@@ -1,0 +1,37 @@
+# Build output
+build/
+cmake-build-*/
+out/
+
+# CMake artefacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Testing/
+Makefile
+*.cmake.user
+
+# Compiled objects / libraries / binaries
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.pdb
+
+# Runtime output produced by the solver
+cpu_mg_solution.bin
+trace/
+
+# Editor / IDE
+.vscode/
+.idea/
+.clion*/
+*.user
+*.swp
+*~
+.DS_Store
