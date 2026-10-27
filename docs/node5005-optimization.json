@@ -1,0 +1,1326 @@
+{
+  "date": "2026-10-22",
+  "host": "node5005",
+  "geometry": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "block": [
+    6,
+    6,
+    6,
+    4
+  ],
+  "mass": -0.277,
+  "csw": 1,
+  "seed": 1024,
+  "levels": 2,
+  "t_boundary": -1,
+  "fine_eo": true,
+  "coarse_eo": true,
+  "methodology": "Same physical AMD node, native znver5 Release GCC14.4. Zero starts, own seeded setup, five normal samples/configuration. Full host API includes layouts and final double residual, excludes setup/I/O. Second sample and median last four. Perf separate 10 solves, PMPI separate 5 solves. Independent original scalar executable verifies each decomposition and twelve columns.",
+  "build_manifest": "../../.cache/node5005-optimized-20261022/build-manifest.json",
+  "build_manifest_sha256": "00f5149ea03b2cb3d62bd4d0c367a6e4ae365ffd7e231699585bc30df198fa2a",
+  "binary_sha256": "2ab10598bf7bfd0e595c1290f1c9c8eb0d2388f97c22918e94532f743a72ceec",
+  "baseline_sha256": "8fd63ca29ba1fa8f79d81e132327b0cd168c4fa1ee178ae1fafb216cc5af64e5",
+  "independent_reference_sha256": "dc9888c9923995487f192066f12c1681f80ea76d6eba4ff9d94d8adfa76d7387",
+  "fixture_sha256": {
+    "PyQCU/data/lime_mg_20261013/input.h5": "e94bc2cdd736134876de776a59ef8ea2c57699a3e4f70d48dd4db70e318c2ecd",
+    "PyQCU/data/lime_mg_20261013/quda_solution.h5": "0ae5838e84c5ba18e5e52620084bd88d74d64c755ede3a4a1ae5903055ae8d1d"
+  },
+  "source_sha256": {
+    "multigrid.cpp/CMakeLists.txt": "2209ecaf8833e0f8fce2d5e3a59a344c00dbf0838319dec37daf1a61407aeaa0",
+    "multigrid.cpp/benchmarks/native/bench_native.cpp": "070d9058d2448968fa04d8ae9b7b5d5f4accb328c84967424beb3b5c59b1735a",
+    "multigrid.cpp/benchmarks/reference-libraries/build.sh": "a5bec47872196d7d718fb412550690369d9fc29bc32b0881576a513ee3c72402",
+    "multigrid.cpp/benchmarks/reference-libraries/collect.py": "8e6efd2f87ea79daa29be77e4aee076d026caddd395d5fcd80193da4ec46fa53",
+    "multigrid.cpp/benchmarks/reference-libraries/dd_bench.c": "923d32b39cc191db15ff081aed244468a88128e196caec4054aa04e064ab03ee",
+    "multigrid.cpp/benchmarks/reference-libraries/openqcd_bench.c": "15277d646a8a7862a67747039808b56352cb2fc5564a164e307ddc78e9123148",
+    "multigrid.cpp/benchmarks/reference-libraries/prepare.py": "e52c583b1b7f88f43a035acc9699426ef1174f46bc0a686704f52c0326e4f4d6",
+    "multigrid.cpp/benchmarks/reference-libraries/run.sh": "f05faa6cd683fb8697b1a7ed49b873589e5ad2132ad65e80f7d1448d5afcfe55",
+    "multigrid.cpp/benchmarks/reference-libraries/verify.py": "363ce094cacab23615c6ace9233a157ed4466fd85918ff00839ce029be1f2c74",
+    "multigrid.cpp/benchmarks/runtime/benchmark_pyquda_runtime.py": "667eac935126b168946208c2bfe7b9bf1e6ef9921c9e52499ab6c058249a8e93",
+    "multigrid.cpp/benchmarks/runtime/benchmark_runtime.py": "80c583390fb2a07fe71ec6b9a011ae9ba4b4919dfbd5f3a3cfd60b766a6cd976",
+    "multigrid.cpp/benchmarks/runtime/verify_runtime_columns.py": "7921233d2e79271a37ed465fa23ed00be6a7bbcdf924bdcd1ca430ca0d39802c",
+    "multigrid.cpp/include/lqcd/core/clover.h": "f8da2717b101918867e94c048f0c0eb864861ab2011ca3b5a93a9e980677763c",
+    "multigrid.cpp/include/lqcd/core/dirac.h": "6588c001b0d1174ab0c775795c7f3dc330a03885df5d2f548a0f4088a7b5630d",
+    "multigrid.cpp/include/lqcd/core/dslash.h": "3425fb8a0d5c7b79e92e44fcc67f0f2abb71f85d8ea03bbe8a01d69124ebae0c",
+    "multigrid.cpp/include/lqcd/core/field.h": "29d1f8bc8e151fc67622e41ecdd10e5145b7a82174d1481ba9a65e16d02f9fd8",
+    "multigrid.cpp/include/lqcd/core/gauge.h": "7dceb84cfb1dd6622691c80c9f3c18b9d8256d45f5a1ef2e66aeba48ce2c616e",
+    "multigrid.cpp/include/lqcd/core/gcr.h": "f6dff6b0240109c17eee8fb2fafb63a30afffe723dba00f7ab5325f1ca1c9204",
+    "multigrid.cpp/include/lqcd/core/multigrid.h": "157481129f0eaf951f298175ba7ce0c3a132114f4155cfe41890c1d5f09604f2",
+    "multigrid.cpp/include/lqcd/core/options.h": "bebad44df960d99d35bf45516d5751bef19863b90d14792fe46440d93c952b60",
+    "multigrid.cpp/include/lqcd/lqcd.h": "f420d627e86008a72dbf19aaab9d7814f9586b23cd3bfcb27e10b7b8d82fffda",
+    "multigrid.cpp/include/lqcd/runtime/runtime.h": "9b2068c3a4612e51d45d189cc60d41b4485fd34aad4f56dd9df4b1eaa0c2acfc",
+    "multigrid.cpp/python/lqcd_cpu/__init__.py": "a864af4048d57be03ead42374ac092c1c38a13e7f62ef79a1a6924a8b57ae1e8",
+    "multigrid.cpp/src/backends/x86/backend.cpp": "175c0772c8b5271d7e73f97db9ac2597c952298f3f35a5ad94f7aff76c1de14a",
+    "multigrid.cpp/src/backends/x86/coarse.cpp": "66dbf5cab90182e7c3a25d7eacd1498e650483a1d1b1cf3021187b6659bce296",
+    "multigrid.cpp/src/backends/x86/cycle.cpp": "dac2406e13bb7c0a05486ff727c01c36c1e2a1a96b4dfdddb2df0dc5f2ee48fd",
+    "multigrid.cpp/src/backends/x86/double_operator.cpp": "9414faa5962815d6cefbc91faf60b01f6872f82d591869b7d38d7443cb9aaa27",
+    "multigrid.cpp/src/backends/x86/environment.cpp": "3eee595c75aa097b81ac4dfa06a14c1d5d3a3091b0d174d25b3931df11fbc9b9",
+    "multigrid.cpp/src/backends/x86/environment.hpp": "fce21649223c8ad8763916dd806c61fcaef23a7f6dfae559f9fa471ba48845c0",
+    "multigrid.cpp/src/backends/x86/fine_operator.cpp": "63814712bec675c3a449d15ce6c034053a93cd51cfca1ef90c3e455a1e694b99",
+    "multigrid.cpp/src/backends/x86/halo_profile.cpp": "d1168b4630328079aa10443a961b25b1cbc3fb382b90e91f6d083343c54e12ac",
+    "multigrid.cpp/src/backends/x86/hierarchy.cpp": "e03e072bdfe4289484d549e949aedbf968146d07f697ef5e8c856844bf97b926",
+    "multigrid.cpp/src/backends/x86/hierarchy.hpp": "c2362a62fbfb9b5ec8d24c7902f5a6de4c9bd8e9d2f4ba064fc5694e516b1caa",
+    "multigrid.cpp/src/backends/x86/multigrid.hpp": "bbef91d5a368d1aac4d8bac4c4f427866198cc72a67747b79731cab8f58ac054",
+    "multigrid.cpp/src/backends/x86/sap.cpp": "8cee954b47ac9a67cc27de929b2f1bb3a7dd28b77157693f782255cf8b069401",
+    "multigrid.cpp/src/backends/x86/setup.cpp": "e6d7e3df0c13c4d66e86564c9a01d0fb4a8653b7d9dd3f3a91fa66ace4c70db6",
+    "multigrid.cpp/src/backends/x86/solver.cpp": "a8e8739d3d8578ddcd12904e188cf7d71e0c47ce0339b51319ab669c919e3c9d",
+    "multigrid.cpp/src/backends/x86/validation.cpp": "8bdf540d1566cd0d4dc543247aecaad8971d017223bea4c19ee8be6c27d86345",
+    "multigrid.cpp/src/backends/x86/wilson_kernel.hpp": "09168b54ee7024b47960ef66414ee63eafd57755655240537fb227bc9ff442bc",
+    "multigrid.cpp/src/core/clover.cpp": "120bfcb6ae359bcd6ecb869df68198cb8f14fc618af2922c919c4c90467553ff",
+    "multigrid.cpp/src/core/dirac.cpp": "7379767901c6e9b44d97db148e7a2a3a358ed763b8ad5ce061deeade8bccdd69",
+    "multigrid.cpp/src/core/dslash.cpp": "77a8b22417af60eb73f4675b6c255df46e3c70ee927d1e8cc54018e87abd2535",
+    "multigrid.cpp/src/core/field.cpp": "2e78b97a2ab2e2de4e50345a7b1b8fcc78256c61521570153918721df84e5dea",
+    "multigrid.cpp/src/core/gauge.cpp": "044c899fdfb31e815df3b09a807e7c6c614e948f7289e64507ea73940973751d",
+    "multigrid.cpp/src/core/gcr.cpp": "feb16dcabb6f0885b548f76a4247395ce470329025eed571e0a6c62ad7cf1e34",
+    "multigrid.cpp/src/core/multigrid.cpp": "b59195d0270a1324def32cc54ede529f874a014f318b60f9a1763eb5b5366b5a",
+    "multigrid.cpp/src/reference/main.cpp": "2f0dda2d1d3a5deb15b51c8ebb1ab028919c8c1bef64aeb5174a282e3b0e49a5",
+    "multigrid.cpp/src/reference/validation.cpp": "3cdb3d0dc3beb93680005f6d58d8183c13b475cf10013069d57b8094608a1589",
+    "multigrid.cpp/src/reference/validation.h": "63cd51d91d02f5460fb7bb1280b556c584ff55b5f37874e7c14164278b11605a",
+    "multigrid.cpp/src/references/ddalphaamg/adapter.cpp": "227b0ef37bc9dda910eeb0d41d56275e6ec619d038a156bed8dbb5ccff156afe",
+    "multigrid.cpp/src/runtime/backend.hpp": "855989852f963b564c7714429bbe6ac53ecae3b9bb95c453a72cb8898ede4eb6",
+    "multigrid.cpp/src/runtime/context.cpp": "b62a2d809dddb20f54050604adb3f3c64ded648c59a1e4a027fbe67ab562648b",
+    "multigrid.cpp/src/runtime/layout.cpp": "05d948cb7b3ce639624e564c59d188a0ad19ec8b14fe72584fcb6dce1ae24089",
+    "multigrid.cpp/src/runtime/registry.cpp": "fe01d10bf3e7fc5880c6c63ce75aa35889c4a72e23112dca2ba5ae322b63b39b",
+    "multigrid.cpp/src/support/aligned_workspace.hpp": "8d5b9a2b8e87abafd3c4c7e2242b34b44535001702aac6279ff0ef7e5e163599",
+    "multigrid.cpp/tests/oracle/compare_all.py": "83fcd0b943e6a51822d23f70da9122f5b006ecca7d77f8904c5c1e312c667d9e",
+    "multigrid.cpp/tests/oracle/compare_baseline.py": "117cb7a09f24c457938db2001c49bf288457758505de9a04ef16f74add4bd95c",
+    "multigrid.cpp/tests/oracle/compare_cpu_quda.py": "114fe3a7158cb511fdacabeedb285427953b583ddae954dae9f8b6677c1f0b73",
+    "multigrid.cpp/tests/oracle/compare_quda_p_probe.py": "4e60c1bc89bb48de6e87a8deef3e7271a4d21c8dcedbd38aa2eb8b8cf98dc504",
+    "multigrid.cpp/tests/oracle/convert_quda_basis.py": "61a1c31c7de0ebed5ad6fcda9c035d0ccf6f7430eaf0305b7a94ac46cf89ba3a",
+    "multigrid.cpp/tests/oracle/oracle_io.py": "5583726cef629e9deda67a75a6398211eadc9a3b5a313c0cb42c430f55d3740c",
+    "multigrid.cpp/tests/oracle/prepare_oracle.py": "c288375a16bf946b0d9de4d0d091c66675bce2df7321d0981a136ac2f6142344",
+    "multigrid.cpp/tests/oracle/run_oracle.sh": "30c6ad2f2c7b7d6ee33017088ada68d7d8be883f39c2cec1a4694c0189b9bcb3",
+    "multigrid.cpp/tests/runtime/test_native_halo.py": "08410527ddfb4009808602677385b0d08f8284d216e93fe09b765f2a73483b43",
+    "multigrid.cpp/tests/runtime/test_numa_launcher.py": "8160449e0dfbb58edf24bbe53678d8e4d21f6acd7b86d641fb084579b87b395c",
+    "multigrid.cpp/tests/runtime/test_runtime.py": "7e2258facdaa31ec4defd2dbea6f346eaa90d7199203e289d9fd309833b7224f",
+    "multigrid.cpp/tests/runtime/test_sap_eo.py": "adc4a19c406f03d746f532b922fd51745e35f16fdc64411779405c747131cf06",
+    "multigrid.cpp/tests/runtime/test_thread_defaults.py": "5b2948a29cda54a457432de81b9a0547b92f54dca829b71c919088d988b5e2c6",
+    "multigrid.cpp/tests/unit/core_test.cpp": "b441c4de22820e7bc338a1496e4fd0a1a125cf4a88c9201823e046d4df243dc9",
+    "multigrid.cpp/tests/unit/native_allocator_test.cpp": "f5eea86d587608fdae0f5aa99fe668f1c53d79772991523ccfba0738c8938e24",
+    "multigrid.cpp/tools/build_runtime.sh": "aa3b74abbf3ed0d2caa7ff3997e7f5846dd607dce5d74485b0cda6514618279d",
+    "multigrid.cpp/tools/run_numa.py": "09c77243ebb3c65d875ffbb38c38a5824554f14e507a2e6f21dbe7f619aa3dfe"
+  },
+  "ctest": {
+    "passed": 13,
+    "failed": 0,
+    "seconds": 254.12,
+    "log_sha256": "fdf8c88cd888e71474ce5ec072a2ecaf84a9d62618365e3624b52a943c36e92d"
+  },
+  "scaling": [
+    {
+      "ranks": 1,
+      "threads": 32,
+      "cores": 32,
+      "baseline_second": 3.6595070464536548,
+      "baseline_steady": 3.657775877509266,
+      "second": 3.553218680433929,
+      "steady": 3.557254138868302,
+      "setup": 79.664099311,
+      "samples": [
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 3.4967014759999984,
+          "api_seconds": 3.602925444999997,
+          "true_residual": 3.7485113255182745e-09,
+          "python_wall_seconds": 3.6031902618706226
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 3.4908600269999965,
+          "api_seconds": 3.549126919999992,
+          "true_residual": 3.748511325518274e-09,
+          "python_wall_seconds": 3.553218680433929
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 3.497033333999994,
+          "api_seconds": 3.555237512000005,
+          "true_residual": 3.7485113255182745e-09,
+          "python_wall_seconds": 3.559504938311875
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 3.496138851000012,
+          "api_seconds": 3.5544851030000046,
+          "true_residual": 3.7485113255182745e-09,
+          "python_wall_seconds": 3.558703093789518
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 3.4931072799999896,
+          "api_seconds": 3.5514866609999984,
+          "true_residual": 3.7485113255182745e-09,
+          "python_wall_seconds": 3.5558051839470863
+        }
+      ],
+      "operator_error": 3.9905810793887977e-16,
+      "solution_error_vs_quda": 1.4890436283076873e-07,
+      "independent": [
+        {
+          "source_spin": 0,
+          "source_color": 0,
+          "independent_residual": 3.748511326163616e-09,
+          "reference_threads": 32
+        }
+      ],
+      "speedup_over_baseline": 1.0282582392814206,
+      "relative_to_32": 1.0,
+      "efficiency": 1.0
+    },
+    {
+      "ranks": 2,
+      "threads": 32,
+      "cores": 64,
+      "baseline_second": 2.1702390844002366,
+      "baseline_steady": 2.1717811478301883,
+      "second": 1.7867009984329343,
+      "steady": 1.7865537726320326,
+      "setup": 65.39378744700001,
+      "samples": [
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 1.7653610169999894,
+          "api_seconds": 1.8126703410000005,
+          "true_residual": 3.748516904216545e-09,
+          "python_wall_seconds": 1.8129489291459322
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 1.7584250750000052,
+          "api_seconds": 1.783627815999992,
+          "true_residual": 3.748516904216545e-09,
+          "python_wall_seconds": 1.7867009984329343
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 1.7579083699999956,
+          "api_seconds": 1.7832162180000068,
+          "true_residual": 3.748516904216545e-09,
+          "python_wall_seconds": 1.7859355406835675
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 1.7578149789999884,
+          "api_seconds": 1.783299814000003,
+          "true_residual": 3.748516904216545e-09,
+          "python_wall_seconds": 1.786406546831131
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 1.7600502949999992,
+          "api_seconds": 1.7853353489999932,
+          "true_residual": 3.748516904216545e-09,
+          "python_wall_seconds": 1.7880541598424315
+        }
+      ],
+      "operator_error": 3.990581079388771e-16,
+      "solution_error_vs_quda": 1.489042787365407e-07,
+      "independent": [
+        {
+          "source_spin": 0,
+          "source_color": 0,
+          "independent_residual": 3.748516904426949e-09,
+          "reference_threads": 32
+        }
+      ],
+      "speedup_over_baseline": 1.2156259616135825,
+      "relative_to_32": 1.9911262640740965,
+      "efficiency": 0.9955631320370483
+    },
+    {
+      "ranks": 4,
+      "threads": 32,
+      "cores": 128,
+      "baseline_second": 1.772387363947928,
+      "baseline_steady": 1.7731957668438554,
+      "second": 1.0366589790210128,
+      "steady": 1.03816561633721,
+      "setup": 73.360310964,
+      "samples": [
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 1.0323224199999999,
+          "api_seconds": 1.0576462420000041,
+          "true_residual": 3.748520402032487e-09,
+          "python_wall_seconds": 1.0579678155481815
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 1.0216814870000093,
+          "api_seconds": 1.0345917260000022,
+          "true_residual": 3.748520402032487e-09,
+          "python_wall_seconds": 1.0366589790210128
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 1.0221737059999896,
+          "api_seconds": 1.034985907999996,
+          "true_residual": 3.748520402032487e-09,
+          "python_wall_seconds": 1.0368452789261937
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 1.0238727360000013,
+          "api_seconds": 1.037375143999995,
+          "true_residual": 3.748520402032487e-09,
+          "python_wall_seconds": 1.0394859537482262
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 1.024938345999999,
+          "api_seconds": 1.037794624,
+          "true_residual": 3.7485204020324865e-09,
+          "python_wall_seconds": 1.0396812157705426
+        }
+      ],
+      "operator_error": 3.99058107938878e-16,
+      "solution_error_vs_quda": 1.4890456717308844e-07,
+      "independent": [
+        {
+          "source_spin": 0,
+          "source_color": 0,
+          "independent_residual": 3.748520402547939e-09,
+          "reference_threads": 32
+        }
+      ],
+      "speedup_over_baseline": 1.7080085671686298,
+      "relative_to_32": 3.426480402441742,
+      "efficiency": 0.8566201006104355
+    },
+    {
+      "ranks": 8,
+      "threads": 32,
+      "cores": 256,
+      "baseline_second": 1.9422223456203938,
+      "baseline_steady": 1.8993129967711866,
+      "second": 0.568291150033474,
+      "steady": 0.567611129488796,
+      "setup": 74.265283533,
+      "samples": [
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 0.5768729119999989,
+          "api_seconds": 0.590806888000003,
+          "true_residual": 3.748521805110326e-09,
+          "python_wall_seconds": 0.5911382753401995
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 0.5612723650000078,
+          "api_seconds": 0.5679799929999945,
+          "true_residual": 3.748521805110325e-09,
+          "python_wall_seconds": 0.568291150033474
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 0.5605613269999878,
+          "api_seconds": 0.5664773880000098,
+          "true_residual": 3.748521805110325e-09,
+          "python_wall_seconds": 0.5667568566277623
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 0.6641659839999932,
+          "api_seconds": 0.6700939429999977,
+          "true_residual": 3.748521805110326e-09,
+          "python_wall_seconds": 0.6704005226492882
+        },
+        {
+          "converged": 1,
+          "iterations": 17,
+          "refinement_steps": 0,
+          "solver_seconds": 0.5607402760000042,
+          "api_seconds": 0.5666422850000004,
+          "true_residual": 3.748525010958571e-09,
+          "python_wall_seconds": 0.566931108944118
+        }
+      ],
+      "operator_error": 3.9905810793887755e-16,
+      "solution_error_vs_quda": 1.4890438845171137e-07,
+      "independent": [
+        {
+          "source_spin": 0,
+          "source_color": 0,
+          "independent_residual": 3.748525011144344e-09,
+          "reference_threads": 32
+        }
+      ],
+      "speedup_over_baseline": 3.3461517896623216,
+      "relative_to_32": 6.267061997307997,
+      "efficiency": 0.7833827496634996
+    }
+  ],
+  "mpi": {
+    "normalization_columns": 5,
+    "baseline": {
+      "allreduce": {
+        "calls_per_column_per_rank": [
+          477.0,
+          477.0,
+          477.0,
+          477.0,
+          477.0,
+          477.0,
+          477.0,
+          477.0
+        ],
+        "mean_rank_seconds_per_column": 0.07252037168946117,
+        "min_rank_seconds_per_column": 0.04451997950673103,
+        "max_rank_seconds_per_column": 0.10367796905338764,
+        "receive_buffer_bytes_per_column_per_rank": 5660.0
+      },
+      "allgather": {
+        "calls_per_column_per_rank": [
+          9.0,
+          9.0,
+          9.0,
+          9.0,
+          9.0,
+          9.0,
+          9.0,
+          9.0
+        ],
+        "mean_rank_seconds_per_column": 0.5001078528817743,
+        "min_rank_seconds_per_column": 0.4704307556152344,
+        "max_rank_seconds_per_column": 0.529403917863965,
+        "receive_buffer_bytes_per_column_per_rank": 849346816.0
+      },
+      "waitall": {
+        "calls_per_column_per_rank": [
+          292.0,
+          292.0,
+          292.0,
+          292.0,
+          292.0,
+          292.0,
+          292.0,
+          292.0
+        ],
+        "mean_rank_seconds_per_column": 0.08021943524945527,
+        "min_rank_seconds_per_column": 0.06657140422612429,
+        "max_rank_seconds_per_column": 0.10586693454533816,
+        "receive_buffer_bytes_per_column_per_rank": 0.0
+      },
+      "barrier": {
+        "calls_per_column_per_rank": [
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0
+        ],
+        "mean_rank_seconds_per_column": 0.0022285277489572765,
+        "min_rank_seconds_per_column": 0.00020613688975572585,
+        "max_rank_seconds_per_column": 0.003111126273870468,
+        "receive_buffer_bytes_per_column_per_rank": 0.0
+      }
+    },
+    "optimized": {
+      "allreduce": {
+        "calls_per_column_per_rank": [
+          481.0,
+          481.0,
+          481.0,
+          481.0,
+          481.0,
+          481.0,
+          481.0,
+          481.0
+        ],
+        "mean_rank_seconds_per_column": 0.03361663473770022,
+        "min_rank_seconds_per_column": 0.027091844007372856,
+        "max_rank_seconds_per_column": 0.0417905081063509,
+        "receive_buffer_bytes_per_column_per_rank": 5676.0
+      },
+      "allgather": {
+        "calls_per_column_per_rank": [
+          4.0,
+          4.0,
+          4.0,
+          4.0,
+          4.0,
+          4.0,
+          4.0,
+          4.0
+        ],
+        "mean_rank_seconds_per_column": 2.7148541994392873e-05,
+        "min_rank_seconds_per_column": 1.7072074115276337e-05,
+        "max_rank_seconds_per_column": 3.649238497018814e-05,
+        "receive_buffer_bytes_per_column_per_rank": 256.0
+      },
+      "waitall": {
+        "calls_per_column_per_rank": [
+          296.0,
+          296.0,
+          296.0,
+          296.0,
+          296.0,
+          296.0,
+          296.0,
+          296.0
+        ],
+        "mean_rank_seconds_per_column": 0.07163177262991667,
+        "min_rank_seconds_per_column": 0.06820548940449953,
+        "max_rank_seconds_per_column": 0.07598184067755938,
+        "receive_buffer_bytes_per_column_per_rank": 0.0
+      },
+      "barrier": {
+        "calls_per_column_per_rank": [
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0,
+          2.0
+        ],
+        "mean_rank_seconds_per_column": 0.0004439987475052476,
+        "min_rank_seconds_per_column": 8.578691631555557e-05,
+        "max_rank_seconds_per_column": 0.000838252529501915,
+        "receive_buffer_bytes_per_column_per_rank": 0.0
+      }
+    },
+    "note": "Per-rank call wall times include imbalance; do not sum ranks or add overlapping timings. Four operation families only. buffer_bytes is receiver buffer size, not network wire traffic; halo MPI_Reduce is not wrapped."
+  },
+  "perf": {
+    "normalization_columns": 10,
+    "baseline": {
+      "task-clock:u": 2649534.27,
+      "cycles:u": 8576470141794.0,
+      "instructions:u": 15668427737141.0,
+      "cache-references:u": 431471757444.0,
+      "cache-misses:u": 33549436886.0,
+      "window_seconds": 20.678781573,
+      "ipc": 1.826908678989877,
+      "generic_miss_reference_ratio": 0.0777558120715568
+    },
+    "optimized": {
+      "task-clock:u": 1693085.85,
+      "cycles:u": 5546891357894.0,
+      "instructions:u": 7317432295960.0,
+      "cache-references:u": 361657434079.0,
+      "cache-misses:u": 38717830763.0,
+      "window_seconds": 8.605758516,
+      "ipc": 1.3191951714623495,
+      "generic_miss_reference_ratio": 0.10705664287421374
+    },
+    "instruction_reduction": 0.532982350321309,
+    "cycle_reduction": 0.35324308646940406,
+    "baseline_flat": [
+      {
+        "percent": 37.33,
+        "dso": "libgomp.so.1.0.0",
+        "symbol": "[.] do_wait"
+      },
+      {
+        "percent": 10.76,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] add_dslash"
+      },
+      {
+        "percent": 7.91,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::local_range"
+      },
+      {
+        "percent": 7.82,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] lqcd_native::x86::wilson_clover_block_impl<false, long, true>"
+      },
+      {
+        "percent": 6.81,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] apply_clover_only"
+      },
+      {
+        "percent": 5.54,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] lqcd_native::x86::wilson_clover_block_impl<true, int, true>"
+      },
+      {
+        "percent": 4.95,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::restrict_to_coarse"
+      },
+      {
+        "percent": 4.41,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::prolongate_add"
+      },
+      {
+        "percent": 3.14,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] spinor_index"
+      },
+      {
+        "percent": 2.7,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] axpy"
+      },
+      {
+        "percent": 1.39,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::clover_range"
+      },
+      {
+        "percent": 0.94,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::sap"
+      },
+      {
+        "percent": 0.81,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::fine_axpy"
+      },
+      {
+        "percent": 0.72,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::coarse_block_apply"
+      },
+      {
+        "percent": 0.68,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::fine_dot"
+      },
+      {
+        "percent": 0.49,
+        "dso": "libc-2.28.so",
+        "symbol": "[.] __memmove_avx512_unaligned_erms"
+      },
+      {
+        "percent": 0.41,
+        "dso": "libc-2.28.so",
+        "symbol": "[.] __memset_avx512_unaligned_erms"
+      },
+      {
+        "percent": 0.32,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::solve_sap_block_eo"
+      },
+      {
+        "percent": 0.27,
+        "dso": "libmpi.so.40.40.7",
+        "symbol": "[.] mca_part_persist_progress"
+      },
+      {
+        "percent": 0.26,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] lqcd::X86Backend::solve"
+      },
+      {
+        "percent": 0.26,
+        "dso": "libpthread-2.28.so",
+        "symbol": "[.] pthread_spin_lock"
+      },
+      {
+        "percent": 0.22,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] lqcd_native::detail::fine_norm"
+      },
+      {
+        "percent": 0.18,
+        "dso": "libc-2.28.so",
+        "symbol": "[.] __memset_avx512_erms"
+      },
+      {
+        "percent": 0.12,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] site_index"
+      },
+      {
+        "percent": 0.11,
+        "dso": "libpthread-2.28.so",
+        "symbol": "[.] __pthread_mutex_unlock_usercnt"
+      },
+      {
+        "percent": 0.11,
+        "dso": "libpthread-2.28.so",
+        "symbol": "[.] __pthread_mutex_lock"
+      },
+      {
+        "percent": 0.1,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::solve_float_gcr"
+      }
+    ],
+    "optimized_flat": [
+      {
+        "percent": 38.25,
+        "dso": "libgomp.so.1.0.0",
+        "symbol": "[.] do_wait"
+      },
+      {
+        "percent": 14.49,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] lqcd_native::x86::wilson_clover_block_impl<false, long, true>"
+      },
+      {
+        "percent": 11.69,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::local_range"
+      },
+      {
+        "percent": 8.4,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] lqcd_native::x86::wilson_clover_block_impl<true, int, true>"
+      },
+      {
+        "percent": 6.84,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::restrict_to_coarse"
+      },
+      {
+        "percent": 6.09,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::prolongate_add"
+      },
+      {
+        "percent": 2.31,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::apply_double(std::vector<std::complex<double>, std::allocator<std::complex<double> > > const&, std::vector<std::complex<double>, std::allocator<std::complex<double> > >&) const::{lambda(unsigned long)#1}::operator()"
+      },
+      {
+        "percent": 1.94,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::clover_range"
+      },
+      {
+        "percent": 1.45,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::fine_axpy"
+      },
+      {
+        "percent": 1.14,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::coarse_block_apply"
+      },
+      {
+        "percent": 1.12,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::sap"
+      },
+      {
+        "percent": 1.01,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::fine_dot"
+      },
+      {
+        "percent": 0.86,
+        "dso": "libc-2.28.so",
+        "symbol": "[.] __memset_avx512_unaligned_erms"
+      },
+      {
+        "percent": 0.76,
+        "dso": "libc-2.28.so",
+        "symbol": "[.] __memmove_avx512_unaligned_erms"
+      },
+      {
+        "percent": 0.43,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] lqcd_native::detail::fine_norm"
+      },
+      {
+        "percent": 0.38,
+        "dso": "libmpi.so.40.40.7",
+        "symbol": "[.] mca_part_persist_progress"
+      },
+      {
+        "percent": 0.34,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::solve_sap_block_eo"
+      },
+      {
+        "percent": 0.25,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] axpy"
+      },
+      {
+        "percent": 0.22,
+        "dso": "libpthread-2.28.so",
+        "symbol": "[.] __pthread_mutex_lock"
+      },
+      {
+        "percent": 0.2,
+        "dso": "libpthread-2.28.so",
+        "symbol": "[.] __pthread_mutex_unlock_usercnt"
+      },
+      {
+        "percent": 0.18,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::solve_float_gcr"
+      },
+      {
+        "percent": 0.16,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::fine_copy"
+      },
+      {
+        "percent": 0.16,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::coarse_diagonal"
+      },
+      {
+        "percent": 0.14,
+        "dso": "libpthread-2.28.so",
+        "symbol": "[.] pthread_spin_lock"
+      },
+      {
+        "percent": 0.11,
+        "dso": "liblqcd_cpu.so.0.2.0",
+        "symbol": "[.] NativeMG::Impl::decode_fine"
+      },
+      {
+        "percent": 0.1,
+        "dso": "[unknown]",
+        "symbol": "[k] 0xffffffffb9001100"
+      }
+    ],
+    "sampled_ranks": [
+      0,
+      4
+    ],
+    "counter_ranks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "frequency_hz": 49,
+    "samples": 20928,
+    "lost_samples": 0,
+    "metadata": {
+      "ranks": [
+        {
+          "rank": 0,
+          "pid": 2082806,
+          "threads": 32,
+          "host": "node5005",
+          "threads_at_attach": 34
+        },
+        {
+          "rank": 1,
+          "pid": 2082807,
+          "threads": 32,
+          "host": "node5005",
+          "threads_at_attach": 34
+        },
+        {
+          "rank": 2,
+          "pid": 2082808,
+          "threads": 32,
+          "host": "node5005",
+          "threads_at_attach": 34
+        },
+        {
+          "rank": 3,
+          "pid": 2082809,
+          "threads": 32,
+          "host": "node5005",
+          "threads_at_attach": 34
+        },
+        {
+          "rank": 4,
+          "pid": 2082810,
+          "threads": 32,
+          "host": "node5005",
+          "threads_at_attach": 34
+        },
+        {
+          "rank": 5,
+          "pid": 2082811,
+          "threads": 32,
+          "host": "node5005",
+          "threads_at_attach": 34
+        },
+        {
+          "rank": 6,
+          "pid": 2082812,
+          "threads": 32,
+          "host": "node5005",
+          "threads_at_attach": 34
+        },
+        {
+          "rank": 7,
+          "pid": 2082813,
+          "threads": 32,
+          "host": "node5005",
+          "threads_at_attach": 34
+        }
+      ],
+      "sampled_ranks": [
+        0,
+        4
+      ],
+      "counter_ranks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "sample_event": "cycles:u",
+      "frequency_hz": 49,
+      "stack": "dwarf,4096",
+      "record_command": [
+        "perf",
+        "record",
+        "-e",
+        "cycles:u",
+        "-F",
+        "49",
+        "--call-graph",
+        "dwarf,4096",
+        "-p",
+        "2082806,2082810",
+        "-o",
+        "/public2/home/lwb_720/lqcd/.cache/node5005-optimized-20261022/perf.data"
+      ],
+      "stat_command": [
+        "perf",
+        "stat",
+        "-p",
+        "2082806,2082807,2082808,2082809,2082810,2082811,2082812,2082813",
+        "-e",
+        "task-clock:u,cycles:u,instructions:u,cache-references:u,cache-misses:u",
+        "-o",
+        "/public2/home/lwb_720/lqcd/.cache/node5005-optimized-20261022/perf-stat.txt"
+      ],
+      "recording_started_unix": 1792654916.5340414,
+      "recording_ended_unix": 1792654924.176728,
+      "exit_codes": [
+        -2,
+        -2
+      ]
+    },
+    "normal_samples": [
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.6459186140000099,
+        "api_seconds": 0.6593962950000076,
+        "true_residual": 3.748507967617824e-09,
+        "python_wall_seconds": 0.6597205922007561
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.5626487499999939,
+        "api_seconds": 0.5693845819999979,
+        "true_residual": 3.748507967617824e-09,
+        "python_wall_seconds": 0.5697185928002
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.6254155080000032,
+        "api_seconds": 0.6313646379999938,
+        "true_residual": 3.748507967617824e-09,
+        "python_wall_seconds": 0.631671448238194
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.5650774069999898,
+        "api_seconds": 0.5709642719999977,
+        "true_residual": 3.748508225027741e-09,
+        "python_wall_seconds": 0.571274938993156
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.5632003480000094,
+        "api_seconds": 0.5691186920000035,
+        "true_residual": 3.748507967617824e-09,
+        "python_wall_seconds": 0.5694423196837306
+      }
+    ],
+    "profile_samples": [
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.5780995639999986,
+        "api_seconds": 0.5855103269999944,
+        "true_residual": 3.748507967617824e-09,
+        "python_wall_seconds": 0.585827874019742
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.7412168630000053,
+        "api_seconds": 0.747988767999999,
+        "true_residual": 3.748508225027741e-09,
+        "python_wall_seconds": 0.7483502915129066
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.8035127630000005,
+        "api_seconds": 0.8292973169999982,
+        "true_residual": 3.748508225027741e-09,
+        "python_wall_seconds": 0.8295890353620052
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.9709442179999996,
+        "api_seconds": 0.9801206719999982,
+        "true_residual": 3.748507967617824e-09,
+        "python_wall_seconds": 0.9804246285930276
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.7000887760000012,
+        "api_seconds": 0.7060168349999998,
+        "true_residual": 3.748507967617824e-09,
+        "python_wall_seconds": 0.7063235249370337
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.6382649850000064,
+        "api_seconds": 0.6443749759999946,
+        "true_residual": 3.748507967617824e-09,
+        "python_wall_seconds": 0.6446669548749924
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.7777835610000068,
+        "api_seconds": 0.7998376460000003,
+        "true_residual": 3.748507967617824e-09,
+        "python_wall_seconds": 0.8001325782388449
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.862754246999998,
+        "api_seconds": 0.8688274940000014,
+        "true_residual": 3.748508225027741e-09,
+        "python_wall_seconds": 0.869138821028173
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.5618755799999917,
+        "api_seconds": 0.5683968890000131,
+        "true_residual": 3.748507967617824e-09,
+        "python_wall_seconds": 0.5687096677720547
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.7006659030000009,
+        "api_seconds": 0.7155404709999971,
+        "true_residual": 3.748507967617824e-09,
+        "python_wall_seconds": 0.715848233550787
+      }
+    ],
+    "note": "Flat self-symbol user-cycle shares, not solve wall-time fractions. DWARF recording perturbs this sub-second workload; only unprofiled samples define speed. Counter windows also include attachment idle; generic misses do not measure DRAM bandwidth."
+  },
+  "halo": {
+    "baseline": {
+      "fine": {
+        "calls": 88,
+        "send_bytes": 233570304,
+        "pack_post_s": 0.0057247010991,
+        "wait_s": 0.0496182702482,
+        "interior_s": 1.99973583221e-05,
+        "boundary_s": 0.0970635069534,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.0939160156995,
+        "total_s": 0.194083091803
+      },
+      "coarse": {
+        "calls": 204,
+        "send_bytes": 10027008,
+        "pack_post_s": 0.283540622331,
+        "wait_s": 0.0320834303275,
+        "interior_s": 1.78404152393e-05,
+        "boundary_s": 0.00912916008383,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.0329754827544,
+        "total_s": 0.296510790475
+      }
+    },
+    "optimized": {
+      "fine": {
+        "calls": 88,
+        "send_bytes": 233570304,
+        "pack_post_s": 0.0059014884755,
+        "wait_s": 0.0580100817606,
+        "interior_s": 0.113351328298,
+        "boundary_s": 0.0313574532047,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.138263566419,
+        "total_s": 0.173413085751
+      },
+      "coarse": {
+        "calls": 204,
+        "send_bytes": 10027008,
+        "pack_post_s": 0.000833865255117,
+        "wait_s": 0.00363153964281,
+        "interior_s": 1.57384201884e-05,
+        "boundary_s": 0.00856763590127,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.00439032353461,
+        "total_s": 0.0189099526033
+      }
+    },
+    "note": "Last five profiled solves; median of independent rank-max fields. Fields are non-additive. Double halos are excluded from fine/coarse HaloStats; they are included in PMPI Waitall."
+  },
+  "propagator": {
+    "wall_seconds": 8.106244755908847,
+    "stats": [
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.566239159999995,
+        "api_seconds": 0.5731453669999951,
+        "true_residual": 3.748521805110326e-09
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.5526001369999989,
+        "api_seconds": 0.560230500000003,
+        "true_residual": 2.6813840549243763e-09
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.6421688249999988,
+        "api_seconds": 0.6607335420000027,
+        "true_residual": 2.78641173011976e-09
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.9245780079999975,
+        "api_seconds": 0.9416999199999907,
+        "true_residual": 2.709128673600814e-09
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.9468373219999933,
+        "api_seconds": 0.9547505600000079,
+        "true_residual": 3.1074063735796124e-09
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.9056867219999987,
+        "api_seconds": 0.9128066389999958,
+        "true_residual": 3.3663839865058554e-09
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.6314520690000052,
+        "api_seconds": 0.6386483510000005,
+        "true_residual": 2.5097007791914614e-09
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.5543624620000003,
+        "api_seconds": 0.5622256350000043,
+        "true_residual": 2.0305631871090464e-09
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.5546331089999939,
+        "api_seconds": 0.5617678390000123,
+        "true_residual": 3.5838500646048384e-09
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.5539815000000061,
+        "api_seconds": 0.5612000459999962,
+        "true_residual": 2.893157247800789e-09
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.5517882179999987,
+        "api_seconds": 0.5598229190000126,
+        "true_residual": 3.174410637697165e-09
+      },
+      {
+        "converged": 1,
+        "iterations": 17,
+        "refinement_steps": 0,
+        "solver_seconds": 0.5534495020000065,
+        "api_seconds": 0.5606225899999941,
+        "true_residual": 1.9692207837197027e-09
+      }
+    ],
+    "independent": [
+      {
+        "source_spin": 0,
+        "source_color": 0,
+        "independent_residual": 3.748521805257272e-09,
+        "reference_threads": 32
+      },
+      {
+        "source_spin": 0,
+        "source_color": 1,
+        "independent_residual": 2.6813840548657334e-09,
+        "reference_threads": 32
+      },
+      {
+        "source_spin": 0,
+        "source_color": 2,
+        "independent_residual": 2.7864117303476956e-09,
+        "reference_threads": 32
+      },
+      {
+        "source_spin": 1,
+        "source_color": 0,
+        "independent_residual": 2.7091286740792613e-09,
+        "reference_threads": 32
+      },
+      {
+        "source_spin": 1,
+        "source_color": 1,
+        "independent_residual": 3.1074063738890115e-09,
+        "reference_threads": 32
+      },
+      {
+        "source_spin": 1,
+        "source_color": 2,
+        "independent_residual": 3.3663839870135234e-09,
+        "reference_threads": 32
+      },
+      {
+        "source_spin": 2,
+        "source_color": 0,
+        "independent_residual": 2.509700779292729e-09,
+        "reference_threads": 32
+      },
+      {
+        "source_spin": 2,
+        "source_color": 1,
+        "independent_residual": 2.030563186996532e-09,
+        "reference_threads": 32
+      },
+      {
+        "source_spin": 2,
+        "source_color": 2,
+        "independent_residual": 3.583850064484444e-09,
+        "reference_threads": 32
+      },
+      {
+        "source_spin": 3,
+        "source_color": 0,
+        "independent_residual": 2.89315724847807e-09,
+        "reference_threads": 32
+      },
+      {
+        "source_spin": 3,
+        "source_color": 1,
+        "independent_residual": 3.174410637445553e-09,
+        "reference_threads": 32
+      },
+      {
+        "source_spin": 3,
+        "source_color": 2,
+        "independent_residual": 1.969220783731836e-09,
+        "reference_threads": 32
+      }
+    ],
+    "max_independent_residual": 3.748521805257272e-09,
+    "second_single_column": 0.5958867128938437,
+    "steady_single_column": 0.5935110114514828,
+    "note": "One separately validated sequential twelve-column sweep, not a second/steady complete-propagator benchmark."
+  },
+  "remaining": [
+    "OpenMP do_wait remains 38.25% of sampled cycles; next candidates are SAP/fine-kernel granularity and synchronization.",
+    "Gauge/clover/setup basis are replicated, fine float storage retains global index space; no multi-node memory-scaling claim.",
+    "t-slab only, ARM/Sunway hardware remain untested.",
+    "rank8 normal sample 3 is 0.6704s versus about 0.567s for the others; all raw samples retained. Twelve-column sweep also has 0.9s outliers. This is a bounded scan, not a global optimum."
+  ],
+  "raw_directory": ".cache/node5005-optimized-20261022"
+}

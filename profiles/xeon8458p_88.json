@@ -1,0 +1,42 @@
+{
+  "name": "xeon8458p_88_numa_eo24x64",
+  "backend": "x86",
+  "algorithm": "project-owned adaptive MG / EO-SAP / coarse EO-GCR",
+  "lattice": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "process_grid": [
+    1,
+    1,
+    1,
+    2
+  ],
+  "threads": 44,
+  "levels": 2,
+  "block": [
+    6,
+    6,
+    6,
+    4
+  ],
+  "mass": -0.277,
+  "csw": 1.0,
+  "t_boundary": -1,
+  "normalization": "mass",
+  "seed": 1024,
+  "omp_proc_bind": "close",
+  "omp_places": "explicit physical CPU IDs in each NUMA domain",
+  "numa_policy": "per-rank CPU affinity; first-touch under the default Linux memory policy",
+  "external_solver_dependency": false,
+  "selection": "default topology discovery, second complete API 2.302160s; nonexclusive node, not a global-optimum claim",
+  "threads_scope": "per MPI rank",
+  "total_physical_cores": 88,
+  "fine_sap_even_odd": true,
+  "coarse_schur_even_odd": true,
+  "setup_update": "inverse",
+  "launch": "tools/run_numa.py",
+  "topology_policy": "one MPI rank per discovered CPU-containing NUMA domain; listed counts record this tested host"
+}

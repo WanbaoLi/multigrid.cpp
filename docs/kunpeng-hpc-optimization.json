@@ -1,0 +1,260 @@
+{
+  "complete": true,
+  "job_id": 1965917,
+  "host": "cn05133",
+  "hbm_used": false,
+  "experiments": [
+    {
+      "name": "addressing",
+      "library_sha256": "7df9422275d33c2602f884e9e58f8778be0e67d94483d9a72eb437aa68452740",
+      "rows": [
+        {
+          "physical_cores": 296,
+          "mpi_ranks": 8,
+          "threads": 37,
+          "baseline_solver_seconds": 37.88753427499998,
+          "candidate_solver_seconds": 37.644782099,
+          "speedup": 1.0064484946509076,
+          "change_percent": 0.6407177997860947,
+          "baseline_api_seconds": 38.43476100603584,
+          "candidate_api_seconds": 38.19189983990509,
+          "baseline_rounds": [
+            38.81991103210021,
+            38.43476100603584,
+            38.41877161001321
+          ],
+          "candidate_rounds": [
+            38.54731145501137,
+            38.19189983990509,
+            38.191723122028634
+          ],
+          "independent_max_residual": 4.81883488842415e-09
+        },
+        {
+          "physical_cores": 592,
+          "mpi_ranks": 16,
+          "threads": 37,
+          "baseline_solver_seconds": 22.869655027999983,
+          "candidate_solver_seconds": 22.60725855900003,
+          "speedup": 1.0116067354347789,
+          "change_percent": 1.1473564803609504,
+          "baseline_api_seconds": 23.491010003956035,
+          "candidate_api_seconds": 23.25174799701199,
+          "baseline_rounds": [
+            23.94633662805427,
+            23.491010003956035,
+            23.643391333986074
+          ],
+          "candidate_rounds": [
+            24.07413062802516,
+            23.25174799701199,
+            23.508489369996823
+          ],
+          "independent_max_residual": 4.818843169095821e-09
+        }
+      ]
+    },
+    {
+      "name": "prolongation",
+      "library_sha256": "6cbdbd146d22aa4586c50bfd5c5af7947c6b4b4957305f1da9c3a8cab282afc8",
+      "rows": [
+        {
+          "physical_cores": 296,
+          "mpi_ranks": 8,
+          "threads": 37,
+          "baseline_solver_seconds": 37.81416268600006,
+          "candidate_solver_seconds": 37.80060362400002,
+          "speedup": 1.0003586996158822,
+          "change_percent": 0.03585709966034134,
+          "baseline_api_seconds": 38.35477829503361,
+          "candidate_api_seconds": 38.351948838098906,
+          "baseline_rounds": [
+            38.76424956799019,
+            38.35477829503361,
+            38.397307178005576
+          ],
+          "candidate_rounds": [
+            38.74190003797412,
+            38.351948838098906,
+            38.36892014509067
+          ],
+          "independent_max_residual": 4.818823768816398e-09
+        },
+        {
+          "physical_cores": 592,
+          "mpi_ranks": 16,
+          "threads": 37,
+          "baseline_solver_seconds": 22.670394684,
+          "candidate_solver_seconds": 22.733671897999983,
+          "speedup": 0.9972165862917398,
+          "change_percent": -0.2791182724517727,
+          "baseline_api_seconds": 23.225322955055162,
+          "candidate_api_seconds": 23.31975471205078,
+          "baseline_rounds": [
+            24.008176031988114,
+            23.225322955055162,
+            23.609660811023787
+          ],
+          "candidate_rounds": [
+            24.132580192992464,
+            23.31975471205078,
+            23.40724604204297
+          ],
+          "independent_max_residual": 4.818855919910906e-09
+        }
+      ]
+    }
+  ],
+  "source_files_sha256": {
+    "src/backends/arm/wilson_sve.hpp": "8509ad87d7f448334d9fcd7794e6f9ecc08186713e9b1884191abe2c04b2a53d",
+    "src/backends/arm/wilson_kernel.hpp": "bc8db912f7d387c8738ccaa71128d2d9ba0c8a0306849d72f0066c09465521f7",
+    "src/backends/arm/transfer_sve.hpp": "7b3ea52222122d24e382e7d506a838257d2f87c5d6a45286e85e803608a5d4ae",
+    "src/solver/native/kernels.hpp": "bf8fe38b417053862f21da50ad7981d6f23c3c4c6180a315541ed8a8dcfc78e9",
+    "src/solver/native/fine_operator.cpp": "06e1d936b665f102aef9d565d8561d39b5e469de72bcf2c5cc71b53b740273f9",
+    "src/solver/native/batched_fine_operator.cpp": "b03f2aeadf018060e0b5ce2bcc9f21e31e445bd9b2903327e7b5aede94531e4f",
+    "src/solver/native/memory_placement.cpp": "ad8158b41652ed09d1b0edf3fe0cc1e67f39b7de86f87dd6ab5726541199a251",
+    "src/solver/native/cycle.cpp": "47637fb7dde55f4fae20c3bc14fe865a24bbf4840903592026d68825049bf85e",
+    "src/solver/native/batched_cycle.cpp": "f3b0222ce85bcd678b21002b6df1e8d1757d3192372c41cec004091eeb80c27f",
+    "tests/unit/arm_sve_plan_test.cpp": "3a3453c6daddf0eb9923221cbd1147899200c83021d24f66d20a38f18d740c54",
+    "tests/unit/arm_sve_transfer_test.cpp": "f9411c0dc00986c484af3955119f74af50ae84d1451f2dfa9e85d7c7262be08b",
+    "python/lqcd_cpu/propagator.py": "22c4ab09663bf799e084734052297f321e593a77bb1453c5db1ef06d1b14165c",
+    "cmake/Tests.cmake": "0f2160dc16d9f78c1ded4ad6399ad074696e95bb53603734f016fab7e0d8c84f"
+  },
+  "source_evidence_sha256": {
+    ".cache/kunpeng-hpc-20261026/evidence/results-planned0/scaling.json": "2ec19b976359262991434fe90b7338669b5ff39f56cc48363a869f367f2cacda",
+    ".cache/kunpeng-hpc-20261026/evidence/results-planned1/scaling.json": "d6edfad36a61721205cd2905627b62268a50b127ebde60d06ead55a3c63112f7",
+    ".cache/kunpeng-hpc-20261026/evidence/results-planned1/numa8/result.json": "4faee423b1f19f69ad4ff539e13ab6e1ee4518b281f89d6a3a9caaca4851c96b",
+    ".cache/kunpeng-hpc-20261026/evidence/results-planned0/numa8/result.json": "5eafe5621e25db857fb256884ad07ea02eb94369ddadd284b34c983abf79dc02",
+    ".cache/kunpeng-hpc-20261026/evidence/verification/numa8/verification.json": "828f8a6e85cec152672ef077c136676be62b155a8e96ea7e8323a2a103020602",
+    ".cache/kunpeng-hpc-20261026/evidence/results-planned1/numa16/result.json": "f8aed1ace21efc6f0dbd941c5043c23eb89b52324d7559ab47dab829a2aef8a6",
+    ".cache/kunpeng-hpc-20261026/evidence/results-planned0/numa16/result.json": "5e30abad19c92004ca052ff600b33dbaea1c3f2c53a353952b13d3a953cc4cde",
+    ".cache/kunpeng-hpc-20261026/evidence/verification/numa16/verification.json": "888340d27ae5c56c0c60f82c562494302f9327c986c6224833400501ae36d187",
+    ".cache/kunpeng-hpc-20261026/evidence/results-transfer0/scaling.json": "733c4ae9b1c4342a0c2aa5a669d8a97fd1be7a1a776950571f9a71a120159639",
+    ".cache/kunpeng-hpc-20261026/evidence/results-transfer1/scaling.json": "cb784d97487c060ce495147533681c7c275c2d4ae9806eb8ff2d9521a3a0c3e3",
+    ".cache/kunpeng-hpc-20261026/evidence/results-transfer1/numa8/result.json": "7d2685beeda66b361f98ea10c8e5d148349e6be1580aa7a84c93b2959726d803",
+    ".cache/kunpeng-hpc-20261026/evidence/results-transfer0/numa8/result.json": "4d460885eee1d00bb5370a0b987987bf710457e993be05eaa145a3eb8c7fccdc",
+    ".cache/kunpeng-hpc-20261026/evidence/verification-transfer/numa8/verification.json": "e0389d35a04370a2605d2726c297439370c6eb2ceb52629b5ba16702cf3e3f6b",
+    ".cache/kunpeng-hpc-20261026/evidence/results-transfer1/numa16/result.json": "bd4e8eecdba3278f344e46b7ea67dba335ae23865a604585cf4b5c9bff868100",
+    ".cache/kunpeng-hpc-20261026/evidence/results-transfer0/numa16/result.json": "ebba9953af67e734630765b3005e47fa119784424561151609981dcc612d9745",
+    ".cache/kunpeng-hpc-20261026/evidence/verification-transfer/numa16/verification.json": "471f372d8f8d791f46bdf84b8ce17db765f94cecb3b85004483baf32138099ae",
+    ".cache/kunpeng-hpc-20261026/evidence/single-profile/result.json": "7868845a383af3c4b5970a84e22b5f6c5cb6fb44972ea3d8f070cd37d16d6374"
+  },
+  "single_rhs_second": {
+    "run": 1,
+    "threads": 37,
+    "physical_cores": 592,
+    "api_wall_seconds": 1.9021386350505054,
+    "stats": {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 1.888673659999995,
+      "api_seconds": 1.9009633080000015,
+      "true_residual": 4.818843632081535e-09
+    }
+  },
+  "vector_length_checks": [
+    {
+      "requested_bytes": 16,
+      "actual_bytes": 16,
+      "test": "arm_sve_test",
+      "returncode": 0,
+      "stdout": "PASS ARM SVE predicated clover oracle/tails\n",
+      "stderr": ""
+    },
+    {
+      "requested_bytes": 16,
+      "actual_bytes": 16,
+      "test": "arm_sve_plan_test",
+      "returncode": 0,
+      "stdout": "PASS SVE local plans, holes, half/tail fallback, alias and compact global offsets\n",
+      "stderr": ""
+    },
+    {
+      "requested_bytes": 16,
+      "actual_bytes": 16,
+      "test": "arm_sve_transfer_test",
+      "returncode": 0,
+      "stdout": "PASS SVE prolongation double oracle, nonzero accumulation, unaligned output and tails\n",
+      "stderr": ""
+    },
+    {
+      "requested_bytes": 32,
+      "actual_bytes": 32,
+      "test": "arm_sve_test",
+      "returncode": 0,
+      "stdout": "PASS ARM SVE predicated clover oracle/tails\n",
+      "stderr": ""
+    },
+    {
+      "requested_bytes": 32,
+      "actual_bytes": 32,
+      "test": "arm_sve_plan_test",
+      "returncode": 0,
+      "stdout": "PASS SVE local plans, holes, half/tail fallback, alias and compact global offsets\n",
+      "stderr": ""
+    },
+    {
+      "requested_bytes": 32,
+      "actual_bytes": 32,
+      "test": "arm_sve_transfer_test",
+      "returncode": 0,
+      "stdout": "PASS SVE prolongation double oracle, nonzero accumulation, unaligned output and tails\n",
+      "stderr": ""
+    },
+    {
+      "requested_bytes": 64,
+      "actual_bytes": 64,
+      "test": "arm_sve_test",
+      "returncode": 0,
+      "stdout": "PASS ARM SVE predicated clover oracle/tails\n",
+      "stderr": ""
+    },
+    {
+      "requested_bytes": 64,
+      "actual_bytes": 64,
+      "test": "arm_sve_plan_test",
+      "returncode": 0,
+      "stdout": "PASS SVE local plans, holes, half/tail fallback, alias and compact global offsets\n",
+      "stderr": ""
+    },
+    {
+      "requested_bytes": 64,
+      "actual_bytes": 64,
+      "test": "arm_sve_transfer_test",
+      "returncode": 0,
+      "stdout": "PASS SVE prolongation double oracle, nonzero accumulation, unaligned output and tails\n",
+      "stderr": ""
+    }
+  ],
+  "local_ctest": {
+    "passed": 35,
+    "total": 35
+  },
+  "arm_selected_ctest": {
+    "passed": 19,
+    "total": 19
+  },
+  "acceptance": {
+    "lattice_xyzt": [
+      24,
+      24,
+      24,
+      64
+    ],
+    "mass": -0.277,
+    "csw": 1.160920226,
+    "tolerance": 1e-08,
+    "stout": {
+      "steps": 1,
+      "rho": 0.125,
+      "dir_ignore": 4
+    },
+    "source_scale": 1,
+    "zero_initial": true
+  },
+  "defaults": {
+    "LQCD_ARM_SVE_PLANNED": 0,
+    "LQCD_ARM_SVE_TRANSFER": 0
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "run": "/public2/home/lwb_720/lqcd/.cache/cpu_libraries/run-11w7BvKI",
+  "lattice": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "mass": -0.277,
+  "csw": 1,
+  "temporal_boundary": -1,
+  "rhs_count": 1,
+  "initial_guess": "zero for every solve",
+  "timing": "second solve, setup/I/O excluded",
+  "full_residual_gate": 1e-08,
+  "all_independent_checks_passed": true,
+  "rows": [
+    {
+      "name": "openQCD",
+      "cores": 72,
+      "mpi_ranks": 4,
+      "threads_per_rank": 18,
+      "solve_seconds": [
+        0.9660474319999999,
+        0.6248594809999997
+      ],
+      "second_seconds": 0.6248594809999997,
+      "setup_seconds": 6.602172229,
+      "native_true_residual": 9.170222579078017e-09,
+      "independent_cpp_residual": 9.170222577095546e-09,
+      "operator_error": 7.603004707302025e-16,
+      "solution_error_vs_quda": 1.6190594141661582e-07,
+      "iterations": 10,
+      "speedup_vs_pyqcu": 202.9750672086594,
+      "speedup_vs_cpp": 316.84474314458066
+    },
+    {
+      "name": "DDalphaAMG",
+      "cores": 88,
+      "mpi_ranks": 8,
+      "threads_per_rank": 11,
+      "solve_seconds": [
+        1.1296148129999999,
+        1.132390663999999
+      ],
+      "second_seconds": 1.132390663999999,
+      "setup_seconds": 22.113864448,
+      "native_true_residual": 3.836482662580994e-09,
+      "independent_cpp_residual": 3.8364826578787626e-09,
+      "operator_error": 7.354147820726955e-16,
+      "solution_error_vs_quda": 1.5254242543948841e-07,
+      "iterations": 11,
+      "speedup_vs_pyqcu": 112.00277358692801,
+      "speedup_vs_cpp": 174.83669554423406
+    },
+    {
+      "name": "Grid",
+      "cores": 88,
+      "mpi_ranks": 8,
+      "threads_per_rank": 11,
+      "solve_seconds": [
+        2.1817959547042847,
+        2.154677264392376
+      ],
+      "second_seconds": 2.154677264392376,
+      "setup_seconds": 1.168871931731701,
+      "native_true_residual": 5.113899139311501e-10,
+      "independent_cpp_residual": 5.113899139049458e-10,
+      "operator_error": 3.6597303641642417e-16,
+      "solution_error_vs_quda": 1.5203585343422744e-07,
+      "iterations": 142,
+      "refinement_steps": 4,
+      "inner_iterations": 130,
+      "final_double_iterations": 12,
+      "speedup_vs_pyqcu": 58.86305909841657,
+      "speedup_vs_cpp": 91.88542759081494
+    },
+    {
+      "name": "PyQCU real/imag + compile BiCGStab",
+      "cores": 88,
+      "solve_seconds": [
+        129.08536103740335,
+        126.83089515194297
+      ],
+      "second_seconds": 126.83089515194297,
+      "native_true_residual": 6.249661745943782e-09,
+      "iterations": 263,
+      "solution_error_vs_quda": 1.8766121527730073e-07,
+      "speedup_vs_pyqcu": 1.0,
+      "speedup_vs_cpp": 1.5610032675533623
+    },
+    {
+      "name": "multigrid.cpp MG/GCR",
+      "cores": 88,
+      "solve_seconds": [
+        198.3351873382926,
+        197.98344175890088
+      ],
+      "second_seconds": 197.98344175890088,
+      "native_true_residual": 9.877663329790843e-09,
+      "iterations": 461,
+      "speedup_vs_pyqcu": 0.6406136494303112,
+      "speedup_vs_cpp": 1.0
+    }
+  ],
+  "provenance": {
+    "DDalphaAMG": "9c723a818b4b1d69b7547d33087ab0c520eba38c",
+    "Grid": "3232b438f2cf729e515c185e2dbf29d7cc276bb7",
+    "openQCD": "2.4.3",
+    "gauge_sha256": "aee6331a90bb2cbb5fc4eb0734902b264fd22cf782887b2f8517564b938ed4b8",
+    "source_sha256": "4dfe3f63d308f22892d4021fb0d3b5c689f6b745ec384238204f9bb0e0bb0a8d"
+  }
+}

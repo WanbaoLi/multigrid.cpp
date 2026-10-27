@@ -1,0 +1,1389 @@
+{
+  "date": "2026-10-23",
+  "host": "node5005",
+  "ranks": 8,
+  "threads_per_rank": 32,
+  "cases": {
+    "fixture-match": {
+      "result": {
+        "format_version": 1,
+        "complete": true,
+        "input": {
+          "gauge": "/public2/home/lwb_720/lqcd/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime",
+          "output": "/public2/home/lwb_720/lqcd/.cache/propagator-20261023/fixture-match",
+          "mass": -0.277,
+          "csw": 1.0,
+          "block": [
+            6,
+            6,
+            6,
+            4
+          ],
+          "point": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "stout_steps": 1,
+          "stout_rho": 0.125,
+          "stout_dir_ignore": 4,
+          "tol": 1e-08,
+          "repeats": 3,
+          "seed": 1024,
+          "normalization": "mass",
+          "source_scale": 1.0,
+          "checksum": true,
+          "save_gauge": true,
+          "library": null
+        },
+        "lime": {
+          "lattice_xyzt": [
+            24,
+            24,
+            24,
+            64
+          ],
+          "precision": 64,
+          "binary_offset": 140376,
+          "binary_bytes": 509607936,
+          "checksum": [
+            2489408864,
+            1749125273
+          ],
+          "csw": 1.160920226
+        },
+        "gauge_sha256": "47969c7fe9b4a4716d5eab40e5a1dbdaef09abdb055934000e034a99d20d2d30",
+        "lattice_xyzt": [
+          24,
+          24,
+          24,
+          64
+        ],
+        "grid_xyzt": [
+          1,
+          1,
+          1,
+          8
+        ],
+        "mass": -0.277,
+        "csw": 1.0,
+        "mass_source": "explicit",
+        "csw_source": "explicit",
+        "normalization": "mass",
+        "source_xyzt": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "source_scale": 1.0,
+        "equation": "Mx=b",
+        "gamma_basis": "DeGrand-Rossi",
+        "fermion_t_boundary": -1,
+        "gauge_t_boundary": 1,
+        "gauge_reunitarized": false,
+        "stout": {
+          "steps": 1,
+          "rho": 0.125,
+          "dir_ignore": 4
+        },
+        "block_xyzt": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "seed": 1024,
+        "resources": [
+          {
+            "rank": 0,
+            "threads": 32,
+            "omp_places": "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31}",
+            "cpu_affinity": [
+              0
+            ]
+          },
+          {
+            "rank": 1,
+            "threads": 32,
+            "omp_places": "{32},{33},{34},{35},{36},{37},{38},{39},{40},{41},{42},{43},{44},{45},{46},{47},{48},{49},{50},{51},{52},{53},{54},{55},{56},{57},{58},{59},{60},{61},{62},{63}",
+            "cpu_affinity": [
+              32
+            ]
+          },
+          {
+            "rank": 2,
+            "threads": 32,
+            "omp_places": "{64},{65},{66},{67},{68},{69},{70},{71},{72},{73},{74},{75},{76},{77},{78},{79},{80},{81},{82},{83},{84},{85},{86},{87},{88},{89},{90},{91},{92},{93},{94},{95}",
+            "cpu_affinity": [
+              64
+            ]
+          },
+          {
+            "rank": 3,
+            "threads": 32,
+            "omp_places": "{96},{97},{98},{99},{100},{101},{102},{103},{104},{105},{106},{107},{108},{109},{110},{111},{112},{113},{114},{115},{116},{117},{118},{119},{120},{121},{122},{123},{124},{125},{126},{127}",
+            "cpu_affinity": [
+              96
+            ]
+          },
+          {
+            "rank": 4,
+            "threads": 32,
+            "omp_places": "{128},{129},{130},{131},{132},{133},{134},{135},{136},{137},{138},{139},{140},{141},{142},{143},{144},{145},{146},{147},{148},{149},{150},{151},{152},{153},{154},{155},{156},{157},{158},{159}",
+            "cpu_affinity": [
+              128
+            ]
+          },
+          {
+            "rank": 5,
+            "threads": 32,
+            "omp_places": "{160},{161},{162},{163},{164},{165},{166},{167},{168},{169},{170},{171},{172},{173},{174},{175},{176},{177},{178},{179},{180},{181},{182},{183},{184},{185},{186},{187},{188},{189},{190},{191}",
+            "cpu_affinity": [
+              160
+            ]
+          },
+          {
+            "rank": 6,
+            "threads": 32,
+            "omp_places": "{192},{193},{194},{195},{196},{197},{198},{199},{200},{201},{202},{203},{204},{205},{206},{207},{208},{209},{210},{211},{212},{213},{214},{215},{216},{217},{218},{219},{220},{221},{222},{223}",
+            "cpu_affinity": [
+              192
+            ]
+          },
+          {
+            "rank": 7,
+            "threads": 32,
+            "omp_places": "{224},{225},{226},{227},{228},{229},{230},{231},{232},{233},{234},{235},{236},{237},{238},{239},{240},{241},{242},{243},{244},{245},{246},{247},{248},{249},{250},{251},{252},{253},{254},{255}",
+            "cpu_affinity": [
+              224
+            ]
+          }
+        ],
+        "capabilities": {
+          "backend": "x86",
+          "algorithm": "project-owned adaptive aggregation MG + SAP + flexible GCR",
+          "mpi": true,
+          "mpi_decomposition": "t-slab",
+          "levels": [
+            2
+          ],
+          "setup": "native homogeneous SAP and inverse iteration",
+          "max_active_contexts_per_process": 1,
+          "device": "cpu",
+          "openmp": true
+        },
+        "initial_guess": "zero_for_every_column_every_round",
+        "columns": "source_spin*3+source_color",
+        "output_file": "propagator.npy",
+        "output_layout": "global [t,z,y,x,sink_spin,source_spin,sink_color,source_color]",
+        "setup_seconds": 69.83441970199999,
+        "lime_read_seconds": 0.30856680776923895,
+        "stout_seconds": 1.3472371166571975,
+        "gauge_load_clover_seconds": 0.864774139598012,
+        "output_seconds": 2.69075199496001,
+        "samples": [
+          {
+            "wall_seconds": 5.075075531378388,
+            "stats": [
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.41546877400000426,
+                "api_seconds": 0.4270443699999902,
+                "true_residual": 3.748481548681392e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.38565608300000065,
+                "api_seconds": 0.39292692700000487,
+                "true_residual": 2.6813965899666044e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.38466349399999444,
+                "api_seconds": 0.39154399199999546,
+                "true_residual": 2.786415734959845e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.38370567600000527,
+                "api_seconds": 0.39057308399999613,
+                "true_residual": 2.7091264105898853e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.3908703000000031,
+                "api_seconds": 0.3977410039999967,
+                "true_residual": 3.1074208353115e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.4918918799999972,
+                "api_seconds": 0.49947492299999396,
+                "true_residual": 3.366384119673367e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.3867956050000032,
+                "api_seconds": 0.393624745000011,
+                "true_residual": 2.509697222748676e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.38730900500000587,
+                "api_seconds": 0.3941239440000004,
+                "true_residual": 2.0305616484365763e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.46633374599998945,
+                "api_seconds": 0.4732444189999967,
+                "true_residual": 3.583857466804909e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.3985757370000016,
+                "api_seconds": 0.4053271909999978,
+                "true_residual": 2.893155349046517e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.4496075389999987,
+                "api_seconds": 0.4567728039999963,
+                "true_residual": 3.1744076546461603e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.3854559029999933,
+                "api_seconds": 0.3922525859999979,
+                "true_residual": 1.9692223297208127e-09
+              }
+            ]
+          },
+          {
+            "wall_seconds": 5.70566585753113,
+            "stats": [
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.3864368560000031,
+                "api_seconds": 0.3946712350000041,
+                "true_residual": 3.748481548681392e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.38512155099999745,
+                "api_seconds": 0.3920081280000005,
+                "true_residual": 2.6813965899666044e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.4449733120000019,
+                "api_seconds": 0.46484814600000846,
+                "true_residual": 2.786415734959845e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6940412390000006,
+                "api_seconds": 0.7095599329999942,
+                "true_residual": 2.7091264105898853e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.7422238540000023,
+                "api_seconds": 0.7491263449999934,
+                "true_residual": 3.1074208353115e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.4239067799999958,
+                "api_seconds": 0.4307228010000017,
+                "true_residual": 3.366384119673367e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.3866537809999926,
+                "api_seconds": 0.39356578599999636,
+                "true_residual": 2.509697222748676e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.46536904799999945,
+                "api_seconds": 0.47227875000000097,
+                "true_residual": 2.030561648436576e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.39462187099999824,
+                "api_seconds": 0.406906972999991,
+                "true_residual": 3.583857466804909e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.4395963219999999,
+                "api_seconds": 0.44724189800000147,
+                "true_residual": 2.8931553490465165e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.3822643830000061,
+                "api_seconds": 0.38982462099998827,
+                "true_residual": 3.1744076546461603e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.38710894399999063,
+                "api_seconds": 0.3944904540000067,
+                "true_residual": 1.9692223297208127e-09
+              }
+            ]
+          },
+          {
+            "wall_seconds": 5.485408908687532,
+            "stats": [
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.39020004399999664,
+                "api_seconds": 0.39794792399999324,
+                "true_residual": 3.748481548681392e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.38378265200000783,
+                "api_seconds": 0.3906520430000029,
+                "true_residual": 2.6813965899666044e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.39549763600000176,
+                "api_seconds": 0.4023089709999965,
+                "true_residual": 2.7864157349598455e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.4712483130000038,
+                "api_seconds": 0.478180088000002,
+                "true_residual": 2.7091264105898853e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.38425171499999067,
+                "api_seconds": 0.39109663000000694,
+                "true_residual": 3.1074208353115e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.3891068030000042,
+                "api_seconds": 0.39592361500000095,
+                "true_residual": 3.3663841196733665e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.3846831729999991,
+                "api_seconds": 0.3915269660000007,
+                "true_residual": 2.509697222748676e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.461601002000009,
+                "api_seconds": 0.46844513499999607,
+                "true_residual": 2.030561648436576e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.3971690249999966,
+                "api_seconds": 0.40402519699999573,
+                "true_residual": 3.583857466804909e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.4441472920000109,
+                "api_seconds": 0.45606749600000285,
+                "true_residual": 2.893155349046517e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.534040877999999,
+                "api_seconds": 0.5412030589999972,
+                "true_residual": 3.17440765464616e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 17,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6936934059999942,
+                "api_seconds": 0.7092959169999915,
+                "true_residual": 1.9692223297208127e-09
+              }
+            ]
+          }
+        ],
+        "first_seconds": 5.075075531378388,
+        "max_true_residual": 3.748481548681392e-09,
+        "second_seconds": 5.70566585753113,
+        "steady_median_seconds": 5.595537383109331,
+        "total_wall_seconds": 91.66890184301883
+      },
+      "independent": {
+        "run": "/public2/home/lwb_720/lqcd/.cache/propagator-20261023/fixture-match",
+        "reference": "/public2/home/lwb_720/lqcd/multigrid.cpp/build/node5005-propagator/multigrid",
+        "reference_sha256": "c5803d59b8c35d5b0bb07e45b98353194e927a3fd8ea1c57ee40070ae9433929",
+        "run_report_sha256": "ad734a59cb1062f2a9de7967d90eea2107ad697810bd681920852cac3771edd2",
+        "propagator_sha256": "cc080a90703c643d3d16db692f7afef67a4708e87a38ce054be0fe90986c8ca6",
+        "assembled_gauge_sha256": "f59792082bd06b109719d9c12319507234ffd62da01254f9fa1be0f7b3e9e743",
+        "normalization": "mass",
+        "source_xyzt": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "source_scale": 1.0,
+        "mass": -0.277,
+        "csw": 1.0,
+        "columns": [
+          {
+            "source_spin": 0,
+            "source_color": 0,
+            "residual": 3.748481548749543e-09
+          },
+          {
+            "source_spin": 0,
+            "source_color": 1,
+            "residual": 2.6813965908914957e-09
+          },
+          {
+            "source_spin": 0,
+            "source_color": 2,
+            "residual": 2.786415735457966e-09
+          },
+          {
+            "source_spin": 1,
+            "source_color": 0,
+            "residual": 2.7091264100606245e-09
+          },
+          {
+            "source_spin": 1,
+            "source_color": 1,
+            "residual": 3.1074208357066853e-09
+          },
+          {
+            "source_spin": 1,
+            "source_color": 2,
+            "residual": 3.3663841199082796e-09
+          },
+          {
+            "source_spin": 2,
+            "source_color": 0,
+            "residual": 2.509697223125319e-09
+          },
+          {
+            "source_spin": 2,
+            "source_color": 1,
+            "residual": 2.030561648657823e-09
+          },
+          {
+            "source_spin": 2,
+            "source_color": 2,
+            "residual": 3.583857466668255e-09
+          },
+          {
+            "source_spin": 3,
+            "source_color": 0,
+            "residual": 2.8931553492813365e-09
+          },
+          {
+            "source_spin": 3,
+            "source_color": 1,
+            "residual": 3.174407654911242e-09
+          },
+          {
+            "source_spin": 3,
+            "source_color": 2,
+            "residual": 1.9692223296755254e-09
+          }
+        ],
+        "fixture_sha256": "e94bc2cdd736134876de776a59ef8ea2c57699a3e4f70d48dd4db70e318c2ecd",
+        "gauge_comparison": "compared_output_shards",
+        "gauge_relative_error": 5.334653882468334e-16,
+        "first_column_quda_error": 1.4890449223061894e-07,
+        "scalar_rhs_scale": 0.26860059092130006,
+        "complete": true
+      },
+      "pyquda_load": {
+        "pyquda_load_exact": true,
+        "ranks": 8,
+        "max_absolute_error": 0.0,
+        "output_shape": [
+          64,
+          24,
+          24,
+          24,
+          4,
+          4,
+          3,
+          3
+        ],
+        "pyquda_local_eo_shape": [
+          2,
+          8,
+          24,
+          24,
+          12,
+          4,
+          4,
+          3,
+          3
+        ]
+      },
+      "output": "/public2/home/lwb_720/lqcd/.cache/propagator-20261023/fixture-match/propagator.npy",
+      "result_sha256": "ad734a59cb1062f2a9de7967d90eea2107ad697810bd681920852cac3771edd2"
+    },
+    "lime-csw": {
+      "result": {
+        "format_version": 1,
+        "complete": true,
+        "input": {
+          "gauge": "/public2/home/lwb_720/lqcd/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime",
+          "output": "/public2/home/lwb_720/lqcd/.cache/propagator-20261023/lime-csw",
+          "mass": -0.277,
+          "csw": null,
+          "block": [
+            6,
+            6,
+            6,
+            4
+          ],
+          "point": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "stout_steps": 1,
+          "stout_rho": 0.125,
+          "stout_dir_ignore": 4,
+          "tol": 1e-08,
+          "repeats": 3,
+          "seed": 1024,
+          "normalization": "mass",
+          "source_scale": 1.0,
+          "checksum": true,
+          "save_gauge": true,
+          "library": null
+        },
+        "lime": {
+          "lattice_xyzt": [
+            24,
+            24,
+            24,
+            64
+          ],
+          "precision": 64,
+          "binary_offset": 140376,
+          "binary_bytes": 509607936,
+          "checksum": [
+            2489408864,
+            1749125273
+          ],
+          "csw": 1.160920226
+        },
+        "gauge_sha256": "47969c7fe9b4a4716d5eab40e5a1dbdaef09abdb055934000e034a99d20d2d30",
+        "lattice_xyzt": [
+          24,
+          24,
+          24,
+          64
+        ],
+        "grid_xyzt": [
+          1,
+          1,
+          1,
+          8
+        ],
+        "mass": -0.277,
+        "csw": 1.160920226,
+        "mass_source": "explicit",
+        "csw_source": "lime",
+        "normalization": "mass",
+        "source_xyzt": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "source_scale": 1.0,
+        "equation": "Mx=b",
+        "gamma_basis": "DeGrand-Rossi",
+        "fermion_t_boundary": -1,
+        "gauge_t_boundary": 1,
+        "gauge_reunitarized": false,
+        "stout": {
+          "steps": 1,
+          "rho": 0.125,
+          "dir_ignore": 4
+        },
+        "block_xyzt": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "seed": 1024,
+        "resources": [
+          {
+            "rank": 0,
+            "threads": 32,
+            "omp_places": "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31}",
+            "cpu_affinity": [
+              0
+            ]
+          },
+          {
+            "rank": 1,
+            "threads": 32,
+            "omp_places": "{32},{33},{34},{35},{36},{37},{38},{39},{40},{41},{42},{43},{44},{45},{46},{47},{48},{49},{50},{51},{52},{53},{54},{55},{56},{57},{58},{59},{60},{61},{62},{63}",
+            "cpu_affinity": [
+              32
+            ]
+          },
+          {
+            "rank": 2,
+            "threads": 32,
+            "omp_places": "{64},{65},{66},{67},{68},{69},{70},{71},{72},{73},{74},{75},{76},{77},{78},{79},{80},{81},{82},{83},{84},{85},{86},{87},{88},{89},{90},{91},{92},{93},{94},{95}",
+            "cpu_affinity": [
+              64
+            ]
+          },
+          {
+            "rank": 3,
+            "threads": 32,
+            "omp_places": "{96},{97},{98},{99},{100},{101},{102},{103},{104},{105},{106},{107},{108},{109},{110},{111},{112},{113},{114},{115},{116},{117},{118},{119},{120},{121},{122},{123},{124},{125},{126},{127}",
+            "cpu_affinity": [
+              96
+            ]
+          },
+          {
+            "rank": 4,
+            "threads": 32,
+            "omp_places": "{128},{129},{130},{131},{132},{133},{134},{135},{136},{137},{138},{139},{140},{141},{142},{143},{144},{145},{146},{147},{148},{149},{150},{151},{152},{153},{154},{155},{156},{157},{158},{159}",
+            "cpu_affinity": [
+              128
+            ]
+          },
+          {
+            "rank": 5,
+            "threads": 32,
+            "omp_places": "{160},{161},{162},{163},{164},{165},{166},{167},{168},{169},{170},{171},{172},{173},{174},{175},{176},{177},{178},{179},{180},{181},{182},{183},{184},{185},{186},{187},{188},{189},{190},{191}",
+            "cpu_affinity": [
+              160
+            ]
+          },
+          {
+            "rank": 6,
+            "threads": 32,
+            "omp_places": "{192},{193},{194},{195},{196},{197},{198},{199},{200},{201},{202},{203},{204},{205},{206},{207},{208},{209},{210},{211},{212},{213},{214},{215},{216},{217},{218},{219},{220},{221},{222},{223}",
+            "cpu_affinity": [
+              192
+            ]
+          },
+          {
+            "rank": 7,
+            "threads": 32,
+            "omp_places": "{224},{225},{226},{227},{228},{229},{230},{231},{232},{233},{234},{235},{236},{237},{238},{239},{240},{241},{242},{243},{244},{245},{246},{247},{248},{249},{250},{251},{252},{253},{254},{255}",
+            "cpu_affinity": [
+              224
+            ]
+          }
+        ],
+        "capabilities": {
+          "backend": "x86",
+          "algorithm": "project-owned adaptive aggregation MG + SAP + flexible GCR",
+          "mpi": true,
+          "mpi_decomposition": "t-slab",
+          "levels": [
+            2
+          ],
+          "setup": "native homogeneous SAP and inverse iteration",
+          "max_active_contexts_per_process": 1,
+          "device": "cpu",
+          "openmp": true
+        },
+        "initial_guess": "zero_for_every_column_every_round",
+        "columns": "source_spin*3+source_color",
+        "output_file": "propagator.npy",
+        "output_layout": "global [t,z,y,x,sink_spin,source_spin,sink_color,source_color]",
+        "setup_seconds": 70.63654320900001,
+        "lime_read_seconds": 0.31151146721094847,
+        "stout_seconds": 1.3466822830960155,
+        "gauge_load_clover_seconds": 0.8179863691329956,
+        "output_seconds": 2.70576885715127,
+        "samples": [
+          {
+            "wall_seconds": 8.874655107036233,
+            "stats": [
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6879371870000028,
+                "api_seconds": 0.7003160879999939,
+                "true_residual": 4.745936637183748e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6222759350000047,
+                "api_seconds": 0.6297570140000062,
+                "true_residual": 3.0903061865821137e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6365410270000069,
+                "api_seconds": 0.6434423569999979,
+                "true_residual": 3.832339753165781e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6277517449999976,
+                "api_seconds": 0.634584941,
+                "true_residual": 3.2423761667959405e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.7025647929999934,
+                "api_seconds": 0.7094610350000039,
+                "true_residual": 4.067703139946539e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6316655499999939,
+                "api_seconds": 0.6393317370000062,
+                "true_residual": 4.110681406864886e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.7200539859999964,
+                "api_seconds": 0.7269753850000029,
+                "true_residual": 3.7993345565262836e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6920905099999999,
+                "api_seconds": 0.6992513699999989,
+                "true_residual": 2.82911634877858e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 25,
+                "refinement_steps": 0,
+                "solver_seconds": 0.684173616999999,
+                "api_seconds": 0.6910239390000044,
+                "true_residual": 2.6075306527741266e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 1.0582862729999931,
+                "api_seconds": 1.065204597999994,
+                "true_residual": 3.840840791354667e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.9997198519999984,
+                "api_seconds": 1.006802553,
+                "true_residual": 4.203280228388275e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6622810749999957,
+                "api_seconds": 0.6690740020000021,
+                "true_residual": 2.688756865530145e-09
+              }
+            ]
+          },
+          {
+            "wall_seconds": 8.752646614797413,
+            "stats": [
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6235205429999979,
+                "api_seconds": 0.6318154239999956,
+                "true_residual": 4.745936637183748e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6247044200000005,
+                "api_seconds": 0.6315561349999967,
+                "true_residual": 3.0903061865821137e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6971421840000005,
+                "api_seconds": 0.7039917660000015,
+                "true_residual": 3.832339753165781e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6263451820000085,
+                "api_seconds": 0.6332806639999973,
+                "true_residual": 3.2423761667959405e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6370993259999977,
+                "api_seconds": 0.6445130940000041,
+                "true_residual": 4.067703139946539e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6221331509999999,
+                "api_seconds": 0.6291241739999975,
+                "true_residual": 4.110681406864886e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.7118327350000015,
+                "api_seconds": 0.7186477950000096,
+                "true_residual": 3.7993345565262836e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.7214184630000062,
+                "api_seconds": 0.728237759999999,
+                "true_residual": 2.82911634877858e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 25,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6623038800000103,
+                "api_seconds": 0.6820298199999968,
+                "true_residual": 2.6075306527741266e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.9221472609999921,
+                "api_seconds": 0.9394540889999945,
+                "true_residual": 3.840840791354666e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 1.1031858500000027,
+                "api_seconds": 1.1101575550000007,
+                "true_residual": 4.203280228388275e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6335500780000132,
+                "api_seconds": 0.6404238560000124,
+                "true_residual": 2.688756865530145e-09
+              }
+            ]
+          },
+          {
+            "wall_seconds": 9.009644114412367,
+            "stats": [
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6288550710000038,
+                "api_seconds": 0.6364683080000049,
+                "true_residual": 4.745936637183748e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.695814029999994,
+                "api_seconds": 0.702728859000004,
+                "true_residual": 3.0903061865821137e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6280882789999964,
+                "api_seconds": 0.6352924739999963,
+                "true_residual": 3.8323371145168096e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.629310493999995,
+                "api_seconds": 0.6361832010000086,
+                "true_residual": 3.2423761667959405e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6553217989999922,
+                "api_seconds": 0.6620990109999951,
+                "true_residual": 4.067703139946539e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6574869490000026,
+                "api_seconds": 0.665393636999994,
+                "true_residual": 4.110681406864886e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6441609160000041,
+                "api_seconds": 0.651034033000002,
+                "true_residual": 3.7993345565262836e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6259808960000015,
+                "api_seconds": 0.632922244999989,
+                "true_residual": 2.82911634877858e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 25,
+                "refinement_steps": 0,
+                "solver_seconds": 0.6580658479999926,
+                "api_seconds": 0.6649484689999952,
+                "true_residual": 2.607530652774126e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.9922004440000052,
+                "api_seconds": 1.0118664950000067,
+                "true_residual": 3.840840791354666e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 1.15120323699999,
+                "api_seconds": 1.1586225439999964,
+                "true_residual": 4.203280228388275e-09
+              },
+              {
+                "converged": 1,
+                "iterations": 24,
+                "refinement_steps": 0,
+                "solver_seconds": 0.881638473999999,
+                "api_seconds": 0.893014210000004,
+                "true_residual": 2.688756865530145e-09
+              }
+            ]
+          }
+        ],
+        "first_seconds": 8.874655107036233,
+        "max_true_residual": 4.745936637183748e-09,
+        "second_seconds": 8.752646614797413,
+        "steady_median_seconds": 8.88114536460489,
+        "total_wall_seconds": 102.82126744370908
+      },
+      "independent": {
+        "run": "/public2/home/lwb_720/lqcd/.cache/propagator-20261023/lime-csw",
+        "reference": "/public2/home/lwb_720/lqcd/multigrid.cpp/build/node5005-propagator/multigrid",
+        "reference_sha256": "c5803d59b8c35d5b0bb07e45b98353194e927a3fd8ea1c57ee40070ae9433929",
+        "run_report_sha256": "cf16f0c2fc166ee26e9827cda10923ef2006c39607f9e37c4673840b80fe235f",
+        "propagator_sha256": "606b84649c1959b8e2b93948a57540919c9368bb9b0dda0229dfd33de1d879f9",
+        "assembled_gauge_sha256": "f59792082bd06b109719d9c12319507234ffd62da01254f9fa1be0f7b3e9e743",
+        "normalization": "mass",
+        "source_xyzt": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "source_scale": 1.0,
+        "mass": -0.277,
+        "csw": 1.160920226,
+        "columns": [
+          {
+            "source_spin": 0,
+            "source_color": 0,
+            "residual": 4.745936637556582e-09
+          },
+          {
+            "source_spin": 0,
+            "source_color": 1,
+            "residual": 3.0903061869499614e-09
+          },
+          {
+            "source_spin": 0,
+            "source_color": 2,
+            "residual": 3.832337116063211e-09
+          },
+          {
+            "source_spin": 1,
+            "source_color": 0,
+            "residual": 3.242376167062415e-09
+          },
+          {
+            "source_spin": 1,
+            "source_color": 1,
+            "residual": 4.0677031404526476e-09
+          },
+          {
+            "source_spin": 1,
+            "source_color": 2,
+            "residual": 4.110681406561983e-09
+          },
+          {
+            "source_spin": 2,
+            "source_color": 0,
+            "residual": 3.799334557501512e-09
+          },
+          {
+            "source_spin": 2,
+            "source_color": 1,
+            "residual": 2.8291163476746004e-09
+          },
+          {
+            "source_spin": 2,
+            "source_color": 2,
+            "residual": 2.6075306524978884e-09
+          },
+          {
+            "source_spin": 3,
+            "source_color": 0,
+            "residual": 3.840840790800065e-09
+          },
+          {
+            "source_spin": 3,
+            "source_color": 1,
+            "residual": 4.203280229632899e-09
+          },
+          {
+            "source_spin": 3,
+            "source_color": 2,
+            "residual": 2.688756864952111e-09
+          }
+        ],
+        "scalar_rhs_scale": 0.26860059092130006,
+        "complete": true
+      },
+      "pyquda_load": {
+        "pyquda_load_exact": true,
+        "ranks": 8,
+        "max_absolute_error": 0.0,
+        "output_shape": [
+          64,
+          24,
+          24,
+          24,
+          4,
+          4,
+          3,
+          3
+        ],
+        "pyquda_local_eo_shape": [
+          2,
+          8,
+          24,
+          24,
+          12,
+          4,
+          4,
+          3,
+          3
+        ]
+      },
+      "output": "/public2/home/lwb_720/lqcd/.cache/propagator-20261023/lime-csw/propagator.npy",
+      "result_sha256": "cf16f0c2fc166ee26e9827cda10923ef2006c39607f9e37c4673840b80fe235f"
+    }
+  },
+  "csw_oracle": {
+    "library": "/public2/home/lwb_720/lqcd/multigrid.cpp/build/node5005-propagator/liblqcd_cpu.so.0.2.0",
+    "ranks": 1,
+    "results": [
+      {
+        "mass": 0.05,
+        "csw": 0.0,
+        "key": "mat_0",
+        "normalization": "mass",
+        "relative_error": 2.5905545599945974e-16
+      },
+      {
+        "mass": 0.05,
+        "csw": 0.0,
+        "key": "mat_0",
+        "normalization": "kappa",
+        "relative_error": 2.5861352548963525e-16
+      },
+      {
+        "mass": 0.05,
+        "csw": 1.0,
+        "key": "mat_1",
+        "normalization": "mass",
+        "relative_error": 3.032365054779521e-16
+      },
+      {
+        "mass": 0.05,
+        "csw": 1.0,
+        "key": "mat_1",
+        "normalization": "kappa",
+        "relative_error": 3.030367867801231e-16
+      },
+      {
+        "mass": 0.05,
+        "csw": 1.160920226,
+        "key": "mat_2",
+        "normalization": "mass",
+        "relative_error": 3.0301932116205627e-16
+      },
+      {
+        "mass": 0.05,
+        "csw": 1.160920226,
+        "key": "mat_2",
+        "normalization": "kappa",
+        "relative_error": 3.0274636273095944e-16
+      },
+      {
+        "mass": -0.277,
+        "csw": 0.0,
+        "key": "mat_3",
+        "normalization": "mass",
+        "relative_error": 3.5251162278359736e-16
+      },
+      {
+        "mass": -0.277,
+        "csw": 0.0,
+        "key": "mat_3",
+        "normalization": "kappa",
+        "relative_error": 3.5509705322394483e-16
+      },
+      {
+        "mass": -0.277,
+        "csw": 1.0,
+        "key": "mat_4",
+        "normalization": "mass",
+        "relative_error": 3.855817826489287e-16
+      },
+      {
+        "mass": -0.277,
+        "csw": 1.0,
+        "key": "mat_4",
+        "normalization": "kappa",
+        "relative_error": 3.884115981302955e-16
+      },
+      {
+        "mass": -0.277,
+        "csw": 1.160920226,
+        "key": "mat_5",
+        "normalization": "mass",
+        "relative_error": 3.87266695365501e-16
+      },
+      {
+        "mass": -0.277,
+        "csw": 1.160920226,
+        "key": "mat_5",
+        "normalization": "kappa",
+        "relative_error": 3.898969806356757e-16
+      }
+    ]
+  },
+  "library_sha256": {
+    "multigrid.cpp/build/node5005-propagator/liblqcd_cpu.so": "0d7476d60f51aacecb79cb340320d4e5974612d1c0a82391505a307b9adb4320",
+    "multigrid.cpp/build/propagator/liblqcd_cpu.so": "b74474f61a0dadc2423f6ac3ac25f6f1d6804e0c760133613ad73986f1a5af0c"
+  },
+  "source_sha256_captured_after_runs": {
+    "multigrid.cpp/cmake/DDalphaAMG.cmake": "b9b35c72c10f2c5fe509afd33a894a7464d59b04d3799cd3c5d04eb5886508f5",
+    "multigrid.cpp/cmake/Tests.cmake": "b4cc59aeac869de9bb1fc5073e36a3edfe2a0f605f1225dc12b0573b4e797ef3",
+    "multigrid.cpp/include/lqcd/core/clover.h": "f8da2717b101918867e94c048f0c0eb864861ab2011ca3b5a93a9e980677763c",
+    "multigrid.cpp/include/lqcd/core/dirac.h": "10075bb809bc7f3ab239f293490fe11111d33851805197928bd315693aaaac0b",
+    "multigrid.cpp/include/lqcd/core/dslash.h": "3425fb8a0d5c7b79e92e44fcc67f0f2abb71f85d8ea03bbe8a01d69124ebae0c",
+    "multigrid.cpp/include/lqcd/core/field.h": "29d1f8bc8e151fc67622e41ecdd10e5145b7a82174d1481ba9a65e16d02f9fd8",
+    "multigrid.cpp/include/lqcd/core/gauge.h": "7dceb84cfb1dd6622691c80c9f3c18b9d8256d45f5a1ef2e66aeba48ce2c616e",
+    "multigrid.cpp/include/lqcd/core/gcr.h": "f6dff6b0240109c17eee8fb2fafb63a30afffe723dba00f7ab5325f1ca1c9204",
+    "multigrid.cpp/include/lqcd/core/multigrid.h": "157481129f0eaf951f298175ba7ce0c3a132114f4155cfe41890c1d5f09604f2",
+    "multigrid.cpp/include/lqcd/core/options.h": "6c32251277fe89bf2ccbbc0338c39ce9ddc7e23c9c5181491c4859e6dfc263d4",
+    "multigrid.cpp/include/lqcd/lqcd.h": "f420d627e86008a72dbf19aaab9d7814f9586b23cd3bfcb27e10b7b8d82fffda",
+    "multigrid.cpp/include/lqcd/runtime/runtime.h": "9b2068c3a4612e51d45d189cc60d41b4485fd34aad4f56dd9df4b1eaa0c2acfc",
+    "multigrid.cpp/python/lqcd_cpu/__init__.py": "55042224932574cf014f4e23a94f64b7861aec86f7461958a0e5fc1095bd4d2a",
+    "multigrid.cpp/python/lqcd_cpu/__main__.py": "290b9f138e7119726ccb04f1bc1bf8829aee147a07055beaa669bdbc08449c56",
+    "multigrid.cpp/python/lqcd_cpu/io.py": "0bb7a799787aa19e6dd9235ab9bcc05fdd658e93508b4a4862495e384d6dd4e7",
+    "multigrid.cpp/python/lqcd_cpu/propagator.py": "51a5634169ef899afeca25b3086665c4df503c51fc160f974bc5aaf65c8d1c14",
+    "multigrid.cpp/python/lqcd_cpu/propagator_io.py": "86d57b97b234c3a2619569a0b36da2edaecde306340232fdbe6b6cf7e3a6deec",
+    "multigrid.cpp/python/lqcd_cpu/smearing.py": "98d6c6d87b51bbb35ac344ddcca58bf8d4b360a5eb6cf05a3d37980435322706",
+    "multigrid.cpp/src/backends/x86/backend.cpp": "62cf0c17b2b351eb989be740bdb214a0265cf612b4d54e773c90099ac4ba8093",
+    "multigrid.cpp/src/backends/x86/coarse.cpp": "fbef9675f90d69d863592766a0daa6c83dc9790d89d9f49f0d4bb6d78e3d061e",
+    "multigrid.cpp/src/backends/x86/cycle.cpp": "d353a2fc164aaec2ee29d7c635e930e8ebc512a14aecae5ce8118247f445ef09",
+    "multigrid.cpp/src/backends/x86/double_operator.cpp": "9414faa5962815d6cefbc91faf60b01f6872f82d591869b7d38d7443cb9aaa27",
+    "multigrid.cpp/src/backends/x86/environment.cpp": "3eee595c75aa097b81ac4dfa06a14c1d5d3a3091b0d174d25b3931df11fbc9b9",
+    "multigrid.cpp/src/backends/x86/environment.hpp": "fce21649223c8ad8763916dd806c61fcaef23a7f6dfae559f9fa471ba48845c0",
+    "multigrid.cpp/src/backends/x86/fine_operator.cpp": "a2fb5c89ee335904e2df9d6326a44f8728d733d2b44ac149c9c4b08a0e42d3e4",
+    "multigrid.cpp/src/backends/x86/halo_profile.cpp": "d1168b4630328079aa10443a961b25b1cbc3fb382b90e91f6d083343c54e12ac",
+    "multigrid.cpp/src/backends/x86/hierarchy.cpp": "03a1d264ee9709c84d7f361e83eb3ead0e900973ccfdf79f3c8e62fb22f0a3d9",
+    "multigrid.cpp/src/backends/x86/hierarchy.hpp": "8225000437ecc91bb758e994cf7b4b33d4bf3e1faaba5e88f160ed4f65d553fc",
+    "multigrid.cpp/src/backends/x86/multigrid.hpp": "bbef91d5a368d1aac4d8bac4c4f427866198cc72a67747b79731cab8f58ac054",
+    "multigrid.cpp/src/backends/x86/sap.cpp": "2f5d1c956168f14e6917f8219e78808638595c804e219f561ff32353ebc41605",
+    "multigrid.cpp/src/backends/x86/setup.cpp": "e6d7e3df0c13c4d66e86564c9a01d0fb4a8653b7d9dd3f3a91fa66ace4c70db6",
+    "multigrid.cpp/src/backends/x86/solver.cpp": "53feb7a2143d4ad1af5ef5fb101b441890f884519cdbb213d47472e65c491fa7",
+    "multigrid.cpp/src/backends/x86/transfer_avx512.hpp": "cccf729c1764014448ad10252102ad49f8a5b4f15644997362169cf39b96b33e",
+    "multigrid.cpp/src/backends/x86/validation.cpp": "8bdf540d1566cd0d4dc543247aecaad8971d017223bea4c19ee8be6c27d86345",
+    "multigrid.cpp/src/backends/x86/wilson_avx512.hpp": "2d246700655f36bc7f374874ea07421c07f067f4e9a77add41593ac174a142bd",
+    "multigrid.cpp/src/backends/x86/wilson_kernel.hpp": "0281a7146587d527437b4f3d2fbca232f71daa4885ffab81e2922a8243625916",
+    "multigrid.cpp/src/core/clover.cpp": "ed15e65ce7fc61a478ac92aa634b4dd5ca423483f2d61ac6f596e2a22aef9e9a",
+    "multigrid.cpp/src/core/dirac.cpp": "7379767901c6e9b44d97db148e7a2a3a358ed763b8ad5ce061deeade8bccdd69",
+    "multigrid.cpp/src/core/dslash.cpp": "77a8b22417af60eb73f4675b6c255df46e3c70ee927d1e8cc54018e87abd2535",
+    "multigrid.cpp/src/core/field.cpp": "2e78b97a2ab2e2de4e50345a7b1b8fcc78256c61521570153918721df84e5dea",
+    "multigrid.cpp/src/core/gauge.cpp": "044c899fdfb31e815df3b09a807e7c6c614e948f7289e64507ea73940973751d",
+    "multigrid.cpp/src/core/gcr.cpp": "feb16dcabb6f0885b548f76a4247395ce470329025eed571e0a6c62ad7cf1e34",
+    "multigrid.cpp/src/core/multigrid.cpp": "b59195d0270a1324def32cc54ede529f874a014f318b60f9a1763eb5b5366b5a",
+    "multigrid.cpp/src/reference/main.cpp": "baa158feec6e944df52ebc85d2eb135ef14fb9389e2fd1de9beb2a820bdb1e77",
+    "multigrid.cpp/src/reference/validation.cpp": "3cdb3d0dc3beb93680005f6d58d8183c13b475cf10013069d57b8094608a1589",
+    "multigrid.cpp/src/reference/validation.h": "63cd51d91d02f5460fb7bb1280b556c584ff55b5f37874e7c14164278b11605a",
+    "multigrid.cpp/src/references/ddalphaamg/adapter.cpp": "227b0ef37bc9dda910eeb0d41d56275e6ec619d038a156bed8dbb5ccff156afe",
+    "multigrid.cpp/src/runtime/backend.hpp": "855989852f963b564c7714429bbe6ac53ecae3b9bb95c453a72cb8898ede4eb6",
+    "multigrid.cpp/src/runtime/context.cpp": "b62a2d809dddb20f54050604adb3f3c64ded648c59a1e4a027fbe67ab562648b",
+    "multigrid.cpp/src/runtime/layout.cpp": "05d948cb7b3ce639624e564c59d188a0ad19ec8b14fe72584fcb6dce1ae24089",
+    "multigrid.cpp/src/runtime/registry.cpp": "fe01d10bf3e7fc5880c6c63ce75aa35889c4a72e23112dca2ba5ae322b63b39b",
+    "multigrid.cpp/src/support/aligned_workspace.hpp": "8d5b9a2b8e87abafd3c4c7e2242b34b44535001702aac6279ff0ef7e5e163599",
+    "multigrid.cpp/tests/oracle/compare_all.py": "83fcd0b943e6a51822d23f70da9122f5b006ecca7d77f8904c5c1e312c667d9e",
+    "multigrid.cpp/tests/oracle/compare_baseline.py": "117cb7a09f24c457938db2001c49bf288457758505de9a04ef16f74add4bd95c",
+    "multigrid.cpp/tests/oracle/compare_cpu_quda.py": "114fe3a7158cb511fdacabeedb285427953b583ddae954dae9f8b6677c1f0b73",
+    "multigrid.cpp/tests/oracle/compare_quda_p_probe.py": "4e60c1bc89bb48de6e87a8deef3e7271a4d21c8dcedbd38aa2eb8b8cf98dc504",
+    "multigrid.cpp/tests/oracle/convert_quda_basis.py": "61a1c31c7de0ebed5ad6fcda9c035d0ccf6f7430eaf0305b7a94ac46cf89ba3a",
+    "multigrid.cpp/tests/oracle/oracle_io.py": "5583726cef629e9deda67a75a6398211eadc9a3b5a313c0cb42c430f55d3740c",
+    "multigrid.cpp/tests/oracle/prepare_oracle.py": "c288375a16bf946b0d9de4d0d091c66675bce2df7321d0981a136ac2f6142344",
+    "multigrid.cpp/tests/oracle/run_oracle.sh": "30c6ad2f2c7b7d6ee33017088ada68d7d8be883f39c2cec1a4694c0189b9bcb3",
+    "multigrid.cpp/tests/runtime/test_lime_io.py": "37cb81f2fd370ca530ecbc115da530077e3a14fe5afe20494cfcaac1424d20e7",
+    "multigrid.cpp/tests/runtime/test_native_halo.py": "08410527ddfb4009808602677385b0d08f8284d216e93fe09b765f2a73483b43",
+    "multigrid.cpp/tests/runtime/test_numa_launcher.py": "8160449e0dfbb58edf24bbe53678d8e4d21f6acd7b86d641fb084579b87b395c",
+    "multigrid.cpp/tests/runtime/test_propagator_io.py": "10a3849e2967c36bbece910660cf167adaaceaef252532342dc1a6ed91ea90d0",
+    "multigrid.cpp/tests/runtime/test_propagator_workflow.py": "fd3b75b47a8ee4c4ca874e8ed3419d9a52563f26ebc0ac8d8d224ec0e1cbd694",
+    "multigrid.cpp/tests/runtime/test_runtime.py": "7e2258facdaa31ec4defd2dbea6f346eaa90d7199203e289d9fd309833b7224f",
+    "multigrid.cpp/tests/runtime/test_sap_eo.py": "adc4a19c406f03d746f532b922fd51745e35f16fdc64411779405c747131cf06",
+    "multigrid.cpp/tests/runtime/test_smearing.py": "5398531280c72e444bf529f0e986a96b6b9fc770a7928b10e7e3d7fc2a101b0f",
+    "multigrid.cpp/tests/runtime/test_thread_defaults.py": "5b2948a29cda54a457432de81b9a0547b92f54dca829b71c919088d988b5e2c6",
+    "multigrid.cpp/tests/unit/core_test.cpp": "b441c4de22820e7bc338a1496e4fd0a1a125cf4a88c9201823e046d4df243dc9",
+    "multigrid.cpp/tests/unit/native_allocator_test.cpp": "f5eea86d587608fdae0f5aa99fe668f1c53d79772991523ccfba0738c8938e24",
+    "multigrid.cpp/tests/unit/wilson_global_test.cpp": "1051abfc0701859253dca32c23c20c25bd02cb51986e8d6db5f2e442f212da17",
+    "multigrid.cpp/tests/unit/wilson_local_test.cpp": "804f5b08ec809d77c00a38d1d90e5c8c4a5688afdd037b168f317dd726acf52d",
+    "multigrid.cpp/tests/unit/wilson_packed_test.cpp": "f39a0b0f13e9c7e840c3ce2662829ec1307241ad2866178eb8f670f8ad2bf352",
+    "multigrid.cpp/tools/build_runtime.sh": "aa3b74abbf3ed0d2caa7ff3997e7f5846dd607dce5d74485b0cda6514618279d",
+    "multigrid.cpp/tools/run_numa.py": "09c77243ebb3c65d875ffbb38c38a5824554f14e507a2e6f21dbe7f619aa3dfe",
+    "multigrid.cpp/tools/solve_propagator.py": "6a87ab00221734b7ea78b822ba1a395f9553c1cc9b8995a06c2b61109c9b2b8d"
+  },
+  "validation": "node5005 22/22 CTest; gpu2025 Intel 5 workflow/core tests; full 12 columns scalar oracle; actual PyQUDA MPI8 file load exact",
+  "raw_directory": "/public2/home/lwb_720/lqcd/.cache/propagator-20261023"
+}

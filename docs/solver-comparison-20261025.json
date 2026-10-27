@@ -1,0 +1,120 @@
+{
+  "protocol": {
+    "lattice_xyzt": [
+      24,
+      24,
+      24,
+      64
+    ],
+    "mass": -0.277,
+    "csw": 1.160920226,
+    "stout": {
+      "steps": 1,
+      "rho": 0.125,
+      "dir_ignore": 4
+    },
+    "source": "origin 12 unit columns, source_spin*3+source_color",
+    "normalization": "M x = delta",
+    "tolerance": 1e-08,
+    "warmup_full_rounds": 1,
+    "timed_full_rounds": 4,
+    "gauge_sha256": "f59792082bd06b109719d9c12319507234ffd62da01254f9fa1be0f7b3e9e743"
+  },
+  "results": [
+    {
+      "implementation": "multigrid.cpp",
+      "algorithm": "project-owned EO SAP + coarse MG + batched independent flexible GCR",
+      "hardware": "dual EPYC9755, 16 MPI ranks x 16 OpenMP threads",
+      "rounds_seconds": [
+        5.945085372,
+        6.565272141,
+        6.777297253,
+        5.729917141,
+        6.388739504
+      ],
+      "second_seconds": 6.565272141,
+      "steady_median_seconds": 6.388739504,
+      "max_true_residual": 9.169759995842228e-09,
+      "setup_seconds": 114.070479189,
+      "evidence": ".cache/solver-comparison-20261023/native/final-output/result.json"
+    },
+    {
+      "implementation": "Grid",
+      "algorithm": "Wilson-Clover two-level MG, B3x6x6x2, generic Wilson kernel",
+      "hardware": "dual EPYC9755, 16 MPI ranks x 16 OpenMP threads",
+      "rounds_seconds": [
+        40.655447837,
+        39.563247366,
+        40.638525996,
+        39.494294093,
+        40.925610757
+      ],
+      "second_seconds": 39.563247366,
+      "steady_median_seconds": 40.638525996,
+      "max_true_residual": 9.171922031014377e-09,
+      "operator_error": 2.0361346548715515e-16,
+      "setup_seconds": 450.933356063,
+      "grid_commit": "3232b438f2cf729e515c185e2dbf29d7cc276bb7",
+      "evidence": ".cache/grid-latest-20261023/mg16b3generic.jsonl"
+    },
+    {
+      "implementation": "PyQUDA",
+      "algorithm": "Clover MG, double outer / single sloppy and MG",
+      "hardware": "1 H20",
+      "rounds_seconds": [
+        8.171628326,
+        8.17120982,
+        8.173496376,
+        8.173036579
+      ],
+      "second_seconds": 8.17120982,
+      "steady_median_seconds": 8.173036579,
+      "max_true_residual": 8.439087832e-09,
+      "evidence": ".cache/pyquda-full12-exclusive-20261025/gpu1/result.json"
+    },
+    {
+      "implementation": "PyQUDA",
+      "algorithm": "Clover MG, double outer / single sloppy and MG",
+      "hardware": "4 H20",
+      "rounds_seconds": [
+        2.537771031,
+        2.535279185,
+        2.53503209,
+        2.535574205
+      ],
+      "second_seconds": 2.535279185,
+      "steady_median_seconds": 2.535279185,
+      "max_true_residual": 8.473315335e-09,
+      "evidence": ".cache/pyquda-full12-exclusive-20261025/gpu4/result.json"
+    },
+    {
+      "implementation": "PyQUDA",
+      "algorithm": "Clover MG, double outer / single sloppy and MG",
+      "hardware": "8 H20",
+      "rounds_seconds": [
+        1.623426955,
+        1.615332697,
+        1.615182593,
+        1.614597216
+      ],
+      "second_seconds": 1.615332697,
+      "steady_median_seconds": 1.615182593,
+      "max_true_residual": 8.44008012e-09,
+      "evidence": ".cache/pyquda-full12-exclusive-20261025/gpu8/result.json"
+    }
+  ],
+  "independent_verification": {
+    "native": ".cache/solver-comparison-20261023/native-verify/final/verification.json",
+    "grid16": ".cache/solver-comparison-20261023/grid16-verify/mg16b3generic/verification.json",
+    "pyquda_1": ".cache/solver-comparison-20261023/gpu-verify2/gpu1/verification.json",
+    "pyquda_4": ".cache/solver-comparison-20261023/gpu-verify2/gpu4/verification.json",
+    "pyquda_8": ".cache/solver-comparison-20261023/gpu-verify2/gpu8/verification.json"
+  },
+  "excluded_grid_paths": {
+    "B6x6x6x2": "Grid red-black SIMD dimension assertion",
+    "B3x6x6x2_default_simd_asm": "Grid red-black SIMD dimension assertion",
+    "B3x6x6x2_explicit_asm": {
+      "operator_error": 0.1357446152544153
+    }
+  }
+}
