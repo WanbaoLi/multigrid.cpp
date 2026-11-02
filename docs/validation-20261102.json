@@ -1,0 +1,2947 @@
+{
+  "date": "2026-11-02",
+  "source_base": "0b8f9f1",
+  "cases": {
+    "x86-baseline": {
+      "format_version": 1,
+      "complete": true,
+      "input": {
+        "gauge": "/public2/home/lwb_720/lqcd/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime",
+        "output": "/public2/home/lwb_720/.cache/mg-20261102/propagator",
+        "mass": -0.277,
+        "csw": 1.160920226,
+        "backend": null,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "point": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "stout_steps": 1,
+        "stout_rho": 0.125,
+        "stout_dir_ignore": 4,
+        "tol": 1E-08,
+        "repeats": 2,
+        "seed": 1024,
+        "normalization": "mass",
+        "source_scale": 1.0,
+        "checksum": true,
+        "save_gauge": true,
+        "library": null,
+        "solve_tuning": {},
+        "tuning_environment": {}
+      },
+      "lime": {
+        "lattice_xyzt": [
+          24,
+          24,
+          24,
+          64
+        ],
+        "precision": 64,
+        "binary_offset": 140376,
+        "binary_bytes": 509607936,
+        "checksum": [
+          2489408864,
+          1749125273
+        ],
+        "csw": 1.160920226
+      },
+      "backend": "x86",
+      "library": "/public2/home/lwb_720/.cache/mg-20261102/source/build/validation/liblqcd_cpu.so.0.2.0",
+      "library_sha256": "372fc7304c56518d8d180efb5034267b6d3f3b3d7082f2289af2ebd1eea5af66",
+      "gauge_sha256": "47969c7fe9b4a4716d5eab40e5a1dbdaef09abdb055934000e034a99d20d2d30",
+      "lattice_xyzt": [
+        24,
+        24,
+        24,
+        64
+      ],
+      "grid_xyzt": [
+        1,
+        1,
+        1,
+        2
+      ],
+      "mass": -0.277,
+      "csw": 1.160920226,
+      "mass_source": "explicit",
+      "csw_source": "explicit",
+      "normalization": "mass",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source_scale": 1.0,
+      "equation": "Mx=b",
+      "gamma_basis": "DeGrand-Rossi",
+      "fermion_t_boundary": -1,
+      "gauge_t_boundary": 1,
+      "gauge_reunitarized": false,
+      "stout": {
+        "steps": 1,
+        "rho": 0.125,
+        "dir_ignore": 4
+      },
+      "block_xyzt": [
+        6,
+        6,
+        6,
+        4
+      ],
+      "seed": 1024,
+      "resources": [
+        {
+          "rank": 0,
+          "threads": 72,
+          "omp_places": "{38},{39},{40},{41},{42},{43},{44},{45},{46},{47},{48},{49},{50},{51},{52},{53},{54},{55},{56},{57},{58},{59},{60},{61},{70},{71},{72},{73},{74},{75},{76},{77},{78},{79},{80},{81},{82},{83},{84},{85},{86},{87},{88},{89},{90},{91},{92},{93},{102},{103},{104},{105},{106},{107},{108},{109},{110},{111},{112},{113},{114},{115},{116},{117},{118},{119},{120},{121},{122},{123},{124},{125}",
+          "cpu_affinity": [
+            38
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 1,
+          "threads": 56,
+          "omp_places": "{134},{135},{136},{137},{138},{139},{140},{141},{142},{143},{144},{145},{146},{147},{148},{149},{150},{151},{152},{153},{154},{155},{156},{157},{166},{167},{168},{169},{170},{171},{172},{173},{174},{175},{176},{177},{178},{179},{180},{181},{182},{183},{184},{185},{186},{187},{188},{189},{197},{198},{199},{200},{201},{202},{203},{204}",
+          "cpu_affinity": [
+            134
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        }
+      ],
+      "capabilities": {
+        "backend": "x86",
+        "algorithm": "project-owned adaptive aggregation MG + SAP + flexible GCR",
+        "mpi": true,
+        "mpi_decomposition": "t-slab",
+        "levels": [
+          2
+        ],
+        "setup": "native homogeneous SAP and inverse iteration",
+        "max_active_contexts_per_process": 1,
+        "device": "cpu",
+        "openmp": true
+      },
+      "initial_guess": "zero_for_every_column_every_round",
+      "columns": "source_spin*3+source_color",
+      "output_file": "propagator.npy",
+      "output_layout": "global [t,z,y,x,sink_spin,source_spin,sink_color,source_color]",
+      "setup_seconds": 45.000812295,
+      "lime_read_seconds": 0.7084320150315762,
+      "stout_seconds": 5.392685458064079,
+      "gauge_load_clover_seconds": 0.790806632488966,
+      "output_seconds": 2.2375166676938534,
+      "samples": [
+        {
+          "wall_seconds": 15.569562152028084,
+          "stats": [
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.3660734369999972,
+              "api_seconds": 1.4338055910000023,
+              "true_residual": 4.745945121061463E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2194193840000054,
+              "api_seconds": 1.2351883369999967,
+              "true_residual": 3.0902982956236552E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.230016089000003,
+              "api_seconds": 1.245407114999999,
+              "true_residual": 3.832283094432777E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2471933739999983,
+              "api_seconds": 1.2626191020000022,
+              "true_residual": 3.242351946234418E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2392055930000012,
+              "api_seconds": 1.2544581499999978,
+              "true_residual": 4.0676108488585284E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2315770999999955,
+              "api_seconds": 1.2470729429999992,
+              "true_residual": 4.110693426615351E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2460005440000046,
+              "api_seconds": 1.2614154870000007,
+              "true_residual": 3.799376971806318E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2422179509999935,
+              "api_seconds": 1.2575558069999957,
+              "true_residual": 2.8291266804150067E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 25,
+              "refinement_steps": 0,
+              "solver_seconds": 1.312067259999992,
+              "api_seconds": 1.327002512000007,
+              "true_residual": 2.607514476481022E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2297382029999966,
+              "api_seconds": 1.2450064140000023,
+              "true_residual": 3.84088826593854E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2379333949999989,
+              "api_seconds": 1.253559893000002,
+              "true_residual": 4.203289582115115E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.236119212999995,
+              "api_seconds": 1.2513663430000008,
+              "true_residual": 2.688745631183788E-09
+            }
+          ]
+        },
+        {
+          "wall_seconds": 15.41025122627616,
+          "stats": [
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2464523729999968,
+              "api_seconds": 1.2622536230000065,
+              "true_residual": 4.745945121061463E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2467291370000027,
+              "api_seconds": 1.2621311799999972,
+              "true_residual": 3.090298295623655E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.243713685000003,
+              "api_seconds": 1.2589052510000016,
+              "true_residual": 3.832283094432777E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2446162979999968,
+              "api_seconds": 1.2598258719999933,
+              "true_residual": 3.242351946234418E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2186218780000075,
+              "api_seconds": 1.2338726230000105,
+              "true_residual": 4.067610848858527E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.228823219000006,
+              "api_seconds": 1.2439324419999878,
+              "true_residual": 4.110693426615351E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.239610199000012,
+              "api_seconds": 1.254785671999997,
+              "true_residual": 3.799376971806318E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.232632233000004,
+              "api_seconds": 1.2479079259999963,
+              "true_residual": 2.8291266804150067E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 25,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2998780369999992,
+              "api_seconds": 1.3149991880000016,
+              "true_residual": 2.607514476481022E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2280598750000138,
+              "api_seconds": 1.2432788320000014,
+              "true_residual": 3.84088826593854E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2581050710000028,
+              "api_seconds": 1.2731474730000087,
+              "true_residual": 4.203289582115115E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 1.2527051009999894,
+              "api_seconds": 1.267885720999999,
+              "true_residual": 2.688745631183788E-09
+            }
+          ]
+        }
+      ],
+      "first_seconds": 15.569562152028084,
+      "max_true_residual": 4.745945121061463E-09,
+      "second_seconds": 15.41025122627616,
+      "steady_median_seconds": 15.41025122627616,
+      "total_wall_seconds": 86.07105658948421
+    },
+    "x86-batch2": {
+      "format_version": 1,
+      "complete": true,
+      "input": {
+        "gauge": "/public2/home/lwb_720/lqcd/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime",
+        "output": "/public2/home/lwb_720/.cache/mg-20261102/propagator-batch2",
+        "mass": -0.277,
+        "csw": 1.160920226,
+        "backend": null,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "point": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "stout_steps": 1,
+        "stout_rho": 0.125,
+        "stout_dir_ignore": 4,
+        "tol": 1E-08,
+        "repeats": 3,
+        "seed": 1024,
+        "normalization": "mass",
+        "source_scale": 1.0,
+        "checksum": true,
+        "save_gauge": false,
+        "library": null,
+        "solve_tuning": {},
+        "tuning_environment": {
+          "LQCD_RHS_BATCH": "2"
+        }
+      },
+      "lime": {
+        "lattice_xyzt": [
+          24,
+          24,
+          24,
+          64
+        ],
+        "precision": 64,
+        "binary_offset": 140376,
+        "binary_bytes": 509607936,
+        "checksum": [
+          2489408864,
+          1749125273
+        ],
+        "csw": 1.160920226
+      },
+      "backend": "x86",
+      "library": "/public2/home/lwb_720/.cache/mg-20261102/source/build/validation/liblqcd_cpu.so.0.2.0",
+      "library_sha256": "372fc7304c56518d8d180efb5034267b6d3f3b3d7082f2289af2ebd1eea5af66",
+      "gauge_sha256": "47969c7fe9b4a4716d5eab40e5a1dbdaef09abdb055934000e034a99d20d2d30",
+      "lattice_xyzt": [
+        24,
+        24,
+        24,
+        64
+      ],
+      "grid_xyzt": [
+        1,
+        1,
+        1,
+        2
+      ],
+      "mass": -0.277,
+      "csw": 1.160920226,
+      "mass_source": "explicit",
+      "csw_source": "explicit",
+      "normalization": "mass",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source_scale": 1.0,
+      "equation": "Mx=b",
+      "gamma_basis": "DeGrand-Rossi",
+      "fermion_t_boundary": -1,
+      "gauge_t_boundary": 1,
+      "gauge_reunitarized": false,
+      "stout": {
+        "steps": 1,
+        "rho": 0.125,
+        "dir_ignore": 4
+      },
+      "block_xyzt": [
+        6,
+        6,
+        6,
+        4
+      ],
+      "seed": 1024,
+      "resources": [
+        {
+          "rank": 0,
+          "threads": 72,
+          "omp_places": "{38},{39},{40},{41},{42},{43},{44},{45},{46},{47},{48},{49},{50},{51},{52},{53},{54},{55},{56},{57},{58},{59},{60},{61},{70},{71},{72},{73},{74},{75},{76},{77},{78},{79},{80},{81},{82},{83},{84},{85},{86},{87},{88},{89},{90},{91},{92},{93},{102},{103},{104},{105},{106},{107},{108},{109},{110},{111},{112},{113},{114},{115},{116},{117},{118},{119},{120},{121},{122},{123},{124},{125}",
+          "cpu_affinity": [
+            38
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 1,
+          "threads": 56,
+          "omp_places": "{134},{135},{136},{137},{138},{139},{140},{141},{142},{143},{144},{145},{146},{147},{148},{149},{150},{151},{152},{153},{154},{155},{156},{157},{166},{167},{168},{169},{170},{171},{172},{173},{174},{175},{176},{177},{178},{179},{180},{181},{182},{183},{184},{185},{186},{187},{188},{189},{197},{198},{199},{200},{201},{202},{203},{204}",
+          "cpu_affinity": [
+            134
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        }
+      ],
+      "capabilities": {
+        "backend": "x86",
+        "algorithm": "project-owned adaptive aggregation MG + SAP + flexible GCR",
+        "mpi": true,
+        "mpi_decomposition": "t-slab",
+        "levels": [
+          2
+        ],
+        "setup": "native homogeneous SAP and inverse iteration",
+        "max_active_contexts_per_process": 1,
+        "device": "cpu",
+        "openmp": true
+      },
+      "initial_guess": "zero_for_every_column_every_round",
+      "columns": "source_spin*3+source_color",
+      "output_file": "propagator.npy",
+      "output_layout": "global [t,z,y,x,sink_spin,source_spin,sink_color,source_color]",
+      "setup_seconds": 44.793951587,
+      "lime_read_seconds": 0.7291172333061695,
+      "stout_seconds": 5.422612749040127,
+      "gauge_load_clover_seconds": 0.7718486152589321,
+      "output_seconds": 2.3108257427811623,
+      "samples": [
+        {
+          "wall_seconds": 14.060300681740046,
+          "stats": [
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.346724774000002,
+              "api_seconds": 2.466470375,
+              "true_residual": 4.745945121061463E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.346724774000002,
+              "api_seconds": 2.466470375,
+              "true_residual": 3.0902982956236544E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.1556590269999987,
+              "api_seconds": 2.209116319000003,
+              "true_residual": 3.832283094432777E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.1556590269999987,
+              "api_seconds": 2.209116319000003,
+              "true_residual": 3.242351946234418E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.160518225000004,
+              "api_seconds": 2.2140208759999993,
+              "true_residual": 4.067610848858528E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.160518225000004,
+              "api_seconds": 2.2140208759999993,
+              "true_residual": 4.110693426615351E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.227025751999996,
+              "api_seconds": 2.2802976369999968,
+              "true_residual": 3.799376971806319E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.227025751999996,
+              "api_seconds": 2.2802976369999968,
+              "true_residual": 2.8291266804150067E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 25,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2754096060000037,
+              "api_seconds": 2.3285730170000036,
+              "true_residual": 2.607514476481022E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2754096060000037,
+              "api_seconds": 2.3285730170000036,
+              "true_residual": 3.84088826593854E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.223820363999991,
+              "api_seconds": 2.2773748630000057,
+              "true_residual": 4.203289611339702E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.223820363999991,
+              "api_seconds": 2.2773748630000057,
+              "true_residual": 2.688745631183788E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            }
+          ]
+        },
+        {
+          "wall_seconds": 13.866614658385515,
+          "stats": [
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.1721589450000067,
+              "api_seconds": 2.224344590000001,
+              "true_residual": 4.745945121061463E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.1721589450000067,
+              "api_seconds": 2.224344590000001,
+              "true_residual": 3.0902982956236552E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2108558190000025,
+              "api_seconds": 2.2641804720000067,
+              "true_residual": 3.832283094432777E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2108558190000025,
+              "api_seconds": 2.2641804720000067,
+              "true_residual": 3.2423519462344185E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.1713814689999964,
+              "api_seconds": 2.2245607250000035,
+              "true_residual": 4.067610848858528E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.1713814689999964,
+              "api_seconds": 2.2245607250000035,
+              "true_residual": 4.110693426615351E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2198453719999947,
+              "api_seconds": 2.2739079429999975,
+              "true_residual": 3.799376971806318E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2198453719999947,
+              "api_seconds": 2.2739079429999975,
+              "true_residual": 2.8291266804150067E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 25,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2650557549999917,
+              "api_seconds": 2.318367508999998,
+              "true_residual": 2.607514476481022E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2650557549999917,
+              "api_seconds": 2.318367508999998,
+              "true_residual": 3.84088826593854E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2105750270000044,
+              "api_seconds": 2.264390075999998,
+              "true_residual": 4.203289611339702E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2105750270000044,
+              "api_seconds": 2.264390075999998,
+              "true_residual": 2.6887456311837877E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            }
+          ]
+        },
+        {
+          "wall_seconds": 13.955572996288538,
+          "stats": [
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2195948169999866,
+              "api_seconds": 2.2710346629999947,
+              "true_residual": 4.745945121061463E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2195948169999866,
+              "api_seconds": 2.2710346629999947,
+              "true_residual": 3.0902982956236552E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.1986687179999933,
+              "api_seconds": 2.2522355859999976,
+              "true_residual": 3.832283094432778E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.1986687179999933,
+              "api_seconds": 2.2522355859999976,
+              "true_residual": 3.242351946234418E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.1902630700000003,
+              "api_seconds": 2.24337603699999,
+              "true_residual": 4.067610848858528E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.1902630700000003,
+              "api_seconds": 2.24337603699999,
+              "true_residual": 4.11069342661535E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.238641193999996,
+              "api_seconds": 2.291780731000003,
+              "true_residual": 3.799376971806318E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.238641193999996,
+              "api_seconds": 2.291780731000003,
+              "true_residual": 2.8291266804150067E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 25,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2688980389999927,
+              "api_seconds": 2.3213960320000098,
+              "true_residual": 2.607514476481022E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2688980389999927,
+              "api_seconds": 2.3213960320000098,
+              "true_residual": 3.84088826593854E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2320662620000036,
+              "api_seconds": 2.2856710669999956,
+              "true_residual": 4.203289611339702E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 2.2320662620000036,
+              "api_seconds": 2.2856710669999956,
+              "true_residual": 2.688745631183788E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            }
+          ]
+        }
+      ],
+      "first_seconds": 14.060300681740046,
+      "max_true_residual": 4.745945121061463E-09,
+      "second_seconds": 13.866614658385515,
+      "steady_median_seconds": 13.911093827337027,
+      "total_wall_seconds": 96.98520098999143
+    },
+    "arm-baseline": {
+      "format_version": 1,
+      "complete": true,
+      "input": {
+        "gauge": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025/configuration24.lime",
+        "output": "/home/share/nsls_lwb/.cache/mg-20261102/propagator",
+        "mass": -0.277,
+        "csw": 1.160920226,
+        "backend": null,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "point": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "stout_steps": 1,
+        "stout_rho": 0.125,
+        "stout_dir_ignore": 4,
+        "tol": 1E-08,
+        "repeats": 2,
+        "seed": 1024,
+        "normalization": "mass",
+        "source_scale": 1.0,
+        "checksum": true,
+        "save_gauge": true,
+        "library": null,
+        "solve_tuning": {},
+        "tuning_environment": {}
+      },
+      "lime": {
+        "lattice_xyzt": [
+          24,
+          24,
+          24,
+          64
+        ],
+        "precision": 64,
+        "binary_offset": 140376,
+        "binary_bytes": 509607936,
+        "checksum": [
+          2489408864,
+          1749125273
+        ],
+        "csw": 1.160920226
+      },
+      "backend": "arm",
+      "library": "/home/share/nsls_lwb/.cache/mg-20261102/source/build/validation/liblqcd_cpu.so.0.2.0",
+      "library_sha256": "b1b8979b454a4eb267153d2ea8bc837e7d452b10a931ff8032ea153615dc4cc1",
+      "gauge_sha256": "47969c7fe9b4a4716d5eab40e5a1dbdaef09abdb055934000e034a99d20d2d30",
+      "lattice_xyzt": [
+        24,
+        24,
+        24,
+        64
+      ],
+      "grid_xyzt": [
+        1,
+        1,
+        1,
+        16
+      ],
+      "mass": -0.277,
+      "csw": 1.160920226,
+      "mass_source": "explicit",
+      "csw_source": "explicit",
+      "normalization": "mass",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source_scale": 1.0,
+      "equation": "Mx=b",
+      "gamma_basis": "DeGrand-Rossi",
+      "fermion_t_boundary": -1,
+      "gauge_t_boundary": 1,
+      "gauge_reunitarized": false,
+      "stout": {
+        "steps": 1,
+        "rho": 0.125,
+        "dir_ignore": 4
+      },
+      "block_xyzt": [
+        6,
+        6,
+        6,
+        4
+      ],
+      "seed": 1024,
+      "resources": [
+        {
+          "rank": 0,
+          "threads": 37,
+          "omp_places": "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35},{36}",
+          "cpu_affinity": [
+            0
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 1,
+          "threads": 37,
+          "omp_places": "{38},{39},{40},{41},{42},{43},{44},{45},{46},{47},{48},{49},{50},{51},{52},{53},{54},{55},{56},{57},{58},{59},{60},{61},{62},{63},{64},{65},{66},{67},{68},{69},{70},{71},{72},{73},{74}",
+          "cpu_affinity": [
+            38
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 2,
+          "threads": 37,
+          "omp_places": "{76},{77},{78},{79},{80},{81},{82},{83},{84},{85},{86},{87},{88},{89},{90},{91},{92},{93},{94},{95},{96},{97},{98},{99},{100},{101},{102},{103},{104},{105},{106},{107},{108},{109},{110},{111},{112}",
+          "cpu_affinity": [
+            76
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 3,
+          "threads": 37,
+          "omp_places": "{114},{115},{116},{117},{118},{119},{120},{121},{122},{123},{124},{125},{126},{127},{128},{129},{130},{131},{132},{133},{134},{135},{136},{137},{138},{139},{140},{141},{142},{143},{144},{145},{146},{147},{148},{149},{150}",
+          "cpu_affinity": [
+            114
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 4,
+          "threads": 37,
+          "omp_places": "{152},{153},{154},{155},{156},{157},{158},{159},{160},{161},{162},{163},{164},{165},{166},{167},{168},{169},{170},{171},{172},{173},{174},{175},{176},{177},{178},{179},{180},{181},{182},{183},{184},{185},{186},{187},{188}",
+          "cpu_affinity": [
+            152
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 5,
+          "threads": 37,
+          "omp_places": "{190},{191},{192},{193},{194},{195},{196},{197},{198},{199},{200},{201},{202},{203},{204},{205},{206},{207},{208},{209},{210},{211},{212},{213},{214},{215},{216},{217},{218},{219},{220},{221},{222},{223},{224},{225},{226}",
+          "cpu_affinity": [
+            190
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 6,
+          "threads": 37,
+          "omp_places": "{228},{229},{230},{231},{232},{233},{234},{235},{236},{237},{238},{239},{240},{241},{242},{243},{244},{245},{246},{247},{248},{249},{250},{251},{252},{253},{254},{255},{256},{257},{258},{259},{260},{261},{262},{263},{264}",
+          "cpu_affinity": [
+            228
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 7,
+          "threads": 37,
+          "omp_places": "{266},{267},{268},{269},{270},{271},{272},{273},{274},{275},{276},{277},{278},{279},{280},{281},{282},{283},{284},{285},{286},{287},{288},{289},{290},{291},{292},{293},{294},{295},{296},{297},{298},{299},{300},{301},{302}",
+          "cpu_affinity": [
+            266
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 8,
+          "threads": 37,
+          "omp_places": "{304},{305},{306},{307},{308},{309},{310},{311},{312},{313},{314},{315},{316},{317},{318},{319},{320},{321},{322},{323},{324},{325},{326},{327},{328},{329},{330},{331},{332},{333},{334},{335},{336},{337},{338},{339},{340}",
+          "cpu_affinity": [
+            304
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 9,
+          "threads": 37,
+          "omp_places": "{342},{343},{344},{345},{346},{347},{348},{349},{350},{351},{352},{353},{354},{355},{356},{357},{358},{359},{360},{361},{362},{363},{364},{365},{366},{367},{368},{369},{370},{371},{372},{373},{374},{375},{376},{377},{378}",
+          "cpu_affinity": [
+            342
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 10,
+          "threads": 37,
+          "omp_places": "{380},{381},{382},{383},{384},{385},{386},{387},{388},{389},{390},{391},{392},{393},{394},{395},{396},{397},{398},{399},{400},{401},{402},{403},{404},{405},{406},{407},{408},{409},{410},{411},{412},{413},{414},{415},{416}",
+          "cpu_affinity": [
+            380
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 11,
+          "threads": 37,
+          "omp_places": "{418},{419},{420},{421},{422},{423},{424},{425},{426},{427},{428},{429},{430},{431},{432},{433},{434},{435},{436},{437},{438},{439},{440},{441},{442},{443},{444},{445},{446},{447},{448},{449},{450},{451},{452},{453},{454}",
+          "cpu_affinity": [
+            418
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 12,
+          "threads": 37,
+          "omp_places": "{456},{457},{458},{459},{460},{461},{462},{463},{464},{465},{466},{467},{468},{469},{470},{471},{472},{473},{474},{475},{476},{477},{478},{479},{480},{481},{482},{483},{484},{485},{486},{487},{488},{489},{490},{491},{492}",
+          "cpu_affinity": [
+            456
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 13,
+          "threads": 37,
+          "omp_places": "{494},{495},{496},{497},{498},{499},{500},{501},{502},{503},{504},{505},{506},{507},{508},{509},{510},{511},{512},{513},{514},{515},{516},{517},{518},{519},{520},{521},{522},{523},{524},{525},{526},{527},{528},{529},{530}",
+          "cpu_affinity": [
+            494
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 14,
+          "threads": 37,
+          "omp_places": "{532},{533},{534},{535},{536},{537},{538},{539},{540},{541},{542},{543},{544},{545},{546},{547},{548},{549},{550},{551},{552},{553},{554},{555},{556},{557},{558},{559},{560},{561},{562},{563},{564},{565},{566},{567},{568}",
+          "cpu_affinity": [
+            532
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 15,
+          "threads": 37,
+          "omp_places": "{570},{571},{572},{573},{574},{575},{576},{577},{578},{579},{580},{581},{582},{583},{584},{585},{586},{587},{588},{589},{590},{591},{592},{593},{594},{595},{596},{597},{598},{599},{600},{601},{602},{603},{604},{605},{606}",
+          "cpu_affinity": [
+            570
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        }
+      ],
+      "capabilities": {
+        "backend": "arm",
+        "algorithm": "project-owned adaptive aggregation MG + SAP + flexible GCR",
+        "mpi": true,
+        "mpi_decomposition": "t-slab",
+        "levels": [
+          2
+        ],
+        "setup": "native homogeneous SAP and inverse iteration",
+        "max_active_contexts_per_process": 1,
+        "device": "cpu",
+        "openmp": true
+      },
+      "initial_guess": "zero_for_every_column_every_round",
+      "columns": "source_spin*3+source_color",
+      "output_file": "propagator.npy",
+      "output_layout": "global [t,z,y,x,sink_spin,source_spin,sink_color,source_color]",
+      "setup_seconds": 313.94557493,
+      "lime_read_seconds": 1.1304953310173005,
+      "stout_seconds": 3.636099186958745,
+      "gauge_load_clover_seconds": 0.8056290640961379,
+      "output_seconds": 27.827522255014628,
+      "samples": [
+        {
+          "wall_seconds": 103.28592963097617,
+          "stats": [
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.571894327000052,
+              "api_seconds": 8.648566162999998,
+              "true_residual": 4.818858112299297E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.437243281000008,
+              "api_seconds": 8.520062085000006,
+              "true_residual": 3.198730450276016E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.417861860000016,
+              "api_seconds": 8.478563907999956,
+              "true_residual": 3.933255204469823E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.546134808999966,
+              "api_seconds": 8.595314055000017,
+              "true_residual": 3.141437012544949E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.469555856,
+              "api_seconds": 8.523648363999996,
+              "true_residual": 4.0893419114669625E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.479947344999971,
+              "api_seconds": 8.541383144999998,
+              "true_residual": 4.07601433330568E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.553331819999983,
+              "api_seconds": 8.61446226999999,
+              "true_residual": 3.656194394585688E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.434379820000004,
+              "api_seconds": 8.495740860000012,
+              "true_residual": 2.835005475197606E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 25,
+              "refinement_steps": 0,
+              "solver_seconds": 8.921418314999983,
+              "api_seconds": 8.997552619000032,
+              "true_residual": 2.6407427078643975E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.452455133,
+              "api_seconds": 8.528450297999996,
+              "true_residual": 3.773108178575985E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.534757726999999,
+              "api_seconds": 8.573601908,
+              "true_residual": 4.279980975646583E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.480620890000012,
+              "api_seconds": 8.555520188999992,
+              "true_residual": 2.6128364898601533E-09
+            }
+          ]
+        },
+        {
+          "wall_seconds": 103.17085174308158,
+          "stats": [
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.512715921999984,
+              "api_seconds": 8.587089538999976,
+              "true_residual": 4.818858112299297E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.44453045199998,
+              "api_seconds": 8.49717005399998,
+              "true_residual": 3.198730450276016E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.46411593800002,
+              "api_seconds": 8.561672017999967,
+              "true_residual": 3.933255204469823E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.481848985,
+              "api_seconds": 8.52071007699999,
+              "true_residual": 3.141437012544949E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.486153700999978,
+              "api_seconds": 8.524882383000033,
+              "true_residual": 4.0893419114669625E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.495883805000005,
+              "api_seconds": 8.55645167800003,
+              "true_residual": 4.07601433330568E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.541294631000028,
+              "api_seconds": 8.615758233000008,
+              "true_residual": 3.656194394585688E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.490422714000033,
+              "api_seconds": 8.551383579000003,
+              "true_residual": 2.835005475222048E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 25,
+              "refinement_steps": 0,
+              "solver_seconds": 8.902056673999994,
+              "api_seconds": 8.942039761999979,
+              "true_residual": 2.6407427078643975E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.46498869100003,
+              "api_seconds": 8.504018135999956,
+              "true_residual": 3.773108178575985E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.504581475999998,
+              "api_seconds": 8.557099367000035,
+              "true_residual": 4.279980975646583E-09
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 8.453062038000041,
+              "api_seconds": 8.535428266000054,
+              "true_residual": 2.612836489860153E-09
+            }
+          ]
+        }
+      ],
+      "first_seconds": 103.28592963097617,
+      "max_true_residual": 4.818858112299297E-09,
+      "second_seconds": 103.17085174308158,
+      "steady_median_seconds": 103.17085174308158,
+      "total_wall_seconds": 557.0031957798637
+    },
+    "arm-batch2": {
+      "format_version": 1,
+      "complete": true,
+      "input": {
+        "gauge": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025/configuration24.lime",
+        "output": "/home/share/nsls_lwb/.cache/mg-20261102/propagator-batch2",
+        "mass": -0.277,
+        "csw": 1.160920226,
+        "backend": null,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "point": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "stout_steps": 1,
+        "stout_rho": 0.125,
+        "stout_dir_ignore": 4,
+        "tol": 1E-08,
+        "repeats": 3,
+        "seed": 1024,
+        "normalization": "mass",
+        "source_scale": 1.0,
+        "checksum": true,
+        "save_gauge": true,
+        "library": null,
+        "solve_tuning": {},
+        "tuning_environment": {
+          "LQCD_RHS_BATCH": "2"
+        }
+      },
+      "lime": {
+        "lattice_xyzt": [
+          24,
+          24,
+          24,
+          64
+        ],
+        "precision": 64,
+        "binary_offset": 140376,
+        "binary_bytes": 509607936,
+        "checksum": [
+          2489408864,
+          1749125273
+        ],
+        "csw": 1.160920226
+      },
+      "backend": "arm",
+      "library": "/home/share/nsls_lwb/.cache/mg-20261102/source/build/validation/liblqcd_cpu.so.0.2.0",
+      "library_sha256": "b1b8979b454a4eb267153d2ea8bc837e7d452b10a931ff8032ea153615dc4cc1",
+      "gauge_sha256": "47969c7fe9b4a4716d5eab40e5a1dbdaef09abdb055934000e034a99d20d2d30",
+      "lattice_xyzt": [
+        24,
+        24,
+        24,
+        64
+      ],
+      "grid_xyzt": [
+        1,
+        1,
+        1,
+        16
+      ],
+      "mass": -0.277,
+      "csw": 1.160920226,
+      "mass_source": "explicit",
+      "csw_source": "explicit",
+      "normalization": "mass",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source_scale": 1.0,
+      "equation": "Mx=b",
+      "gamma_basis": "DeGrand-Rossi",
+      "fermion_t_boundary": -1,
+      "gauge_t_boundary": 1,
+      "gauge_reunitarized": false,
+      "stout": {
+        "steps": 1,
+        "rho": 0.125,
+        "dir_ignore": 4
+      },
+      "block_xyzt": [
+        6,
+        6,
+        6,
+        4
+      ],
+      "seed": 1024,
+      "resources": [
+        {
+          "rank": 0,
+          "threads": 37,
+          "omp_places": "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35},{36}",
+          "cpu_affinity": [
+            0
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 1,
+          "threads": 37,
+          "omp_places": "{38},{39},{40},{41},{42},{43},{44},{45},{46},{47},{48},{49},{50},{51},{52},{53},{54},{55},{56},{57},{58},{59},{60},{61},{62},{63},{64},{65},{66},{67},{68},{69},{70},{71},{72},{73},{74}",
+          "cpu_affinity": [
+            38
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 2,
+          "threads": 37,
+          "omp_places": "{76},{77},{78},{79},{80},{81},{82},{83},{84},{85},{86},{87},{88},{89},{90},{91},{92},{93},{94},{95},{96},{97},{98},{99},{100},{101},{102},{103},{104},{105},{106},{107},{108},{109},{110},{111},{112}",
+          "cpu_affinity": [
+            76
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 3,
+          "threads": 37,
+          "omp_places": "{114},{115},{116},{117},{118},{119},{120},{121},{122},{123},{124},{125},{126},{127},{128},{129},{130},{131},{132},{133},{134},{135},{136},{137},{138},{139},{140},{141},{142},{143},{144},{145},{146},{147},{148},{149},{150}",
+          "cpu_affinity": [
+            114
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 4,
+          "threads": 37,
+          "omp_places": "{152},{153},{154},{155},{156},{157},{158},{159},{160},{161},{162},{163},{164},{165},{166},{167},{168},{169},{170},{171},{172},{173},{174},{175},{176},{177},{178},{179},{180},{181},{182},{183},{184},{185},{186},{187},{188}",
+          "cpu_affinity": [
+            152
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 5,
+          "threads": 37,
+          "omp_places": "{190},{191},{192},{193},{194},{195},{196},{197},{198},{199},{200},{201},{202},{203},{204},{205},{206},{207},{208},{209},{210},{211},{212},{213},{214},{215},{216},{217},{218},{219},{220},{221},{222},{223},{224},{225},{226}",
+          "cpu_affinity": [
+            190
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 6,
+          "threads": 37,
+          "omp_places": "{228},{229},{230},{231},{232},{233},{234},{235},{236},{237},{238},{239},{240},{241},{242},{243},{244},{245},{246},{247},{248},{249},{250},{251},{252},{253},{254},{255},{256},{257},{258},{259},{260},{261},{262},{263},{264}",
+          "cpu_affinity": [
+            228
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 7,
+          "threads": 37,
+          "omp_places": "{266},{267},{268},{269},{270},{271},{272},{273},{274},{275},{276},{277},{278},{279},{280},{281},{282},{283},{284},{285},{286},{287},{288},{289},{290},{291},{292},{293},{294},{295},{296},{297},{298},{299},{300},{301},{302}",
+          "cpu_affinity": [
+            266
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 8,
+          "threads": 37,
+          "omp_places": "{304},{305},{306},{307},{308},{309},{310},{311},{312},{313},{314},{315},{316},{317},{318},{319},{320},{321},{322},{323},{324},{325},{326},{327},{328},{329},{330},{331},{332},{333},{334},{335},{336},{337},{338},{339},{340}",
+          "cpu_affinity": [
+            304
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 9,
+          "threads": 37,
+          "omp_places": "{342},{343},{344},{345},{346},{347},{348},{349},{350},{351},{352},{353},{354},{355},{356},{357},{358},{359},{360},{361},{362},{363},{364},{365},{366},{367},{368},{369},{370},{371},{372},{373},{374},{375},{376},{377},{378}",
+          "cpu_affinity": [
+            342
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 10,
+          "threads": 37,
+          "omp_places": "{380},{381},{382},{383},{384},{385},{386},{387},{388},{389},{390},{391},{392},{393},{394},{395},{396},{397},{398},{399},{400},{401},{402},{403},{404},{405},{406},{407},{408},{409},{410},{411},{412},{413},{414},{415},{416}",
+          "cpu_affinity": [
+            380
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 11,
+          "threads": 37,
+          "omp_places": "{418},{419},{420},{421},{422},{423},{424},{425},{426},{427},{428},{429},{430},{431},{432},{433},{434},{435},{436},{437},{438},{439},{440},{441},{442},{443},{444},{445},{446},{447},{448},{449},{450},{451},{452},{453},{454}",
+          "cpu_affinity": [
+            418
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 12,
+          "threads": 37,
+          "omp_places": "{456},{457},{458},{459},{460},{461},{462},{463},{464},{465},{466},{467},{468},{469},{470},{471},{472},{473},{474},{475},{476},{477},{478},{479},{480},{481},{482},{483},{484},{485},{486},{487},{488},{489},{490},{491},{492}",
+          "cpu_affinity": [
+            456
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 13,
+          "threads": 37,
+          "omp_places": "{494},{495},{496},{497},{498},{499},{500},{501},{502},{503},{504},{505},{506},{507},{508},{509},{510},{511},{512},{513},{514},{515},{516},{517},{518},{519},{520},{521},{522},{523},{524},{525},{526},{527},{528},{529},{530}",
+          "cpu_affinity": [
+            494
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 14,
+          "threads": 37,
+          "omp_places": "{532},{533},{534},{535},{536},{537},{538},{539},{540},{541},{542},{543},{544},{545},{546},{547},{548},{549},{550},{551},{552},{553},{554},{555},{556},{557},{558},{559},{560},{561},{562},{563},{564},{565},{566},{567},{568}",
+          "cpu_affinity": [
+            532
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        },
+        {
+          "rank": 15,
+          "threads": 37,
+          "omp_places": "{570},{571},{572},{573},{574},{575},{576},{577},{578},{579},{580},{581},{582},{583},{584},{585},{586},{587},{588},{589},{590},{591},{592},{593},{594},{595},{596},{597},{598},{599},{600},{601},{602},{603},{604},{605},{606}",
+          "cpu_affinity": [
+            570
+          ],
+          "cpu_affinity_scope": "calling thread; OpenMP team places above"
+        }
+      ],
+      "capabilities": {
+        "backend": "arm",
+        "algorithm": "project-owned adaptive aggregation MG + SAP + flexible GCR",
+        "mpi": true,
+        "mpi_decomposition": "t-slab",
+        "levels": [
+          2
+        ],
+        "setup": "native homogeneous SAP and inverse iteration",
+        "max_active_contexts_per_process": 1,
+        "device": "cpu",
+        "openmp": true
+      },
+      "initial_guess": "zero_for_every_column_every_round",
+      "columns": "source_spin*3+source_color",
+      "output_file": "propagator.npy",
+      "output_layout": "global [t,z,y,x,sink_spin,source_spin,sink_color,source_color]",
+      "setup_seconds": 312.752533117,
+      "lime_read_seconds": 1.0945147050078958,
+      "stout_seconds": 3.357958317035809,
+      "gauge_load_clover_seconds": 0.804929899983108,
+      "output_seconds": 17.220474037108943,
+      "samples": [
+        {
+          "wall_seconds": 114.92201007599942,
+          "stats": [
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 19.04371614500002,
+              "api_seconds": 19.157516906000012,
+              "true_residual": 4.818858112299297E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 19.04371614500002,
+              "api_seconds": 19.157516906000012,
+              "true_residual": 3.198730450276016E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.927917318000027,
+              "api_seconds": 19.043500565999977,
+              "true_residual": 3.933255204469823E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.927917318000027,
+              "api_seconds": 19.043500565999977,
+              "true_residual": 3.141437012544949E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.931301202999975,
+              "api_seconds": 19.047928687000024,
+              "true_residual": 4.0893419114669625E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.931301202999975,
+              "api_seconds": 19.047928687000024,
+              "true_residual": 4.07601433330568E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.947508715000026,
+              "api_seconds": 19.063197943999967,
+              "true_residual": 3.656194394585688E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.947508715000026,
+              "api_seconds": 19.063197943999967,
+              "true_residual": 2.835005475197606E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 25,
+              "refinement_steps": 0,
+              "solver_seconds": 19.31712914100001,
+              "api_seconds": 19.434414317000005,
+              "true_residual": 2.6407427078643975E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 19.31712914100001,
+              "api_seconds": 19.434414317000005,
+              "true_residual": 3.773108178575985E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.83221546499999,
+              "api_seconds": 18.968853886999966,
+              "true_residual": 4.279980975646583E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.83221546499999,
+              "api_seconds": 18.968853886999966,
+              "true_residual": 2.6128364898601533E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            }
+          ]
+        },
+        {
+          "wall_seconds": 114.9740551111754,
+          "stats": [
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.916268892999994,
+              "api_seconds": 19.032744917000002,
+              "true_residual": 4.818858112299297E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.916268892999994,
+              "api_seconds": 19.032744917000002,
+              "true_residual": 3.198730450276016E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 19.03859817,
+              "api_seconds": 19.173975525000003,
+              "true_residual": 3.933255204469823E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 19.03859817,
+              "api_seconds": 19.173975525000003,
+              "true_residual": 3.141437012544949E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.88514287099997,
+              "api_seconds": 19.00405849399999,
+              "true_residual": 4.0893419114669625E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.88514287099997,
+              "api_seconds": 19.00405849399999,
+              "true_residual": 4.07601433330568E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.896373347000008,
+              "api_seconds": 19.034101453000005,
+              "true_residual": 3.656194394585688E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.896373347000008,
+              "api_seconds": 19.034101453000005,
+              "true_residual": 2.835005475197606E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 25,
+              "refinement_steps": 0,
+              "solver_seconds": 19.393173270000034,
+              "api_seconds": 19.510604797000042,
+              "true_residual": 2.6407427078643975E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 19.393173270000034,
+              "api_seconds": 19.510604797000042,
+              "true_residual": 3.773108178575985E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.895798854999953,
+              "api_seconds": 19.010925660999987,
+              "true_residual": 4.279980975646583E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.895798854999953,
+              "api_seconds": 19.010925660999987,
+              "true_residual": 2.612836489860153E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            }
+          ]
+        },
+        {
+          "wall_seconds": 114.97870026994497,
+          "stats": [
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.97108050999998,
+              "api_seconds": 19.08835509700009,
+              "true_residual": 4.818858112299297E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.97108050999998,
+              "api_seconds": 19.08835509700009,
+              "true_residual": 3.198730450276016E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.985032417999946,
+              "api_seconds": 19.10198833300001,
+              "true_residual": 3.933255204469823E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.985032417999946,
+              "api_seconds": 19.10198833300001,
+              "true_residual": 3.1414370125449485E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.923339270999918,
+              "api_seconds": 19.04107594900006,
+              "true_residual": 4.0893419114669625E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.923339270999918,
+              "api_seconds": 19.04107594900006,
+              "true_residual": 4.07601433330568E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.91469692699991,
+              "api_seconds": 19.03132571099991,
+              "true_residual": 3.656194394585688E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.91469692699991,
+              "api_seconds": 19.03132571099991,
+              "true_residual": 2.8350054751976063E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 25,
+              "refinement_steps": 0,
+              "solver_seconds": 19.42564624099998,
+              "api_seconds": 19.542154343999982,
+              "true_residual": 2.6407427078643975E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 19.42564624099998,
+              "api_seconds": 19.542154343999982,
+              "true_residual": 3.773108178575985E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.847834369999987,
+              "api_seconds": 18.964804575000016,
+              "true_residual": 4.279980975646583E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            },
+            {
+              "converged": 1,
+              "iterations": 24,
+              "refinement_steps": 0,
+              "solver_seconds": 18.847834369999987,
+              "api_seconds": 18.964804575000016,
+              "true_residual": 2.6128364898601533E-09,
+              "batch_size": 2,
+              "timing_scope": "shared_batch"
+            }
+          ]
+        }
+      ],
+      "first_seconds": 114.92201007599942,
+      "max_true_residual": 4.818858112299297E-09,
+      "second_seconds": 114.9740551111754,
+      "steady_median_seconds": 114.97637769056018,
+      "total_wall_seconds": 683.4440928839613
+    }
+  },
+  "independent_verification": {
+    "x86": {
+      "complete": true,
+      "run": "../propagator-batch2",
+      "reference": "/public2/home/lwb_720/.cache/mg-20261102/source/build/validation/multigrid",
+      "reference_sha256": "c5803d59b8c35d5b0bb07e45b98353194e927a3fd8ea1c57ee40070ae9433929",
+      "run_report_sha256": "e7c0dc159e7ffe31432bdfdda98c315f6a9cd9d145eaa2884e410941bfbee314",
+      "propagator_sha256": "88bf6e83128ce6f4fa89b87594ac49144cc7d6feef22bc66bc18e13f8d1c7510",
+      "method": "byte-only column extraction + independent scalar C++",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source_scale": 1.0,
+      "mass": -0.277,
+      "csw": 1.160920226,
+      "normalization": "mass",
+      "columns": [
+        {
+          "source_spin": 0,
+          "source_color": 0,
+          "residual": 4.745945120813694E-09
+        },
+        {
+          "source_spin": 0,
+          "source_color": 1,
+          "residual": 3.090298295715412E-09
+        },
+        {
+          "source_spin": 0,
+          "source_color": 2,
+          "residual": 3.8322830956234545E-09
+        },
+        {
+          "source_spin": 1,
+          "source_color": 0,
+          "residual": 3.2423519464634864E-09
+        },
+        {
+          "source_spin": 1,
+          "source_color": 1,
+          "residual": 4.067610848879002E-09
+        },
+        {
+          "source_spin": 1,
+          "source_color": 2,
+          "residual": 4.110693426680364E-09
+        },
+        {
+          "source_spin": 2,
+          "source_color": 0,
+          "residual": 3.799376972307652E-09
+        },
+        {
+          "source_spin": 2,
+          "source_color": 1,
+          "residual": 2.8291266797900064E-09
+        },
+        {
+          "source_spin": 2,
+          "source_color": 2,
+          "residual": 2.6075144765025E-09
+        },
+        {
+          "source_spin": 3,
+          "source_color": 0,
+          "residual": 3.840888266018734E-09
+        },
+        {
+          "source_spin": 3,
+          "source_color": 1,
+          "residual": 4.203289611872256E-09
+        },
+        {
+          "source_spin": 3,
+          "source_color": 2,
+          "residual": 2.6887456304908494E-09
+        }
+      ],
+      "assembled_gauge_sha256": "f59792082bd06b109719d9c12319507234ffd62da01254f9fa1be0f7b3e9e743"
+    },
+    "arm": {
+      "complete": true,
+      "run": "/home/share/nsls_lwb/.cache/mg-20261102/propagator",
+      "reference": "/home/share/nsls_lwb/.cache/mg-20261102/source/build/validation/multigrid",
+      "reference_sha256": "1534d9c0653a019dcac4df98965f47f14d052cb324c35e568faa760d50878e9c",
+      "run_report_sha256": "ac78beb0adba570b62c09cf4e2b8f939a78fee69f22c9d09f696264de1ec2f01",
+      "propagator_sha256": "31d5cb29eeaa2714b4db003424da1215668d369288a6706bff03a1e0fb2e71cd",
+      "method": "byte-only column extraction + independent scalar C++",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source_scale": 1.0,
+      "mass": -0.277,
+      "csw": 1.160920226,
+      "normalization": "mass",
+      "columns": [
+        {
+          "source_spin": 0,
+          "source_color": 0,
+          "residual": 4.818858112534332E-09
+        },
+        {
+          "source_spin": 0,
+          "source_color": 1,
+          "residual": 3.1987304507300633E-09
+        },
+        {
+          "source_spin": 0,
+          "source_color": 2,
+          "residual": 3.933255204770775E-09
+        },
+        {
+          "source_spin": 1,
+          "source_color": 0,
+          "residual": 3.141437012798294E-09
+        },
+        {
+          "source_spin": 1,
+          "source_color": 1,
+          "residual": 4.089341912539488E-09
+        },
+        {
+          "source_spin": 1,
+          "source_color": 2,
+          "residual": 4.0760143335083455E-09
+        },
+        {
+          "source_spin": 2,
+          "source_color": 0,
+          "residual": 3.656194395084031E-09
+        },
+        {
+          "source_spin": 2,
+          "source_color": 1,
+          "residual": 2.8350054766284584E-09
+        },
+        {
+          "source_spin": 2,
+          "source_color": 2,
+          "residual": 2.6407427075312873E-09
+        },
+        {
+          "source_spin": 3,
+          "source_color": 0,
+          "residual": 3.773108179113123E-09
+        },
+        {
+          "source_spin": 3,
+          "source_color": 1,
+          "residual": 4.2799809762892076E-09
+        },
+        {
+          "source_spin": 3,
+          "source_color": 2,
+          "residual": 2.612836488129494E-09
+        }
+      ],
+      "assembled_gauge_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834"
+    }
+  },
+  "hardware": {
+    "x86": {
+      "host": "node5004",
+      "machine": "x86_64",
+      "allowed_cpus": [
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204
+      ],
+      "commands": {
+        "lscpu": {
+          "returncode": 0,
+          "stdout": "架构：           x86_64\nCPU 运行模式：   32-bit, 64-bit\n字节序：         Little Endian\nCPU:             256\n在线 CPU 列表：  0-255\n每个核的线程数： 1\n每个座的核数：   128\n座：             2\nNUMA 节点：      2\n厂商 ID：        AuthenticAMD\nCPU 系列：       26\n型号：           2\n型号名称：       AMD EPYC 9755 128-Core Processor\n步进：           1\nCPU MHz：        4055.201\nCPU 最大 MHz：   4121.1909\nCPU 最小 MHz：   1500.0000\nBogoMIPS：       5392.01\n虚拟化：         AMD-V\nL1d 缓存：       48K\nL1i 缓存：       32K\nL2 缓存：        1024K\nL3 缓存：        32768K\nNUMA 节点0 CPU： 0-127\nNUMA 节点1 CPU： 128-255\n标记：           fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 invpcid_single hw_pstate ssbd mba ibrs ibpb stibp vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local avx_vnni avx512_bf16 clzero irperf xsaveerptr wbnoinvd amd_ppin arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif v_spec_ctrl avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid bus_lock_detect movdiri movdir64b overflow_recov succor smca fsrm avx512_vp2intersect flush_l1d\n",
+          "stderr": ""
+        },
+        "numactl --hardware": {
+          "returncode": 0,
+          "stdout": "available: 2 nodes (0-1)\nnode 0 cpus: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127\nnode 0 size: 1160225 MB\nnode 0 free: 1053532 MB\nnode 1 cpus: 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255\nnode 1 size: 1161058 MB\nnode 1 free: 1011571 MB\nnode distances:\nnode   0   1 \n  0:  10  32 \n  1:  32  10 \n",
+          "stderr": ""
+        }
+      },
+      "allocation": [
+        "Cpus_allowed_list:\t38-61,70-93,102-125,134-157,166-189,197-204",
+        "Mems_allowed_list:\t0-1"
+      ]
+    },
+    "arm": {
+      "host": "cn10580",
+      "machine": "aarch64",
+      "allowed_cpus": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259,
+        260,
+        261,
+        262,
+        263,
+        264,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        273,
+        274,
+        275,
+        276,
+        277,
+        278,
+        279,
+        280,
+        281,
+        282,
+        283,
+        284,
+        285,
+        286,
+        287,
+        288,
+        289,
+        290,
+        291,
+        292,
+        293,
+        294,
+        295,
+        296,
+        297,
+        298,
+        299,
+        300,
+        301,
+        302,
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322,
+        323,
+        324,
+        325,
+        326,
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334,
+        335,
+        336,
+        337,
+        338,
+        339,
+        340,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351,
+        352,
+        353,
+        354,
+        355,
+        356,
+        357,
+        358,
+        359,
+        360,
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370,
+        371,
+        372,
+        373,
+        374,
+        375,
+        376,
+        377,
+        378,
+        380,
+        381,
+        382,
+        383,
+        384,
+        385,
+        386,
+        387,
+        388,
+        389,
+        390,
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416,
+        418,
+        419,
+        420,
+        421,
+        422,
+        423,
+        424,
+        425,
+        426,
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442,
+        443,
+        444,
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451,
+        452,
+        453,
+        454,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        463,
+        464,
+        465,
+        466,
+        467,
+        468,
+        469,
+        470,
+        471,
+        472,
+        473,
+        474,
+        475,
+        476,
+        477,
+        478,
+        479,
+        480,
+        481,
+        482,
+        483,
+        484,
+        485,
+        486,
+        487,
+        488,
+        489,
+        490,
+        491,
+        492,
+        494,
+        495,
+        496,
+        497,
+        498,
+        499,
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        509,
+        510,
+        511,
+        512,
+        513,
+        514,
+        515,
+        516,
+        517,
+        518,
+        519,
+        520,
+        521,
+        522,
+        523,
+        524,
+        525,
+        526,
+        527,
+        528,
+        529,
+        530,
+        532,
+        533,
+        534,
+        535,
+        536,
+        537,
+        538,
+        539,
+        540,
+        541,
+        542,
+        543,
+        544,
+        545,
+        546,
+        547,
+        548,
+        549,
+        550,
+        551,
+        552,
+        553,
+        554,
+        555,
+        556,
+        557,
+        558,
+        559,
+        560,
+        561,
+        562,
+        563,
+        564,
+        565,
+        566,
+        567,
+        568,
+        570,
+        571,
+        572,
+        573,
+        574,
+        575,
+        576,
+        577,
+        578,
+        579,
+        580,
+        581,
+        582,
+        583,
+        584,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590,
+        591,
+        592,
+        593,
+        594,
+        595,
+        596,
+        597,
+        598,
+        599,
+        600,
+        601,
+        602,
+        603,
+        604,
+        605,
+        606
+      ],
+      "commands": {
+        "lscpu": {
+          "returncode": 0,
+          "stdout": "Architecture:                       aarch64\nCPU op-mode(s):                     64-bit\nByte Order:                         Little Endian\nCPU(s):                             608\nOn-line CPU(s) list:                0-607\nVendor ID:                          HiSilicon\nModel:                              0\nThread(s) per core:                 1\nCore(s) per socket:                 304\nSocket(s):                          2\nStepping:                           0x0\nFrequency boost:                    enabled\nCPU max MHz:                        2000.0000\nCPU min MHz:                        1200.0000\nBogoMIPS:                           200.00\nFlags:                              fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp sha512 sve asimdfhm dit uscat ilrcpc flagm ssbs sb paca pacg dcpodp sve2 sveaes svepmull svebitperm svesha3 svesm4 flagm2 frint svei8mm svebf16 i8mm bf16 dgh ecv afp rpres sme smef64f64 smei8i32 smef16f32 smeb16f32 smef32f32 smefa64 wfxt\nL1d cache:                          19 MiB (608 instances)\nL1i cache:                          19 MiB (608 instances)\nL2 cache:                           456 MiB (608 instances)\nNUMA node(s):                       32\nNUMA node0 CPU(s):                  0-37\nNUMA node1 CPU(s):                  38-75\nNUMA node2 CPU(s):                  76-113\nNUMA node3 CPU(s):                  114-151\nNUMA node4 CPU(s):                  152-189\nNUMA node5 CPU(s):                  190-227\nNUMA node6 CPU(s):                  228-265\nNUMA node7 CPU(s):                  266-303\nNUMA node8 CPU(s):                  304-341\nNUMA node9 CPU(s):                  342-379\nNUMA node10 CPU(s):                 380-417\nNUMA node11 CPU(s):                 418-455\nNUMA node12 CPU(s):                 456-493\nNUMA node13 CPU(s):                 494-531\nNUMA node14 CPU(s):                 532-569\nNUMA node15 CPU(s):                 570-607\nNUMA node16 CPU(s):                 \nNUMA node17 CPU(s):                 \nNUMA node18 CPU(s):                 \nNUMA node19 CPU(s):                 \nNUMA node20 CPU(s):                 \nNUMA node21 CPU(s):                 \nNUMA node22 CPU(s):                 \nNUMA node23 CPU(s):                 \nNUMA node24 CPU(s):                 \nNUMA node25 CPU(s):                 \nNUMA node26 CPU(s):                 \nNUMA node27 CPU(s):                 \nNUMA node28 CPU(s):                 \nNUMA node29 CPU(s):                 \nNUMA node30 CPU(s):                 \nNUMA node31 CPU(s):                 \nVulnerability Gather data sampling: Not affected\nVulnerability Itlb multihit:        Not affected\nVulnerability L1tf:                 Not affected\nVulnerability Mds:                  Not affected\nVulnerability Meltdown:             Not affected\nVulnerability Mmio stale data:      Not affected\nVulnerability Retbleed:             Not affected\nVulnerability Spec rstack overflow: Not affected\nVulnerability Spec store bypass:    Not affected\nVulnerability Spectre v1:           Mitigation; __user pointer sanitization\nVulnerability Spectre v2:           Mitigation; CSV2, but not BHB\nVulnerability Srbds:                Not affected\nVulnerability Tsx async abort:      Not affected\n",
+          "stderr": ""
+        },
+        "numactl --hardware": {
+          "returncode": 0,
+          "stdout": "available: 32 nodes (0-31)\nnode 0 cpus: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37\nnode 0 size: 31376 MB\nnode 0 free: 6634 MB\nnode 1 cpus: 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75\nnode 1 size: 32250 MB\nnode 1 free: 10578 MB\nnode 2 cpus: 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113\nnode 2 size: 32250 MB\nnode 2 free: 15664 MB\nnode 3 cpus: 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151\nnode 3 size: 32250 MB\nnode 3 free: 16126 MB\nnode 4 cpus: 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189\nnode 4 size: 32250 MB\nnode 4 free: 16318 MB\nnode 5 cpus: 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227\nnode 5 size: 32250 MB\nnode 5 free: 17194 MB\nnode 6 cpus: 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265\nnode 6 size: 32250 MB\nnode 6 free: 17349 MB\nnode 7 cpus: 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299 300 301 302 303\nnode 7 size: 32250 MB\nnode 7 free: 20336 MB\nnode 8 cpus: 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 321 322 323 324 325 326 327 328 329 330 331 332 333 334 335 336 337 338 339 340 341\nnode 8 size: 32250 MB\nnode 8 free: 25106 MB\nnode 9 cpus: 342 343 344 345 346 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379\nnode 9 size: 32250 MB\nnode 9 free: 25606 MB\nnode 10 cpus: 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395 396 397 398 399 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417\nnode 10 size: 32250 MB\nnode 10 free: 27419 MB\nnode 11 cpus: 418 419 420 421 422 423 424 425 426 427 428 429 430 431 432 433 434 435 436 437 438 439 440 441 442 443 444 445 446 447 448 449 450 451 452 453 454 455\nnode 11 size: 32250 MB\nnode 11 free: 29554 MB\nnode 12 cpus: 456 457 458 459 460 461 462 463 464 465 466 467 468 469 470 471 472 473 474 475 476 477 478 479 480 481 482 483 484 485 486 487 488 489 490 491 492 493\nnode 12 size: 32250 MB\nnode 12 free: 25355 MB\nnode 13 cpus: 494 495 496 497 498 499 500 501 502 503 504 505 506 507 508 509 510 511 512 513 514 515 516 517 518 519 520 521 522 523 524 525 526 527 528 529 530 531\nnode 13 size: 32250 MB\nnode 13 free: 25547 MB\nnode 14 cpus: 532 533 534 535 536 537 538 539 540 541 542 543 544 545 546 547 548 549 550 551 552 553 554 555 556 557 558 559 560 561 562 563 564 565 566 567 568 569\nnode 14 size: 32250 MB\nnode 14 free: 27007 MB\nnode 15 cpus: 570 571 572 573 574 575 576 577 578 579 580 581 582 583 584 585 586 587 588 589 590 591 592 593 594 595 596 597 598 599 600 601 602 603 604 605 606 607\nnode 15 size: 30139 MB\nnode 15 free: 24744 MB\nnode 16 cpus:\nnode 16 size: 4096 MB\nnode 16 free: 3963 MB\nnode 17 cpus:\nnode 17 size: 4096 MB\nnode 17 free: 4049 MB\nnode 18 cpus:\nnode 18 size: 4096 MB\nnode 18 free: 4061 MB\nnode 19 cpus:\nnode 19 size: 4096 MB\nnode 19 free: 4060 MB\nnode 20 cpus:\nnode 20 size: 4096 MB\nnode 20 free: 4065 MB\nnode 21 cpus:\nnode 21 size: 4096 MB\nnode 21 free: 4067 MB\nnode 22 cpus:\nnode 22 size: 4096 MB\nnode 22 free: 4065 MB\nnode 23 cpus:\nnode 23 size: 4096 MB\nnode 23 free: 4067 MB\nnode 24 cpus:\nnode 24 size: 4096 MB\nnode 24 free: 4068 MB\nnode 25 cpus:\nnode 25 size: 4096 MB\nnode 25 free: 4068 MB\nnode 26 cpus:\nnode 26 size: 4096 MB\nnode 26 free: 4068 MB\nnode 27 cpus:\nnode 27 size: 4096 MB\nnode 27 free: 4065 MB\nnode 28 cpus:\nnode 28 size: 4096 MB\nnode 28 free: 4066 MB\nnode 29 cpus:\nnode 29 size: 4096 MB\nnode 29 free: 4065 MB\nnode 30 cpus:\nnode 30 size: 4096 MB\nnode 30 free: 4066 MB\nnode 31 cpus:\nnode 31 size: 4096 MB\nnode 31 free: 4067 MB\nnode distances:\nnode   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22  23  24  25  26  27  28  29  30  31 \n  0:  10  20  20  20  30  30  30  30  40  40  40  40  40  40  40  40  61  71  71  71  81  81  81  81  91  91  91  91  91  91  91  91 \n  1:  20  10  20  20  30  30  30  30  40  40  40  40  40  40  40  40  71  61  71  71  81  81  81  81  91  91  91  91  91  91  91  91 \n  2:  20  20  10  20  30  30  30  30  40  40  40  40  40  40  40  40  71  71  61  71  81  81  81  81  91  91  91  91  91  91  91  91 \n  3:  20  20  20  10  30  30  30  30  40  40  40  40  40  40  40  40  71  71  71  61  81  81  81  81  91  91  91  91  91  91  91  91 \n  4:  30  30  30  30  10  20  20  20  40  40  40  40  40  40  40  40  81  81  81  81  61  71  71  71  91  91  91  91  91  91  91  91 \n  5:  30  30  30  30  20  10  20  20  40  40  40  40  40  40  40  40  81  81  81  81  71  61  71  71  91  91  91  91  91  91  91  91 \n  6:  30  30  30  30  20  20  10  20  40  40  40  40  40  40  40  40  81  81  81  81  71  71  61  71  91  91  91  91  91  91  91  91 \n  7:  30  30  30  30  20  20  20  10  40  40  40  40  40  40  40  40  81  81  81  81  71  71  71  61  91  91  91  91  91  91  91  91 \n  8:  40  40  40  40  40  40  40  40  10  20  20  20  30  30  30  30  91  91  91  91  91  91  91  91  61  71  71  71  81  81  81  81 \n  9:  40  40  40  40  40  40  40  40  20  10  20  20  30  30  30  30  91  91  91  91  91  91  91  91  71  61  71  71  81  81  81  81 \n 10:  40  40  40  40  40  40  40  40  20  20  10  20  30  30  30  30  91  91  91  91  91  91  91  91  71  71  61  71  81  81  81  81 \n 11:  40  40  40  40  40  40  40  40  20  20  20  10  30  30  30  30  91  91  91  91  91  91  91  91  71  71  71  61  81  81  81  81 \n 12:  40  40  40  40  40  40  40  40  30  30  30  30  10  20  20  20  91  91  91  91  91  91  91  91  81  81  81  81  61  71  71  71 \n 13:  40  40  40  40  40  40  40  40  30  30  30  30  20  10  20  20  91  91  91  91  91  91  91  91  81  81  81  81  71  61  71  71 \n 14:  40  40  40  40  40  40  40  40  30  30  30  30  20  20  10  20  91  91  91  91  91  91  91  91  81  81  81  81  71  71  61  71 \n 15:  40  40  40  40  40  40  40  40  30  30  30  30  20  20  20  10  91  91  91  91  91  91  91  91  81  81  81  81  71  71  71  61 \n 16:  61  71  71  71  81  81  81  81  91  91  91  91  91  91  91  91  10  255  255  255  255  255  255  255  255  255  255  255  255  255  255  255 \n 17:  71  61  71  71  81  81  81  81  91  91  91  91  91  91  91  91  255  10  255  255  255  255  255  255  255  255  255  255  255  255  255  255 \n 18:  71  71  61  71  81  81  81  81  91  91  91  91  91  91  91  91  255  255  10  255  255  255  255  255  255  255  255  255  255  255  255  255 \n 19:  71  71  71  61  81  81  81  81  91  91  91  91  91  91  91  91  255  255  255  10  255  255  255  255  255  255  255  255  255  255  255  255 \n 20:  81  81  81  81  61  71  71  71  91  91  91  91  91  91  91  91  255  255  255  255  10  255  255  255  255  255  255  255  255  255  255  255 \n 21:  81  81  81  81  71  61  71  71  91  91  91  91  91  91  91  91  255  255  255  255  255  10  255  255  255  255  255  255  255  255  255  255 \n 22:  81  81  81  81  71  71  61  71  91  91  91  91  91  91  91  91  255  255  255  255  255  255  10  255  255  255  255  255  255  255  255  255 \n 23:  81  81  81  81  71  71  71  61  91  91  91  91  91  91  91  91  255  255  255  255  255  255  255  10  255  255  255  255  255  255  255  255 \n 24:  91  91  91  91  91  91  91  91  61  71  71  71  81  81  81  81  255  255  255  255  255  255  255  255  10  255  255  255  255  255  255  255 \n 25:  91  91  91  91  91  91  91  91  71  61  71  71  81  81  81  81  255  255  255  255  255  255  255  255  255  10  255  255  255  255  255  255 \n 26:  91  91  91  91  91  91  91  91  71  71  61  71  81  81  81  81  255  255  255  255  255  255  255  255  255  255  10  255  255  255  255  255 \n 27:  91  91  91  91  91  91  91  91  71  71  71  61  81  81  81  81  255  255  255  255  255  255  255  255  255  255  255  10  255  255  255  255 \n 28:  91  91  91  91  91  91  91  91  81  81  81  81  61  71  71  71  255  255  255  255  255  255  255  255  255  255  255  255  10  255  255  255 \n 29:  91  91  91  91  91  91  91  91  81  81  81  81  71  61  71  71  255  255  255  255  255  255  255  255  255  255  255  255  255  10  255  255 \n 30:  91  91  91  91  91  91  91  91  81  81  81  81  71  71  61  71  255  255  255  255  255  255  255  255  255  255  255  255  255  255  10  255 \n 31:  91  91  91  91  91  91  91  91  81  81  81  81  71  71  71  61  255  255  255  255  255  255  255  255  255  255  255  255  255  255  255  10 \n",
+          "stderr": ""
+        }
+      },
+      "allocation": [
+        "Cpus_allowed_list:\t0-36,38-74,76-112,114-150,152-188,190-226,228-264,266-302,304-340,342-378,380-416,418-454,456-492,494-530,532-568,570-606",
+        "Mems_allowed_list:\t0-31"
+      ],
+      "hwcap": 4294967295,
+      "hwcap2": 4273533951,
+      "sve": true,
+      "sve2": true,
+      "sme": true,
+      "sve_vector_bytes": 64
+    }
+  },
+  "tests": {
+    "arm": "36 tests passed before timeout adjustments; native_halo and sap_eo passed CTest at 348.34s and 305.65s with 480s budgets",
+    "x86": "38/38 CTest passed"
+  },
+  "caveats": [
+    "x86 node5004 MIXED, allocated 128 cores; ARM cn10580 exclusive 592 cores. No cross-hardware peak claim.",
+    "ARM current timing is slower than historical records; cause not established.",
+    "No new SIMD arithmetic kernel; existing two-RHS mode compared. Under-5-second target not met."
+  ]
+}

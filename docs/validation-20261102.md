@@ -49,6 +49,7 @@ sbatch -p amd256c_2025 -N 1 -n 16 -c 8 --mem=192G -t 00:30:00 \
 
 ```bash
 export LQCD_GAUGE="$HOME/.cache/multigrid-arm-20261025/configuration24.lime"
+export LQCD_RHS_BATCH=1
 export LQCD_OUTPUT="$PWD/results/arm-$(date +%Y%m%dT%H%M%S)"
 dsub -q q_hpcapp -A common -nn 1 -N 1 -x job \
   -R 'cpu=592,mem=480000MB' -T 1800 --cwd "$PWD" \
@@ -63,6 +64,11 @@ memory-only NUMA16–31 各4096MB，本轮 cpuset 的 `Mems_allowed_list=0-31`�
 HWCAP 显示 SVE/SVE2/SME，SVE VL 为64字节；native 库反汇编含 `ld1w {z2.s}, p0/z`
 等 SVE 指令。SME 算术内核没有实测，内存域允许访问也不能代表已经使用 HBM。
 当前求解默认 HBM off；后续可对 owned 热点资产做 require 模式迁移/驻留验证后再测量。
+
+完整回归中，缺失 host 依赖导致的失败经补齐后重跑；36项在原预算下通过。
+`native_halo` 和 `sap_eo` 的 240 秒预算在第三次 hierarchy 构建阶段不足，ARM
+预算改为480秒后分别在348.34/305.65秒通过；保留全部模式、非等线程和残差门。
+两项补测后，38项均有通过结果；没有将 timeout 记为数值通过。
 
 ## x86 本轮有限扫描
 
@@ -94,6 +100,28 @@ python benchmarks/runtime/verify_fixture_propagator.py \
 
 需 `--save-gauge` 输出和新的验证目录，约 10GB 临时磁盘空间；成功后删除临时二进制，
 保留逐列日志与 `verification.json`。性能计时不包含此验证。
+
+## 灵晟本轮有限扫描
+
+灵晟 cn10580 同一独占分配、同一库及16 MPI×37线程的实测如下。
+
+| LQCD_RHS_BATCH | setup 秒 | 首轮12列秒 | 第二轮12列秒 | 最大真残差 |
+|---|---:|---:|---:|---:|
+| 1（保留） | 313.946 | 103.286 | 103.171 | 4.819e-9 |
+| 2（不采用） | 312.753 | 114.922 | 114.974 | 4.819e-9 |
+
+batch=2 第三轮114.979秒，后两轮中位数114.976秒；第二轮比batch=1慢11.44%。
+该节点本轮保留batch=1，不推广x86的双RHS profile。两端数据不能直接作为硬件峰值
+对比：x86仅分配128核且节点MIXED，ARM为592核独占；本轮ARM结果慢于历史记录，
+差异原因尚未定位，不能把旧记录的28秒列为本轮成绩。仓库的<5秒目标尚未达到。
+
+保留的batch=1输出12列独立参考算子复核全部通过，最大残差
+`4.81885811253433e-9`。完整清单（两端的单/双RHS原始报告、库/输入哈希、CPU绑定、
+逐列统计、架构探测和独立验证）见 `validation-20261102.json`。
+远端大体积传播子保存在两端 `~/.cache/mg-20261102/propagator{,-batch2}`，未上传Git。
+
+下一阶段先在同一分配中复现历史参数环境、分析细/粗层与归约分项，再评估选择性HBM；
+h20原工作目录未提交的field-batch改动保持原样，合入前需单独建立数值与性能对照。
 
 ## 科学参数和验收
 

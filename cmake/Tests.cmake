@@ -106,5 +106,12 @@ if(BUILD_TESTING)
         set_tests_properties(runtime_serial runtime_mpi2 runtime_mpi4 native_halo PROPERTIES TIMEOUT 240 ENVIRONMENT "${LQCD_RUNTIME_ENV}")
         set_tests_properties(runtime_paper PROPERTIES TIMEOUT 240 ENVIRONMENT "LQCD_CPU_LIBRARY=$<TARGET_FILE:lqcd_cpu>;LQCD_SETUP_UPDATE=paper;OMP_NUM_THREADS=2;OPENBLAS_NUM_THREADS=1;OMPI_MCA_hwloc_base_binding_policy=none")
         set_tests_properties(sap_eo PROPERTIES TIMEOUT 240 ENVIRONMENT "${LQCD_RUNTIME_ENV}")
+        if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64|AARCH64|arm64|ARM64)$")
+            # These comparisons build several hierarchies with 1/2 threads.
+            # ARM halo completes two independently verified modes before the
+            # third setup hits 240s; all modes finish in 348s on the test node.
+            # Keep every mode and numerical gate, with a full-test budget.
+            set_tests_properties(native_halo sap_eo PROPERTIES TIMEOUT 480)
+        endif()
     endif()
 endif()
