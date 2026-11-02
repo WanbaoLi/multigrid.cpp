@@ -5,6 +5,10 @@ project_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 build_dir=${BUILD_DIR:-$project_dir/build/runtime}
 mpi_c=${MPICC:-${MPI_PREFIX:+$MPI_PREFIX/bin/}mpicc}
 mpi_cxx=${MPICXX:-${MPI_PREFIX:+$MPI_PREFIX/bin/}mpicxx}
+# CTest derives the matching launcher directory from these paths. Bare wrapper
+# names otherwise produce /mpiexec even though FindMPI can compile successfully.
+mpi_c=$(command -v "$mpi_c")
+mpi_cxx=$(command -v "$mpi_cxx")
 
 cmake_options=(
   -DCMAKE_BUILD_TYPE=Release
@@ -15,6 +19,12 @@ cmake_options=(
   -DMPI_CXX_COMPILER="$mpi_cxx"
   -DLQCD_TEST_PYTHON="${LQCD_TEST_PYTHON:-}"
 )
+
+# A single scheduler replica may reserve many CPUs but advertise one MPI slot.
+# Preserve CMake's normal defaults unless the job explicitly supplies a launcher.
+if [[ -n ${LQCD_MPI_FLAGS:-} ]]; then
+  cmake_options+=("-DLQCD_MPI_FLAGS=$LQCD_MPI_FLAGS")
+fi
 
 if [[ ${LQCD_DD_REFERENCE:-OFF} == ON ]]; then
   reference_source=${DDALPHAAMG_SOURCE:-$project_dir/../.cache/cpu_libraries/DDalphaAMG}

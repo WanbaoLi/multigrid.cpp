@@ -34,7 +34,7 @@ export OMP_PROC_BIND=spread OMP_PLACES=cores
 # One Donau replica reserves this node's cores, while this single-host tool
 # launches its own NUMA ranks. Bypass Donau's one-slot MPI replica description.
 export OMPI_MCA_ras='^donau' OMPI_MCA_plm=isolated
-"$python_bin" "$HOME/.codex/skills/kunpeng-lingsheng-cpu/scripts/probe_cpu.py" > "$task_root/cpu-probe.json"
+"$python_bin" "$project_dir/tools/probe_host.py" > "$task_root/cpu-probe.json"
 "$python_bin" -c 'from mpi4py import MPI; print(MPI.Get_library_version())'
 cmake -S "$project_dir" -B "$task_root/build" \
     -DCMAKE_BUILD_TYPE=Release -DLQCD_BUILD_RUNTIME=ON -DMULTIGRID_NATIVE=ON \
