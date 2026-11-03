@@ -1,0 +1,20 @@
+{
+  "complete": true,
+  "scope": "Frozen source bytes and local infrastructure contracts only; no new numerical run",
+  "original_runtime_and_support_records_unchanged": 62,
+  "new_exact_copies": 58,
+  "total_source_metadata_records": 120,
+  "frozen_sources_before_after_sha256_all_match": true,
+  "linux_wsl_contracts": {
+    "run": 127,
+    "passed": 126,
+    "skipped": 1,
+    "reason": "Historical perf-flat input is supplied separately; no fabricated fixture"
+  },
+  "cold_x86_actual_scope": "Same-binary f94/c30 canonical field to fresh hierarchy first12; nonexclusive; not rawLIME or ARM",
+  "arm_source_owned_performance_measured": false,
+  "main_103_closed": true,
+  "original100_failed_retained": true,
+  "commit_created": false,
+  "validated_at_epoch": 1793749320.3377223
+}

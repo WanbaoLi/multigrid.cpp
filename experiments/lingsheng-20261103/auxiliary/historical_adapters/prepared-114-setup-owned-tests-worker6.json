@@ -1,0 +1,53 @@
+{
+  "complete": true,
+  "preparation_only": true,
+  "not_enqueued": true,
+  "proposed_queue_task": "114-setup-owned-tests-worker6",
+  "task": {
+    "argv": [
+      "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+      "-u",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-setup-owned-arm-v2/arm_setup_owned_qualify.py",
+      "--root",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103",
+      "--auxiliary",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-setup-owned-arm-v2",
+      "--prefix",
+      "114-setup-owned-worker6",
+      "--test-attempt",
+      "000-setup-owned-tests",
+      "--expected-host",
+      "cn19483",
+      "--expected-entry-sha",
+      "ce5647f8da18d9854a893b1b6595acb4f20fbd48c9940821be92975e8fb8c78a",
+      "--expected-helper-manifest-sha",
+      "8e0bfe9db88328ba9bdfbfdd2c7f381fa8087a5bac2876c50650287781d31a61",
+      "--tests-only",
+      "--execute"
+    ],
+    "cwd": "/home/share/nsls_lwb/.cache/mg-opt-20261103",
+    "environment": {
+      "LD_LIBRARY_PATH": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/neon:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/neon/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/neon/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+      "LIBRARY_PATH": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/neon:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/neon/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/neon/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/work_ssd/system/os_jasmine_v01/vroot/usr/lib64:/work_ssd/system/os_jasmine_v01/vroot/usr/lib",
+      "LQCD_EXPERIMENT_CXX_RUNTIME": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64",
+      "LQCD_EXPERIMENT_KUPL_ROOT": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release",
+      "CC": "/work_ssd/system/os_jasmine_v01/vroot/usr/bin/gcc",
+      "CXX": "/work_ssd/system/os_jasmine_v01/vroot/usr/bin/g++",
+      "LQCD_MPI_FLAGS": "--host;localhost:4;--map-by;ppr:1:numa:PE=2;--bind-to;core"
+    },
+    "timeout": 3300
+  },
+  "entry_sha256": "ce5647f8da18d9854a893b1b6595acb4f20fbd48c9940821be92975e8fb8c78a",
+  "helper_manifest_sha256": "8e0bfe9db88328ba9bdfbfdd2c7f381fa8087a5bac2876c50650287781d31a61",
+  "seed_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue6/103-halo-derived-recovery-worker6.running.json",
+  "seed_sha256": "7f30e79d0fef68f1d50650b9e27534176664e2bf59e379007f862d03c7368483",
+  "prepared_epoch": 1793747484.3953135,
+  "worker6_safe_deadline_epoch": 1793751756.0,
+  "remaining_seconds": 4271.605144262314,
+  "publication_requires": [
+    "103 complete/verified/cleanup and matching runtime ownership",
+    "root refreshes deadline and confirms full task timeout plus cleanup reserve",
+    "queue6 idle, exact new task identity, no active competing ARM solve"
+  ],
+  "expected_outcome": "Passed actual build/tests then pending full four-context qualification; no cold or warm adoption"
+}

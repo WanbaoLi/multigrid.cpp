@@ -1,0 +1,55 @@
+{
+  "complete": true,
+  "scope": "Downloaded existing immutable export only; no numerical rerun or re-export",
+  "archive": {
+    "archive": "/home/share/nsls_lwb/.cache/mg-opt-20261103/exports/phase6-20261104-0723.tar.gz",
+    "bytes": 67357863,
+    "sha256": "41d8de2a93e7e7f21a09403adb7c526acfe31cd4e0fa150f9f04d98c0e73290d",
+    "files": 3467,
+    "source_export": "/home/share/nsls_lwb/.cache/mg-opt-20261103/export-phase6-20261104-0723"
+  },
+  "archive_sha_verified": true,
+  "export_manifest_sha256": "8330e8fbb09997f457efad18566435a1b80b251ed292dae4ee2e871baf669d3b",
+  "included_entry_checks": 3811,
+  "distinct_export_paths_verified": 3465,
+  "actual_files": 3467,
+  "generated_unlisted_files": [
+    "README.md",
+    "export-manifest.json"
+  ],
+  "declared_included_files": 3811,
+  "included_bytes": 76563128,
+  "read_consistent": true,
+  "registered_review_complete": true,
+  "best_review_complete": true,
+  "ongoing": true,
+  "attempts": 43,
+  "counts": {
+    "attempts": 43,
+    "complete_review_material": 32,
+    "registered_full12_contracts": 32,
+    "running_checkpoints": 0,
+    "statuses": {
+      "best": 6,
+      "blocked": 4,
+      "failed": 1,
+      "inconclusive": 27,
+      "measured": 4,
+      "snapshotted": 1
+    }
+  },
+  "best": {
+    "against": "050-reduce-frozen-control",
+    "attempt": "052-reduce-on",
+    "gain": 0.035320184207437544,
+    "library_sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+    "median_seconds": 15.268187850997492,
+    "previous_best": "024-whole32",
+    "report_sha256": "254f36efaa6ef145a2af2542718fbd5da7ea94897fa964a2d51598a77d929651",
+    "source_manifest_sha256": "78b429dc13a8b113792aa45bd27fc93134a8c4b39359da9ade05558c93d590ae",
+    "time": "2026-11-03T18:24:44.313690+00:00"
+  },
+  "all_export_sha256_verified": true,
+  "excluded_arrays_rehashed": false,
+  "source_owned_independent_campaign_included": false
+}

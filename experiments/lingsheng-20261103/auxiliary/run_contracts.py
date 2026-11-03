@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Linux infrastructure contracts; no scheduler, SSH, solver or scientific job."""
 import os
+import importlib.util
 from pathlib import Path
 import sys
 import unittest
@@ -25,6 +26,16 @@ def main():
         return 2
     root=Path(__file__).resolve().parent;sys.path.insert(0,str(root))
     suite=unittest.defaultTestLoader.discover(str(root),pattern='test_*.py')
+    # Preserve the frozen worker test's real filename and bytes. Its name does
+    # not match discovery's test_*.py pattern, so load it explicitly.
+    worker_spec=importlib.util.spec_from_file_location('archived_worker7_contracts',root/'worker7_logic_tests.py')
+    worker_tests=importlib.util.module_from_spec(worker_spec)
+    worker_spec.loader.exec_module(worker_tests)
+    suite.addTests(unittest.defaultTestLoader.loadTestsFromModule(worker_tests))
+    publisher_spec=importlib.util.spec_from_file_location('archived_110_contracts',root/'historical_adapters/test_queue_phase5_shim110.py')
+    publisher_tests=importlib.util.module_from_spec(publisher_spec)
+    publisher_spec.loader.exec_module(publisher_tests)
+    suite.addTests(unittest.defaultTestLoader.loadTestsFromModule(publisher_tests))
     external=root.parent/'outputs/optimization-20261103/profile-hbw-evidence/rank00000.perf-flat.txt'
     result=unittest.TestSuite()
     for case in flatten(suite):

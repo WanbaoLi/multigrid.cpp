@@ -1,0 +1,17 @@
+{
+  "original_file": "profile_setup.py",
+  "original_sha256": "309cd4ea35bcd4ea0f6515afd2a98a737a7d9ae546f9f752bcfcb0d06c60c42b",
+  "derived_file": "profile_setup_flat.py",
+  "derived_sha256": "c68317283dd207ba019f595e645448ce738c7d5b2072eead343a8507418d73fa",
+  "change": "Only perf report argv adds --call-graph none; perf record/Solver/setup clocks/returns/numerical paths unchanged",
+  "retry_condition": "092 original DWARF report exceeded60s timeout; independent flat report with --call-graph none took about0.4s. Preserve092 failed; new diagnostic needs fresh output and full12 independent precision.",
+  "byte_replacement": {
+    "before": "'report','--stdio','--no-children','--sort','symbol'",
+    "after": "'report','--stdio','--no-children','--call-graph','none','--sort','symbol'",
+    "count": 1
+  },
+  "diff_file": "profile_setup_flat.diff",
+  "diff_sha256": "0a3d003c37e8dd4203e6b2883fd2e84cc258df17990b774d250286e803153392",
+  "status": "prepared_not_deployed_not_run",
+  "diagnostic_only": true
+}

@@ -1,0 +1,57 @@
+{
+  "prepared_only": true,
+  "deployed": false,
+  "hpc_executed": false,
+  "files": {
+    "phase7_cold.py": {
+      "bytes": 46419,
+      "sha256": "2ae0fa9d1c6846cd2ad646245c541863280091c4aa8942ff9f3f470cfb17ac36"
+    },
+    "phase7_publication.py": {
+      "bytes": 5489,
+      "sha256": "d66744c2ee7f65442ee76ee86ea1e933b15cdc6948469b2fa0812cdacc1b1406"
+    },
+    "phase7_cold_entry.py": {
+      "bytes": 5670,
+      "sha256": "8aa8c7f78eb5d26a54a8d84442fff30bec808dbf18951ad396a6d5d4fd25d504"
+    },
+    "test_phase7_cold.py": {
+      "bytes": 9704,
+      "sha256": "3f718c49e0818f6fdc09996e0296d1939ebe8d62db0a341a372126137ad24da5"
+    },
+    "test_phase7_publication.py": {
+      "bytes": 12141,
+      "sha256": "73d7b0f56afdf94c58f93d23485eb532b57349fef5ee55eaed963caaebbda585"
+    },
+    "phase7-cold.md": {
+      "bytes": 6774,
+      "sha256": "91ffd2014618798f93ba7f4163f1aa80c2a5db28d2b4a6b038e5720495b35f9a"
+    },
+    "phase7-publication.md": {
+      "bytes": 3015,
+      "sha256": "4508486091b93607454a83a311a6120733a89d367c030d4ffcf4b77e6cb5e612"
+    }
+  },
+  "tests": {
+    "wsl_linux": {
+      "passed": 21,
+      "skipped": 0
+    },
+    "windows": {
+      "passed": 18,
+      "skipped": 3
+    },
+    "python_compile": "passed"
+  },
+  "limitations": [
+    "No real phase7 numerical/source/runtime experiment executed",
+    "Actual matched runtime proof required before cold adoption; observer not integrated",
+    "Current numerical candidates must retain frozen bench/helper Python bytes",
+    "092 failed cold sample is never reused"
+  ],
+  "preparation_corrections": [
+    "Only known CTest build-library alias resolves inside canonical build; logical/resolved/SHA binding retained",
+    "Full-process observed group starting floor7150s; same-allocation passed-stage checkpoint only",
+    "Actual node5005 libc-2.28.so recognized as strict glibc filename family; real path/SHA/uniqueness checks unchanged"
+  ]
+}

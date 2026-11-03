@@ -1,0 +1,1135 @@
+{
+  "schema": 1,
+  "previous_manifest_sha256": "63695e40c1055dbd5a2fb54278821e7a00eb827672fe3cce4d0a679247be7dfa",
+  "previous_snapshot_git_commit": "1ac57bc",
+  "asof_epoch": 1793748256.898665,
+  "scope": "Exact frozen infrastructure extension; no source edit, numerical execution, remote task or skill mutation",
+  "files": [
+    {
+      "path": "phase7_cold.py",
+      "deployment_relative_path": "phase7_cold.py",
+      "group": "reusable_cold_protocol",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\x86\\setup-owned-cold\\evidence\\aux-phase7\\phase7_cold.py",
+      "source_remote_path": "/public2/home/lwb_720/.cache/mg-opt-setup-owned-20261104/aux-phase7/phase7_cold.py",
+      "sha256": "2ae0fa9d1c6846cd2ad646245c541863280091c4aa8942ff9f3f470cfb17ac36",
+      "bytes": 46419,
+      "local_sha256": "2ae0fa9d1c6846cd2ad646245c541863280091c4aa8942ff9f3f470cfb17ac36",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Actually completed x86 same-binary cold acceptance; ARM source-owned remains unmeasured",
+      "copy_validation": {
+        "source_sha256_before": "2ae0fa9d1c6846cd2ad646245c541863280091c4aa8942ff9f3f470cfb17ac36",
+        "source_sha256_after": "2ae0fa9d1c6846cd2ad646245c541863280091c4aa8942ff9f3f470cfb17ac36",
+        "archive_sha256": "2ae0fa9d1c6846cd2ad646245c541863280091c4aa8942ff9f3f470cfb17ac36",
+        "identical": true
+      },
+      "identity_evidence": {
+        "captured_runtime_archive_sha256": "a206640487b043d4f62e2d100b5b69f71b4b5a659ca99514d15b307a57f3b9f0",
+        "workstation_frozen_source": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\phase7_cold.py"
+      }
+    },
+    {
+      "path": "phase7_publication.py",
+      "deployment_relative_path": "phase7_publication.py",
+      "group": "reusable_cold_protocol",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\x86\\setup-owned-cold\\evidence\\aux-phase7\\phase7_publication.py",
+      "source_remote_path": "/public2/home/lwb_720/.cache/mg-opt-setup-owned-20261104/aux-phase7/phase7_publication.py",
+      "sha256": "d66744c2ee7f65442ee76ee86ea1e933b15cdc6948469b2fa0812cdacc1b1406",
+      "bytes": 5489,
+      "local_sha256": "d66744c2ee7f65442ee76ee86ea1e933b15cdc6948469b2fa0812cdacc1b1406",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Actually completed x86 same-binary cold acceptance; ARM source-owned remains unmeasured",
+      "copy_validation": {
+        "source_sha256_before": "d66744c2ee7f65442ee76ee86ea1e933b15cdc6948469b2fa0812cdacc1b1406",
+        "source_sha256_after": "d66744c2ee7f65442ee76ee86ea1e933b15cdc6948469b2fa0812cdacc1b1406",
+        "archive_sha256": "d66744c2ee7f65442ee76ee86ea1e933b15cdc6948469b2fa0812cdacc1b1406",
+        "identical": true
+      },
+      "identity_evidence": {
+        "captured_runtime_archive_sha256": "a206640487b043d4f62e2d100b5b69f71b4b5a659ca99514d15b307a57f3b9f0",
+        "workstation_frozen_source": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\phase7_publication.py"
+      }
+    },
+    {
+      "path": "phase7_cold_entry.py",
+      "deployment_relative_path": "phase7_cold_entry.py",
+      "group": "reusable_cold_protocol",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\x86\\setup-owned-cold\\evidence\\aux-phase7\\phase7_cold_entry.py",
+      "source_remote_path": "/public2/home/lwb_720/.cache/mg-opt-setup-owned-20261104/aux-phase7/phase7_cold_entry.py",
+      "sha256": "8aa8c7f78eb5d26a54a8d84442fff30bec808dbf18951ad396a6d5d4fd25d504",
+      "bytes": 5670,
+      "local_sha256": "8aa8c7f78eb5d26a54a8d84442fff30bec808dbf18951ad396a6d5d4fd25d504",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Actually completed x86 same-binary cold acceptance; ARM source-owned remains unmeasured",
+      "copy_validation": {
+        "source_sha256_before": "8aa8c7f78eb5d26a54a8d84442fff30bec808dbf18951ad396a6d5d4fd25d504",
+        "source_sha256_after": "8aa8c7f78eb5d26a54a8d84442fff30bec808dbf18951ad396a6d5d4fd25d504",
+        "archive_sha256": "8aa8c7f78eb5d26a54a8d84442fff30bec808dbf18951ad396a6d5d4fd25d504",
+        "identical": true
+      },
+      "identity_evidence": {
+        "captured_runtime_archive_sha256": "a206640487b043d4f62e2d100b5b69f71b4b5a659ca99514d15b307a57f3b9f0",
+        "workstation_frozen_source": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\phase7_cold_entry.py"
+      }
+    },
+    {
+      "path": "test_phase7_cold.py",
+      "deployment_relative_path": "test_phase7_cold.py",
+      "group": "cold_protocol_contract_or_document",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\test_phase7_cold.py",
+      "source_remote_path": null,
+      "sha256": "3f718c49e0818f6fdc09996e0296d1939ebe8d62db0a341a372126137ad24da5",
+      "bytes": 9704,
+      "local_sha256": "3f718c49e0818f6fdc09996e0296d1939ebe8d62db0a341a372126137ad24da5",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Frozen preparation/contracts; historical preparation status does not replace later actual x86 result",
+      "copy_validation": {
+        "source_sha256_before": "3f718c49e0818f6fdc09996e0296d1939ebe8d62db0a341a372126137ad24da5",
+        "source_sha256_after": "3f718c49e0818f6fdc09996e0296d1939ebe8d62db0a341a372126137ad24da5",
+        "archive_sha256": "3f718c49e0818f6fdc09996e0296d1939ebe8d62db0a341a372126137ad24da5",
+        "identical": true
+      }
+    },
+    {
+      "path": "test_phase7_publication.py",
+      "deployment_relative_path": "test_phase7_publication.py",
+      "group": "cold_protocol_contract_or_document",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\test_phase7_publication.py",
+      "source_remote_path": null,
+      "sha256": "73d7b0f56afdf94c58f93d23485eb532b57349fef5ee55eaed963caaebbda585",
+      "bytes": 12141,
+      "local_sha256": "73d7b0f56afdf94c58f93d23485eb532b57349fef5ee55eaed963caaebbda585",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Frozen preparation/contracts; historical preparation status does not replace later actual x86 result",
+      "copy_validation": {
+        "source_sha256_before": "73d7b0f56afdf94c58f93d23485eb532b57349fef5ee55eaed963caaebbda585",
+        "source_sha256_after": "73d7b0f56afdf94c58f93d23485eb532b57349fef5ee55eaed963caaebbda585",
+        "archive_sha256": "73d7b0f56afdf94c58f93d23485eb532b57349fef5ee55eaed963caaebbda585",
+        "identical": true
+      }
+    },
+    {
+      "path": "phase7-cold.md",
+      "deployment_relative_path": "phase7-cold.md",
+      "group": "cold_protocol_contract_or_document",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\phase7-cold.md",
+      "source_remote_path": null,
+      "sha256": "91ffd2014618798f93ba7f4163f1aa80c2a5db28d2b4a6b038e5720495b35f9a",
+      "bytes": 6774,
+      "local_sha256": "91ffd2014618798f93ba7f4163f1aa80c2a5db28d2b4a6b038e5720495b35f9a",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Frozen preparation/contracts; historical preparation status does not replace later actual x86 result",
+      "copy_validation": {
+        "source_sha256_before": "91ffd2014618798f93ba7f4163f1aa80c2a5db28d2b4a6b038e5720495b35f9a",
+        "source_sha256_after": "91ffd2014618798f93ba7f4163f1aa80c2a5db28d2b4a6b038e5720495b35f9a",
+        "archive_sha256": "91ffd2014618798f93ba7f4163f1aa80c2a5db28d2b4a6b038e5720495b35f9a",
+        "identical": true
+      }
+    },
+    {
+      "path": "phase7-publication.md",
+      "deployment_relative_path": "phase7-publication.md",
+      "group": "cold_protocol_contract_or_document",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\phase7-publication.md",
+      "source_remote_path": null,
+      "sha256": "4508486091b93607454a83a311a6120733a89d367c030d4ffcf4b77e6cb5e612",
+      "bytes": 3015,
+      "local_sha256": "4508486091b93607454a83a311a6120733a89d367c030d4ffcf4b77e6cb5e612",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Frozen preparation/contracts; historical preparation status does not replace later actual x86 result",
+      "copy_validation": {
+        "source_sha256_before": "4508486091b93607454a83a311a6120733a89d367c030d4ffcf4b77e6cb5e612",
+        "source_sha256_after": "4508486091b93607454a83a311a6120733a89d367c030d4ffcf4b77e6cb5e612",
+        "archive_sha256": "4508486091b93607454a83a311a6120733a89d367c030d4ffcf4b77e6cb5e612",
+        "identical": true
+      }
+    },
+    {
+      "path": "phase7-preparation-manifest.json",
+      "deployment_relative_path": "phase7-preparation-manifest.json",
+      "group": "preparation_identity_record",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\phase7-preparation-manifest.json",
+      "source_remote_path": null,
+      "sha256": "d53d1e8ec6da8319f3a5faaaee801f381c8e689e1a0c04a2f6f1fc1d1065fce9",
+      "bytes": 1990,
+      "local_sha256": "d53d1e8ec6da8319f3a5faaaee801f381c8e689e1a0c04a2f6f1fc1d1065fce9",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Historical preparation snapshot; x86 later passed, not an ARM result",
+      "copy_validation": {
+        "source_sha256_before": "d53d1e8ec6da8319f3a5faaaee801f381c8e689e1a0c04a2f6f1fc1d1065fce9",
+        "source_sha256_after": "d53d1e8ec6da8319f3a5faaaee801f381c8e689e1a0c04a2f6f1fc1d1065fce9",
+        "archive_sha256": "d53d1e8ec6da8319f3a5faaaee801f381c8e689e1a0c04a2f6f1fc1d1065fce9",
+        "identical": true
+      }
+    },
+    {
+      "path": "derived_publication.py",
+      "deployment_relative_path": "derived_publication.py",
+      "group": "fixed_expected_derived_gauge_protocol",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\derived_publication.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/derived_publication.py",
+      "sha256": "83b790954b64b0ae7ae8e71ed2978b752f30477bafd7fa48cdfd6ef548b683a6",
+      "bytes": 7860,
+      "local_sha256": "83b790954b64b0ae7ae8e71ed2978b752f30477bafd7fa48cdfd6ef548b683a6",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Used for103 independent precision;103 completed, original100 remains failed; no new ARM source-owned result",
+      "copy_validation": {
+        "source_sha256_before": "83b790954b64b0ae7ae8e71ed2978b752f30477bafd7fa48cdfd6ef548b683a6",
+        "source_sha256_after": "83b790954b64b0ae7ae8e71ed2978b752f30477bafd7fa48cdfd6ef548b683a6",
+        "archive_sha256": "83b790954b64b0ae7ae8e71ed2978b752f30477bafd7fa48cdfd6ef548b683a6",
+        "identical": true
+      }
+    },
+    {
+      "path": "raw_scalar_helper_derived.py",
+      "deployment_relative_path": "raw_scalar_helper_derived.py",
+      "group": "fixed_expected_derived_gauge_protocol",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\raw_scalar_helper_derived.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/raw_scalar_helper_derived.py",
+      "sha256": "25b6fb0d171efb12954edbd0941701ac38fdcb954cf1882de443b50e755659a2",
+      "bytes": 7000,
+      "local_sha256": "25b6fb0d171efb12954edbd0941701ac38fdcb954cf1882de443b50e755659a2",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Used for103 independent precision;103 completed, original100 remains failed; no new ARM source-owned result",
+      "copy_validation": {
+        "source_sha256_before": "25b6fb0d171efb12954edbd0941701ac38fdcb954cf1882de443b50e755659a2",
+        "source_sha256_after": "25b6fb0d171efb12954edbd0941701ac38fdcb954cf1882de443b50e755659a2",
+        "archive_sha256": "25b6fb0d171efb12954edbd0941701ac38fdcb954cf1882de443b50e755659a2",
+        "identical": true
+      }
+    },
+    {
+      "path": "raw_protocol_derived.py",
+      "deployment_relative_path": "raw_protocol_derived.py",
+      "group": "fixed_expected_derived_gauge_protocol",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\raw_protocol_derived.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/raw_protocol_derived.py",
+      "sha256": "a07ccf40e3808d8dd7c6480f1a8f511113d4b1d944e28f627fc5cca092a6fe27",
+      "bytes": 3101,
+      "local_sha256": "a07ccf40e3808d8dd7c6480f1a8f511113d4b1d944e28f627fc5cca092a6fe27",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Frozen reusable factory/contracts/docs; no automatic retry or numerical adoption",
+      "copy_validation": {
+        "source_sha256_before": "a07ccf40e3808d8dd7c6480f1a8f511113d4b1d944e28f627fc5cca092a6fe27",
+        "source_sha256_after": "a07ccf40e3808d8dd7c6480f1a8f511113d4b1d944e28f627fc5cca092a6fe27",
+        "archive_sha256": "a07ccf40e3808d8dd7c6480f1a8f511113d4b1d944e28f627fc5cca092a6fe27",
+        "identical": true
+      }
+    },
+    {
+      "path": "test_derived_publication.py",
+      "deployment_relative_path": "test_derived_publication.py",
+      "group": "fixed_expected_derived_gauge_protocol",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\test_derived_publication.py",
+      "source_remote_path": null,
+      "sha256": "7f66af72573edd793df686d19e19a1c924b1ce49678857ae7b651b6e3ef1e661",
+      "bytes": 8434,
+      "local_sha256": "7f66af72573edd793df686d19e19a1c924b1ce49678857ae7b651b6e3ef1e661",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Frozen reusable factory/contracts/docs; no automatic retry or numerical adoption",
+      "copy_validation": {
+        "source_sha256_before": "7f66af72573edd793df686d19e19a1c924b1ce49678857ae7b651b6e3ef1e661",
+        "source_sha256_after": "7f66af72573edd793df686d19e19a1c924b1ce49678857ae7b651b6e3ef1e661",
+        "archive_sha256": "7f66af72573edd793df686d19e19a1c924b1ce49678857ae7b651b6e3ef1e661",
+        "identical": true
+      }
+    },
+    {
+      "path": "test_raw_protocol_derived.py",
+      "deployment_relative_path": "test_raw_protocol_derived.py",
+      "group": "fixed_expected_derived_gauge_protocol",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\test_raw_protocol_derived.py",
+      "source_remote_path": null,
+      "sha256": "c3b004cc3aae76b4cc06995db03b117f734bf5cf439523a88877cb639530858b",
+      "bytes": 2037,
+      "local_sha256": "c3b004cc3aae76b4cc06995db03b117f734bf5cf439523a88877cb639530858b",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Frozen reusable factory/contracts/docs; no automatic retry or numerical adoption",
+      "copy_validation": {
+        "source_sha256_before": "c3b004cc3aae76b4cc06995db03b117f734bf5cf439523a88877cb639530858b",
+        "source_sha256_after": "c3b004cc3aae76b4cc06995db03b117f734bf5cf439523a88877cb639530858b",
+        "archive_sha256": "c3b004cc3aae76b4cc06995db03b117f734bf5cf439523a88877cb639530858b",
+        "identical": true
+      }
+    },
+    {
+      "path": "derived-publication.md",
+      "deployment_relative_path": "derived-publication.md",
+      "group": "fixed_expected_derived_gauge_protocol",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\derived-publication.md",
+      "source_remote_path": null,
+      "sha256": "22526d988490d488e1dc8cc3dd0655553e35431987e2871b22c8515b0526218b",
+      "bytes": 5699,
+      "local_sha256": "22526d988490d488e1dc8cc3dd0655553e35431987e2871b22c8515b0526218b",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Frozen reusable factory/contracts/docs; no automatic retry or numerical adoption",
+      "copy_validation": {
+        "source_sha256_before": "22526d988490d488e1dc8cc3dd0655553e35431987e2871b22c8515b0526218b",
+        "source_sha256_after": "22526d988490d488e1dc8cc3dd0655553e35431987e2871b22c8515b0526218b",
+        "archive_sha256": "22526d988490d488e1dc8cc3dd0655553e35431987e2871b22c8515b0526218b",
+        "identical": true
+      }
+    },
+    {
+      "path": "worker7.sh",
+      "deployment_relative_path": "worker7.sh",
+      "group": "worker7_infrastructure",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\worker7.sh",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker7.sh",
+      "sha256": "b4ecc52952e8d0b5342e2bda9e53d19a4a575b6897a94f03c788ac057e51b070",
+      "bytes": 2333,
+      "local_sha256": "b4ecc52952e8d0b5342e2bda9e53d19a4a575b6897a94f03c788ac057e51b070",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployment verified; not submitted or run; explicit source/head required;25 local contracts passed",
+      "copy_validation": {
+        "source_sha256_before": "b4ecc52952e8d0b5342e2bda9e53d19a4a575b6897a94f03c788ac057e51b070",
+        "source_sha256_after": "b4ecc52952e8d0b5342e2bda9e53d19a4a575b6897a94f03c788ac057e51b070",
+        "archive_sha256": "b4ecc52952e8d0b5342e2bda9e53d19a4a575b6897a94f03c788ac057e51b070",
+        "identical": true
+      }
+    },
+    {
+      "path": "worker7_entry.py",
+      "deployment_relative_path": "worker7_entry.py",
+      "group": "worker7_infrastructure",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\worker7_entry.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker7_entry.py",
+      "sha256": "5717a047b1d58ff6ae17c3c0c89e04f63d55efcf4472d2fe313aa76b5d5c59f7",
+      "bytes": 12283,
+      "local_sha256": "5717a047b1d58ff6ae17c3c0c89e04f63d55efcf4472d2fe313aa76b5d5c59f7",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployment verified; not submitted or run; explicit source/head required;25 local contracts passed",
+      "copy_validation": {
+        "source_sha256_before": "5717a047b1d58ff6ae17c3c0c89e04f63d55efcf4472d2fe313aa76b5d5c59f7",
+        "source_sha256_after": "5717a047b1d58ff6ae17c3c0c89e04f63d55efcf4472d2fe313aa76b5d5c59f7",
+        "archive_sha256": "5717a047b1d58ff6ae17c3c0c89e04f63d55efcf4472d2fe313aa76b5d5c59f7",
+        "identical": true
+      }
+    },
+    {
+      "path": "worker7_preflight.py",
+      "deployment_relative_path": "worker7_preflight.py",
+      "group": "worker7_infrastructure",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\worker7_preflight.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker7_preflight.py",
+      "sha256": "515132f05f6d332572a67c6566963296145a4ae93a1e8468d5f8aa398cdc06d9",
+      "bytes": 6318,
+      "local_sha256": "515132f05f6d332572a67c6566963296145a4ae93a1e8468d5f8aa398cdc06d9",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployment verified; not submitted or run; explicit source/head required;25 local contracts passed",
+      "copy_validation": {
+        "source_sha256_before": "515132f05f6d332572a67c6566963296145a4ae93a1e8468d5f8aa398cdc06d9",
+        "source_sha256_after": "515132f05f6d332572a67c6566963296145a4ae93a1e8468d5f8aa398cdc06d9",
+        "archive_sha256": "515132f05f6d332572a67c6566963296145a4ae93a1e8468d5f8aa398cdc06d9",
+        "identical": true
+      }
+    },
+    {
+      "path": "worker7_login_record.py",
+      "deployment_relative_path": "worker7_login_record.py",
+      "group": "worker7_infrastructure",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\worker7_login_record.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker7_login_record.py",
+      "sha256": "eb28cc6ca07a3df3178bb68c659a6b559026186994769dbd8692169daaa5a164",
+      "bytes": 5724,
+      "local_sha256": "eb28cc6ca07a3df3178bb68c659a6b559026186994769dbd8692169daaa5a164",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployment verified; not submitted or run; explicit source/head required;25 local contracts passed",
+      "copy_validation": {
+        "source_sha256_before": "eb28cc6ca07a3df3178bb68c659a6b559026186994769dbd8692169daaa5a164",
+        "source_sha256_after": "eb28cc6ca07a3df3178bb68c659a6b559026186994769dbd8692169daaa5a164",
+        "archive_sha256": "eb28cc6ca07a3df3178bb68c659a6b559026186994769dbd8692169daaa5a164",
+        "identical": true
+      }
+    },
+    {
+      "path": "worker7_runtime_probe.py",
+      "deployment_relative_path": "worker7_runtime_probe.py",
+      "group": "worker7_infrastructure",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\worker7_runtime_probe.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker7_runtime_probe.py",
+      "sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "bytes": 2363,
+      "local_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployment verified; not submitted or run; explicit source/head required;25 local contracts passed",
+      "copy_validation": {
+        "source_sha256_before": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+        "source_sha256_after": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+        "archive_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+        "identical": true
+      }
+    },
+    {
+      "path": "worker7_logic_tests.py",
+      "deployment_relative_path": "worker7_logic_tests.py",
+      "group": "worker7_infrastructure",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\worker7_logic_tests.py",
+      "source_remote_path": null,
+      "sha256": "1d828024a14833280cd842f799a50ffc6d80d43e18439ce64b1a51888168b37a",
+      "bytes": 15525,
+      "local_sha256": "1d828024a14833280cd842f799a50ffc6d80d43e18439ce64b1a51888168b37a",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployment verified; not submitted or run; explicit source/head required;25 local contracts passed",
+      "copy_validation": {
+        "source_sha256_before": "1d828024a14833280cd842f799a50ffc6d80d43e18439ce64b1a51888168b37a",
+        "source_sha256_after": "1d828024a14833280cd842f799a50ffc6d80d43e18439ce64b1a51888168b37a",
+        "archive_sha256": "1d828024a14833280cd842f799a50ffc6d80d43e18439ce64b1a51888168b37a",
+        "identical": true
+      }
+    },
+    {
+      "path": "prepare_worker7.py",
+      "deployment_relative_path": "prepare_worker7.py",
+      "group": "worker7_infrastructure",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\prepare_worker7.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepare_worker7.py",
+      "sha256": "1a22fe4cccf93532f972dbaf11b0aabf3e381a875d1ff0706f0b6916866e2f24",
+      "bytes": 2522,
+      "local_sha256": "1a22fe4cccf93532f972dbaf11b0aabf3e381a875d1ff0706f0b6916866e2f24",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployment verified; not submitted or run; explicit source/head required;25 local contracts passed",
+      "copy_validation": {
+        "source_sha256_before": "1a22fe4cccf93532f972dbaf11b0aabf3e381a875d1ff0706f0b6916866e2f24",
+        "source_sha256_after": "1a22fe4cccf93532f972dbaf11b0aabf3e381a875d1ff0706f0b6916866e2f24",
+        "archive_sha256": "1a22fe4cccf93532f972dbaf11b0aabf3e381a875d1ff0706f0b6916866e2f24",
+        "identical": true
+      }
+    },
+    {
+      "path": "test_prepare_worker7.py",
+      "deployment_relative_path": "test_prepare_worker7.py",
+      "group": "worker7_infrastructure",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\test_prepare_worker7.py",
+      "source_remote_path": null,
+      "sha256": "2d41030d60c9af6ac740355351bff117ce9d5957c252f350665c63b542619ba4",
+      "bytes": 1012,
+      "local_sha256": "2d41030d60c9af6ac740355351bff117ce9d5957c252f350665c63b542619ba4",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployment verified; not submitted or run; explicit source/head required;25 local contracts passed",
+      "copy_validation": {
+        "source_sha256_before": "2d41030d60c9af6ac740355351bff117ce9d5957c252f350665c63b542619ba4",
+        "source_sha256_after": "2d41030d60c9af6ac740355351bff117ce9d5957c252f350665c63b542619ba4",
+        "archive_sha256": "2d41030d60c9af6ac740355351bff117ce9d5957c252f350665c63b542619ba4",
+        "identical": true
+      }
+    },
+    {
+      "path": "worker7-preparation.md",
+      "deployment_relative_path": "worker7-preparation.md",
+      "group": "worker7_infrastructure",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\worker7-preparation.md",
+      "source_remote_path": null,
+      "sha256": "54c0f2f770db145ffcf84b8b8186bb68704c9dacf027a4b10f1173054ba6e442",
+      "bytes": 3358,
+      "local_sha256": "54c0f2f770db145ffcf84b8b8186bb68704c9dacf027a4b10f1173054ba6e442",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployment verified; not submitted or run; explicit source/head required;25 local contracts passed",
+      "copy_validation": {
+        "source_sha256_before": "54c0f2f770db145ffcf84b8b8186bb68704c9dacf027a4b10f1173054ba6e442",
+        "source_sha256_after": "54c0f2f770db145ffcf84b8b8186bb68704c9dacf027a4b10f1173054ba6e442",
+        "archive_sha256": "54c0f2f770db145ffcf84b8b8186bb68704c9dacf027a4b10f1173054ba6e442",
+        "identical": true
+      }
+    },
+    {
+      "path": "worker7-launch-manifest.json",
+      "deployment_relative_path": "worker7-launch-manifest.json",
+      "group": "preparation_identity_record",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\worker7-launch-manifest.json",
+      "source_remote_path": null,
+      "sha256": "0516785df854aefba05a39b62dcd0b3f19cbecb61b0ece0eea3dcd0378598e50",
+      "bytes": 1914,
+      "local_sha256": "0516785df854aefba05a39b62dcd0b3f19cbecb61b0ece0eea3dcd0378598e50",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Historical preparation manifest; corrected entry5717 deployed, no allocation submission",
+      "copy_validation": {
+        "source_sha256_before": "0516785df854aefba05a39b62dcd0b3f19cbecb61b0ece0eea3dcd0378598e50",
+        "source_sha256_after": "0516785df854aefba05a39b62dcd0b3f19cbecb61b0ece0eea3dcd0378598e50",
+        "archive_sha256": "0516785df854aefba05a39b62dcd0b3f19cbecb61b0ece0eea3dcd0378598e50",
+        "identical": true
+      }
+    },
+    {
+      "path": "profile_setup_flat.py",
+      "deployment_relative_path": "profile_setup_flat.py",
+      "group": "flat_setup_diagnostic_preparation",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\profile_setup_flat.py",
+      "source_remote_path": null,
+      "sha256": "c68317283dd207ba019f595e645448ce738c7d5b2072eead343a8507418d73fa",
+      "bytes": 9134,
+      "local_sha256": "c68317283dd207ba019f595e645448ce738c7d5b2072eead343a8507418d73fa",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Prepared only;5 local contracts and script-generation smoke passed; no f94 setup profile executed",
+      "copy_validation": {
+        "source_sha256_before": "c68317283dd207ba019f595e645448ce738c7d5b2072eead343a8507418d73fa",
+        "source_sha256_after": "c68317283dd207ba019f595e645448ce738c7d5b2072eead343a8507418d73fa",
+        "archive_sha256": "c68317283dd207ba019f595e645448ce738c7d5b2072eead343a8507418d73fa",
+        "identical": true
+      }
+    },
+    {
+      "path": "profile_setup_flat.diff",
+      "deployment_relative_path": "profile_setup_flat.diff",
+      "group": "flat_setup_diagnostic_preparation",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\profile_setup_flat.diff",
+      "source_remote_path": null,
+      "sha256": "0a3d003c37e8dd4203e6b2883fd2e84cc258df17990b774d250286e803153392",
+      "bytes": 919,
+      "local_sha256": "0a3d003c37e8dd4203e6b2883fd2e84cc258df17990b774d250286e803153392",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Prepared only;5 local contracts and script-generation smoke passed; no f94 setup profile executed",
+      "copy_validation": {
+        "source_sha256_before": "0a3d003c37e8dd4203e6b2883fd2e84cc258df17990b774d250286e803153392",
+        "source_sha256_after": "0a3d003c37e8dd4203e6b2883fd2e84cc258df17990b774d250286e803153392",
+        "archive_sha256": "0a3d003c37e8dd4203e6b2883fd2e84cc258df17990b774d250286e803153392",
+        "identical": true
+      }
+    },
+    {
+      "path": "profile_setup_flat.provenance.json",
+      "deployment_relative_path": "profile_setup_flat.provenance.json",
+      "group": "flat_setup_diagnostic_preparation",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\profile_setup_flat.provenance.json",
+      "source_remote_path": null,
+      "sha256": "fa1ca00784dde49e83221272cb65554fbc392e8f1dccae67141c79618efd2486",
+      "bytes": 1032,
+      "local_sha256": "fa1ca00784dde49e83221272cb65554fbc392e8f1dccae67141c79618efd2486",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Prepared only;5 local contracts and script-generation smoke passed; no f94 setup profile executed",
+      "copy_validation": {
+        "source_sha256_before": "fa1ca00784dde49e83221272cb65554fbc392e8f1dccae67141c79618efd2486",
+        "source_sha256_after": "fa1ca00784dde49e83221272cb65554fbc392e8f1dccae67141c79618efd2486",
+        "archive_sha256": "fa1ca00784dde49e83221272cb65554fbc392e8f1dccae67141c79618efd2486",
+        "identical": true
+      }
+    },
+    {
+      "path": "prepare_setup_profile_flat.py",
+      "deployment_relative_path": "prepare_setup_profile_flat.py",
+      "group": "flat_setup_diagnostic_preparation",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\prepare_setup_profile_flat.py",
+      "source_remote_path": null,
+      "sha256": "174b53945cd050914be87c3478ea79fd0834cb8ce1ab6f7a5846168e5198e0da",
+      "bytes": 9174,
+      "local_sha256": "174b53945cd050914be87c3478ea79fd0834cb8ce1ab6f7a5846168e5198e0da",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Prepared only;5 local contracts and script-generation smoke passed; no f94 setup profile executed",
+      "copy_validation": {
+        "source_sha256_before": "174b53945cd050914be87c3478ea79fd0834cb8ce1ab6f7a5846168e5198e0da",
+        "source_sha256_after": "174b53945cd050914be87c3478ea79fd0834cb8ce1ab6f7a5846168e5198e0da",
+        "archive_sha256": "174b53945cd050914be87c3478ea79fd0834cb8ce1ab6f7a5846168e5198e0da",
+        "identical": true
+      }
+    },
+    {
+      "path": "test_setup_profile_flat.py",
+      "deployment_relative_path": "test_setup_profile_flat.py",
+      "group": "flat_setup_diagnostic_preparation",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\test_setup_profile_flat.py",
+      "source_remote_path": null,
+      "sha256": "d5b64754c9206de6d510f7f707d7be4e1dba2cbcea2da70258026f6879cb77f3",
+      "bytes": 6910,
+      "local_sha256": "d5b64754c9206de6d510f7f707d7be4e1dba2cbcea2da70258026f6879cb77f3",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Prepared only;5 local contracts and script-generation smoke passed; no f94 setup profile executed",
+      "copy_validation": {
+        "source_sha256_before": "d5b64754c9206de6d510f7f707d7be4e1dba2cbcea2da70258026f6879cb77f3",
+        "source_sha256_after": "d5b64754c9206de6d510f7f707d7be4e1dba2cbcea2da70258026f6879cb77f3",
+        "archive_sha256": "d5b64754c9206de6d510f7f707d7be4e1dba2cbcea2da70258026f6879cb77f3",
+        "identical": true
+      }
+    },
+    {
+      "path": "setup-profile-flat.md",
+      "deployment_relative_path": "setup-profile-flat.md",
+      "group": "flat_setup_diagnostic_preparation",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\setup-profile-flat.md",
+      "source_remote_path": null,
+      "sha256": "104b2e414c820f773766d3dca3f88d02fbc9a74166f54ca0dca18ed98345408c",
+      "bytes": 4205,
+      "local_sha256": "104b2e414c820f773766d3dca3f88d02fbc9a74166f54ca0dca18ed98345408c",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Prepared only;5 local contracts and script-generation smoke passed; no f94 setup profile executed",
+      "copy_validation": {
+        "source_sha256_before": "104b2e414c820f773766d3dca3f88d02fbc9a74166f54ca0dca18ed98345408c",
+        "source_sha256_after": "104b2e414c820f773766d3dca3f88d02fbc9a74166f54ca0dca18ed98345408c",
+        "archive_sha256": "104b2e414c820f773766d3dca3f88d02fbc9a74166f54ca0dca18ed98345408c",
+        "identical": true
+      }
+    },
+    {
+      "path": "historical_adapters/resume_phase6_derived103.py",
+      "deployment_relative_path": "resume_phase6_derived103.py",
+      "group": "historical_site_adapter",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\resume_phase6_derived103.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/resume_phase6_derived103.py",
+      "sha256": "e70fb51ccbbb4cfe7db0171a20433c431914cf19a81d576c88c17296c0696233",
+      "bytes": 11076,
+      "local_sha256": "e70fb51ccbbb4cfe7db0171a20433c431914cf19a81d576c88c17296c0696233",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "103 completed rc0/cleanup; best052 retained, no candidate adoption; original100 failed unchanged",
+      "copy_validation": {
+        "source_sha256_before": "e70fb51ccbbb4cfe7db0171a20433c431914cf19a81d576c88c17296c0696233",
+        "source_sha256_after": "e70fb51ccbbb4cfe7db0171a20433c431914cf19a81d576c88c17296c0696233",
+        "archive_sha256": "e70fb51ccbbb4cfe7db0171a20433c431914cf19a81d576c88c17296c0696233",
+        "identical": true
+      }
+    },
+    {
+      "path": "historical_adapters/queue_derived103.py",
+      "deployment_relative_path": "queue_derived103.py",
+      "group": "historical_site_adapter",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\queue_derived103.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue_derived103.py",
+      "sha256": "36baacfbeba99a031771e6efef695e2a85de3dd20cb9630ad750f05b85b3d0a3",
+      "bytes": 3640,
+      "local_sha256": "36baacfbeba99a031771e6efef695e2a85de3dd20cb9630ad750f05b85b3d0a3",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Published completed103; historical adapter, never replay old job IDs",
+      "copy_validation": {
+        "source_sha256_before": "36baacfbeba99a031771e6efef695e2a85de3dd20cb9630ad750f05b85b3d0a3",
+        "source_sha256_after": "36baacfbeba99a031771e6efef695e2a85de3dd20cb9630ad750f05b85b3d0a3",
+        "archive_sha256": "36baacfbeba99a031771e6efef695e2a85de3dd20cb9630ad750f05b85b3d0a3",
+        "identical": true
+      }
+    },
+    {
+      "path": "historical_adapters/queue_setup_tests114.py",
+      "deployment_relative_path": "queue_setup_tests114.py",
+      "group": "historical_site_adapter",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\queue_setup_tests114.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue_setup_tests114.py",
+      "sha256": "4c37d6b8a8a0487ef433e76ecc87d91251e0b28089d2df700d60de0aaa6fc423",
+      "bytes": 4993,
+      "local_sha256": "4c37d6b8a8a0487ef433e76ecc87d91251e0b28089d2df700d60de0aaa6fc423",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "114 published, ARM source-owned build/tests running; no ARM performance result",
+      "copy_validation": {
+        "source_sha256_before": "4c37d6b8a8a0487ef433e76ecc87d91251e0b28089d2df700d60de0aaa6fc423",
+        "source_sha256_after": "4c37d6b8a8a0487ef433e76ecc87d91251e0b28089d2df700d60de0aaa6fc423",
+        "archive_sha256": "4c37d6b8a8a0487ef433e76ecc87d91251e0b28089d2df700d60de0aaa6fc423",
+        "identical": true
+      }
+    },
+    {
+      "path": "historical_adapters/prepared-114-setup-owned-tests-worker6.json",
+      "deployment_relative_path": "prepared-114-setup-owned-tests-worker6.json",
+      "group": "historical_site_adapter",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\prepared-114-setup-owned-tests-worker6.json",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-114-setup-owned-tests-worker6.json",
+      "sha256": "6b0566809144b1c971a81989522eba898d585cfebe06d625f020111ab9cefe9e",
+      "bytes": 4518,
+      "local_sha256": "6b0566809144b1c971a81989522eba898d585cfebe06d625f020111ab9cefe9e",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Exact published tests-only task preparation; no numerical/performance completion claimed",
+      "copy_validation": {
+        "source_sha256_before": "6b0566809144b1c971a81989522eba898d585cfebe06d625f020111ab9cefe9e",
+        "source_sha256_after": "6b0566809144b1c971a81989522eba898d585cfebe06d625f020111ab9cefe9e",
+        "archive_sha256": "6b0566809144b1c971a81989522eba898d585cfebe06d625f020111ab9cefe9e",
+        "identical": true
+      }
+    },
+    {
+      "path": "multigrid.cpp/tools/optimization/campaign.py",
+      "deployment_relative_path": null,
+      "group": "frozen711_contract_fixture",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\multigrid.cpp\\experiments\\lingsheng-20261103\\auxiliary\\multigrid.cpp\\tools\\optimization\\campaign.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/optimization/campaign.py",
+      "sha256": "0ce3034d9d66e08a155a303711b4f3280f18b924dab3e202ffa7439ffc18aef2",
+      "bytes": 38920,
+      "local_sha256": "0ce3034d9d66e08a155a303711b4f3280f18b924dab3e202ffa7439ffc18aef2",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Actual711 core-tool bytes only for unchanged contracts; not candidate numerical source",
+      "copy_validation": {
+        "source_sha256_before": "0ce3034d9d66e08a155a303711b4f3280f18b924dab3e202ffa7439ffc18aef2",
+        "source_sha256_after": "0ce3034d9d66e08a155a303711b4f3280f18b924dab3e202ffa7439ffc18aef2",
+        "archive_sha256": "0ce3034d9d66e08a155a303711b4f3280f18b924dab3e202ffa7439ffc18aef2",
+        "identical": true
+      },
+      "identity_evidence": {
+        "recorded_in": "frozen-framework.json",
+        "git_head": "71160fac57d577d27423527e6b577c0593940d35"
+      }
+    },
+    {
+      "path": "multigrid.cpp/tools/optimization/worker.py",
+      "deployment_relative_path": null,
+      "group": "frozen711_contract_fixture",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\multigrid.cpp\\experiments\\lingsheng-20261103\\auxiliary\\multigrid.cpp\\tools\\optimization\\worker.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/optimization/worker.py",
+      "sha256": "bc7edf47cc464a670ce0e48158e1d95231eba649c233774fcbc003e0350334bb",
+      "bytes": 7225,
+      "local_sha256": "bc7edf47cc464a670ce0e48158e1d95231eba649c233774fcbc003e0350334bb",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Actual711 core-tool bytes only for unchanged contracts; not candidate numerical source",
+      "copy_validation": {
+        "source_sha256_before": "bc7edf47cc464a670ce0e48158e1d95231eba649c233774fcbc003e0350334bb",
+        "source_sha256_after": "bc7edf47cc464a670ce0e48158e1d95231eba649c233774fcbc003e0350334bb",
+        "archive_sha256": "bc7edf47cc464a670ce0e48158e1d95231eba649c233774fcbc003e0350334bb",
+        "identical": true
+      },
+      "identity_evidence": {
+        "recorded_in": "frozen-framework.json",
+        "git_head": "71160fac57d577d27423527e6b577c0593940d35"
+      }
+    },
+    {
+      "path": "multigrid.cpp/tools/optimization/process_tree.py",
+      "deployment_relative_path": null,
+      "group": "frozen711_contract_fixture",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\multigrid.cpp\\experiments\\lingsheng-20261103\\auxiliary\\multigrid.cpp\\tools\\optimization\\process_tree.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/optimization/process_tree.py",
+      "sha256": "45238789c0919be0ad9b836372f99779e5c39e5defa9fd9bcc8c74f40f1c0864",
+      "bytes": 7101,
+      "local_sha256": "45238789c0919be0ad9b836372f99779e5c39e5defa9fd9bcc8c74f40f1c0864",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Actual711 core-tool bytes only for unchanged contracts; not candidate numerical source",
+      "copy_validation": {
+        "source_sha256_before": "45238789c0919be0ad9b836372f99779e5c39e5defa9fd9bcc8c74f40f1c0864",
+        "source_sha256_after": "45238789c0919be0ad9b836372f99779e5c39e5defa9fd9bcc8c74f40f1c0864",
+        "archive_sha256": "45238789c0919be0ad9b836372f99779e5c39e5defa9fd9bcc8c74f40f1c0864",
+        "identical": true
+      },
+      "identity_evidence": {
+        "recorded_in": "frozen-framework.json",
+        "git_head": "71160fac57d577d27423527e6b577c0593940d35"
+      }
+    },
+    {
+      "path": "multigrid.cpp/tools/run_numa.py",
+      "deployment_relative_path": null,
+      "group": "frozen711_contract_fixture",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\multigrid.cpp\\experiments\\lingsheng-20261103\\auxiliary\\multigrid.cpp\\tools\\run_numa.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/run_numa.py",
+      "sha256": "4babd5c47a69431e63d98d2e7268184f9d70292a219bb9da2eae9fd7ae151b64",
+      "bytes": 12361,
+      "local_sha256": "4babd5c47a69431e63d98d2e7268184f9d70292a219bb9da2eae9fd7ae151b64",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Actual711 core-tool bytes only for unchanged contracts; not candidate numerical source",
+      "copy_validation": {
+        "source_sha256_before": "4babd5c47a69431e63d98d2e7268184f9d70292a219bb9da2eae9fd7ae151b64",
+        "source_sha256_after": "4babd5c47a69431e63d98d2e7268184f9d70292a219bb9da2eae9fd7ae151b64",
+        "archive_sha256": "4babd5c47a69431e63d98d2e7268184f9d70292a219bb9da2eae9fd7ae151b64",
+        "identical": true
+      },
+      "identity_evidence": {
+        "recorded_in": "frozen-framework.json",
+        "git_head": "71160fac57d577d27423527e6b577c0593940d35"
+      }
+    },
+    {
+      "path": "multigrid.cpp/tools/probe_host.py",
+      "deployment_relative_path": null,
+      "group": "frozen711_contract_fixture",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\multigrid.cpp\\experiments\\lingsheng-20261103\\auxiliary\\multigrid.cpp\\tools\\probe_host.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/probe_host.py",
+      "sha256": "cc4ab89bc87ccdc6d9b1faf524f1d52d6e19f4b9c481774b74b032d309d288a9",
+      "bytes": 1707,
+      "local_sha256": "cc4ab89bc87ccdc6d9b1faf524f1d52d6e19f4b9c481774b74b032d309d288a9",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Actual711 core-tool bytes only for unchanged contracts; not candidate numerical source",
+      "copy_validation": {
+        "source_sha256_before": "cc4ab89bc87ccdc6d9b1faf524f1d52d6e19f4b9c481774b74b032d309d288a9",
+        "source_sha256_after": "cc4ab89bc87ccdc6d9b1faf524f1d52d6e19f4b9c481774b74b032d309d288a9",
+        "archive_sha256": "cc4ab89bc87ccdc6d9b1faf524f1d52d6e19f4b9c481774b74b032d309d288a9",
+        "identical": true
+      },
+      "identity_evidence": {
+        "recorded_in": "frozen-framework.json",
+        "git_head": "71160fac57d577d27423527e6b577c0593940d35"
+      }
+    },
+    {
+      "path": "multigrid.cpp/tools/pin_build.py",
+      "deployment_relative_path": null,
+      "group": "frozen711_contract_fixture",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\multigrid.cpp\\experiments\\lingsheng-20261103\\auxiliary\\multigrid.cpp\\tools\\pin_build.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/pin_build.py",
+      "sha256": "bc3c377fbcc95fdc4aa5a18613aa53ddc8a4ff77492e92ec47e608e2d64a710a",
+      "bytes": 530,
+      "local_sha256": "bc3c377fbcc95fdc4aa5a18613aa53ddc8a4ff77492e92ec47e608e2d64a710a",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Actual711 core-tool bytes only for unchanged contracts; not candidate numerical source",
+      "copy_validation": {
+        "source_sha256_before": "bc3c377fbcc95fdc4aa5a18613aa53ddc8a4ff77492e92ec47e608e2d64a710a",
+        "source_sha256_after": "bc3c377fbcc95fdc4aa5a18613aa53ddc8a4ff77492e92ec47e608e2d64a710a",
+        "archive_sha256": "bc3c377fbcc95fdc4aa5a18613aa53ddc8a4ff77492e92ec47e608e2d64a710a",
+        "identical": true
+      },
+      "identity_evidence": {
+        "recorded_in": "frozen-framework.json",
+        "git_head": "71160fac57d577d27423527e6b577c0593940d35"
+      }
+    },
+    {
+      "path": "results/x86-source-owned-cold/summary.json",
+      "deployment_relative_path": "results/x86-source-owned-cold/summary.json",
+      "group": "recorded_result_summary",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\x86\\setup-owned-cold\\summary.json",
+      "source_remote_path": null,
+      "sha256": "b48755bb702a6c7c82846ff4f8609dc3c5a78ca9bbb8a2995ac343d32ca349ca",
+      "bytes": 22073,
+      "local_sha256": "b48755bb702a6c7c82846ff4f8609dc3c5a78ca9bbb8a2995ac343d32ca349ca",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Actual node5005 f94/c30 same-binary cold acceptance; nonexclusive; canonical fixture first12 scope only",
+      "copy_validation": {
+        "source_sha256_before": "b48755bb702a6c7c82846ff4f8609dc3c5a78ca9bbb8a2995ac343d32ca349ca",
+        "source_sha256_after": "b48755bb702a6c7c82846ff4f8609dc3c5a78ca9bbb8a2995ac343d32ca349ca",
+        "archive_sha256": "b48755bb702a6c7c82846ff4f8609dc3c5a78ca9bbb8a2995ac343d32ca349ca",
+        "identical": true
+      },
+      "identity_evidence": {
+        "actual_archive_sha256": "a206640487b043d4f62e2d100b5b69f71b4b5a659ca99514d15b307a57f3b9f0",
+        "files_verified": 27970
+      }
+    },
+    {
+      "path": "results/x86-source-owned-cold/report.md",
+      "deployment_relative_path": "results/x86-source-owned-cold/report.md",
+      "group": "recorded_result_summary",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\x86\\setup-owned-cold\\report.md",
+      "source_remote_path": null,
+      "sha256": "79af429bc75df0322ec96319c986925c616b004458d0e9192401314d10b6ee02",
+      "bytes": 4400,
+      "local_sha256": "79af429bc75df0322ec96319c986925c616b004458d0e9192401314d10b6ee02",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Actual node5005 f94/c30 same-binary cold acceptance; nonexclusive; canonical fixture first12 scope only",
+      "copy_validation": {
+        "source_sha256_before": "79af429bc75df0322ec96319c986925c616b004458d0e9192401314d10b6ee02",
+        "source_sha256_after": "79af429bc75df0322ec96319c986925c616b004458d0e9192401314d10b6ee02",
+        "archive_sha256": "79af429bc75df0322ec96319c986925c616b004458d0e9192401314d10b6ee02",
+        "identical": true
+      },
+      "identity_evidence": {
+        "actual_archive_sha256": "a206640487b043d4f62e2d100b5b69f71b4b5a659ca99514d15b307a57f3b9f0",
+        "files_verified": 27970
+      }
+    },
+    {
+      "path": "results/x86-source-owned-cold/samples.csv",
+      "deployment_relative_path": "results/x86-source-owned-cold/samples.csv",
+      "group": "recorded_result_summary",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\x86\\setup-owned-cold\\samples.csv",
+      "source_remote_path": null,
+      "sha256": "75a80b55cca67fcb1318d4d80135621d9cc8ca0bdd3bafc6041150790ebb56b1",
+      "bytes": 1403,
+      "local_sha256": "75a80b55cca67fcb1318d4d80135621d9cc8ca0bdd3bafc6041150790ebb56b1",
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Actual node5005 f94/c30 same-binary cold acceptance; nonexclusive; canonical fixture first12 scope only",
+      "copy_validation": {
+        "source_sha256_before": "75a80b55cca67fcb1318d4d80135621d9cc8ca0bdd3bafc6041150790ebb56b1",
+        "source_sha256_after": "75a80b55cca67fcb1318d4d80135621d9cc8ca0bdd3bafc6041150790ebb56b1",
+        "archive_sha256": "75a80b55cca67fcb1318d4d80135621d9cc8ca0bdd3bafc6041150790ebb56b1",
+        "identical": true
+      },
+      "identity_evidence": {
+        "actual_archive_sha256": "a206640487b043d4f62e2d100b5b69f71b4b5a659ca99514d15b307a57f3b9f0",
+        "files_verified": 27970
+      }
+    },
+    {
+      "path": "results/arm-main-phase6/report.md",
+      "deployment_relative_path": null,
+      "group": "closed_main_campaign_summary_or_state",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\phase6-final\\report.md",
+      "source_remote_path": null,
+      "sha256": "b9c59ead370b99ade29b12bd8b4e79a2cf8ca2ac31f7aca490e1a283b2913e26",
+      "bytes": 2736,
+      "copy_source": "exact_frozen_local_export_metadata",
+      "execution_status": "103 complete rc0 cleanup; original100 failed retained; main best052; independent source-owned campaign excluded",
+      "copy_validation": {
+        "source_sha256_before": "b9c59ead370b99ade29b12bd8b4e79a2cf8ca2ac31f7aca490e1a283b2913e26",
+        "source_sha256_after": "b9c59ead370b99ade29b12bd8b4e79a2cf8ca2ac31f7aca490e1a283b2913e26",
+        "archive_sha256": "b9c59ead370b99ade29b12bd8b4e79a2cf8ca2ac31f7aca490e1a283b2913e26",
+        "identical": true
+      }
+    },
+    {
+      "path": "results/arm-main-phase6/summary.json",
+      "deployment_relative_path": null,
+      "group": "closed_main_campaign_summary_or_state",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\phase6-final\\summary.json",
+      "source_remote_path": null,
+      "sha256": "7306e6df65ed08e444fd09421219ba74ecc7f85f4482c46fbf26532484bcd653",
+      "bytes": 3029,
+      "copy_source": "exact_frozen_local_export_metadata",
+      "execution_status": "103 complete rc0 cleanup; original100 failed retained; main best052; independent source-owned campaign excluded",
+      "copy_validation": {
+        "source_sha256_before": "7306e6df65ed08e444fd09421219ba74ecc7f85f4482c46fbf26532484bcd653",
+        "source_sha256_after": "7306e6df65ed08e444fd09421219ba74ecc7f85f4482c46fbf26532484bcd653",
+        "archive_sha256": "7306e6df65ed08e444fd09421219ba74ecc7f85f4482c46fbf26532484bcd653",
+        "identical": true
+      }
+    },
+    {
+      "path": "results/arm-main-phase6/verification.json",
+      "deployment_relative_path": null,
+      "group": "closed_main_campaign_summary_or_state",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\phase6-final\\verification.json",
+      "source_remote_path": null,
+      "sha256": "0dfa61c1a2821af1ec2260edc293ac05e108b91df01c4fd99c3b93ef944c84fa",
+      "bytes": 1964,
+      "copy_source": "exact_frozen_local_export_metadata",
+      "execution_status": "103 complete rc0 cleanup; original100 failed retained; main best052; independent source-owned campaign excluded",
+      "copy_validation": {
+        "source_sha256_before": "0dfa61c1a2821af1ec2260edc293ac05e108b91df01c4fd99c3b93ef944c84fa",
+        "source_sha256_after": "0dfa61c1a2821af1ec2260edc293ac05e108b91df01c4fd99c3b93ef944c84fa",
+        "archive_sha256": "0dfa61c1a2821af1ec2260edc293ac05e108b91df01c4fd99c3b93ef944c84fa",
+        "identical": true
+      }
+    },
+    {
+      "path": "results/arm-main-phase6/archive.json",
+      "deployment_relative_path": null,
+      "group": "closed_main_campaign_summary_or_state",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\phase6-final\\archive.json",
+      "source_remote_path": null,
+      "sha256": "de6b66ef0bcf5b2f43d47387a92dd986e9449f1e1e0d5ca2baa71d50d3f7a34b",
+      "bytes": 318,
+      "copy_source": "exact_frozen_local_export_metadata",
+      "execution_status": "103 complete rc0 cleanup; original100 failed retained; main best052; independent source-owned campaign excluded",
+      "copy_validation": {
+        "source_sha256_before": "de6b66ef0bcf5b2f43d47387a92dd986e9449f1e1e0d5ca2baa71d50d3f7a34b",
+        "source_sha256_after": "de6b66ef0bcf5b2f43d47387a92dd986e9449f1e1e0d5ca2baa71d50d3f7a34b",
+        "archive_sha256": "de6b66ef0bcf5b2f43d47387a92dd986e9449f1e1e0d5ca2baa71d50d3f7a34b",
+        "identical": true
+      }
+    },
+    {
+      "path": "results/arm-main-phase6/100-halo-state.json",
+      "deployment_relative_path": null,
+      "group": "closed_main_campaign_summary_or_state",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\phase6-final\\100-halo-state.json",
+      "source_remote_path": null,
+      "sha256": "1983a1c1ffa1824ff78cab1477a7e9461023c661ee25239ab54ef54d146b6c69",
+      "bytes": 37644,
+      "copy_source": "exact_frozen_local_export_metadata",
+      "execution_status": "103 complete rc0 cleanup; original100 failed retained; main best052; independent source-owned campaign excluded",
+      "copy_validation": {
+        "source_sha256_before": "1983a1c1ffa1824ff78cab1477a7e9461023c661ee25239ab54ef54d146b6c69",
+        "source_sha256_after": "1983a1c1ffa1824ff78cab1477a7e9461023c661ee25239ab54ef54d146b6c69",
+        "archive_sha256": "1983a1c1ffa1824ff78cab1477a7e9461023c661ee25239ab54ef54d146b6c69",
+        "identical": true
+      }
+    },
+    {
+      "path": "results/arm-main-phase6/100-phase6-halo-worker6.status.json",
+      "deployment_relative_path": null,
+      "group": "closed_main_campaign_summary_or_state",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\phase6-final\\100-phase6-halo-worker6.status.json",
+      "source_remote_path": null,
+      "sha256": "3799db6e0464be7b7582b4e862fdfa2d429e272b3f78c1fdeb1ad7cb5370b540",
+      "bytes": 2133,
+      "copy_source": "exact_frozen_local_export_metadata",
+      "execution_status": "103 complete rc0 cleanup; original100 failed retained; main best052; independent source-owned campaign excluded",
+      "copy_validation": {
+        "source_sha256_before": "3799db6e0464be7b7582b4e862fdfa2d429e272b3f78c1fdeb1ad7cb5370b540",
+        "source_sha256_after": "3799db6e0464be7b7582b4e862fdfa2d429e272b3f78c1fdeb1ad7cb5370b540",
+        "archive_sha256": "3799db6e0464be7b7582b4e862fdfa2d429e272b3f78c1fdeb1ad7cb5370b540",
+        "identical": true
+      }
+    },
+    {
+      "path": "results/arm-main-phase6/103-halo-recovered-state.json",
+      "deployment_relative_path": null,
+      "group": "closed_main_campaign_summary_or_state",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\phase6-final\\103-halo-recovered-state.json",
+      "source_remote_path": null,
+      "sha256": "d65fe4fc0d7df8eb2971463891d3471b905813be3f6f64a28def0cde0a18dffe",
+      "bytes": 42701,
+      "copy_source": "exact_frozen_local_export_metadata",
+      "execution_status": "103 complete rc0 cleanup; original100 failed retained; main best052; independent source-owned campaign excluded",
+      "copy_validation": {
+        "source_sha256_before": "d65fe4fc0d7df8eb2971463891d3471b905813be3f6f64a28def0cde0a18dffe",
+        "source_sha256_after": "d65fe4fc0d7df8eb2971463891d3471b905813be3f6f64a28def0cde0a18dffe",
+        "archive_sha256": "d65fe4fc0d7df8eb2971463891d3471b905813be3f6f64a28def0cde0a18dffe",
+        "identical": true
+      }
+    },
+    {
+      "path": "results/arm-main-phase6/103-halo-derived-recovery-worker6.status.json",
+      "deployment_relative_path": null,
+      "group": "closed_main_campaign_summary_or_state",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\phase6-final\\103-halo-derived-recovery-worker6.status.json",
+      "source_remote_path": null,
+      "sha256": "7b6e41db08329c1768e9ef27bc132fbc3a830eb3998939ea261f731a7742cb5f",
+      "bytes": 1325,
+      "copy_source": "exact_frozen_local_export_metadata",
+      "execution_status": "103 complete rc0 cleanup; original100 failed retained; main best052; independent source-owned campaign excluded",
+      "copy_validation": {
+        "source_sha256_before": "7b6e41db08329c1768e9ef27bc132fbc3a830eb3998939ea261f731a7742cb5f",
+        "source_sha256_after": "7b6e41db08329c1768e9ef27bc132fbc3a830eb3998939ea261f731a7742cb5f",
+        "archive_sha256": "7b6e41db08329c1768e9ef27bc132fbc3a830eb3998939ea261f731a7742cb5f",
+        "identical": true
+      }
+    },
+    {
+      "path": "phase5_validation_shim.py",
+      "deployment_relative_path": "phase5_validation_shim.py",
+      "group": "prepared_runtime_library_shim",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\phase5_validation_shim.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/phase5_validation_shim.py",
+      "sha256": "c5a8a8b3c14d697c9062bf04172e2eb616ffebda66298a99aa123ca80419d9fe",
+      "bytes": 51917,
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployed/locally contracted preparation; actual runtime comparison not executed; login loader evidence is not solver acceptance",
+      "copy_validation": {
+        "source_sha256_before": "c5a8a8b3c14d697c9062bf04172e2eb616ffebda66298a99aa123ca80419d9fe",
+        "source_sha256_after": "c5a8a8b3c14d697c9062bf04172e2eb616ffebda66298a99aa123ca80419d9fe",
+        "archive_sha256": "c5a8a8b3c14d697c9062bf04172e2eb616ffebda66298a99aa123ca80419d9fe",
+        "identical": true
+      }
+    },
+    {
+      "path": "test_phase5_validation_shim.py",
+      "deployment_relative_path": "test_phase5_validation_shim.py",
+      "group": "prepared_runtime_library_shim",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\test_phase5_validation_shim.py",
+      "source_remote_path": null,
+      "sha256": "3573c1965d2b208d561acd7d9332c0423dd8f8349943081226a8ed3af809414d",
+      "bytes": 13201,
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployed/locally contracted preparation; actual runtime comparison not executed; login loader evidence is not solver acceptance",
+      "copy_validation": {
+        "source_sha256_before": "3573c1965d2b208d561acd7d9332c0423dd8f8349943081226a8ed3af809414d",
+        "source_sha256_after": "3573c1965d2b208d561acd7d9332c0423dd8f8349943081226a8ed3af809414d",
+        "archive_sha256": "3573c1965d2b208d561acd7d9332c0423dd8f8349943081226a8ed3af809414d",
+        "identical": true
+      }
+    },
+    {
+      "path": "inspect_runtime_shim.py",
+      "deployment_relative_path": "inspect_runtime_shim.py",
+      "group": "prepared_runtime_library_shim",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\inspect_runtime_shim.py",
+      "source_remote_path": null,
+      "sha256": "9e89669fdbda48a6d9e7b851713969e54e47dd3e3f3ca7690d709065d706dc85",
+      "bytes": 6781,
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployed/locally contracted preparation; actual runtime comparison not executed; login loader evidence is not solver acceptance",
+      "copy_validation": {
+        "source_sha256_before": "9e89669fdbda48a6d9e7b851713969e54e47dd3e3f3ca7690d709065d706dc85",
+        "source_sha256_after": "9e89669fdbda48a6d9e7b851713969e54e47dd3e3f3ca7690d709065d706dc85",
+        "archive_sha256": "9e89669fdbda48a6d9e7b851713969e54e47dd3e3f3ca7690d709065d706dc85",
+        "identical": true
+      }
+    },
+    {
+      "path": "phase5-shim.md",
+      "deployment_relative_path": "phase5-shim.md",
+      "group": "prepared_runtime_library_shim",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\phase5-shim.md",
+      "source_remote_path": null,
+      "sha256": "fb9735ed82cc60a8cbc530f27d49bb63e78e4b0a4579bf09474725960a901610",
+      "bytes": 7574,
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployed/locally contracted preparation; actual runtime comparison not executed; login loader evidence is not solver acceptance",
+      "copy_validation": {
+        "source_sha256_before": "fb9735ed82cc60a8cbc530f27d49bb63e78e4b0a4579bf09474725960a901610",
+        "source_sha256_after": "fb9735ed82cc60a8cbc530f27d49bb63e78e4b0a4579bf09474725960a901610",
+        "archive_sha256": "fb9735ed82cc60a8cbc530f27d49bb63e78e4b0a4579bf09474725960a901610",
+        "identical": true
+      }
+    },
+    {
+      "path": "historical_adapters/queue_phase5_shim110.py",
+      "deployment_relative_path": "queue_phase5_shim110.py",
+      "group": "historical_site_adapter",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\queue_phase5_shim110.py",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue_phase5_shim110.py",
+      "sha256": "9fdf938252ec6ddb2d647fcc9bcdfefcba79a00de6488aa11c2ddf82180481db",
+      "bytes": 6064,
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Never enqueued; obsolete100-pass dependency now blocked because original100 remains failed; source retained for history",
+      "copy_validation": {
+        "source_sha256_before": "9fdf938252ec6ddb2d647fcc9bcdfefcba79a00de6488aa11c2ddf82180481db",
+        "source_sha256_after": "9fdf938252ec6ddb2d647fcc9bcdfefcba79a00de6488aa11c2ddf82180481db",
+        "archive_sha256": "9fdf938252ec6ddb2d647fcc9bcdfefcba79a00de6488aa11c2ddf82180481db",
+        "identical": true
+      }
+    },
+    {
+      "path": "historical_adapters/test_queue_phase5_shim110.py",
+      "deployment_relative_path": "test_queue_phase5_shim110.py",
+      "group": "historical_site_adapter",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\test_queue_phase5_shim110.py",
+      "source_remote_path": null,
+      "sha256": "6472fd226d5305b79940b87b18cf281d60bc56c4833972332836cecad225e14a",
+      "bytes": 2219,
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Never enqueued; obsolete100-pass dependency now blocked because original100 remains failed; source retained for history",
+      "copy_validation": {
+        "source_sha256_before": "6472fd226d5305b79940b87b18cf281d60bc56c4833972332836cecad225e14a",
+        "source_sha256_after": "6472fd226d5305b79940b87b18cf281d60bc56c4833972332836cecad225e14a",
+        "archive_sha256": "6472fd226d5305b79940b87b18cf281d60bc56c4833972332836cecad225e14a",
+        "identical": true
+      }
+    },
+    {
+      "path": "runtime-shim-manifest-v2.json",
+      "deployment_relative_path": "runtime-shim-manifest-v2.json",
+      "group": "prepared_runtime_library_shim",
+      "source_workstation_path": "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\outputs\\optimization-20261103\\phase5-shim\\loader-shim-manifest-v2.json",
+      "source_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/runtime-shim-manifest-v2.json",
+      "sha256": "c3f5fbca582920302010b5c742e4e59d78eb5f24a1a99861520e2464df5dae98",
+      "bytes": 17692,
+      "copy_source": "exact_frozen_bytes",
+      "execution_status": "Deployed/locally contracted preparation; actual runtime comparison not executed; login loader evidence is not solver acceptance",
+      "copy_validation": {
+        "source_sha256_before": "c3f5fbca582920302010b5c742e4e59d78eb5f24a1a99861520e2464df5dae98",
+        "source_sha256_after": "c3f5fbca582920302010b5c742e4e59d78eb5f24a1a99861520e2464df5dae98",
+        "archive_sha256": "c3f5fbca582920302010b5c742e4e59d78eb5f24a1a99861520e2464df5dae98",
+        "identical": true
+      }
+    }
+  ],
+  "pending": [
+    {
+      "path": "phase7_cold_derived_arm.py",
+      "reason": "ARM-specific derivative is still part of active qualification/cold preparation; not copied before explicit freeze inventory",
+      "status": "pending_not_copied"
+    },
+    {
+      "path": "arm_setup_owned_cold_entry.py",
+      "reason": "Active ARM-specific controller/dependency closure not yet archived",
+      "status": "pending_not_copied"
+    },
+    {
+      "path": "prepare_phase7_derived_arm.py",
+      "reason": "Generator for active ARM-specific variant, not a generic executed result",
+      "status": "pending_not_copied"
+    },
+    {
+      "path": "queue_phase5_after103.py",
+      "reason": "Draft paused by root; not reviewed/frozen or deployed",
+      "status": "pending_not_copied"
+    },
+    {
+      "path": "phase5_allocation_entry.py",
+      "reason": "Draft paused with portable phase5 publisher",
+      "status": "pending_not_copied"
+    },
+    {
+      "path": "115-task",
+      "reason": "Currently in preparation, root requested pending only",
+      "status": "pending_not_copied"
+    }
+  ],
+  "latest_status": {
+    "phase103": "complete rc0 cleanup; original100 failed1983;best052;winnernull; downloaded export individually SHA checked",
+    "phase114": "published build/tests running; ARM performance not measured",
+    "worker7": "deployed verified not submitted",
+    "flat_setup": "prepared not executed",
+    "x86_cold": "actual same-binary canonical first12 accepted",
+    "runtime_shim": "Frozen prepared controller; no team/runtime solver measurements; old110 publisher obsolete/blocked"
+  },
+  "closed_export": {
+    "archive_sha256": "41d8de2a93e7e7f21a09403adb7c526acfe31cd4e0fa150f9f04d98c0e73290d",
+    "included_entry_checks": 3811,
+    "distinct_export_paths": 3465,
+    "actual_files": 3467,
+    "main_best": "052-reduce-on",
+    "ongoing": true,
+    "large_export_bundled": false
+  }
+}

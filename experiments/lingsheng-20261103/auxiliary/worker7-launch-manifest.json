@@ -1,0 +1,55 @@
+{
+  "status": "prepared_not_deployed_not_submitted",
+  "files": {
+    "worker7.sh": {
+      "sha256": "b4ecc52952e8d0b5342e2bda9e53d19a4a575b6897a94f03c788ac057e51b070",
+      "bytes": 2333
+    },
+    "worker7_entry.py": {
+      "sha256": "5717a047b1d58ff6ae17c3c0c89e04f63d55efcf4472d2fe313aa76b5d5c59f7",
+      "bytes": 12283
+    },
+    "worker7_preflight.py": {
+      "sha256": "515132f05f6d332572a67c6566963296145a4ae93a1e8468d5f8aa398cdc06d9",
+      "bytes": 6318
+    },
+    "worker7_login_record.py": {
+      "sha256": "eb28cc6ca07a3df3178bb68c659a6b559026186994769dbd8692169daaa5a164",
+      "bytes": 5724
+    },
+    "worker7_runtime_probe.py": {
+      "sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "bytes": 2363
+    },
+    "worker7_logic_tests.py": {
+      "sha256": "1d828024a14833280cd842f799a50ffc6d80d43e18439ce64b1a51888168b37a",
+      "bytes": 15525
+    },
+    "prepare_worker7.py": {
+      "sha256": "1a22fe4cccf93532f972dbaf11b0aabf3e381a875d1ff0706f0b6916866e2f24",
+      "bytes": 2522
+    },
+    "test_prepare_worker7.py": {
+      "sha256": "2d41030d60c9af6ac740355351bff117ce9d5957c252f350665c63b542619ba4",
+      "bytes": 1012
+    },
+    "worker7-preparation.md": {
+      "sha256": "54c0f2f770db145ffcf84b8b8186bb68704c9dacf027a4b10f1173054ba6e442",
+      "bytes": 3358
+    }
+  },
+  "tests": 25,
+  "expected_source_head_required": true,
+  "source_root_required": true,
+  "source_coretools_bound": true,
+  "allocation": "mg-opt-20261103-worker7",
+  "expected_host": "cn19483",
+  "previous_job": "2021868",
+  "queue": "queue7",
+  "idle_timeout_seconds": 3600,
+  "wall_seconds": 14400,
+  "safe_reserve_seconds": 300,
+  "predecessor_actual_terminal_not_yet_claimed": true,
+  "source_changed": false,
+  "review_correction": "Final execv must selectqueue7; independent exactargv contract now covers this"
+}

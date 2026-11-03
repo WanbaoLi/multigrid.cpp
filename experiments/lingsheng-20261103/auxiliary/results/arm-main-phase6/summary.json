@@ -1,0 +1,81 @@
+{
+  "complete": true,
+  "scope": "Closed ordinary whole12 halo comparison; maincampaign ongoing",
+  "rows": [
+    {
+      "attempt": "100-halo-control-a",
+      "steady_samples": [
+        16.05008775999886,
+        15.993507416002103,
+        16.040711460998864,
+        16.036866593000013,
+        16.034133626992116,
+        15.967226943001151,
+        15.988128436991246
+      ],
+      "median_seconds": 16.034133626992116,
+      "library_sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+      "source_manifest_sha256": "78b429dc13a8b113792aa45bd27fc93134a8c4b39359da9ade05558c93d590ae",
+      "max_true_residual": 4.818858112534332e-09,
+      "max_solution_relative_error": 1.7191732932621374e-16
+    },
+    {
+      "attempt": "100-halo-new-off",
+      "steady_samples": [
+        16.738435526989633,
+        16.897192140997504,
+        16.89215655598673,
+        16.725252629999886,
+        16.874779240999487,
+        16.70160568499705,
+        16.90345069199975
+      ],
+      "median_seconds": 16.874779240999487,
+      "library_sha256": "2f579a965ab969d1feef48ab6e222bb8762446b6ccd4f037392a9d428c5ba68e",
+      "source_manifest_sha256": "8af80f19388e951a52062abf61d4c93cc1954ee8cb3125bce211d3c806a50d2b",
+      "max_true_residual": 4.818858112534332e-09,
+      "max_solution_relative_error": 1.7191732932621374e-16
+    },
+    {
+      "attempt": "100-halo-halo-on",
+      "steady_samples": [
+        16.623594229997252,
+        16.57658571600041,
+        16.660240504003013,
+        16.604068143991753,
+        16.501758792001056,
+        16.70321438300016,
+        16.593846755000413
+      ],
+      "median_seconds": 16.604068143991753,
+      "library_sha256": "2f579a965ab969d1feef48ab6e222bb8762446b6ccd4f037392a9d428c5ba68e",
+      "source_manifest_sha256": "8af80f19388e951a52062abf61d4c93cc1954ee8cb3125bce211d3c806a50d2b",
+      "max_true_residual": 4.818858112534332e-09,
+      "max_solution_relative_error": 1.7191732932621374e-16
+    },
+    {
+      "attempt": "100-halo-control-b",
+      "steady_samples": [
+        16.45632918199408,
+        16.662271401000908,
+        16.479524035996292,
+        16.475724586009164,
+        16.481258821004303,
+        16.645679194989498,
+        16.45423914999992
+      ],
+      "median_seconds": 16.479524035996292,
+      "library_sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+      "source_manifest_sha256": "78b429dc13a8b113792aa45bd27fc93134a8c4b39359da9ade05558c93d590ae",
+      "max_true_residual": 4.818858112534332e-09,
+      "max_solution_relative_error": 1.7191732932621374e-16
+    }
+  ],
+  "best": "052-reduce-on",
+  "winner": null,
+  "original100_status": "failed",
+  "original100_state_sha256": "1983a1c1ffa1824ff78cab1477a7e9461023c661ee25239ab54ef54d146b6c69",
+  "recovery103_status": "complete_passed_cleanup",
+  "source_owned_independent_campaign_included": false,
+  "arm_source_owned_performance_measured": false
+}

@@ -1,0 +1,37 @@
+{
+  "task": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue6/103-halo-derived-recovery-worker6.running.json",
+  "host": "cn19483",
+  "started": 1793746181.2822256,
+  "argv": [
+    "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+    "-u",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/resume_phase6_derived103.py",
+    "--helper",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/raw_scalar_helper_derived.py",
+    "--helper-sha",
+    "25b6fb0d171efb12954edbd0941701ac38fdcb954cf1882de443b50e755659a2",
+    "--publication",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/derived_publication.py",
+    "--publication-sha",
+    "83b790954b64b0ae7ae8e71ed2978b752f30477bafd7fa48cdfd6ef548b683a6",
+    "--original-state-sha",
+    "1983a1c1ffa1824ff78cab1477a7e9461023c661ee25239ab54ef54d146b6c69",
+    "--expected-entry-sha",
+    "e70fb51ccbbb4cfe7db0171a20433c431914cf19a81d576c88c17296c0696233"
+  ],
+  "status": "passed",
+  "task_tag": "ccd72320447649f5af5d3806a7c1c4f9",
+  "pid": 3552886,
+  "returncode": 0,
+  "cleanup": {
+    "complete": true,
+    "platform": "linux",
+    "method": "same-uid exact tag and verified descendants",
+    "tag_key": "LQCD_OPT_TASK_ID",
+    "targeted_pids": [],
+    "term_signals": 0,
+    "kill_signals": 0,
+    "surviving_pids": []
+  },
+  "ended": 1793748053.3884058
+}

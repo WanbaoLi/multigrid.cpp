@@ -1,0 +1,11 @@
+--- profile_setup.py@309cd4ea35bcd4ea0f6515afd2a98a737a7d9ae546f9f752bcfcb0d06c60c42b
++++ profile_setup_flat.py
+@@ -134,7 +134,7 @@
+                     data=prefix.with_suffix('.perf.data')
+                     if not eligible or not data.is_file() or not data.stat().st_size:
+                         raise RuntimeError('No valid nonempty setup perf data')
+-                    command=[shutil.which(args.perf),'report','--stdio','--no-children','--sort','symbol','--input',str(data)]
++                    command=[shutil.which(args.perf),'report','--stdio','--no-children','--call-graph','none','--sort','symbol','--input',str(data)]
+                     record['report_argv']=command
+                     with prefix.with_suffix('.perf-flat.txt').open('xb') as flat, prefix.with_suffix('.perf-report.log').open('xb') as log:
+                         result=subprocess.run(command,stdout=flat,stderr=log,timeout=60)
