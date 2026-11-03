@@ -1,0 +1,98 @@
+{
+  "git_head": "71160fac57d577d27423527e6b577c0593940d35",
+  "files": [
+    {
+      "repo_relative_path": "tools/optimization/campaign.py",
+      "actual_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/optimization/campaign.py",
+      "sha256": "0ce3034d9d66e08a155a303711b4f3280f18b924dab3e202ffa7439ffc18aef2",
+      "bytes": 38920
+    },
+    {
+      "repo_relative_path": "tools/optimization/trial.py",
+      "actual_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/optimization/trial.py",
+      "sha256": "365ad97c9351c43d24f52b0242e7147b5b383f238840984dced682116ea78ef7",
+      "bytes": 7477
+    },
+    {
+      "repo_relative_path": "tools/optimization/worker.py",
+      "actual_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/optimization/worker.py",
+      "sha256": "bc7edf47cc464a670ce0e48158e1d95231eba649c233774fcbc003e0350334bb",
+      "bytes": 7225
+    },
+    {
+      "repo_relative_path": "tools/optimization/process_tree.py",
+      "actual_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/optimization/process_tree.py",
+      "sha256": "45238789c0919be0ad9b836372f99779e5c39e5defa9fd9bcc8c74f40f1c0864",
+      "bytes": 7101
+    },
+    {
+      "repo_relative_path": "tools/optimization/bench_full12.py",
+      "actual_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/optimization/bench_full12.py",
+      "sha256": "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1",
+      "bytes": 24912
+    },
+    {
+      "repo_relative_path": "tools/optimization/profile_full12.py",
+      "actual_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/optimization/profile_full12.py",
+      "sha256": "0f8f91305635ae7085d6bb9dcaa96b4c0607b3dfbeb4b83cc3b34526f714bc98",
+      "bytes": 14506
+    },
+    {
+      "repo_relative_path": "tools/run_numa.py",
+      "actual_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/run_numa.py",
+      "sha256": "4babd5c47a69431e63d98d2e7268184f9d70292a219bb9da2eae9fd7ae151b64",
+      "bytes": 12361
+    },
+    {
+      "repo_relative_path": "tools/probe_host.py",
+      "actual_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/probe_host.py",
+      "sha256": "cc4ab89bc87ccdc6d9b1faf524f1d52d6e19f4b9c481774b74b032d309d288a9",
+      "bytes": 1707
+    },
+    {
+      "repo_relative_path": "tools/pin_build.py",
+      "actual_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/pin_build.py",
+      "sha256": "bc3c377fbcc95fdc4aa5a18613aa53ddc8a4ff77492e92ec47e608e2d64a710a",
+      "bytes": 530
+    },
+    {
+      "repo_relative_path": "tools/run_sve_vl.py",
+      "actual_remote_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/tools/run_sve_vl.py",
+      "sha256": "fd63b1cfe244f68d0e749b938dabc27e4e1ec70977fe7c990d7a0ba14a8d25d4",
+      "bytes": 1379
+    }
+  ],
+  "reference_skill_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source/skills/kunpeng-lqcd-reference",
+  "reference_manifest_as_recorded": [
+    {
+      "bytes": 4928,
+      "path": "SKILL.md",
+      "sha256": "31f0ad3a2ed12cf404af92f48d5b217cab1b0d1e590f6af25cdef8da4873f7e6"
+    },
+    {
+      "bytes": 733,
+      "path": "manifest.json",
+      "sha256": "77f4ad86e632866d302e84b12fbfa3858b62250953e08858369bdb898189e8bf"
+    },
+    {
+      "bytes": 6384,
+      "path": "references/hardware-constraints.md",
+      "sha256": "b60b3b173736b8cb651c4d0aacce6e52fcad24412c184896cc6dfeb8e741b4f3"
+    },
+    {
+      "bytes": 6866,
+      "path": "references/installed-sdk.md",
+      "sha256": "02c75d7714a274f2384694e132ba412ee285cb3c3929963e9e9a89a450ffc544"
+    },
+    {
+      "bytes": 8008,
+      "path": "references/official-sources.md",
+      "sha256": "13207923370753836ced269b737e034bd6c66c745b9dd52b6d3706cc2185b51d"
+    },
+    {
+      "bytes": 2539,
+      "path": "references/sdk-evidence.json",
+      "sha256": "91a1bf0cfe41d09aba35527327673907c4cf5239491eceb4fdc9812994854e6f"
+    }
+  ]
+}

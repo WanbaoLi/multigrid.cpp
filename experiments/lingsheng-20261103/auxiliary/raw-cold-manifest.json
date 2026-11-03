@@ -1,0 +1,41 @@
+{
+  "method": "external namespace callbacks; frozen numerical source/clock unchanged",
+  "files": {
+    "raw_cold_adapter.py": {
+      "sha256": "c65c2da816c9a68f992a6db4cdbbef98e02954a17015abf8405ea474d780cc69",
+      "bytes": 11647
+    },
+    "raw_cold_controller.py": {
+      "sha256": "6e4f15a5ce9a1b2a9d021e21ff6ca766af58fd690b1e5aa4bc3f900bc5353cee",
+      "bytes": 9297
+    },
+    "test_raw_cold_adapter.py": {
+      "sha256": "c2aa39fb973ace732018dccab0b55172f4b5a2724c60c68050d7b1fc355fb2b4",
+      "bytes": 13472
+    },
+    "raw-cold-profile-adapter.md": {
+      "sha256": "9152a1270985928ee7aecbace7a5ecd85fcda7451c804086616615491f21804d",
+      "bytes": 5735
+    },
+    "queue_setup092_raw.py": {
+      "sha256": "79d357ecb8e67a544c318ed70d3ecb8a14e60dad56ee2063eeb5e5850a16d366",
+      "bytes": 6553
+    }
+  },
+  "frozen_remote_sources": {
+    "cold_full12.py": "245ecd8201c1268c8e3a78ba64383ce7dce6334709fe5856deac8033ed39a1de",
+    "profile_setup.py": "309cd4ea35bcd4ea0f6515afd2a98a737a7d9ae546f9f752bcfcb0d06c60c42b",
+    "prepare_best_replay.py": "448d47e37ff4b10a57ba7864249e43ba11be1c2a6847ec050368de6918445201",
+    "queue_setup_profile.py": "acc3ab86b0bdea558a6a72ef62950c9ba3413a4db8a94e6de4fbabb0afa85ceb",
+    "raw_controller_v4.py": "dd2d4049ed2ebd39e08efc03c4528e516c28e518a5c6e2e9de803358715d1b0e",
+    "source/tools/optimization/profile_full12.py": "0f8f91305635ae7085d6bb9dcaa96b4c0607b3dfbeb4b83cc3b34526f714bc98",
+    "source/tools/optimization/campaign.py": "0ce3034d9d66e08a155a303711b4f3280f18b924dab3e202ffa7439ffc18aef2"
+  },
+  "reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+  "validation": {
+    "linux_python": "3.9.9 GCC10.3.1",
+    "contracts_passed": 9,
+    "scope": "isolated toy infrastructure; no MPI/perf/numerical claims",
+    "log_sha256": "f4ed8ddc8f317065a6e8419b33fe5b8365b0cc3acaa2904cbd6f40b255e687e5"
+  }
+}
