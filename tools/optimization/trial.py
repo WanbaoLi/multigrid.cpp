@@ -59,7 +59,11 @@ def main():
         ledger.check_snapshot(root/'attempts'/args.reuse_attempt, other)
         if other['snapshot']['source_manifest_sha256'] != snapshot['source_manifest_sha256']:
             raise RuntimeError('Cannot reuse binary compiled from different source snapshot')
-        library = root/'attempts'/args.reuse_attempt/'build'/'liblqcd_cpu.so'
+        if 'report' in other:
+            ledger.check_artifact(root/'attempts'/args.reuse_attempt,other)
+            library = root/'attempts'/args.reuse_attempt/'artifacts'/'liblqcd_cpu.so'
+        else:
+            library = root/'attempts'/args.reuse_attempt/'build'/'liblqcd_cpu.so'
         if not library.is_file():
             raise RuntimeError('Reusable build missing')
         reuse = dict(attempt=args.reuse_attempt, source_manifest_sha256=snapshot['source_manifest_sha256'],
