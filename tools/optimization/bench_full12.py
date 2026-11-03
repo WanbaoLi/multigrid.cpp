@@ -54,6 +54,14 @@ def validate_fixture(previous):
         raise RuntimeError('Frozen fixture input SHA256 missing')
 
 
+def fixture_metadata(previous):
+    """Carry physical provenance only; fixture creation timings are not samples."""
+    keys = ['mass','csw','lattice_xyzt','grid_xyzt','normalization','source_xyzt',
+            'source_scale','gamma_basis','fermion_t_boundary','gauge_t_boundary',
+            'gauge_reunitarized','stout','gauge_sha256']
+    return {key:previous[key] for key in keys}
+
+
 def validate_plan(plan, solve_keys):
     cases = plan.get('cases', [])
     if not cases or not isinstance(plan.get('context_environment', {}), dict):
@@ -248,9 +256,7 @@ def benchmark(args):
     resources = comm.allgather(dict(rank=rank, cpus=sorted(os.sched_getaffinity(0)),
         omp_places=os.environ.get('OMP_PLACES'), omp_proc_bind=os.environ.get('OMP_PROC_BIND')))
     all_hashes = comm.allgather(fixture_hashes)
-    metadata = dict(previous)
-    for key in ['samples', 'timings', 'resources', 'options']:
-        metadata.pop(key, None)
+    metadata = fixture_metadata(previous)
     metadata.update(complete=False, measurements_complete=False, backend=args.backend,
         library=str(library), library_path=str(library), library_sha256=library_sha,
         source_manifest_sha256=args.snapshot_sha, input_sha256=previous['gauge_sha256'],
@@ -259,6 +265,7 @@ def benchmark(args):
         normalization='mass', fermion_t_boundary=-1, gauge_t_boundary=1,
         timing_scope='profile_full12_api' if args.diagnostic else 'full12_api', zero_initial_guess=True, samples=[], resources=resources,
         fixture_files=sorted(set(pair for values in all_hashes for pair in values)),
+        fixture_report_sha256=collective(comm,lambda:sha(fixture/'result.json')),
         comparison_key=dict(host=socket.gethostname(), allocation=args.allocation,
                             problem='24x24x24x64-m-.277-csw1.160920226-stout1-rho.125-point0000',
                             input_sha256=previous['gauge_sha256'], prepared_gauge_manifest_sha256=prepared_sha,

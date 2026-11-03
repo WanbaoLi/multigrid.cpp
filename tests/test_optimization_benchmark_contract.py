@@ -34,6 +34,12 @@ class BenchmarkContractTest(unittest.TestCase):
             gauge_reunitarized=False, stout=dict(steps=1,rho=.125,dir_ignore=4),
             gauge_sha256='a'*64)
         bench.validate_fixture(good)
+        provenance=bench.fixture_metadata({**good, 'first_seconds':103.,
+            'steady_median_seconds':103.,'complete':True,'verification':{'passed':True}})
+        self.assertEqual(provenance['mass'],good['mass'])
+        self.assertEqual(provenance['stout'],good['stout'])
+        for stale in ['first_seconds','steady_median_seconds','complete','verification']:
+            self.assertNotIn(stale,provenance)
         for field, value in [('complete', False), ('mass', -.2), ('csw', 1.),
                              ('stout', dict(steps=0,rho=.125,dir_ignore=4)),
                              ('fermion_t_boundary', 1), ('normalization', 'kappa'),
