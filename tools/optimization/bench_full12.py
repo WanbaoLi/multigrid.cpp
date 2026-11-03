@@ -335,6 +335,10 @@ def benchmark(args):
     with Solver([24,24,24,64], [1,1,1,ranks], mass=-.277, csw=1.160920226,
                 block=[6,6,6,4], seed=1024, threads=setup_threads,
                 normalization='mass', backend=args.backend, library=library) as solver:
+        capabilities=collective(comm,lambda:solver.capabilities)
+        if capabilities.get('backend')!=args.backend or capabilities.get('device')!='cpu':
+            raise RuntimeError('Loaded solver capabilities differ from the requested CPU backend')
+        for report in reports.values():report['capabilities']=dict(capabilities)
         solver.load_gauge(gauge, 'lex')
         setup = solver.setup()
         base_environment = dict(os.environ)
