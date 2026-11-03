@@ -160,21 +160,26 @@ class Exporter:
             self.changed_during_reads.add(str(source))
         return raw
 
-    def linked_verification(self, expected):
+    def linked_verification(self, expected, evidence_relative_path='independent/verification.json'):
         """Interleaved child reports may reference their parent's run directory.
 
         Read only small verifier JSON; copy only an exact registered digest and
         its column logs, even when the containing parent campaign is ongoing.
         No completion is inherited from that parent or its raw result.
         """
+        relative_evidence = safe_relative(evidence_relative_path).as_posix()
+        if Path(relative_evidence).name != 'verification.json':
+            raise ValueError('Independent evidence path must identify verification.json')
         if self.verification_candidates is None:
             self.verification_candidates = []
             for directory, directories, names in os.walk(self.root/'attempts',followlinks=False):
                 directories[:] = [name for name in directories if name not in
                     {'source','build','artifacts','__pycache__','.git'} and not (Path(directory)/name).is_symlink()]
-                if Path(directory).name == 'independent' and 'verification.json' in names:
+                if 'verification.json' in names:
                     self.verification_candidates.append(Path(directory)/'verification.json')
         for target in self.verification_candidates:
+            if not target.as_posix().endswith('/'+relative_evidence):
+                continue
             try:
                 raw = self.read(target)
                 if hashlib.sha256(raw).hexdigest() != expected:
@@ -271,14 +276,18 @@ class Exporter:
             result['samples_summary'] = ledger.validate_report(report, self.config,
                 data['snapshot']['source_manifest_sha256'])
             result['registered_report_contract'] = True
+            relative_evidence = safe_relative(report['verification'].get('evidence_relative_path',
+                'independent/verification.json')).as_posix()
+            if Path(relative_evidence).name != 'verification.json':
+                raise ValueError('Independent evidence path must identify verification.json')
             matching = []
             for target in files:
-                if target.name == 'verification.json':
+                if target.as_posix().endswith('/'+relative_evidence):
                     raw = self.read(target)
                     if hashlib.sha256(raw).hexdigest() == report['verification'].get('evidence_sha256'):
                         matching.append((target, json.loads(raw)))
             if not matching:
-                linked = self.linked_verification(report['verification'].get('evidence_sha256'))
+                linked = self.linked_verification(report['verification'].get('evidence_sha256'),relative_evidence)
                 if linked:
                     matching.append(linked)
                 else:

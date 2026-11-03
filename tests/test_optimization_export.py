@@ -170,6 +170,45 @@ class ExportTest(unittest.TestCase):
         self.assertFalse(parent_row['payload_included'])
         self.assertTrue((self.base/'export/campaign/attempts/parent/measurements/candidate/independent/column11.log').is_file())
 
+    def test_named_recovery_verification_supports_parent_lookup_and_rejects_unsafe_path(self):
+        best = self.attempt();self.accept()
+        parent = self.attempt('parent',active=True)
+        original = best/'measurements/full12/independent'
+        linked = parent/'measurements/candidate/validation-retry'
+        linked.parent.mkdir()
+        original.rename(linked)
+        report = ledger.read(best/'report.json')
+        report['verification']['evidence_relative_path'] = 'validation-retry/verification.json'
+        ledger.atomic(best/'report.json',report)
+        data = ledger.read(best/'attempt.json')
+        data['report']['sha256'] = ledger.object_digest(report)
+        ledger.atomic(best/'attempt.json',data)
+        result = exporter.export(self.root,self.base/'named')
+        best_row = next(row for row in result['attempts'] if row['id']=='best')
+        self.assertTrue(best_row['review']['complete_review_material'])
+        self.assertEqual(best_row['review']['independent_path'],str(linked/'verification.json'))
+        report['verification']['evidence_relative_path'] = '../validation-retry/verification.json'
+        ledger.atomic(best/'report.json',report)
+        data['report']['sha256'] = ledger.object_digest(report)
+        ledger.atomic(best/'attempt.json',data)
+        result = exporter.export(self.root,self.base/'unsafe')
+        best_row = next(row for row in result['attempts'] if row['id']=='best')
+        self.assertFalse(best_row['review']['complete_review_material'])
+        self.assertIn('Unsafe evidence path',best_row['review']['errors'][0])
+        report['verification']['evidence_relative_path'] = 'validation-retry/verification.json'
+        ledger.atomic(best/'report.json',report)
+        data['report']['sha256'] = ledger.object_digest(report)
+        ledger.atomic(best/'attempt.json',data)
+        original_is_symlink = Path.is_symlink
+        def simulate_symlink(target):
+            return target == linked/'verification.json' or original_is_symlink(target)
+        with mock.patch.object(Path,'is_symlink',simulate_symlink):
+            result = exporter.export(self.root,self.base/'symlink')
+        best_row = next(row for row in result['attempts'] if row['id']=='best')
+        self.assertFalse(best_row['review']['complete_review_material'])
+        self.assertFalse(any(row['included'] and row['source_path']==str(linked/'verification.json')
+                             for row in result['entries']))
+
     def test_mutation_during_export_is_marked_inconsistent(self):
         self.attempt();self.accept()
         original = exporter.Exporter.write
