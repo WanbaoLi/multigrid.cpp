@@ -1,0 +1,140 @@
+"""Stdlib checks for benchmark provenance and durable worker termination."""
+import copy
+import importlib.util
+import json
+import os
+from pathlib import Path
+import signal
+import subprocess
+import sys
+import tempfile
+import time
+import unittest
+from unittest import mock
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def load(name):
+    spec = importlib.util.spec_from_file_location(name, ROOT / 'tools' / 'optimization' / (name+'.py'))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+bench, worker = load('bench_full12'), load('worker')
+
+
+class BenchmarkContractTest(unittest.TestCase):
+    def test_fixture_rejects_changed_physics_or_preprocessing(self):
+        good = dict(complete=True, mass=-.277, csw=1.160920226,
+            lattice_xyzt=[24,24,24,64], grid_xyzt=[1,1,1,16],
+            normalization='mass', source_xyzt=[0,0,0,0], source_scale=1.,
+            gamma_basis='DeGrand-Rossi', fermion_t_boundary=-1, gauge_t_boundary=1,
+            gauge_reunitarized=False, stout=dict(steps=1,rho=.125,dir_ignore=4),
+            gauge_sha256='a'*64)
+        bench.validate_fixture(good)
+        for field, value in [('complete', False), ('mass', -.2), ('csw', 1.),
+                             ('stout', dict(steps=0,rho=.125,dir_ignore=4)),
+                             ('fermion_t_boundary', 1), ('normalization', 'kappa'),
+                             ('lattice_xyzt', [8,8,8,8]), ('grid_xyzt', [1,1,1,3])]:
+            with self.subTest(field=field):
+                with self.assertRaises(RuntimeError):
+                    bench.validate_fixture({**good, field:value})
+
+    def test_cached_flags_cannot_masquerade_as_dynamic_cases(self):
+        plan = {'cases':[{'id':'baseline','threads':37,'batch':2,
+                          'environment':{'LQCD_GCR_FUSED':1}}]}
+        bench.validate_plan(plan, {'LQCD_GCR_FUSED'})
+        for flag in ['LQCD_ARM_SVE_PLANNED','LQCD_COARSE_FUSED','OMP_WAIT_POLICY']:
+            bad = copy.deepcopy(plan)
+            bad['cases'][0]['environment'] = {flag:1}
+            with self.assertRaises(RuntimeError):
+                bench.validate_plan(bad, {'LQCD_GCR_FUSED'})
+
+    def test_diagnostic_environment_does_not_leak_between_cases(self):
+        original = dict(os.environ)
+        self.addCleanup(lambda: (os.environ.clear(), os.environ.update(original)))
+        base = {'FIXED':'yes'}
+        bench.apply_case_environment(base, {'batch':2,'environment':{'LQCD_COARSE_CGS2':1}}, diagnostic=True)
+        self.assertEqual(os.environ['LQCD_COARSE_CGS2'], '1')
+        bench.apply_case_environment(base, {'batch':1}, diagnostic=True)
+        self.assertNotIn('LQCD_COARSE_CGS2', os.environ)
+        self.assertEqual(os.environ['LQCD_VERBOSE'], '1')
+
+    def test_cached_verification_rechecks_all_saved_evidence(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / 'independent').mkdir()
+            paths = [root/'reference', root/'extractor', root/'propagator.npy',
+                     root/'gauge_rank00000.npy', root/'independent'/'verification.json',
+                     root/'baseline.npy']
+            for i,path in enumerate(paths):
+                path.write_bytes(f'frozen {i}'.encode())
+            reference, extractor, prop, gauge, evidence, baseline = paths
+            report = dict(propagator_sha256=bench.sha(prop), output_gauge_files=[[0,bench.sha(gauge)]],
+                reference_propagator=str(baseline), verification=dict(complete=True, passed=True,columns=12,
+                    max_true_residual=4e-9, reference_sha256=bench.sha(reference),
+                    extractor_sha256=bench.sha(extractor), evidence_sha256=bench.sha(evidence),
+                    propagator_sha256=bench.sha(prop), reference_propagator_sha256=bench.sha(baseline)))
+            bench.check_cached_verification(root, report, reference, extractor)
+            for path in paths:
+                with self.subTest(path=path.name):
+                    original = path.read_bytes()
+                    path.write_bytes(b'changed after validation')
+                    with self.assertRaises(RuntimeError):
+                        bench.check_cached_verification(root, report, reference, extractor)
+                    path.write_bytes(original)
+
+    def test_nonfinite_timeouts_and_shell_strings_are_rejected(self):
+        for timeout in [float('nan'), float('inf'), -1, 0, 101]:
+            with self.assertRaises(RuntimeError):
+                worker.validate_task({'timeout':timeout,'argv':['true']},100)
+        with self.assertRaises(RuntimeError):
+            worker.validate_task({'timeout':1,'argv':'sh -c something'},100)
+        self.assertEqual(worker.validate_task({'timeout':1,'argv':['true']},100),1)
+
+    def test_termination_waits_and_escalates_before_return(self):
+        process = mock.Mock(pid=12345)
+        with mock.patch.object(worker.os,'killpg',create=True) as kill, \
+                mock.patch.object(worker.signal,'SIGKILL',9,create=True):
+            worker.terminate_group(process,grace=0)
+        self.assertEqual(kill.call_args_list,
+                         [mock.call(12345,signal.SIGTERM),mock.call(12345,9)])
+        process.wait.assert_called_once()
+
+    @unittest.skipUnless(os.name == 'posix','Linux queue worker lifecycle')
+    def test_sigterm_retains_interrupted_claim_and_reaps_child(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root/'001.ready.json').write_text(json.dumps(dict(timeout=20,
+                argv=[sys.executable,'-c','import time; time.sleep(20)'])))
+            process = subprocess.Popen([sys.executable,str(ROOT/'tools/optimization/worker.py'),
+                '--queue',str(root),'--lifetime','30','--idle-timeout','5'],
+                stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+            try:
+                deadline = time.monotonic()+5
+                status = {}
+                while time.monotonic()<deadline:
+                    if (root/'001.status.json').exists():
+                        status = json.loads((root/'001.status.json').read_text())
+                        if status.get('pid'):
+                            break
+                    time.sleep(.02)
+                self.assertIn('pid',status)
+                process.send_signal(signal.SIGTERM)
+                process.communicate(timeout=15)
+                final = json.loads((root/'001.status.json').read_text())
+                self.assertEqual(final['status'],'interrupted')
+                self.assertTrue((root/'001.running.json').exists())
+                self.assertFalse((root/'001.finished.json').exists())
+                with self.assertRaises(ProcessLookupError):
+                    os.kill(status['pid'],0)
+            finally:
+                if process.poll() is None:
+                    process.kill()
+                    process.communicate()
+
+
+if __name__=='__main__':
+    unittest.main()

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-03T13:26:51.2921944Z",
+  "reference_date": "2026-11-03",
+  "policy": "frozen_read_only_reference; experiment history belongs outside this tree",
+  "files": {
+    "references/hardware-constraints.md": "b60b3b173736b8cb651c4d0aacce6e52fcad24412c184896cc6dfeb8e741b4f3",
+    "references/installed-sdk.md": "02c75d7714a274f2384694e132ba412ee285cb3c3929963e9e9a89a450ffc544",
+    "references/official-sources.md": "13207923370753836ced269b737e034bd6c66c745b9dd52b6d3706cc2185b51d",
+    "references/sdk-evidence.json": "91a1bf0cfe41d09aba35527327673907c4cf5239491eceb4fdc9812994854e6f",
+    "SKILL.md": "31f0ad3a2ed12cf404af92f48d5b217cab1b0d1e590f6af25cdef8da4873f7e6"
+  }
+}

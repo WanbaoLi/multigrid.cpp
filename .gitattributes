@@ -7,3 +7,4 @@
 *.h text eol=lf
 *.pdf binary
 *.docx binary
+skills/kunpeng-lqcd-reference/** -text

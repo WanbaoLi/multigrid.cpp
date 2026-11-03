@@ -219,6 +219,14 @@ std::vector<int> NativeMG::solve_batch(const std::vector<Field> &b, std::vector<
         counts[i] = work[i].iterations;
         iterations = std::max(iterations, counts[i]);
     }
+    // Like the scalar diagnostic, these are rank 0's accumulated local
+    // stage wall times. A batch shares them: never multiply by nrhs or add
+    // the separately reported halo timings, which overlap these stages.
+    if (verbose)
+        std::cerr << "native profile R " << impl->restrict_seconds << " coarse "
+                  << impl->coarse_seconds << " P " << impl->prolong_seconds << " SAP "
+                  << impl->sap_seconds << " nrhs " << b.size()
+                  << " timing_scope shared_batch aggregation rank0_local_sums" << std::endl;
     impl->report_halo_profile();
     return counts;
 }

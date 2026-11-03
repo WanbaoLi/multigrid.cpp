@@ -1,0 +1,31 @@
+{
+  "snapshot_date": "2026-11-03",
+  "access": "read-only ssh ls; no compute kernels executed during this inspection",
+  "sdk_root": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001",
+  "latest_link_resolved": true,
+  "methods": ["readlink -f", "sed/grep installed headers and environment script", "sha256sum", "nm -D", "readelf -d", "objdump -d selected public entry points and HBW detection sequence"],
+  "files": {
+    "kupl/gcc/release/include/kupl.h": "5357743b3eb9e797ef60cd71c8d246c4e9b64268731fb1ee494f80ab0f183b09",
+    "kupl/gcc/release/lib/libkupl.so.25.1.0.SPC001": "5955055a872388c2a9ae27280c0f602880538244b4acdd3985e713a5bb79964f",
+    "kml/gcc/include/kblas.h": "526e15866d507178bf5acc300059b3401c93693223d2269f48be32a632f48f2c",
+    "kml/gcc/include/kml_service.h": "33b635bb72a9494b87df1d0518ae96dacd9c8611286241dd2b85a26c31365193",
+    "kml/gcc/env/setvars.sh": "96124717040b66cead69c7436debd516fddb88ab7950426415f9ffa2295f4e8d",
+    "kml/gcc/lib/sve/kblas/locking/libkblas.so.25.1.0.SPC001": "2a36307c98a4fcd8ef5f43be05a7ee1feb5aea4badc7e486cbad2a2d6988bea7",
+    "kml/gcc/lib/sve/kblas/nolocking/libkblas.so.25.1.0.SPC001": "cb11892ea1e5ae072050f984bb28e34139105c65e92c1bea40ea5340e2b1af86",
+    "kml/gcc/lib/sve/kblas/multi/libkblas.so.25.1.0.SPC001": "52f2b54c0b84688403206249c94ee895d1a400b445585aa78b30dfd00bc01f5f",
+    "kml/gcc/lib/sme/kblas/locking/libkblas.so.25.1.0.SPC001": "1e2e0a3ca4b811bea444b56562b6b647c2aa917b7c091943fb0d154b140c59ff"
+  },
+  "observations": {
+    "kupl_malloc_abi": "one size_t argument in inspected 25.1 header",
+    "kupl_parallel_for_description": "range, concurrency, egroup, policy; no newer field_mask",
+    "hbw_detection": "binary obtains allowed-memory mask, filters memory-only nodes, then uses NUMA distance; check_available reads cached result",
+    "kml_complex_calls_exported_in_inspected_sve_locking": ["cblas_cgemv", "cblas_zgemv", "cblas_cgemm", "cblas_zgemm", "cblas_cgemm3m", "cblas_zgemm3m"],
+    "kml_batch_gemm_in_inspected_header_or_sve_locking_symbols": false,
+    "kml_thread_api": ["BlasSetNumThreads", "BlasSetNumThreadsLocal", "BlasGetNumThreads", "BlasGetNumThreadsLocal", "BlasGetParallel"],
+    "sve_locking_dynamic_dependencies": ["libm.so.6", "libc.so.6", "ld-linux-aarch64.so.1"],
+    "complete_proprietary_implementation_source_obtained": false,
+    "runtime_hbw_allocation_proved_by_this_inspection": false,
+    "runtime_sdma_overlap_proved_by_this_inspection": false,
+    "runtime_sme_arithmetic_proved_by_this_inspection": false
+  }
+}

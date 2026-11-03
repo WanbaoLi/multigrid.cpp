@@ -1,0 +1,12 @@
+{
+  "context_environment": {
+    "LQCD_COARSE_FUSED": 0,
+    "LQCD_ARM_COARSE_SVE": 0,
+    "LQCD_ARM_SVE": 1,
+    "LQCD_ARM_SVE_PLANNED": 0,
+    "LQCD_ARM_SVE_TRANSFER": 0,
+    "LQCD_HBW_ALLOC": "off",
+    "LQCD_HBM": "off"
+  },
+  "cases": [{"id":"full12","threads":37,"batch":2,"environment":{}}]
+}
