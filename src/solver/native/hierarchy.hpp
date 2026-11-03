@@ -80,6 +80,7 @@ struct NativeMG::Impl {
     mutable FloatField coarse_schur_hop, coarse_schur_extended;
     bool coarse_fused = setting("LQCD_COARSE_FUSED", 0) != 0;
     bool coarse_sve = setting("LQCD_ARM_COARSE_SVE", 0) != 0;
+    bool coarse_batch_reduce = false;
     mutable bool coarse_pack_ready = false;
     mutable FloatField coarse_columns, coarse_inverse_columns;
     void prepare_coarse_columns() const;
@@ -172,6 +173,9 @@ struct NativeMG::Impl {
     void verify_coarse_eo(const FloatField &probe) const;
 
     void coarse_solve(const FloatField &b, FloatField &x) const;
+
+    void coarse_solve_batch(const std::vector<FloatField> &sources,
+                            std::vector<FloatField> &destinations, int nrhs) const;
 
     void precondition(const Field &b, Field &out);
 

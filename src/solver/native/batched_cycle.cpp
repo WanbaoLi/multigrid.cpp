@@ -57,8 +57,11 @@ void NativeMG::Impl::apply_vcycle_batch(const std::vector<const FloatField *> &s
     }
     restrict_seconds += wall_seconds() - t;
     t = wall_seconds();
-    for (int r = 0; r < nrhs; r++)
-        coarse_solve(batch_coarse_rhs[r], batch_coarse_correction[r]);
+    if (coarse_batch_reduce)
+        coarse_solve_batch(batch_coarse_rhs, batch_coarse_correction, nrhs);
+    else
+        for (int r = 0; r < nrhs; r++)
+            coarse_solve(batch_coarse_rhs[r], batch_coarse_correction[r]);
     coarse_seconds += wall_seconds() - t;
     t = wall_seconds();
 #if defined(LQCD_NATIVE_AVX512_TRANSFER)

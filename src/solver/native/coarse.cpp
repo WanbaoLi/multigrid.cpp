@@ -1,6 +1,7 @@
 #include "hierarchy.hpp"
 #include "kernels.hpp"
 #include <cmath>
+#include <iostream>
 
 using namespace lqcd_native::detail;
 
@@ -130,6 +131,71 @@ bool coarse_gcr_fused_step(FloatField &q, FloatField &z, FloatField &x,
         MPI_Allreduce(MPI_IN_PLACE, &rr, 1, MPI_DOUBLE, MPI_SUM, native_comm);
     rn = std::sqrt(rr);
     return true;
+}
+
+// Local pieces for the opt-in independent-RHS reduction batch. Keep the
+// established scalar implementation above unchanged. Each loop uses the same
+// arithmetic order/precision and OMP threshold as its scalar counterpart;
+// only MPI reductions across independent RHS slots are combined below.
+double coarse_batch_norm_local(const FloatField &v) {
+    double sum = 0;
+#pragma omp parallel for reduction(+ : sum) schedule(static) if (v.size() > 100000)
+    for (size_t i = 0; i < v.size(); ++i)
+        sum += (double)v[i] * v[i];
+    return sum;
+}
+
+Complex coarse_batch_dot_local(const FloatField &basis, const FloatField &q) {
+    double re = 0, im = 0;
+#pragma omp parallel for reduction(+ : re, im) schedule(static) if (basis.size() > 100000)
+    for (size_t k = 0; k < basis.size() / 2; ++k) {
+        re += (double)basis[2 * k] * q[2 * k] +
+              (double)basis[2 * k + 1] * q[2 * k + 1];
+        im += (double)basis[2 * k] * q[2 * k + 1] -
+              (double)basis[2 * k + 1] * q[2 * k];
+    }
+    return {re, im};
+}
+
+std::array<double, 3> coarse_batch_moments_local(const FloatField &q, const FloatField &r) {
+    double qq = 0, qr_re = 0, qr_im = 0;
+#pragma omp parallel for reduction(+ : qq, qr_re, qr_im) schedule(static) if (q.size() > 100000)
+    for (size_t k = 0; k < q.size() / 2; ++k) {
+        const size_t re = 2 * k, im = re + 1;
+        const double a = q[re], b = q[im];
+        qq += a * a + b * b;
+        qr_re += a * r[re] + b * r[im];
+        qr_im += a * r[im] - b * r[re];
+    }
+    return {qq, qr_re, qr_im};
+}
+
+double coarse_batch_update_local(FloatField &q, FloatField &z, FloatField &x,
+                                  FloatField &r, const double *moments) {
+    const double den = std::sqrt(moments[0]);
+    const float ar = moments[1] / den, ai = moments[2] / den;
+    double rr = 0;
+#pragma omp parallel for reduction(+ : rr) schedule(static) if (q.size() > 100000)
+    for (size_t k = 0; k < q.size() / 2; ++k) {
+        const size_t re = 2 * k, im = re + 1;
+        q[re] /= den;
+        q[im] /= den;
+        z[re] /= den;
+        z[im] /= den;
+        x[re] += ar * z[re] - ai * z[im];
+        x[im] += ar * z[im] + ai * z[re];
+        r[re] += -ar * q[re] + ai * q[im];
+        r[im] += -ar * q[im] - ai * q[re];
+        rr += (double)r[re] * r[re] + (double)r[im] * r[im];
+    }
+    return rr;
+}
+
+void coarse_batch_sum(std::vector<double> &values) {
+    // Width is at most 3*12. No MPI calls occur inside an OpenMP region.
+    if (native_size > 1)
+        MPI_Allreduce(MPI_IN_PLACE, values.data(), static_cast<int>(values.size()),
+                      MPI_DOUBLE, MPI_SUM, native_comm);
 }
 } // namespace
 
@@ -587,4 +653,183 @@ void NativeMG::Impl::coarse_solve(const FloatField &b, FloatField &x) const {
             coarse_axpy(r, -1., q);
         }
     }
+}
+
+void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
+                                        std::vector<FloatField> &destinations, int nrhs) const {
+    if (nrhs < 1 || nrhs > 12 || static_cast<size_t>(nrhs) > sources.size())
+        throw std::runtime_error("coarse batch requires one to twelve matching RHS fields");
+    if (destinations.size() < static_cast<size_t>(nrhs))
+        destinations.resize(nrhs);
+    // This first candidate implements precisely the default EO/MGS/fused
+    // algorithm. Other valid modes retain the previously tested scalar path.
+    if (!coarse_batch_reduce || nrhs == 1 || !coarse_eo || coarse_cgs2 ||
+        !setting("LQCD_GCR_FUSED", 1)) {
+        for (int r = 0; r < nrhs; ++r)
+            coarse_solve(sources[r], destinations[r]);
+        return;
+    }
+    CoarseThreadScope coarse_team(coarse_threads);
+    struct State {
+        FloatField reduced, residual, solution, direction, image;
+        std::vector<FloatField> directions, images;
+        double source_norm = 0, residual_norm = 0;
+        int iterations = 0, restarts = 0, refreshes = 0;
+        bool stopped = false;
+    };
+    std::vector<State> states(nrhs);
+    int reduction_rounds = 0;
+    auto reduce = [&](std::vector<double> &values) {
+        coarse_batch_sum(values);
+        ++reduction_rounds;
+    };
+    auto report = [&]() {
+        if (!setting("LQCD_VERBOSE", 0) || native_rank != 0) return;
+        std::cerr << "native coarse batch reduce {\"nrhs\":" << nrhs
+                  << ",\"coarse_it_limit\":" << coarse_it
+                  << ",\"coarse_tolerance\":" << coarse_tolerance
+                  << ",\"reduction_rounds\":" << reduction_rounds
+                  << ",\"allreduce_calls\":" << (native_size > 1 ? reduction_rounds : 0);
+        const char *names[] = {"iterations", "restarts", "refreshes", "capped"};
+        for (int metric = 0; metric < 4; ++metric) {
+            std::cerr << ",\"" << names[metric] << "\":[";
+            for (int r = 0; r < nrhs; ++r) {
+                const auto &state = states[r];
+                const int value = metric == 0 ? state.iterations :
+                                  metric == 1 ? state.restarts :
+                                  metric == 2 ? state.refreshes :
+                                  (!state.stopped && state.iterations == coarse_it &&
+                                   state.residual_norm >= coarse_tolerance * state.source_norm);
+                std::cerr << (r ? "," : "") << value;
+            }
+            std::cerr << ']';
+        }
+        std::cerr << '}' << std::endl;
+    };
+    std::vector<double> sums(nrhs, 0.);
+    for (int r = 0; r < nrhs; ++r) {
+        destinations[r].assign(sources[r].size(), 0.f);
+        states[r].solution.assign(sources[r].size(), 0.f);
+        sums[r] = coarse_batch_norm_local(sources[r]);
+    }
+    reduce(sums);
+    bool nonzero = false;
+    for (int r = 0; r < nrhs; ++r) {
+        auto &state = states[r];
+        state.source_norm = std::sqrt(sums[r]);
+        state.stopped = state.source_norm == 0;
+        nonzero |= !state.stopped;
+        if (state.stopped) continue;
+        // Matvec/halo calls remain sequential in ascending RHS order. Each
+        // call completes all communication before shared scratch is reused.
+        coarse_reduced_rhs(sources[r], state.reduced);
+        state.residual = state.reduced;
+    }
+    if (!nonzero) {
+        report();
+        return;
+    }
+    std::fill(sums.begin(), sums.end(), 0.);
+    for (int r = 0; r < nrhs; ++r)
+        if (!states[r].stopped)
+            sums[r] = coarse_batch_norm_local(states[r].residual);
+    reduce(sums);
+    for (int r = 0; r < nrhs; ++r)
+        states[r].residual_norm = std::sqrt(sums[r]);
+
+    std::vector<int> active, refreshed;
+    active.reserve(nrhs);
+    refreshed.reserve(nrhs);
+    std::vector<double> projections(2 * nrhs), moments(3 * nrhs);
+    // Iteration limits are per RHS. A converged/broken-down RHS never advances
+    // another RHS's history. Every decision uses a globally reduced scalar,
+    // so active sets and collective order agree on all MPI ranks.
+    for (int it = 0; it < coarse_it; ++it) {
+        active.clear();
+        size_t maximum_history = 0;
+        for (int r = 0; r < nrhs; ++r) {
+            auto &state = states[r];
+            if (state.stopped || !(state.residual_norm >= coarse_tolerance * state.source_norm))
+                continue;
+            active.push_back(r);
+            ++state.iterations;
+            coarse_diagonal(state.residual, state.direction, 0, true);
+            coarse_schur(state.direction, state.image);
+            maximum_history = std::max(maximum_history, state.images.size());
+        }
+        if (active.empty()) break;
+
+        // Modified Gram-Schmidt order is retained separately for every RHS:
+        // projection j is applied before projection j+1. The packed reduction
+        // contains only independent per-RHS dot products, no cross-RHS Gram.
+        for (size_t j = 0; j < maximum_history; ++j) {
+            std::fill(projections.begin(), projections.end(), 0.);
+            for (int r : active) {
+                const auto &state = states[r];
+                if (j >= state.images.size()) continue;
+                const Complex beta = coarse_batch_dot_local(state.images[j], state.image);
+                projections[2 * r] = beta.real();
+                projections[2 * r + 1] = beta.imag();
+            }
+            reduce(projections);
+            for (int r : active) {
+                auto &state = states[r];
+                if (j >= state.images.size()) continue;
+                const Complex beta(projections[2 * r], projections[2 * r + 1]);
+                coarse_axpy(state.image, -beta, state.images[j]);
+                coarse_axpy(state.direction, -beta, state.directions[j]);
+            }
+        }
+        std::fill(moments.begin(), moments.end(), 0.);
+        for (int r : active) {
+            const auto local = coarse_batch_moments_local(states[r].image, states[r].residual);
+            std::copy(local.begin(), local.end(), moments.begin() + 3 * r);
+        }
+        reduce(moments);
+        std::fill(sums.begin(), sums.end(), 0.);
+        for (int r : active) {
+            auto &state = states[r];
+            if (std::sqrt(moments[3 * r]) < 1e-30) {
+                state.stopped = true; // Same early-break behavior as scalar GCR.
+                continue;
+            }
+            sums[r] = coarse_batch_update_local(state.image, state.direction,
+                state.solution, state.residual, moments.data() + 3 * r);
+        }
+        reduce(sums);
+        refreshed.clear();
+        for (int r : active) {
+            auto &state = states[r];
+            if (state.stopped) continue;
+            state.residual_norm = std::sqrt(sums[r]);
+            state.directions.push_back(std::move(state.direction));
+            state.images.push_back(std::move(state.image));
+            if (state.residual_norm < coarse_tolerance * state.source_norm ||
+                state.images.size() == 16) {
+                ++state.refreshes;
+                state.restarts += state.images.size() == 16;
+                FloatField actual;
+                coarse_schur(state.solution, actual);
+                state.residual = state.reduced;
+                coarse_axpy(state.residual, -1., actual);
+                refreshed.push_back(r);
+            }
+        }
+        if (!refreshed.empty()) {
+            std::fill(sums.begin(), sums.end(), 0.);
+            for (int r : refreshed)
+                sums[r] = coarse_batch_norm_local(states[r].residual);
+            reduce(sums);
+            for (int r : refreshed) {
+                auto &state = states[r];
+                state.residual_norm = std::sqrt(sums[r]);
+                state.images.clear();
+                state.directions.clear();
+            }
+        }
+    }
+    for (int r = 0; r < nrhs; ++r)
+        if (states[r].source_norm != 0)
+            coarse_reconstruct(sources[r], states[r].solution, destinations[r]);
+    report();
 }

@@ -38,7 +38,8 @@ with Solver(lat,grid,mass=.05,csw=1.160920226,block=(2,2,2,2),threads=2+comm.ran
   assert np.sqrt(difference/reference)<2e-9
  settings=dict(LQCD_MG_SAP_STEPS='2',LQCD_MG_SAP_CYCLES='1',LQCD_MG_COARSE_IT='20',
                LQCD_MG_COARSE_TOL='.3',LQCD_CORRECTION_BASE_TOL='.01',
-               LQCD_FLOAT_CORRECTION_VERIFY='0',LQCD_FINE_TEAM_FUSED='1',LQCD_COARSE_THREADS='0')
+               LQCD_FLOAT_CORRECTION_VERIFY='0',LQCD_FINE_TEAM_FUSED='1',LQCD_COARSE_THREADS='0',
+               LQCD_COARSE_BATCH_REDUCE='0',LQCD_GCR_FUSED='1')
  os.environ.update(settings);check()
  for verify in ('0','1'):
   for team in ('0','1'):
@@ -46,7 +47,8 @@ with Solver(lat,grid,mass=.05,csw=1.160920226,block=(2,2,2,2),threads=2+comm.ran
  for key,bad in [('LQCD_MG_SAP_STEPS','2.5'),('LQCD_MG_COARSE_TOL','nan'),
                  ('LQCD_CORRECTION_BASE_TOL','0'),('LQCD_FINE_TEAM_FUSED','2'),
                  ('LQCD_COARSE_THREADS','-1'),('LQCD_COARSE_THREADS','1.5'),
-                 ('LQCD_COARSE_THREADS','609')]:
+                 ('LQCD_COARSE_THREADS','609'),('LQCD_COARSE_BATCH_REDUCE','2'),
+                 ('LQCD_COARSE_BATCH_REDUCE','nan'),('LQCD_GCR_FUSED','2')]:
   good=os.environ.get(key)
   os.environ[key]=bad if comm.rank==0 else settings[key]
   try:solver.solve(rhs,layout='lex')
