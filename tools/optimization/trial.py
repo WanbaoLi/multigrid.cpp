@@ -88,8 +88,10 @@ def main():
             configure += ['-DCMAKE_EXE_LINKER_FLAGS='+flags,'-DCMAKE_SHARED_LINKER_FLAGS='+flags]
         stage('configure',configure,180)
         stage('build',['cmake','--build',build,'-j','16'],480)
+        test_environment = {key:str(value) for key,value in plan.get('context_environment',{}).items()}
+        test_environment.update(OMP_NUM_THREADS='2',OMP_PLACES='cores',OMP_PROC_BIND='close')
         stage('ctest',['ctest','--test-dir',build,'--output-on-failure','-R',args.test_regex],1800,
-              {'OMP_NUM_THREADS':'2','OMP_PLACES':'cores','OMP_PROC_BIND':'close'})
+              test_environment)
         library = build/'liblqcd_cpu.so'
     maximum = max(case['threads'] for case in plan['cases'])
     command = [sys.executable,source/'tools/run_numa.py']
