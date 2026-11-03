@@ -661,12 +661,23 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
         throw std::runtime_error("coarse batch requires one to twelve matching RHS fields");
     if (destinations.size() < static_cast<size_t>(nrhs))
         destinations.resize(nrhs);
+    if (coarse_batch_halo) coarse_batch_halo_stats = {};
+    auto report_halo_batch = [&]() {
+        if (!coarse_batch_halo || !setting("LQCD_VERBOSE", 0) || native_rank != 0) return;
+        const auto &stats = coarse_batch_halo_stats;
+        std::cerr << "native coarse batch halo {\"calls\":" << stats.calls
+                  << ",\"send_bytes\":" << stats.send_bytes
+                  << ",\"rhs_slots\":" << stats.rhs_slots
+                  << ",\"max_width\":" << stats.max_width
+                  << ",\"aggregation\":\"rank0_local_sums\"}" << std::endl;
+    };
     // This first candidate implements precisely the default EO/MGS/fused
     // algorithm. Other valid modes retain the previously tested scalar path.
     if (!coarse_batch_reduce || nrhs == 1 || !coarse_eo || coarse_cgs2 ||
         !setting("LQCD_GCR_FUSED", 1)) {
         for (int r = 0; r < nrhs; ++r)
             coarse_solve(sources[r], destinations[r]);
+        report_halo_batch();
         return;
     }
     CoarseThreadScope coarse_team(coarse_threads);
@@ -705,6 +716,7 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
             std::cerr << ']';
         }
         std::cerr << '}' << std::endl;
+        report_halo_batch();
     };
     std::vector<double> sums(nrhs, 0.);
     for (int r = 0; r < nrhs; ++r) {
@@ -720,14 +732,29 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
         state.stopped = state.source_norm == 0;
         nonzero |= !state.stopped;
         if (state.stopped) continue;
-        // Matvec/halo calls remain sequential in ascending RHS order. Each
-        // call completes all communication before shared scratch is reused.
-        coarse_reduced_rhs(sources[r], state.reduced);
-        state.residual = state.reduced;
+        if (!coarse_batch_halo) {
+            // Reduction-only default retains its sequential matvec order.
+            coarse_reduced_rhs(sources[r], state.reduced);
+            state.residual = state.reduced;
+        }
     }
     if (!nonzero) {
         report();
         return;
+    }
+    std::vector<const FloatField *> halo_sources, halo_solutions;
+    std::vector<FloatField *> halo_outputs;
+    if (coarse_batch_halo) {
+        // Source norms are globally reduced, hence this ascending slot map
+        // agrees across ranks even when zero sources or stopped slots differ.
+        for (int r = 0; r < nrhs; ++r)
+            if (!states[r].stopped) {
+                halo_sources.push_back(&sources[r]);
+                halo_outputs.push_back(&states[r].reduced);
+            }
+        coarse_reduced_rhs_batch(halo_sources, halo_outputs);
+        for (int r = 0; r < nrhs; ++r)
+            if (!states[r].stopped) states[r].residual = states[r].reduced;
     }
     std::fill(sums.begin(), sums.end(), 0.);
     for (int r = 0; r < nrhs; ++r)
@@ -754,10 +781,19 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
             active.push_back(r);
             ++state.iterations;
             coarse_diagonal(state.residual, state.direction, 0, true);
-            coarse_schur(state.direction, state.image);
+            if (!coarse_batch_halo) coarse_schur(state.direction, state.image);
             maximum_history = std::max(maximum_history, state.images.size());
         }
         if (active.empty()) break;
+        if (coarse_batch_halo) {
+            halo_sources.clear();
+            halo_outputs.clear();
+            for (int r : active) {
+                halo_sources.push_back(&states[r].direction);
+                halo_outputs.push_back(&states[r].image);
+            }
+            coarse_schur_batch(halo_sources, halo_outputs);
+        }
 
         // Modified Gram-Schmidt order is retained separately for every RHS:
         // projection j is applied before projection j+1. The packed reduction
@@ -808,14 +844,33 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
                 state.images.size() == 16) {
                 ++state.refreshes;
                 state.restarts += state.images.size() == 16;
-                FloatField actual;
-                coarse_schur(state.solution, actual);
-                state.residual = state.reduced;
-                coarse_axpy(state.residual, -1., actual);
+                if (!coarse_batch_halo) {
+                    FloatField actual;
+                    coarse_schur(state.solution, actual);
+                    state.residual = state.reduced;
+                    coarse_axpy(state.residual, -1., actual);
+                }
                 refreshed.push_back(r);
             }
         }
         if (!refreshed.empty()) {
+            if (coarse_batch_halo) {
+                // Refresh only columns whose own criterion triggered. Never
+                // force another column's refresh/restart to join a message.
+                std::vector<FloatField> actual(refreshed.size());
+                halo_sources.clear();
+                halo_outputs.clear();
+                for (size_t slot = 0; slot < refreshed.size(); ++slot) {
+                    halo_sources.push_back(&states[refreshed[slot]].solution);
+                    halo_outputs.push_back(&actual[slot]);
+                }
+                coarse_schur_batch(halo_sources, halo_outputs);
+                for (size_t slot = 0; slot < refreshed.size(); ++slot) {
+                    auto &state = states[refreshed[slot]];
+                    state.residual = state.reduced;
+                    coarse_axpy(state.residual, -1., actual[slot]);
+                }
+            }
             std::fill(sums.begin(), sums.end(), 0.);
             for (int r : refreshed)
                 sums[r] = coarse_batch_norm_local(states[r].residual);
@@ -828,8 +883,21 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
             }
         }
     }
-    for (int r = 0; r < nrhs; ++r)
-        if (states[r].source_norm != 0)
-            coarse_reconstruct(sources[r], states[r].solution, destinations[r]);
+    if (coarse_batch_halo) {
+        halo_sources.clear();
+        halo_solutions.clear();
+        halo_outputs.clear();
+        for (int r = 0; r < nrhs; ++r)
+            if (states[r].source_norm != 0) {
+                halo_sources.push_back(&sources[r]);
+                halo_solutions.push_back(&states[r].solution);
+                halo_outputs.push_back(&destinations[r]);
+            }
+        coarse_reconstruct_batch(halo_sources, halo_solutions, halo_outputs);
+    } else {
+        for (int r = 0; r < nrhs; ++r)
+            if (states[r].source_norm != 0)
+                coarse_reconstruct(sources[r], states[r].solution, destinations[r]);
+    }
     report();
 }

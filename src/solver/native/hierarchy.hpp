@@ -3,6 +3,7 @@
 #include "batched_state.hpp"
 #include "multigrid.hpp"
 #include <cstddef>
+#include <cstdint>
 #include "../../support/hbw_buffer.hpp"
 
 using lqcd_native::detail::FloatField;
@@ -81,6 +82,12 @@ struct NativeMG::Impl {
     bool coarse_fused = setting("LQCD_COARSE_FUSED", 0) != 0;
     bool coarse_sve = setting("LQCD_ARM_COARSE_SVE", 0) != 0;
     bool coarse_batch_reduce = false;
+    bool coarse_batch_halo = false;
+    struct CoarseBatchHaloStats {
+        std::uint64_t calls = 0, send_bytes = 0, rhs_slots = 0;
+        int max_width = 0;
+    };
+    mutable CoarseBatchHaloStats coarse_batch_halo_stats;
     mutable bool coarse_pack_ready = false;
     mutable FloatField coarse_columns, coarse_inverse_columns;
     void prepare_coarse_columns() const;
@@ -94,6 +101,10 @@ struct NativeMG::Impl {
     mutable FloatField send_lower, send_upper, recv_lower, recv_upper;
     mutable Field double_recv_lower, double_recv_upper;
     mutable FloatField coarse_send_lower, coarse_send_upper, coarse_recv_lower, coarse_recv_upper;
+    // Dedicated RHS-major faces: no alias with scalar coarse/fine halos and
+    // no send mutation while any request remains active.
+    mutable FloatField coarse_batch_send_lower, coarse_batch_send_upper;
+    mutable FloatField coarse_batch_recv_lower, coarse_batch_recv_upper;
     bool halo_overlap = setting("LQCD_HALO_OVERLAP", 1) != 0;
     bool coarse_empty_interior = setting("LQCD_COARSE_EMPTY_INTERIOR", 1) != 0;
     bool coarse_spatial_overlap = setting("LQCD_COARSE_SPATIAL_OVERLAP", 0) != 0;
@@ -157,6 +168,22 @@ struct NativeMG::Impl {
 
     void coarse_apply(const FloatField &src, FloatField &out, int color = -1,
                       bool diagonal = true) const;
+
+    // Opt-in independent-RHS halo batching. Explicit ghosts preserve scalar
+    // scratch isolation and keep the established scalar matvec untouched.
+    void coarse_block_apply_ghosts(int cb, const FloatField &src, FloatField &out,
+                                   const float *lower, const float *upper,
+                                   int dir_begin, int dir_end, bool add) const;
+    void coarse_apply_batch(const std::vector<const FloatField *> &sources,
+                             const std::vector<FloatField *> &outputs,
+                             int color = -1, bool diagonal = true) const;
+    void coarse_schur_batch(const std::vector<const FloatField *> &sources,
+                             const std::vector<FloatField *> &outputs) const;
+    void coarse_reduced_rhs_batch(const std::vector<const FloatField *> &sources,
+                                   const std::vector<FloatField *> &outputs) const;
+    void coarse_reconstruct_batch(const std::vector<const FloatField *> &sources,
+                                   const std::vector<const FloatField *> &solutions,
+                                   const std::vector<FloatField *> &outputs) const;
 
     void coarse_diagonal(const FloatField &src, FloatField &out, int color, bool inverse) const;
 
