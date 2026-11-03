@@ -266,6 +266,61 @@ def snapshot(root, name):
     return data["snapshot"]
 
 
+def snapshot_from(root, name, parent_name):
+    """Remeasure verified frozen source without checking out an old repo HEAD.
+
+    The parent's manifest/archive are copied byte-for-byte; only the new source
+    and build locations differ. Numerical evidence remains per-attempt and is
+    never inherited. A measured control is an eligible parent as long as its
+    complete report, independent verification, source and binary still verify.
+    """
+    root, config = campaign(root)
+    require(name != parent_name, "Source parent must be a different attempt")
+    with locked(root):
+        path = attempt_path(root, name)
+        parent_path = attempt_path(root, parent_name)
+        parent, _, _ = checked_attempt(root, parent_name, config)
+        data = read(path / "attempt.json")
+        if "snapshot" in data:
+            require(data["snapshot"].get("origin_attempt") == parent_name,
+                    "Existing snapshot has a different source origin")
+            check_snapshot(path, data)
+            require(data["snapshot"]["source_manifest_sha256"] ==
+                    parent["snapshot"]["source_manifest_sha256"],
+                    "Source parent manifest changed")
+            return data["snapshot"]
+        require(not (path / "seal.json").exists(), "Attempt is sealed")
+        require(not (path / "source").exists() and not (path / "build").exists(),
+                "Incomplete copied snapshot exists; retain it and use a new attempt")
+        source = path / "source"
+        source.mkdir()
+        manifest = read(parent_path / "source-manifest.json")
+        for entry in manifest["files"]:
+            if entry.get("deleted"):
+                continue
+            relative = Path(entry["path"])
+            require(not relative.is_absolute() and ".." not in relative.parts,
+                    "Unsafe parent source path")
+            destination = source / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(parent_path / "source" / relative, destination)
+        for filename in ("source-manifest.json", "source.tar.gz", "source.diff", "git-status.txt"):
+            shutil.copy2(parent_path / filename, path / filename)
+        (path / "build").mkdir()
+        data["snapshot"] = dict(parent["snapshot"], source=str(source),
+            build=str(path / "build"), origin_attempt=parent_name,
+            origin_report_sha256=parent["report"]["sha256"],
+            origin_library_sha256=parent["report"]["library_sha256"])
+        # Copying the source does not copy tests, performance or numerical passes.
+        data["status"] = "snapshotted"
+        check_snapshot(path, data)
+        check_snapshot(parent_path, parent)
+        check_artifact(parent_path, parent)
+        atomic(path / "attempt.json", data)
+        event(root, "snapshot_from", {"attempt": name, **data["snapshot"]})
+    return data["snapshot"]
+
+
 def check_snapshot(path, data):
     require("snapshot" in data, "Snapshot source before running or ingesting")
     snapshot = data["snapshot"]
@@ -636,8 +691,10 @@ def main(argv=None):
     proposal = subs.add_parser("propose")
     proposal.add_argument("id")
     proposal.add_argument("--proposal", required=True, help="JSON file")
-    for action in ("snapshot", "seal"):
-        subs.add_parser(action).add_argument("id")
+    snapshot_parser = subs.add_parser("snapshot")
+    snapshot_parser.add_argument("id")
+    snapshot_parser.add_argument("--from-attempt", help="Copy verified frozen source instead of current repository HEAD")
+    subs.add_parser("seal").add_argument("id")
     run = subs.add_parser("run")
     run.add_argument("id")
     run.add_argument("--stage", required=True)
@@ -677,7 +734,7 @@ def main(argv=None):
         elif args.action == "propose":
             result = propose(root, args.id, read(args.proposal))
         elif args.action == "snapshot":
-            result = snapshot(root, args.id)
+            result = snapshot_from(root, args.id, args.from_attempt) if args.from_attempt else snapshot(root, args.id)
         elif args.action == "run":
             result = run_stage(root, args.id, args.stage, read(args.command),
                                args.retry_interrupted, args.retry_failed, args.reason)

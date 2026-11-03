@@ -199,6 +199,55 @@ class CampaignTest(unittest.TestCase):
         with self.assertRaisesRegex(ledger.EvidenceError, "Unrecorded source"):
             ledger.snapshot(self.campaign, "dirty")
 
+    def test_fresh_control_preserves_old_source_after_repo_head_advances(self):
+        baseline = self.baseline()
+        old_head = ledger.git(self.repo, "rev-parse", "HEAD")
+        (self.repo / "solver.cpp").write_text("int faster_candidate = 2;\n")
+        self.git("add", "solver.cpp")
+        self.git("-c", "user.name=Test", "-c", "user.email=test@example.com", "commit", "-qm", "candidate")
+        new_head = ledger.git(self.repo, "rev-parse", "HEAD")
+        self.assertNotEqual(old_head, new_head)
+        ledger.propose(self.campaign, "fresh-control", self.proposal())
+        copied = ledger.snapshot_from(self.campaign, "fresh-control", "baseline")
+        self.assertEqual(copied["source_manifest_sha256"], baseline["source_manifest_sha256"])
+        self.assertEqual(copied["git_head"], old_head)
+        control_path = self.campaign / "attempts" / "fresh-control"
+        self.assertEqual((control_path / "source" / "solver.cpp").read_text(), "int baseline = 1;\n")
+        self.assertEqual(list((control_path / "build").iterdir()), [])
+        control_state = ledger.read(control_path / "attempt.json")
+        self.assertNotIn("report", control_state)
+        self.assertEqual(control_state["stages"], {})
+        self.assertEqual(copied, ledger.snapshot_from(self.campaign, "fresh-control", "baseline"))
+        new_allocation = {"host":"new-node", "allocation":"fresh", "physical_problem":"fixture"}
+        self.ingest("fresh-control", self.report("fresh-control", comparison_key=new_allocation))
+
+        self.library.write_bytes(b"correct faster implementation after new HEAD")
+        candidate = self.create("new-candidate")
+        self.assertEqual(candidate["git_head"], new_head)
+        self.assertNotEqual(candidate["source_manifest_sha256"], copied["source_manifest_sha256"])
+        self.ingest("new-candidate", self.report("new-candidate", (8.,8.1,7.9), comparison_key=new_allocation))
+        selected = ledger.promote(self.campaign, "new-candidate", against="fresh-control")
+        self.assertAlmostEqual(selected["gain"], .2)
+        self.assertEqual(ledger.git(self.repo, "rev-parse", "HEAD"), new_head)
+        self.assertEqual((self.repo / "solver.cpp").read_text(), "int faster_candidate = 2;\n")
+
+    def test_copied_source_parent_needs_verified_artifacts(self):
+        self.create("unverified-parent")
+        ledger.propose(self.campaign, "control", self.proposal())
+        with self.assertRaisesRegex(ledger.EvidenceError, "complete report"):
+            ledger.snapshot_from(self.campaign, "control", "unverified-parent")
+        self.baseline()
+        archive = self.campaign / "attempts" / "baseline" / "source.tar.gz"
+        original = archive.read_bytes()
+        archive.write_bytes(b"corrupt archive")
+        with self.assertRaisesRegex(ledger.EvidenceError, "archive changed"):
+            ledger.snapshot_from(self.campaign, "control", "baseline")
+        archive.write_bytes(original)
+        artifact = self.campaign / "attempts" / "baseline" / "artifacts" / "liblqcd_cpu.so"
+        artifact.write_bytes(b"unverified replacement")
+        with self.assertRaisesRegex(ledger.EvidenceError, "library is missing/changed"):
+            ledger.snapshot_from(self.campaign, "control", "baseline")
+
     def test_successful_stage_resume_is_idempotent(self):
         self.create("run")
         command = {"argv": [sys.executable, "-c", "from pathlib import Path; p=Path('counter'); p.write_text(p.read_text()+'x' if p.exists() else 'x')"],

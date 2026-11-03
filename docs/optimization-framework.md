@@ -88,6 +88,21 @@ python tools/optimization/campaign.py --campaign CAMPAIGN snapshot baseline
 未提交修改伪装成基线代码；归档保存实际文件。每轮独立快照后再构建，禁止边编译
 边修改同一快照。源树、库和输入内容同时记录，路径名称不能代替版本证据。
 
+仓库 HEAD 前进、或换到新节点后，需要重新测量冻结的最佳版作为控制。不要为此
+回退工作树或把旧二进制标记为当前新源码。先正常阅读历史并提案，再执行：
+
+```bash
+python tools/optimization/campaign.py --campaign CAMPAIGN snapshot fresh-control \
+  --from-attempt accepted-best
+```
+
+这会逐项复核父轮的完整报告、独立精度证据、源码和实际库，将已冻结的源码清单及
+归档按原字节复制到新轮，保留原 `source_manifest_sha256` 和 Git HEAD。新轮得到独立
+源码位置和空构建目录，记录 `origin_attempt`、父报告及父库摘要，但不继承测试或
+性能通过状态。父轮可以是正确且完整的已验收版本，也可以是已独立验证的测量控制。
+新轮仍须重新测量与验证；候选随后用 `--against fresh-control` 比较。该操作不会
+改变当前仓库 HEAD 或文件。中断产生的半份复制保留以供检查，需使用新的实验 ID。
+
 ## 有界运行、中断恢复
 
 运行命令使用 JSON 参数数组，不拼接 shell。`{source}`、`{build}`、`{attempt}`、

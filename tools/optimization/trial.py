@@ -22,6 +22,7 @@ def main():
     p.add_argument('--backend', choices=['arm','x86'], required=True)
     p.add_argument('--allocation', required=True)
     p.add_argument('--reuse-attempt')
+    p.add_argument('--source-from')
     p.add_argument('--against')
     p.add_argument('--baseline', action='store_true')
     p.add_argument('--diagnostic', action='store_true')
@@ -35,7 +36,8 @@ def main():
         proposal = ledger.read(args.proposal)
         proposal['history_read_token'] = history['history_read_token']
         ledger.propose(root, args.id, proposal)
-    snapshot = ledger.snapshot(root, args.id)
+    snapshot = (ledger.snapshot_from(root,args.id,args.source_from) if args.source_from
+                else ledger.snapshot(root, args.id))
     source, build = Path(snapshot['source']), Path(snapshot['build'])
     plan = ledger.read(args.plan)
     if len(plan['cases']) != 1:
@@ -76,6 +78,14 @@ def main():
             configure.append('-DLQCD_MPI_FLAGS='+os.environ['LQCD_MPI_FLAGS'])
         if os.environ.get('LQCD_EXPERIMENT_KUPL_ROOT'):
             configure += ['-DLQCD_KUPL_HBW=ON','-DLQCD_KUPL_ROOT='+os.environ['LQCD_EXPERIMENT_KUPL_ROOT']]
+        if os.environ.get('LQCD_EXPERIMENT_CXX_RUNTIME'):
+            runtime = Path(os.environ['LQCD_EXPERIMENT_CXX_RUNTIME']).resolve()
+            if not (runtime/'libstdc++.so').is_file():
+                raise RuntimeError('Requested C++ runtime directory is incomplete')
+            # GCC searches its own implicit directories before LIBRARY_PATH;
+            # an explicit -L is needed for the SDK GLIBCXX_3.4.30 dependency.
+            flags=f'-L{runtime} -Wl,-rpath,{runtime}'
+            configure += ['-DCMAKE_EXE_LINKER_FLAGS='+flags,'-DCMAKE_SHARED_LINKER_FLAGS='+flags]
         stage('configure',configure,180)
         stage('build',['cmake','--build',build,'-j','16'],480)
         stage('ctest',['ctest','--test-dir',build,'--output-on-failure','-R',args.test_regex],1800,
