@@ -62,6 +62,16 @@ class BenchmarkContractTest(unittest.TestCase):
         self.assertNotIn('LQCD_COARSE_CGS2', os.environ)
         self.assertEqual(os.environ['LQCD_VERBOSE'], '1')
 
+    def test_fixed_placement_and_setup_allow_smaller_solve_teams(self):
+        plan = dict(placement_threads=37,setup_threads=37,cases=[
+            dict(id='full',threads=37,batch=2),dict(id='reduced',threads=16,batch=2)])
+        bench.validate_plan(plan,set())
+        for key,value in [('placement_threads',32),('setup_threads',38),
+                          ('placement_threads',0),('setup_threads',True)]:
+            with self.subTest(key=key,value=value):
+                with self.assertRaises(RuntimeError):
+                    bench.validate_plan({**plan,key:value},set())
+
     def test_cached_verification_rechecks_all_saved_evidence(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -96,12 +106,10 @@ class BenchmarkContractTest(unittest.TestCase):
 
     def test_termination_waits_and_escalates_before_return(self):
         process = mock.Mock(pid=12345)
-        with mock.patch.object(worker.os,'killpg',create=True) as kill, \
-                mock.patch.object(worker.signal,'SIGKILL',9,create=True):
-            worker.terminate_group(process,grace=0)
-        self.assertEqual(kill.call_args_list,
-                         [mock.call(12345,signal.SIGTERM),mock.call(12345,9)])
-        process.wait.assert_called_once()
+        result = dict(complete=True,surviving_pids=[])
+        with mock.patch.object(worker.process_tree,'terminate_owned',return_value=result) as cleanup:
+            self.assertIs(worker.terminate_group(process,grace=0,tag='owned'),result)
+        cleanup.assert_called_once_with(process,worker.process_tree.TASK_KEY,'owned',0)
 
     @unittest.skipUnless(os.name == 'posix','Linux queue worker lifecycle')
     def test_sigterm_retains_interrupted_claim_and_reaps_child(self):
@@ -134,6 +142,56 @@ class BenchmarkContractTest(unittest.TestCase):
                 if process.poll() is None:
                     process.kill()
                     process.communicate()
+
+    @unittest.skipUnless(sys.platform.startswith('linux'),'Linux detached-session ownership lifecycle')
+    def test_sigterm_cleans_nested_setsid_grandchild_without_touching_unrelated_process(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            grandchild = ("import os,signal,time; from pathlib import Path; "
+                          "signal.signal(signal.SIGTERM,signal.SIG_IGN); "
+                          "Path('grandchild.pid').write_text(str(os.getpid())); time.sleep(60)")
+            middle = ("import os,subprocess,sys,time; from pathlib import Path; "
+                      f"subprocess.Popen([sys.executable,'-c',{grandchild!r}],start_new_session=True); "
+                      "Path('middle.pid').write_text(str(os.getpid())); time.sleep(60)")
+            task = ("import os,subprocess,sys,time; from pathlib import Path; "
+                    f"subprocess.Popen([sys.executable,'-c',{middle!r}],start_new_session=True); "
+                    "Path('task.pid').write_text(str(os.getpid())); time.sleep(60)")
+            (root/'001.ready.json').write_text(json.dumps(dict(timeout=50,cwd=str(root),
+                environment={'LQCD_OPT_TASK_ID':'caller-supplied-must-be-replaced'},
+                argv=[sys.executable,'-c',task])))
+            unrelated = subprocess.Popen([sys.executable,'-c','import time; time.sleep(60)'],start_new_session=True)
+            process = subprocess.Popen([sys.executable,str(ROOT/'tools/optimization/worker.py'),
+                '--queue',str(root),'--lifetime','60','--idle-timeout','5'],
+                stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+            owned = []
+            try:
+                deadline = time.monotonic()+8
+                pidfiles = [root/f'{name}.pid' for name in ['task','middle','grandchild']]
+                while time.monotonic()<deadline and not all(p.exists() and p.stat().st_size for p in pidfiles):
+                    time.sleep(.03)
+                self.assertTrue(all(p.exists() and p.stat().st_size for p in pidfiles))
+                owned = [int((root/f'{name}.pid').read_text()) for name in ['task','middle','grandchild']]
+                self.assertEqual(len({os.getsid(pid) for pid in owned}),3)
+                process.send_signal(signal.SIGTERM)
+                process.communicate(timeout=20)
+                final = json.loads((root/'001.status.json').read_text())
+                self.assertEqual(final['status'],'interrupted')
+                self.assertNotEqual(final['task_tag'],'caller-supplied-must-be-replaced')
+                self.assertTrue(final['cleanup']['complete'])
+                self.assertGreaterEqual(final['cleanup']['kill_signals'],1)
+                self.assertTrue((root/'001.running.json').exists())
+                self.assertFalse((root/'001.finished.json').exists())
+                for pid in owned:
+                    with self.assertRaises(ProcessLookupError):
+                        os.kill(pid,0)
+                self.assertIsNone(unrelated.poll())
+            finally:
+                if process.poll() is None:
+                    process.kill();process.communicate()
+                for pid in owned:
+                    try:os.kill(pid,signal.SIGKILL)
+                    except ProcessLookupError:pass
+                unrelated.kill();unrelated.wait()
 
 
 if __name__=='__main__':

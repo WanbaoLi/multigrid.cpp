@@ -5,8 +5,10 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import signal
 import sys
 import tempfile
+import time
 import unittest
 
 FILE = Path(__file__).resolve().parents[1] / "tools" / "optimization" / "campaign.py"
@@ -285,6 +287,47 @@ class CampaignTest(unittest.TestCase):
         self.assertIn("log_sha256", result)
         with self.assertRaises(ledger.EvidenceError):
             ledger.run_stage(self.campaign, "timeout", "test", command)
+
+    @unittest.skipUnless(sys.platform.startswith('linux'), 'Linux direct stage SIGTERM lifecycle')
+    def test_direct_stage_sigterm_checkpoints_and_cleans_detached_grandchild(self):
+        self.create("signal")
+        build = self.campaign / "attempts" / "signal" / "build"
+        grandchild = ("import os,signal,time; from pathlib import Path; "
+                      "signal.signal(signal.SIGTERM,signal.SIG_IGN); "
+                      "Path('grandchild.pid').write_text(str(os.getpid())); time.sleep(60)")
+        task = ("import os,subprocess,sys,time; from pathlib import Path; "
+                f"subprocess.Popen([sys.executable,'-c',{grandchild!r}],start_new_session=True); "
+                "Path('task.pid').write_text(str(os.getpid())); time.sleep(60)")
+        command = self.root / "nested-command.json"
+        ledger.atomic(command,dict(argv=[sys.executable,'-c',task],cwd='{build}',timeout_seconds=50))
+        controller = subprocess.Popen([sys.executable,str(FILE),'--campaign',str(self.campaign),
+            'run','signal','--stage','nested','--command',str(command)],
+            stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+        owned = []
+        try:
+            deadline = time.monotonic()+8
+            pidfiles = [build/f'{name}.pid' for name in ['task','grandchild']]
+            while time.monotonic()<deadline and not all(p.exists() and p.stat().st_size for p in pidfiles):
+                time.sleep(.03)
+            self.assertTrue(all(p.exists() and p.stat().st_size for p in pidfiles))
+            owned = [int((build/f'{name}.pid').read_text()) for name in ['task','grandchild']]
+            self.assertNotEqual(os.getsid(owned[0]),os.getsid(owned[1]))
+            controller.send_signal(signal.SIGTERM)
+            controller.communicate(timeout=12)
+            self.assertEqual(controller.returncode,1)
+            stage = ledger.read(self.campaign/'attempts'/'signal'/'attempt.json')['stages']['nested']
+            self.assertEqual(stage['status'],'interrupted')
+            self.assertEqual(stage['interrupt_signal'],int(signal.SIGTERM))
+            self.assertTrue(stage['cleanup']['complete'])
+            for pid in owned:
+                with self.assertRaises(ProcessLookupError):os.kill(pid,0)
+            self.assertFalse((self.campaign/'.lock').exists())
+        finally:
+            if controller.poll() is None:
+                controller.kill();controller.communicate()
+            for pid in owned:
+                try:os.kill(pid,signal.SIGKILL)
+                except ProcessLookupError:pass
 
 
 if __name__ == "__main__":

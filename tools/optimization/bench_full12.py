@@ -75,6 +75,13 @@ def validate_plan(plan, solve_keys):
             raise RuntimeError('Solve-only environment values must be finite numbers')
     if len(set(names)) != len(names):
         raise RuntimeError('Unique safe case IDs required')
+    maximum=max(case['threads'] for case in cases)
+    for key in ['placement_threads','setup_threads']:
+        if key in plan and (type(plan[key]) is not int or plan[key] < 1):
+            raise RuntimeError(key+' must be a positive integer')
+    placement=plan.get('placement_threads',maximum)
+    if placement < maximum or plan.get('setup_threads',maximum) > placement:
+        raise RuntimeError('Fine/setup teams must fit the declared rank CPU placement')
 
 
 def collective(comm, function, root_only=False):
@@ -256,13 +263,20 @@ def benchmark(args):
                             problem='24x24x24x64-m-.277-csw1.160920226-stout1-rho.125-point0000',
                             input_sha256=previous['gauge_sha256'], prepared_gauge_manifest_sha256=prepared_sha,
                             scope='profile_full12_api' if args.diagnostic else 'full12_api'),
-        environment={k:v for k,v in os.environ.items() if k.startswith(('LQCD_', 'OMP_', 'OMPI_MCA_', 'GOMP_'))},
+        environment={k:v for k,v in os.environ.items() if k.startswith(('LQCD_', 'OMP_', 'OMPI_MCA_', 'GOMP_', 'LD_'))},
         reference_propagator=str(Path(args.reference_propagator).resolve()) if args.reference_propagator else None,
         verification=dict(complete=False, passed=False))
     if rank == 0:
         atomic(out / 'host.json', probe())
         atomic(out / 'plan.json', plan)
     cases = plan['cases']
+    setup_threads=plan.get('setup_threads',max(c['threads'] for c in cases))
+    placement_widths=[len(r['cpus']) for r in resources]
+    if len(set(placement_widths))!=1 or min(placement_widths)<max(c['threads'] for c in cases):
+        raise RuntimeError('This driver requires equal, sufficient per-rank CPU placement widths')
+    placement_threads=placement_widths[0]
+    if plan.get('placement_threads',placement_threads)!=placement_threads:
+        raise RuntimeError('Declared placement differs from actual rank CPU mask')
     names = [c['id'] for c in cases]
     reports = {}
     for case in cases:
@@ -271,6 +285,10 @@ def benchmark(args):
         report['configuration'] = dict(context_environment=plan.get('context_environment', {}),
             solve_environment=case.get('environment', {}), threads=case['threads'], batch=case['batch'],
             ranks=ranks, block=[6, 6, 6, 4], seed=1024)
+        if placement_threads!=case['threads']:
+            report['configuration']['placement_threads']=placement_threads
+        if setup_threads!=case['threads']:
+            report['configuration']['setup_threads']=setup_threads
         reports[case['id']] = report
         if rank == 0:
             (out / case['id']).mkdir()
@@ -278,7 +296,7 @@ def benchmark(args):
     comm.Barrier()
     final_propagators = {}
     with Solver([24,24,24,64], [1,1,1,ranks], mass=-.277, csw=1.160920226,
-                block=[6,6,6,4], seed=1024, threads=max(c['threads'] for c in cases),
+                block=[6,6,6,4], seed=1024, threads=setup_threads,
                 normalization='mass', backend=args.backend, library=library) as solver:
         solver.load_gauge(gauge, 'lex')
         setup = solver.setup()

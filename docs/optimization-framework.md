@@ -135,6 +135,19 @@ NUMA 放置继续使用 `run_numa.py`，而不是在账本中复制一套启动�
 `--retry-failed --reason '归因与改进'`。同主机检测到旧进程仍存在时拒绝重复启动。
 跨主机共享目录时，操作者须核对调度器和旧主机 PID，账本不猜测远端进程状态。
 
+Linux 清理不能只给最外层进程组发信号：CMake、MPI、阶段执行器和 perf 可能启动
+新的 session。worker 在用户环境覆盖之后生成唯一 `LQCD_OPT_TASK_ID`，每个阶段
+再生成唯一 `LQCD_OPT_STAGE_ID`。清理器只选择相同 UID 下具有精确标签的进程，或
+已经验证的父子进程；发信号前核对 PID 的启动时间，不根据程序名匹配，也不输出
+环境内容。它重复扫描 `/proc`，先 TERM、等待，再 KILL，并通过 Linux subreaper
+回收已接管的孙进程。记录包含目标 PID、信号数量及存活 PID，不包含环境变量内容。
+阶段直接收到 SIGTERM 时写入 interrupted 检查点，清理其独立 session 中的后代。
+若仍有可观察的所属进程存活，状态为 cleanup_failed，队列不启动下一项，running
+声明保留。重启 worker 时遇到遗留 running 声明也拒绝自动继续；必须先核对状态、
+所属进程和调度器，再明确处理旧声明。SIGKILL 不能被进程捕获，遗留检查点正是其
+恢复依据。Windows 继续使用 taskkill 的进程树回退，Linux 的跨 session 保证须在
+Linux 上运行生命周期测试验证。
+
 `.lock` 由写操作持有，防止同一 campaign 并发更新。进程异常终止遗留锁时先检查
 锁内 host/PID 和阶段，确认没有活跃控制器后用 `unlock --reason '证据'`；本机
 仍存活的锁持有者不能解锁。不要删除日志来“恢复”。

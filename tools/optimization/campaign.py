@@ -24,6 +24,9 @@ import tarfile
 import time
 from datetime import datetime, timezone
 
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+import process_tree
+
 SCHEMA = 1
 SHA = re.compile(r"^[0-9a-f]{64}$")
 NAME = re.compile(r"^[a-z0-9][a-z0-9_-]{0,79}$")
@@ -358,22 +361,26 @@ def check_artifact(path, data):
             "Frozen measured library is missing/changed")
 
 
-def terminate(process):
-    if process.poll() is not None:
-        return
-    if os.name == "posix":
-        os.killpg(process.pid, signal.SIGTERM)
-    else:
-        subprocess.run(["taskkill", "/PID", str(process.pid), "/T", "/F"],
-                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+class StageInterrupted(KeyboardInterrupt):
+    def __init__(self, signum):
+        super().__init__(f"Stage received signal {signum}")
+        self.signum = signum
+
+
+@contextlib.contextmanager
+def stage_interrupts():
+    def received(signum, frame):
+        raise StageInterrupted(signum)
+    previous = signal.signal(signal.SIGTERM, received)
     try:
-        process.wait(timeout=10)
-    except subprocess.TimeoutExpired:
-        if os.name == "posix":
-            os.killpg(process.pid, signal.SIGKILL)
-        else:
-            process.kill()
-        process.wait()
+        yield
+    finally:
+        signal.signal(signal.SIGTERM, previous)
+
+
+def terminate(process, tag=None):
+    # Leave the outer worker enough grace to let this checkpoint flush first.
+    return process_tree.terminate_owned(process,process_tree.STAGE_KEY,tag,grace=3)
 
 
 def run_stage(root, name, stage, command, retry_interrupted=False, retry_failed=False, reason=None):
@@ -400,6 +407,9 @@ def run_stage(root, name, stage, command, retry_interrupted=False, retry_failed=
             require((interrupted and retry_interrupted) or (not interrupted and retry_failed),
                     "Prior stage is unfinished/failed; inspect it and explicitly opt into retry")
             require(reason, "An explicit retry reason is required")
+            if previous.get("host") == socket.gethostname() and previous.get("stage_tag"):
+                require(not process_tree.tagged_processes(process_tree.STAGE_KEY,previous["stage_tag"]),
+                        "Prior detached stage processes are still alive; do not duplicate them")
             if interrupted and previous.get("host") == socket.gethostname() and previous.get("pid"):
                 try:
                     os.kill(previous["pid"], 0)
@@ -424,11 +434,16 @@ def run_stage(root, name, stage, command, retry_interrupted=False, retry_failed=
         for key, value in overrides.items():
             require(isinstance(value, str), "Environment values must be strings")
             env[key] = expand(value)
+        if process_tree.TASK_KEY in os.environ:
+            env[process_tree.TASK_KEY] = os.environ[process_tree.TASK_KEY]
+        stage_tag = process_tree.new_tag()
+        env[process_tree.STAGE_KEY] = stage_tag
         serial = len(previous.get("prior_runs", [])) + 1 if previous else 0
         log_name = f"{stage}-{serial:03d}.log"
         state = {"status": "running", "started": now(), "argv": argv, "cwd": str(cwd),
                  "env_overrides": {k: env[k] for k in overrides}, "timeout_seconds": timeout,
                  "command_sha256": request_sha, "log": log_name,
+                 "stage_tag": stage_tag,
                  "prior_runs": ([*previous.get("prior_runs", []),
                                   {k: v for k, v in previous.items() if k != "prior_runs"}]
                                  if previous else [])}
@@ -437,8 +452,10 @@ def run_stage(root, name, stage, command, retry_interrupted=False, retry_failed=
         data["stages"][stage] = state
         atomic(path / "attempt.json", data)
         process = None
+        cleanup = None
         try:
-            with (path / log_name).open("wb") as log:
+            process_tree.enable_subreaper()
+            with stage_interrupts(), (path / log_name).open("wb") as log:
                 process = subprocess.Popen(argv, cwd=cwd, env=env, stdout=log,
                     stderr=subprocess.STDOUT, start_new_session=(os.name == "posix"))
                 state["pid"] = process.pid
@@ -448,18 +465,26 @@ def run_stage(root, name, stage, command, retry_interrupted=False, retry_failed=
                     state["returncode"] = process.wait(timeout=timeout)
                     state["status"] = "passed" if state["returncode"] == 0 else "failed"
                 except subprocess.TimeoutExpired:
-                    terminate(process)
+                    cleanup = terminate(process,stage_tag)
                     state["status"] = "timeout"
                     state["returncode"] = process.returncode
-        except KeyboardInterrupt:
+        except KeyboardInterrupt as exc:
             if process:
-                terminate(process)
+                cleanup = terminate(process,stage_tag)
             state["status"] = "interrupted"
+            state["error"] = str(exc)
+            state["interrupt_signal"] = getattr(exc,"signum",int(signal.SIGINT))
         except Exception as exc:
             if process:
-                terminate(process)
+                cleanup = terminate(process,stage_tag)
             state["status"] = "failed"
             state["error"] = str(exc)
+        if process and cleanup is None:
+            cleanup = terminate(process,stage_tag)
+        if cleanup is not None:
+            state["cleanup"] = cleanup
+            if not cleanup["complete"]:
+                state["status"] = "cleanup_failed"
         state["ended"] = now()
         if (path / log_name).exists():
             state["log_sha256"] = digest(path / log_name)

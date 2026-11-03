@@ -11,6 +11,9 @@ import subprocess
 import sys
 import time
 
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+import process_tree
+
 
 def atomic(path, record):
     temporary = path.with_suffix('.tmp')
@@ -43,25 +46,8 @@ def validate_task(record, lifetime):
     return timeout
 
 
-def terminate_group(process, grace=10):
-    """Terminate/reap before another task can start, including stubborn children."""
-    try:
-        os.killpg(process.pid, signal.SIGTERM)
-    except ProcessLookupError:
-        pass
-    deadline = time.monotonic() + grace
-    while time.monotonic() < deadline:
-        process.poll()
-        try:
-            os.killpg(process.pid, 0)
-        except ProcessLookupError:
-            break
-        time.sleep(.05)
-    try:
-        os.killpg(process.pid, signal.SIGKILL)
-    except ProcessLookupError:
-        pass
-    process.wait()
+def terminate_group(process, grace=10, tag=None):
+    return process_tree.terminate_owned(process,process_tree.TASK_KEY,tag,grace)
 
 
 def main():
@@ -74,12 +60,15 @@ def main():
         parser.error('lifetime and idle-timeout must be positive')
     signal.signal(signal.SIGTERM, interrupted)
     signal.signal(signal.SIGINT, interrupted)
+    process_tree.enable_subreaper()
     root = args.queue.resolve()
     root.mkdir(parents=True, exist_ok=True)
     lock = root / 'worker.lock'
     import fcntl
     with lock.open('a') as guard:
         fcntl.flock(guard, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        if list(root.glob('*.running.json')):
+            raise RuntimeError('Prior running claims retained; inspect ownership/cleanup and explicitly resolve them before restarting the queue')
         started = active = time.monotonic()
         while True:
             now = time.monotonic()
@@ -98,13 +87,18 @@ def main():
                     break
                 claimed = task_path.with_name(task_path.name.replace('.ready.json','.running.json'))
                 task_path.rename(claimed)
+                tag = process_tree.new_tag()
                 status = dict(task=str(claimed), host=socket.gethostname(), started=time.time(),
-                              argv=record['argv'], status='running')
+                              argv=record['argv'], status='running', task_tag=tag)
                 status_path = task_path.with_name(task_path.name.replace('.ready.json','.status.json'))
                 atomic(status_path, status)
                 logfile = task_path.with_name(task_path.name.replace('.ready.json','.log'))
                 env = dict(os.environ, **{k:str(v) for k,v in record.get('environment',{}).items()})
+                # Override user-provided/inherited tags to avoid selecting a
+                # different task's processes during detached-session cleanup.
+                env[process_tree.TASK_KEY] = tag
                 process = None
+                cleanup = None
                 try:
                     with logfile.open('xb') as stream:
                         process = subprocess.Popen(record['argv'], cwd=record.get('cwd'), env=env,
@@ -115,23 +109,32 @@ def main():
                             result = process.wait(timeout=timeout)
                             status.update(returncode=result, status='passed' if result==0 else 'failed')
                         except subprocess.TimeoutExpired:
-                            terminate_group(process)
+                            cleanup = terminate_group(process,tag=tag)
                             status.update(status='timeout', returncode=process.returncode)
                 except BaseException as exc:
                     if process:
-                        terminate_group(process)
+                        cleanup = terminate_group(process,tag=tag)
                     status.update(status='interrupted' if isinstance(exc,KeyboardInterrupt) else 'failed', error=repr(exc))
                     if isinstance(exc,KeyboardInterrupt):
                         raise
                 finally:
+                    if process and cleanup is None:
+                        # A successful parent can still leave detached helpers.
+                        cleanup = terminate_group(process,tag=tag)
+                    if cleanup is not None:
+                        status['cleanup'] = cleanup
+                        if not cleanup['complete']:
+                            status['status'] = 'cleanup_failed'
                     status['ended'] = time.time()
                     atomic(status_path, status)
                     # Preserve an interrupted claim for explicit inspection/retry;
                     # a normal failure/timeout is terminal and gets an immutable
                     # finished marker. Never silently turn a killed allocation
                     # into an absent task.
-                    if status['status'] != 'interrupted':
+                    if status['status'] not in ('interrupted','cleanup_failed'):
                         claimed.rename(claimed.with_name(claimed.name.replace('.running.json','.finished.json')))
+                if status['status'] == 'cleanup_failed':
+                    raise RuntimeError('Owned processes survived cleanup; queue stopped and running claim retained')
                 active = time.monotonic()
                 print(json.dumps(status), flush=True)
                 continue

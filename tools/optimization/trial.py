@@ -97,7 +97,7 @@ def main():
         stage('ctest',['ctest','--test-dir',build,'--output-on-failure','-R',args.test_regex],1800,
               test_environment)
         library = build/'liblqcd_cpu.so'
-    maximum = max(case['threads'] for case in plan['cases'])
+    maximum = plan.get('placement_threads',max(case['threads'] for case in plan['cases']))
     command = [sys.executable,source/'tools/run_numa.py']
     if args.backend == 'x86':
         command += ['--ranks-per-numa','2']
