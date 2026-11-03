@@ -38,6 +38,15 @@ def atomic(path, value):
     temporary.replace(path)
 
 
+def sync_completed_output(path):
+    # The collective mmap writer has joined all slab writes. Commit the file
+    # once more after that join, before a fresh verifier process opens it.
+    # This is outside every accepted timing interval; digest mismatches still
+    # fail strictly and are never repaired by changing the expected digest.
+    with Path(path).open('r+b') as stream:
+        os.fsync(stream.fileno())
+
+
 def validate_fixture(previous):
     expected = dict(complete=True, mass=-.277, csw=1.160920226,
         lattice_xyzt=[24,24,24,64], normalization='mass', source_xyzt=[0,0,0,0],
@@ -278,6 +287,7 @@ def benchmark(args):
     all_hashes = comm.allgather(fixture_hashes)
     metadata = fixture_metadata(previous)
     metadata.update(complete=False, measurements_complete=False, backend=args.backend,
+        propagator_output_protocol='collective slab writer, final joined fsync, SHA256, independent reopen',
         library=str(library), library_path=str(library), library_sha256=library_sha,
         source_manifest_sha256=args.snapshot_sha, input_sha256=previous['gauge_sha256'],
         gauge_sha256=previous['gauge_sha256'], grid_xyzt=[1, 1, 1, ranks],
@@ -368,6 +378,7 @@ def benchmark(args):
         collective(comm, lambda: np.save(target / f'gauge_rank{rank:05d}.npy', gauge, allow_pickle=False))
         write_propagator(target / 'propagator.npy', final_propagators.pop(name), [24,24,24,64],
                          [1,1,1,ranks], [0,0,0,rank], comm)
+        collective(comm,lambda:sync_completed_output(target/'propagator.npy'),root_only=True)
         reports[name]['propagator_sha256'] = collective(comm, lambda: sha(target / 'propagator.npy'), root_only=True)
         gauge_hash = collective(comm, lambda: sha(target / f'gauge_rank{rank:05d}.npy'))
         reports[name]['output_gauge_files'] = comm.allgather((rank, gauge_hash))
