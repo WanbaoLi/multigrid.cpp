@@ -109,7 +109,10 @@ def main():
         command += ['--reference-propagator',args.reference_propagator]
     if args.diagnostic:
         command += ['--diagnostic']
-    stage('benchmark',command,1800)
+    # Runtime startup variables (e.g. OMP_WAIT_POLICY, LD_PRELOAD) must be set
+    # before the launcher/Python/MPI/library process starts, not only at ctor.
+    stage('benchmark',command,1800,
+          {key:str(value) for key,value in plan.get('context_environment',{}).items()})
     case = attempt/'measurements'/plan['cases'][0]['id']
     stage('independent',[sys.executable,source/'tools/optimization/bench_full12.py','--verify',case,
           '--reference',args.reference,'--extractor',args.extractor],1200,

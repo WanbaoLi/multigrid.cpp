@@ -66,6 +66,15 @@ def validate_plan(plan, solve_keys):
     cases = plan.get('cases', [])
     if not cases or not isinstance(plan.get('context_environment', {}), dict):
         raise RuntimeError('Plan needs nonempty cases and context_environment object')
+    managed={'OMP_NUM_THREADS','OMP_PLACES','OMP_PROC_BIND','GOMP_CPU_AFFINITY',
+             'LQCD_CPU_LIBRARY','LQCD_RHS_BATCH','LQCD_VERBOSE','LQCD_HALO_PROFILE'}
+    for key,value in plan.get('context_environment',{}).items():
+        if key in managed:
+            raise RuntimeError('Context environment conflicts with benchmark-owned '+key)
+        if not isinstance(key,str) or isinstance(value,bool) or not isinstance(value,(str,int,float)):
+            raise RuntimeError('Context environment needs string keys and string/finite-number values')
+        if isinstance(value,(int,float)) and not math.isfinite(value):
+            raise RuntimeError('Context environment needs finite values')
     names = []
     for case in cases:
         name = case.get('id', '')

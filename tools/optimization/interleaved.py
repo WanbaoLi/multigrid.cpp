@@ -81,7 +81,8 @@ def main():
         result=ledger.run_stage(root,name,label,dict(argv=argv,
             cwd=str(root/'attempts'/name/'build'),timeout_seconds=timeout,env=env or {}))
         ledger.require(result['status']=='passed',label+' failed; explicit attributed retry required')
-    stage(names[0],'interleaved-benchmark',command,1800)
+    stage(names[0],'interleaved-benchmark',command,1800,
+          {key:str(value) for key,value in plan.get('context_environment',{}).items()})
     for name in names:
         target=group/'measurements'/name
         stage(name,'independent',[sys.executable,str(source/'tools/optimization/bench_full12.py'),

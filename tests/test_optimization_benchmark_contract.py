@@ -86,6 +86,16 @@ class BenchmarkContractTest(unittest.TestCase):
                 with self.assertRaises(RuntimeError):
                     bench.validate_plan({**plan,key:value},set())
 
+    def test_context_runtime_options_cannot_override_managed_placement_or_timing(self):
+        plan=dict(cases=[dict(id='base',threads=37,batch=2)])
+        bench.validate_plan({**plan,'context_environment':{'OMP_WAIT_POLICY':'passive'}},set())
+        for key,value in [('OMP_NUM_THREADS',1),('OMP_PLACES','threads'),
+                          ('LQCD_VERBOSE',1),('LQCD_HALO_PROFILE',1),
+                          ('LQCD_ARM_SVE',True),('LQCD_ARM_SVE',float('nan'))]:
+            with self.subTest(key=key,value=value):
+                with self.assertRaises(RuntimeError):
+                    bench.validate_plan({**plan,'context_environment':{key:value}},set())
+
     def test_cached_verification_rechecks_all_saved_evidence(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
