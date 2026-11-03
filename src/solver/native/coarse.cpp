@@ -133,12 +133,16 @@ void NativeMG::Impl::prepare_coarse_columns() const {
 
 void NativeMG::Impl::coarse_block_apply(int cb, const FloatField &src, FloatField &out,
                                         bool diagonal) const {
+    coarse_block_apply_range(cb, src, out, diagonal ? 0 : 1, 9, false);
+}
+
+void NativeMG::Impl::coarse_block_apply_range(int cb, const FloatField &src, FloatField &out,
+                                              int dir_begin, int dir_end, bool add) const {
 #if defined(LQCD_NATIVE_SVE_COARSE)
     if (coarse_sve) {
         const size_t stride = (size_t)coarse_dof * coarse_dof * 2;
         float *dest = out.data() + (size_t)(cb-first_aggregate)*coarse_dof*2;
-        bool add = false;
-        for (int dir = diagonal ? 0 : 1; dir < 9; ++dir) {
+        for (int dir = dir_begin; dir < dir_end; ++dir) {
             const int nb = cneighbor[cb*9+dir];
             const float *v;
             if (nb >= first_aggregate && nb < end_aggregate)
@@ -154,8 +158,9 @@ void NativeMG::Impl::coarse_block_apply(int cb, const FloatField &src, FloatFiel
     }
 #endif
     for (int a = 0; a < coarse_dof; a++) {
-        float re = 0, im = 0;
-        for (int dir = diagonal ? 0 : 1; dir < 9; dir++) {
+        const size_t output = ((size_t)(cb - first_aggregate) * coarse_dof + a) * 2;
+        float re = add ? out[output] : 0.f, im = add ? out[output + 1] : 0.f;
+        for (int dir = dir_begin; dir < dir_end; dir++) {
             const int nb = cneighbor[cb * 9 + dir];
             const float *v;
             if (nb >= first_aggregate && nb < end_aggregate)
@@ -209,6 +214,62 @@ void NativeMG::Impl::coarse_apply(const FloatField &src, FloatField &out, int co
     trace.post(count);
     const int interior_first = first_aggregate + aggregates_per_tslice;
     const int interior_last = std::max(interior_first, end_aggregate - aggregates_per_tslice);
+    if (halo_overlap && coarse_spatial_overlap && interior_first == interior_last &&
+        omp_get_max_threads() > 1) {
+        // Time-slab ownership guarantees that diagonal and spatial directions
+        // 0..6 read owned source entries. Only directions 7/8 may use receives.
+        // Keep MPI on the calling/main thread; workers never touch a receive
+        // buffer until the barrier after Waitall. Send buffers remain separate
+        // and immutable throughout both computation phases.
+#pragma omp parallel
+        {
+            const int tid = omp_get_thread_num(), threads = omp_get_num_threads();
+            if (threads == 1) {
+                // An OMP thread limit may shrink the requested team. In that
+                // case retain the wait-then-compute behavior without dividing
+                // work by zero or appending an uninitialized partial result.
+                const double wait_start = trace.now();
+                MPI_Waitall(4, requests, MPI_STATUSES_IGNORE);
+                trace.wait(wait_start);
+                const double compute_start = trace.now();
+                for (int cb = first_aggregate; cb < end_aggregate; ++cb)
+                    if (color < 0 || colors[cb] == color)
+                        coarse_block_apply(cb, src, out, diagonal);
+                trace.compute_all(compute_start);
+            } else {
+                if (tid == 0) {
+                    const double wait_start = trace.now();
+                    MPI_Waitall(4, requests, MPI_STATUSES_IGNORE);
+                    trace.wait(wait_start);
+                } else {
+                    const double work_start = trace.now();
+                    const int n = end_aggregate - first_aggregate;
+                    const int begin = first_aggregate + n * (tid - 1) / (threads - 1);
+                    const int end = first_aggregate + n * tid / (threads - 1);
+                    for (int cb = begin; cb < end; ++cb)
+                        if (color < 0 || colors[cb] == color)
+                            coarse_block_apply_range(cb, src, out, diagonal ? 0 : 1, 7, false);
+                    // For this candidate the profile's interior field means
+                    // local direction work, not additional interior time planes.
+                    trace.interior(tid, work_start);
+                }
+#pragma omp barrier
+                if (tid == 0)
+                    trace.region();
+                const double boundary_start = trace.now();
+                // Each selected block has a finished prefix. Append temporal
+                // terms after it, keeping the same direction and column order
+                // as the complete operator, rather than adding separately
+                // reduced spatial/temporal sums with different rounding.
+#pragma omp for schedule(static)
+                for (int cb = first_aggregate; cb < end_aggregate; ++cb)
+                    if (color < 0 || colors[cb] == color)
+                        coarse_block_apply_range(cb, src, out, 7, 9, true);
+                trace.boundary(tid, boundary_start);
+            }
+        }
+        return;
+    }
     if (!halo_overlap || (coarse_empty_interior && interior_first == interior_last)) {
         const double wait_start = trace.now();
         MPI_Waitall(4, requests, MPI_STATUSES_IGNORE);

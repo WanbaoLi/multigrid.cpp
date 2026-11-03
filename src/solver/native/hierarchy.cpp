@@ -452,6 +452,7 @@ NativeMG::NativeMG(const Gauge &g, const Multigrid &m, MPI_Comm comm, unsigned s
         return value != 0;
     };
     impl->coarse_empty_interior = collective_binary_setting("LQCD_COARSE_EMPTY_INTERIOR", 1);
+    impl->coarse_spatial_overlap = collective_binary_setting("LQCD_COARSE_SPATIAL_OVERLAP", 0);
     impl->coarse_fused = collective_binary_setting("LQCD_COARSE_FUSED", 0);
     impl->coarse_sve = collective_binary_setting("LQCD_ARM_COARSE_SVE", 0);
     (void)collective_binary_setting("LQCD_GCR_FUSED", 1);

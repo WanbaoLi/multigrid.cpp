@@ -95,6 +95,7 @@ struct NativeMG::Impl {
     mutable FloatField coarse_send_lower, coarse_send_upper, coarse_recv_lower, coarse_recv_upper;
     bool halo_overlap = setting("LQCD_HALO_OVERLAP", 1) != 0;
     bool coarse_empty_interior = setting("LQCD_COARSE_EMPTY_INTERIOR", 1) != 0;
+    bool coarse_spatial_overlap = setting("LQCD_COARSE_SPATIAL_OVERLAP", 0) != 0;
     bool halo_profile = setting("LQCD_HALO_PROFILE", 0) != 0;
     bool adaptive_correction = setting("LQCD_ADAPTIVE_CORRECTION", 1) != 0;
     bool float_correction_verify = false;
@@ -146,6 +147,11 @@ struct NativeMG::Impl {
 
     void coarse_block_apply(int cb, const FloatField &src, FloatField &out,
                             bool diagonal = true) const;
+
+    // Direction subranges are appended in the original stencil order.
+    // The local prefix [0,7) is safe before temporal receives complete.
+    void coarse_block_apply_range(int cb, const FloatField &src, FloatField &out,
+                                  int dir_begin, int dir_end, bool add) const;
 
     void coarse_apply(const FloatField &src, FloatField &out, int color = -1,
                       bool diagonal = true) const;
