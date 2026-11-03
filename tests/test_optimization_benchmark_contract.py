@@ -68,6 +68,14 @@ class BenchmarkContractTest(unittest.TestCase):
         self.assertNotIn('LQCD_COARSE_CGS2', os.environ)
         self.assertEqual(os.environ['LQCD_VERBOSE'], '1')
 
+    def test_inherited_solve_tuning_cannot_silently_change_setup(self):
+        original=dict(os.environ)
+        self.addCleanup(lambda:(os.environ.clear(),os.environ.update(original)))
+        os.environ['LQCD_MG_SAP_STEPS']='31'
+        bench.apply_context_environment({'LQCD_COARSE_FUSED':1},{'LQCD_MG_SAP_STEPS'})
+        self.assertNotIn('LQCD_MG_SAP_STEPS',os.environ)
+        self.assertEqual(os.environ['LQCD_COARSE_FUSED'],'1')
+
     def test_fixed_placement_and_setup_allow_smaller_solve_teams(self):
         plan = dict(placement_threads=37,setup_threads=37,cases=[
             dict(id='full',threads=37,batch=2),dict(id='reduced',threads=16,batch=2)])

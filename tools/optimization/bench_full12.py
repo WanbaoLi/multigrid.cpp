@@ -114,6 +114,14 @@ def apply_case_environment(base, case, diagnostic=False):
         os.environ['LQCD_VERBOSE'] = '1'
 
 
+def apply_context_environment(context,solve_keys):
+    # An inherited tuning variable must not silently change setup or a case
+    # whose recorded solve environment requests the default.
+    for key in solve_keys:
+        if key not in context:os.environ.pop(key,None)
+    os.environ.update({key:str(value) for key,value in context.items()})
+
+
 def check_saved_artifacts(run, report):
     if sha(run / 'propagator.npy') != report['propagator_sha256']:
         raise RuntimeError('Saved propagator changed since measurement')
@@ -221,7 +229,7 @@ def benchmark(args):
         raise RuntimeError('Invalid t-slab decomposition')
     out = Path(args.output).resolve()
     collective(comm, lambda: out.mkdir(parents=True, exist_ok=False), root_only=True)
-    os.environ.update({k: str(v) for k, v in plan.get('context_environment', {}).items()})
+    apply_context_environment(plan.get('context_environment', {}),SOLVE_TUNING_KEYS)
     library = Path(args.library).resolve()
     library_sha = collective(comm, lambda: sha(library))
     if len(set(comm.allgather(library_sha))) != 1:
