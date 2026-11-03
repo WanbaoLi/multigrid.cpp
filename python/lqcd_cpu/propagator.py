@@ -22,7 +22,7 @@ SOLVE_TUNING_KEYS = {
     'LQCD_MG_SAP_STEPS', 'LQCD_MG_SAP_CYCLES', 'LQCD_MG_COARSE_IT',
     'LQCD_MG_COARSE_TOL', 'LQCD_CORRECTION_BASE_TOL',
     'LQCD_FLOAT_CORRECTION_VERIFY', 'LQCD_FINE_TEAM_FUSED',
-    'LQCD_COARSE_CGS2', 'LQCD_RESTRICT_FLOAT', 'LQCD_GCR_FUSED'}
+    'LQCD_COARSE_CGS2', 'LQCD_RESTRICT_FLOAT', 'LQCD_GCR_FUSED', 'LQCD_COARSE_THREADS'}
 
 
 @contextmanager
@@ -110,7 +110,7 @@ def solve_lime_propagator(gauge_path, output, *, mass=None, csw=None,
             'LQCD_FLOAT_CORRECTION_VERIFY', 'LQCD_FINE_TEAM_FUSED',
             'LQCD_LOCAL_CONTIGUOUS', 'LQCD_RESTRICT_FLOAT', 'LQCD_GCR_FUSED',
             'LQCD_ARM_SVE', 'LQCD_ARM_SVE_PLANNED', 'LQCD_ARM_SVE_TRANSFER', 'LQCD_HBM',
-            'LQCD_COARSE_FUSED', 'LQCD_ARM_COARSE_SVE', 'LQCD_HBW_ALLOC',
+            'LQCD_COARSE_FUSED', 'LQCD_ARM_COARSE_SVE', 'LQCD_HBW_ALLOC', 'LQCD_COARSE_THREADS',
             'LQCD_SAP_EO', 'LQCD_COARSE_EO', 'LQCD_COARSE_CGS2', 'LQCD_SETUP_UPDATE',
             'LQCD_ADAPTIVE_CORRECTION', 'LQCD_HALO_OVERLAP', 'LQCD_RHS_BATCH')}
     configs = comm.allgather(options)
@@ -131,7 +131,7 @@ def solve_lime_propagator(gauge_path, output, *, mass=None, csw=None,
                 raise ValueError(f'{key} must be a finite JSON number')
             bounds = {'LQCD_MG_SAP_STEPS': (1, 32), 'LQCD_MG_SAP_CYCLES': (1, 8),
                       'LQCD_MG_COARSE_IT': (1, 200), 'LQCD_MG_COARSE_TOL': (1e-4, .9),
-                      'LQCD_CORRECTION_BASE_TOL': (1e-6, .1)}
+                      'LQCD_CORRECTION_BASE_TOL': (1e-6, .1), 'LQCD_COARSE_THREADS': (0, 608)}
             low, high = bounds.get(key, (0, 1))
             if not low <= value <= high or (key not in (
                     'LQCD_MG_COARSE_TOL', 'LQCD_CORRECTION_BASE_TOL') and value != int(value)):

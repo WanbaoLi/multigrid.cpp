@@ -101,6 +101,7 @@ struct NativeMG::Impl {
     bool float_correction_verify = false;
     bool fine_team_fused = true;
     bool coarse_cgs2 = false;
+    int coarse_threads = 0; // 0 retains the calling thread's fine-team size.
     double correction_base_tol = 1e-3, coarse_tolerance = .1;
     SetupUpdate setup_update = SetupUpdate::Inverse;
     bool profile_active = false;

@@ -12,14 +12,15 @@ using namespace lqcd_native::detail;
 void NativeMG::Impl::configure_solve() {
     const char *names[] = {"LQCD_MG_SAP_STEPS", "LQCD_MG_SAP_CYCLES", "LQCD_MG_COARSE_IT",
                           "LQCD_MG_COARSE_TOL", "LQCD_CORRECTION_BASE_TOL",
-                          "LQCD_FLOAT_CORRECTION_VERIFY", "LQCD_FINE_TEAM_FUSED", "LQCD_COARSE_CGS2"};
+                          "LQCD_FLOAT_CORRECTION_VERIFY", "LQCD_FINE_TEAM_FUSED", "LQCD_COARSE_CGS2",
+                          "LQCD_COARSE_THREADS"};
     double values[] = {(double)setting("NATIVE_SAP_STEPS", 4),
                        (double)setting("NATIVE_SAP_CYCLES", 2),
-                       (double)setting("NATIVE_COARSE_IT", 40), .1, 1e-3, 0., 1., 0.};
-    const double lower[] = {1., 1., 1., 1e-4, 1e-6, 0., 0., 0.};
-    const double upper[] = {32., 8., 200., .9, .1, 1., 1., 1.};
+                       (double)setting("NATIVE_COARSE_IT", 40), .1, 1e-3, 0., 1., 0., 0.};
+    const double lower[] = {1., 1., 1., 1e-4, 1e-6, 0., 0., 0., 0.};
+    const double upper[] = {32., 8., 200., .9, .1, 1., 1., 1., 608.};
     int invalid = 0;
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 9; i++) {
         if (const char *raw = std::getenv(names[i])) {
             char *end;
             values[i] = std::strtod(raw, &end);
@@ -34,13 +35,13 @@ void NativeMG::Impl::configure_solve() {
             ((i < 3 || i > 4) && values[i] != std::floor(values[i])))
             invalid = 1;
     }
-    double minimum[8], maximum[8];
-    std::copy_n(values, 8, minimum);
-    std::copy_n(values, 8, maximum);
+    double minimum[9], maximum[9];
+    std::copy_n(values, 9, minimum);
+    std::copy_n(values, 9, maximum);
     MPI_Allreduce(MPI_IN_PLACE, &invalid, 1, MPI_INT, MPI_MAX, native_comm);
-    MPI_Allreduce(MPI_IN_PLACE, minimum, 8, MPI_DOUBLE, MPI_MIN, native_comm);
-    MPI_Allreduce(MPI_IN_PLACE, maximum, 8, MPI_DOUBLE, MPI_MAX, native_comm);
-    for (int i = 0; i < 8; i++)
+    MPI_Allreduce(MPI_IN_PLACE, minimum, 9, MPI_DOUBLE, MPI_MIN, native_comm);
+    MPI_Allreduce(MPI_IN_PLACE, maximum, 9, MPI_DOUBLE, MPI_MAX, native_comm);
+    for (int i = 0; i < 9; i++)
         if (minimum[i] != maximum[i])
             invalid = 1;
     if (invalid)
@@ -53,6 +54,7 @@ void NativeMG::Impl::configure_solve() {
     float_correction_verify = values[5] != 0;
     fine_team_fused = values[6] != 0;
     coarse_cgs2 = values[7] != 0;
+    coarse_threads = (int)values[8];
 }
 
 NativeMG::Impl::Impl(const Gauge &gg, const Multigrid &mm, bool eo)

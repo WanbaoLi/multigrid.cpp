@@ -5,6 +5,31 @@
 using namespace lqcd_native::detail;
 
 namespace {
+// omp_set_num_threads changes the calling task's ICV. Limit only the coarse
+// phase and restore that same ICV before any fine-grid work resumes, including
+// early returns and exception unwinding. Never increase a rank's fine team or
+// modify an enclosing parallel team's policy if a future caller is nested.
+class CoarseThreadScope {
+    int previous_;
+    bool changed_ = false;
+public:
+    explicit CoarseThreadScope(int requested) : previous_(omp_get_max_threads()) {
+        if (requested > 0 && !omp_in_parallel()) {
+            const int capped = std::min(requested, previous_);
+            if (capped != previous_) {
+                omp_set_num_threads(capped);
+                changed_ = true;
+            }
+        }
+    }
+    ~CoarseThreadScope() noexcept {
+        if (changed_)
+            omp_set_num_threads(previous_);
+    }
+    CoarseThreadScope(const CoarseThreadScope &) = delete;
+    CoarseThreadScope &operator=(const CoarseThreadScope &) = delete;
+};
+
 // Two classical Gram-Schmidt passes: each projection has one global vector
 // reduction. Transform q and its paired preconditioned direction z together,
 // preserving D*z ~= q. Fields contain owned entries only, including zero odd
@@ -495,6 +520,7 @@ void NativeMG::Impl::coarse_solve_eo(const FloatField &b, FloatField &out) const
 }
 
 void NativeMG::Impl::coarse_solve(const FloatField &b, FloatField &x) const {
+    const CoarseThreadScope thread_scope(coarse_threads);
     if (coarse_eo) {
         coarse_solve_eo(b, x);
         return;
