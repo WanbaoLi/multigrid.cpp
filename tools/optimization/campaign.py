@@ -505,6 +505,10 @@ def number(value, label, positive=False):
 def validate_report(report, config, snapshot_sha):
     require(report.get("complete") is True, "Benchmark incomplete")
     require(report.get("timing_scope") == "full12_api", "Only full12_api wall time can be accepted")
+    if "shared_process_thread_teams" in report:
+        teams=report["shared_process_thread_teams"]
+        require(isinstance(teams,list) and len(teams)==1,
+                "Shared-process thread-team changes need independent-process confirmation")
     require(report.get("zero_initial_guess") is True, "Zero initial guess contract missing")
     require(report.get("input_sha256") == config["input_sha256"], "Input SHA mismatch")
     require(report.get("source_manifest_sha256") == snapshot_sha, "Source snapshot SHA mismatch")

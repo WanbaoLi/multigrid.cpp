@@ -12,6 +12,23 @@ spec.loader.exec_module(paired)
 
 
 class PairedConfigurationTest(unittest.TestCase):
+    def test_reject_team_switches_before_any_ledger_mutation(self):
+        for cases in [
+            [dict(threads=32),dict(threads=37)],
+            [dict(threads=32),dict(threads=32,environment={'LQCD_COARSE_THREADS':16})],
+        ]:
+            with self.subTest(cases=cases):
+                with self.assertRaisesRegex(paired.ledger.EvidenceError,'independent processes'):
+                    paired.require_comparable_teams(dict(cases=cases))
+
+    def test_allow_same_effective_teams_with_different_algorithm_or_batch(self):
+        plan=dict(setup_threads=37,context_environment={'LQCD_COARSE_THREADS':64},
+            cases=[dict(threads=32,batch=2),dict(threads=32,batch=4,
+                environment={'LQCD_COARSE_THREADS':32,'LQCD_MG_SAP_STEPS':5})])
+        paired.require_comparable_teams(plan)
+        self.assertEqual(paired.shared_process_thread_teams(plan),
+                         [dict(fine_threads=32,coarse_threads=32)])
+
     def test_reduced_team_control_preserves_original_setup_and_placement(self):
         reference=dict(context_environment={'LQCD_HBW_ALLOC':'require'},solve_environment={},
             threads=32,batch=2,ranks=16,block=[6,6,6,4],seed=1024,

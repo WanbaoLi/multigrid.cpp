@@ -10,6 +10,13 @@ from pathlib import Path
 import sys
 
 import campaign as ledger
+from bench_full12 import shared_process_thread_teams
+
+
+def require_comparable_teams(plan):
+    ledger.require(len(shared_process_thread_teams(plan))==1,
+        'Different solve teams in one process are diagnostic only; compare thread '
+        'counts or coarse-team caps in independent processes with a closing control')
 
 
 def configuration(plan,case,reference):
@@ -44,6 +51,7 @@ def main():
     plan=ledger.read(args.plan)
     names=[case['id'] for case in plan['cases']]
     ledger.require(len(names)>1 and len(set(names))==len(names),'Need at least two unique cases')
+    require_comparable_teams(plan)
     group=root/'attempts'/names[0]
     if not group.exists():
         ledger.require(best['attempt']==args.reuse_attempt,'New group must use current best')

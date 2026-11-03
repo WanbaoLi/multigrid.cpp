@@ -141,6 +141,23 @@ def apply_context_environment(context,solve_keys):
     os.environ.update({key:str(value) for key,value in context.items()})
 
 
+def shared_process_thread_teams(plan):
+    """Distinct fine/coarse teams switched between cases, excluding setup.
+
+    CoarseThreadScope caps a positive request at the case's fine team. A
+    constant setup-to-solve transition is covered by full12 warmup; alternating
+    different solve teams in one process needs independent-process confirmation.
+    """
+    teams=set()
+    for case in plan['cases']:
+        fine=case['threads']
+        cap=case.get('environment',{}).get('LQCD_COARSE_THREADS',
+            plan.get('context_environment',{}).get('LQCD_COARSE_THREADS',0))
+        cap=int(cap)
+        teams.add((fine,min(fine,cap) if cap>0 else fine))
+    return [dict(fine_threads=fine,coarse_threads=coarse) for fine,coarse in sorted(teams)]
+
+
 def check_saved_artifacts(run, report):
     actual=sha(run / 'propagator.npy')
     if actual != report['propagator_sha256']:
@@ -328,6 +345,7 @@ def benchmark(args):
         lattice_xyzt=[24, 24, 24, 64], source_xyzt=[0, 0, 0, 0], source_scale=1.,
         normalization='mass', fermion_t_boundary=-1, gauge_t_boundary=1,
         timing_scope='profile_full12_api' if args.diagnostic else 'full12_api', zero_initial_guess=True, samples=[], resources=resources,
+        shared_process_thread_teams=shared_process_thread_teams(plan),
         fixture_files=sorted(set(pair for values in all_hashes for pair in values)),
         fixture_report_sha256=collective(comm,lambda:sha(fixture/'result.json')),
         comparison_key=dict(host=socket.gethostname(), allocation=args.allocation,
