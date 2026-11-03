@@ -123,11 +123,14 @@ def apply_context_environment(context,solve_keys):
 
 
 def check_saved_artifacts(run, report):
-    if sha(run / 'propagator.npy') != report['propagator_sha256']:
-        raise RuntimeError('Saved propagator changed since measurement')
+    actual=sha(run / 'propagator.npy')
+    if actual != report['propagator_sha256']:
+        raise RuntimeError('Saved propagator digest mismatch: expected '+
+                           report['propagator_sha256']+' actual '+actual)
     for rank, expected in report['output_gauge_files']:
-        if sha(run / f'gauge_rank{rank:05d}.npy') != expected:
-            raise RuntimeError('Saved gauge changed since measurement')
+        actual=sha(run / f'gauge_rank{rank:05d}.npy')
+        if actual != expected:
+            raise RuntimeError(f'Saved gauge rank {rank} digest mismatch: expected {expected} actual {actual}')
 
 
 def check_cached_verification(run, report, reference, extractor):
