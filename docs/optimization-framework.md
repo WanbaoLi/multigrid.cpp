@@ -253,6 +253,38 @@ python tools/optimization/campaign.py --campaign CAMPAIGN seal candidate
 复核源码、报告、二进制及参考 skill。恢复时复制被选版本的归档库/源码，不执行
 `git reset --hard` 或删除其他人的工作。
 
+## 生成下一轮可阅读的经验
+
+`summarize.py` 复用账本的完整 12 列数值契约，读取全部轮次、阶段、原始报告和
+best/rollback 事件，在账本外生成 `experience.md` 与 `experience.json`：
+
+```bash
+python tools/optimization/summarize.py --campaign CAMPAIGN --output EXPERIENCE_DIR
+# 在原节点或完整恢复了源码/库归档时，可额外重算冻结资产的摘要：
+python tools/optimization/summarize.py --campaign CAMPAIGN --output EXPERIENCE_DIR --verify-artifacts
+```
+
+工具只读账本，不创建历史阅读回执、不改报告、不晋升版本。输出目录必须位于账本
+外；经验文件可写，再次生成会覆盖，所以正式结论仍应写入 `campaign.py conclude`。
+JSON 保存每列统计、全部样本、假设/机制/重试条件、配置、输入/源码/库摘要、日志和
+profile 路径、阶段失败以及最佳版本历史。Markdown 列出当前失败、blocked、中断及
+缺少结论的轮次，供下一轮先读；已有提案不能因为测量结束就自动变成“已处理”。
+
+只有已经 ingest、摘要匹配且通过完整精度契约的报告才计作完整。未导入的原始
+result、diagnostic、局部算子和缺失/损坏证据不会完成计数或参与排序。噪声超过
+campaign 阈值的结果保留但不排名；其余仅在相同 `comparison_key` 内按实测中位数
+排列，不能用排序替代原有晋升门，也不跨主机/分配宣称硬件快慢。工具默认不重哈希
+全部构建资产；需要时使用 `--verify-artifacts`。若读取过程中账本发生变化，则
+保留“读取不一致”标记、取消排名并返回非零，待阶段结束后重新生成。
+
+恢复及回滚仍使用现有 `run --retry-interrupted/--retry-failed`、`conclude` 和
+`rollback`；汇总文件提供入口，不自动执行未知状态的命令。读取汇总后，提案前仍需
+运行 `campaign.py history` 取得当时的历史回执。测试汇总契约：
+
+```bash
+python tests/test_optimization_summary.py -v
+```
+
 ## 停止条件与边界
 
 每个方向先解释失败，再根据新证据进行下一版；不能一次失败即永久排除。方向表
