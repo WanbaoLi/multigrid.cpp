@@ -96,8 +96,9 @@ sha256sum "$BUILD/liblqcd_cpu.so" > "$RUN_ROOT/library.sha256"
 需要 `GLIBCXX_3.4.30` 的 KUPL 与旧 `libstdc++` 混用。不要手动覆盖系统 libc 或把
 旧 sysroot 的 libc 路径随意加到加载路径最前。`ldd`/运行时映射用于确认实际依赖。
 
-`site_job.sh` 已复用相同 HPCKit、sysroot 编译器、MPI 和 NUMA 基础设置，但它的入口
-是队列 worker，而且还需要任务显式给出上述已验证的 SDK GCC/KUPL 加载目录。
+`site_job.sh` 已固定相同 HPCKit 25.1、sysroot 编译器、SDK GCC/KUPL 运行库、MPI
+和 NUMA 基础设置；它的入口是队列 worker。可用 `LQCD_HPCKIT_ROOT`、
+`LQCD_SYSROOT`、`LQCD_SITE_PYTHON` 明确选择另一套经过验证的环境。
 `trial.py` 接受 `LQCD_EXPERIMENT_KUPL_ROOT` 和 `LQCD_EXPERIMENT_CXX_RUNTIME`，会加入
 对应 CMake 选项；普通 `build_runtime.sh` 不自动打开 KUPL，不能只设置环境就假设已链接。
 
@@ -196,7 +197,7 @@ unset LQCD_COARSE_THREADS
 export LQCD_HBW_ALLOC=off LQCD_HBM=off
 export LQCD_VERBOSE=0 LQCD_HALO_PROFILE=0
 export LQCD_CPU_LIBRARY=$BUILD/liblqcd_cpu.so
-GAUGE=/public2/home/lwb_720/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime
+GAUGE=/public2/home/lwb_720/.cache/mg-opt-20261103/inputs/configuration24.lime
 "$PYTHON" tools/run_numa.py --ranks-per-numa 2 --threads 16 -- \
   "$PYTHON" -u tools/solve_propagator.py --backend x86 \
   --library "$LQCD_CPU_LIBRARY" --gauge "$GAUGE" \
@@ -338,9 +339,10 @@ MPI、C++ 运行库及 HBW 允许条件。这个例子只生成新的控制报�
 | fine solve | case 的 `threads` | setup 后 `Solver.set_threads()` 的线程数 |
 | coarse solve | case 动态参数 `LQCD_COARSE_THREADS` | 粗层局部线程上限，返回细层前恢复；0 继承 fine 团队 |
 
-例如固定 placement=37、setup=37，只将 solve 依次设为 37/32/16，才能隔离小团队
-调度收益，而不是同时改变 CPU 分配与层级构建。node5005 类似地固定 placement=16、
-setup=16，再比较 solve=16/12/8。同节点一进程/NUMA 与每 NUMA 两进程是不同拓扑，
+例如固定 placement=37、setup=37，在独立进程中分别设置 solve=37/32/16，完整
+预热并以开始、结束控制夹测。node5005 类似地固定 placement=16、setup=16，
+再分别比较 solve=16/12/8。不同线程队伍不能在同一进程交替后直接用于排名；
+运行库的线程唤醒和重建状态可能混入结果。同节点一进程/NUMA 与每 NUMA 两进程是不同拓扑，
 也不能仅按线程数混在一起比较。
 
 现有原始 LIME CLI 的 `--threads` 同时设置初始 setup 和后续 solve；它没有单独
