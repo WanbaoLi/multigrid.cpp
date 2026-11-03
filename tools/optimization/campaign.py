@@ -520,6 +520,10 @@ def validate_report(report, config, snapshot_sha):
             "Independent verification missing/failed/incomplete")
     require(verification.get("reference_sha256") == config["reference_sha256"], "Independent reference SHA mismatch")
     require(verification.get("columns") == 12, "Independent verification must cover all 12 columns")
+    if "propagator_sha256" in report:
+        require(SHA.fullmatch(str(report['propagator_sha256'])) and
+                verification.get('propagator_sha256')==report['propagator_sha256'],
+                "Independent and measured propagator digests differ")
     require(number(verification.get("max_true_residual"), "independent residual") <= config["residual_limit"],
             "Independent residual exceeds tolerance")
     if "solution_relative_error" in verification:

@@ -195,6 +195,8 @@ def check_cached_verification(run, report, reference, extractor):
         raise RuntimeError('Cached independent verification is not a full12 pass')
     if not math.isfinite(validation['max_true_residual']) or validation['max_true_residual'] > 1e-8:
         raise RuntimeError('Cached independent residual failed')
+    if validation.get('propagator_sha256') != report['propagator_sha256']:
+        raise RuntimeError('Independent and measured propagator digests differ')
     evidence = verification_evidence_path(run, validation.get('evidence_relative_path', 'independent/verification.json'))
     if ('verification_driver_sha256' in validation and
             not re.fullmatch('[0-9a-f]{64}', str(validation['verification_driver_sha256']))):
@@ -239,6 +241,10 @@ def verify(args):
     residuals = [r['residual'] for r in independent['columns']]
     if not independent['complete'] or len(residuals) != 12 or not all(math.isfinite(r) and 0 <= r <= 1e-8 for r in residuals):
         raise RuntimeError('Independent full12 verification failed')
+    if independent.get('propagator_sha256') != report['propagator_sha256']:
+        raise RuntimeError('Independent and measured propagator digests differ')
+    if {(r['source_spin'],r['source_color']) for r in independent['columns']} != {(s,c) for s in range(4) for c in range(3)}:
+        raise RuntimeError('Independent verification must cover twelve unique spin/color columns')
     validation = dict(complete=True, passed=True, columns=12,
         max_true_residual=max(residuals), reference_sha256=independent['reference_sha256'],
         method=independent['method'], evidence_sha256=sha(evidence),

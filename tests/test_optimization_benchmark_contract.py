@@ -28,6 +28,24 @@ bench, worker = load('bench_full12'), load('worker')
 
 
 class BenchmarkContractTest(unittest.TestCase):
+    def test_reject_helper_hash_or_duplicate_columns_before_publishing_pass(self):
+        for fault in ('digest','columns'):
+            with self.subTest(fault=fault), tempfile.TemporaryDirectory() as directory:
+                root=Path(directory)
+                args,report=self.verification_run(root)
+                def helper(argv,**kwargs):
+                    self.verifier_result(args,report,argv,**kwargs)
+                    evidence=Path(argv[-1])/'verification.json'
+                    row=json.loads(evidence.read_text())
+                    if fault=='digest':row['propagator_sha256']='0'*64
+                    else:row['columns'][1]=row['columns'][0].copy()
+                    bench.atomic(evidence,row)
+                with mock.patch.object(bench.subprocess,'run',side_effect=helper):
+                    with self.assertRaisesRegex(RuntimeError,'digests differ|unique spin/color'):
+                        bench.verify(args)
+                self.assertFalse(json.loads((root/'result.json').read_text())['verification']['complete'])
+                self.assertTrue((root/'independent/verification.json').is_file())
+
     def verification_run(self, root):
         reference, extractor = root/'reference', root/'extractor'
         prop, gauge = root/'propagator.npy', root/'gauge_rank00000.npy'

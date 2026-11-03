@@ -98,6 +98,7 @@ class CampaignTest(unittest.TestCase):
         original = self.report("bad")
         cases = []
         for key, value in [("complete", False), ("timing_scope", "local_kernel"),
+                           ("propagator_sha256", "1"*64),
                            ("shared_process_thread_teams", [dict(fine_threads=32,coarse_threads=32),
                                                             dict(fine_threads=37,coarse_threads=37)]),
                            ("zero_initial_guess", False), ("input_sha256", "c"*64),
