@@ -1,5 +1,6 @@
 """Stdlib checks for benchmark provenance and durable worker termination."""
 import copy
+import argparse
 import importlib.util
 import json
 import os
@@ -10,6 +11,7 @@ import sys
 import tempfile
 import time
 import unittest
+from types import SimpleNamespace
 from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,6 +28,32 @@ bench, worker = load('bench_full12'), load('worker')
 
 
 class BenchmarkContractTest(unittest.TestCase):
+    def verification_run(self, root):
+        reference, extractor = root/'reference', root/'extractor'
+        prop, gauge = root/'propagator.npy', root/'gauge_rank00000.npy'
+        for index, path in enumerate([reference, extractor, prop, gauge]):
+            path.write_bytes(f'frozen artifact {index}'.encode())
+        report = dict(measurements_complete=True, complete=True,
+            propagator_sha256=bench.sha(prop), output_gauge_files=[[0,bench.sha(gauge)]],
+            verification=dict(complete=False, passed=False))
+        bench.atomic(root/'result.json', report)
+        args = SimpleNamespace(verify=str(root), reference=str(reference), extractor=str(extractor),
+                               verification_output='independent')
+        return args, report
+
+    def verifier_result(self, args, report, argv, **kwargs):
+        # An orchestration fixture, not a substitute numerical oracle. Assert
+        # that retry invokes the same fixed full12 verifier and executables.
+        self.assertEqual(argv[:2], [sys.executable, str(ROOT/'benchmarks/runtime/verify_fixture_propagator.py')])
+        self.assertEqual(argv[2:5], [str(Path(args.verify).resolve()), args.reference, args.extractor])
+        self.assertTrue(kwargs['check'])
+        output = Path(argv[-1])
+        output.mkdir(exist_ok=False)
+        independent = dict(complete=True, columns=[dict(source_spin=i//3, source_color=i%3,
+            residual=4e-9) for i in range(12)], reference_sha256=bench.sha(args.reference),
+            propagator_sha256=report['propagator_sha256'], method='byte-only column extraction + independent scalar C++')
+        bench.atomic(output/'verification.json', independent)
+
     def test_fixture_rejects_changed_physics_or_preprocessing(self):
         good = dict(complete=True, mass=-.277, csw=1.160920226,
             lattice_xyzt=[24,24,24,64], grid_xyzt=[1,1,1,16],
@@ -119,6 +147,144 @@ class BenchmarkContractTest(unittest.TestCase):
                     with self.assertRaises(RuntimeError):
                         bench.check_cached_verification(root, report, reference, extractor)
                     path.write_bytes(original)
+
+    def test_cached_verification_uses_named_evidence_and_accepts_legacy_path(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            args, report = self.verification_run(root)
+            for name in ['independent', 'independent-retry']:
+                (root/name).mkdir()
+                (root/name/'verification.json').write_bytes(name.encode())
+            validation = dict(complete=True, passed=True, columns=12, max_true_residual=4e-9,
+                reference_sha256=bench.sha(args.reference), extractor_sha256=bench.sha(args.extractor),
+                evidence_sha256=bench.sha(root/'independent-retry/verification.json'),
+                evidence_relative_path='independent-retry/verification.json',
+                verification_driver_sha256='a'*64, propagator_sha256=report['propagator_sha256'])
+            report['verification'] = validation
+            bench.check_cached_verification(root, report, args.reference, args.extractor)
+            # Driver provenance is historical bookkeeping, not a requirement
+            # that an already accepted report was made by today's Python file.
+            self.assertNotEqual(validation['verification_driver_sha256'], bench.sha(bench.__file__))
+            target = root/'independent-retry/verification.json'
+            original = target.read_bytes()
+            target.write_bytes(b'changed named evidence')
+            with self.assertRaises(RuntimeError):
+                bench.check_cached_verification(root, report, args.reference, args.extractor)
+            target.write_bytes(original)
+            validation.pop('evidence_relative_path')
+            validation.pop('verification_driver_sha256')
+            validation['evidence_sha256'] = bench.sha(root/'independent/verification.json')
+            bench.check_cached_verification(root, report, args.reference, args.extractor)
+
+    def test_verification_paths_reject_unsafe_names_and_cached_escapes(self):
+        for name in ['', '.', '..', '../retry', '/retry', 'retry/child', r'retry\child',
+                     'retry.name', 'C:retry', 'UPPER', 'a'*81]:
+            with self.subTest(name=name), self.assertRaises(argparse.ArgumentTypeError):
+                bench.verification_output_name(name)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            args, report = self.verification_run(root)
+            report['verification'] = dict(complete=True, passed=True, columns=12,
+                max_true_residual=4e-9, reference_sha256=bench.sha(args.reference),
+                extractor_sha256=bench.sha(args.extractor), evidence_sha256='a'*64,
+                propagator_sha256=report['propagator_sha256'])
+            for relative in ['', '../verification.json', '/tmp/verification.json',
+                             'C:/tmp/verification.json', 'retry/../verification.json',
+                             'retry/child/verification.json', './retry/verification.json',
+                             r'retry\verification.json', 'retry/other.json']:
+                with self.subTest(relative=relative), self.assertRaises(RuntimeError):
+                    bench.check_cached_verification(root, {**report,'verification':{
+                        **report['verification'],'evidence_relative_path':relative}},
+                        args.reference, args.extractor)
+
+    def test_verification_paths_reject_directory_and_evidence_symlinks(self):
+        for kind in ['directory', 'file']:
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                run, outside = root/'run', root/'outside'
+                run.mkdir(); outside.mkdir()
+                (outside/'verification.json').write_bytes(b'external evidence')
+                try:
+                    if kind == 'directory':
+                        (run/'retry').symlink_to(outside, target_is_directory=True)
+                    else:
+                        (run/'retry').mkdir()
+                        (run/'retry/verification.json').symlink_to(outside/'verification.json')
+                except OSError as failure:
+                    self.skipTest(f'OS cannot create fixture symlink: {failure}')
+                with self.assertRaisesRegex(RuntimeError, 'symlink|escape'):
+                    bench.verification_evidence_path(run, 'retry/verification.json')
+
+    def test_cli_rejects_output_escape_before_opening_measurement_files(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            process = subprocess.run([sys.executable, str(ROOT/'tools/optimization/bench_full12.py'),
+                '--verify', str(root/'absent-run'), '--reference', 'unchanged-reference',
+                '--extractor', 'unchanged-extractor', '--verification-output', '../escaped'],
+                capture_output=True, text=True, timeout=10)
+            self.assertEqual(process.returncode, 2)
+            self.assertIn('single safe name', process.stderr)
+            self.assertEqual(list(root.iterdir()), [])
+
+    def test_failed_verification_is_retained_and_explicit_retry_uses_new_directory(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            args, report = self.verification_run(root)
+            original_report = (root/'result.json').read_bytes()
+            checks = bench.check_saved_artifacts
+            calls = 0
+            def fail_postcheck(run, value):
+                nonlocal calls
+                checks(run, value)
+                calls += 1
+                if calls == 2:
+                    raise RuntimeError('post-verification digest read rejected')
+            def scalar(argv, **kwargs):
+                self.verifier_result(args, report, argv, **kwargs)
+            with mock.patch.object(bench.subprocess,'run',side_effect=scalar), \
+                 mock.patch.object(bench,'check_saved_artifacts',side_effect=fail_postcheck):
+                with self.assertRaisesRegex(RuntimeError, 'post-verification'):
+                    bench.verify(args)
+            old_evidence = (root/'independent/verification.json').read_bytes()
+            self.assertEqual((root/'result.json').read_bytes(), original_report)
+            with mock.patch.object(bench.subprocess,'run') as runner:
+                with self.assertRaisesRegex(RuntimeError, 'retained'):
+                    bench.verify(args)
+                runner.assert_not_called()
+            args.verification_output = 'independent-retry'
+            with mock.patch.object(bench.subprocess,'run',side_effect=scalar):
+                bench.verify(args)
+            saved = json.loads((root/'result.json').read_text())
+            self.assertEqual((root/'independent/verification.json').read_bytes(), old_evidence)
+            self.assertEqual(saved['propagator_sha256'], report['propagator_sha256'])
+            self.assertEqual(saved['verification']['evidence_relative_path'], 'independent-retry/verification.json')
+            self.assertEqual(saved['verification']['verification_driver_sha256'], bench.sha(bench.__file__))
+            # The default cached call follows the accepted report's path rather
+            # than attempting to overwrite the older failed directory.
+            args.verification_output = 'independent'
+            with mock.patch.object(bench.subprocess,'run') as runner:
+                bench.verify(args)
+                runner.assert_not_called()
+
+    def test_retry_cannot_rebaseline_a_changed_frozen_propagator(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            args, report = self.verification_run(root)
+            original_report = (root/'result.json').read_bytes()
+            def corrupt(argv, **kwargs):
+                self.verifier_result(args, report, argv, **kwargs)
+                (root/'propagator.npy').write_bytes(b'changed during scalar validation')
+            with mock.patch.object(bench.subprocess,'run',side_effect=corrupt):
+                with self.assertRaisesRegex(RuntimeError, 'digest mismatch'):
+                    bench.verify(args)
+            self.assertTrue((root/'independent/verification.json').is_file())
+            args.verification_output = 'independent-retry'
+            with mock.patch.object(bench.subprocess,'run') as runner:
+                with self.assertRaisesRegex(RuntimeError, 'digest mismatch'):
+                    bench.verify(args)
+                runner.assert_not_called()
+            self.assertEqual((root/'result.json').read_bytes(), original_report)
+            self.assertFalse((root/'independent-retry').exists())
 
     def test_nonfinite_timeouts_and_shell_strings_are_rejected(self):
         for timeout in [float('nan'), float('inf'), -1, 0, 101]:

@@ -18,6 +18,7 @@ import sys
 import time
 
 PROJECT = Path(__file__).resolve().parents[2]
+VERIFICATION_OUTPUT_NAME = r'[a-z0-9][a-z0-9_-]{0,79}'
 
 
 def sha(path):
@@ -151,16 +152,40 @@ def check_saved_artifacts(run, report):
             raise RuntimeError(f'Saved gauge rank {rank} digest mismatch: expected {expected} actual {actual}')
 
 
+def verification_output_name(value):
+    if not isinstance(value, str) or not re.fullmatch(VERIFICATION_OUTPUT_NAME, value):
+        raise argparse.ArgumentTypeError('Verification output must be a single safe name: lowercase letters, digits, _ or -')
+    return value
+
+
+def verification_evidence_path(run, relative):
+    # A verifier directory is one named child, never an arbitrary report path.
+    # Reject links even when their target happens to remain inside this run.
+    if not isinstance(relative, str) or not re.fullmatch(VERIFICATION_OUTPUT_NAME + r'/verification\.json', relative):
+        raise RuntimeError('Independent verification evidence needs a safe NAME/verification.json path')
+    root = Path(run).resolve()
+    evidence = root / relative
+    output = evidence.parent
+    if (output.is_symlink() or evidence.is_symlink() or
+            output.resolve() != output or evidence.resolve() != evidence):
+        raise RuntimeError('Independent verification evidence must not use symlinks or escape its run')
+    return evidence
+
+
 def check_cached_verification(run, report, reference, extractor):
     validation = report['verification']
     if validation.get('passed') is not True or validation.get('columns') != 12:
         raise RuntimeError('Cached independent verification is not a full12 pass')
     if not math.isfinite(validation['max_true_residual']) or validation['max_true_residual'] > 1e-8:
         raise RuntimeError('Cached independent residual failed')
+    evidence = verification_evidence_path(run, validation.get('evidence_relative_path', 'independent/verification.json'))
+    if ('verification_driver_sha256' in validation and
+            not re.fullmatch('[0-9a-f]{64}', str(validation['verification_driver_sha256']))):
+        raise RuntimeError('Cached verification driver provenance needs a SHA256')
     check_saved_artifacts(run, report)
     checks = [(reference, validation['reference_sha256']),
               (extractor, validation['extractor_sha256']),
-              (run / 'independent' / 'verification.json', validation['evidence_sha256']),
+              (evidence, validation['evidence_sha256']),
               (run / 'propagator.npy', validation['propagator_sha256'])]
     if report.get('reference_propagator'):
         checks.append((report['reference_propagator'], validation['reference_propagator_sha256']))
@@ -171,6 +196,7 @@ def check_cached_verification(run, report, reference, extractor):
 
 def verify(args):
     run = Path(args.verify).resolve()
+    name = verification_output_name(getattr(args, 'verification_output', 'independent'))
     report = json.loads((run / 'result.json').read_text())
     if not report['measurements_complete']:
         raise RuntimeError('Incomplete benchmark cannot be independently validated')
@@ -178,23 +204,29 @@ def verify(args):
         check_cached_verification(run, report, args.reference, args.extractor)
         print(json.dumps(report['verification']))
         return
-    output = run / 'independent'
+    evidence = verification_evidence_path(run, name + '/verification.json')
+    output = evidence.parent
     if output.exists():
-        raise RuntimeError('Interrupted validation retained; inspect and choose a new validation directory')
+        raise RuntimeError('Interrupted validation retained; inspect and retry with --verification-output NEW_NAME')
     check_saved_artifacts(run, report)
+    driver = Path(__file__).resolve()
+    driver_sha = sha(driver)
     reference_sha, extractor_sha = sha(args.reference), sha(args.extractor)
     baseline_sha = sha(report['reference_propagator']) if report.get('reference_propagator') else None
     env = dict(os.environ, OMP_NUM_THREADS='4', OMP_PLACES='cores', OMP_PROC_BIND='close')
     subprocess.run([sys.executable, str(PROJECT / 'benchmarks/runtime/verify_fixture_propagator.py'),
                     str(run), str(Path(args.reference).resolve()),
                     str(Path(args.extractor).resolve()), str(output)], env=env, check=True)
-    independent = json.loads((output / 'verification.json').read_text())
+    evidence = verification_evidence_path(run, name + '/verification.json')
+    independent = json.loads(evidence.read_text())
     residuals = [r['residual'] for r in independent['columns']]
     if not independent['complete'] or len(residuals) != 12 or not all(math.isfinite(r) and 0 <= r <= 1e-8 for r in residuals):
         raise RuntimeError('Independent full12 verification failed')
     validation = dict(complete=True, passed=True, columns=12,
         max_true_residual=max(residuals), reference_sha256=independent['reference_sha256'],
-        method=independent['method'], evidence_sha256=sha(output / 'verification.json'),
+        method=independent['method'], evidence_sha256=sha(evidence),
+        evidence_relative_path=evidence.relative_to(run).as_posix(),
+        verification_driver_sha256=driver_sha,
         propagator_sha256=independent['propagator_sha256'], extractor_sha256=extractor_sha)
     if report.get('reference_propagator'):
         import numpy as np
@@ -221,6 +253,8 @@ def verify(args):
         raise RuntimeError('Independent executable changed during validation')
     if baseline_sha and sha(report['reference_propagator']) != baseline_sha:
         raise RuntimeError('Baseline propagator changed during validation')
+    if sha(driver) != driver_sha:
+        raise RuntimeError('Verification driver changed during validation')
     report['verification'] = validation
     report['complete'] = True
     atomic(run / 'result.json', report)
@@ -401,6 +435,8 @@ def main():
     p.add_argument('--verify')
     p.add_argument('--reference')
     p.add_argument('--extractor')
+    p.add_argument('--verification-output', type=verification_output_name, default='independent',
+                   help='new single-level evidence directory for --verify (default: independent)')
     p.add_argument('--fixture')
     p.add_argument('--plan')
     p.add_argument('--library')

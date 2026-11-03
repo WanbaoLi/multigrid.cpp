@@ -202,6 +202,22 @@ Linux 上运行生命周期测试验证。
 覆盖随机源、非平凡规范场、奇偶、尾部、alias、归一化和 MPI 边界。独立逐列验证
 负责真实组态的完整算子残差；CTest 记录保留在该轮阶段日志中。
 
+独立验证若中断或在末尾哈希复核失败，原 `independent/` 目录完整保留，默认命令
+拒绝覆盖。检查失败原因后可显式重试到新目录，例如：
+
+```sh
+python tools/optimization/bench_full12.py --verify RUN --reference REFERENCE \
+  --extractor EXTRACTOR --verification-output independent-retry1
+```
+
+`RUN` 是原完整测量目录，`REFERENCE` 和 `EXTRACTOR` 仍是同一冻结标量参考程序和
+列提取器。新目录名只允许单级小写字母、数字、下划线和短横线。整个固定 12 列
+流程及原文件/参考程序的前后哈希检查重新执行；不会修改预期传播子 SHA256。
+报告记录 `verification.evidence_relative_path` 和本次 Python 驱动的
+`verification_driver_sha256`。缓存复核按记录路径找证据，缺路径字段的旧报告
+继续使用 `independent/verification.json`；绝对路径、上级跳转和符号链接均拒绝。
+驱动摘要记录历史 provenance，不要求旧已接受报告由当前版本的 Python 文件生成。
+
 `comparison_key` 是前后对照约束：同一主机和分配、相同物理问题及计时口径。
 允许候选的线程数、分块、批大小、内部算法和库不同，它们记录在 `configuration`；
 不得把这些值混入必须相等的比较键，否则无法比较调度优化。更换节点后必须在
