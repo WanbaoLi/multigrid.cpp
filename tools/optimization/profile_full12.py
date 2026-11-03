@@ -118,10 +118,13 @@ def runtime_evidence(MPI, benchmark):
 
 
 def stop_perf(process):
+    requested_sigint = False
     if process.poll() is None:
         process.send_signal(signal.SIGINT)
+        requested_sigint = True
     try:
-        return process.wait(timeout=30)
+        return dict(record_returncode=process.wait(timeout=30),
+                    stop_requested_sigint=requested_sigint)
     except subprocess.TimeoutExpired:
         os.killpg(process.pid, signal.SIGTERM)
         try:
@@ -130,6 +133,11 @@ def stop_perf(process):
             os.killpg(process.pid, signal.SIGKILL)
             process.wait()
         raise RuntimeError('perf did not flush/exit after SIGINT')
+
+
+def record_exit_eligible(returncode, requested_sigint):
+    """A requested SIGINT can flush valid data; decoding still has to succeed."""
+    return returncode == 0 or (requested_sigint and returncode == -signal.SIGINT)
 
 
 def main(argv=None):
@@ -236,10 +244,14 @@ def main(argv=None):
                 except Exception as exc:
                     local_errors.append('optional PMPI counter end: '+repr(exc))
             if selected:
+                record_exit_ok = False
                 if process:
                     try:
-                        profile_record['record_returncode'] = stop_perf(process)
-                        if profile_record['record_returncode'] != 0:
+                        profile_record.update(stop_perf(process))
+                        record_exit_ok = record_exit_eligible(
+                            profile_record['record_returncode'],
+                            profile_record['stop_requested_sigint'])
+                        if not record_exit_ok:
                             raise RuntimeError(f"perf record failed: {profile_record['record_returncode']}")
                     except Exception as exc:
                         local_errors.append('perf stop: '+repr(exc))
@@ -247,7 +259,7 @@ def main(argv=None):
                     stream.close()
                 try:
                     perfdata = prefix.with_suffix('.perf.data')
-                    if not process or process.returncode != 0 or not perfdata.is_file() or not perfdata.stat().st_size:
+                    if not process or not record_exit_ok or not perfdata.is_file() or not perfdata.stat().st_size:
                         raise RuntimeError('No successful nonempty perf recording')
                     report_argv = [shutil.which(args.perf),'report','--stdio','--no-children',
                                    '--sort','symbol','--input',str(perfdata)]
@@ -258,6 +270,8 @@ def main(argv=None):
                     profile_record['report_returncode'] = result.returncode
                     if result.returncode:
                         raise RuntimeError(f'perf report failed: {result.returncode}')
+                    if not prefix.with_suffix('.perf-flat.txt').stat().st_size:
+                        raise RuntimeError('perf report produced an empty flat report')
                     profile_record['perf_data_sha256'] = sha(perfdata)
                     profile_record['flat_report_sha256'] = sha(prefix.with_suffix('.perf-flat.txt'))
                 except Exception as exc:
