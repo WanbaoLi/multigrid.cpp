@@ -518,6 +518,11 @@ def validate_report(report, config, snapshot_sha):
     verification = report.get("verification", {})
     require(verification.get("complete") is True and verification.get("passed") is True,
             "Independent verification missing/failed/incomplete")
+    if 'checksum_audit' in verification:
+        audit=verification['checksum_audit']
+        require(isinstance(audit,dict) and audit.get('complete') is True and
+                audit.get('passed') is True and audit.get('status')=='passed',
+                "Checksum protocol has not reached a complete terminal pass")
     require(verification.get("reference_sha256") == config["reference_sha256"], "Independent reference SHA mismatch")
     require(verification.get("columns") == 12, "Independent verification must cover all 12 columns")
     if "propagator_sha256" in report:

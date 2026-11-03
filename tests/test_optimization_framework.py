@@ -105,6 +105,8 @@ class CampaignTest(unittest.TestCase):
                            ("source_manifest_sha256", "d"*64), ("library_sha256", "e"*64)]:
             cases.append({**copy.deepcopy(original), key: value})
         for field, value in [("complete", False), ("passed", False), ("columns", 1),
+                             ("checksum_audit", dict(complete=False,passed=False,status='running')),
+                             ("checksum_audit", dict(complete=True,passed=False,status='failed')),
                              ("max_true_residual", 2e-8), ("solution_relative_error", 2e-6),
                              ("reference_sha256", "f"*64)]:
             row = copy.deepcopy(original)
