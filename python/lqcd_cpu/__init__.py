@@ -406,7 +406,7 @@ class Solver:
                     results.extend(batch_results)
             except RuntimeError as exc:
                 label = f"RHS {index}" if count == 1 else f"RHS batch starting at {index}"
-                raise RuntimeError(f"{label} failed: {self.last_result}") from exc
+                raise RuntimeError(f"{label} failed: {exc}; last_result={self.last_result}") from exc
         return solutions, results
 
     def solve_propagator(self, point=(0, 0, 0, 0), tol=1e-8, *, source_scale=1.0,
