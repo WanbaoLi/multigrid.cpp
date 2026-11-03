@@ -285,6 +285,69 @@ campaign 阈值的结果保留但不排名；其余仅在相同 `comparison_key`
 python tests/test_optimization_summary.py -v
 ```
 
+## 导出小体积只读证据包
+
+在登录节点运行导出工具即可，无需启动求解、profile 或申请计算核：
+
+```bash
+python tools/optimization/export_evidence.py --campaign CAMPAIGN \
+  --output EXPORT_PARENT/asof-UTC_TIMESTAMP --max-log-bytes 131072
+```
+
+输出目录必须是尚不存在的新目录，且位于账本、冻结源码及参考 skill 之外。默认
+`--completed-only` 保留所有轮次的状态、提案与计划，但不复制运行中或尚未结束轮次
+的日志和测量载荷。`--no-completed-only` 可纳入尚未结束但没有 running 阶段的载荷；
+运行中的载荷始终排除。failed、blocked、中断及未 ingest 的轮次仍保留原有状态，
+不能因导出变成已完成。工具不调用 `history`、`seal`、`ingest`、晋升或回滚。
+交错实验的候选报告若引用父轮次目录中的独立校验，会按已 ingest 报告中的原始
+`evidence_sha256` 精确定位，只补拷对应校验 JSON 和十二列日志/残差文件，不把
+父轮次认定为已完成，也不复制其大数组。
+
+`export-manifest.json` 记录每个原始绝对路径、大小、原始 SHA、导出路径/SHA、
+脱敏或摘录操作、排除原因、全部轮次和最佳版本状态。源归档按内容 SHA 去重，
+逐项核对归档与 source-manifest；当前最佳另保留 `best/source/` 和实测库
+`best/liblqcd_cpu.so`。原始冻结参考 skill 的六个文件按 campaign 保存的摘要逐字节
+复制，不修改原件。普通运行命令、环境白名单、计划、报告、逐列校验 JSON、十二列
+日志和残差小文件均保留。私密环境变量值与凭据赋值会脱敏，因此原始与导出文件
+摘要可能不同；不要使用脱敏副本替换原始 ledger 的证据。
+
+默认每个日志最多 128 KiB，超限导出首尾摘录并标记；总导出预算默认 256 MiB，
+可通过 `--max-total-bytes` 调整。build、其他库/构建树、缓存、原始 perf.data、
+传播子和 gauge 数组不打包、不重新哈希。被排除数组的 `declared_sha256` 来自原始
+报告，仅是声明；`sha256: null` 表示导出工具没有读取原始大文件计算摘要。原始
+source archive 若包含环境凭据文件、数组、链接或路径越界，会明确报错而非改写
+归档继续沿用旧摘要。
+
+导出只复核已有报告契约、独立 verification 摘要、十二列覆盖及日志残差的一致性，
+不重跑数值验证。`complete_review_material` 表示这些审阅材料齐备，仍应结合
+`read_consistent`、错误列表及冻结源码/库条目检查；它不表示未打包数组被重新验证。
+读取期间文件集合或内容变化会标记 `read_consistent: false` 并返回非零。所有中间
+产物保留供诊断，待稳定时换一个新输出目录重试，绝不封存正在运行的轮次。
+已 ingest 报告缺少审阅材料时，`registered_review_complete` 为 false 并返回非零；
+`best_review_complete` 单独标明当前最佳的十二列精度材料是否齐备。
+
+收到包后，可在包目录核对全部已导出文件的摘要：
+
+```bash
+python - <<'PY'
+import hashlib, json
+from pathlib import Path
+root = Path('.')
+manifest = json.loads((root / 'export-manifest.json').read_text())
+assert manifest['export_complete'] and manifest['read_consistent']
+for row in manifest['entries']:
+    if row['included']:
+        path = root / row['export_path']
+        assert path.stat().st_size == row['export_bytes']
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == row['export_sha256']
+print('Exported file bytes match the export manifest; no numerical solve was run.')
+PY
+```
+
+原始大数组仍在源机器上；完整数值复现使用原有 fixture/独立标量校验命令。
+中断恢复和回滚继续使用原 ledger 的命令；此包不是可直接继续运行的完整账本。
+只读及并发/脱敏契约测试：`python tests/test_optimization_export.py -v`。
+
 ## 停止条件与边界
 
 每个方向先解释失败，再根据新证据进行下一版；不能一次失败即永久排除。方向表
