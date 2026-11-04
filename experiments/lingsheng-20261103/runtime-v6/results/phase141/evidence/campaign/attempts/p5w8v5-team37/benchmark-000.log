@@ -1,0 +1,2234 @@
+{
+  "mpi_launcher": "openmpi",
+  "topology": {
+    "ranks": 16,
+    "ranks_per_numa": 1,
+    "threads_per_rank": [
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37
+    ],
+    "grid": [
+      1,
+      1,
+      1,
+      16
+    ],
+    "lattice": [
+      24,
+      24,
+      24,
+      64
+    ],
+    "block": [
+      6,
+      6,
+      6,
+      4
+    ],
+    "host": "cn19483",
+    "placement": [
+      {
+        "rank": 0,
+        "node": 0,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 1,
+        "node": 1,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 2,
+        "node": 2,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 3,
+        "node": 3,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 4,
+        "node": 4,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159,
+          160,
+          161,
+          162,
+          163,
+          164,
+          165,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171,
+          172,
+          173,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          185,
+          186,
+          187,
+          188
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 5,
+        "node": 5,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199,
+          200,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207,
+          208,
+          209,
+          210,
+          211,
+          212,
+          213,
+          214,
+          215,
+          216,
+          217,
+          218,
+          219,
+          220,
+          221,
+          222,
+          223,
+          224,
+          225,
+          226
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 6,
+        "node": 6,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          228,
+          229,
+          230,
+          231,
+          232,
+          233,
+          234,
+          235,
+          236,
+          237,
+          238,
+          239,
+          240,
+          241,
+          242,
+          243,
+          244,
+          245,
+          246,
+          247,
+          248,
+          249,
+          250,
+          251,
+          252,
+          253,
+          254,
+          255,
+          256,
+          257,
+          258,
+          259,
+          260,
+          261,
+          262,
+          263,
+          264
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 7,
+        "node": 7,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          266,
+          267,
+          268,
+          269,
+          270,
+          271,
+          272,
+          273,
+          274,
+          275,
+          276,
+          277,
+          278,
+          279,
+          280,
+          281,
+          282,
+          283,
+          284,
+          285,
+          286,
+          287,
+          288,
+          289,
+          290,
+          291,
+          292,
+          293,
+          294,
+          295,
+          296,
+          297,
+          298,
+          299,
+          300,
+          301,
+          302
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 8,
+        "node": 8,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          304,
+          305,
+          306,
+          307,
+          308,
+          309,
+          310,
+          311,
+          312,
+          313,
+          314,
+          315,
+          316,
+          317,
+          318,
+          319,
+          320,
+          321,
+          322,
+          323,
+          324,
+          325,
+          326,
+          327,
+          328,
+          329,
+          330,
+          331,
+          332,
+          333,
+          334,
+          335,
+          336,
+          337,
+          338,
+          339,
+          340
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 9,
+        "node": 9,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          342,
+          343,
+          344,
+          345,
+          346,
+          347,
+          348,
+          349,
+          350,
+          351,
+          352,
+          353,
+          354,
+          355,
+          356,
+          357,
+          358,
+          359,
+          360,
+          361,
+          362,
+          363,
+          364,
+          365,
+          366,
+          367,
+          368,
+          369,
+          370,
+          371,
+          372,
+          373,
+          374,
+          375,
+          376,
+          377,
+          378
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 10,
+        "node": 10,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          380,
+          381,
+          382,
+          383,
+          384,
+          385,
+          386,
+          387,
+          388,
+          389,
+          390,
+          391,
+          392,
+          393,
+          394,
+          395,
+          396,
+          397,
+          398,
+          399,
+          400,
+          401,
+          402,
+          403,
+          404,
+          405,
+          406,
+          407,
+          408,
+          409,
+          410,
+          411,
+          412,
+          413,
+          414,
+          415,
+          416
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 11,
+        "node": 11,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          418,
+          419,
+          420,
+          421,
+          422,
+          423,
+          424,
+          425,
+          426,
+          427,
+          428,
+          429,
+          430,
+          431,
+          432,
+          433,
+          434,
+          435,
+          436,
+          437,
+          438,
+          439,
+          440,
+          441,
+          442,
+          443,
+          444,
+          445,
+          446,
+          447,
+          448,
+          449,
+          450,
+          451,
+          452,
+          453,
+          454
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 12,
+        "node": 12,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          456,
+          457,
+          458,
+          459,
+          460,
+          461,
+          462,
+          463,
+          464,
+          465,
+          466,
+          467,
+          468,
+          469,
+          470,
+          471,
+          472,
+          473,
+          474,
+          475,
+          476,
+          477,
+          478,
+          479,
+          480,
+          481,
+          482,
+          483,
+          484,
+          485,
+          486,
+          487,
+          488,
+          489,
+          490,
+          491,
+          492
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 13,
+        "node": 13,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          494,
+          495,
+          496,
+          497,
+          498,
+          499,
+          500,
+          501,
+          502,
+          503,
+          504,
+          505,
+          506,
+          507,
+          508,
+          509,
+          510,
+          511,
+          512,
+          513,
+          514,
+          515,
+          516,
+          517,
+          518,
+          519,
+          520,
+          521,
+          522,
+          523,
+          524,
+          525,
+          526,
+          527,
+          528,
+          529,
+          530
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 14,
+        "node": 14,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560,
+          561,
+          562,
+          563,
+          564,
+          565,
+          566,
+          567,
+          568
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 15,
+        "node": 15,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          570,
+          571,
+          572,
+          573,
+          574,
+          575,
+          576,
+          577,
+          578,
+          579,
+          580,
+          581,
+          582,
+          583,
+          584,
+          585,
+          586,
+          587,
+          588,
+          589,
+          590,
+          591,
+          592,
+          593,
+          594,
+          595,
+          596,
+          597,
+          598,
+          599,
+          600,
+          601,
+          602,
+          603,
+          604,
+          605,
+          606
+        ],
+        "available_physical_cores": 37
+      }
+    ]
+  },
+  "rank_environments": [
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35},{36}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "0",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{38},{39},{40},{41},{42},{43},{44},{45},{46},{47},{48},{49},{50},{51},{52},{53},{54},{55},{56},{57},{58},{59},{60},{61},{62},{63},{64},{65},{66},{67},{68},{69},{70},{71},{72},{73},{74}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "1",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{76},{77},{78},{79},{80},{81},{82},{83},{84},{85},{86},{87},{88},{89},{90},{91},{92},{93},{94},{95},{96},{97},{98},{99},{100},{101},{102},{103},{104},{105},{106},{107},{108},{109},{110},{111},{112}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "2",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{114},{115},{116},{117},{118},{119},{120},{121},{122},{123},{124},{125},{126},{127},{128},{129},{130},{131},{132},{133},{134},{135},{136},{137},{138},{139},{140},{141},{142},{143},{144},{145},{146},{147},{148},{149},{150}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "3",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{152},{153},{154},{155},{156},{157},{158},{159},{160},{161},{162},{163},{164},{165},{166},{167},{168},{169},{170},{171},{172},{173},{174},{175},{176},{177},{178},{179},{180},{181},{182},{183},{184},{185},{186},{187},{188}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "4",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{190},{191},{192},{193},{194},{195},{196},{197},{198},{199},{200},{201},{202},{203},{204},{205},{206},{207},{208},{209},{210},{211},{212},{213},{214},{215},{216},{217},{218},{219},{220},{221},{222},{223},{224},{225},{226}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "5",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{228},{229},{230},{231},{232},{233},{234},{235},{236},{237},{238},{239},{240},{241},{242},{243},{244},{245},{246},{247},{248},{249},{250},{251},{252},{253},{254},{255},{256},{257},{258},{259},{260},{261},{262},{263},{264}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "6",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{266},{267},{268},{269},{270},{271},{272},{273},{274},{275},{276},{277},{278},{279},{280},{281},{282},{283},{284},{285},{286},{287},{288},{289},{290},{291},{292},{293},{294},{295},{296},{297},{298},{299},{300},{301},{302}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "7",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{304},{305},{306},{307},{308},{309},{310},{311},{312},{313},{314},{315},{316},{317},{318},{319},{320},{321},{322},{323},{324},{325},{326},{327},{328},{329},{330},{331},{332},{333},{334},{335},{336},{337},{338},{339},{340}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "8",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{342},{343},{344},{345},{346},{347},{348},{349},{350},{351},{352},{353},{354},{355},{356},{357},{358},{359},{360},{361},{362},{363},{364},{365},{366},{367},{368},{369},{370},{371},{372},{373},{374},{375},{376},{377},{378}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "9",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{380},{381},{382},{383},{384},{385},{386},{387},{388},{389},{390},{391},{392},{393},{394},{395},{396},{397},{398},{399},{400},{401},{402},{403},{404},{405},{406},{407},{408},{409},{410},{411},{412},{413},{414},{415},{416}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "10",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{418},{419},{420},{421},{422},{423},{424},{425},{426},{427},{428},{429},{430},{431},{432},{433},{434},{435},{436},{437},{438},{439},{440},{441},{442},{443},{444},{445},{446},{447},{448},{449},{450},{451},{452},{453},{454}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "11",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{456},{457},{458},{459},{460},{461},{462},{463},{464},{465},{466},{467},{468},{469},{470},{471},{472},{473},{474},{475},{476},{477},{478},{479},{480},{481},{482},{483},{484},{485},{486},{487},{488},{489},{490},{491},{492}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "12",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{494},{495},{496},{497},{498},{499},{500},{501},{502},{503},{504},{505},{506},{507},{508},{509},{510},{511},{512},{513},{514},{515},{516},{517},{518},{519},{520},{521},{522},{523},{524},{525},{526},{527},{528},{529},{530}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "13",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{532},{533},{534},{535},{536},{537},{538},{539},{540},{541},{542},{543},{544},{545},{546},{547},{548},{549},{550},{551},{552},{553},{554},{555},{556},{557},{558},{559},{560},{561},{562},{563},{564},{565},{566},{567},{568}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "14",
+      "LQCD_CPU_THREADS": "37"
+    },
+    {
+      "OMP_NUM_THREADS": "37",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{570},{571},{572},{573},{574},{575},{576},{577},{578},{579},{580},{581},{582},{583},{584},{585},{586},{587},{588},{589},{590},{591},{592},{593},{594},{595},{596},{597},{598},{599},{600},{601},{602},{603},{604},{605},{606}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "15",
+      "LQCD_CPU_THREADS": "37"
+    }
+  ],
+  "launch_command": "mpirun --host localhost:16 -n 16 --bind-to none /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/source/tools/run_numa.py --_rank '{\"ranks\":16,\"ranks_per_numa\":1,\"threads_per_rank\":[37,37,37,37,37,37,37,37,37,37,37,37,37,37,37,37],\"grid\":[1,1,1,16],\"lattice\":[24,24,24,64],\"block\":[6,6,6,4],\"host\":\"cn19483\",\"placement\":[{\"rank\":0,\"node\":0,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36],\"available_physical_cores\":37},{\"rank\":1,\"node\":1,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74],\"available_physical_cores\":37},{\"rank\":2,\"node\":2,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112],\"available_physical_cores\":37},{\"rank\":3,\"node\":3,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150],\"available_physical_cores\":37},{\"rank\":4,\"node\":4,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188],\"available_physical_cores\":37},{\"rank\":5,\"node\":5,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226],\"available_physical_cores\":37},{\"rank\":6,\"node\":6,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264],\"available_physical_cores\":37},{\"rank\":7,\"node\":7,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302],\"available_physical_cores\":37},{\"rank\":8,\"node\":8,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340],\"available_physical_cores\":37},{\"rank\":9,\"node\":9,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378],\"available_physical_cores\":37},{\"rank\":10,\"node\":10,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416],\"available_physical_cores\":37},{\"rank\":11,\"node\":11,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454],\"available_physical_cores\":37},{\"rank\":12,\"node\":12,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492],\"available_physical_cores\":37},{\"rank\":13,\"node\":13,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530],\"available_physical_cores\":37},{\"rank\":14,\"node\":14,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568],\"available_physical_cores\":37},{\"rank\":15,\"node\":15,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600,601,602,603,604,605,606],\"available_physical_cores\":37}]}' /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python -u /home/share/nsls_lwb/.cache/mg-opt-20261103/aux-phase5-worker8-v5/runtime_benchmark_capture_v5.py --expected-self-sha a131af14babc8471f8bc416e9ba6b8b7c075823d8ad46602ab22e5aca7c2f97d --capture-output /home/share/nsls_lwb/.cache/mg-opt-20261103/141-phase5-worker8-v5-runtime-audit/p5w8v5-team37.json --attempt p5w8v5-team37 -- --benchmark /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/source/tools/optimization/bench_full12.py --audit-output /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark --expected-benchmark-sha 711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1 --expected-wrapper-sha f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60 --expected-reader-sha 34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427 --expected-helper-sha bc441c56af7ffe65781816c8d18427578e8097f0b35168349a27629655fa2074 --helper-wrapper /home/share/nsls_lwb/.cache/mg-opt-20261103/aux-phase5-worker8-v5/raw_scalar_helper_publication_v2.py --expected-helper-wrapper-sha c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097 --fixture /home/share/nsls_lwb/.cache/mg-20261102/propagator --plan /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/plan.json --library /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so --backend arm --output /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/measurements --allocation mg-opt-20261103-worker8 --snapshot-sha 78b429dc13a8b113792aa45bd27fc93134a8c4b39359da9ade05558c93d590ae --reference-propagator /home/share/nsls_lwb/.cache/mg-20261102/propagator/propagator.npy"
+}
+native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+setup vector 1 norm setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+87.9317
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+2 norm 86.5116
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+3 norm 89.3287
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+4 norm 87.6957
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+6 norm 88.6822
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+7 norm 89.5573
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+8 norm 89.5933
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+9 norm 90.069
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+12 norm 88.7709
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+13 norm 88.813
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+14 norm 89.8863
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+15 norm 86.9404
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+16 norm 87.6246
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+17 norm 89.2465
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+18 norm 87.7514
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+19 norm 87.8747
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+20 norm 89.2337
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+21 norm 85.957
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+22 norm 87.9753
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+23 norm 88.2655
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+24 norm 87.6472
+native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector setup vector 1 norm 1
+1 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+2 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+3 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector setup vector 4 norm 1
+setup vector 4 norm 1
+4 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector setup vector 5 norm 1
+setup vector 5 norm 1
+5 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector setup vector 6 norm 1
+6 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+7 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector setup vector 8 norm 1
+setup vector 8 norm 1
+8 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+9 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+10 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+11 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+12 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector setup vector 13 norm 1
+setup vector 13 norm 1
+13 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+14 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+15 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+16 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector setup vector 17 norm 1
+setup vector 17 norm 1
+17 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+20 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+21 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+23 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector setup vector 24 norm 1
+setup vector 24 norm 1
+24 norm 1
+native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+1 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector setup vector 2 norm 1
+2 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector setup vector 3 norm 1
+setup vector 3 norm 1
+3 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+4 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector setup vector 6 norm 1
+6 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+7 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+9 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+10 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector setup vector 11 norm 1
+11 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector setup vector 12 norm 1
+12 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+13 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector setup vector 14 norm 1
+14 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector setup vector 15 norm 1
+15 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector setup vector 17 norm 1
+setup vector 17 norm 1
+17 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+20 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+21 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+23 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+24 norm 1
+native EO gates clover_inverse=8.65917e-08 Schur_reconstruction=1.56469e-07
+native coarse EO gate Schur_reconstruction=1.6946e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+1.73625e-16 fine=9.23932e-08 R*P=4.97305e-09 RAP=1.65809e-07
+HBW rank=9 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,
+HBW rank=8 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,
+HBW rank=11 asset=links bytes=HBW rank=10 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=HBW rank=5 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=27,27,27,27,27,27,27,0 nodes=26,26,26,26,26,26,26,26,26,26,31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=21,21,21,21,21,2127,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26HBW rank=12 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=28,28,28,28,28,28,28,28,,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,2127,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27HBW rank=14 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=30,30,30,30,30,30,30,30,30,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,2628,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,HBW rank=13 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,26,26,26,26,26,26,26,26,26,26,
+HBW rank=2 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,
+HBW rank=6 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,2221,21,
+HBW rank=3 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19HBW rank=0 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,
+HBW rank=4 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20HBW rank=7 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,
+HBW rank=1 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+18,18,18,18,18,18,18,18,18,18,
+,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,
+,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
+,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,
+20,20,20,20,20,
+HBW rank=8 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=24,HBW rank=9 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=25,25,25,25,25,25,25,25,25,25,25,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,2425,25,25,25,25,25,25,25,25,25,25,25,,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,24,24,24,24,24,24,24,24,24,24,24,24,24HBW rank=5 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=025,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,
+ query_errno=0 nodes=21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,
+,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,
+HBW rank=11 asset=diag bytes=HBW rank=10 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=031850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=27,27,27,27, query_errno=0 nodes=26,26,26,26,26,26,26,26HBW rank=2 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=18,18,18,1827,27,27,27,27,27,27,27,27,27,27,27,27,27,27,,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,,18,18,18,18,18,18,18,18,18,1827,27,27,27,27,27,27,27,27,27,27,27,2726,26,26,26,26,26,26,26,26,26,26,26,26,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18HBW rank=13 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=29,29,29,,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,HBW rank=7 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+,26,26,26,26,26,26,
+18,18,18,18,18,18,18,18,18,18,18,18,
+29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,2329,29,29,29,29,29,29,29,29,29,29,29,23,23,23,23,23,23,23,23,23,23,,29,29,29,29,29,29,29,29,29,29,29,29,23,23,23,23,23,23,23,23,23,23,23,23,23,23,
+29,29,
+HBW rank=14 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30HBW rank=12 asset=diag bytes=31850496 provider=,30,30,30,30,30,30,30,30,30KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=28,28,28,30,30,30,30,30,30,30,30,30,30,30,28,28,28,28,28,28,28,28,30,30,30,30,30,30,30,30,30,30,28,28,28,28,28,28,28,28,28,28,28,28,30,30,30,30,30,30,30,30,30,
+HBW rank=0 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64,28,28,28,28,28,28,28,28,28,28,28,28,28,28, query_rc=0 query_errno=0 nodes=16,16,16,16,16,16,16,16,16,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16HBW rank=6 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=22,22,22HBW rank=3 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=19,19,19,19,19,19,19,HBW rank=1 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=17,17,17,17,17,17,17,17,1728,28,28,28,28,28,28,
+,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16HBW rank=4 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=20,20,20,20,20,20,20,20,20,20,20,20,20,,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,2219,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,,16,16,16,16,16,16,16,16,16,16,16,16,16,16,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,20,20,20,20,20,20,20,20,20,20,20,20,20,20,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+HBW rank=8 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,19,19,19,19,19,19,
+,17,17,17,17,17,17,17,17,17,17,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
+24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,
+HBW rank=9 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,
+HBW rank=5 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,
+HBW rank=11 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=27,27,27,27,27,27,27,27,27HBW rank=10 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,HBW rank=2 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=18,18,18,18,18,18,18,18,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,2726,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26HBW rank=13 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=29,29,29,29,29,29,29,29,29,HBW rank=7 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,1827,27,27,27,27,27,27,27,27,
+,26,26,26,26,26,26,26,26,26,
+29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,HBW rank=0 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=16,16,16,16,16,16,16,16,16,16,16,16,16,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,
+,18,18,18,18,18,18,18,
+HBW rank=14 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=30,30,30,30,30,30,30,30,30,3029,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,30,30,30,30,30,30,30,30,30,30,30,,29,29,29,29,29,29,29,29,29,29,29,,16,16,16,16,16,16,16,16,16,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,29,29,29,29,29,
+HBW rank=12 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,
+16,16,16,16,16,16,16,16,16,16,16,
+30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,
+HBW rank=6 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,HBW rank=3 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19HBW rank=1 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,HBW rank=4 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=20,20,20,20,20,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,1917,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,2022,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,
+17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,
+,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
+HBW rank=5 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,
+HBW rank=5 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+HBW rank=8 asset=basis bytes=HBW rank=9 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=24,24,24,2464 query_rc=0 query_errno=0 nodes=25,25,25,25,25,25,25,25,25,25,24,24,24,24,24,24,24,24,24,24,24,24,24,24,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,,24,24,24,24,24,24,24,24,24,24,25,25,25,25,25,25,25,25,25,25,25,25,2524,24,24,24,24,24,24,24,24,24,24,24,24,,25,25,25,25,25,25,25,25,25,25,25,24,24,24,24,24,24,24,24,2425,25,25,25,25,25,25,25,25,25,25,24,24,24,24,24,24,24,24,24,24,,
+HBW rank=9 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+24,24,24,24,
+HBW rank=8 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+HBW rank=10 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26HBW rank=11 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,HBW rank=7 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,2723,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,2326,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,
+HBW rank=10 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,
+HBW rank=11 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,
+HBW rank=7 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+HBW rank=2 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18HBW rank=13 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=HBW rank=14 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0,18,18,18,18,18,
+HBW rank=2 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+0 query_errno=0 nodes=29,29,29,29,29,29,29, query_errno=0 nodes=30,30,30,30,30,30,30,30,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,2930,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,29,29,29,29,29,29,29,29,,30,30,30,30,30,30,30,3029,29,29,29,29,29,29,29,29,29,30,30,30,30,30,30,30,30,30,30,,29,29,29,29,29,29,29,29,30,30,30,30,30,30,30,30,3029,29,29,29,29,29,29,29,29,
+,30,30,30,30,30,30,
+HBW rank=14 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+HBW rank=13 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+HBW rank=6 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,
+HBW rank=6 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+HBW rank=12 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28HBW rank=4 asset=basis bytes=127401984 provider=KUPL fallback=,28,28,28,28,28,28,28,28,28,280 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=20,20,20,,28,28,28,28,28,28,28,28,28,28,20,20,20,20,20,20,20,20,20,20,28,28,28,28,28,28,28,28,28,28,28,28,20,20,20,20,20,20,20,20,20,20
+HBW rank=12 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+,20,20,20,20,20,20,20,20,20,20,20,20HBW rank=3 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=,20,20,20,20,20,20,20,20,20,20,64 query_rc=0 query_errno=0 nodes=19,19,19,19,19,19,19,19,19,HBW rank=0 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19HBW rank=1 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=17,17,17,1716,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,20,20,20,
+HBW rank=4 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,1716,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,,19,19,19,19,19,19,19,19,19,19,19,19,,17,17,17,17,17,17,17,17,17,17,17,17,16,16,16,16,16,16,16,16,16,16,16,16,16,1619,19,19,19,19,19,19,19,
+HBW rank=3 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+17,17,17,17,17,17,17,17,17,17,17,17,,16,16,16,16,16,16,16,16,16,16,16,16,1617,17,17,17,17,17,17,17,17,17,16,16,16,16,
+HBW rank=0 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+,17,17,17,17,17,17,17,17,17,17,
+HBW rank=1 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+HBW rank=15 asset=links bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,
+HBW rank=15 asset=diag bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,
+HBW rank=15 asset=clover_inverse bytes=31850496 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,
+HBW rank=15 asset=basis bytes=127401984 provider=KUPL fallback=0 reason= sdk_verify=1 sampled_pages=64 query_rc=0 query_errno=0 nodes=28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,
+HBW rank=15 sidecar_bytes=222953724 cap=1073741824 raw_replicas_retained=1
+FULL12 {"case": "full12", "repeat": 0, "warmup": true, "wall_seconds": 18.0110117180011, "stats": [{"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 3.3454963549999945, "api_seconds": 3.4429988190000245, "true_residual": 4.818784495324712e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 3.3454963549999945, "api_seconds": 3.4429988190000245, "true_residual": 3.198723266023545e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.753149747000009, "api_seconds": 2.8664709299999913, "true_residual": 3.93331914178998e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.753149747000009, "api_seconds": 2.8664709299999913, "true_residual": 3.1414701107624717e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.747117875999976, "api_seconds": 2.843471925000017, "true_residual": 4.089293916030362e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.747117875999976, "api_seconds": 2.843471925000017, "true_residual": 4.075962155764433e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7826495490000127, "api_seconds": 2.8928828380000198, "true_residual": 3.656197070530659e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7826495490000127, "api_seconds": 2.8928828380000198, "true_residual": 2.8349929413297067e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 25, "refinement_steps": 0, "solver_seconds": 2.857623399000005, "api_seconds": 2.9723031429999764, "true_residual": 2.6407629419690196e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.857623399000005, "api_seconds": 2.9723031429999764, "true_residual": 3.773112245999546e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7270309519999785, "api_seconds": 2.8233265570000015, "true_residual": 4.27994077615877e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7270309519999785, "api_seconds": 2.8233265570000015, "true_residual": 2.612865913677638e-09, "batch_size": 2, "timing_scope": "shared_batch"}], "order_in_round": 0}
+FULL12 {"case": "full12", "repeat": 1, "warmup": false, "wall_seconds": 17.23133411598974, "stats": [{"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7422165989999883, "api_seconds": 2.816836964999993, "true_residual": 4.818784495324713e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7422165989999883, "api_seconds": 2.816836964999993, "true_residual": 3.198723266023545e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.757065857000015, "api_seconds": 2.8329867969999896, "true_residual": 3.93331914178998e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.757065857000015, "api_seconds": 2.8329867969999896, "true_residual": 3.1414741332670436e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.744812343999996, "api_seconds": 2.840426999000016, "true_residual": 4.089293916030363e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.744812343999996, "api_seconds": 2.840426999000016, "true_residual": 4.075962155764434e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7631170749999967, "api_seconds": 2.8592408579999926, "true_residual": 3.656197070530659e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7631170749999967, "api_seconds": 2.8592408579999926, "true_residual": 2.834974777171503e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 25, "refinement_steps": 0, "solver_seconds": 2.787783116999975, "api_seconds": 2.8825452979999966, "true_residual": 2.6407629419690196e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.787783116999975, "api_seconds": 2.8825452979999966, "true_residual": 3.773112289820159e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7355764840000063, "api_seconds": 2.829795593, "true_residual": 4.27994077615877e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7355764840000063, "api_seconds": 2.829795593, "true_residual": 2.6128659136776385e-09, "batch_size": 2, "timing_scope": "shared_batch"}], "order_in_round": 0}
+FULL12 {"case": "full12", "repeat": 2, "warmup": false, "wall_seconds": 17.36902558300062, "stats": [{"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.721282510000009, "api_seconds": 2.816544270999998, "true_residual": 4.818784495324713e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.721282510000009, "api_seconds": 2.816544270999998, "true_residual": 3.198723266023545e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.862650266000003, "api_seconds": 2.981328499, "true_residual": 3.93331914178998e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.862650266000003, "api_seconds": 2.981328499, "true_residual": 3.1414741332670436e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.721617297000023, "api_seconds": 2.7964238170000044, "true_residual": 4.089293916030362e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.721617297000023, "api_seconds": 2.7964238170000044, "true_residual": 4.075962155764434e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7693797649999965, "api_seconds": 2.844160826999996, "true_residual": 3.6561970705306593e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7693797649999965, "api_seconds": 2.844160826999996, "true_residual": 2.834974777171503e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 25, "refinement_steps": 0, "solver_seconds": 2.806217623000009, "api_seconds": 2.919886415999997, "true_residual": 2.64076294196902e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.806217623000009, "api_seconds": 2.919886415999997, "true_residual": 3.773112245999546e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7429259549999756, "api_seconds": 2.8397172400000272, "true_residual": 4.279940776158771e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7429259549999756, "api_seconds": 2.8397172400000272, "true_residual": 2.612865913677638e-09, "batch_size": 2, "timing_scope": "shared_batch"}], "order_in_round": 0}
+FULL12 {"case": "full12", "repeat": 3, "warmup": false, "wall_seconds": 17.2284351640119, "stats": [{"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.712351980000051, "api_seconds": 2.7884615880000183, "true_residual": 4.818784495324712e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.712351980000051, "api_seconds": 2.7884615880000183, "true_residual": 3.198723266023545e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.803817568999989, "api_seconds": 2.8795725449999736, "true_residual": 3.93331914178998e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.803817568999989, "api_seconds": 2.8795725449999736, "true_residual": 3.1414741332670436e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7476107119999824, "api_seconds": 2.8211701299999845, "true_residual": 4.089293916030362e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7476107119999824, "api_seconds": 2.8211701299999845, "true_residual": 4.075962155764434e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.719260520999967, "api_seconds": 2.8162919559999864, "true_residual": 3.656197070530659e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.719260520999967, "api_seconds": 2.8162919559999864, "true_residual": 2.834974777171503e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 25, "refinement_steps": 0, "solver_seconds": 2.849293005999982, "api_seconds": 2.9247765540000046, "true_residual": 2.64076294196902e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.849293005999982, "api_seconds": 2.9247765540000046, "true_residual": 3.773112245999546e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7169341410000243, "api_seconds": 2.8361031530000105, "true_residual": 4.27994077615877e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 24, "refinement_steps": 0, "solver_seconds": 2.7169341410000243, "api_seconds": 2.8361031530000105, "true_residual": 2.612865913677638e-09, "batch_size": 2, "timing_scope": "shared_batch"}], "order_in_round": 0}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 2, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00002/manifest.json", "manifest_sha256": "47554279d37371a582699f16176df9f0e0c7b58e14d3ec770979ea2318a9c55d", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 3, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00003/manifest.json", "manifest_sha256": "5cae60d3aaa77a7a7acb14e9747d0a1c09569db40ff31a8f8239bd85d2413a79", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 1, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00001/manifest.json", "manifest_sha256": "4321eed365a81f023f768b292fc74bbe1aecec20d83054c0d52a9e86f2b8c326", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 6, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00006/manifest.json", "manifest_sha256": "1450d64f54eba2285112444a238ab8f7556e5877b7ff2f3c7725293f64871b0a", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 5, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00005/manifest.json", "manifest_sha256": "40d0f665e0e191482ed22f5dd5174079d28558c95b4babacca4c9d3d1b342500", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 4, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00004/manifest.json", "manifest_sha256": "8160d1e64076707533e15da16f69daf36102d3d2f931dae564a43cf15ca55740", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 11, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00011/manifest.json", "manifest_sha256": "8daf46c7f20bd269e519e64009809237116970053301228a3695243b3330f4dd", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 10, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00010/manifest.json", "manifest_sha256": "1bc8d7d9989135a07b123f712d3589a4bbe1198965344c53dff370fd0a05521f", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 8, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00008/manifest.json", "manifest_sha256": "cbf837424278fed9fb27d97837418907387598d760e1076e76e489c8a5714319", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 12, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00012/manifest.json", "manifest_sha256": "24df0b8ba5d3cdf28e170fef7cef577bfaa13937243bc76ccace06b4b54a9849", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 7, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00007/manifest.json", "manifest_sha256": "c7e604e3a23163b8db597ea55ba8774f1d0fa2411889c3d5e39f831d0ac469aa", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 14, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00014/manifest.json", "manifest_sha256": "35c958106fc629d28d3822269e3d08a8dce6cc01722b1d0abefdb6f0083d0364", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 9, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00009/manifest.json", "manifest_sha256": "998d9d697f9809494eb8d2583dabc93af8b8bdfa9dbf8add03eafc3b4cd8de28", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 13, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00013/manifest.json", "manifest_sha256": "cd46b2ce9edeecabd36614d9e9ecd395e2ca487a682cd0a557d8b2cb668a1120", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 15, "checks": 5, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00015/manifest.json", "manifest_sha256": "37fdbaef05e8aeab8f65523989a818aca2bf7a05666c06e456882b59726858fe", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 3, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00003/manifest.json", "sha256": "3cbb0b8f0dd3f583d9505f99f4d7f550454dc713d8c76c8c03d493328e428841"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 2, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00002/manifest.json", "sha256": "11fa9677924e66f844b69d03d55706052d96c84b8e6098b93ea962b9d699214a"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 1, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00001/manifest.json", "sha256": "459b47dc38a100e8da3994e5e30b4d02c9660c18a8095d08613059d185973493"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 6, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00006/manifest.json", "sha256": "ed6f41a8b234b0c76bbe029d07dc06999d32548285544f6e5786fe01647a599a"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 5, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00005/manifest.json", "sha256": "6625570a50f169e8ed7bb2e0a019283b54d4b502bbac408d82759d1b09a48aa4"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 4, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00004/manifest.json", "sha256": "3e50cb72ef6cc2042048da29309a3bab56f647b7adfc63da1ce1aa0f8d0ee3bb"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 11, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00011/manifest.json", "sha256": "3809dc9adbc7ca4bb0a83beedd30bf2d90aca0f9893cde70d878d708ccb3c76d"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 8, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00008/manifest.json", "sha256": "3a206ddc1e889f2bc8d52491161ade2bedcf24958783cf7576c6a89b0df3f95f"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 12, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00012/manifest.json", "sha256": "6bdda789b35ef58710b78e9be52fb0428ad783914fb355b7e615ef04e1fee4dc"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 10, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00010/manifest.json", "sha256": "61f9c88c051bab0c986a8b8a745f271bde321d28f098ebeae35c5018fa028124"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 13, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00013/manifest.json", "sha256": "c15bdac40d734c56d69e400950faf4e3e5bed18602121db93f385f61d5370819"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 14, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00014/manifest.json", "sha256": "c7b0494cf3f63cd63e8d1290d4a81f119379f265e03c69384f63d9c9a2e19db2"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 9, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00009/manifest.json", "sha256": "05261b9da20817c88d9468b6d58120a91470503106d241ad5ba03f117611fbab"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 7, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00007/manifest.json", "sha256": "b222d5a7b275faa020a82ba6147b87033624cfdb86ca34f4d311cdcf8b4db500"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 15, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00015/manifest.json", "sha256": "805050e6d91b20461bfbd40c9f7f90a4d8eea9d4078b70d13caea12fb13d854d"}
+RAW_BENCHMARK_CHECKSUM_COMPLETE {"rank": 0, "checks": 6, "audit_manifest": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark/rank00000/manifest.json", "manifest_sha256": "c70f01bb5a29547501f99314417f5e9403b607b21e2527a80c5b3a11f18d7758", "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec", "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 0, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team37/checksum-audit/benchmark-fresh-publication-v2/rank00000/manifest.json", "sha256": "a63b4db8d580053e840730fd8803e31ee79f338911a446ac5881fbb62c054f7a"}
