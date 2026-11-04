@@ -1,0 +1,1542 @@
+[
+  {
+    "original_export_relative_path": "143-best-solve-profile-worker8-state.json",
+    "archived_path": "records/d04d3573ef071dc9-143-best-solve-profile-worker8-state.json",
+    "sha256": "2a095db59c22f2576b9904b8f5b67bacc97549b008b9b7ad2510038559a94797"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/attempt.json",
+    "archived_path": "records/b272099e8da3be8c-attempt.json",
+    "sha256": "539ddf4a40f95166197929053710fd7f7cea396cd9c653258836226aff6b798d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/benchmark-000.log",
+    "archived_path": "records/699f15fb0cadcc05-benchmark-000.log",
+    "sha256": "4600a18d5d5dd10114ce50eb6ad5eb82992c44ff83dc947708dfc81774999cf3"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00000/hash-000.json",
+    "archived_path": "records/0d47ab44ca4a9b84-hash-000.json",
+    "sha256": "d6e52934a15d055194bb0b265625e101539d398580a2d0390024990a907ffd12"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00000/hash-001.json",
+    "archived_path": "records/3f18bce7e5b2ab73-hash-001.json",
+    "sha256": "e3bc38779d587cc3430a45a37e4ac1e68e1fc1d89f8cf5dd4730864a6c84922f"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00000/hash-002.json",
+    "archived_path": "records/e1847af757a64d09-hash-002.json",
+    "sha256": "3a9405d36929191640dcb4ad99e566dbf75d17a447f0bb050a992066826b6c40"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00000/hash-003.json",
+    "archived_path": "records/5e4fa5fc6aa90db2-hash-003.json",
+    "sha256": "040141155010539482ebfee146f8c8830f192d0a425169e279ad278093565f87"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00000/hash-004.json",
+    "archived_path": "records/a726d68b4915c5c7-hash-004.json",
+    "sha256": "7867f965f0699306bbca0f2c339a4073efe648c70309d5a061dda1018a5a3d74"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00000/hash-005.json",
+    "archived_path": "records/20b370dde63903d6-hash-005.json",
+    "sha256": "280f0dc2c05c3c280c98168ebb2b1d21b9718b6289db87997a609b2062dfb5b2"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00000/manifest.json",
+    "archived_path": "records/a519234f15a8636a-manifest.json",
+    "sha256": "b191cf2914436f0c9cf0981c8e9d065a1b3d1f424e2e7a54a7ca5bfb4d3dd367"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00000/protocol.json",
+    "archived_path": "records/909a1b7a70970033-protocol.json",
+    "sha256": "ebae2276f779e68509ebf1e7c179cb6dca49c6bd2b71e7a257d441f9cfc0a224"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00001/hash-000.json",
+    "archived_path": "records/a0196adc246265bd-hash-000.json",
+    "sha256": "7ee0203b4ffb0e459d39c9b823e9de65162b437c217618746fd4727162f85ff6"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00001/hash-001.json",
+    "archived_path": "records/839e92e2cb0861e6-hash-001.json",
+    "sha256": "ca657edf5ab7392d8de5c546acaecdcdd4c8422be5bee74b829e7a8fad21e04e"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00001/hash-002.json",
+    "archived_path": "records/96266b650bfe1611-hash-002.json",
+    "sha256": "d346c6f283cead991291ab8f5c9589e1063c141284395fdbd37dc16627bd04d7"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00001/hash-003.json",
+    "archived_path": "records/68ddf7d3815ae9ac-hash-003.json",
+    "sha256": "45eac92b829f539b223fab9d62bb5224b5458c92d919d193858e283ee46e40e9"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00001/hash-004.json",
+    "archived_path": "records/2ec05e11c5706352-hash-004.json",
+    "sha256": "9bd6e7b91678e70a856f26f52fea268f7598012ed26e7fbcad73f549e060ad3c"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00001/manifest.json",
+    "archived_path": "records/895a9e54a1287b14-manifest.json",
+    "sha256": "c33284ce640c674e6a6a0084895a58af0e1f2631e41a1fe6f9559db3800368aa"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00001/protocol.json",
+    "archived_path": "records/59b68df759cf3840-protocol.json",
+    "sha256": "0e302459b84bb67963bd78a41fb43bf20d9f15c99524db14757dd5f1e6177bf1"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00002/hash-000.json",
+    "archived_path": "records/642d35508c659e68-hash-000.json",
+    "sha256": "dd2cc07075efd86bab7df3ccd598182554af29ce43b60da00ef3b21122864387"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00002/hash-001.json",
+    "archived_path": "records/4d2513d5e1b18276-hash-001.json",
+    "sha256": "e30ef099c766c155e0c26a5f42ade5d08f41eb74a2bb29f5368e590b8092faea"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00002/hash-002.json",
+    "archived_path": "records/3994047c9e102228-hash-002.json",
+    "sha256": "f4513e9292756da77b0d162a8dea6f81c4a3bb0ed8b3daccedd56c140243118d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00002/hash-003.json",
+    "archived_path": "records/f6270e65b1d7027f-hash-003.json",
+    "sha256": "e0967e532a14a94afaaebaf2094bf9cf775c4a3d1f5133811ca8bd2c465950e4"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00002/hash-004.json",
+    "archived_path": "records/d0c5c222b8396455-hash-004.json",
+    "sha256": "13e239638013aeb338568ab57dade0f0198eb87826d497c3a493b7223a43c2d8"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00002/manifest.json",
+    "archived_path": "records/e44827c51c9f501b-manifest.json",
+    "sha256": "185d13969f1c23169cc8f975babbfc89e3b13b6b679baf3c2f38e6273dffd184"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00002/protocol.json",
+    "archived_path": "records/cc69a49d03b9e169-protocol.json",
+    "sha256": "9a1cd9914a5c57ba4d9ef0f4770d3d510d81ec715c4466a6486ec6010e1d28d3"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00003/hash-000.json",
+    "archived_path": "records/f35005942593161a-hash-000.json",
+    "sha256": "57444e3be4ae574ef9c3b73bd307a30590b04f559727575442cb0dc5cc0f061d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00003/hash-001.json",
+    "archived_path": "records/f43e2f4220852eeb-hash-001.json",
+    "sha256": "03b9f9e677d43567936915c3d944b9dd007171a6f436c56f0b1ab1b28d7de083"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00003/hash-002.json",
+    "archived_path": "records/073850d9d40eda6b-hash-002.json",
+    "sha256": "79bd6dee2460575c3c6550a2094b28a8e0aeafef456b6cad1a47fa9dd891ea59"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00003/hash-003.json",
+    "archived_path": "records/9bcf751f0886c2c3-hash-003.json",
+    "sha256": "6cd330dd6ed833df08f683a0990eed718c11abeb5e15a72579a5aacf4361227d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00003/hash-004.json",
+    "archived_path": "records/98b8a29a7f6f4fbf-hash-004.json",
+    "sha256": "ed1dfada628ff308707f2733a374bf98164591f3c8dcf82d788b191626851dc6"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00003/manifest.json",
+    "archived_path": "records/d6d7bffd2d159234-manifest.json",
+    "sha256": "eb443344bbe4cda4692dbbeb9fae8abefd9e83c1e629f273a8f66d596112c5ca"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00003/protocol.json",
+    "archived_path": "records/eb5e193644c0436c-protocol.json",
+    "sha256": "b1b0de47ebcf1569c13248b8bcd9087504ea11e516d1728c00f826814f01729a"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00004/hash-000.json",
+    "archived_path": "records/098231ec64bce03c-hash-000.json",
+    "sha256": "31521ab21835cfbd236414055b7bb304044a77533788b03888225fda31b3643a"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00004/hash-001.json",
+    "archived_path": "records/7c96d3ca5ac58902-hash-001.json",
+    "sha256": "5263d3f50a50d1581c714885c4f09381ba6c5f44fd3a2d25f29b1f184eb5633c"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00004/hash-002.json",
+    "archived_path": "records/b2537bdb874b52e1-hash-002.json",
+    "sha256": "0568337b6fbae14197d1f0a68f765938845530a334e4a0c8f473f9a70228fa73"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00004/hash-003.json",
+    "archived_path": "records/376b6f3908dbe75f-hash-003.json",
+    "sha256": "4a5a1c61580580ed8ac301bfd2a378a831d9a237ef049e5a0f30fa04fbb1feed"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00004/hash-004.json",
+    "archived_path": "records/9978bcf5e1d16e02-hash-004.json",
+    "sha256": "b3e58d58f4802b6c749392f568496ece3f7991c4935fa4f82c1b2cdb7ae6b423"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00004/manifest.json",
+    "archived_path": "records/3adb64613d420f5a-manifest.json",
+    "sha256": "bfa9e2853082282219c17c2dddf51e3590b8eb60de94d2949943b2b30643064f"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00004/protocol.json",
+    "archived_path": "records/6fe20d4da065834c-protocol.json",
+    "sha256": "e1ddcb61398afccf481e5df515e3aee505b3031bdf5129109cfa889c68151d5d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00005/hash-000.json",
+    "archived_path": "records/43b96904416c4010-hash-000.json",
+    "sha256": "df7df78cf5d2adee373a323844057416ce29b052be39e1b68429c9d60dcbfb53"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00005/hash-001.json",
+    "archived_path": "records/cc2a384c7c3f0eb0-hash-001.json",
+    "sha256": "a155f0802c20290e10aa4d5fe103832d34dec92036689194fd84238213c0fabb"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00005/hash-002.json",
+    "archived_path": "records/498acdc6d38eaf17-hash-002.json",
+    "sha256": "d769c92d35c4eb418836aaffeafbbfb319b1e999309137ccd31434e83aca3004"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00005/hash-003.json",
+    "archived_path": "records/1380bea8b590ec39-hash-003.json",
+    "sha256": "aa6d1fcf578bb0613936e2e93fa3630cd96b29325b861076617018d122356c13"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00005/hash-004.json",
+    "archived_path": "records/8a2e10659b4fa113-hash-004.json",
+    "sha256": "ce71ba0eccf8da856bfac55a9370e986bdb2924755479925b03da8fa96b13269"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00005/manifest.json",
+    "archived_path": "records/c5c26a2d9ddf2488-manifest.json",
+    "sha256": "0626321ba3fbeb56506e4000117f229fa6d44ed843df9b0f1a9d52785d2216b2"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00005/protocol.json",
+    "archived_path": "records/5dca268f2c1f0889-protocol.json",
+    "sha256": "923151f034d2c68e8ca16d0ec1862d3813618d5a2d7f72ff951a06a8c470d791"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00006/hash-000.json",
+    "archived_path": "records/0680c00a553c6a7d-hash-000.json",
+    "sha256": "bb070ef986ebdb124ad2145f33a09fb39baeafc79acbed902f23f34f05be843e"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00006/hash-001.json",
+    "archived_path": "records/683f4570501293b2-hash-001.json",
+    "sha256": "0336976dbc7234cc291caaf5b0a43c6d790f8d419224251b6c0c90b7a821bdf4"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00006/hash-002.json",
+    "archived_path": "records/c1cfa7eda418d145-hash-002.json",
+    "sha256": "043fcd89dfdee88b370fa6319d1cce3dbd45234a01befa64ac5e1abcab48f2a9"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00006/hash-003.json",
+    "archived_path": "records/b2075dec2ba7af28-hash-003.json",
+    "sha256": "49e798aa0697550e110f373b168438b424d69cdab028df31ea5c0eb70927bdd7"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00006/hash-004.json",
+    "archived_path": "records/6c5ef19d94a43e9f-hash-004.json",
+    "sha256": "1f40b57ea4bbd2b4d6abf3c4e9d49f59ac4b91af7e1fb44c3182e955c6a78d9a"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00006/manifest.json",
+    "archived_path": "records/bbd7e9267396d6f3-manifest.json",
+    "sha256": "ed1f55968daa1da3352da06e727771b64b33ea9a2e2ab98861dd75df7797ded7"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00006/protocol.json",
+    "archived_path": "records/2e1bb6eefe6ce6d1-protocol.json",
+    "sha256": "2619edf441a65f0b7c3dd7c3a19aefa8a34306bfa732da4fa4e708fef97cce8e"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00007/hash-000.json",
+    "archived_path": "records/6ee32ccb41ab7c29-hash-000.json",
+    "sha256": "7deb36037f4e32ab3f843b4b686fb8d3d484286c459a6ae35026ff38a7147c46"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00007/hash-001.json",
+    "archived_path": "records/068c1ed9af791cfa-hash-001.json",
+    "sha256": "b5a73424b514a91c61a3ab86cb9fb468f13b86b1f5ab842357d13e098bb13dab"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00007/hash-002.json",
+    "archived_path": "records/31bab48187836e88-hash-002.json",
+    "sha256": "13c2324ec5a9f36e77fd87b2b15f3fcb79726b8c489a4e6506205a2005f0d620"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00007/hash-003.json",
+    "archived_path": "records/3b762ca33174a341-hash-003.json",
+    "sha256": "07637f148cf3876fe209e0a2755a31976296d504dc13848ded0ee3b5bc04aa46"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00007/hash-004.json",
+    "archived_path": "records/450fb7d7be3da61f-hash-004.json",
+    "sha256": "14ff4a759c3dcc994a8613c963c1670d28d370acbe1dc3c63bba70df8c0652a3"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00007/manifest.json",
+    "archived_path": "records/e23b276e0d099ade-manifest.json",
+    "sha256": "529982380f5ecb2abbbe5aac791e1790e36b97a00541e1ada1f7d1a9177c4829"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00007/protocol.json",
+    "archived_path": "records/a7ceaa0b23ae6dfe-protocol.json",
+    "sha256": "d9eb6d309c3fbb106af8e9972ed6629d21c3b8a64d3f54b4af804338e766e737"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00008/hash-000.json",
+    "archived_path": "records/01df55cbc7082d67-hash-000.json",
+    "sha256": "a9ced95eb55a9b8d241f0d827225372fd187654584417c23d01bbfafefbb570b"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00008/hash-001.json",
+    "archived_path": "records/ae27743ae3db4435-hash-001.json",
+    "sha256": "9b532ee7a22a7554065d5c7599003560e36282222b91327b8877d56ac5aad04d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00008/hash-002.json",
+    "archived_path": "records/3909c6e0e1c35597-hash-002.json",
+    "sha256": "28e89fa483fdd0d9562d4bb94a6ec8bb9360d2949739283bb47671f7842e9a47"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00008/hash-003.json",
+    "archived_path": "records/af6db5705e15c0a9-hash-003.json",
+    "sha256": "7d92391a8324a0e3ad229deea6dd5ae677679a01827f69b963364656b6f197e2"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00008/hash-004.json",
+    "archived_path": "records/7f282502fc1dd72e-hash-004.json",
+    "sha256": "773aa4e9085422d33b6cece6b988675640ce213ba1d497d9ce00acaf765dd81b"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00008/manifest.json",
+    "archived_path": "records/983881377d78e87e-manifest.json",
+    "sha256": "227ef43b9f426c9a223341f4c5ed4bb92faa20d81be8d2d48626af9daad92fc8"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00008/protocol.json",
+    "archived_path": "records/16a259b725b765eb-protocol.json",
+    "sha256": "ba9b28eb417c461ba17d86448973c2a802b1db9b6e1df2443e9882c2ead1697b"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00009/hash-000.json",
+    "archived_path": "records/ce5fad77893aa02d-hash-000.json",
+    "sha256": "2874c66ad5603a1a95f703fb0e327f6bf3a04afeb6a4553f333e2ab4d8592166"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00009/hash-001.json",
+    "archived_path": "records/61caad636c5aa9b3-hash-001.json",
+    "sha256": "0ace56dcd0e5685080d069fb79b399d518a616cae47de78cab091b0b30c4845f"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00009/hash-002.json",
+    "archived_path": "records/ab32c2215619e285-hash-002.json",
+    "sha256": "464e22135634d21821bf479e5bf3b78f24adeef9386280f8ff2628ab2f04edc2"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00009/hash-003.json",
+    "archived_path": "records/36f3764d28f46a1e-hash-003.json",
+    "sha256": "df5e8c397d72ca5fe7b9d0308914deae05fd5eff0bf6ac7045a24fa60724bd01"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00009/hash-004.json",
+    "archived_path": "records/f84fdc9b6aef291e-hash-004.json",
+    "sha256": "549dfa6c27726f20855b3593af8f0ba050fc091aff3a26d103f375713d00d119"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00009/manifest.json",
+    "archived_path": "records/6fc1f70d11f3ed33-manifest.json",
+    "sha256": "b776d6e6d012c5006a228116570be5bf411c0d8fc3d58a4c3eb35e6da62d9545"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00009/protocol.json",
+    "archived_path": "records/53b35110ea7c50b1-protocol.json",
+    "sha256": "929d5635f6204fb552c502b7fe5a0a5af986b94c1144825ac9b7737194021dac"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00010/hash-000.json",
+    "archived_path": "records/e8d41ccd54fc9209-hash-000.json",
+    "sha256": "9cea0732eef44659e24cf7397fef538ea2d87e3de7c729f4e61327a229255934"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00010/hash-001.json",
+    "archived_path": "records/2d11b58a859f7c37-hash-001.json",
+    "sha256": "cefff34d29420278239ae02eb396dd4b253a7fbab5ef5d6dab3b0992a0301481"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00010/hash-002.json",
+    "archived_path": "records/1899db615ada5e5e-hash-002.json",
+    "sha256": "9d25cd672e7f83f4bee19a0c8bd6d61368fb4c9abf33554b59839d054a310591"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00010/hash-003.json",
+    "archived_path": "records/a452032f7e1a3d36-hash-003.json",
+    "sha256": "91fc907a431308e2338542ee64226e6aea086a664480902a0aa6b35a291f0759"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00010/hash-004.json",
+    "archived_path": "records/6663e6276cf1cf33-hash-004.json",
+    "sha256": "b995923383e20758a4f686b7b691e00bdf29b4565f5f497e488c00420e591df7"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00010/manifest.json",
+    "archived_path": "records/9000224bca26d950-manifest.json",
+    "sha256": "37d0062f099d11dfad5de6bd15bf83b786233081c5fd6a5a94bade32285b2f60"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00010/protocol.json",
+    "archived_path": "records/c263252370d5a185-protocol.json",
+    "sha256": "3e1c03cf045204b3a1778ad13a575957c7d7b94df5512c25dde79c8a8287a904"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00011/hash-000.json",
+    "archived_path": "records/1838b13b5af76a50-hash-000.json",
+    "sha256": "79a1109c5b199f916a722b8f5b75685491d12f03c3dcf0239255566ec563ef84"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00011/hash-001.json",
+    "archived_path": "records/3f8b1c7edbc1f955-hash-001.json",
+    "sha256": "2418a1a755e24b50c35fc65c9d69d60e5b50a68ddbc5e56db78edbc766708cca"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00011/hash-002.json",
+    "archived_path": "records/72f2ee4f2e402c4e-hash-002.json",
+    "sha256": "e3762f70206cfd2e9306409641fe76f44a88f93718023223388710f66dd5ef5c"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00011/hash-003.json",
+    "archived_path": "records/9480dc51cffa0dc6-hash-003.json",
+    "sha256": "6db3eee5d5a54681ce579f785cd54b5a852095a1750de3a217d963513d8918af"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00011/hash-004.json",
+    "archived_path": "records/30a859eb2ca05246-hash-004.json",
+    "sha256": "3322a277e356c954e45fcf640bffef1e80517104c5ccdf1dc19e08c5f2a7e2fb"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00011/manifest.json",
+    "archived_path": "records/db9fe4d53bb19ba7-manifest.json",
+    "sha256": "e3402d11bf90b9a14dad5c1b932502a6b6c8b8d7a4586ac090363d57684d4b5b"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00011/protocol.json",
+    "archived_path": "records/8d3541101aa3c961-protocol.json",
+    "sha256": "c3b1518b8998a64127da100a4fa1f11a2eeff3e7dd44a702349096e22c1ed54f"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00012/hash-000.json",
+    "archived_path": "records/d4b9badf4cf68a67-hash-000.json",
+    "sha256": "c0c405be7e6dcd2dce8b01af98ea00e558de1a72a0a6aa276ff26329a3c7081f"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00012/hash-001.json",
+    "archived_path": "records/38fabc2a0be5effc-hash-001.json",
+    "sha256": "ae003d71c6e4879a2045e64f9ec55ef61853b4537dfa3f93623f25553b34be36"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00012/hash-002.json",
+    "archived_path": "records/28af9f2221893ebc-hash-002.json",
+    "sha256": "c2bfb228a4e01bf2288a5d6f4115e172b51334096adb83ad231d775ca0b29133"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00012/hash-003.json",
+    "archived_path": "records/bbc3cf69cb48d4ed-hash-003.json",
+    "sha256": "4c856048e670823c9da69d438c49f82cf554105f47f71e5a9457b462058e8881"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00012/hash-004.json",
+    "archived_path": "records/192bd8deeedd1286-hash-004.json",
+    "sha256": "a2c0ffa0f4a595b5936d19478980d480613e7365e525329f7a6ea78bb71c1613"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00012/manifest.json",
+    "archived_path": "records/5cc9899e766928b0-manifest.json",
+    "sha256": "5fb190ccacb9d698fbcbfa35fc9e610e76e5ccb43a55f5536357f5f178b59fd7"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00012/protocol.json",
+    "archived_path": "records/216b027681f5a7c6-protocol.json",
+    "sha256": "48504790d37a3e406c24c0ce38dda6811bf3938280e404ab3ee47919656116e5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00013/hash-000.json",
+    "archived_path": "records/dc5792c6425f347d-hash-000.json",
+    "sha256": "0f68ecd51dc2a7629d89de7972e3b65e479677b7724d34c68dc22be38b3ad5f7"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00013/hash-001.json",
+    "archived_path": "records/d4211fcfb6f48ded-hash-001.json",
+    "sha256": "8b5fd56405e42d6dfaf7114d08a330e7108f64590270812ef719a55707717e61"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00013/hash-002.json",
+    "archived_path": "records/dfd0618ff45a5c5c-hash-002.json",
+    "sha256": "ad5434717a151673aad5a09d2d7cc43f6115692ea92cb4b2b0ebf4bc8f7379ce"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00013/hash-003.json",
+    "archived_path": "records/b615c46930d38a43-hash-003.json",
+    "sha256": "40c2be1ce01bec8e9245218f07bb78d7dfa62a20795146e58d0c94eb98057768"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00013/hash-004.json",
+    "archived_path": "records/82fbc08ebb465167-hash-004.json",
+    "sha256": "28006f4eef2becf4c88bf89a1b3a6db6913bffcd6fb21975fd2b33fcc7974ca3"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00013/manifest.json",
+    "archived_path": "records/a7e4633e75109351-manifest.json",
+    "sha256": "3eaf1faafcb0aae2c144fc5e0c0d5354359ffb0fc211d98362e0a8a26e2a3188"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00013/protocol.json",
+    "archived_path": "records/eea2f878cd523cbe-protocol.json",
+    "sha256": "d7eb364b1c378f6df0f4fb0f3a5f3cb2ba6bd2554733b1b9f6d738ab677c17f7"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00014/hash-000.json",
+    "archived_path": "records/9bd4c44e923414e2-hash-000.json",
+    "sha256": "827ea0571b05b1b5f26c3bd35bad9bc27047f6d2e3ee32befc46abb5a7842d7c"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00014/hash-001.json",
+    "archived_path": "records/ea7a057214864e76-hash-001.json",
+    "sha256": "33d85edf93191f4affc5e3e42040ef63af7305ba7738a1eb14c73d6c588329a7"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00014/hash-002.json",
+    "archived_path": "records/58d5fa6f02eaaaf1-hash-002.json",
+    "sha256": "8b7932f2b279b23af50e99e1942e73afc428774befacb2874035121e2774cf41"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00014/hash-003.json",
+    "archived_path": "records/83d26d8e356d10cd-hash-003.json",
+    "sha256": "f34c3c661bfb4dea91c29d0f1f322cb5eba5283102336e13e404dde6c7b68ed9"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00014/hash-004.json",
+    "archived_path": "records/82da1af9df6657fd-hash-004.json",
+    "sha256": "857182e64a604e15384aae368d710ffaaf9680a4c1e44cc8c48a7b63fa9d8f5f"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00014/manifest.json",
+    "archived_path": "records/849acaf64c00eb21-manifest.json",
+    "sha256": "b0420c9de1d58c0f4b4612c7770936303b74547d3800d87750535cac48cd11cb"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00014/protocol.json",
+    "archived_path": "records/2d79bf31b23a7755-protocol.json",
+    "sha256": "2f6053d1e0ad9fb08b67f7002750772ab783b41b9905a665b923e9a604f1d7b6"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00015/hash-000.json",
+    "archived_path": "records/404fd0f9953f6b7b-hash-000.json",
+    "sha256": "32bcc56f605b2120957c2c36ccbbb21f83e71d7960c1622e0f12dd13a40b8337"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00015/hash-001.json",
+    "archived_path": "records/70472aa9ff120d2e-hash-001.json",
+    "sha256": "69c0d98baba490178906a5dbfc51e64cda9ef37c1659f5b2e0b1b46a5a0c83cc"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00015/hash-002.json",
+    "archived_path": "records/b4894b2528dd9dfa-hash-002.json",
+    "sha256": "7e656756fa5951aaedd5cc698d4d73f5d11490272e3517808e3f6bbb570c5e99"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00015/hash-003.json",
+    "archived_path": "records/8625eaf4f822d6b9-hash-003.json",
+    "sha256": "805c279f3735d9cf4f4f57415e557d9f97c9bb1aa114631951777be496f53609"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00015/hash-004.json",
+    "archived_path": "records/dbec6a9c246de0f6-hash-004.json",
+    "sha256": "e1c44a1fd4f22a50346e74b89a4654ca67e145f2d683bd0b6d56c733d22b7d2d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00015/manifest.json",
+    "archived_path": "records/1143d357b4a39fb3-manifest.json",
+    "sha256": "09c1d2f797119e7a14317e16f10c3e55bc5d94eaacf05fce306677b77c4464ab"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark/rank00015/protocol.json",
+    "archived_path": "records/c3c6e389aa40ce3d-protocol.json",
+    "sha256": "82db416a6d003108bc9ae706ad9d057e989904daae9ca0cd3a9426e0489bea2e"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00000/manifest.json",
+    "archived_path": "records/a707960e9963a89f-manifest.json",
+    "sha256": "113e3ff43a6de8e3b44b2eba7ae116f036d7991f1dacac901557bacfba845094"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/eligibility.json",
+    "archived_path": "records/82bcccbd67c549ce-eligibility.json",
+    "sha256": "d0940c2f767b188ab788e9c2f16172635e9c067422c84b1c8f8a066e596be01a"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-000.json",
+    "archived_path": "records/b5d08e802fe8bc7f-progress-000.json",
+    "sha256": "3ac084ffebc51c0ec8cb5b3feb7765928f3f5b059bc440290f0ff95d27828aac"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-001.json",
+    "archived_path": "records/00fba6a2ced948b0-progress-001.json",
+    "sha256": "05c1883b177fa28e31596f1ab67b90feeac41c35a3276ffa57e38c8ddb6c872c"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-002.json",
+    "archived_path": "records/59605d6b38e788b3-progress-002.json",
+    "sha256": "72704919e6c608b8fe8b9a361c7ce2d8180beb27ffa6842fd2a4cf0cd17f0044"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-003.json",
+    "archived_path": "records/10f04726fcbf20ff-progress-003.json",
+    "sha256": "d21124cc8bad553f03e871d9e2ca5f8fd66237fbe6d687acb72d97a8c762ab4c"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-004.json",
+    "archived_path": "records/6f2ff4334f7c0cb9-progress-004.json",
+    "sha256": "0929f98b05d18ffe250a763876824c26abd06ffbaea1fb58c09efc3f7d0f8807"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/read-0.json",
+    "archived_path": "records/d2a9779ebe28fb0c-read-0.json",
+    "sha256": "8fb5e76e7d1734f22d2096d808e94bcca821476560a7d60ac082886cb382e503"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/read-1.json",
+    "archived_path": "records/3c1cc15e14e5b1e9-read-1.json",
+    "sha256": "3072b236bdda9d397ad9a305a473bc063e566ebf70e13f77a56f8bdf9b96fb2e"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/read-2.json",
+    "archived_path": "records/07b6ef5fe4e9180d-read-2.json",
+    "sha256": "9310eb738307935bf4ca6bcb67cf5790d66942bc5dde3829a4e21e4e35aaa49e"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/receipt.json",
+    "archived_path": "records/30e119fbded0e608-receipt.json",
+    "sha256": "1728cf807a7a3cb7f1e5fdcb96b48adceb5fe096782b9a33b4aeb5af4fd34146"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00000/startup.json",
+    "archived_path": "records/be75af897048519d-startup.json",
+    "sha256": "39d2bb380e709a932acd409eb70601074728e204d4a737be0c333a43b6003602"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00001/manifest.json",
+    "archived_path": "records/64a6dd03d09d6b71-manifest.json",
+    "sha256": "8484af23cabeaa3fe91d1a312b0467e268b3a5d797627147985ee98cb61a7b34"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00001/startup.json",
+    "archived_path": "records/2d520d0833ae9287-startup.json",
+    "sha256": "046febf6a486e25ff1651df76b02af073972dbbf802c379195f5e5163cf4e429"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00002/manifest.json",
+    "archived_path": "records/8b10aecfe7ffe788-manifest.json",
+    "sha256": "98cac8c58cde9fba9486d2870be2a65079d7a17027bbac93470d8b811b066ff3"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00002/startup.json",
+    "archived_path": "records/c2412cecc674b1dd-startup.json",
+    "sha256": "59517f4b8aeba5dd486a6aa383c3911dc43b58f0fb119f127bdbd3c000be4fc2"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00003/manifest.json",
+    "archived_path": "records/ddaa7a54e6cab7a4-manifest.json",
+    "sha256": "232b68086e920679e877f89a54b6f342549b28de40635b6dc2425df1241c118e"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00003/startup.json",
+    "archived_path": "records/85c6de5b845d856f-startup.json",
+    "sha256": "aea4b9e71623f8d369e5f0545581eaa69ad312c86ce7499b82d6cf918b16440a"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00004/manifest.json",
+    "archived_path": "records/674ed0dedb49a877-manifest.json",
+    "sha256": "6e2cc20563c3badcc56a1705dd575799725245888c60e03ffd4310b6df05d752"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00004/startup.json",
+    "archived_path": "records/c774342bc692df0c-startup.json",
+    "sha256": "b5da06469c89ea61e4d90ff1a218fb14c8604f32f1dca69b7d3f056e7400b31e"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00005/manifest.json",
+    "archived_path": "records/fdad664f7f6f169c-manifest.json",
+    "sha256": "c1ed9635bed331bdaadbf1cf48c5a8ba2ab3711f623c3eea34bc3ddf932185b4"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00005/startup.json",
+    "archived_path": "records/a47cc04ff897e880-startup.json",
+    "sha256": "226435d28b4cc52dba9e5ce1aaace7528bd30add6d86c5ce8921fa4c593dcad3"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00006/manifest.json",
+    "archived_path": "records/7b2708ae592c12e6-manifest.json",
+    "sha256": "fc8c21e7078d44870498e8711593bc43e89e3e21e766f67514826a78f513116e"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00006/startup.json",
+    "archived_path": "records/fc3df0079b4b30b6-startup.json",
+    "sha256": "8b2301dc3d0dcc62003fbf020ddf11629e59616aa4babd77539e6bf6e4eb7488"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00007/manifest.json",
+    "archived_path": "records/1f32f8fa70fba2ab-manifest.json",
+    "sha256": "8acef91133a6367cda11263765bf0e4b4da6c188af230676c4c8a24aa67be4c5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00007/startup.json",
+    "archived_path": "records/a9398a40257bf28b-startup.json",
+    "sha256": "a84ad2b33f68618c7b3fb86e28e05a6a6d4976f321c4611cfdb85bcad88ca474"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00008/manifest.json",
+    "archived_path": "records/efa2d196c9dfffec-manifest.json",
+    "sha256": "2ff1259968f981417287344d83b87e010523e83df3c4d617b299acfe9a4c8deb"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00008/startup.json",
+    "archived_path": "records/3eb8fe9363eb1657-startup.json",
+    "sha256": "24175c1fddc7b77672c3fd5c51a3543af16b0fe3575359748f4f06bbb81f2998"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00009/manifest.json",
+    "archived_path": "records/f45c62a3d26f2634-manifest.json",
+    "sha256": "d7283fd32a9fd9ec9d61221acc835e8f5e2811ec91236eab37663a5c5b49381d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00009/startup.json",
+    "archived_path": "records/7b8ef41d247e2bc9-startup.json",
+    "sha256": "3a3120646cbb2f3eddf90000f05d450fe056a415623b31c3d1a0c921f8ccffcc"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00010/manifest.json",
+    "archived_path": "records/d20bb9ad7306809e-manifest.json",
+    "sha256": "ede2b6bbb68b0b7552f23f30d7ea4123318a9eab7954c69758e5c5f7bbfda683"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00010/startup.json",
+    "archived_path": "records/26f2c19723c7c9d5-startup.json",
+    "sha256": "e940f0b14a4682617e34181d7a1043297a55a3eb945a20f43cc78d8274dc4450"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00011/manifest.json",
+    "archived_path": "records/5c9f95e0286ba6a6-manifest.json",
+    "sha256": "877c52c59b8f053f9aa449a737a1586652bbebd823f1d2322cf55193b2f34e6f"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00011/startup.json",
+    "archived_path": "records/d633d6165ed37239-startup.json",
+    "sha256": "df815144953c71b26fbc6cdd8d37c7893201ef64023dc04e85f90e9f15a0a594"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00012/manifest.json",
+    "archived_path": "records/b7e29ca79e51fd0f-manifest.json",
+    "sha256": "643cec490bb9cd7815eaf91c91e175ba6a822ca2128d11e986f2cf71d6605a38"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00012/startup.json",
+    "archived_path": "records/6e7730d4c2da8887-startup.json",
+    "sha256": "b7195c3ccf2a020c9fd325a361bcdd67a783005698775cb39ec7470a0974931a"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00013/manifest.json",
+    "archived_path": "records/381b7ba934b21f61-manifest.json",
+    "sha256": "3066f3e25ccced38cf87a45dff2c0b9da2c0d1d03a12d1298a4dabdbfb89da0d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00013/startup.json",
+    "archived_path": "records/4cbaa3f39a099a3b-startup.json",
+    "sha256": "5d2768c53a4761eab2328858f227b8d9e1faf29a425df7a2c4c5addafc72dfdc"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00014/manifest.json",
+    "archived_path": "records/02c1a461c0612d4c-manifest.json",
+    "sha256": "a830c051ebacfca15ae25468df23c01fe7fee2cbf08514cf83ac9fe04421dcdf"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00014/startup.json",
+    "archived_path": "records/6c8a40dd5ccd0945-startup.json",
+    "sha256": "c922e50e2459efd2d0b61815f3ef806de7cab2c698b59a01935fbcb38d6946f9"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00015/manifest.json",
+    "archived_path": "records/73ee9a23f4fb42c3-manifest.json",
+    "sha256": "cf9fa51687002256e7535a3af231633ea3722f13df7f86f91e4a07dfefe83e87"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/benchmark-fresh-publication-v2/rank00015/startup.json",
+    "archived_path": "records/9f0b23fe55dfd2bd-startup.json",
+    "sha256": "bfe98ce610ec7c4898a75a81eea64361dcab2507ac18b6282181f119e704165d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-000.json",
+    "archived_path": "records/2a9f06afec0c537c-hash-000.json",
+    "sha256": "46db7591ac9fa257071bbd9d5da3da3f1f1d0285523ac23b955a8fa00f244c25"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-001.json",
+    "archived_path": "records/a3eecdb36da4f907-hash-001.json",
+    "sha256": "28fe1e9c30fe5b40979a3ad40fca09e25285af7170bd9f7e74b9ed6437203dcc"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-002.json",
+    "archived_path": "records/92e6d76e584dfebf-hash-002.json",
+    "sha256": "011350d6a3d4a9606cdb4d08c25f7c51d4529ed760d551c4369c9f140ff1e738"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-003.json",
+    "archived_path": "records/bfccc1416e6726e2-hash-003.json",
+    "sha256": "53afd3d243fd18117ad9ccc78ca800e7531166424c762fdd54e15e5c29009877"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-004.json",
+    "archived_path": "records/4f2f8ae363cf0b65-hash-004.json",
+    "sha256": "634c39018901793b6712ea4f23c7c2f8af1b744055d9b5bbc52ccbf1b40394ba"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-005.json",
+    "archived_path": "records/79386f45d711daf9-hash-005.json",
+    "sha256": "7b01030a806898fce40af90f48da288ff93d0a37fc9c4b8a2168582937cb7a74"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-006.json",
+    "archived_path": "records/28e4da76f6b9e9cb-hash-006.json",
+    "sha256": "b526844339e72dc45e31285b23da5d50d3e0bc4ecd06f6b85619a4fb916f67bc"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-007.json",
+    "archived_path": "records/b84ce8effbb757e2-hash-007.json",
+    "sha256": "a02c93dfa5856551427ee76bbf19bd1f27ae60ddcdc793bdcd3bc42cfae6ef0e"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-008.json",
+    "archived_path": "records/9f478b4ea12dab1b-hash-008.json",
+    "sha256": "d20d366c9916cf54c07e33395f766ae18ac3b96527a55c34e1cc8ba3ccfb5446"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-009.json",
+    "archived_path": "records/6682ce64197f6f33-hash-009.json",
+    "sha256": "b3c98e6832beff61c1988117a612244b699c2be7673315e29935b3cefbec7dea"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-010.json",
+    "archived_path": "records/542bcc5275751ce1-hash-010.json",
+    "sha256": "4ecfd1379748e5c463d68decfaed2e068c088857739b895c36445dfc4341fe13"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-011.json",
+    "archived_path": "records/9764abefb1a52114-hash-011.json",
+    "sha256": "4bd3dd4d2286375facf88c6e5b4ba1bfc255399646a505b1104262d92de472c7"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-012.json",
+    "archived_path": "records/22783076b50f1662-hash-012.json",
+    "sha256": "61610098a8a1d0684a84593eee77cd30753230cdce03b156647dbb8d36019bd1"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-013.json",
+    "archived_path": "records/c8b4cb7f3cea92b5-hash-013.json",
+    "sha256": "29a75d0b0ca5075320279d88ae968bed3da26311db4a99548a36c3c9307219c3"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-014.json",
+    "archived_path": "records/b1c3079968494aec-hash-014.json",
+    "sha256": "f044fe37c9aaa7ffdf96893f12575fdc3a91c7ddd0b9831e8d6d82951b821851"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-015.json",
+    "archived_path": "records/69839f2abf9d2796-hash-015.json",
+    "sha256": "dafdd7b9d535a7e73315d7ef0c75300d341ba70f317daf259fc72e195b40e0db"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-016.json",
+    "archived_path": "records/e8c53f0edad104c4-hash-016.json",
+    "sha256": "7d965a946c7af023f4885d5e5d3560f8e31943f71b66195f4f5ceaee1af7e020"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-017.json",
+    "archived_path": "records/a89c25c089c78056-hash-017.json",
+    "sha256": "a6ec1aa350669a33cd525163748c2c30d31c125997557e70a39722ddeb6add3d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-018.json",
+    "archived_path": "records/3eecef32ac6eaae0-hash-018.json",
+    "sha256": "47ad3826717fcdcdc9117d7af74ecdc20428fc44caaae3dce1a5fd9fc44b9566"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-019.json",
+    "archived_path": "records/12e705d0d41da11c-hash-019.json",
+    "sha256": "aff668dcb7956f54a821f5cb213f75dad3c003d0815d24cb4f80c3bd7ea4700a"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-020.json",
+    "archived_path": "records/bdc2ea71b7fe318d-hash-020.json",
+    "sha256": "796bda622a7d6646727d7d4d7df8c7c20c35e38b81b503d36a9910a528c359fb"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-021.json",
+    "archived_path": "records/700ed4e76d17d9df-hash-021.json",
+    "sha256": "e889a98b6784bda66134af34a66286823c2ad92e2f8dae1296a058025a5caf75"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-022.json",
+    "archived_path": "records/862e860041efd9e7-hash-022.json",
+    "sha256": "06c4ccc1ef139ed80f10e88fb590e03a0ca2ebd5b19a4e62429570ba2bec38a9"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-023.json",
+    "archived_path": "records/8ffdb73d0e09f660-hash-023.json",
+    "sha256": "82fcfe76cf9ddf388e4eb1f2bc390c72c263e899d8cb75831111980fc5854ae1"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-024.json",
+    "archived_path": "records/23a01edd5533a16c-hash-024.json",
+    "sha256": "53c4bcaee96e69770cad762b1219d22be320d3318719ed5f8108aff746825db8"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-025.json",
+    "archived_path": "records/979d35df7e937294-hash-025.json",
+    "sha256": "b481c20c070ea5ae5b2fa9dd0dd6cdf360afa2210964b86a9eb7b40140749e47"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-026.json",
+    "archived_path": "records/c37e7eaf4cab67be-hash-026.json",
+    "sha256": "9a3f8125dbaefd10729f6af0cea20d503bd43989c4a4520c8f9e2b012347851b"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-027.json",
+    "archived_path": "records/40ea79e8599fc1cc-hash-027.json",
+    "sha256": "d5c66abbcb945fd174d7ba7921c78778cadc9069c238f0a2081b50b9def66042"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-028.json",
+    "archived_path": "records/704487f4dce75bd5-hash-028.json",
+    "sha256": "cda5c21d9c43e81fa6aac140dffc9be3f182d7af275225c10348789e6be75116"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-029.json",
+    "archived_path": "records/0e58bb0f2afc3f9f-hash-029.json",
+    "sha256": "23b2c7d42af972ccb995262d24ca6d51633b9e10d68590b0c694f7dc5d713257"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-030.json",
+    "archived_path": "records/50ecc55488b71ab1-hash-030.json",
+    "sha256": "372b22f2ccf38fffee8270e7ec69efc21c95ad5968348a4219fa21f64316a8f9"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-031.json",
+    "archived_path": "records/f2f887ed3408501e-hash-031.json",
+    "sha256": "9026197df4e77b92efabf2a8188b1bd4be8ad8fc69c622cafbecdd4450b41bcf"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-032.json",
+    "archived_path": "records/68075345cab11713-hash-032.json",
+    "sha256": "9c882e336bc1e3d9200c903f07bd39d860171bdf99307844f95e4526ae675d58"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-033.json",
+    "archived_path": "records/8236fc1c7387fda3-hash-033.json",
+    "sha256": "09fb6442a14e35a872b8b6246e6ab2f74c05d9018dc6e0a106384ea92441ef17"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-034.json",
+    "archived_path": "records/06766df1b0ac0074-hash-034.json",
+    "sha256": "2213643267f81ab7312752d54192e9157831056867b23a6141fdbefe9c7b2881"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-035.json",
+    "archived_path": "records/b7e3a680a9df7f4e-hash-035.json",
+    "sha256": "fdcba87c2e8095d5a331e4d04bed30c7aa473aa9c20e59e6c84ec9554b2e7c45"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-036.json",
+    "archived_path": "records/bca5eda09116aa19-hash-036.json",
+    "sha256": "da2b2fa5507f03b86528136b21dc2c85c53e9e5a1ceded5e4499795ff768b05e"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-037.json",
+    "archived_path": "records/79c6724cbec24299-hash-037.json",
+    "sha256": "3c1d2fdeb108b22414f775def9d6bb02840bc1946891e56d604321f7010f9e3b"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-038.json",
+    "archived_path": "records/9cc791c2c3e9179b-hash-038.json",
+    "sha256": "9355d9348bb60c2e7b9492f3ffcbc6bf25cefbbd51c3b835a8ea99df2bacc1a8"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-039.json",
+    "archived_path": "records/b5a4031a4bc8245f-hash-039.json",
+    "sha256": "ae16f9582173ecb06c8be6490fd86f07c368b6e121f8b875abb055565c0e1919"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-040.json",
+    "archived_path": "records/8c5f8b029ad1da52-hash-040.json",
+    "sha256": "f99038765f25c36868871bf4eb7504cd02e92926607351a34568205d4b26a79d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-041.json",
+    "archived_path": "records/08cb3d3874f4bcb4-hash-041.json",
+    "sha256": "7f2ae4cf75988eb113b269623e18d165c8021ee271f8daa838b83555bf007305"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-042.json",
+    "archived_path": "records/50ec9f0edb9845e1-hash-042.json",
+    "sha256": "5409126674cd8743ebd29af71a67bdad7f047b9362872917efc52b1cb4403533"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-043.json",
+    "archived_path": "records/a1e19691a5ca4148-hash-043.json",
+    "sha256": "a419cfe91d05a47499660168fe4dd611c468b567b44ae9f2d3026bbb8fd9b419"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/hash-044.json",
+    "archived_path": "records/40184403819edbb0-hash-044.json",
+    "sha256": "a4852885b134aaf63283abec77036cf329d93bd5b1f82601bff8e0e707de6a14"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/eligibility.json",
+    "archived_path": "records/0a986124789866b2-eligibility.json",
+    "sha256": "33a1a5ebb2e24c911228f2217e922415e1ca704a987d5d7b4fcdb8146f5412c4"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/progress-000.json",
+    "archived_path": "records/dcdfa39274d3c508-progress-000.json",
+    "sha256": "f1729f9812c0fc46ff3eb312e192fbc9650042d62a6bdd798bb14a49cb1da223"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/progress-001.json",
+    "archived_path": "records/4c007023a6239716-progress-001.json",
+    "sha256": "ffaad5cec8d1862f16349b3e42d77d23adfb37e5b0229ebc372a871207255a7e"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/read-0.json",
+    "archived_path": "records/a3607571cd38b3d7-read-0.json",
+    "sha256": "3ac51efd6ec5b17e4bf092b0679d2a35f02af8a43dbb57e6e6aa14f38441bb14"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/receipt.json",
+    "archived_path": "records/77b264cafe82915a-receipt.json",
+    "sha256": "6f97916bd34c6e83b778755000836711bf0e247c9e7e803a598c8198b895cd99"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper/hash-000.json",
+    "archived_path": "records/1b8af878beed7c80-hash-000.json",
+    "sha256": "5ab29cfe845f1c53f543e706a4181817eac721dfe55944dbe1ce967bb4ea649b"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper/hash-001.json",
+    "archived_path": "records/cf0089ded9733efc-hash-001.json",
+    "sha256": "c27fba0cd421f2ccd370b1c1459a2f07009fb00314bed557515b15bc15326b85"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper/hash-002.json",
+    "archived_path": "records/6d6c0dc3fcb55b91-hash-002.json",
+    "sha256": "f3e2f868d882135d2bf956b20d13a696dff165075df242369e23b97c5ab17b44"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper/hash-003.json",
+    "archived_path": "records/ea0f009492cf07a5-hash-003.json",
+    "sha256": "07061e3fd7f4ffbb13b2f2d7a380423368dc9d960b693fd25318cb3eb250a422"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper/manifest.json",
+    "archived_path": "records/a42c1f23c54a0d72-manifest.json",
+    "sha256": "74037e987e29a847cd7cc27752b66363e87206a07b1dac39da9459e1879f5b7f"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper/protocol.json",
+    "archived_path": "records/63a02fed6b4fd797-protocol.json",
+    "sha256": "b61653d0ad31c85516759b5c6795352344bafa1b028330ae742608662fc72362"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper/status.json",
+    "archived_path": "records/a4d4e293fcc38365-status.json",
+    "sha256": "6be8e2e5d4f409c4405a84da3f2afe038dfeb21f779c59366abe1f8b9bb83576"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/helper-call.json",
+    "archived_path": "records/78f5c1622236c04c-helper-call.json",
+    "sha256": "ea243f0c02870752e2db4cddc013a497d0e549d699a39f9abe907afe26472091"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/manifest.json",
+    "archived_path": "records/366b0aa3b402b28e-manifest.json",
+    "sha256": "bf44f6c0d195f57337611e9b3de42609c386e289cf7eb8438af88a2830148e7d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/prior-result.json",
+    "archived_path": "records/7cf225b7af958902-prior-result.json",
+    "sha256": "fda6c7b0be83c721ac2efb1212e7b1e5d8b40a97c1c7cd618a5618ce4c320302"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent/protocol.json",
+    "archived_path": "records/62f968b3a7b98810-protocol.json",
+    "sha256": "847fc8bbb2c32cb60283ab68ed069ef74c3c383a64b95d57c17080a3f75d20c6"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent-fresh-publication-v2/rank00000/manifest.json",
+    "archived_path": "records/739000409f2a6477-manifest.json",
+    "sha256": "6df999afd5a15216dc5fcbd135595bd67779acaf1cbc74c294b987dc35e7bb83"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/checksum-audit/independent-fresh-publication-v2/rank00000/startup.json",
+    "archived_path": "records/a0dc2aaf0c77abe0-startup.json",
+    "sha256": "d991ddbcf692ea815b9d336f4c989d8336f310ed61f99790c0fb975900c06c75"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/independent-000.log",
+    "archived_path": "records/237ce57853facec1-independent-000.log",
+    "sha256": "15182120608d0472e57e292e00f16d907ef0a0a0eaec13edbad8637da3cc42af"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/column0.log",
+    "archived_path": "records/bc78f337fb1b4c24-column0.log",
+    "sha256": "e3fed7e4b538aab3c37602b190b8bcd30d4179b6e17d285b0d9b3dd36c4a4bed"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/column1.log",
+    "archived_path": "records/249668db2674e756-column1.log",
+    "sha256": "1e27951d4dd8511bec7baa295c51a69213c0dad1bf3452ce34fb069783fed2b9"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/column10.log",
+    "archived_path": "records/a856597fe9115552-column10.log",
+    "sha256": "980eccb5b0dacea53bba26c4c77284a511eaa25a8683e777e79a359de486acb1"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/column11.log",
+    "archived_path": "records/d333fa4bab7b8722-column11.log",
+    "sha256": "32fb31573c9ab98c1de852fd1aba5051261308d6b0f3701f157d9e9608889fce"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/column2.log",
+    "archived_path": "records/5adb9cff0035f7bf-column2.log",
+    "sha256": "7db95ff7e7324576dc66944dd7e60c36f18a4a1edd5a5e3daf712e70840d8ec2"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/column3.log",
+    "archived_path": "records/1f3eaf680310abf1-column3.log",
+    "sha256": "dc9567519d055e15207a7c8d4bd784c206734f5b1ef58449f60867397a9c0633"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/column4.log",
+    "archived_path": "records/58d15d4752ab220a-column4.log",
+    "sha256": "f99358b05540278f8e725fc822243e486dfedaf8f174ff15da75bf81824a0d2f"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/column5.log",
+    "archived_path": "records/e293e59f9524680f-column5.log",
+    "sha256": "0a07a945ecea8f4119d98e48ae46d058605d15900a679654099430d148ca1a93"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/column6.log",
+    "archived_path": "records/4206deabee021949-column6.log",
+    "sha256": "919af1cfa6c5ce4e9acd5fac2c33e34ecd846712bc958f0aa46c9ede4b8b45ec"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/column7.log",
+    "archived_path": "records/403d041d5141885a-column7.log",
+    "sha256": "181be7717b1603ccfa62672490b5754808b575c5f63956284367c963013ed8aa"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/column8.log",
+    "archived_path": "records/4ab2eca6a5017858-column8.log",
+    "sha256": "41dc72c046b78114b83597b4c69d00fb54828514c1903a094531e6441d46f7c0"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/column9.log",
+    "archived_path": "records/d0775060d740c7ad-column9.log",
+    "sha256": "17a5a7a0739b005718b4a26a5ceab782ded135cb1c9fdb926eb368ee99ceb30d"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verification.json",
+    "archived_path": "records/e28b4525832ed057-verification.json",
+    "sha256": "6c54e97539896a1b6762338242cc913ea0a07188b23ebbe0ce05e80b67900852"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verified0.params.json",
+    "archived_path": "records/5318c94b0b2dfb49-verified0.params.json",
+    "sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verified1.params.json",
+    "archived_path": "records/2e82676230014724-verified1.params.json",
+    "sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verified10.params.json",
+    "archived_path": "records/cae378bbabe29175-verified10.params.json",
+    "sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verified11.params.json",
+    "archived_path": "records/81c3cc1ad4b6ce12-verified11.params.json",
+    "sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verified2.params.json",
+    "archived_path": "records/51a70c0541435bc6-verified2.params.json",
+    "sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verified3.params.json",
+    "archived_path": "records/f68f476c10ca7d66-verified3.params.json",
+    "sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verified4.params.json",
+    "archived_path": "records/cce492a16d4a1727-verified4.params.json",
+    "sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verified5.params.json",
+    "archived_path": "records/5ea4c3c094a9da64-verified5.params.json",
+    "sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verified6.params.json",
+    "archived_path": "records/b8c6f04004af8bc7-verified6.params.json",
+    "sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verified7.params.json",
+    "archived_path": "records/c8d89cce6e0fc675-verified7.params.json",
+    "sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verified8.params.json",
+    "archived_path": "records/f579351a96826b98-verified8.params.json",
+    "sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/independent/verified9.params.json",
+    "archived_path": "records/80e3352ccad6555c-verified9.params.json",
+    "sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/full12/result.json",
+    "archived_path": "records/eaf1d5b1e606f058-result.json",
+    "sha256": "b508687a53da71437302fe7c98669d054058008ed0020d6b149cfab63f30be93"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/host.json",
+    "archived_path": "records/f935bb3de5e21d25-host.json",
+    "sha256": "65f00659eea7e7a71f40de7c313a4b8787579181ecfcf79c9718663882367ca9"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/measurements.json",
+    "archived_path": "records/d623f79ab8c38121-measurements.json",
+    "sha256": "f93a0531557d3dc6459813dce4cc5aa387b49d14ac4fc86ea5ecf836040958e8"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/measurements/plan.json",
+    "archived_path": "records/36692c6ffa5b0d94-plan.json",
+    "sha256": "8978f8f8f9e1f5508fec8f052f1eefa7d8b859cb494fb73707ea782abccc71f6"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/plan.json",
+    "archived_path": "records/7f883f2ebd958d84-plan.json",
+    "sha256": "8978f8f8f9e1f5508fec8f052f1eefa7d8b859cb494fb73707ea782abccc71f6"
+  },
+  {
+    "original_export_relative_path": "campaign/attempts/143-best-solve-profile-worker8/source-manifest.json",
+    "archived_path": "records/3ac813aa3cc4fab6-source-manifest.json",
+    "sha256": "8310343f3576999860e79959cbdfcc96b8df92ac0c67559e658b5c91c6f2c9ba"
+  },
+  {
+    "original_export_relative_path": "exports/profile143-complete-v2/summary.json",
+    "archived_path": "records/8f3f8730e4055064-summary.json",
+    "sha256": "dc77fbb9844a7233e98a68d83e76707af9df3b564b3cd06c3bc2f22e6a06b4e3"
+  },
+  {
+    "original_export_relative_path": "prepared-solve-profile-v7-143/contract.json",
+    "archived_path": "records/2407a26afe41a0a9-contract.json",
+    "sha256": "b9b57abad66e8700c533401f40f5d1d0077a92d63103f79372e4485f9203e4dc"
+  },
+  {
+    "original_export_relative_path": "prepared-solve-profile-v7-143/task.json",
+    "archived_path": "records/b2bda0af97080c78-task.json",
+    "sha256": "b9ea063200ad4af1e64b5f385ff0f1075e880fa9b622e4c75021b454840a5381"
+  },
+  {
+    "original_export_relative_path": "queue8/143-best-solve-profile-worker8.finished.json",
+    "archived_path": "records/54949e87109fed44-143-best-solve-profile-worker8.finished.json",
+    "sha256": "b9ea063200ad4af1e64b5f385ff0f1075e880fa9b622e4c75021b454840a5381"
+  },
+  {
+    "original_export_relative_path": "queue8/143-best-solve-profile-worker8.status.json",
+    "archived_path": "records/7b3c32fa2edf151b-143-best-solve-profile-worker8.status.json",
+    "sha256": "f6966eafad7b2936ced6c65634d1aeafc810903bb664ba91a6ee6ee7b248d1cf"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/exact-period-analysis.json",
+    "archived_path": "records/857744109a50e655-exact-period-analysis.json",
+    "sha256": "3544c8d73c0877f11359dde850182d8271f95081ea9ea3f52fcd003582259e72"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/profile-summary.json",
+    "archived_path": "records/a6a169dc404e9e7c-profile-summary.json",
+    "sha256": "73164eda0c2d2fe439f0a2c91631d35853b671d9e3fd3efa249ba3e4d49f56f4"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00000.leaf-by-thread.log",
+    "archived_path": "records/be795acbb083b775-rank00000.leaf-by-thread.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00000.leaf-by-thread.txt",
+    "archived_path": "records/c875e8896acbc170-rank00000.leaf-by-thread.txt",
+    "sha256": "39bd58492f9f0736a041b18d4cf74e159a784ef9cfc76066e06683a9982a05e9"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00000.leaf-periods.csv",
+    "archived_path": "records/939277a60f2793a8-rank00000.leaf-periods.csv",
+    "sha256": "02bec03d376a5b81cad45e118410f49fdf6923f1a28498f474038a97a57e7aca"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00000.leaf-periods.log",
+    "archived_path": "records/aefaa93d33ef5d9f-rank00000.leaf-periods.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00000.perf-flat.txt",
+    "archived_path": "records/cf8225df8e4d05ac-rank00000.perf-flat.txt",
+    "sha256": "c8bce80ad9daff5c6cbebf9a01b1653801aa97ff4cfa6afaa26ba4d444834172"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00000.perf-record.log",
+    "archived_path": "records/22edc75bf84d57f0-rank00000.perf-record.log",
+    "sha256": "2be203f39d740b395b12d973964fc23ea72085a09e6e41e87a2452f8d86b8db4"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00000.perf-report.log",
+    "archived_path": "records/8af753b9939a1e68-rank00000.perf-report.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00000.profile.json",
+    "archived_path": "records/de7f55f0af49a6d8-rank00000.profile.json",
+    "sha256": "e4bae149d91071794c2142a802b64922e647c5891b88f19fbbb28ab3033c3620"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00000.wrapper-v7.json",
+    "archived_path": "records/f6df503a96b4fcdd-rank00000.wrapper-v7.json",
+    "sha256": "37b017bec32de435dedcdd73d788cb118f5745b9508dea6b520056f744d90d0c"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00001.profile.json",
+    "archived_path": "records/e2f5935b3f7f2164-rank00001.profile.json",
+    "sha256": "d41b555f8d56c1cd1b186c5295c8c92636557a5e7b97b65d1e2d623c9679632e"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00001.wrapper-v7.json",
+    "archived_path": "records/00737fad73efa783-rank00001.wrapper-v7.json",
+    "sha256": "ac42bf9297a904b28321e4c845b377707e3e42b8e79731456cd0b7ed707ff8fd"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00002.profile.json",
+    "archived_path": "records/776811d3b7d719f2-rank00002.profile.json",
+    "sha256": "07dcfdb7c89e095d1ddaee0e737d7c6cb846e19e11995cf9dea1575157347e7b"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00002.wrapper-v7.json",
+    "archived_path": "records/00322f2c335031e0-rank00002.wrapper-v7.json",
+    "sha256": "ddaa2f3ee9ca9b2ca79c33009ed04050dd4b4252c280e8250dab1c80a8e5b7df"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00003.profile.json",
+    "archived_path": "records/9f6ff2b35dd8e753-rank00003.profile.json",
+    "sha256": "f4e2b93b286feb63dd798cabd5693e7dc03de8580f97d89601e71b569c148e4d"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00003.wrapper-v7.json",
+    "archived_path": "records/582bc2cb87df2e6e-rank00003.wrapper-v7.json",
+    "sha256": "4d62b4a8b2c3113c27950158932630469c69506a6532c17e1fcf5e3af2db22f5"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00004.profile.json",
+    "archived_path": "records/8b7c07ed3f54c927-rank00004.profile.json",
+    "sha256": "5cf21cf8fee3b99ddcd885d6aab47f2475b116f878dbc530035822d955091235"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00004.wrapper-v7.json",
+    "archived_path": "records/6b8f73634b837151-rank00004.wrapper-v7.json",
+    "sha256": "071b0ae83f61e76c0c4f797f96cebe6c20a884d7d0af9ed3410378b00c755d08"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00005.profile.json",
+    "archived_path": "records/e75eb7a9cdddd64e-rank00005.profile.json",
+    "sha256": "66ac8fcdd0c19b55e994a765ca757dced76b89576f78a87132163a89fa6a65e4"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00005.wrapper-v7.json",
+    "archived_path": "records/8e08c473416edcfa-rank00005.wrapper-v7.json",
+    "sha256": "b48c71e962c22d4f33372781152ec9191d84ede40913bbbdc87be597cf769778"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00006.profile.json",
+    "archived_path": "records/924fe5cac69faf41-rank00006.profile.json",
+    "sha256": "1d540ccdc499e97b1331580aa0ec0d5dcf97061e1c7b520821cb837c62a6d989"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00006.wrapper-v7.json",
+    "archived_path": "records/2f8be9b521294773-rank00006.wrapper-v7.json",
+    "sha256": "9e62e4a18204526cb475613e3d53a509703065c35e2afcef0f56279610042beb"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00007.profile.json",
+    "archived_path": "records/b765b64a4a723e0c-rank00007.profile.json",
+    "sha256": "61d6b733ee7413d1f78469a3197bd179a5d77796f202e0c11b90d4c215e865af"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00007.wrapper-v7.json",
+    "archived_path": "records/f055f793375cb81e-rank00007.wrapper-v7.json",
+    "sha256": "88f76ba952220ac28d2ca9ad1a6a01750509ce38104613568e19da05a0e339af"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00008.leaf-by-thread.log",
+    "archived_path": "records/c20d4e4248adb011-rank00008.leaf-by-thread.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00008.leaf-by-thread.txt",
+    "archived_path": "records/0014bd2bf256c51d-rank00008.leaf-by-thread.txt",
+    "sha256": "cd41e5300497f8d982d056a475671b337444e6ad186e2ec7035ca0159055141c"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00008.leaf-periods.csv",
+    "archived_path": "records/d117658491715828-rank00008.leaf-periods.csv",
+    "sha256": "0da16c2986754f01469305cad0a14cb922dfb38b66f43458a71ad1a705f05f3f"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00008.leaf-periods.log",
+    "archived_path": "records/fa0f112c80080cca-rank00008.leaf-periods.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00008.perf-flat.txt",
+    "archived_path": "records/fe700630bcdc2c70-rank00008.perf-flat.txt",
+    "sha256": "9928751888b3721bdf8cc766eb61afaeb0c197c0587f3fefdd22c65d2538cd88"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00008.perf-record.log",
+    "archived_path": "records/57d348d5579fdac8-rank00008.perf-record.log",
+    "sha256": "1e132f7058a6acd9e78128aef1b97f9002050401652abb8a9c98ece59a1e6571"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00008.perf-report.log",
+    "archived_path": "records/db75bdc43691f4e9-rank00008.perf-report.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00008.profile.json",
+    "archived_path": "records/b6da87e24daeac23-rank00008.profile.json",
+    "sha256": "6f6b8cb09a65e81306e028cc000a0d9fbf26d63869c8a5e2fbb72657d4397b84"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00008.wrapper-v7.json",
+    "archived_path": "records/046456a35280294d-rank00008.wrapper-v7.json",
+    "sha256": "cfade55389f4aa0d262dc5fc4ed85c3ee4408dfed4f8640472f3e7cbb07d1792"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00009.profile.json",
+    "archived_path": "records/1dce6be522343e59-rank00009.profile.json",
+    "sha256": "06be846cacebbc141015459e17ce45b5a53ae947232e7e84364f052500ef42d7"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00009.wrapper-v7.json",
+    "archived_path": "records/f084fae0c6ef31b7-rank00009.wrapper-v7.json",
+    "sha256": "6ed6c6edda23fe018fbeb073ea6042f3cee48eae544f2a81e21ce25706661212"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00010.profile.json",
+    "archived_path": "records/8aeef33f427e7067-rank00010.profile.json",
+    "sha256": "f48dad6a30e71a9ac73f8286970186fb14472bb57460409153d368b8ab181008"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00010.wrapper-v7.json",
+    "archived_path": "records/493553819b49ad8d-rank00010.wrapper-v7.json",
+    "sha256": "6bdc34c7dcd57b8814fcebd0a04a4e4ff51a62fb65a195753b009800fad03eaf"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00011.profile.json",
+    "archived_path": "records/015d525883b31a85-rank00011.profile.json",
+    "sha256": "d594e47d238e135bec7a4a978ac23e59987c19160d9be22759a5f7ab1aba65c2"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00011.wrapper-v7.json",
+    "archived_path": "records/212454acd1c9ae73-rank00011.wrapper-v7.json",
+    "sha256": "35ec35ecc84f1b2982814cc779c84004d60544624ad55319b91f200318ab5e7f"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00012.profile.json",
+    "archived_path": "records/9428a0cc426ccb74-rank00012.profile.json",
+    "sha256": "77d52111d19b6b7a7b56ca7d2c589a0cb32bcadfd604341e38a9e2c16c9c1d32"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00012.wrapper-v7.json",
+    "archived_path": "records/5b707483d61ff973-rank00012.wrapper-v7.json",
+    "sha256": "7edbd8abe9286cd0684d1a7aaf9abb8bb7cfd056657ac068f55c984c34299daa"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00013.profile.json",
+    "archived_path": "records/1939beb343380c1d-rank00013.profile.json",
+    "sha256": "623056136b54527114154d8979a861401393ed926bdff1bdc1e80cd919fbd2bb"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00013.wrapper-v7.json",
+    "archived_path": "records/24397ca42c81dcd3-rank00013.wrapper-v7.json",
+    "sha256": "2aab6e253c6d43bafea7026ad8f9dd79141facc34032bcaa24a7cb5f9ffe9e7e"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00014.profile.json",
+    "archived_path": "records/fcee6eddae25988a-rank00014.profile.json",
+    "sha256": "484dc4c5879fecb4080f7e758005ed8fbae13876f9c107cc2be04579b7de0e4d"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00014.wrapper-v7.json",
+    "archived_path": "records/03039259907dbe89-rank00014.wrapper-v7.json",
+    "sha256": "063418a1ea7056ec4598754f37a29f4a1be91a125db6e4e88534af45220c1595"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00015.profile.json",
+    "archived_path": "records/c8b9caba1343c6ed-rank00015.profile.json",
+    "sha256": "fb2f12c0e533c01da6ea0b184528b940aeeb9361c873588e071dd78cf2481f33"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/rank00015.wrapper-v7.json",
+    "archived_path": "records/8574d23752fe8c01-rank00015.wrapper-v7.json",
+    "sha256": "8251b89a7aa42cc87f1f1d66a64b3d94cf3c45f9beda92599fe6a9ddfd6dc914"
+  },
+  {
+    "original_export_relative_path": "solve-profile-worker8-143/143-best-solve-profile-worker8/wrapper-v7-summary.json",
+    "archived_path": "records/fffaaa0051b7d6f9-wrapper-v7-summary.json",
+    "sha256": "b261658f3d6107ebf9c2e0e64a54ac5162bd078e32681f7dd90cf949528e36c3"
+  },
+  {
+    "original_export_relative_path": "solve-profile143-launch.json",
+    "archived_path": "records/5bb699733568b2ab-solve-profile143-launch.json",
+    "sha256": "aa54fa7a67f54baeb1a5ab8fe487a03a7a4f87df881012de876c11c0b3d6e2e8"
+  }
+]

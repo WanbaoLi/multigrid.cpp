@@ -1,0 +1,23 @@
+{
+  "complete": true,
+  "id": "143-best-solve-profile-worker8",
+  "task_sha256": "4e7d16c2d29d8b65c8d87cc5236373cbb2d4f73bf644affa80214029b92b509f",
+  "contract_sha256": "b9b57abad66e8700c533401f40f5d1d0077a92d63103f79372e4485f9203e4dc",
+  "publisher_sha256": "aae67d2157284b2c03dbade6d305c391c2adb531c8fe6dca85597ba6c229f8ac",
+  "scheduler_query": {
+    "argv": [
+      "/opt/batch/cli/bin/djob",
+      "-J",
+      "-l",
+      "2023152"
+    ],
+    "request_id": "req-103c7714-4533-4279-b266-70fc71b20b70",
+    "code": "success"
+  },
+  "heartbeat_sha256": "4ea54f2048ed638dd36f47e578d22857209828618fc962793d2c0647ea4c283d",
+  "preceding_phase_status": "failed; retained unchanged",
+  "probe_status_sha256": "0af26ddfb918fc921a2b422f910f1594acdea026ff783b2435dfcd53cf345f7a",
+  "expected_best": "052-reduce-on",
+  "unranked": true,
+  "epoch": 1793770844.4812624
+}

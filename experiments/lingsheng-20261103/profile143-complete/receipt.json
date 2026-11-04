@@ -1,0 +1,9 @@
+{
+  "complete": true,
+  "passed": true,
+  "files": 312,
+  "archive": "/home/share/nsls_lwb/.cache/mg-opt-20261103/exports/profile143-complete-v2/evidence.tar.gz",
+  "archive_sha256": "17cb84d0b078f712d3c52438e7b9375fc17fc758b045c1160d32b19738073920",
+  "archive_bytes": 7107475,
+  "manifest_sha256": "fc4314e6bd6f8b86f919a7c3a0ccdb439549a71bb1458b0d5063dab37b91a436"
+}

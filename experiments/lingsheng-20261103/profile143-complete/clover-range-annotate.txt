@@ -1,0 +1,661 @@
+ Percent |	Source code & Disassembly of liblqcd_cpu.so for cycles:u (398 samples, percent: local period)
+-------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         :           Disassembly of section .text:
+         :
+         :           0000000000017bd0 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const>:
+         :           NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const:
+    0.00 :   17bd0:  stp     x29, x30, [sp, #-240]!
+    0.00 :   17bd4:  mov     w7, #0x90                       // #144
+    0.00 :   17bd8:  mov     x6, x0
+    0.00 :   17bdc:  mov     x29, sp
+    0.00 :   17be0:  ldr     w8, [x0, #112]
+    0.00 :   17be4:  mov     w0, w1
+    0.00 :   17be8:  stp     x21, x22, [sp, #32]
+    0.00 :   17bec:  stp     x19, x20, [sp, #16]
+    0.00 :   17bf0:  stp     x23, x24, [sp, #48]
+    0.00 :   17bf4:  stp     x25, x26, [sp, #64]
+    0.00 :   17bf8:  mov     x26, x2
+    0.00 :   17bfc:  mov     w2, w4
+    0.00 :   17c00:  str     x3, [sp, #184]
+    0.00 :   17c04:  sxtw    x21, w8
+    0.00 :   17c08:  str     w8, [sp, #180]
+    0.00 :   17c0c:  smull   x1, w8, w7
+    0.00 :   17c10:  mov     x20, x21
+    0.00 :   17c14:  tst     w5, #0xff
+    0.00 :   17c18:  b.eq    18298 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x6c8>  // b.none
+    0.00 :   17c1c:  ldr     x3, [x6, #592]
+    0.00 :   17c20:  cbz     x3, 185e4 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0xa14>
+    0.21 :   17c24:  ldr     w4, [x6, #136]
+    0.00 :   17c28:  sub     w19, w0, w4
+    0.00 :   17c2c:  sxtw    x19, w19
+    0.00 :   17c30:  mul     x19, x19, x1
+    0.00 :   17c34:  add     x19, x3, x19, lsl #2
+    0.27 :   17c38:  ldr     w0, [sp, #180]
+    0.00 :   17c3c:  adrp    x23, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   17c40:  add     w22, w0, w0, lsr #31
+    0.00 :   17c44:  add     x0, x23, #0x6d0
+    0.00 :   17c48:  asr     w22, w22, #1
+    0.00 :   17c4c:  mul     w1, w22, w2
+    0.00 :   17c50:  str     w1, [sp, #208]
+    0.00 :   17c54:  add     w1, w22, w1
+    0.00 :   17c58:  mov     w25, w1
+    0.00 :   17c5c:  ldarb   w1, [x0]
+    0.00 :   17c60:  adrp    x24, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   17c64:  tbz     w1, #0, 182b4 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x6e4>
+    0.00 :   17c68:  ldrb    w0, [x24, #1752]
+    0.00 :   17c6c:  lsl     x5, x21, #2
+    0.00 :   17c70:  cbnz    w0, 182fc <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x72c>
+    0.00 :   17c74:  ldr     w4, [sp, #208]
+    0.00 :   17c78:  sub     w0, w22, #0x4
+    0.00 :   17c7c:  mov     w24, w25
+    0.00 :   17c80:  movi    v4.4s, #0x0
+    0.00 :   17c84:  and     w0, w0, #0xfffffffc
+    0.00 :   17c88:  movi    v5.2s, #0x0
+    0.00 :   17c8c:  stp     x27, x28, [sp, #80]
+    0.00 :   17c90:  str     d10, [sp, #112]
+    0.00 :   17c94:  str     wzr, [sp, #156]
+    0.00 :   17c98:  str     wzr, [sp, #164]
+    0.00 :   17c9c:  stp     d8, d9, [sp, #96]
+    0.00 :   17ca0:  str     wzr, [sp, #176]
+    0.00 :   17ca4:  stp     x19, x5, [sp, #192]
+    0.00 :   17ca8:  sxtw    x3, w4
+    0.00 :   17cac:  add     w2, w4, #0x3
+    0.00 :   17cb0:  add     w1, w4, #0x4
+    0.00 :   17cb4:  cmp     w25, w2
+    0.00 :   17cb8:  str     x3, [sp, #224]
+    0.00 :   17cbc:  ldr     w3, [sp, #180]
+    0.00 :   17cc0:  csel    w0, w0, wzr, gt
+    0.00 :   17cc4:  add     w0, w0, w1
+    0.00 :   17cc8:  lsl     w6, w3, #1
+    0.00 :   17ccc:  cmp     w3, #0x7
+    0.00 :   17cd0:  add     w2, w6, w3
+    0.00 :   17cd4:  lsl     w7, w3, #2
+    0.00 :   17cd8:  csel    w4, w4, w0, le
+    0.00 :   17cdc:  add     w1, w7, w3
+    0.00 :   17ce0:  mov     w0, w3
+    0.00 :   17ce4:  lsl     w3, w2, #2
+    0.00 :   17ce8:  str     w3, [sp, #220]
+    0.00 :   17cec:  sxtw    x3, w4
+    0.00 :   17cf0:  lsl     w2, w2, #1
+    0.00 :   17cf4:  lsl     w1, w1, #1
+    0.00 :   17cf8:  str     w1, [sp, #140]
+    0.00 :   17cfc:  str     w2, [sp, #152]
+    0.00 :   17d00:  str     w0, [sp, #160]
+    0.00 :   17d04:  lsl     w0, w0, #3
+    0.00 :   17d08:  str     w0, [sp, #144]
+    0.00 :   17d0c:  stp     w7, w6, [sp, #168]
+    0.00 :   17d10:  stp     w4, w6, [sp, #212]
+    0.00 :   17d14:  str     x3, [sp, #232]
+    0.00 :   17d18:  ldr     w0, [sp, #180]
+    0.00 :   17d1c:  cmp     w0, #0x7
+    0.00 :   17d20:  b.le    17fa8 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x3d8>
+    0.00 :   17d24:  ldr     w0, [sp, #156]
+    0.00 :   17d28:  mov     w1, #0xaaab                     // #43691
+    0.00 :   17d2c:  ldrsw   x7, [sp, #176]
+    0.00 :   17d30:  movk    w1, #0xaaaa, lsl #16
+    0.00 :   17d34:  ldr     x8, [sp, #224]
+    0.00 :   17d38:  ldr     x20, [sp, #200]
+    0.00 :   17d3c:  ldp     x30, x2, [sp, #184]
+    0.00 :   17d40:  ldrsw   x4, [sp, #164]
+    0.00 :   17d44:  ldp     w28, w27, [sp, #168]
+    0.00 :   17d48:  ldrsw   x9, [sp, #144]
+    0.00 :   17d4c:  umull   x10, w0, w1
+    0.00 :   17d50:  ldr     w0, [sp, #180]
+    0.00 :   17d54:  ldrsw   x15, [sp, #152]
+    0.00 :   17d58:  add     x1, x7, x8
+    0.00 :   17d5c:  ldr     w6, [sp, #208]
+    0.00 :   17d60:  lsl     x1, x1, #2
+    0.00 :   17d64:  add     x3, x1, x20
+    0.00 :   17d68:  add     x1, x2, x1
+    0.00 :   17d6c:  add     x5, x4, x8
+    0.00 :   17d70:  lsr     x10, x10, #34
+    0.00 :   17d74:  add     x3, x2, x3
+    0.00 :   17d78:  sxtw    x17, w27
+    0.00 :   17d7c:  sub     x9, x9, x7
+    0.00 :   17d80:  mul     w10, w10, w0
+    0.00 :   17d84:  mov     w2, w0
+    0.00 :   17d88:  sub     x15, x15, x7
+    0.00 :   17d8c:  lsl     x9, x9, #2
+    0.00 :   17d90:  sxtw    x16, w28
+    0.00 :   17d94:  sub     x17, x17, x7
+    0.00 :   17d98:  lsl     x15, x15, #2
+    0.00 :   17d9c:  add     x5, x30, x5, lsl #2
+    0.00 :   17da0:  lsl     x17, x17, #2
+    0.00 :   17da4:  add     w10, w10, w10, lsl #1
+    0.00 :   17da8:  sub     x16, x16, x7
+    0.00 :   17dac:  lsl     x16, x16, #2
+    0.00 :   17db0:  add     w11, w0, w10, lsl #1
+    0.00 :   17db4:  lsl     w10, w10, #2
+    0.00 :   17db8:  sxtw    x10, w10
+    0.00 :   17dbc:  add     w12, w11, w0
+    0.00 :   17dc0:  lsl     w11, w11, #1
+    0.00 :   17dc4:  sxtw    x19, w11
+    0.00 :   17dc8:  add     w13, w12, w0
+    0.00 :   17dcc:  add     x0, x10, x8
+    0.00 :   17dd0:  ldrsw   x8, [sp, #140]
+    0.00 :   17dd4:  lsl     w12, w12, #1
+    0.00 :   17dd8:  add     w14, w13, w2
+    0.00 :   17ddc:  sxtw    x21, w12
+    0.00 :   17de0:  lsl     w13, w13, #1
+    0.00 :   17de4:  lsl     x0, x0, #2
+    0.00 :   17de8:  add     w18, w14, w2
+    0.00 :   17dec:  sxtw    x23, w13
+    0.00 :   17df0:  add     x2, x0, x20
+    0.00 :   17df4:  lsl     w14, w14, #1
+    0.00 :   17df8:  lsl     w18, w18, #1
+    0.00 :   17dfc:  sxtw    x22, w14
+    0.00 :   17e00:  sub     x21, x21, x10
+    0.00 :   17e04:  sub     x19, x19, x10
+    0.00 :   17e08:  sxtw    x20, w18
+    0.00 :   17e0c:  sub     x23, x23, x10
+    0.00 :   17e10:  sub     x8, x8, x7
+    0.00 :   17e14:  add     x2, x26, x2
+    0.00 :   17e18:  neg     x25, x10, lsl #2
+    0.00 :   17e1c:  sub     x22, x22, x10
+    0.00 :   17e20:  add     x0, x26, x0
+    0.00 :   17e24:  lsl     x23, x23, #2
+    0.00 :   17e28:  sub     x20, x20, x10
+    0.00 :   17e2c:  neg     x10, x7, lsl #2
+    0.00 :   17e30:  ldrsw   x7, [sp, #160]
+    0.00 :   17e34:  lsl     x22, x22, #2
+    0.00 :   17e38:  add     x18, x25, w18, sxtw #2
+    0.00 :   17e3c:  add     x14, x25, w14, sxtw #2
+    0.00 :   17e40:  add     x13, x25, w13, sxtw #2
+    0.00 :   17e44:  add     x12, x25, w12, sxtw #2
+    0.00 :   17e48:  add     x30, x10, w27, sxtw #2
+    0.00 :   17e4c:  add     x11, x25, w11, sxtw #2
+    0.00 :   17e50:  add     x28, x10, w28, sxtw #2
+    0.00 :   17e54:  lsl     x21, x21, #2
+    0.00 :   17e58:  lsl     x20, x20, #2
+    0.00 :   17e5c:  lsl     x19, x19, #2
+    0.00 :   17e60:  lsl     x8, x8, #2
+    0.00 :   17e64:  sub     x7, x7, x4
+    0.00 :   17e68:  ldr     w4, [sp, #152]
+    0.00 :   17e6c:  lsl     x7, x7, #2
+    0.00 :   17e70:  add     x27, x10, w4, sxtw #2
+    0.00 :   17e74:  ldr     w4, [sp, #144]
+    0.00 :   17e78:  add     x25, x10, w4, sxtw #2
+    0.00 :   17e7c:  ldr     w4, [sp, #140]
+    0.00 :   17e80:  add     x10, x10, w4, sxtw #2
+    0.00 :   17e84:  nop
+    0.00 :   17e88:  ldr     q19, [x1]
+    0.00 :   17e8c:  ldr     q20, [x3]
+    0.00 :   17e90:  add     w4, w6, #0x7
+    0.00 :   17e94:  add     w6, w6, #0x4
+    0.00 :   17e98:  ldr     q0, [x0]
+    0.00 :   17e9c:  ldr     q10, [x17, x1]
+    0.00 :   17ea0:  ldr     q6, [x19, x0]
+    0.00 :   17ea4:  ldr     q7, [x30, x3]
+    0.00 :   17ea8:  ldr     q2, [x21, x0]
+    0.00 :   17eac:  ldr     q16, [x28, x3]
+    0.00 :   17eb0:  ldr     q18, [x2]
+    0.00 :   17eb4:  ldr     q8, [x16, x1]
+    0.00 :   17eb8:  ldr     q9, [x11, x2]
+    0.00 :   17ebc:  ldr     q27, [x15, x1]
+    0.00 :   17ec0:  fmul    v1.4s, v19.4s, v0.4s
+    0.00 :   17ec4:  fmul    v0.4s, v20.4s, v0.4s
+    0.00 :   17ec8:  ldr     q17, [x23, x0]
+    0.00 :   17ecc:  ldr     q30, [x27, x3]
+    0.00 :   17ed0:  fmul    v29.4s, v10.4s, v6.4s
+    0.00 :   17ed4:  fmul    v6.4s, v7.4s, v6.4s
+    0.00 :   17ed8:  ldr     q31, [x12, x2]
+    0.00 :   17edc:  ldr     q23, [x9, x1]
+    0.00 :   17ee0:  ldr     q3, [x22, x0]
+    0.00 :   17ee4:  ldr     q25, [x25, x3]
+    0.00 :   17ee8:  fmul    v24.4s, v8.4s, v2.4s
+    0.00 :   17eec:  ldr     q28, [x13, x2]
+    0.00 :   17ef0:  ldr     q22, [x10, x3]
+    0.00 :   17ef4:  add     x3, x3, #0x10
+    0.00 :   17ef8:  fmls    v1.4s, v20.4s, v18.4s
+    0.00 :   17efc:  fmla    v0.4s, v19.4s, v18.4s
+    0.00 :   17f00:  ldr     q20, [x8, x1]
+    0.00 :   17f04:  ldr     q26, [x14, x2]
+    0.00 :   17f08:  fmul    v19.4s, v16.4s, v2.4s
+    0.00 :   17f0c:  ldr     q2, [x20, x0]
+    0.00 :   17f10:  fmls    v29.4s, v7.4s, v9.4s
+    0.00 :   17f14:  ldr     q21, [x18, x2]
+    0.00 :   17f18:  fmul    v18.4s, v27.4s, v17.4s
+    0.00 :   17f1c:  fmla    v6.4s, v10.4s, v9.4s
+    0.00 :   17f20:  add     x2, x2, #0x10
+    0.00 :   17f24:  add     x1, x1, #0x10
+    0.00 :   17f28:  fmul    v17.4s, v30.4s, v17.4s
+    0.00 :   17f2c:  fmls    v24.4s, v16.4s, v31.4s
+    0.00 :   17f30:  add     x0, x0, #0x10
+    0.00 :   17f34:  fmul    v16.4s, v23.4s, v3.4s
+    0.00 :   17f38:  fadd    v1.4s, v1.4s, v4.4s
+    0.00 :   17f3c:  fmla    v19.4s, v8.4s, v31.4s
+    0.00 :   17f40:  fmul    v3.4s, v25.4s, v3.4s
+    0.00 :   17f44:  fmul    v7.4s, v20.4s, v2.4s
+    0.00 :   17f48:  fadd    v0.4s, v0.4s, v4.4s
+    0.00 :   17f4c:  fmls    v18.4s, v30.4s, v28.4s
+    0.00 :   17f50:  fadd    v1.4s, v1.4s, v29.4s
+    0.00 :   17f54:  fadd    v0.4s, v0.4s, v6.4s
+    0.00 :   17f58:  fmla    v17.4s, v27.4s, v28.4s
+    0.00 :   17f5c:  fmul    v2.4s, v22.4s, v2.4s
+    0.00 :   17f60:  fmls    v16.4s, v25.4s, v26.4s
+    0.00 :   17f64:  fadd    v1.4s, v1.4s, v24.4s
+    0.00 :   17f68:  fmla    v3.4s, v23.4s, v26.4s
+    0.00 :   17f6c:  mov     v6.16b, v7.16b
+    0.00 :   17f70:  fadd    v0.4s, v0.4s, v19.4s
+    0.00 :   17f74:  fadd    v1.4s, v1.4s, v18.4s
+    0.00 :   17f78:  fmls    v6.4s, v22.4s, v21.4s
+    0.00 :   17f7c:  fmla    v2.4s, v20.4s, v21.4s
+    0.00 :   17f80:  fadd    v0.4s, v0.4s, v17.4s
+    0.00 :   17f84:  fadd    v1.4s, v1.4s, v16.4s
+    0.00 :   17f88:  fadd    v0.4s, v0.4s, v3.4s
+    0.00 :   17f8c:  fadd    v1.4s, v1.4s, v6.4s
+    0.00 :   17f90:  fadd    v0.4s, v0.4s, v2.4s
+    0.00 :   17f94:  str     q1, [x5]
+    0.00 :   17f98:  str     q0, [x7, x5]
+    0.00 :   17f9c:  add     x5, x5, #0x10
+    0.00 :   17fa0:  cmp     w24, w4
+    0.00 :   17fa4:  b.gt    17e88 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x2b8>
+    0.00 :   17fa8:  ldr     w0, [sp, #212]
+    0.00 :   17fac:  cmp     w24, w0
+    0.00 :   17fb0:  b.le    181f8 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x628>
+    0.00 :   17fb4:  ldr     w0, [sp, #156]
+    0.00 :   17fb8:  mov     w1, #0xaaab                     // #43691
+    0.00 :   17fbc:  ldr     w6, [sp, #180]
+    0.00 :   17fc0:  movk    w1, #0xaaaa, lsl #16
+    0.00 :   17fc4:  ldr     w5, [sp, #164]
+    0.00 :   17fc8:  ldr     x17, [sp, #200]
+    0.00 :   17fcc:  umull   x1, w0, w1
+    0.00 :   17fd0:  ldr     w0, [sp, #176]
+    0.00 :   17fd4:  lsr     x1, x1, #34
+    0.00 :   17fd8:  mul     w1, w1, w6
+    0.00 :   17fdc:  sbfiz   x12, x0, #2, #32
+    0.00 :   17fe0:  ldr     w0, [sp, #172]
+    0.00 :   17fe4:  add     x25, x12, x17
+    0.00 :   17fe8:  add     w1, w1, w1, lsl #1
+    0.00 :   17fec:  sbfiz   x11, x0, #2, #32
+    0.00 :   17ff0:  ldr     w0, [sp, #168]
+    0.00 :   17ff4:  add     w2, w6, w1, lsl #1
+    0.00 :   17ff8:  add     x23, x11, x17
+    0.00 :   17ffc:  lsl     w1, w1, #2
+    0.00 :   18000:  sbfiz   x1, x1, #2, #32
+    0.00 :   18004:  add     x18, x1, x17
+    0.00 :   18008:  add     x1, x26, x1
+    0.00 :   1800c:  add     w3, w2, w6
+    0.00 :   18010:  lsl     w2, w2, #1
+    0.00 :   18014:  sbfiz   x2, x2, #2, #32
+    0.00 :   18018:  add     x13, x2, x17
+    0.00 :   1801c:  add     x18, x26, x18
+    0.00 :   18020:  add     x13, x26, x13
+    0.00 :   18024:  add     x2, x26, x2
+    0.00 :   18028:  sbfiz   x10, x0, #2, #32
+    0.00 :   1802c:  ldr     w0, [sp, #152]
+    0.00 :   18030:  add     x22, x10, x17
+    0.00 :   18034:  sbfiz   x9, x0, #2, #32
+    0.00 :   18038:  ldr     w0, [sp, #144]
+    0.00 :   1803c:  add     x21, x9, x17
+    0.00 :   18040:  sbfiz   x8, x0, #2, #32
+    0.00 :   18044:  ldr     w0, [sp, #140]
+    0.00 :   18048:  add     x20, x8, x17
+    0.00 :   1804c:  sbfiz   x7, x0, #2, #32
+    0.00 :   18050:  ldp     x4, x0, [sp, #184]
+    0.00 :   18054:  add     x19, x7, x17
+    0.00 :   18058:  add     x27, x4, w5, sxtw #2
+    0.00 :   1805c:  ldr     w5, [sp, #160]
+    0.00 :   18060:  add     x25, x0, x25
+    0.00 :   18064:  add     x12, x0, x12
+    0.00 :   18068:  add     x23, x0, x23
+    0.00 :   1806c:  add     x11, x0, x11
+    0.00 :   18070:  add     x22, x0, x22
+    0.00 :   18074:  add     x10, x0, x10
+    0.00 :   18078:  add     x21, x0, x21
+    0.00 :   1807c:  add     x9, x0, x9
+    0.00 :   18080:  add     x20, x0, x20
+    0.00 :   18084:  add     x8, x0, x8
+    0.00 :   18088:  add     x19, x0, x19
+    0.00 :   1808c:  add     x28, x4, w5, sxtw #2
+    0.00 :   18090:  add     w4, w3, w6
+    0.00 :   18094:  add     x7, x0, x7
+    0.00 :   18098:  ldr     x0, [sp, #232]
+    0.00 :   1809c:  add     w5, w4, w6
+    0.00 :   180a0:  lsl     w3, w3, #1
+    0.00 :   180a4:  lsl     w4, w4, #1
+    0.00 :   180a8:  sbfiz   x3, x3, #2, #32
+    0.00 :   180ac:  add     w6, w5, w6
+    0.00 :   180b0:  add     x14, x3, x17
+    0.00 :   180b4:  sbfiz   x4, x4, #2, #32
+    0.00 :   180b8:  lsl     w5, w5, #1
+    0.00 :   180bc:  add     x15, x4, x17
+    0.00 :   180c0:  sbfiz   x5, x5, #2, #32
+    0.00 :   180c4:  lsl     w6, w6, #1
+    0.00 :   180c8:  add     x16, x5, x17
+    0.00 :   180cc:  sbfiz   x6, x6, #2, #32
+    0.00 :   180d0:  add     x17, x6, x17
+    0.00 :   180d4:  add     x16, x26, x16
+    0.00 :   180d8:  add     x6, x26, x6
+    0.00 :   180dc:  add     x17, x26, x17
+    0.00 :   180e0:  add     x5, x26, x5
+    0.00 :   180e4:  add     x15, x26, x15
+    0.00 :   180e8:  add     x4, x26, x4
+    0.00 :   180ec:  add     x14, x26, x14
+    0.00 :   180f0:  add     x3, x26, x3
+    0.00 :   180f4:  ldr     s16, [x18, x0, lsl #2]
+    0.00 :   180f8:  ldr     s0, [x25, x0, lsl #2]
+    0.00 :   180fc:  ldr     s8, [x1, x0, lsl #2]
+    0.00 :   18100:  ldr     s2, [x23, x0, lsl #2]
+    0.00 :   18104:  ldr     s10, [x13, x0, lsl #2]
+    0.00 :   18108:  ldr     s20, [x12, x0, lsl #2]
+    0.00 :   1810c:  ldr     s17, [x2, x0, lsl #2]
+    0.00 :   18110:  ldr     s9, [x14, x0, lsl #2]
+    0.00 :   18114:  ldr     s7, [x22, x0, lsl #2]
+    0.00 :   18118:  ldr     s18, [x11, x0, lsl #2]
+    0.00 :   1811c:  fmul    s1, s0, s16
+    0.00 :   18120:  ldr     s28, [x3, x0, lsl #2]
+    0.00 :   18124:  ldr     s6, [x21, x0, lsl #2]
+    0.00 :   18128:  fmul    s0, s8, s0
+    0.00 :   1812c:  ldr     s24, [x15, x0, lsl #2]
+    0.00 :   18130:  ldr     s27, [x10, x0, lsl #2]
+    0.00 :   18134:  fmul    s22, s2, s10
+    0.00 :   18138:  ldr     s26, [x4, x0, lsl #2]
+    0.00 :   1813c:  ldr     s3, [x20, x0, lsl #2]
+    0.00 :   18140:  fnmsub  s1, s20, s8, s1
+    0.00 :   18144:  fmul    s8, s17, s2
+    0.00 :   18148:  ldr     s19, [x16, x0, lsl #2]
+    0.00 :   1814c:  ldr     s25, [x9, x0, lsl #2]
+    0.00 :   18150:  fmadd   s0, s20, s16, s0
+    0.00 :   18154:  fmul    s16, s7, s9
+    0.00 :   18158:  ldr     s23, [x5, x0, lsl #2]
+    0.00 :   1815c:  ldr     s2, [x19, x0, lsl #2]
+    0.00 :   18160:  fnmsub  s22, s18, s17, s22
+    0.00 :   18164:  fmul    s7, s28, s7
+    0.00 :   18168:  ldr     s17, [x17, x0, lsl #2]
+    0.00 :   1816c:  ldr     s21, [x8, x0, lsl #2]
+    0.00 :   18170:  fmadd   s8, s18, s10, s8
+    0.00 :   18174:  fmul    s10, s6, s24
+    0.00 :   18178:  ldr     s20, [x6, x0, lsl #2]
+    0.00 :   1817c:  ldr     s18, [x7, x0, lsl #2]
+    0.00 :   18180:  fnmsub  s16, s27, s28, s16
+    0.00 :   18184:  fmul    s6, s26, s6
+    0.00 :   18188:  fadd    s1, s1, s5
+    0.00 :   1818c:  fmadd   s7, s27, s9, s7
+    0.00 :   18190:  fadd    s0, s0, s5
+    0.00 :   18194:  fmul    s9, s3, s19
+    0.00 :   18198:  fnmsub  s10, s25, s26, s10
+    0.00 :   1819c:  fmul    s3, s23, s3
+    0.00 :   181a0:  fadd    s1, s1, s22
+    0.00 :   181a4:  fadd    s0, s0, s8
+    0.00 :   181a8:  fmadd   s6, s25, s24, s6
+    0.00 :   181ac:  fmul    s8, s2, s17
+    0.00 :   181b0:  fnmsub  s9, s21, s23, s9
+    0.00 :   181b4:  fmul    s2, s20, s2
+    0.00 :   181b8:  fadd    s1, s1, s16
+    0.00 :   181bc:  fadd    s0, s0, s7
+    0.00 :   181c0:  fmadd   s3, s21, s19, s3
+    0.00 :   181c4:  fnmsub  s7, s18, s20, s8
+    0.00 :   181c8:  fadd    s1, s1, s10
+    0.00 :   181cc:  fmadd   s2, s18, s17, s2
+    0.00 :   181d0:  fadd    s0, s0, s6
+    0.00 :   181d4:  fadd    s1, s1, s9
+    0.00 :   181d8:  fadd    s0, s0, s3
+    0.00 :   181dc:  fadd    s1, s1, s7
+    0.00 :   181e0:  fadd    s0, s0, s2
+    0.00 :   181e4:  str     s1, [x27, x0, lsl #2]
+    0.00 :   181e8:  str     s0, [x28, x0, lsl #2]
+    0.00 :   181ec:  add     x0, x0, #0x1
+    0.00 :   181f0:  cmp     w24, w0
+    0.00 :   181f4:  b.gt    180f4 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x524>
+    0.00 :   181f8:  ldr     w0, [sp, #156]
+    0.00 :   181fc:  ldr     w2, [sp, #176]
+    0.00 :   18200:  add     w1, w0, #0x1
+    0.00 :   18204:  ldr     w0, [sp, #220]
+    0.00 :   18208:  str     w1, [sp, #156]
+    0.00 :   1820c:  add     w2, w2, w0
+    0.00 :   18210:  str     w2, [sp, #176]
+    0.00 :   18214:  ldr     w2, [sp, #172]
+    0.00 :   18218:  add     w2, w2, w0
+    0.00 :   1821c:  str     w2, [sp, #172]
+    0.00 :   18220:  ldr     w2, [sp, #168]
+    0.00 :   18224:  add     w2, w2, w0
+    0.00 :   18228:  str     w2, [sp, #168]
+    0.00 :   1822c:  ldr     w2, [sp, #152]
+    0.00 :   18230:  add     w2, w2, w0
+    0.00 :   18234:  str     w2, [sp, #152]
+    0.00 :   18238:  ldr     w2, [sp, #144]
+    0.00 :   1823c:  add     w2, w2, w0
+    0.00 :   18240:  str     w2, [sp, #144]
+    0.00 :   18244:  ldr     w2, [sp, #140]
+    0.00 :   18248:  add     w0, w2, w0
+    0.00 :   1824c:  ldr     w2, [sp, #164]
+    0.00 :   18250:  str     w0, [sp, #140]
+    0.00 :   18254:  ldr     w0, [sp, #216]
+    0.00 :   18258:  add     w2, w2, w0
+    0.00 :   1825c:  str     w2, [sp, #164]
+    0.00 :   18260:  ldr     w2, [sp, #160]
+    0.00 :   18264:  add     w0, w2, w0
+    0.00 :   18268:  str     w0, [sp, #160]
+    0.00 :   1826c:  cmp     w1, #0xc
+    0.00 :   18270:  b.ne    17d18 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x148>  // b.any
+    0.00 :   18274:  ldp     d8, d9, [sp, #96]
+    0.00 :   18278:  ldr     d10, [sp, #112]
+    0.00 :   1827c:  ldp     x27, x28, [sp, #80]
+    0.00 :   18280:  ldp     x19, x20, [sp, #16]
+    0.00 :   18284:  ldp     x21, x22, [sp, #32]
+    0.00 :   18288:  ldp     x23, x24, [sp, #48]
+    0.00 :   1828c:  ldp     x25, x26, [sp, #64]
+    0.00 :   18290:  ldp     x29, x30, [sp], #240
+    0.00 :   18294:  ret
+    0.00 :   18298:  ldr     x3, [x6, #448]
+    0.00 :   1829c:  cbnz    x3, 17c24 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x54>
+    0.00 :   182a0:  sxtw    x19, w0
+    0.00 :   182a4:  ldr     x0, [x6, #176]
+    0.00 :   182a8:  mul     x19, x19, x1
+    0.00 :   182ac:  add     x19, x0, x19, lsl #2
+    0.00 :   182b0:  b       17c38 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x68>
+    0.00 :   182b4:  bl      5740 <__cxa_guard_acquire@plt>
+    0.00 :   182b8:  cbz     w0, 17c68 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x98>
+    0.00 :   182bc:  adrp    x0, 58000 <typeinfo name for lqcd::Error+0x88>
+    0.00 :   182c0:  add     x0, x0, #0x858
+    0.00 :   182c4:  bl      5610 <getenv@plt>
+    0.00 :   182c8:  cbz     x0, 182dc <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x70c>
+    0.00 :   182cc:  mov     w2, #0xa                        // #10
+    0.00 :   182d0:  mov     x1, #0x0                        // #0
+    0.00 :   182d4:  bl      5040 <strtol@plt>
+    0.00 :   182d8:  cbz     w0, 185f8 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0xa28>
+    0.00 :   182dc:  mov     w1, #0x1                        // #1
+    0.00 :   182e0:  add     x0, x23, #0x6d0
+    0.00 :   182e4:  adrp    x24, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   182e8:  strb    w1, [x24, #1752]
+    0.00 :   182ec:  bl      5130 <__cxa_guard_release@plt>
+    0.00 :   182f0:  ldrb    w0, [x24, #1752]
+    0.00 :   182f4:  lsl     x5, x21, #2
+    0.00 :   182f8:  cbz     w0, 17c74 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0xa4>
+    0.50 :   182fc:  ldr     w2, [sp, #208]
+    0.00 :   18300:  cmp     w2, w25
+    0.00 :   18304:  b.ge    18280 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x6b0>  // b.tcont
+    0.00 :   18308:  ldr     w0, [sp, #180]
+    0.00 :   1830c:  ldr     x8, [sp, #184]
+    0.00 :   18310:  mov     w30, #0x0                       // #0
+    0.00 :   18314:  sxtw    x24, w25
+    0.00 :   18318:  stp     x27, x28, [sp, #80]
+    0.00 :   1831c:  mov     w28, #0xaaab                    // #43691
+    0.00 :   18320:  mov     x17, #0x0                       // #0
+    0.00 :   18324:  mov     x16, #0x0                       // #0
+    0.00 :   18328:  movk    w28, #0xaaaa, lsl #16
+    0.00 :   1832c:  str     d10, [sp, #112]
+    0.00 :   18330:  str     w30, [sp, #140]
+    0.00 :   18334:  mov     z5.s, #0
+    0.00 :   18338:  stp     d8, d9, [sp, #96]
+    0.00 :   1833c:  lsl     w0, w0, #1
+    0.00 :   18340:  sxtw    x27, w0
+    0.00 :   18344:  mov     x15, x27
+    0.00 :   18348:  str     x27, [sp, #144]
+    0.00 :   1834c:  mov     w27, w25
+    0.00 :   18350:  ldr     w0, [sp, #140]
+    0.00 :   18354:  ldr     w2, [sp, #180]
+    0.00 :   18358:  add     x25, x16, x5
+    0.00 :   1835c:  add     x23, x15, x5
+    0.00 :   18360:  ldr     w7, [sp, #208]
+    0.00 :   18364:  add     x22, x25, x5
+    0.00 :   18368:  add     x21, x23, x5
+    0.00 :   1836c:  umull   x0, w0, w28
+    0.00 :   18370:  lsr     x0, x0, #34
+    0.00 :   18374:  mul     w0, w0, w2
+    0.00 :   18378:  add     w0, w0, w0, lsl #1
+    0.00 :   1837c:  add     w1, w2, w0, lsl #1
+    0.00 :   18380:  lsl     w0, w0, #2
+    0.00 :   18384:  sxtw    x10, w0
+    0.00 :   18388:  add     w0, w1, w2
+    0.00 :   1838c:  lsl     w1, w1, #1
+    0.00 :   18390:  sxtw    x14, w1
+    0.00 :   18394:  add     w1, w0, w2
+    0.00 :   18398:  lsl     w0, w0, #1
+    0.00 :   1839c:  sxtw    x13, w0
+    0.00 :   183a0:  add     w0, w1, w2
+    0.00 :   183a4:  lsl     w1, w1, #1
+    0.00 :   183a8:  sxtw    x12, w1
+    0.00 :   183ac:  add     w18, w0, w2
+    0.00 :   183b0:  lsl     w0, w0, #1
+    0.00 :   183b4:  sxtw    x11, w0
+    0.00 :   183b8:  lsl     w18, w18, #1
+    0.00 :   183bc:  sxtw    x18, w18
+    0.25 :   183c0:  sxtw    x0, w7
+    0.00 :   183c4:  incw    x7
+    0.00 :   183c8:  add     x1, x0, x16
+    0.00 :   183cc:  add     x9, x0, x10
+    0.23 :   183d0:  whilelo p0.s, x0, x24
+    0.00 :   183d4:  add     x3, x0, x15
+    0.00 :   183d8:  add     x4, x19, x1, lsl #2
+    0.00 :   183dc:  ld1w    {z2.s}, p0/z, [x26, x9, lsl #2]
+    1.88 :   183e0:  ld1w    {z3.s}, p0/z, [x19, x3, lsl #2]
+    9.29 :   183e4:  ld1w    {z0.s}, p0/z, [x19, x1, lsl #2]
+    0.00 :   183e8:  add     x9, x26, x9, lsl #2
+    0.00 :   183ec:  add     x30, x0, x14
+   17.84 :   183f0:  movprfx z1, z0
+    0.00 :   183f4:  fmul    z1.s, p0/m, z1.s, z2.s
+    0.00 :   183f8:  add     x2, x0, x25
+    0.00 :   183fc:  add     x4, x4, x5
+    0.00 :   18400:  add     x3, x19, x3, lsl #2
+    0.00 :   18404:  add     x6, x0, x13
+    0.22 :   18408:  add     x1, x0, x23
+    0.00 :   1840c:  ld1w    {z4.s}, p0/z, [x4]
+    0.00 :   18410:  add     x9, x9, x5
+    0.00 :   18414:  fmul    z2.s, p0/m, z2.s, z4.s
+    0.00 :   18418:  add     x4, x0, x12
+   13.06 :   1841c:  ld1w    {z6.s}, p0/z, [x9]
+    0.00 :   18420:  add     x3, x3, x5
+    0.00 :   18424:  fmul    z0.s, p0/m, z0.s, z6.s
+    0.00 :   18428:  fadd    z0.s, p0/m, z0.s, z2.s
+    0.22 :   1842c:  ld1w    {z2.s}, p0/z, [x26, x30, lsl #2]
+    0.00 :   18430:  add     x30, x26, x30, lsl #2
+    0.00 :   18434:  ld1w    {z7.s}, p0/z, [x3]
+    1.71 :   18438:  movprfx z10, z3
+    0.00 :   1843c:  fmul    z10.s, p0/m, z10.s, z2.s
+    0.72 :   18440:  movprfx z8, z7
+    0.00 :   18444:  fmul    z8.s, p0/m, z8.s, z2.s
+    0.00 :   18448:  fmul    z4.s, p0/m, z4.s, z6.s
+    0.00 :   1844c:  ld1w    {z2.s}, p0/z, [x19, x2, lsl #2]
+    2.88 :   18450:  ld1w    {z6.s}, p0/z, [x26, x6, lsl #2]
+    0.00 :   18454:  add     x2, x19, x2, lsl #2
+    0.00 :   18458:  add     x30, x30, x5
+    0.69 :   1845c:  movprfx z9, z2
+    0.00 :   18460:  fmul    z9.s, p0/m, z9.s, z6.s
+    0.00 :   18464:  fsub    z1.s, p0/m, z1.s, z4.s
+    0.00 :   18468:  add     x6, x26, x6, lsl #2
+    0.00 :   1846c:  ld1w    {z16.s}, p0/z, [x30]
+    0.86 :   18470:  fmul    z7.s, p0/m, z7.s, z16.s
+    0.00 :   18474:  fmul    z3.s, p0/m, z3.s, z16.s
+    0.00 :   18478:  add     x30, x2, x5
+    0.80 :   1847c:  fsubr   z7.s, p0/m, z7.s, z10.s
+    0.00 :   18480:  fadd    z3.s, p0/m, z3.s, z8.s
+    0.28 :   18484:  ld1w    {z4.s}, p0/z, [x19, x1, lsl #2]
+    0.00 :   18488:  add     x6, x6, x5
+    1.87 :   1848c:  add     x1, x19, x1, lsl #2
+    0.00 :   18490:  fadd    z1.s, p0/m, z1.s, z5.s
+    2.49 :   18494:  fadd    z0.s, p0/m, z0.s, z5.s
+    0.00 :   18498:  fadd    z1.s, p0/m, z1.s, z7.s
+    0.29 :   1849c:  fadd    z0.s, p0/m, z0.s, z3.s
+    0.73 :   184a0:  ld1w    {z7.s}, p0/z, [x30]
+    4.20 :   184a4:  ld1w    {z3.s}, p0/z, [x6]
+    0.00 :   184a8:  fmul    z6.s, p0/m, z6.s, z7.s
+    0.00 :   184ac:  fmul    z2.s, p0/m, z2.s, z3.s
+    0.00 :   184b0:  fadd    z2.s, p0/m, z2.s, z6.s
+    0.47 :   184b4:  add     x9, x0, x22
+    0.00 :   184b8:  add     x3, x0, x11
+    0.00 :   184bc:  fmul    z7.s, p0/m, z7.s, z3.s
+    0.00 :   184c0:  fadd    z0.s, p0/m, z0.s, z2.s
+    0.00 :   184c4:  ld1w    {z2.s}, p0/z, [x26, x4, lsl #2]
+    0.66 :   184c8:  add     x4, x26, x4, lsl #2
+    0.00 :   184cc:  movprfx z3, z9
+    0.00 :   184d0:  fsub    z3.s, p0/m, z3.s, z7.s
+    0.00 :   184d4:  add     x2, x0, x21
+    0.00 :   184d8:  ld1w    {z7.s}, p0/z, [x26, x3, lsl #2]
+    0.00 :   184dc:  add     x30, x1, x5
+    0.00 :   184e0:  add     x6, x19, x9, lsl #2
+    0.00 :   184e4:  add     x1, x0, x18
+    0.76 :   184e8:  movprfx z16, z4
+    0.00 :   184ec:  fmul    z16.s, p0/m, z16.s, z2.s
+    0.00 :   184f0:  add     x3, x26, x3, lsl #2
+    0.92 :   184f4:  ld1w    {z6.s}, p0/z, [x26, x1, lsl #2]
+    0.44 :   184f8:  ld1w    {z9.s}, p0/z, [x30]
+    0.00 :   184fc:  add     x4, x4, x5
+    2.69 :   18500:  movprfx z8, z9
+    0.00 :   18504:  fmul    z8.s, p0/m, z8.s, z2.s
+    0.00 :   18508:  add     x1, x26, x1, lsl #2
+    0.00 :   1850c:  ld1w    {z2.s}, p0/z, [x19, x2, lsl #2]
+   15.95 :   18510:  ld1w    {z17.s}, p0/z, [x4]
+    0.00 :   18514:  add     x2, x19, x2, lsl #2
+    0.20 :   18518:  add     x6, x6, x5
+    0.00 :   1851c:  add     x3, x3, x5
+    0.79 :   18520:  fmul    z9.s, p0/m, z9.s, z17.s
+    0.00 :   18524:  fmul    z4.s, p0/m, z4.s, z17.s
+    0.00 :   18528:  fsubr   z9.s, p0/m, z9.s, z16.s
+    0.00 :   1852c:  fadd    z4.s, p0/m, z4.s, z8.s
+    0.00 :   18530:  add     x4, x0, x17
+    0.00 :   18534:  fadd    z1.s, p0/m, z1.s, z3.s
+    0.00 :   18538:  fadd    z0.s, p0/m, z0.s, z4.s
+    0.26 :   1853c:  ld1w    {z3.s}, p0/z, [x19, x9, lsl #2]
+    3.51 :   18540:  ld1w    {z4.s}, p0/z, [x6]
+    3.02 :   18544:  movprfx z10, z3
+    0.00 :   18548:  fmul    z10.s, p0/m, z10.s, z7.s
+    0.00 :   1854c:  fadd    z1.s, p0/m, z1.s, z9.s
+    0.00 :   18550:  fmul    z7.s, p0/m, z7.s, z4.s
+    0.00 :   18554:  ld1w    {z9.s}, p0/z, [x3]
+    0.00 :   18558:  add     x2, x2, x5
+    0.00 :   1855c:  add     x1, x1, x5
+    0.00 :   18560:  add     x0, x0, x20
+    0.27 :   18564:  fmul    z4.s, p0/m, z4.s, z9.s
+    0.00 :   18568:  fmul    z3.s, p0/m, z3.s, z9.s
+    0.00 :   1856c:  fsubr   z4.s, p0/m, z4.s, z10.s
+    0.00 :   18570:  fadd    z3.s, p0/m, z3.s, z7.s
+    0.26 :   18574:  movprfx z8, z2
+    0.00 :   18578:  fmul    z8.s, p0/m, z8.s, z6.s
+    0.00 :   1857c:  fadd    z1.s, p0/m, z1.s, z4.s
+    0.00 :   18580:  fadd    z0.s, p0/m, z0.s, z3.s
+    0.00 :   18584:  ld1w    {z4.s}, p0/z, [x1]
+    3.25 :   18588:  ld1w    {z3.s}, p0/z, [x2]
+    2.42 :   1858c:  fmul    z2.s, p0/m, z2.s, z4.s
+    0.00 :   18590:  fmul    z6.s, p0/m, z6.s, z3.s
+    0.00 :   18594:  fmul    z3.s, p0/m, z3.s, z4.s
+    1.90 :   18598:  fadd    z2.s, p0/m, z2.s, z6.s
+    0.23 :   1859c:  fsubr   z3.s, p0/m, z3.s, z8.s
+    0.00 :   185a0:  fadd    z0.s, p0/m, z0.s, z2.s
+    0.00 :   185a4:  fadd    z1.s, p0/m, z1.s, z3.s
+    0.23 :   185a8:  st1w    {z1.s}, p0, [x8, x4, lsl #2]
+    0.00 :   185ac:  st1w    {z0.s}, p0, [x8, x0, lsl #2]
+    0.00 :   185b0:  cmp     w27, w7
+    0.31 :   185b4:  b.gt    183c0 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x7f0>
+    0.00 :   185b8:  ldr     w0, [sp, #140]
+    0.00 :   185bc:  ldr     x1, [sp, #144]
+    0.00 :   185c0:  add     x16, x22, x5
+    0.00 :   185c4:  add     x15, x21, x5
+    0.00 :   185c8:  add     w0, w0, #0x1
+    0.00 :   185cc:  add     x17, x17, x1
+    0.00 :   185d0:  add     x20, x20, x1
+    0.00 :   185d4:  str     w0, [sp, #140]
+    0.00 :   185d8:  cmp     w0, #0xc
+    0.00 :   185dc:  b.ne    18350 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x780>  // b.any
+    0.00 :   185e0:  b       18274 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x6a4>
+    0.00 :   185e4:  sxtw    x19, w0
+    0.00 :   185e8:  ldr     x0, [x6, #272]
+    0.00 :   185ec:  mul     x19, x19, x1
+    0.00 :   185f0:  add     x19, x0, x19, lsl #2
+    0.00 :   185f4:  b       17c38 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x68>
+    0.00 :   185f8:  mov     w1, #0x0                        // #0
+    0.00 :   185fc:  b       182e0 <NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const+0x710>

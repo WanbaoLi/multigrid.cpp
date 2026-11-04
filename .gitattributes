@@ -13,3 +13,4 @@ experiments/lingsheng-20261103/runtime-v5/frozen-helpers/** -text
 experiments/lingsheng-20261103/runtime-v5/tests/** -text
 experiments/lingsheng-20261103/runtime-v6/frozen-helpers/** -text whitespace=cr-at-eol
 experiments/lingsheng-20261103/runtime-v6/results/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
+experiments/lingsheng-20261103/profile143-complete/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol

@@ -1,0 +1,14 @@
+{
+  "complete": true,
+  "passed": true,
+  "rank": 4,
+  "host": "cn19483",
+  "pid": 1774123,
+  "selected": false,
+  "event": "cycles:u",
+  "frequency": 49,
+  "call_graph": "dwarf,4096",
+  "errors": [],
+  "coverage": "one final diagnostic full12 call; sampled ranks only; not an accepted timing sample",
+  "solver_completed": true
+}

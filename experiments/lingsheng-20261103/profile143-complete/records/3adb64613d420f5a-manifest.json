@@ -1,0 +1,27 @@
+{
+  "complete": true,
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "rows": [
+    {
+      "path": "hash-000.json",
+      "sha256": "31521ab21835cfbd236414055b7bb304044a77533788b03888225fda31b3643a"
+    },
+    {
+      "path": "hash-001.json",
+      "sha256": "5263d3f50a50d1581c714885c4f09381ba6c5f44fd3a2d25f29b1f184eb5633c"
+    },
+    {
+      "path": "hash-002.json",
+      "sha256": "0568337b6fbae14197d1f0a68f765938845530a334e4a0c8f473f9a70228fa73"
+    },
+    {
+      "path": "hash-003.json",
+      "sha256": "4a5a1c61580580ed8ac301bfd2a378a831d9a237ef049e5a0f30fa04fbb1feed"
+    },
+    {
+      "path": "hash-004.json",
+      "sha256": "b3e58d58f4802b6c749392f568496ece3f7991c4935fa4f82c1b2cdb7ae6b423"
+    }
+  ]
+}

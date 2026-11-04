@@ -1,0 +1,133 @@
+{
+  "rank": 7,
+  "complete": true,
+  "wrapper_sha256": "53c7bcde4eb17349baf6705ba94d494bbb57e47c5c85729901ba258050f92546",
+  "frozen_profile_sha256": "0f8f91305635ae7085d6bb9dcaa96b4c0607b3dfbeb4b83cc3b34526f714bc98",
+  "frozen_publication_sha256": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+  "actual_profiled_stats": [
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 4.404520951999984,
+      "api_seconds": 4.510371807000013,
+      "true_residual": 4.8187844953247115e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 4.404520951999984,
+      "api_seconds": 4.510371807000013,
+      "true_residual": 3.198723266023545e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.7159742260000144,
+      "api_seconds": 3.854818197000043,
+      "true_residual": 3.93331914178998e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.7159742260000144,
+      "api_seconds": 3.854818197000043,
+      "true_residual": 3.1414741332670436e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.569525982000016,
+      "api_seconds": 3.699535862999994,
+      "true_residual": 4.089293916030361e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.569525982000016,
+      "api_seconds": 3.699535862999994,
+      "true_residual": 4.075962155764434e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.675778777000005,
+      "api_seconds": 3.786095932999956,
+      "true_residual": 3.656197070530659e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.675778777000005,
+      "api_seconds": 3.786095932999956,
+      "true_residual": 2.834974777171503e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 25,
+      "refinement_steps": 0,
+      "solver_seconds": 3.9572978790000093,
+      "api_seconds": 4.076057074000005,
+      "true_residual": 2.64076294196902e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.9572978790000093,
+      "api_seconds": 4.076057074000005,
+      "true_residual": 3.7731122459995464e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.746736553000005,
+      "api_seconds": 3.825349038000013,
+      "true_residual": 4.279940776158771e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.746736553000005,
+      "api_seconds": 3.825349038000013,
+      "true_residual": 2.6128659136776385e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    }
+  ],
+  "actual_profiled_stats_checked": true,
+  "independently_verified_saved_output_scope": "Last light diagnostic sample; final verbose sampled output is not saved",
+  "timing_scope": "Auxiliary diagnostic only; no ordinary performance acceptance",
+  "error": null
+}

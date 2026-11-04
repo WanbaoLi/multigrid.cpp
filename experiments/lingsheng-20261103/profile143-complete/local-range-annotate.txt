@@ -1,0 +1,2130 @@
+ Percent |	Source code & Disassembly of liblqcd_cpu.so for cycles:u (1262 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         :           Disassembly of section .text:
+         :
+         :           0000000000019340 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const>:
+         :           NativeMG::Impl::local_range(int, float const*, float*, int, bool) const:
+    0.00 :   19340:  sub     sp, sp, #0x210
+    0.00 :   19344:  mov     w6, #0x90                       // #144
+    0.00 :   19348:  stp     x29, x30, [sp, #32]
+    0.00 :   1934c:  add     x29, sp, #0x20
+    0.00 :   19350:  ldr     w8, [x0, #112]
+    0.00 :   19354:  ldr     x7, [x0, #448]
+    0.00 :   19358:  stp     x25, x26, [sp, #96]
+    0.00 :   1935c:  stp     x19, x20, [sp, #48]
+    0.00 :   19360:  mov     x25, x3
+    0.00 :   19364:  and     w20, w5, #0xff
+    0.00 :   19368:  stp     x21, x22, [sp, #64]
+    0.00 :   1936c:  stp     x23, x24, [sp, #80]
+    0.00 :   19370:  sxtw    x3, w1
+    0.00 :   19374:  str     x2, [sp, #400]
+    0.00 :   19378:  sxtw    x26, w8
+    0.00 :   1937c:  str     w8, [sp, #416]
+    0.00 :   19380:  smull   x2, w8, w6
+    0.00 :   19384:  mov     x23, x26
+    0.00 :   19388:  cbz     x7, 1a8bc <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x157c>
+    0.00 :   1938c:  ldr     w21, [x0, #136]
+    0.00 :   19390:  sub     w21, w1, w21
+    0.00 :   19394:  sxtw    x21, w21
+    0.00 :   19398:  mul     x21, x21, x2
+    0.00 :   1939c:  add     x21, x7, x21, lsl #2
+    0.00 :   193a0:  ldr     x5, [x0, #304]
+    0.00 :   193a4:  cbz     x5, 1a8a8 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1568>
+    0.00 :   193a8:  ldr     w3, [x0, #136]
+    0.00 :   193ac:  sub     w3, w1, w3
+    0.00 :   193b0:  sxtw    x3, w3
+    0.00 :   193b4:  mul     x2, x3, x2
+    0.00 :   193b8:  add     x2, x5, x2, lsl #2
+    0.00 :   193bc:  str     x2, [sp, #336]
+    0.00 :   193c0:  ldr     w2, [sp, #416]
+    0.00 :   193c4:  ldr     x5, [x0, #1336]
+    0.00 :   193c8:  add     x6, x0, #0x644
+    0.00 :   193cc:  ldrb    w3, [x0, #1280]
+    0.00 :   193d0:  str     x6, [sp, #448]
+    0.00 :   193d4:  add     x6, x0, #0x684
+    0.00 :   193d8:  str     x6, [sp, #456]
+    0.00 :   193dc:  add     x6, x0, #0x6c4
+    0.00 :   193e0:  str     xzr, [sp, #184]
+    0.00 :   193e4:  str     x6, [sp, #464]
+    0.00 :   193e8:  smull   x2, w2, w1
+    0.00 :   193ec:  add     x2, x5, x2, lsl #5
+    0.00 :   193f0:  str     x2, [sp, #216]
+    0.00 :   193f4:  cbz     w3, 19410 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xd0>
+    0.00 :   193f8:  ldr     w3, [x0, #136]
+    0.00 :   193fc:  ldr     x2, [x0, #1256]
+    0.00 :   19400:  sub     w0, w1, w3
+    0.00 :   19404:  sbfiz   x0, x0, #6, #32
+    0.00 :   19408:  add     x0, x2, x0
+    0.00 :   1940c:  str     x0, [sp, #184]
+    0.00 :   19410:  ldr     w0, [sp, #416]
+    0.00 :   19414:  adrp    x19, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   19418:  add     w0, w0, w0, lsr #31
+    0.00 :   1941c:  asr     w0, w0, #1
+    0.00 :   19420:  mul     w1, w4, w0
+    0.00 :   19424:  stp     w0, w1, [sp, #192]
+    0.00 :   19428:  add     w24, w0, w1
+    0.00 :   1942c:  add     x0, x19, #0x6a0
+    0.00 :   19430:  cbz     w20, 19494 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x154>
+    0.00 :   19434:  ldarb   w1, [x0]
+    0.00 :   19438:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1943c:  tbz     w1, #0, 1a930 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x15f0>
+    0.00 :   19440:  ldrb    w20, [x22, #1704]
+    0.00 :   19444:  cbnz    w20, 1a054 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xd14>
+    0.00 :   19448:  ldr     w0, [sp, #196]
+    0.00 :   1944c:  ldr     x3, [sp, #216]
+    0.00 :   19450:  mov     x1, x21
+    0.00 :   19454:  ldr     x2, [sp, #336]
+    0.00 :   19458:  ldr     x7, [sp, #400]
+    0.00 :   1945c:  ldp     x4, x5, [sp, #448]
+    0.00 :   19460:  ldr     x6, [sp, #464]
+    0.00 :   19464:  str     x25, [sp]
+    0.00 :   19468:  str     w24, [sp, #16]
+    0.00 :   1946c:  str     w0, [sp, #8]
+    0.00 :   19470:  ldr     w0, [sp, #416]
+    0.00 :   19474:  bl      188b0 <void lqcd_native::portable::wilson_clover_block_impl<true, int, true>(int, int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int) [clone .isra.0]>
+    0.00 :   19478:  ldp     x29, x30, [sp, #32]
+    0.00 :   1947c:  ldp     x19, x20, [sp, #48]
+    0.00 :   19480:  ldp     x21, x22, [sp, #64]
+    0.00 :   19484:  ldp     x23, x24, [sp, #80]
+    0.00 :   19488:  ldp     x25, x26, [sp, #96]
+    0.00 :   1948c:  add     sp, sp, #0x210
+    0.00 :   19490:  ret
+    0.00 :   19494:  ldarb   w1, [x0]
+    0.00 :   19498:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1949c:  tbz     w1, #0, 1a8f0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x15b0>
+    0.00 :   194a0:  ldrb    w20, [x22, #1704]
+    0.00 :   194a4:  cbnz    w20, 19b10 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x7d0>
+    0.00 :   194a8:  ldr     w0, [sp, #196]
+    0.00 :   194ac:  stp     x27, x28, [sp, #112]
+    0.00 :   194b0:  stp     d8, d9, [sp, #128]
+    0.00 :   194b4:  stp     d10, d11, [sp, #144]
+    0.00 :   194b8:  str     d12, [sp, #160]
+    0.00 :   194bc:  cmp     w0, w24
+    0.00 :   194c0:  b.ge    1aab4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1774>  // b.tcont
+    0.00 :   194c4:  ldrsw   x11, [sp, #196]
+    0.00 :   194c8:  ldr     w0, [sp, #192]
+    0.00 :   194cc:  mov     w27, #0xc                       // #12
+    0.00 :   194d0:  ldr     w1, [sp, #416]
+    0.00 :   194d4:  sub     w0, w0, #0x1
+    0.00 :   194d8:  add     x21, x26, x11
+    0.00 :   194dc:  lsl     x20, x11, #2
+    0.00 :   194e0:  mov     x28, x11
+    0.00 :   194e4:  lsl     w1, w1, #1
+    0.00 :   194e8:  ubfiz   x23, x0, #2, #32
+    0.00 :   194ec:  sub     x19, x25, x20
+    0.00 :   194f0:  add     x23, x23, #0x4
+    0.00 :   194f4:  lsl     x21, x21, #2
+    0.00 :   194f8:  sbfiz   x22, x1, #2, #32
+    0.00 :   194fc:  str     w1, [sp, #200]
+    0.00 :   19500:  str     w0, [sp, #352]
+    0.00 :   19504:  b       19538 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1f8>
+    0.00 :   19508:  mov     x2, x23
+    0.00 :   1950c:  mov     w1, #0x0                        // #0
+    0.00 :   19510:  add     x0, x25, x20
+    0.00 :   19514:  bl      50a0 <memset@plt>
+    0.00 :   19518:  add     x20, x20, x22
+    0.00 :   1951c:  add     x0, x25, x21
+    0.00 :   19520:  mov     x2, x23
+    0.00 :   19524:  mov     w1, #0x0                        // #0
+    0.00 :   19528:  bl      50a0 <memset@plt>
+    0.00 :   1952c:  add     x21, x21, x22
+    0.00 :   19530:  subs    w27, w27, #0x1
+    0.00 :   19534:  b.eq    1957c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x23c>  // b.none
+    0.00 :   19538:  add     x1, x21, x23
+    0.00 :   1953c:  add     x0, x20, x23
+    0.00 :   19540:  add     x2, x19, x20
+    0.00 :   19544:  cmp     x1, x20
+    0.00 :   19548:  ccmp    x0, x21, #0x4, gt
+    0.00 :   1954c:  b.le    19508 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1c8>
+    0.00 :   19550:  add     x1, x19, x21
+    0.00 :   19554:  mov     x0, x28
+    0.00 :   19558:  str     wzr, [x2, x0, lsl #2]
+    0.00 :   1955c:  str     wzr, [x1, x0, lsl #2]
+    0.00 :   19560:  add     x0, x0, #0x1
+    0.00 :   19564:  cmp     w24, w0
+    0.00 :   19568:  b.gt    19558 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x218>
+    0.00 :   1956c:  add     x21, x21, x22
+    0.00 :   19570:  add     x20, x20, x22
+    0.00 :   19574:  subs    w27, w27, #0x1
+    0.00 :   19578:  b.ne    19538 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1f8>  // b.any
+    0.00 :   1957c:  mov     x11, x28
+    0.00 :   19580:  mrs     x20, tpidr_el0
+    0.00 :   19584:  adrp    x0, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   19588:  ldr     x1, [x0, #1336]
+    0.00 :   1958c:  add     x0, x0, #0x538
+    0.00 :   19590:  blr     x1
+    0.00 :   19594:  ldr     x1, [x20, x0]
+    0.00 :   19598:  add     x3, x20, x0
+    0.00 :   1959c:  tbz     w1, #0, 1aa2c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x16ec>
+    0.00 :   195a0:  adrp    x0, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   195a4:  ldr     x1, [x0, #1320]
+    0.00 :   195a8:  add     x0, x0, #0x528
+    0.00 :   195ac:  blr     x1
+    0.00 :   195b0:  add     x20, x20, x0
+    0.00 :   195b4:  adrp    x0, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   195b8:  ldr     x2, [x0, #1320]
+    0.00 :   195bc:  add     x0, x0, #0x528
+    0.00 :   195c0:  blr     x2
+    0.00 :   195c4:  lsl     x1, x26, #1
+    0.00 :   195c8:  ldp     x19, x2, [x20]
+    0.00 :   195cc:  sub     x0, x2, x19
+    0.00 :   195d0:  asr     x0, x0, #2
+    0.00 :   195d4:  cmp     x1, x0
+    0.00 :   195d8:  b.hi    1a9f0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x16b0>  // b.pmore
+    0.00 :   195dc:  b.cc    1a8cc <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x158c>  // b.lo, b.ul, b.last
+    0.00 :   195e0:  ldr     w0, [sp, #352]
+    0.00 :   195e4:  ldr     w7, [sp, #200]
+    0.00 :   195e8:  add     x4, x26, x11
+    0.00 :   195ec:  add     x2, x11, #0x1
+    0.00 :   195f0:  ldr     w5, [sp, #416]
+    0.00 :   195f4:  add     x3, x4, #0x1
+    0.00 :   195f8:  lsl     x6, x4, #2
+    0.00 :   195fc:  str     x4, [sp, #296]
+    0.00 :   19600:  lsl     x1, x11, #2
+    0.00 :   19604:  ldr     w9, [sp, #192]
+    0.00 :   19608:  ldr     x22, [sp, #216]
+    0.00 :   1960c:  add     x27, x19, x1
+    0.00 :   19610:  add     x28, x19, x6
+    0.00 :   19614:  str     wzr, [sp, #408]
+    0.00 :   19618:  str     wzr, [sp, #436]
+    0.00 :   1961c:  fmov    s9, #1.000000000000000000e+00
+    0.00 :   19620:  add     x2, x2, x0
+    0.00 :   19624:  add     x3, x3, x0
+    0.00 :   19628:  add     x0, x0, #0x1
+    0.00 :   1962c:  fmov    s8, #-1.000000000000000000e+00
+    0.00 :   19630:  add     w4, w7, w5
+    0.00 :   19634:  lsl     x0, x0, #2
+    0.00 :   19638:  add     w5, w5, w5, lsl #3
+    0.00 :   1963c:  str     x0, [sp, #200]
+    0.00 :   19640:  lsl     w4, w4, #1
+    0.00 :   19644:  sub     x0, x25, x1
+    0.00 :   19648:  sxtw    x8, w4
+    0.00 :   1964c:  cmp     x1, x3, lsl #2
+    0.00 :   19650:  lsl     x4, x26, #2
+    0.00 :   19654:  str     x0, [sp, #360]
+    0.00 :   19658:  add     x0, x25, x4
+    0.00 :   1965c:  sxtw    x3, w7
+    0.00 :   19660:  str     x0, [sp, #392]
+    0.00 :   19664:  lsl     w0, w5, #1
+    0.00 :   19668:  str     w0, [sp, #472]
+    0.00 :   1966c:  add     x20, x19, x4
+    0.00 :   19670:  ldr     w0, [sp, #196]
+    0.00 :   19674:  str     x3, [sp, #344]
+    0.00 :   19678:  cset    w3, ge  // ge = tcont
+    0.00 :   1967c:  cmp     x6, x2, lsl #2
+    0.00 :   19680:  add     x2, x20, x1
+    0.00 :   19684:  str     w8, [sp, #288]
+    0.00 :   19688:  str     x8, [sp, #440]
+    0.00 :   1968c:  and     w8, w9, #0xfffffffc
+    0.00 :   19690:  cset    w1, ge  // ge = tcont
+    0.00 :   19694:  mov     x5, x26
+    0.00 :   19698:  mov     w26, w24
+    0.00 :   1969c:  str     w8, [sp, #376]
+    0.00 :   196a0:  orr     w1, w3, w1
+    0.00 :   196a4:  str     x2, [sp, #384]
+    0.00 :   196a8:  sbfiz   x23, x7, #2, #32
+    0.00 :   196ac:  add     w0, w0, w8
+    0.00 :   196b0:  str     w1, [sp, #368]
+    0.00 :   196b4:  mov     w1, #0x9                        // #9
+    0.00 :   196b8:  str     w0, [sp, #420]
+    0.00 :   196bc:  lsr     w0, w9, #2
+    0.00 :   196c0:  lsl     x21, x0, #4
+    0.00 :   196c4:  mov     x6, x21
+    0.00 :   196c8:  mov     x21, x22
+    0.00 :   196cc:  mov     x22, x4
+    0.00 :   196d0:  str     w1, [sp, #280]
+    0.00 :   196d4:  ldr     w1, [sp, #280]
+    0.00 :   196d8:  ldr     w0, [sp, #436]
+    0.00 :   196dc:  mov     x10, x21
+    0.00 :   196e0:  mov     x13, #0x0                       // #0
+    0.00 :   196e4:  mov     x21, x6
+    0.00 :   196e8:  mov     x6, x11
+    0.00 :   196ec:  str     x11, [sp, #320]
+    0.00 :   196f0:  str     wzr, [sp, #328]
+    0.00 :   196f4:  sub     w1, w1, #0x9
+    0.00 :   196f8:  tst     x0, #0x1
+    0.00 :   196fc:  asr     w0, w0, #1
+    0.00 :   19700:  sbfiz   x0, x0, #4, #32
+    0.00 :   19704:  str     w1, [sp, #432]
+    0.00 :   19708:  ldr     x1, [sp, #448]
+    0.00 :   1970c:  fcsel   s10, s9, s8, ne  // ne = any
+    0.00 :   19710:  add     x1, x1, x0
+    0.00 :   19714:  str     x1, [sp, #424]
+    0.00 :   19718:  ldr     x1, [sp, #456]
+    0.00 :   1971c:  add     x12, x1, x0
+    0.00 :   19720:  ldr     x1, [sp, #464]
+    0.00 :   19724:  add     x8, x1, x0
+    0.00 :   19728:  ldr     x0, [sp, #424]
+    0.00 :   1972c:  ldr     w1, [sp, #328]
+    0.00 :   19730:  ldr     w9, [sp, #432]
+    0.00 :   19734:  ldr     w7, [x0, x13, lsl #2]
+    0.00 :   19738:  ldr     w0, [sp, #408]
+    0.00 :   1973c:  str     w0, [sp, #184]
+    0.00 :   19740:  ldr     x0, [sp, #400]
+    0.00 :   19744:  add     w24, w7, w7, lsl #1
+    0.00 :   19748:  sbfiz   x7, x7, #2, #32
+    0.00 :   1974c:  add     x1, x0, w1, sxtw #2
+    0.00 :   19750:  str     x1, [sp, #312]
+    0.00 :   19754:  ldr     w1, [sp, #416]
+    0.00 :   19758:  mul     w24, w24, w1
+    0.00 :   1975c:  lsl     w24, w24, #1
+    0.00 :   19760:  sxtw    x24, w24
+    0.00 :   19764:  add     x0, x0, x24, lsl #2
+    0.00 :   19768:  add     x24, x24, x11
+    0.00 :   1976c:  str     x0, [sp, #304]
+    0.00 :   19770:  ldr     s11, [x12, x13, lsl #2]
+    0.00 :   19774:  ldr     s12, [x8, x13, lsl #2]
+    0.00 :   19778:  ldr     w0, [sp, #196]
+    0.00 :   1977c:  fmul    s11, s10, s11
+    0.00 :   19780:  fmul    s12, s10, s12
+    0.00 :   19784:  cmp     w0, w26
+    0.00 :   19788:  b.ge    19a5c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x71c>  // b.tcont
+    0.00 :   1978c:  ldr     w0, [sp, #368]
+    0.00 :   19790:  cbz     w0, 1a888 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1548>
+    0.00 :   19794:  ldr     x2, [sp, #200]
+    0.00 :   19798:  mov     w1, #0x0                        // #0
+    0.00 :   1979c:  mov     x0, x27
+    0.00 :   197a0:  stp     x12, x8, [sp, #208]
+    0.00 :   197a4:  stp     x10, x13, [sp, #224]
+    0.00 :   197a8:  str     w9, [sp, #240]
+    0.00 :   197ac:  stp     x6, x11, [sp, #248]
+    0.00 :   197b0:  stp     x5, x7, [sp, #264]
+    0.00 :   197b4:  bl      50a0 <memset@plt>
+    0.00 :   197b8:  ldr     x2, [sp, #200]
+    0.00 :   197bc:  ldr     x0, [sp, #384]
+    0.00 :   197c0:  mov     w1, #0x0                        // #0
+    0.00 :   197c4:  bl      50a0 <memset@plt>
+    0.00 :   197c8:  ldr     w9, [sp, #240]
+    0.00 :   197cc:  ldp     x12, x8, [sp, #208]
+    0.00 :   197d0:  ldp     x10, x13, [sp, #224]
+    0.00 :   197d4:  ldp     x6, x11, [sp, #248]
+    0.00 :   197d8:  ldp     x5, x7, [sp, #264]
+    0.00 :   197dc:  ldr     w0, [sp, #184]
+    0.00 :   197e0:  ldr     x1, [sp, #336]
+    0.00 :   197e4:  ldp     x14, x4, [sp, #304]
+    0.00 :   197e8:  add     x2, x1, w0, sxtw #2
+    0.00 :   197ec:  mov     w1, #0x3                        // #3
+    0.00 :   197f0:  mov     x0, x11
+    0.00 :   197f4:  add     x16, x22, x2
+    0.00 :   197f8:  ldr     w15, [x10, x0, lsl #2]
+    0.00 :   197fc:  sxtw    x3, w15
+    0.00 :   19800:  tbnz    w15, #31, 19860 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x520>
+    0.00 :   19804:  add     x15, x3, x5
+    0.00 :   19808:  ldr     s4, [x14, x3, lsl #2]
+    0.00 :   1980c:  ldr     s0, [x4, x3, lsl #2]
+    0.00 :   19810:  ldr     s5, [x14, x15, lsl #2]
+    0.00 :   19814:  ldr     s1, [x4, x15, lsl #2]
+    0.00 :   19818:  ldr     s2, [x16, x0, lsl #2]
+    0.00 :   1981c:  ldr     s6, [x2, x0, lsl #2]
+    0.00 :   19820:  ldr     s3, [x19, x0, lsl #2]
+    0.00 :   19824:  fmadd   s0, s11, s4, s0
+    0.00 :   19828:  fmadd   s1, s11, s5, s1
+    0.00 :   1982c:  fmsub   s0, s12, s5, s0
+    0.00 :   19830:  fmadd   s1, s12, s4, s1
+    0.00 :   19834:  fmul    s2, s1, s2
+    0.00 :   19838:  fnmsub  s2, s0, s6, s2
+    0.00 :   1983c:  fadd    s2, s3, s2
+    0.00 :   19840:  str     s2, [x19, x0, lsl #2]
+    0.00 :   19844:  ldr     s4, [x16, x0, lsl #2]
+    0.00 :   19848:  ldr     s3, [x2, x0, lsl #2]
+    0.00 :   1984c:  ldr     s2, [x20, x0, lsl #2]
+    0.00 :   19850:  fmul    s0, s0, s4
+    0.00 :   19854:  fmadd   s0, s1, s3, s0
+    0.00 :   19858:  fadd    s0, s2, s0
+    0.00 :   1985c:  str     s0, [x20, x0, lsl #2]
+    0.00 :   19860:  add     x0, x0, #0x1
+    0.00 :   19864:  cmp     w26, w0
+    0.00 :   19868:  b.gt    197f8 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x4b8>
+    0.00 :   1986c:  add     x4, x4, x23
+    0.00 :   19870:  add     x14, x14, x23
+    0.00 :   19874:  add     x2, x2, x23
+    0.00 :   19878:  subs    w1, w1, #0x1
+    0.00 :   1987c:  b.ne    197f0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x4b0>  // b.any
+    0.00 :   19880:  ldr     s3, [x12, x7]
+    0.00 :   19884:  ldr     s2, [x8, x7]
+    0.00 :   19888:  lsl     x4, x6, #2
+    0.00 :   1988c:  lsl     x0, x24, #2
+    0.00 :   19890:  ldr     w14, [sp, #352]
+    0.00 :   19894:  ldr     x3, [sp, #360]
+    0.00 :   19898:  fmul    s3, s10, s3
+    0.00 :   1989c:  add     x2, x4, x3
+    0.00 :   198a0:  fmul    s2, s10, s2
+    0.00 :   198a4:  add     x3, x0, x3
+    0.00 :   198a8:  cmp     w14, #0x2
+    0.00 :   198ac:  b.ls    1a880 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1540>  // b.plast
+    0.00 :   198b0:  ldr     x1, [sp, #392]
+    0.00 :   198b4:  add     x15, x25, x4
+    0.00 :   198b8:  add     x14, x25, x0
+    0.00 :   198bc:  dup     v4.4s, v3.s[0]
+    0.00 :   198c0:  dup     v1.4s, v2.s[0]
+    0.00 :   198c4:  add     x4, x4, x1
+    0.00 :   198c8:  add     x1, x0, x1
+    0.00 :   198cc:  mov     x0, #0x0                        // #0
+    0.00 :   198d0:  ldr     q5, [x15, x0]
+    0.00 :   198d4:  ldr     q0, [x27, x0]
+    0.00 :   198d8:  fadd    v0.4s, v0.4s, v5.4s
+    0.00 :   198dc:  str     q0, [x15, x0]
+    0.00 :   198e0:  ldr     q5, [x4, x0]
+    0.00 :   198e4:  ldr     q0, [x28, x0]
+    0.00 :   198e8:  fadd    v0.4s, v0.4s, v5.4s
+    0.00 :   198ec:  str     q0, [x4, x0]
+    0.00 :   198f0:  ldr     q0, [x27, x0]
+    0.00 :   198f4:  ldr     q6, [x28, x0]
+    0.00 :   198f8:  ldr     q5, [x14, x0]
+    0.00 :   198fc:  fmul    v0.4s, v0.4s, v4.4s
+    0.00 :   19900:  fmls    v0.4s, v1.4s, v6.4s
+    0.00 :   19904:  fadd    v0.4s, v0.4s, v5.4s
+    0.00 :   19908:  str     q0, [x14, x0]
+    0.00 :   1990c:  ldr     q0, [x27, x0]
+    0.00 :   19910:  ldr     q6, [x28, x0]
+    0.00 :   19914:  ldr     q5, [x1, x0]
+    0.00 :   19918:  fmul    v0.4s, v0.4s, v1.4s
+    0.00 :   1991c:  fmla    v0.4s, v6.4s, v4.4s
+    0.00 :   19920:  fadd    v0.4s, v0.4s, v5.4s
+    0.00 :   19924:  str     q0, [x1, x0]
+    0.00 :   19928:  add     x0, x0, #0x10
+    0.00 :   1992c:  cmp     x21, x0
+    0.00 :   19930:  b.ne    198d0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x590>  // b.any
+    0.00 :   19934:  ldr     w1, [sp, #192]
+    0.00 :   19938:  ldr     w0, [sp, #376]
+    0.00 :   1993c:  cmp     w0, w1
+    0.00 :   19940:  b.eq    19a5c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x71c>  // b.none
+    0.00 :   19944:  mov     w1, w0
+    0.00 :   19948:  ldr     w0, [sp, #420]
+    0.00 :   1994c:  ldr     w4, [sp, #192]
+    0.00 :   19950:  sub     w16, w4, w1
+    0.00 :   19954:  cmp     w16, #0x1
+    0.00 :   19958:  b.eq    199fc <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x6bc>  // b.none
+    0.00 :   1995c:  mov     w1, w1
+    0.00 :   19960:  ldr     x4, [sp, #296]
+    0.00 :   19964:  dup     v1.2s, v3.s[0]
+    0.00 :   19968:  and     w17, w16, #0xfffffffe
+    0.00 :   1996c:  add     x15, x6, x1
+    0.00 :   19970:  add     x14, x1, x11
+    0.00 :   19974:  dup     v4.2s, v2.s[0]
+    0.00 :   19978:  add     w0, w0, w17
+    0.00 :   1997c:  lsl     x15, x15, #2
+    0.00 :   19980:  lsl     x14, x14, #2
+    0.00 :   19984:  ldr     d5, [x25, x15]
+    0.00 :   19988:  ldr     d0, [x19, x14]
+    0.00 :   1998c:  add     x30, x22, x15
+    0.00 :   19990:  add     x4, x1, x4
+    0.00 :   19994:  add     x1, x24, x1
+    0.00 :   19998:  lsl     x4, x4, #2
+    0.00 :   1999c:  lsl     x1, x1, #2
+    0.00 :   199a0:  add     x18, x22, x1
+    0.00 :   199a4:  fadd    v0.2s, v0.2s, v5.2s
+    0.00 :   199a8:  str     d0, [x25, x15]
+    0.00 :   199ac:  ldr     d5, [x25, x30]
+    0.00 :   199b0:  ldr     d0, [x19, x4]
+    0.00 :   199b4:  fadd    v0.2s, v0.2s, v5.2s
+    0.00 :   199b8:  str     d0, [x25, x30]
+    0.00 :   199bc:  ldr     d0, [x19, x14]
+    0.00 :   199c0:  ldr     d6, [x19, x4]
+    0.00 :   199c4:  ldr     d5, [x25, x1]
+    0.00 :   199c8:  fmul    v0.2s, v0.2s, v1.2s
+    0.00 :   199cc:  fmls    v0.2s, v4.2s, v6.2s
+    0.00 :   199d0:  fadd    v0.2s, v5.2s, v0.2s
+    0.00 :   199d4:  str     d0, [x25, x1]
+    0.00 :   199d8:  ldr     d0, [x19, x14]
+    0.00 :   199dc:  ldr     d6, [x19, x4]
+    0.00 :   199e0:  ldr     d5, [x25, x18]
+    0.00 :   199e4:  fmul    v0.2s, v0.2s, v4.2s
+    0.00 :   199e8:  fmla    v0.2s, v6.2s, v1.2s
+    0.00 :   199ec:  fadd    v0.2s, v5.2s, v0.2s
+    0.00 :   199f0:  str     d0, [x25, x18]
+    0.00 :   199f4:  cmp     w17, w16
+    0.00 :   199f8:  b.eq    19a5c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x71c>  // b.none
+    0.00 :   199fc:  sxtw    x1, w0
+    0.00 :   19a00:  add     x0, x22, w0, sxtw #2
+    0.00 :   19a04:  ldr     s1, [x19, x1, lsl #2]
+    0.00 :   19a08:  ldr     s0, [x2, x1, lsl #2]
+    0.00 :   19a0c:  fadd    s0, s0, s1
+    0.00 :   19a10:  str     s0, [x2, x1, lsl #2]
+    0.00 :   19a14:  ldr     s1, [x20, x1, lsl #2]
+    0.00 :   19a18:  ldr     s0, [x2, x0]
+    0.00 :   19a1c:  fadd    s0, s0, s1
+    0.00 :   19a20:  str     s0, [x2, x0]
+    0.00 :   19a24:  ldr     s0, [x20, x1, lsl #2]
+    0.00 :   19a28:  ldr     s4, [x19, x1, lsl #2]
+    0.00 :   19a2c:  ldr     s1, [x3, x1, lsl #2]
+    0.00 :   19a30:  fmul    s0, s2, s0
+    0.00 :   19a34:  fnmsub  s0, s4, s3, s0
+    0.00 :   19a38:  fadd    s0, s1, s0
+    0.00 :   19a3c:  str     s0, [x3, x1, lsl #2]
+    0.00 :   19a40:  ldr     s0, [x19, x1, lsl #2]
+    0.00 :   19a44:  ldr     s4, [x20, x1, lsl #2]
+    0.00 :   19a48:  ldr     s1, [x3, x0]
+    0.00 :   19a4c:  fmul    s0, s2, s0
+    0.00 :   19a50:  fmadd   s0, s4, s3, s0
+    0.00 :   19a54:  fadd    s0, s1, s0
+    0.00 :   19a58:  str     s0, [x3, x0]
+    0.00 :   19a5c:  ldr     x0, [sp, #344]
+    0.00 :   19a60:  ldr     w1, [sp, #288]
+    0.00 :   19a64:  add     w9, w9, #0x3
+    0.00 :   19a68:  add     x6, x6, x0
+    0.00 :   19a6c:  add     x24, x24, x0
+    0.00 :   19a70:  ldr     w0, [sp, #184]
+    0.00 :   19a74:  add     w0, w0, w1
+    0.00 :   19a78:  str     w0, [sp, #184]
+    0.00 :   19a7c:  ldr     w0, [sp, #280]
+    0.00 :   19a80:  cmp     w0, w9
+    0.00 :   19a84:  b.ne    19770 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x430>  // b.any
+    0.00 :   19a88:  ldr     w1, [sp, #288]
+    0.00 :   19a8c:  ldr     w0, [sp, #328]
+    0.00 :   19a90:  add     w0, w0, w1
+    0.00 :   19a94:  ldr     x1, [sp, #440]
+    0.00 :   19a98:  str     w0, [sp, #328]
+    0.00 :   19a9c:  ldr     x0, [sp, #320]
+    0.00 :   19aa0:  add     x0, x0, x1
+    0.00 :   19aa4:  str     x0, [sp, #320]
+    0.00 :   19aa8:  cbz     x13, 1a874 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1534>
+    0.00 :   19aac:  ldr     w1, [sp, #280]
+    0.00 :   19ab0:  ldr     w0, [sp, #436]
+    0.00 :   19ab4:  mov     x6, x21
+    0.00 :   19ab8:  add     x21, x10, x22
+    0.00 :   19abc:  ldr     w2, [sp, #472]
+    0.00 :   19ac0:  add     w1, w1, #0x9
+    0.00 :   19ac4:  add     w0, w0, #0x1
+    0.00 :   19ac8:  str     w1, [sp, #280]
+    0.00 :   19acc:  ldr     w1, [sp, #408]
+    0.00 :   19ad0:  str     w0, [sp, #436]
+    0.00 :   19ad4:  add     w1, w1, w2
+    0.00 :   19ad8:  str     w1, [sp, #408]
+    0.00 :   19adc:  cmp     w0, #0x8
+    0.00 :   19ae0:  b.ne    196d4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x394>  // b.any
+    0.00 :   19ae4:  ldp     x29, x30, [sp, #32]
+    0.00 :   19ae8:  ldp     x19, x20, [sp, #48]
+    0.00 :   19aec:  ldp     x21, x22, [sp, #64]
+    0.00 :   19af0:  ldp     x23, x24, [sp, #80]
+    0.00 :   19af4:  ldp     x25, x26, [sp, #96]
+    0.00 :   19af8:  ldp     x27, x28, [sp, #112]
+    0.00 :   19afc:  ldp     d8, d9, [sp, #128]
+    0.00 :   19b00:  ldp     d10, d11, [sp, #144]
+    0.00 :   19b04:  ldr     d12, [sp, #160]
+    0.00 :   19b08:  add     sp, sp, #0x210
+    0.00 :   19b0c:  ret
+    0.00 :   19b10:  adrp    x19, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   19b14:  add     x0, x19, #0x6d0
+    0.00 :   19b18:  ldarb   w1, [x0]
+    0.00 :   19b1c:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   19b20:  tbz     w1, #0, 1a9b0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1670>
+    0.00 :   19b24:  ldrb    w19, [x22, #1752]
+    0.00 :   19b28:  cbz     w19, 194a8 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x168>
+    0.00 :   19b2c:  adrp    x20, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   19b30:  add     x0, x20, #0x6c0
+    0.00 :   19b34:  ldarb   w1, [x0]
+    0.00 :   19b38:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   19b3c:  tbz     w1, #0, 1b3fc <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x20bc>
+    0.00 :   19b40:  ldrb    w1, [x22, #1736]
+    0.00 :   19b44:  adrp    x20, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   19b48:  add     x0, x20, #0x6b0
+    0.00 :   19b4c:  cmp     w1, #0x0
+    0.00 :   19b50:  ldr     x1, [sp, #184]
+    0.00 :   19b54:  csel    x1, x1, xzr, ne  // ne = any
+    0.00 :   19b58:  str     x1, [sp, #184]
+    0.00 :   19b5c:  ldarb   w1, [x0]
+    0.00 :   19b60:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   19b64:  tbz     w1, #0, 1b3d0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x2090>
+    0.00 :   19b68:  ldrb    w0, [x22, #1720]
+    0.00 :   19b6c:  cbz     w0, 1acc0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1980>
+    0.00 :   19b70:  ldr     w0, [sp, #196]
+    0.00 :   19b74:  cmp     w0, w24
+    0.00 :   19b78:  b.ge    19478 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x138>  // b.tcont
+    0.00 :   19b7c:  sxtw    x5, w24
+    0.00 :   19b80:  mov     x3, #0x0                        // #0
+    0.00 :   19b84:  mov     w4, #0x18                       // #24
+    0.00 :   19b88:  stp     x27, x28, [sp, #112]
+    0.00 :   19b8c:  str     d12, [sp, #160]
+    0.00 :   19b90:  mov     z0.s, #0
+    0.00 :   19b94:  stp     d8, d9, [sp, #128]
+    0.00 :   19b98:  stp     d10, d11, [sp, #144]
+    0.00 :   19b9c:  str     x5, [sp, #208]
+    0.00 :   19ba0:  ldr     w0, [sp, #196]
+    0.60 :   19ba4:  sxtw    x2, w0
+    0.00 :   19ba8:  incw    x0
+    0.00 :   19bac:  add     x1, x2, x3
+    0.00 :   19bb0:  whilelo p0.s, x2, x5
+    0.00 :   19bb4:  st1w    {z0.s}, p0, [x25, x1, lsl #2]
+    0.00 :   19bb8:  cmp     w24, w0
+    0.00 :   19bbc:  b.gt    19ba4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x864>
+    0.00 :   19bc0:  add     x3, x3, x26
+    0.00 :   19bc4:  subs    w4, w4, #0x1
+    0.00 :   19bc8:  b.ne    19ba0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x860>  // b.any
+    0.00 :   19bcc:  ldr     w4, [sp, #416]
+    0.00 :   19bd0:  mov     w3, #0x18                       // #24
+    0.00 :   19bd4:  lsl     x28, x26, #2
+    0.00 :   19bd8:  str     w24, [sp, #248]
+    0.00 :   19bdc:  str     x26, [sp, #328]
+    0.00 :   19be0:  fmov    s17, #1.000000000000000000e+00
+    0.00 :   19be4:  fmov    s16, #-1.000000000000000000e+00
+    0.00 :   19be8:  add     w0, w4, w4, lsl #3
+    0.00 :   19bec:  lsl     w1, w4, #1
+    0.00 :   19bf0:  add     w2, w1, w4
+    0.00 :   19bf4:  sbfiz   x27, x1, #2, #32
+    0.00 :   19bf8:  sxtw    x5, w1
+    0.00 :   19bfc:  lsl     w2, w2, #1
+    0.00 :   19c00:  sbfiz   x30, x2, #2, #32
+    0.00 :   19c04:  mov     x26, x30
+    0.00 :   19c08:  smull   x1, w4, w3
+    0.00 :   19c0c:  lsl     w0, w0, #1
+    0.00 :   19c10:  sbfiz   x0, x0, #2, #32
+    0.00 :   19c14:  str     x0, [sp, #200]
+    0.00 :   19c18:  lsl     w0, w4, #2
+    0.00 :   19c1c:  sxtw    x0, w0
+    0.00 :   19c20:  str     x5, [sp, #296]
+    0.00 :   19c24:  str     x1, [sp, #272]
+    0.00 :   19c28:  str     x0, [sp, #280]
+    0.09 :   19c2c:  ldr     w4, [sp, #196]
+    0.00 :   19c30:  ldr     x1, [sp, #208]
+    0.00 :   19c34:  cntw    x5
+    0.00 :   19c38:  mov     w9, #0x0                        // #0
+    0.00 :   19c3c:  ldr     w0, [sp, #248]
+    0.00 :   19c40:  sxtw    x14, w4
+    0.00 :   19c44:  sub     w0, w0, w4
+    0.00 :   19c48:  whilelo p2.s, x14, x1
+    0.00 :   19c4c:  ldr     x1, [sp, #296]
+    0.00 :   19c50:  mov     p0.b, p2.b
+    0.00 :   19c54:  cmp     w0, w5
+    0.00 :   19c58:  csel    w0, w0, w5, le
+    0.00 :   19c5c:  add     x3, x14, x1
+    0.00 :   19c60:  ldr     x1, [sp, #280]
+    0.00 :   19c64:  add     x3, x25, x3, lsl #2
+    0.00 :   19c68:  str     x3, [sp, #304]
+    0.00 :   19c6c:  ldr     x3, [sp, #216]
+    0.00 :   19c70:  add     x2, x14, x1
+    0.00 :   19c74:  lsl     x1, x14, #2
+    0.00 :   19c78:  add     x2, x25, x2, lsl #2
+    0.00 :   19c7c:  add     x24, x3, x1
+    0.00 :   19c80:  ldr     x3, [sp, #336]
+    0.00 :   19c84:  str     x2, [sp, #288]
+    0.00 :   19c88:  ldr     w2, [sp, #192]
+    0.00 :   19c8c:  add     x30, x3, x1
+    0.00 :   19c90:  add     x1, x25, x1
+    0.00 :   19c94:  cmp     w2, w4
+    0.00 :   19c98:  str     x1, [sp, #312]
+    0.00 :   19c9c:  sxtw    x1, w0
+    0.00 :   19ca0:  add     w0, w0, w4
+    0.00 :   19ca4:  str     w0, [sp, #256]
+    0.00 :   19ca8:  cset    w0, le
+    0.00 :   19cac:  lsl     w0, w0, #3
+    0.00 :   19cb0:  str     w0, [sp, #264]
+    0.00 :   19cb4:  str     x1, [sp, #320]
+    0.00 :   19cb8:  b       19cd4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x994>
+    0.34 :   19cbc:  ldr     x0, [sp, #200]
+    0.09 :   19cc0:  add     w9, w9, #0x1
+    0.00 :   19cc4:  add     x24, x24, x28
+    0.00 :   19cc8:  add     x30, x30, x0
+    0.00 :   19ccc:  cmp     w9, #0x8
+    0.00 :   19cd0:  b.eq    1b360 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x2020>  // b.none
+    0.00 :   19cd4:  ld1w    {z9.s}, p2/z, [x24]
+    0.55 :   19cd8:  cmpge   p1.s, p0/z, z9.s, #0
+    0.00 :   19cdc:  ptest   p0, p1.b
+    0.68 :   19ce0:  mov     p3.b, p1.b
+   15.53 :   19ce4:  b.eq    19cbc <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x97c>  // b.none
+    1.00 :   19ce8:  ldp     w0, w1, [sp, #192]
+    0.00 :   19cec:  cmp     w0, w1
+    0.00 :   19cf0:  b.le    1b37c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x203c>
+    0.00 :   19cf4:  ldr     w1, [sp, #256]
+    0.00 :   19cf8:  cmp     w0, w1
+    0.00 :   19cfc:  b.ge    1b37c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x203c>  // b.tcont
+    0.00 :   19d00:  mov     x22, x28
+    0.00 :   19d04:  mov     w8, #0x0                        // #0
+    0.00 :   19d08:  mov     x17, #0x0                       // #0
+    0.07 :   19d0c:  ldr     x1, [sp, #272]
+    0.00 :   19d10:  asr     w13, w9, #1
+    0.00 :   19d14:  sbfiz   x13, x13, #4, #32
+    0.00 :   19d18:  tst     x9, #0x1
+    0.16 :   19d1c:  str     w9, [sp, #344]
+    0.00 :   19d20:  ldr     w9, [sp, #416]
+    0.00 :   19d24:  mov     x16, #0x0                       // #0
+    0.00 :   19d28:  ldr     x12, [sp, #288]
+    0.07 :   19d2c:  ldp     x11, x10, [sp, #304]
+    0.00 :   19d30:  fcsel   s12, s17, s16, ne  // ne = any
+    0.00 :   19d34:  ldr     x21, [sp, #400]
+    0.00 :   19d38:  add     x0, x1, x30
+    0.00 :   19d3c:  str     x0, [sp, #240]
+    0.00 :   19d40:  add     x0, x0, x1
+    0.00 :   19d44:  str     x0, [sp, #232]
+    0.00 :   19d48:  ldr     x0, [sp, #448]
+    0.00 :   19d4c:  add     x0, x0, x13
+    0.06 :   19d50:  str     x0, [sp, #224]
+    0.00 :   19d54:  ldr     x0, [sp, #456]
+    0.00 :   19d58:  add     x23, x0, x13
+    0.00 :   19d5c:  ldr     x0, [sp, #464]
+    0.00 :   19d60:  add     x13, x0, x13
+    0.16 :   19d64:  ldp     x0, x3, [sp, #224]
+    2.02 :   19d68:  ldr     s19, [x23, x16, lsl #2]
+    0.00 :   19d6c:  mov     x5, x21
+    0.00 :   19d70:  mov     x1, x30
+    0.00 :   19d74:  ldr     s18, [x13, x16, lsl #2]
+    0.00 :   19d78:  ldr     x2, [sp, #240]
+    0.00 :   19d7c:  mov     w7, #0x3                        // #3
+    0.00 :   19d80:  mov     z4.s, #0
+    0.00 :   19d84:  ldr     x18, [sp, #400]
+    0.00 :   19d88:  mov     z10.d, z4.d
+    0.00 :   19d8c:  mov     z7.d, z4.d
+    0.00 :   19d90:  mov     z11.d, z4.d
+    0.23 :   19d94:  mov     z5.d, z4.d
+    0.00 :   19d98:  mov     z8.d, z4.d
+    0.00 :   19d9c:  ldr     w15, [x0, x16, lsl #2]
+    0.00 :   19da0:  fmul    s19, s12, s19
+    0.00 :   19da4:  fmul    s18, s12, s18
+    0.00 :   19da8:  mul     w4, w9, w15
+    1.32 :   19dac:  mov     z19.s, s19
+    0.00 :   19db0:  mov     z18.s, s18
+    0.00 :   19db4:  add     w6, w4, w4, lsl #1
+    0.00 :   19db8:  lsl     w0, w6, #1
+    0.07 :   19dbc:  add     x0, x18, w0, sxtw #2
+    0.25 :   19dc0:  cbnz    w8, 1b320 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1fe0>
+    0.16 :   19dc4:  add     x19, x28, x5
+    0.00 :   19dc8:  add     x18, x28, x0
+    0.00 :   19dcc:  ld1w    {z3.s}, p3/z, [x5, z9.s, sxtw #2]
+    4.98 :   19dd0:  ld1w    {z1.s}, p3/z, [x0, z9.s, sxtw #2]
+    8.12 :   19dd4:  ld1w    {z0.s}, p3/z, [x19, z9.s, sxtw #2]
+    3.59 :   19dd8:  ld1w    {z6.s}, p3/z, [x18, z9.s, sxtw #2]
+    5.67 :   19ddc:  movprfx z2, z1
+    0.00 :   19de0:  fmul    z2.s, p0/m, z2.s, z19.s
+    0.06 :   19de4:  add     x18, x1, x28
+    0.00 :   19de8:  fadd    z3.s, p0/m, z3.s, z2.s
+    0.00 :   19dec:  add     x19, x2, x28
+    0.16 :   19df0:  movprfx z2, z1
+    0.00 :   19df4:  fmul    z2.s, p0/m, z2.s, z18.s
+    0.19 :   19df8:  movprfx z1, z6
+    0.00 :   19dfc:  fmul    z1.s, p0/m, z1.s, z18.s
+    0.28 :   19e00:  fmul    z6.s, p0/m, z6.s, z19.s
+    0.00 :   19e04:  fadd    z0.s, p0/m, z0.s, z6.s
+    0.00 :   19e08:  fadd    z0.s, p0/m, z0.s, z2.s
+    0.09 :   19e0c:  ld1w    {z2.s}, p1/z, [x18]
+    4.58 :   19e10:  movprfx z20, z2
+    0.00 :   19e14:  fmul    z20.s, p0/m, z20.s, z0.s
+    0.07 :   19e18:  fsub    z3.s, p0/m, z3.s, z1.s
+    0.35 :   19e1c:  ld1w    {z1.s}, p1/z, [x1]
+    0.00 :   19e20:  fmul    z2.s, p0/m, z2.s, z3.s
+    2.61 :   19e24:  movprfx z6, z1
+    0.00 :   19e28:  fmul    z6.s, p0/m, z6.s, z3.s
+    0.17 :   19e2c:  fmul    z1.s, p0/m, z1.s, z0.s
+    0.00 :   19e30:  fsub    z6.s, p0/m, z6.s, z20.s
+    0.00 :   19e34:  fadd    z1.s, p0/m, z1.s, z2.s
+    0.10 :   19e38:  movprfx z20, z8
+    0.07 :   19e3c:  fadd    z20.s, p0/m, z20.s, z6.s
+    0.38 :   19e40:  add     x18, x3, x28
+    0.00 :   19e44:  ld1w    {z6.s}, p1/z, [x19]
+    0.00 :   19e48:  fadd    z5.s, p0/m, z5.s, z1.s
+    1.43 :   19e4c:  mov     z8.d, z20.d
+    6.07 :   19e50:  ld1w    {z1.s}, p1/z, [x2]
+    1.20 :   19e54:  movprfx z20, z6
+    0.00 :   19e58:  fmul    z20.s, p0/m, z20.s, z0.s
+    0.08 :   19e5c:  movprfx z2, z1
+    0.00 :   19e60:  fmul    z2.s, p0/m, z2.s, z0.s
+    0.17 :   19e64:  fmul    z6.s, p0/m, z6.s, z3.s
+    0.21 :   19e68:  fadd    z2.s, p0/m, z2.s, z6.s
+    0.07 :   19e6c:  movprfx z22, z1
+    0.00 :   19e70:  fmul    z22.s, p0/m, z22.s, z3.s
+    0.30 :   19e74:  fadd    z7.s, p0/m, z7.s, z2.s
+    0.09 :   19e78:  ld1w    {z1.s}, p1/z, [x3]
+   14.62 :   19e7c:  ld1w    {z2.s}, p1/z, [x18]
+    7.90 :   19e80:  movprfx z6, z1
+    0.00 :   19e84:  fmul    z6.s, p0/m, z6.s, z3.s
+    0.06 :   19e88:  fmul    z1.s, p0/m, z1.s, z0.s
+    0.00 :   19e8c:  fmul    z0.s, p0/m, z0.s, z2.s
+    0.07 :   19e90:  fmul    z2.s, p0/m, z2.s, z3.s
+    0.00 :   19e94:  fsub    z22.s, p0/m, z22.s, z20.s
+    0.07 :   19e98:  fadd    z1.s, p0/m, z1.s, z2.s
+    0.26 :   19e9c:  movprfx z20, z11
+    0.00 :   19ea0:  fadd    z20.s, p0/m, z20.s, z22.s
+    0.23 :   19ea4:  fsubr   z0.s, p0/m, z0.s, z6.s
+    0.00 :   19ea8:  add     x5, x5, x27
+    0.07 :   19eac:  movprfx z2, z10
+    0.00 :   19eb0:  fadd    z2.s, p0/m, z2.s, z0.s
+    0.10 :   19eb4:  add     x0, x0, x27
+    0.14 :   19eb8:  add     x1, x1, x27
+    0.00 :   19ebc:  add     x2, x2, x27
+    0.09 :   19ec0:  add     x3, x3, x27
+    0.14 :   19ec4:  mov     z11.d, z20.d
+    0.09 :   19ec8:  fadd    z4.s, p0/m, z4.s, z1.s
+    0.00 :   19ecc:  mov     z10.d, z2.d
+    0.00 :   19ed0:  subs    w7, w7, #0x1
+    0.16 :   19ed4:  b.ne    19dc0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xa80>  // b.any
+    0.00 :   19ed8:  sxtw    x15, w15
+    0.00 :   19edc:  ld1w    {z2.s}, p2/z, [x10]
+    0.00 :   19ee0:  add     x3, x10, x28
+    0.00 :   19ee4:  fadd    z2.s, p0/m, z2.s, z8.s
+    0.00 :   19ee8:  add     w0, w4, w4, lsl #1
+    1.17 :   19eec:  add     w6, w9, w6
+    0.00 :   19ef0:  add     x4, x12, x28
+    0.00 :   19ef4:  add     x21, x21, x26
+    0.00 :   19ef8:  ldr     s0, [x23, x15, lsl #2]
+    0.44 :   19efc:  ldr     s1, [x13, x15, lsl #2]
+    0.06 :   19f00:  st1w    {z2.s}, p2, [x10]
+    0.30 :   19f04:  ld1w    {z2.s}, p2/z, [x3]
+    0.00 :   19f08:  lsl     w0, w0, #1
+    0.20 :   19f0c:  add     x0, x14, w0, sxtw
+    0.00 :   19f10:  add     x0, x25, x0, lsl #2
+    0.20 :   19f14:  fadd    z2.s, p0/m, z2.s, z5.s
+    0.00 :   19f18:  st1w    {z2.s}, p2, [x3]
+    0.00 :   19f1c:  add     w2, w9, w6
+    0.00 :   19f20:  lsl     w1, w6, #1
+    0.00 :   19f24:  add     x6, x11, x28
+    0.00 :   19f28:  ld1w    {z2.s}, p2/z, [x0]
+    0.00 :   19f2c:  add     x7, x0, x28
+    0.00 :   19f30:  add     x1, x14, w1, sxtw
+    0.00 :   19f34:  add     x1, x25, x1, lsl #2
+    1.36 :   19f38:  lsl     w2, w2, #1
+    0.00 :   19f3c:  add     x2, x14, w2, sxtw
+    0.00 :   19f40:  add     x2, x25, x2, lsl #2
+    0.00 :   19f44:  add     x10, x10, x26
+    0.10 :   19f48:  fmul    s0, s12, s0
+    0.00 :   19f4c:  fmul    s1, s12, s1
+    0.00 :   19f50:  add     x5, x1, x28
+    0.00 :   19f54:  add     x3, x2, x28
+    0.00 :   19f58:  mov     z0.s, s0
+    0.00 :   19f5c:  mov     z1.s, s1
+    0.08 :   19f60:  movprfx z3, z8
+    0.00 :   19f64:  fmul    z3.s, p0/m, z3.s, z0.s
+    0.24 :   19f68:  movprfx z6, z5
+    0.00 :   19f6c:  fmul    z6.s, p0/m, z6.s, z1.s
+    0.00 :   19f70:  fmul    z8.s, p0/m, z8.s, z1.s
+    0.00 :   19f74:  movprfx z18, z7
+    0.00 :   19f78:  fmul    z18.s, p0/m, z18.s, z1.s
+    0.00 :   19f7c:  fsub    z3.s, p0/m, z3.s, z6.s
+    0.00 :   19f80:  fmul    z5.s, p0/m, z5.s, z0.s
+    0.33 :   19f84:  movprfx z6, z20
+    0.00 :   19f88:  fmul    z6.s, p0/m, z6.s, z0.s
+    0.00 :   19f8c:  fadd    z5.s, p0/m, z5.s, z8.s
+    0.00 :   19f90:  fsub    z6.s, p0/m, z6.s, z18.s
+    0.00 :   19f94:  movprfx z8, z2
+    0.00 :   19f98:  fadd    z8.s, p0/m, z8.s, z3.s
+    0.08 :   19f9c:  movprfx z18, z4
+    0.00 :   19fa0:  fmul    z18.s, p0/m, z18.s, z1.s
+    0.16 :   19fa4:  movprfx z2, z20
+    0.00 :   19fa8:  fmul    z2.s, p0/m, z2.s, z1.s
+    0.08 :   19fac:  fmul    z1.s, p0/m, z1.s, z10.s
+    0.00 :   19fb0:  movprfx z3, z7
+    0.00 :   19fb4:  fmul    z3.s, p0/m, z3.s, z0.s
+    0.00 :   19fb8:  fadd    z3.s, p0/m, z3.s, z2.s
+    0.07 :   19fbc:  movprfx z2, z10
+    0.00 :   19fc0:  fmul    z2.s, p0/m, z2.s, z0.s
+    0.00 :   19fc4:  fmul    z0.s, p0/m, z0.s, z4.s
+    0.00 :   19fc8:  fadd    z0.s, p0/m, z0.s, z1.s
+    0.00 :   19fcc:  st1w    {z8.s}, p2, [x0]
+    0.65 :   19fd0:  ld1w    {z1.s}, p2/z, [x7]
+    0.00 :   19fd4:  fadd    z1.s, p0/m, z1.s, z5.s
+    1.85 :   19fd8:  st1w    {z1.s}, p2, [x7]
+    0.00 :   19fdc:  ld1w    {z1.s}, p2/z, [x11]
+    0.00 :   19fe0:  fadd    z1.s, p0/m, z1.s, z20.s
+    0.08 :   19fe4:  st1w    {z1.s}, p2, [x11]
+    0.00 :   19fe8:  fsub    z2.s, p0/m, z2.s, z18.s
+    0.22 :   19fec:  ld1w    {z1.s}, p2/z, [x6]
+    0.00 :   19ff0:  fadd    z1.s, p0/m, z1.s, z7.s
+    0.31 :   19ff4:  st1w    {z1.s}, p2, [x6]
+    0.00 :   19ff8:  add     x11, x11, x26
+    0.23 :   19ffc:  ld1w    {z1.s}, p2/z, [x1]
+    0.15 :   1a000:  fadd    z1.s, p0/m, z1.s, z6.s
+    0.71 :   1a004:  st1w    {z1.s}, p2, [x1]
+    0.00 :   1a008:  ld1w    {z1.s}, p2/z, [x5]
+    0.00 :   1a00c:  fadd    z1.s, p0/m, z1.s, z3.s
+    0.53 :   1a010:  st1w    {z1.s}, p2, [x5]
+    0.08 :   1a014:  ld1w    {z1.s}, p2/z, [x12]
+    0.00 :   1a018:  fadd    z1.s, p0/m, z1.s, z10.s
+    0.23 :   1a01c:  st1w    {z1.s}, p2, [x12]
+    0.00 :   1a020:  add     x12, x12, x26
+    0.33 :   1a024:  ld1w    {z1.s}, p2/z, [x4]
+    0.09 :   1a028:  fadd    z1.s, p0/m, z1.s, z4.s
+    0.21 :   1a02c:  st1w    {z1.s}, p2, [x4]
+    0.17 :   1a030:  ld1w    {z1.s}, p2/z, [x2]
+    0.00 :   1a034:  fadd    z1.s, p0/m, z1.s, z2.s
+    0.24 :   1a038:  st1w    {z1.s}, p2, [x2]
+    0.00 :   1a03c:  ld1w    {z1.s}, p2/z, [x3]
+    0.00 :   1a040:  fadd    z0.s, p0/m, z0.s, z1.s
+    0.13 :   1a044:  st1w    {z0.s}, p2, [x3]
+    0.00 :   1a048:  cbnz    x16, 1b344 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x2004>
+    0.08 :   1a04c:  mov     x16, #0x1                       // #1
+    0.00 :   1a050:  b       19d64 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xa24>
+    0.00 :   1a054:  adrp    x19, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1a058:  add     x0, x19, #0x6d0
+    0.00 :   1a05c:  ldarb   w1, [x0]
+    0.00 :   1a060:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1a064:  tbz     w1, #0, 1a970 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1630>
+    0.00 :   1a068:  ldrb    w19, [x22, #1752]
+    0.00 :   1a06c:  cbz     w19, 19448 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x108>
+    0.00 :   1a070:  adrp    x20, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1a074:  add     x0, x20, #0x6c0
+    0.00 :   1a078:  ldarb   w1, [x0]
+    0.00 :   1a07c:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1a080:  tbz     w1, #0, 1ac58 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1918>
+    0.00 :   1a084:  ldrb    w1, [x22, #1736]
+    0.00 :   1a088:  adrp    x20, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1a08c:  add     x0, x20, #0x6b0
+    0.00 :   1a090:  cmp     w1, #0x0
+    0.00 :   1a094:  ldr     x1, [sp, #184]
+    0.00 :   1a098:  csel    x1, x1, xzr, ne  // ne = any
+    0.00 :   1a09c:  str     x1, [sp, #184]
+    0.00 :   1a0a0:  ldarb   w1, [x0]
+    0.00 :   1a0a4:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1a0a8:  tbz     w1, #0, 1ac2c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x18ec>
+    0.00 :   1a0ac:  ldrb    w0, [x22, #1720]
+    0.00 :   1a0b0:  cbnz    w0, 1abf0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x18b0>
+    0.00 :   1a0b4:  ldr     w0, [sp, #196]
+    0.00 :   1a0b8:  stp     x27, x28, [sp, #112]
+    0.00 :   1a0bc:  lsl     x28, x26, #2
+    0.00 :   1a0c0:  cmp     w0, w24
+    0.00 :   1a0c4:  b.ge    1abe8 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x18a8>  // b.tcont
+    0.00 :   1a0c8:  ldr     w0, [sp, #416]
+    0.00 :   1a0cc:  ldr     x1, [sp, #400]
+    0.00 :   1a0d0:  mov     x19, #0x0                       // #0
+    0.00 :   1a0d4:  mov     x20, #0x0                       // #0
+    0.00 :   1a0d8:  mov     w27, #0x0                       // #0
+    0.00 :   1a0dc:  str     d12, [sp, #160]
+    0.00 :   1a0e0:  str     x26, [sp, #224]
+    0.00 :   1a0e4:  mov     z5.s, #0
+    0.00 :   1a0e8:  stp     d8, d9, [sp, #128]
+    0.00 :   1a0ec:  stp     d10, d11, [sp, #144]
+    0.00 :   1a0f0:  lsl     w0, w0, #1
+    0.00 :   1a0f4:  sxtw    x30, w0
+    0.00 :   1a0f8:  str     w0, [sp, #200]
+    0.00 :   1a0fc:  sxtw    x0, w24
+    0.00 :   1a100:  mov     x22, x30
+    0.00 :   1a104:  str     x0, [sp, #208]
+    0.00 :   1a108:  mov     w0, #0xaaab                     // #43691
+    0.00 :   1a10c:  ldr     w3, [sp, #416]
+    0.00 :   1a110:  ldr     w8, [sp, #196]
+    0.00 :   1a114:  add     x18, x28, x20
+    0.00 :   1a118:  movk    w0, #0xaaaa, lsl #16
+    0.00 :   1a11c:  add     x17, x28, x22
+    0.00 :   1a120:  add     x15, x28, x18
+    0.00 :   1a124:  umull   x0, w27, w0
+    0.00 :   1a128:  add     x16, x17, x28
+    0.00 :   1a12c:  lsr     x0, x0, #34
+    0.00 :   1a130:  mul     w0, w0, w3
+    0.00 :   1a134:  add     w0, w0, w0, lsl #1
+    0.00 :   1a138:  add     w2, w3, w0, lsl #1
+    0.00 :   1a13c:  lsl     w0, w0, #2
+    0.00 :   1a140:  sxtw    x7, w0
+    0.00 :   1a144:  add     w0, w3, w2
+    0.00 :   1a148:  lsl     w2, w2, #1
+    0.00 :   1a14c:  sxtw    x13, w2
+    0.00 :   1a150:  add     w2, w3, w0
+    0.00 :   1a154:  lsl     w0, w0, #1
+    0.00 :   1a158:  sxtw    x12, w0
+    0.00 :   1a15c:  add     w0, w3, w2
+    0.00 :   1a160:  lsl     w2, w2, #1
+    0.00 :   1a164:  sxtw    x11, w2
+    0.00 :   1a168:  add     w14, w3, w0
+    0.00 :   1a16c:  lsl     w0, w0, #1
+    0.00 :   1a170:  sxtw    x10, w0
+    0.00 :   1a174:  lsl     w14, w14, #1
+    0.00 :   1a178:  sxtw    x14, w14
+    0.00 :   1a17c:  ldr     x4, [sp, #208]
+    0.00 :   1a180:  sxtw    x0, w8
+    0.00 :   1a184:  incw    x8
+    0.00 :   1a188:  add     x2, x0, x20
+    0.00 :   1a18c:  add     x9, x0, x7
+    0.00 :   1a190:  add     x3, x0, x22
+    0.00 :   1a194:  add     x26, x0, x13
+    0.00 :   1a198:  add     x6, x0, x18
+    0.00 :   1a19c:  add     x5, x0, x12
+    0.00 :   1a1a0:  whilelo p0.s, x0, x4
+    0.00 :   1a1a4:  add     x4, x21, x2, lsl #2
+    0.00 :   1a1a8:  ld1w    {z2.s}, p0/z, [x1, x9, lsl #2]
+    0.00 :   1a1ac:  ld1w    {z3.s}, p0/z, [x21, x3, lsl #2]
+    0.00 :   1a1b0:  add     x9, x1, x9, lsl #2
+    0.00 :   1a1b4:  ld1w    {z0.s}, p0/z, [x21, x2, lsl #2]
+    0.00 :   1a1b8:  movprfx z1, z0
+    0.00 :   1a1bc:  fmul    z1.s, p0/m, z1.s, z2.s
+    0.00 :   1a1c0:  add     x2, x0, x17
+    0.00 :   1a1c4:  add     x4, x4, x28
+    0.00 :   1a1c8:  add     x3, x21, x3, lsl #2
+    0.00 :   1a1cc:  ld1w    {z4.s}, p0/z, [x4]
+    0.00 :   1a1d0:  add     x9, x9, x28
+    0.00 :   1a1d4:  fmul    z2.s, p0/m, z2.s, z4.s
+    0.00 :   1a1d8:  add     x4, x0, x11
+    0.00 :   1a1dc:  ld1w    {z6.s}, p0/z, [x9]
+    0.00 :   1a1e0:  add     x3, x3, x28
+    0.00 :   1a1e4:  fmul    z0.s, p0/m, z0.s, z6.s
+    0.00 :   1a1e8:  fadd    z0.s, p0/m, z0.s, z2.s
+    0.00 :   1a1ec:  ld1w    {z2.s}, p0/z, [x1, x26, lsl #2]
+    0.00 :   1a1f0:  add     x26, x1, x26, lsl #2
+    0.00 :   1a1f4:  ld1w    {z7.s}, p0/z, [x3]
+    0.00 :   1a1f8:  movprfx z10, z3
+    0.00 :   1a1fc:  fmul    z10.s, p0/m, z10.s, z2.s
+    0.00 :   1a200:  movprfx z8, z7
+    0.00 :   1a204:  fmul    z8.s, p0/m, z8.s, z2.s
+    0.00 :   1a208:  fmul    z4.s, p0/m, z4.s, z6.s
+    0.00 :   1a20c:  ld1w    {z2.s}, p0/z, [x21, x6, lsl #2]
+    0.00 :   1a210:  ld1w    {z6.s}, p0/z, [x1, x5, lsl #2]
+    0.00 :   1a214:  add     x6, x21, x6, lsl #2
+    0.00 :   1a218:  add     x26, x26, x28
+    0.00 :   1a21c:  movprfx z9, z2
+    0.00 :   1a220:  fmul    z9.s, p0/m, z9.s, z6.s
+    0.00 :   1a224:  fsub    z1.s, p0/m, z1.s, z4.s
+    0.00 :   1a228:  add     x5, x1, x5, lsl #2
+    0.00 :   1a22c:  ld1w    {z11.s}, p0/z, [x26]
+    0.00 :   1a230:  fmul    z7.s, p0/m, z7.s, z11.s
+    0.00 :   1a234:  fmul    z3.s, p0/m, z3.s, z11.s
+    0.00 :   1a238:  fsubr   z7.s, p0/m, z7.s, z10.s
+    0.00 :   1a23c:  fadd    z3.s, p0/m, z3.s, z8.s
+    0.00 :   1a240:  add     x6, x6, x28
+    0.00 :   1a244:  add     x26, x21, x2, lsl #2
+    0.00 :   1a248:  add     x5, x5, x28
+    0.00 :   1a24c:  fadd    z1.s, p0/m, z1.s, z5.s
+    0.00 :   1a250:  fadd    z0.s, p0/m, z0.s, z5.s
+    0.00 :   1a254:  fadd    z1.s, p0/m, z1.s, z7.s
+    0.00 :   1a258:  fadd    z0.s, p0/m, z0.s, z3.s
+    0.00 :   1a25c:  ld1w    {z7.s}, p0/z, [x6]
+    0.00 :   1a260:  ld1w    {z3.s}, p0/z, [x5]
+    0.00 :   1a264:  fmul    z6.s, p0/m, z6.s, z7.s
+    0.00 :   1a268:  fmul    z2.s, p0/m, z2.s, z3.s
+    0.00 :   1a26c:  fadd    z2.s, p0/m, z2.s, z6.s
+    0.00 :   1a270:  add     x9, x0, x15
+    0.00 :   1a274:  add     x3, x0, x10
+    0.00 :   1a278:  fmul    z7.s, p0/m, z7.s, z3.s
+    0.00 :   1a27c:  fadd    z0.s, p0/m, z0.s, z2.s
+    0.00 :   1a280:  ld1w    {z2.s}, p0/z, [x1, x4, lsl #2]
+    0.00 :   1a284:  add     x4, x1, x4, lsl #2
+    0.00 :   1a288:  ld1w    {z4.s}, p0/z, [x21, x2, lsl #2]
+    0.00 :   1a28c:  movprfx z3, z9
+    0.00 :   1a290:  fsub    z3.s, p0/m, z3.s, z7.s
+    0.00 :   1a294:  add     x2, x0, x16
+    0.00 :   1a298:  ld1w    {z7.s}, p0/z, [x1, x3, lsl #2]
+    0.00 :   1a29c:  add     x5, x0, x14
+    0.00 :   1a2a0:  add     x6, x21, x9, lsl #2
+    0.00 :   1a2a4:  add     x26, x26, x28
+    0.00 :   1a2a8:  movprfx z11, z4
+    0.00 :   1a2ac:  fmul    z11.s, p0/m, z11.s, z2.s
+    0.00 :   1a2b0:  add     x3, x1, x3, lsl #2
+    0.00 :   1a2b4:  ld1w    {z6.s}, p0/z, [x1, x5, lsl #2]
+    0.00 :   1a2b8:  ld1w    {z9.s}, p0/z, [x26]
+    0.00 :   1a2bc:  add     x4, x4, x28
+    0.00 :   1a2c0:  movprfx z8, z9
+    0.00 :   1a2c4:  fmul    z8.s, p0/m, z8.s, z2.s
+    0.00 :   1a2c8:  add     x5, x1, x5, lsl #2
+    0.00 :   1a2cc:  ld1w    {z2.s}, p0/z, [x21, x2, lsl #2]
+    0.00 :   1a2d0:  ld1w    {z12.s}, p0/z, [x4]
+    0.00 :   1a2d4:  add     x2, x21, x2, lsl #2
+    0.00 :   1a2d8:  add     x6, x6, x28
+    0.00 :   1a2dc:  add     x3, x3, x28
+    0.00 :   1a2e0:  fmul    z9.s, p0/m, z9.s, z12.s
+    0.00 :   1a2e4:  fmul    z4.s, p0/m, z4.s, z12.s
+    0.00 :   1a2e8:  fsubr   z9.s, p0/m, z9.s, z11.s
+    0.00 :   1a2ec:  fadd    z4.s, p0/m, z4.s, z8.s
+    0.00 :   1a2f0:  fadd    z1.s, p0/m, z1.s, z3.s
+    0.00 :   1a2f4:  add     x4, x2, x28
+    0.00 :   1a2f8:  ld1w    {z3.s}, p0/z, [x21, x9, lsl #2]
+    0.00 :   1a2fc:  add     x2, x5, x28
+    0.00 :   1a300:  movprfx z10, z3
+    0.00 :   1a304:  fmul    z10.s, p0/m, z10.s, z7.s
+    0.00 :   1a308:  add     x5, x0, x19
+    0.00 :   1a30c:  fadd    z1.s, p0/m, z1.s, z9.s
+    0.00 :   1a310:  fadd    z0.s, p0/m, z0.s, z4.s
+    0.00 :   1a314:  ld1w    {z9.s}, p0/z, [x3]
+    0.00 :   1a318:  ld1w    {z4.s}, p0/z, [x6]
+    0.00 :   1a31c:  add     x0, x0, x23
+    0.00 :   1a320:  fmul    z7.s, p0/m, z7.s, z4.s
+    0.00 :   1a324:  fmul    z3.s, p0/m, z3.s, z9.s
+    0.00 :   1a328:  fmul    z4.s, p0/m, z4.s, z9.s
+    0.00 :   1a32c:  fadd    z3.s, p0/m, z3.s, z7.s
+    0.00 :   1a330:  fsubr   z4.s, p0/m, z4.s, z10.s
+    0.00 :   1a334:  movprfx z8, z2
+    0.00 :   1a338:  fmul    z8.s, p0/m, z8.s, z6.s
+    0.00 :   1a33c:  fadd    z1.s, p0/m, z1.s, z4.s
+    0.00 :   1a340:  fadd    z0.s, p0/m, z0.s, z3.s
+    0.00 :   1a344:  ld1w    {z4.s}, p0/z, [x2]
+    0.00 :   1a348:  ld1w    {z3.s}, p0/z, [x4]
+    0.00 :   1a34c:  fmul    z2.s, p0/m, z2.s, z4.s
+    0.00 :   1a350:  fmul    z6.s, p0/m, z6.s, z3.s
+    0.00 :   1a354:  fmul    z3.s, p0/m, z3.s, z4.s
+    0.00 :   1a358:  fadd    z2.s, p0/m, z2.s, z6.s
+    0.00 :   1a35c:  fsubr   z3.s, p0/m, z3.s, z8.s
+    0.00 :   1a360:  fadd    z0.s, p0/m, z0.s, z2.s
+    0.00 :   1a364:  fadd    z1.s, p0/m, z1.s, z3.s
+    0.00 :   1a368:  st1w    {z1.s}, p0, [x25, x5, lsl #2]
+    0.00 :   1a36c:  st1w    {z0.s}, p0, [x25, x0, lsl #2]
+    0.00 :   1a370:  cmp     w24, w8
+    0.00 :   1a374:  b.gt    1a17c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xe3c>
+    0.00 :   1a378:  add     w27, w27, #0x1
+    0.00 :   1a37c:  add     x20, x15, x28
+    0.00 :   1a380:  add     x22, x16, x28
+    0.00 :   1a384:  add     x19, x19, x30
+    0.00 :   1a388:  add     x23, x23, x30
+    0.00 :   1a38c:  cmp     w27, #0xc
+    0.00 :   1a390:  b.ne    1a108 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xdc8>  // b.any
+    0.00 :   1a394:  ldr     w3, [sp, #200]
+    0.00 :   1a398:  ldr     w2, [sp, #416]
+    0.00 :   1a39c:  mov     x23, x28
+    0.00 :   1a3a0:  fmov    s8, #1.000000000000000000e+00
+    0.00 :   1a3a4:  ldr     x26, [sp, #224]
+    0.00 :   1a3a8:  str     w24, [sp, #432]
+    0.00 :   1a3ac:  fmov    s7, #-1.000000000000000000e+00
+    0.00 :   1a3b0:  mov     z6.s, #0
+    0.00 :   1a3b4:  add     w1, w3, w2
+    0.00 :   1a3b8:  add     w0, w2, w2, lsl #3
+    0.00 :   1a3bc:  lsl     w2, w2, #2
+    0.00 :   1a3c0:  str     w2, [sp, #512]
+    0.00 :   1a3c4:  ldr     x2, [sp, #400]
+    0.00 :   1a3c8:  lsl     w1, w1, #1
+    0.00 :   1a3cc:  sbfiz   x3, x3, #2, #32
+    0.00 :   1a3d0:  sbfiz   x27, x1, #2, #32
+    0.00 :   1a3d4:  str     w1, [sp, #420]
+    0.00 :   1a3d8:  lsl     x1, x26, #4
+    0.00 :   1a3dc:  lsl     w0, w0, #1
+    0.00 :   1a3e0:  mov     x24, x27
+    0.00 :   1a3e4:  sbfiz   x0, x0, #2, #32
+    0.00 :   1a3e8:  str     x3, [sp, #200]
+    0.00 :   1a3ec:  str     x0, [sp, #272]
+    0.00 :   1a3f0:  str     x1, [sp, #440]
+    0.00 :   1a3f4:  lsl     x1, x26, #3
+    0.00 :   1a3f8:  str     x1, [sp, #472]
+    0.00 :   1a3fc:  add     x2, x2, x3
+    0.00 :   1a400:  str     x26, [sp, #504]
+    0.00 :   1a404:  str     x2, [sp, #488]
+    0.00 :   1a408:  ldr     w2, [sp, #196]
+    0.00 :   1a40c:  ldp     x1, x3, [sp, #208]
+    0.00 :   1a410:  mov     w30, #0x0                       // #0
+    0.00 :   1a414:  mov     x22, x23
+    0.00 :   1a418:  ldr     w0, [sp, #432]
+    0.00 :   1a41c:  mov     w21, w30
+    0.00 :   1a420:  ldr     w20, [sp, #416]
+    0.00 :   1a424:  sxtw    x28, w2
+    0.00 :   1a428:  sub     w0, w0, w2
+    0.00 :   1a42c:  whilelo p2.s, x28, x1
+    0.00 :   1a430:  lsl     x1, x28, #2
+    0.00 :   1a434:  add     x27, x3, x1
+    0.00 :   1a438:  ldr     x3, [sp, #336]
+    0.00 :   1a43c:  mov     x30, x28
+    0.00 :   1a440:  mov     p0.b, p2.b
+    0.00 :   1a444:  mov     x28, x25
+    0.00 :   1a448:  add     x26, x3, x1
+    0.00 :   1a44c:  add     x1, x25, x1
+    0.00 :   1a450:  cntw    x3
+    0.00 :   1a454:  str     x1, [sp, #480]
+    0.00 :   1a458:  ldr     w1, [sp, #192]
+    0.00 :   1a45c:  cmp     w0, w3
+    0.00 :   1a460:  mov     x23, x26
+    0.00 :   1a464:  csel    w0, w0, w3, le
+    0.00 :   1a468:  mov     x26, x24
+    0.00 :   1a46c:  mov     x24, x27
+    0.00 :   1a470:  cmp     w1, w2
+    0.00 :   1a474:  sxtw    x1, w0
+    0.00 :   1a478:  add     w0, w0, w2
+    0.00 :   1a47c:  str     w0, [sp, #424]
+    0.00 :   1a480:  cset    w0, le
+    0.00 :   1a484:  lsl     w0, w0, #3
+    0.00 :   1a488:  str     w0, [sp, #436]
+    0.00 :   1a48c:  str     x1, [sp, #496]
+    0.00 :   1a490:  b       1a4ac <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x116c>
+    0.00 :   1a494:  ldr     x0, [sp, #272]
+    0.00 :   1a498:  add     w21, w21, #0x1
+    0.00 :   1a49c:  add     x24, x24, x22
+    0.00 :   1a4a0:  add     x23, x23, x0
+    0.00 :   1a4a4:  cmp     w21, #0x8
+    0.00 :   1a4a8:  b.eq    1ab6c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x182c>  // b.none
+    0.00 :   1a4ac:  ld1w    {z4.s}, p2/z, [x24]
+    0.00 :   1a4b0:  cmpge   p1.s, p0/z, z4.s, #0
+    0.00 :   1a4b4:  ptest   p0, p1.b
+    0.00 :   1a4b8:  mov     p3.b, p1.b
+    0.00 :   1a4bc:  b.eq    1a494 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1154>  // b.none
+    0.00 :   1a4c0:  ldp     w0, w1, [sp, #192]
+    0.00 :   1a4c4:  cmp     w0, w1
+    0.00 :   1a4c8:  b.le    1ab94 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1854>
+    0.00 :   1a4cc:  ldr     w1, [sp, #424]
+    0.00 :   1a4d0:  cmp     w0, w1
+    0.00 :   1a4d4:  b.ge    1ab94 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1854>  // b.tcont
+    0.00 :   1a4d8:  mov     x27, x22
+    0.00 :   1a4dc:  mov     w18, #0x0                       // #0
+    0.00 :   1a4e0:  mov     x19, #0x0                       // #0
+    0.00 :   1a4e4:  ldr     x0, [sp, #440]
+    0.00 :   1a4e8:  ldr     x2, [sp, #472]
+    0.00 :   1a4ec:  tst     x21, #0x1
+    0.00 :   1a4f0:  mov     x25, #0x0                       // #0
+    0.00 :   1a4f4:  ldr     x17, [sp, #400]
+    0.00 :   1a4f8:  ldr     x14, [sp, #488]
+    0.00 :   1a4fc:  fcsel   s5, s8, s7, ne  // ne = any
+    0.00 :   1a500:  str     x23, [sp, #376]
+    0.00 :   1a504:  str     w21, [sp, #516]
+    0.00 :   1a508:  str     x24, [sp, #520]
+    0.00 :   1a50c:  add     x1, x0, x23
+    0.00 :   1a510:  asr     w0, w21, #1
+    0.00 :   1a514:  sbfiz   x0, x0, #4, #32
+    0.00 :   1a518:  str     x1, [sp, #408]
+    0.00 :   1a51c:  sub     x1, x1, x2
+    0.00 :   1a520:  str     x1, [sp, #392]
+    0.00 :   1a524:  ldr     x1, [sp, #448]
+    0.00 :   1a528:  add     x1, x1, x0
+    0.00 :   1a52c:  str     x1, [sp, #384]
+    0.00 :   1a530:  ldr     x1, [sp, #456]
+    0.00 :   1a534:  add     x16, x1, x0
+    0.00 :   1a538:  ldr     x1, [sp, #464]
+    0.00 :   1a53c:  add     x15, x1, x0
+    0.00 :   1a540:  ldr     x0, [sp, #480]
+    0.00 :   1a544:  str     x0, [sp, #224]
+    0.00 :   1a548:  ldr     w0, [sp, #512]
+    0.00 :   1a54c:  str     w0, [sp, #232]
+    0.00 :   1a550:  ldp     x5, x0, [sp, #376]
+    0.00 :   1a554:  ldp     x4, x9, [sp, #392]
+    0.00 :   1a558:  add     x24, x22, x17
+    0.00 :   1a55c:  mov     x2, #0x0                        // #0
+    0.00 :   1a560:  ldr     x1, [sp, #224]
+    0.00 :   1a564:  ldr     x3, [sp, #408]
+    0.00 :   1a568:  add     x21, x22, x14
+    0.00 :   1a56c:  ldr     w7, [x0, x25, lsl #2]
+    0.00 :   1a570:  ldr     w0, [sp, #232]
+    0.00 :   1a574:  add     x12, x9, w0, sxtw #2
+    0.00 :   1a578:  add     x0, x12, x19
+    0.00 :   1a57c:  add     w13, w7, w7, lsl #1
+    0.00 :   1a580:  add     x23, x12, x22
+    0.00 :   1a584:  str     x0, [sp, #264]
+    0.00 :   1a588:  add     x0, x12, x27
+    0.00 :   1a58c:  sbfiz   x7, x7, #2, #32
+    0.00 :   1a590:  str     x0, [sp, #352]
+    0.00 :   1a594:  add     x0, x17, x19
+    0.00 :   1a598:  str     x0, [sp, #288]
+    0.00 :   1a59c:  add     x0, x17, x27
+    0.00 :   1a5a0:  str     x0, [sp, #280]
+    0.00 :   1a5a4:  add     x0, x14, x19
+    0.00 :   1a5a8:  str     x0, [sp, #296]
+    0.00 :   1a5ac:  add     x0, x14, x27
+    0.00 :   1a5b0:  str     x0, [sp, #320]
+    0.00 :   1a5b4:  mul     w0, w20, w13
+    0.00 :   1a5b8:  add     w6, w20, w0
+    0.00 :   1a5bc:  lsl     w0, w0, #1
+    0.00 :   1a5c0:  add     x8, x9, w0, sxtw #2
+    0.00 :   1a5c4:  add     x10, x8, x27
+    0.00 :   1a5c8:  add     x0, x8, x19
+    0.00 :   1a5cc:  stp     x0, x10, [sp, #304]
+    0.00 :   1a5d0:  add     w0, w20, w6
+    0.00 :   1a5d4:  mov     x10, x9
+    0.00 :   1a5d8:  lsl     w6, w6, #1
+    0.00 :   1a5dc:  lsl     w0, w0, #1
+    0.00 :   1a5e0:  add     x9, x9, w6, sxtw #2
+    0.00 :   1a5e4:  add     x10, x10, w0, sxtw #2
+    0.00 :   1a5e8:  add     x6, x9, x19
+    0.00 :   1a5ec:  add     x0, x9, x27
+    0.00 :   1a5f0:  str     x6, [sp, #328]
+    0.00 :   1a5f4:  str     x0, [sp, #344]
+    0.00 :   1a5f8:  add     x0, x10, x19
+    0.00 :   1a5fc:  str     x0, [sp, #360]
+    0.00 :   1a600:  add     x0, x10, x27
+    0.00 :   1a604:  str     x0, [sp, #368]
+    0.00 :   1a608:  add     x0, x10, x22
+    0.00 :   1a60c:  str     x0, [sp, #256]
+    0.00 :   1a610:  add     x0, x9, x22
+    0.00 :   1a614:  str     x0, [sp, #248]
+    0.00 :   1a618:  add     x0, x8, x22
+    0.00 :   1a61c:  str     x0, [sp, #240]
+    0.00 :   1a620:  ldr     s1, [x16, x25, lsl #2]
+    0.00 :   1a624:  ldr     s3, [x15, x25, lsl #2]
+    0.00 :   1a628:  mov     w0, w2
+    0.00 :   1a62c:  fmul    s1, s5, s1
+    0.00 :   1a630:  fmul    s3, s5, s3
+    0.00 :   1a634:  cbnz    w18, 1ab24 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x17e4>
+    0.00 :   1a638:  ldr     x6, [sp, #240]
+    0.00 :   1a63c:  ld1w    {z9.s}, p3/z, [x17, z4.s, sxtw #2]
+    0.00 :   1a640:  ld1w    {z2.s}, p3/z, [x24, z4.s, sxtw #2]
+    0.00 :   1a644:  ld1w    {z0.s}, p3/z, [x8, z4.s, sxtw #2]
+    0.00 :   1a648:  ld1w    {z10.s}, p3/z, [x6, z4.s, sxtw #2]
+    0.00 :   1a64c:  mov     z11.s, s1
+    0.00 :   1a650:  mov     z3.s, s3
+    0.00 :   1a654:  movprfx z12, z0
+    0.00 :   1a658:  fmul    z12.s, p0/m, z12.s, z11.s
+    0.00 :   1a65c:  movprfx z1, z0
+    0.00 :   1a660:  fmul    z1.s, p0/m, z1.s, z3.s
+    0.00 :   1a664:  add     x6, x5, x22
+    0.00 :   1a668:  movprfx z0, z10
+    0.00 :   1a66c:  fmul    z0.s, p0/m, z0.s, z3.s
+    0.00 :   1a670:  fmul    z10.s, p0/m, z10.s, z11.s
+    0.00 :   1a674:  fadd    z9.s, p0/m, z9.s, z12.s
+    0.00 :   1a678:  fadd    z2.s, p0/m, z2.s, z10.s
+    0.00 :   1a67c:  fsub    z9.s, p0/m, z9.s, z0.s
+    0.00 :   1a680:  fadd    z2.s, p0/m, z2.s, z1.s
+    0.00 :   1a684:  ld1w    {z0.s}, p1/z, [x5]
+    0.00 :   1a688:  ld1w    {z10.s}, p1/z, [x6]
+    0.00 :   1a68c:  movprfx z1, z0
+    0.00 :   1a690:  fmul    z1.s, p0/m, z1.s, z9.s
+    0.00 :   1a694:  fmul    z0.s, p0/m, z0.s, z2.s
+    0.00 :   1a698:  fmul    z2.s, p0/m, z2.s, z10.s
+    0.00 :   1a69c:  fmul    z10.s, p0/m, z10.s, z9.s
+    0.00 :   1a6a0:  fsub    z1.s, p0/m, z1.s, z2.s
+    0.00 :   1a6a4:  fadd    z0.s, p0/m, z0.s, z10.s
+    0.00 :   1a6a8:  fadd    z1.s, p0/m, z1.s, z6.s
+    0.00 :   1a6ac:  fadd    z0.s, p0/m, z0.s, z6.s
+    0.00 :   1a6b0:  cbnz    w18, 1ab00 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x17c0>
+    0.00 :   1a6b4:  ldr     x6, [sp, #248]
+    0.00 :   1a6b8:  ld1w    {z10.s}, p3/z, [x14, z4.s, sxtw #2]
+    0.00 :   1a6bc:  ld1w    {z2.s}, p3/z, [x21, z4.s, sxtw #2]
+    0.00 :   1a6c0:  ld1w    {z9.s}, p3/z, [x9, z4.s, sxtw #2]
+    0.00 :   1a6c4:  ld1w    {z16.s}, p3/z, [x6, z4.s, sxtw #2]
+    0.00 :   1a6c8:  movprfx z12, z9
+    0.00 :   1a6cc:  fmul    z12.s, p0/m, z12.s, z3.s
+    0.00 :   1a6d0:  movprfx z17, z9
+    0.00 :   1a6d4:  fmul    z17.s, p0/m, z17.s, z11.s
+    0.00 :   1a6d8:  add     x6, x4, x22
+    0.00 :   1a6dc:  movprfx z9, z16
+    0.00 :   1a6e0:  fmul    z9.s, p0/m, z9.s, z3.s
+    0.00 :   1a6e4:  fmul    z16.s, p0/m, z16.s, z11.s
+    0.00 :   1a6e8:  fadd    z10.s, p0/m, z10.s, z17.s
+    0.00 :   1a6ec:  fadd    z2.s, p0/m, z2.s, z16.s
+    0.00 :   1a6f0:  fsub    z10.s, p0/m, z10.s, z9.s
+    0.00 :   1a6f4:  fadd    z2.s, p0/m, z2.s, z12.s
+    0.00 :   1a6f8:  ld1w    {z9.s}, p1/z, [x4]
+    0.00 :   1a6fc:  ld1w    {z12.s}, p1/z, [x6]
+    0.00 :   1a700:  movprfx z16, z9
+    0.00 :   1a704:  fmul    z16.s, p0/m, z16.s, z10.s
+    0.00 :   1a708:  fmul    z9.s, p0/m, z9.s, z2.s
+    0.00 :   1a70c:  fmul    z2.s, p0/m, z2.s, z12.s
+    0.00 :   1a710:  fmul    z12.s, p0/m, z12.s, z10.s
+    0.00 :   1a714:  fsubr   z2.s, p0/m, z2.s, z16.s
+    0.00 :   1a718:  fadd    z9.s, p0/m, z9.s, z12.s
+    0.00 :   1a71c:  movprfx z16, z1
+    0.00 :   1a720:  fadd    z16.s, p0/m, z16.s, z2.s
+    0.00 :   1a724:  movprfx z12, z0
+    0.00 :   1a728:  fadd    z12.s, p0/m, z12.s, z9.s
+    0.00 :   1a72c:  cbnz    w18, 1aadc <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x179c>
+    0.00 :   1a730:  ldr     x6, [sp, #256]
+    0.00 :   1a734:  ld1w    {z10.s}, p3/z, [x12, z4.s, sxtw #2]
+    0.00 :   1a738:  ld1w    {z2.s}, p3/z, [x23, z4.s, sxtw #2]
+    0.00 :   1a73c:  ld1w    {z17.s}, p3/z, [x10, z4.s, sxtw #2]
+    0.00 :   1a740:  ld1w    {z18.s}, p3/z, [x6, z4.s, sxtw #2]
+    0.00 :   1a744:  ldr     s9, [x15, x7]
+    0.00 :   1a748:  ldr     s0, [x16, x7]
+    0.00 :   1a74c:  add     w0, w13, w0
+    0.00 :   1a750:  movprfx z1, z18
+    0.00 :   1a754:  fmul    z1.s, p0/m, z1.s, z11.s
+    0.00 :   1a758:  mul     w0, w0, w20
+    0.00 :   1a75c:  fadd    z1.s, p0/m, z1.s, z2.s
+    0.00 :   1a760:  add     x11, x3, x22
+    0.00 :   1a764:  movprfx z19, z17
+    0.00 :   1a768:  fmul    z19.s, p0/m, z19.s, z11.s
+    0.00 :   1a76c:  fmul    z18.s, p0/m, z18.s, z3.s
+    0.00 :   1a770:  fmul    z17.s, p0/m, z17.s, z3.s
+    0.00 :   1a774:  fadd    z10.s, p0/m, z10.s, z19.s
+    0.00 :   1a778:  ld1w    {z3.s}, p1/z, [x3]
+    0.00 :   1a77c:  fsub    z10.s, p0/m, z10.s, z18.s
+    0.00 :   1a780:  fadd    z1.s, p0/m, z1.s, z17.s
+    0.00 :   1a784:  movprfx z11, z3
+    0.00 :   1a788:  fmul    z11.s, p0/m, z11.s, z10.s
+    0.00 :   1a78c:  fmul    z3.s, p0/m, z3.s, z1.s
+    0.00 :   1a790:  add     x6, x1, x22
+    0.00 :   1a794:  lsl     w0, w0, #1
+    0.00 :   1a798:  add     x0, x30, w0, sxtw
+    0.00 :   1a79c:  add     x0, x28, x0, lsl #2
+    0.00 :   1a7a0:  fmul    s2, s5, s9
+    0.00 :   1a7a4:  fmul    s0, s5, s0
+    0.00 :   1a7a8:  ld1w    {z9.s}, p1/z, [x11]
+    0.00 :   1a7ac:  fmul    z1.s, p0/m, z1.s, z9.s
+    0.00 :   1a7b0:  fmul    z9.s, p0/m, z9.s, z10.s
+    0.00 :   1a7b4:  fsubr   z1.s, p0/m, z1.s, z11.s
+    0.00 :   1a7b8:  ld1w    {z10.s}, p2/z, [x1]
+    0.00 :   1a7bc:  fadd    z1.s, p0/m, z1.s, z16.s
+    0.00 :   1a7c0:  fadd    z3.s, p0/m, z3.s, z9.s
+    0.00 :   1a7c4:  fadd    z10.s, p0/m, z10.s, z1.s
+    0.00 :   1a7c8:  fadd    z3.s, p0/m, z3.s, z12.s
+    0.00 :   1a7cc:  st1w    {z10.s}, p2, [x1]
+    0.00 :   1a7d0:  mov     z2.s, s2
+    0.00 :   1a7d4:  mov     z0.s, s0
+    0.00 :   1a7d8:  movprfx z9, z1
+    0.00 :   1a7dc:  fmul    z9.s, p0/m, z9.s, z0.s
+    0.00 :   1a7e0:  fmul    z1.s, p0/m, z1.s, z2.s
+    0.00 :   1a7e4:  fmul    z0.s, p0/m, z0.s, z3.s
+    0.00 :   1a7e8:  fadd    z0.s, p0/m, z0.s, z1.s
+    0.00 :   1a7ec:  ld1w    {z1.s}, p2/z, [x6]
+    0.00 :   1a7f0:  fadd    z1.s, p0/m, z1.s, z3.s
+    0.00 :   1a7f4:  add     x11, x0, x22
+    0.00 :   1a7f8:  movprfx z11, z3
+    0.00 :   1a7fc:  fmul    z11.s, p0/m, z11.s, z2.s
+    0.00 :   1a800:  movprfx z2, z9
+    0.00 :   1a804:  fsub    z2.s, p0/m, z2.s, z11.s
+    0.00 :   1a808:  st1w    {z1.s}, p2, [x6]
+    0.00 :   1a80c:  ld1w    {z1.s}, p2/z, [x0]
+    0.00 :   1a810:  fadd    z1.s, p0/m, z1.s, z2.s
+    0.00 :   1a814:  st1w    {z1.s}, p2, [x0]
+    0.00 :   1a818:  ldr     x0, [sp, #200]
+    0.00 :   1a81c:  ld1w    {z1.s}, p2/z, [x11]
+    0.00 :   1a820:  add     x2, x2, #0x1
+    0.00 :   1a824:  fadd    z0.s, p0/m, z0.s, z1.s
+    0.00 :   1a828:  st1w    {z0.s}, p2, [x11]
+    0.00 :   1a82c:  add     x4, x4, x26
+    0.00 :   1a830:  add     x5, x5, x26
+    0.00 :   1a834:  add     x3, x3, x26
+    0.00 :   1a838:  add     x1, x1, x0
+    0.00 :   1a83c:  cmp     x2, #0x3
+    0.00 :   1a840:  b.ne    1a620 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x12e0>  // b.any
+    0.00 :   1a844:  ldr     w0, [sp, #232]
+    0.00 :   1a848:  ldr     w1, [sp, #420]
+    0.00 :   1a84c:  add     x14, x14, x26
+    0.00 :   1a850:  add     x17, x17, x26
+    0.00 :   1a854:  add     w0, w0, w1
+    0.00 :   1a858:  str     w0, [sp, #232]
+    0.00 :   1a85c:  ldr     x0, [sp, #224]
+    0.00 :   1a860:  add     x0, x0, x26
+    0.00 :   1a864:  str     x0, [sp, #224]
+    0.00 :   1a868:  cbnz    x25, 1ab48 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1808>
+    0.00 :   1a86c:  mov     x25, #0x1                       // #1
+    0.00 :   1a870:  b       1a550 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1210>
+    0.00 :   1a874:  mov     x13, #0x1                       // #1
+    0.00 :   1a878:  mov     x6, x0
+    0.00 :   1a87c:  b       19728 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x3e8>
+    0.00 :   1a880:  ldr     w0, [sp, #196]
+    0.00 :   1a884:  b       1994c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x60c>
+    0.00 :   1a888:  mov     x0, x11
+    0.00 :   1a88c:  nop
+    0.00 :   1a890:  str     wzr, [x19, x0, lsl #2]
+    0.00 :   1a894:  str     wzr, [x20, x0, lsl #2]
+    0.00 :   1a898:  add     x0, x0, #0x1
+    0.00 :   1a89c:  cmp     w26, w0
+    0.00 :   1a8a0:  b.gt    1a890 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1550>
+    0.00 :   1a8a4:  b       197dc <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x49c>
+    0.00 :   1a8a8:  ldr     x5, [x0, #152]
+    0.00 :   1a8ac:  mul     x2, x2, x3
+    0.00 :   1a8b0:  add     x2, x5, x2, lsl #2
+    0.00 :   1a8b4:  str     x2, [sp, #336]
+    0.00 :   1a8b8:  b       193c0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x80>
+    0.00 :   1a8bc:  ldr     x5, [x0, #176]
+    0.00 :   1a8c0:  mul     x21, x2, x3
+    0.00 :   1a8c4:  add     x21, x5, x21, lsl #2
+    0.00 :   1a8c8:  b       193a0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x60>
+    0.00 :   1a8cc:  add     x1, x19, x26, lsl #3
+    0.00 :   1a8d0:  cmp     x2, x1
+    0.00 :   1a8d4:  b.eq    195e0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x2a0>  // b.none
+    0.00 :   1a8d8:  adrp    x0, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1a8dc:  ldr     x2, [x0, #1320]
+    0.00 :   1a8e0:  add     x0, x0, #0x528
+    0.00 :   1a8e4:  blr     x2
+    0.00 :   1a8e8:  str     x1, [x20, #8]
+    0.00 :   1a8ec:  b       195e0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x2a0>
+    0.00 :   1a8f0:  bl      5740 <__cxa_guard_acquire@plt>
+    0.00 :   1a8f4:  cbz     w0, 194a0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x160>
+    0.00 :   1a8f8:  adrp    x0, 58000 <typeinfo name for lqcd::Error+0x88>
+    0.00 :   1a8fc:  add     x0, x0, #0x8a0
+    0.00 :   1a900:  bl      5610 <getenv@plt>
+    0.00 :   1a904:  cbz     x0, 1aad4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1794>
+    0.00 :   1a908:  mov     w2, #0xa                        // #10
+    0.00 :   1a90c:  mov     x1, #0x0                        // #0
+    0.00 :   1a910:  bl      5040 <strtol@plt>
+    0.00 :   1a914:  cbnz    w0, 1aad4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1794>
+    0.00 :   1a918:  mov     w1, #0x0                        // #0
+    0.00 :   1a91c:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1a920:  add     x0, x19, #0x6a0
+    0.00 :   1a924:  strb    w1, [x22, #1704]
+    0.00 :   1a928:  bl      5130 <__cxa_guard_release@plt>
+    0.00 :   1a92c:  b       194a0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x160>
+    0.00 :   1a930:  bl      5740 <__cxa_guard_acquire@plt>
+    0.00 :   1a934:  cbz     w0, 19440 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x100>
+    0.00 :   1a938:  adrp    x0, 58000 <typeinfo name for lqcd::Error+0x88>
+    0.00 :   1a93c:  add     x0, x0, #0x8a0
+    0.00 :   1a940:  bl      5610 <getenv@plt>
+    0.00 :   1a944:  cbz     x0, 1a95c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x161c>
+    0.00 :   1a948:  mov     w2, #0xa                        // #10
+    0.00 :   1a94c:  mov     x1, #0x0                        // #0
+    0.00 :   1a950:  bl      5040 <strtol@plt>
+    0.00 :   1a954:  cmp     w0, #0x0
+    0.00 :   1a958:  csel    w20, w20, wzr, ne  // ne = any
+    0.00 :   1a95c:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1a960:  add     x0, x19, #0x6a0
+    0.00 :   1a964:  strb    w20, [x22, #1704]
+    0.00 :   1a968:  bl      5130 <__cxa_guard_release@plt>
+    0.00 :   1a96c:  b       19440 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x100>
+    0.00 :   1a970:  bl      5740 <__cxa_guard_acquire@plt>
+    0.00 :   1a974:  cbz     w0, 1a068 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xd28>
+    0.00 :   1a978:  adrp    x0, 58000 <typeinfo name for lqcd::Error+0x88>
+    0.00 :   1a97c:  add     x0, x0, #0x858
+    0.00 :   1a980:  bl      5610 <getenv@plt>
+    0.00 :   1a984:  cbz     x0, 1a99c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x165c>
+    0.00 :   1a988:  mov     w2, #0xa                        // #10
+    0.00 :   1a98c:  mov     x1, #0x0                        // #0
+    0.00 :   1a990:  bl      5040 <strtol@plt>
+    0.00 :   1a994:  cmp     w0, #0x0
+    0.00 :   1a998:  csel    w20, w20, wzr, ne  // ne = any
+    0.00 :   1a99c:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1a9a0:  add     x0, x19, #0x6d0
+    0.00 :   1a9a4:  strb    w20, [x22, #1752]
+    0.00 :   1a9a8:  bl      5130 <__cxa_guard_release@plt>
+    0.00 :   1a9ac:  b       1a068 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xd28>
+    0.00 :   1a9b0:  bl      5740 <__cxa_guard_acquire@plt>
+    0.00 :   1a9b4:  cbz     w0, 19b24 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x7e4>
+    0.00 :   1a9b8:  adrp    x0, 58000 <typeinfo name for lqcd::Error+0x88>
+    0.00 :   1a9bc:  add     x0, x0, #0x858
+    0.00 :   1a9c0:  bl      5610 <getenv@plt>
+    0.00 :   1a9c4:  cbz     x0, 1a9dc <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x169c>
+    0.00 :   1a9c8:  mov     w2, #0xa                        // #10
+    0.00 :   1a9cc:  mov     x1, #0x0                        // #0
+    0.00 :   1a9d0:  bl      5040 <strtol@plt>
+    0.00 :   1a9d4:  cmp     w0, #0x0
+    0.00 :   1a9d8:  csel    w20, w20, wzr, ne  // ne = any
+    0.00 :   1a9dc:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1a9e0:  add     x0, x19, #0x6d0
+    0.00 :   1a9e4:  strb    w20, [x22, #1752]
+    0.00 :   1a9e8:  bl      5130 <__cxa_guard_release@plt>
+    0.00 :   1a9ec:  b       19b24 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x7e4>
+    0.00 :   1a9f0:  str     x11, [sp, #184]
+    0.00 :   1a9f4:  sub     x1, x1, x0
+    0.00 :   1a9f8:  adrp    x0, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1a9fc:  ldr     x2, [x0, #1320]
+    0.00 :   1aa00:  add     x0, x0, #0x528
+    0.00 :   1aa04:  blr     x2
+    0.00 :   1aa08:  mov     x0, x20
+    0.00 :   1aa0c:  bl      13270 <std::vector<float, lqcd_native::WorkspaceAllocator<float> >::_M_default_append(unsigned long)>
+    0.00 :   1aa10:  adrp    x0, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1aa14:  ldr     x1, [x0, #1320]
+    0.00 :   1aa18:  add     x0, x0, #0x528
+    0.00 :   1aa1c:  blr     x1
+    0.00 :   1aa20:  ldr     x19, [x20]
+    0.00 :   1aa24:  ldr     x11, [sp, #184]
+    0.00 :   1aa28:  b       195e0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x2a0>
+    0.00 :   1aa2c:  str     x11, [sp, #184]
+    0.00 :   1aa30:  adrp    x0, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1aa34:  ldr     x1, [x0, #1320]
+    0.00 :   1aa38:  add     x0, x0, #0x528
+    0.00 :   1aa3c:  blr     x1
+    0.00 :   1aa40:  add     x1, x20, x0
+    0.00 :   1aa44:  str     xzr, [x20, x0]
+    0.00 :   1aa48:  adrp    x0, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1aa4c:  ldr     x2, [x0, #1320]
+    0.00 :   1aa50:  add     x0, x0, #0x528
+    0.00 :   1aa54:  blr     x2
+    0.00 :   1aa58:  str     xzr, [x1, #8]
+    0.00 :   1aa5c:  adrp    x0, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1aa60:  ldr     x2, [x0, #1320]
+    0.00 :   1aa64:  add     x0, x0, #0x528
+    0.00 :   1aa68:  blr     x2
+    0.00 :   1aa6c:  str     xzr, [x1, #16]
+    0.00 :   1aa70:  adrp    x0, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1aa74:  ldr     x2, [x0, #1336]
+    0.00 :   1aa78:  add     x0, x0, #0x538
+    0.00 :   1aa7c:  blr     x2
+    0.00 :   1aa80:  mov     x0, #0x1                        // #1
+    0.00 :   1aa84:  adrp    x2, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1aa88:  str     x0, [x3]
+    0.00 :   1aa8c:  add     x2, x2, #0x568
+    0.00 :   1aa90:  adrp    x0, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1aa94:  ldr     x3, [x0, #1320]
+    0.00 :   1aa98:  add     x0, x0, #0x528
+    0.00 :   1aa9c:  blr     x3
+    0.00 :   1aaa0:  adrp    x0, 1e000 <NativeMG::Impl::fine_apply(std::vector<float, lqcd_native::WorkspaceAllocator<float> > const&, std::vector<float, lqcd_native::WorkspaceAllocator<float> >&, int) const [clone ._omp_fn.3]+0x1700>
+    0.00 :   1aaa4:  add     x0, x0, #0xd30
+    0.00 :   1aaa8:  bl      56f0 <__cxa_thread_atexit@plt>
+    0.00 :   1aaac:  ldr     x11, [sp, #184]
+    0.00 :   1aab0:  b       195a0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x260>
+    0.00 :   1aab4:  ldr     w0, [sp, #416]
+    0.00 :   1aab8:  ldrsw   x11, [sp, #196]
+    0.00 :   1aabc:  lsl     w0, w0, #1
+    0.00 :   1aac0:  str     w0, [sp, #200]
+    0.00 :   1aac4:  ldr     w0, [sp, #192]
+    0.00 :   1aac8:  sub     w0, w0, #0x1
+    0.00 :   1aacc:  str     w0, [sp, #352]
+    0.00 :   1aad0:  b       19580 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x240>
+    0.00 :   1aad4:  mov     w1, #0x1                        // #1
+    0.00 :   1aad8:  b       1a91c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x15dc>
+    0.00 :   1aadc:  ldr     x6, [sp, #264]
+    0.00 :   1aae0:  ld1w    {z10.s}, p1/z, [x6]
+    0.00 :   1aae4:  ldr     x6, [sp, #352]
+    0.00 :   1aae8:  ld1w    {z2.s}, p1/z, [x6]
+    0.00 :   1aaec:  ldr     x6, [sp, #360]
+    0.00 :   1aaf0:  ld1w    {z17.s}, p1/z, [x6]
+    0.00 :   1aaf4:  ldr     x6, [sp, #368]
+    0.00 :   1aaf8:  ld1w    {z18.s}, p1/z, [x6]
+    0.00 :   1aafc:  b       1a744 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1404>
+    0.00 :   1ab00:  ldr     x6, [sp, #296]
+    0.00 :   1ab04:  ld1w    {z10.s}, p1/z, [x6]
+    0.00 :   1ab08:  ldr     x6, [sp, #320]
+    0.00 :   1ab0c:  ld1w    {z2.s}, p1/z, [x6]
+    0.00 :   1ab10:  ldr     x6, [sp, #328]
+    0.00 :   1ab14:  ld1w    {z9.s}, p1/z, [x6]
+    0.00 :   1ab18:  ldr     x6, [sp, #344]
+    0.00 :   1ab1c:  ld1w    {z16.s}, p1/z, [x6]
+    0.00 :   1ab20:  b       1a6c8 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1388>
+    0.00 :   1ab24:  ldr     x6, [sp, #288]
+    0.00 :   1ab28:  ld1w    {z9.s}, p1/z, [x6]
+    0.00 :   1ab2c:  ldr     x6, [sp, #280]
+    0.00 :   1ab30:  ld1w    {z2.s}, p1/z, [x6]
+    0.00 :   1ab34:  ldr     x6, [sp, #304]
+    0.00 :   1ab38:  ld1w    {z0.s}, p1/z, [x6]
+    0.00 :   1ab3c:  ldr     x6, [sp, #312]
+    0.00 :   1ab40:  ld1w    {z10.s}, p1/z, [x6]
+    0.00 :   1ab44:  b       1a64c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x130c>
+    0.00 :   1ab48:  ldr     w21, [sp, #516]
+    0.00 :   1ab4c:  ldr     x0, [sp, #272]
+    0.00 :   1ab50:  ldr     x23, [sp, #376]
+    0.00 :   1ab54:  ldr     x24, [sp, #520]
+    0.00 :   1ab58:  add     w21, w21, #0x1
+    0.00 :   1ab5c:  add     x24, x24, x22
+    0.00 :   1ab60:  add     x23, x23, x0
+    0.00 :   1ab64:  cmp     w21, #0x8
+    0.00 :   1ab68:  b.ne    1a4ac <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x116c>  // b.any
+    0.00 :   1ab6c:  ldr     w0, [sp, #196]
+    0.00 :   1ab70:  ldr     w1, [sp, #432]
+    0.00 :   1ab74:  mov     x23, x22
+    0.00 :   1ab78:  mov     x24, x26
+    0.00 :   1ab7c:  mov     x25, x28
+    0.00 :   1ab80:  incw    x0
+    0.00 :   1ab84:  str     w0, [sp, #196]
+    0.00 :   1ab88:  cmp     w1, w0
+    0.00 :   1ab8c:  b.gt    1a408 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x10c8>
+    0.00 :   1ab90:  b       19ae4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x7a4>
+    0.00 :   1ab94:  ldr     x1, [sp, #184]
+    0.00 :   1ab98:  cbz     x1, 1a4d8 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1198>
+    0.00 :   1ab9c:  ldr     w0, [sp, #436]
+    0.00 :   1aba0:  add     w0, w21, w0
+    0.00 :   1aba4:  ldr     w0, [x1, x0, lsl #2]
+    0.00 :   1aba8:  mov     w1, #0x80000000                 // #-2147483648
+    0.00 :   1abac:  cmp     w0, w1
+    0.00 :   1abb0:  add     x0, x30, w0, sxtw
+    0.00 :   1abb4:  mvn     x1, x0
+    0.00 :   1abb8:  lsl     x19, x0, #2
+    0.00 :   1abbc:  cset    w2, ne  // ne = any
+    0.00 :   1abc0:  add     x27, x22, x19
+    0.00 :   1abc4:  lsr     x1, x1, #63
+    0.00 :   1abc8:  ands    w18, w2, w1
+    0.00 :   1abcc:  b.eq    1a4e4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x11a4>  // b.none
+    0.00 :   1abd0:  ldr     x1, [sp, #496]
+    0.00 :   1abd4:  add     x0, x1, x0
+    0.00 :   1abd8:  ldr     x1, [sp, #504]
+    0.00 :   1abdc:  cmp     x0, x1
+    0.00 :   1abe0:  csel    w18, w18, wzr, le
+    0.00 :   1abe4:  b       1a4e4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x11a4>
+    0.00 :   1abe8:  ldp     x27, x28, [sp, #112]
+    0.00 :   1abec:  b       19478 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x138>
+    0.00 :   1abf0:  ldr     w0, [sp, #196]
+    0.00 :   1abf4:  ldr     x8, [sp, #184]
+    0.00 :   1abf8:  mov     x1, x21
+    0.00 :   1abfc:  ldr     x3, [sp, #216]
+    0.00 :   1ac00:  ldr     x2, [sp, #336]
+    0.00 :   1ac04:  ldr     x7, [sp, #400]
+    0.00 :   1ac08:  ldp     x4, x5, [sp, #448]
+    0.00 :   1ac0c:  ldr     x6, [sp, #464]
+    0.00 :   1ac10:  str     x25, [sp]
+    0.00 :   1ac14:  str     w0, [sp, #8]
+    0.00 :   1ac18:  ldr     w0, [sp, #416]
+    0.00 :   1ac1c:  str     w24, [sp, #16]
+    0.00 :   1ac20:  str     x8, [sp, #24]
+    0.00 :   1ac24:  bl      15190 <void lqcd_native::arm::wilson_sve_impl<true, int, true, true>(int, int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, int const*) [clone .isra.0]>
+    0.00 :   1ac28:  b       19478 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x138>
+    0.00 :   1ac2c:  bl      5740 <__cxa_guard_acquire@plt>
+    0.00 :   1ac30:  cbz     w0, 1a0ac <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xd6c>
+    0.00 :   1ac34:  adrp    x0, 58000 <typeinfo name for lqcd::Error+0x88>
+    0.00 :   1ac38:  add     x0, x0, #0x840
+    0.00 :   1ac3c:  bl      5610 <getenv@plt>
+    0.00 :   1ac40:  cbz     x0, 1ac50 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1910>
+    0.00 :   1ac44:  ldrb    w1, [x0]
+    0.00 :   1ac48:  cmp     w1, #0x31
+    0.00 :   1ac4c:  b.eq    1aca0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1960>  // b.none
+    0.00 :   1ac50:  mov     w19, #0x0                       // #0
+    0.00 :   1ac54:  b       1acac <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x196c>
+    0.00 :   1ac58:  bl      5740 <__cxa_guard_acquire@plt>
+    0.00 :   1ac5c:  cbz     w0, 1a084 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xd44>
+    0.00 :   1ac60:  adrp    x0, 58000 <typeinfo name for lqcd::Error+0x88>
+    0.00 :   1ac64:  add     x0, x0, #0x828
+    0.00 :   1ac68:  bl      5610 <getenv@plt>
+    0.00 :   1ac6c:  mov     w1, #0x0                        // #0
+    0.00 :   1ac70:  cbz     x0, 1ac8c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x194c>
+    0.00 :   1ac74:  ldrb    w2, [x0]
+    0.00 :   1ac78:  cmp     w2, #0x31
+    0.00 :   1ac7c:  b.ne    1ac8c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x194c>  // b.any
+    0.00 :   1ac80:  ldrb    w0, [x0, #1]
+    0.00 :   1ac84:  cmp     w0, #0x0
+    0.00 :   1ac88:  csel    w1, w19, wzr, eq  // eq = none
+    0.00 :   1ac8c:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1ac90:  add     x0, x20, #0x6c0
+    0.00 :   1ac94:  strb    w1, [x22, #1736]
+    0.00 :   1ac98:  bl      5130 <__cxa_guard_release@plt>
+    0.00 :   1ac9c:  b       1a084 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xd44>
+    0.00 :   1aca0:  ldrb    w0, [x0, #1]
+    0.00 :   1aca4:  cmp     w0, #0x0
+    0.00 :   1aca8:  csel    w19, w19, wzr, eq  // eq = none
+    0.00 :   1acac:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1acb0:  add     x0, x20, #0x6b0
+    0.00 :   1acb4:  strb    w19, [x22, #1720]
+    0.00 :   1acb8:  bl      5130 <__cxa_guard_release@plt>
+    0.00 :   1acbc:  b       1a0ac <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xd6c>
+    0.00 :   1acc0:  ldr     w0, [sp, #196]
+    0.00 :   1acc4:  cmp     w0, w24
+    0.00 :   1acc8:  b.ge    19478 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x138>  // b.tcont
+    0.00 :   1accc:  sxtw    x5, w24
+    0.00 :   1acd0:  mov     x3, #0x0                        // #0
+    0.00 :   1acd4:  mov     w4, #0x18                       // #24
+    0.00 :   1acd8:  stp     x27, x28, [sp, #112]
+    0.00 :   1acdc:  str     d12, [sp, #160]
+    0.00 :   1ace0:  mov     z0.s, #0
+    0.00 :   1ace4:  stp     d8, d9, [sp, #128]
+    0.00 :   1ace8:  stp     d10, d11, [sp, #144]
+    0.00 :   1acec:  str     x5, [sp, #208]
+    0.00 :   1acf0:  ldr     w0, [sp, #196]
+    0.00 :   1acf4:  sxtw    x2, w0
+    0.00 :   1acf8:  incw    x0
+    0.00 :   1acfc:  add     x1, x2, x3
+    0.00 :   1ad00:  whilelo p0.s, x2, x5
+    0.00 :   1ad04:  st1w    {z0.s}, p0, [x25, x1, lsl #2]
+    0.00 :   1ad08:  cmp     w24, w0
+    0.00 :   1ad0c:  b.gt    1acf4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x19b4>
+    0.00 :   1ad10:  add     x3, x3, x26
+    0.00 :   1ad14:  subs    w4, w4, #0x1
+    0.00 :   1ad18:  b.ne    1acf0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x19b0>  // b.any
+    0.00 :   1ad1c:  ldr     w3, [sp, #416]
+    0.00 :   1ad20:  lsl     x27, x26, #2
+    0.00 :   1ad24:  mov     x23, x27
+    0.00 :   1ad28:  str     w24, [sp, #432]
+    0.00 :   1ad2c:  str     x26, [sp, #504]
+    0.00 :   1ad30:  fmov    s8, #1.000000000000000000e+00
+    0.00 :   1ad34:  fmov    s7, #-1.000000000000000000e+00
+    0.00 :   1ad38:  mov     z6.s, #0
+    0.00 :   1ad3c:  lsl     w1, w3, #1
+    0.00 :   1ad40:  add     w2, w1, w3
+    0.00 :   1ad44:  sbfiz   x30, x1, #2, #32
+    0.00 :   1ad48:  add     w0, w3, w3, lsl #3
+    0.00 :   1ad4c:  lsl     w1, w2, #1
+    0.00 :   1ad50:  ldr     x2, [sp, #400]
+    0.00 :   1ad54:  sbfiz   x28, x1, #2, #32
+    0.00 :   1ad58:  mov     x24, x30
+    0.00 :   1ad5c:  lsl     w0, w0, #1
+    0.00 :   1ad60:  sbfiz   x0, x0, #2, #32
+    0.00 :   1ad64:  str     x0, [sp, #272]
+    0.00 :   1ad68:  str     w1, [sp, #420]
+    0.00 :   1ad6c:  lsl     x0, x26, #4
+    0.00 :   1ad70:  lsl     w1, w3, #2
+    0.00 :   1ad74:  str     x0, [sp, #472]
+    0.00 :   1ad78:  str     w1, [sp, #512]
+    0.00 :   1ad7c:  lsl     x0, x26, #3
+    0.00 :   1ad80:  mov     x26, x25
+    0.00 :   1ad84:  mov     x25, x28
+    0.00 :   1ad88:  str     x0, [sp, #440]
+    0.00 :   1ad8c:  add     x2, x2, x30
+    0.00 :   1ad90:  str     x2, [sp, #488]
+    0.00 :   1ad94:  ldr     w2, [sp, #196]
+    0.00 :   1ad98:  ldp     x1, x3, [sp, #208]
+    0.00 :   1ad9c:  mov     w27, #0x0                       // #0
+    0.00 :   1ada0:  mov     x21, x23
+    0.00 :   1ada4:  ldr     w0, [sp, #432]
+    0.00 :   1ada8:  ldr     w20, [sp, #416]
+    0.00 :   1adac:  mov     w22, w27
+    0.00 :   1adb0:  sxtw    x30, w2
+    0.00 :   1adb4:  sub     w0, w0, w2
+    0.00 :   1adb8:  whilelo p2.s, x30, x1
+    0.00 :   1adbc:  lsl     x1, x30, #2
+    0.00 :   1adc0:  add     x28, x3, x1
+    0.00 :   1adc4:  ldr     x3, [sp, #336]
+    0.00 :   1adc8:  mov     p0.b, p2.b
+    0.00 :   1adcc:  add     x3, x3, x1
+    0.00 :   1add0:  add     x1, x26, x1
+    0.00 :   1add4:  str     x1, [sp, #480]
+    0.00 :   1add8:  ldr     w1, [sp, #192]
+    0.00 :   1addc:  str     x3, [sp, #200]
+    0.00 :   1ade0:  cntw    x3
+    0.00 :   1ade4:  cmp     w0, w3
+    0.00 :   1ade8:  csel    w0, w0, w3, le
+    0.00 :   1adec:  cmp     w1, w2
+    0.00 :   1adf0:  sxtw    x1, w0
+    0.00 :   1adf4:  add     w0, w0, w2
+    0.00 :   1adf8:  str     w0, [sp, #436]
+    0.00 :   1adfc:  cset    w0, le
+    0.00 :   1ae00:  lsl     w0, w0, #3
+    0.00 :   1ae04:  str     w0, [sp, #424]
+    0.00 :   1ae08:  str     x1, [sp, #496]
+    0.00 :   1ae0c:  mov     x0, x26
+    0.00 :   1ae10:  mov     x26, x25
+    0.00 :   1ae14:  mov     x25, x24
+    0.00 :   1ae18:  mov     x24, x28
+    0.00 :   1ae1c:  mov     x28, x0
+    0.00 :   1ae20:  b       1ae44 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1b04>
+    0.00 :   1ae24:  ldr     x0, [sp, #200]
+    0.00 :   1ae28:  ldr     x1, [sp, #272]
+    0.00 :   1ae2c:  add     w22, w22, #0x1
+    0.00 :   1ae30:  add     x24, x24, x21
+    0.00 :   1ae34:  add     x0, x0, x1
+    0.00 :   1ae38:  str     x0, [sp, #200]
+    0.00 :   1ae3c:  cmp     w22, #0x8
+    0.00 :   1ae40:  b.eq    1b2a0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1f60>  // b.none
+    0.00 :   1ae44:  ld1w    {z4.s}, p2/z, [x24]
+    0.00 :   1ae48:  cmpge   p1.s, p0/z, z4.s, #0
+    0.00 :   1ae4c:  ptest   p0, p1.b
+    0.00 :   1ae50:  mov     p3.b, p1.b
+    0.00 :   1ae54:  b.eq    1ae24 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1ae4>  // b.none
+    0.00 :   1ae58:  ldp     w0, w1, [sp, #192]
+    0.00 :   1ae5c:  cmp     w0, w1
+    0.00 :   1ae60:  b.le    1b2cc <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1f8c>
+    0.00 :   1ae64:  ldr     w1, [sp, #436]
+    0.00 :   1ae68:  cmp     w0, w1
+    0.00 :   1ae6c:  b.ge    1b2cc <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1f8c>  // b.tcont
+    0.00 :   1ae70:  mov     x27, x21
+    0.00 :   1ae74:  mov     w19, #0x0                       // #0
+    0.00 :   1ae78:  mov     x23, #0x0                       // #0
+    0.00 :   1ae7c:  ldr     x1, [sp, #200]
+    0.00 :   1ae80:  ldr     x0, [sp, #472]
+    0.00 :   1ae84:  tst     x22, #0x1
+    0.00 :   1ae88:  mov     x14, #0x0                       // #0
+    0.00 :   1ae8c:  ldr     x2, [sp, #440]
+    0.00 :   1ae90:  ldr     x18, [sp, #400]
+    0.00 :   1ae94:  ldr     x15, [sp, #488]
+    0.00 :   1ae98:  fcsel   s5, s8, s7, ne  // ne = any
+    0.00 :   1ae9c:  str     w22, [sp, #516]
+    0.00 :   1aea0:  str     x24, [sp, #520]
+    0.00 :   1aea4:  add     x1, x0, x1
+    0.00 :   1aea8:  asr     w0, w22, #1
+    0.00 :   1aeac:  sbfiz   x0, x0, #4, #32
+    0.00 :   1aeb0:  str     x1, [sp, #408]
+    0.00 :   1aeb4:  sub     x1, x1, x2
+    0.00 :   1aeb8:  str     x1, [sp, #392]
+    0.00 :   1aebc:  ldr     x1, [sp, #448]
+    0.00 :   1aec0:  add     x1, x1, x0
+    0.00 :   1aec4:  str     x1, [sp, #384]
+    0.00 :   1aec8:  ldr     x1, [sp, #456]
+    0.00 :   1aecc:  add     x17, x1, x0
+    0.00 :   1aed0:  ldr     x1, [sp, #464]
+    0.00 :   1aed4:  add     x16, x1, x0
+    0.00 :   1aed8:  ldr     x0, [sp, #480]
+    0.00 :   1aedc:  str     x0, [sp, #224]
+    0.00 :   1aee0:  ldr     w0, [sp, #512]
+    0.00 :   1aee4:  str     w0, [sp, #232]
+    0.00 :   1aee8:  ldp     x0, x4, [sp, #384]
+    0.00 :   1aeec:  ldp     x9, x3, [sp, #400]
+    0.00 :   1aef0:  add     x24, x21, x18
+    0.00 :   1aef4:  mov     x2, #0x0                        // #0
+    0.00 :   1aef8:  ldr     x5, [sp, #200]
+    0.00 :   1aefc:  ldr     x1, [sp, #224]
+    0.00 :   1af00:  ldr     w7, [x0, x14, lsl #2]
+    0.00 :   1af04:  ldr     w0, [sp, #232]
+    0.00 :   1af08:  add     x12, x9, w0, sxtw #2
+    0.00 :   1af0c:  add     x0, x12, x23
+    0.00 :   1af10:  add     w13, w7, w7, lsl #1
+    0.00 :   1af14:  add     x22, x12, x21
+    0.00 :   1af18:  str     x0, [sp, #280]
+    0.00 :   1af1c:  add     x0, x12, x27
+    0.00 :   1af20:  sbfiz   x7, x7, #2, #32
+    0.00 :   1af24:  str     x0, [sp, #360]
+    0.00 :   1af28:  add     x0, x18, x23
+    0.00 :   1af2c:  str     x0, [sp, #296]
+    0.00 :   1af30:  add     x0, x18, x27
+    0.00 :   1af34:  str     x0, [sp, #288]
+    0.00 :   1af38:  add     x0, x15, x23
+    0.00 :   1af3c:  str     x0, [sp, #304]
+    0.00 :   1af40:  add     x0, x15, x27
+    0.00 :   1af44:  str     x0, [sp, #328]
+    0.00 :   1af48:  add     x0, x21, x15
+    0.00 :   1af4c:  str     x0, [sp, #248]
+    0.00 :   1af50:  mul     w0, w20, w13
+    0.00 :   1af54:  add     w6, w20, w0
+    0.00 :   1af58:  lsl     w0, w0, #1
+    0.00 :   1af5c:  add     x8, x9, w0, sxtw #2
+    0.00 :   1af60:  add     x10, x8, x27
+    0.00 :   1af64:  add     x0, x8, x23
+    0.00 :   1af68:  stp     x0, x10, [sp, #312]
+    0.00 :   1af6c:  add     w0, w20, w6
+    0.00 :   1af70:  mov     x10, x9
+    0.00 :   1af74:  lsl     w6, w6, #1
+    0.00 :   1af78:  lsl     w0, w0, #1
+    0.00 :   1af7c:  add     x9, x9, w6, sxtw #2
+    0.00 :   1af80:  add     x10, x10, w0, sxtw #2
+    0.00 :   1af84:  add     x6, x9, x23
+    0.00 :   1af88:  add     x0, x9, x27
+    0.00 :   1af8c:  stp     x6, x0, [sp, #344]
+    0.00 :   1af90:  add     x0, x10, x23
+    0.00 :   1af94:  str     x0, [sp, #368]
+    0.00 :   1af98:  add     x0, x10, x27
+    0.00 :   1af9c:  str     x0, [sp, #376]
+    0.00 :   1afa0:  add     x0, x10, x21
+    0.00 :   1afa4:  str     x0, [sp, #264]
+    0.00 :   1afa8:  add     x0, x9, x21
+    0.00 :   1afac:  str     x0, [sp, #256]
+    0.00 :   1afb0:  add     x0, x8, x21
+    0.00 :   1afb4:  str     x0, [sp, #240]
+    0.00 :   1afb8:  ldr     s1, [x17, x14, lsl #2]
+    0.00 :   1afbc:  ldr     s3, [x16, x14, lsl #2]
+    0.00 :   1afc0:  mov     w0, w2
+    0.00 :   1afc4:  fmul    s1, s5, s1
+    0.00 :   1afc8:  fmul    s3, s5, s3
+    0.00 :   1afcc:  cbnz    w19, 1b230 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1ef0>
+    0.00 :   1afd0:  ldr     x6, [sp, #240]
+    0.00 :   1afd4:  ld1w    {z9.s}, p3/z, [x18, z4.s, sxtw #2]
+    0.00 :   1afd8:  ld1w    {z2.s}, p3/z, [x24, z4.s, sxtw #2]
+    0.00 :   1afdc:  ld1w    {z0.s}, p3/z, [x8, z4.s, sxtw #2]
+    0.00 :   1afe0:  ld1w    {z10.s}, p3/z, [x6, z4.s, sxtw #2]
+    0.00 :   1afe4:  mov     z11.s, s1
+    0.00 :   1afe8:  mov     z3.s, s3
+    0.00 :   1afec:  movprfx z12, z0
+    0.00 :   1aff0:  fmul    z12.s, p0/m, z12.s, z11.s
+    0.00 :   1aff4:  movprfx z1, z0
+    0.00 :   1aff8:  fmul    z1.s, p0/m, z1.s, z3.s
+    0.00 :   1affc:  add     x6, x5, x21
+    0.00 :   1b000:  movprfx z0, z10
+    0.00 :   1b004:  fmul    z0.s, p0/m, z0.s, z3.s
+    0.00 :   1b008:  fmul    z10.s, p0/m, z10.s, z11.s
+    0.00 :   1b00c:  fadd    z9.s, p0/m, z9.s, z12.s
+    0.00 :   1b010:  fadd    z2.s, p0/m, z2.s, z10.s
+    0.00 :   1b014:  fsub    z9.s, p0/m, z9.s, z0.s
+    0.00 :   1b018:  fadd    z2.s, p0/m, z2.s, z1.s
+    0.00 :   1b01c:  ld1w    {z0.s}, p1/z, [x5]
+    0.00 :   1b020:  ld1w    {z10.s}, p1/z, [x6]
+    0.00 :   1b024:  movprfx z1, z0
+    0.00 :   1b028:  fmul    z1.s, p0/m, z1.s, z9.s
+    0.00 :   1b02c:  fmul    z0.s, p0/m, z0.s, z2.s
+    0.00 :   1b030:  fmul    z2.s, p0/m, z2.s, z10.s
+    0.00 :   1b034:  fmul    z10.s, p0/m, z10.s, z9.s
+    0.00 :   1b038:  fsub    z1.s, p0/m, z1.s, z2.s
+    0.00 :   1b03c:  fadd    z0.s, p0/m, z0.s, z10.s
+    0.00 :   1b040:  fadd    z1.s, p0/m, z1.s, z6.s
+    0.00 :   1b044:  fadd    z0.s, p0/m, z0.s, z6.s
+    0.00 :   1b048:  cbnz    w19, 1b254 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1f14>
+    0.00 :   1b04c:  ldr     x6, [sp, #248]
+    0.00 :   1b050:  ld1w    {z10.s}, p3/z, [x15, z4.s, sxtw #2]
+    0.00 :   1b054:  ld1w    {z9.s}, p3/z, [x9, z4.s, sxtw #2]
+    0.00 :   1b058:  ld1w    {z2.s}, p3/z, [x6, z4.s, sxtw #2]
+    0.00 :   1b05c:  ldr     x6, [sp, #256]
+    0.00 :   1b060:  ld1w    {z16.s}, p3/z, [x6, z4.s, sxtw #2]
+    0.00 :   1b064:  movprfx z12, z9
+    0.00 :   1b068:  fmul    z12.s, p0/m, z12.s, z3.s
+    0.00 :   1b06c:  movprfx z17, z9
+    0.00 :   1b070:  fmul    z17.s, p0/m, z17.s, z11.s
+    0.00 :   1b074:  add     x6, x4, x21
+    0.00 :   1b078:  movprfx z9, z16
+    0.00 :   1b07c:  fmul    z9.s, p0/m, z9.s, z3.s
+    0.00 :   1b080:  fmul    z16.s, p0/m, z16.s, z11.s
+    0.00 :   1b084:  fadd    z10.s, p0/m, z10.s, z17.s
+    0.00 :   1b088:  fadd    z2.s, p0/m, z2.s, z16.s
+    0.00 :   1b08c:  fsub    z10.s, p0/m, z10.s, z9.s
+    0.00 :   1b090:  fadd    z2.s, p0/m, z2.s, z12.s
+    0.00 :   1b094:  ld1w    {z9.s}, p1/z, [x4]
+    0.00 :   1b098:  ld1w    {z12.s}, p1/z, [x6]
+    0.00 :   1b09c:  movprfx z16, z9
+    0.00 :   1b0a0:  fmul    z16.s, p0/m, z16.s, z10.s
+    0.00 :   1b0a4:  fmul    z9.s, p0/m, z9.s, z2.s
+    0.00 :   1b0a8:  fmul    z2.s, p0/m, z2.s, z12.s
+    0.00 :   1b0ac:  fmul    z12.s, p0/m, z12.s, z10.s
+    0.00 :   1b0b0:  fsubr   z2.s, p0/m, z2.s, z16.s
+    0.00 :   1b0b4:  fadd    z9.s, p0/m, z9.s, z12.s
+    0.00 :   1b0b8:  movprfx z16, z1
+    0.00 :   1b0bc:  fadd    z16.s, p0/m, z16.s, z2.s
+    0.00 :   1b0c0:  movprfx z12, z0
+    0.00 :   1b0c4:  fadd    z12.s, p0/m, z12.s, z9.s
+    0.00 :   1b0c8:  cbnz    w19, 1b20c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1ecc>
+    0.00 :   1b0cc:  ldr     x6, [sp, #264]
+    0.00 :   1b0d0:  ld1w    {z10.s}, p3/z, [x12, z4.s, sxtw #2]
+    0.00 :   1b0d4:  ld1w    {z2.s}, p3/z, [x22, z4.s, sxtw #2]
+    0.00 :   1b0d8:  ld1w    {z17.s}, p3/z, [x10, z4.s, sxtw #2]
+    0.00 :   1b0dc:  ld1w    {z18.s}, p3/z, [x6, z4.s, sxtw #2]
+    0.00 :   1b0e0:  ldr     s9, [x16, x7]
+    0.00 :   1b0e4:  ldr     s0, [x17, x7]
+    0.00 :   1b0e8:  add     w0, w0, w13
+    0.00 :   1b0ec:  movprfx z1, z18
+    0.00 :   1b0f0:  fmul    z1.s, p0/m, z1.s, z11.s
+    0.00 :   1b0f4:  mul     w0, w0, w20
+    0.00 :   1b0f8:  fadd    z1.s, p0/m, z1.s, z2.s
+    0.00 :   1b0fc:  add     x11, x3, x21
+    0.00 :   1b100:  movprfx z19, z17
+    0.00 :   1b104:  fmul    z19.s, p0/m, z19.s, z11.s
+    0.00 :   1b108:  fmul    z18.s, p0/m, z18.s, z3.s
+    0.00 :   1b10c:  fmul    z17.s, p0/m, z17.s, z3.s
+    0.00 :   1b110:  fadd    z10.s, p0/m, z10.s, z19.s
+    0.00 :   1b114:  ld1w    {z3.s}, p1/z, [x3]
+    0.00 :   1b118:  fsub    z10.s, p0/m, z10.s, z18.s
+    0.00 :   1b11c:  fadd    z1.s, p0/m, z1.s, z17.s
+    0.00 :   1b120:  movprfx z11, z3
+    0.00 :   1b124:  fmul    z11.s, p0/m, z11.s, z10.s
+    0.00 :   1b128:  fmul    z3.s, p0/m, z3.s, z1.s
+    0.00 :   1b12c:  add     x6, x1, x21
+    0.00 :   1b130:  lsl     w0, w0, #1
+    0.00 :   1b134:  add     x0, x30, w0, sxtw
+    0.00 :   1b138:  add     x0, x28, x0, lsl #2
+    0.00 :   1b13c:  fmul    s2, s5, s9
+    0.00 :   1b140:  fmul    s0, s5, s0
+    0.00 :   1b144:  ld1w    {z9.s}, p1/z, [x11]
+    0.00 :   1b148:  fmul    z1.s, p0/m, z1.s, z9.s
+    0.00 :   1b14c:  fmul    z9.s, p0/m, z9.s, z10.s
+    0.00 :   1b150:  fsubr   z1.s, p0/m, z1.s, z11.s
+    0.00 :   1b154:  ld1w    {z10.s}, p2/z, [x1]
+    0.00 :   1b158:  fadd    z1.s, p0/m, z1.s, z16.s
+    0.00 :   1b15c:  fadd    z3.s, p0/m, z3.s, z9.s
+    0.00 :   1b160:  fadd    z10.s, p0/m, z10.s, z1.s
+    0.00 :   1b164:  fadd    z3.s, p0/m, z3.s, z12.s
+    0.00 :   1b168:  st1w    {z10.s}, p2, [x1]
+    0.00 :   1b16c:  mov     z2.s, s2
+    0.00 :   1b170:  mov     z0.s, s0
+    0.00 :   1b174:  movprfx z9, z1
+    0.00 :   1b178:  fmul    z9.s, p0/m, z9.s, z0.s
+    0.00 :   1b17c:  fmul    z1.s, p0/m, z1.s, z2.s
+    0.00 :   1b180:  fmul    z0.s, p0/m, z0.s, z3.s
+    0.00 :   1b184:  fadd    z0.s, p0/m, z0.s, z1.s
+    0.00 :   1b188:  ld1w    {z1.s}, p2/z, [x6]
+    0.00 :   1b18c:  fadd    z1.s, p0/m, z1.s, z3.s
+    0.00 :   1b190:  add     x11, x0, x21
+    0.00 :   1b194:  movprfx z11, z3
+    0.00 :   1b198:  fmul    z11.s, p0/m, z11.s, z2.s
+    0.00 :   1b19c:  movprfx z2, z9
+    0.00 :   1b1a0:  fsub    z2.s, p0/m, z2.s, z11.s
+    0.00 :   1b1a4:  st1w    {z1.s}, p2, [x6]
+    0.00 :   1b1a8:  ld1w    {z1.s}, p2/z, [x0]
+    0.00 :   1b1ac:  fadd    z1.s, p0/m, z1.s, z2.s
+    0.00 :   1b1b0:  add     x2, x2, #0x1
+    0.00 :   1b1b4:  st1w    {z1.s}, p2, [x0]
+    0.00 :   1b1b8:  ld1w    {z1.s}, p2/z, [x11]
+    0.00 :   1b1bc:  fadd    z0.s, p0/m, z0.s, z1.s
+    0.00 :   1b1c0:  st1w    {z0.s}, p2, [x11]
+    0.00 :   1b1c4:  add     x4, x4, x26
+    0.00 :   1b1c8:  add     x5, x5, x26
+    0.00 :   1b1cc:  add     x3, x3, x26
+    0.00 :   1b1d0:  add     x1, x1, x25
+    0.00 :   1b1d4:  cmp     x2, #0x3
+    0.00 :   1b1d8:  b.ne    1afb8 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1c78>  // b.any
+    0.00 :   1b1dc:  ldr     w0, [sp, #232]
+    0.00 :   1b1e0:  ldr     w1, [sp, #420]
+    0.00 :   1b1e4:  add     x15, x15, x26
+    0.00 :   1b1e8:  add     x18, x18, x26
+    0.00 :   1b1ec:  add     w0, w0, w1
+    0.00 :   1b1f0:  str     w0, [sp, #232]
+    0.00 :   1b1f4:  ldr     x0, [sp, #224]
+    0.00 :   1b1f8:  add     x0, x0, x26
+    0.00 :   1b1fc:  str     x0, [sp, #224]
+    0.00 :   1b200:  cbnz    x14, 1b278 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1f38>
+    0.00 :   1b204:  mov     x14, #0x1                       // #1
+    0.00 :   1b208:  b       1aee8 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1ba8>
+    0.00 :   1b20c:  ldr     x6, [sp, #280]
+    0.00 :   1b210:  ld1w    {z10.s}, p1/z, [x6]
+    0.00 :   1b214:  ldr     x6, [sp, #360]
+    0.00 :   1b218:  ld1w    {z2.s}, p1/z, [x6]
+    0.00 :   1b21c:  ldr     x6, [sp, #368]
+    0.00 :   1b220:  ld1w    {z17.s}, p1/z, [x6]
+    0.00 :   1b224:  ldr     x6, [sp, #376]
+    0.00 :   1b228:  ld1w    {z18.s}, p1/z, [x6]
+    0.00 :   1b22c:  b       1b0e0 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1da0>
+    0.00 :   1b230:  ldr     x6, [sp, #296]
+    0.00 :   1b234:  ld1w    {z9.s}, p1/z, [x6]
+    0.00 :   1b238:  ldr     x6, [sp, #288]
+    0.00 :   1b23c:  ld1w    {z2.s}, p1/z, [x6]
+    0.00 :   1b240:  ldr     x6, [sp, #312]
+    0.00 :   1b244:  ld1w    {z0.s}, p1/z, [x6]
+    0.00 :   1b248:  ldr     x6, [sp, #320]
+    0.00 :   1b24c:  ld1w    {z10.s}, p1/z, [x6]
+    0.00 :   1b250:  b       1afe4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1ca4>
+    0.00 :   1b254:  ldr     x6, [sp, #304]
+    0.00 :   1b258:  ld1w    {z10.s}, p1/z, [x6]
+    0.00 :   1b25c:  ldr     x6, [sp, #328]
+    0.00 :   1b260:  ld1w    {z2.s}, p1/z, [x6]
+    0.00 :   1b264:  ldr     x6, [sp, #344]
+    0.00 :   1b268:  ld1w    {z9.s}, p1/z, [x6]
+    0.00 :   1b26c:  ldr     x6, [sp, #352]
+    0.00 :   1b270:  ld1w    {z16.s}, p1/z, [x6]
+    0.00 :   1b274:  b       1b064 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1d24>
+    0.00 :   1b278:  ldr     x0, [sp, #200]
+    0.00 :   1b27c:  ldr     x1, [sp, #272]
+    0.00 :   1b280:  ldr     w22, [sp, #516]
+    0.00 :   1b284:  ldr     x24, [sp, #520]
+    0.00 :   1b288:  add     x0, x0, x1
+    0.00 :   1b28c:  add     w22, w22, #0x1
+    0.00 :   1b290:  str     x0, [sp, #200]
+    0.00 :   1b294:  add     x24, x24, x21
+    0.00 :   1b298:  cmp     w22, #0x8
+    0.00 :   1b29c:  b.ne    1ae44 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1b04>  // b.any
+    0.00 :   1b2a0:  ldr     w0, [sp, #196]
+    0.00 :   1b2a4:  ldr     w1, [sp, #432]
+    0.00 :   1b2a8:  mov     x24, x25
+    0.00 :   1b2ac:  mov     x23, x21
+    0.00 :   1b2b0:  mov     x25, x26
+    0.00 :   1b2b4:  mov     x26, x28
+    0.00 :   1b2b8:  incw    x0
+    0.00 :   1b2bc:  str     w0, [sp, #196]
+    0.00 :   1b2c0:  cmp     w1, w0
+    0.00 :   1b2c4:  b.gt    1ad94 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1a54>
+    0.00 :   1b2c8:  b       19ae4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x7a4>
+    0.00 :   1b2cc:  ldr     x1, [sp, #184]
+    0.00 :   1b2d0:  cbz     x1, 1ae70 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1b30>
+    0.00 :   1b2d4:  ldr     w0, [sp, #424]
+    0.00 :   1b2d8:  add     w0, w22, w0
+    0.00 :   1b2dc:  ldr     w0, [x1, x0, lsl #2]
+    0.00 :   1b2e0:  mov     w1, #0x80000000                 // #-2147483648
+    0.00 :   1b2e4:  cmp     w0, w1
+    0.00 :   1b2e8:  add     x0, x30, w0, sxtw
+    0.00 :   1b2ec:  mvn     x1, x0
+    0.00 :   1b2f0:  lsl     x23, x0, #2
+    0.00 :   1b2f4:  cset    w2, ne  // ne = any
+    0.00 :   1b2f8:  add     x27, x21, x23
+    0.00 :   1b2fc:  lsr     x1, x1, #63
+    0.00 :   1b300:  ands    w19, w2, w1
+    0.00 :   1b304:  b.eq    1ae7c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1b3c>  // b.none
+    0.00 :   1b308:  ldr     x1, [sp, #496]
+    0.00 :   1b30c:  add     x0, x1, x0
+    0.00 :   1b310:  ldr     x1, [sp, #504]
+    0.00 :   1b314:  cmp     x0, x1
+    0.00 :   1b318:  csel    w19, w19, wzr, le
+    0.00 :   1b31c:  b       1ae7c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x1b3c>
+    0.00 :   1b320:  add     x18, x5, x22
+    0.00 :   1b324:  add     x20, x5, x17
+    0.00 :   1b328:  add     x19, x0, x17
+    0.00 :   1b32c:  ld1w    {z0.s}, p1/z, [x18]
+    0.00 :   1b330:  add     x18, x0, x22
+    0.00 :   1b334:  ld1w    {z3.s}, p1/z, [x20]
+    0.00 :   1b338:  ld1w    {z1.s}, p1/z, [x19]
+    0.00 :   1b33c:  ld1w    {z6.s}, p1/z, [x18]
+    0.00 :   1b340:  b       19ddc <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0xa9c>
+    0.00 :   1b344:  ldr     w9, [sp, #344]
+    0.07 :   1b348:  ldr     x0, [sp, #200]
+    0.00 :   1b34c:  add     x24, x24, x28
+    0.00 :   1b350:  add     w9, w9, #0x1
+    0.00 :   1b354:  add     x30, x30, x0
+    0.18 :   1b358:  cmp     w9, #0x8
+    0.00 :   1b35c:  b.ne    19cd4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x994>  // b.any
+    0.00 :   1b360:  ldr     w0, [sp, #196]
+    0.00 :   1b364:  ldr     w1, [sp, #248]
+    0.00 :   1b368:  incw    x0
+    0.00 :   1b36c:  str     w0, [sp, #196]
+    0.00 :   1b370:  cmp     w1, w0
+    0.00 :   1b374:  b.gt    19c2c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x8ec>
+    0.00 :   1b378:  b       19ae4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x7a4>
+    0.00 :   1b37c:  ldr     x1, [sp, #184]
+    0.00 :   1b380:  cbz     x1, 19d00 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x9c0>
+    0.00 :   1b384:  ldr     w0, [sp, #264]
+    0.00 :   1b388:  add     w0, w9, w0
+    0.00 :   1b38c:  ldr     w0, [x1, x0, lsl #2]
+    0.00 :   1b390:  mov     w1, #0x80000000                 // #-2147483648
+    0.00 :   1b394:  cmp     w0, w1
+    0.00 :   1b398:  add     x0, x14, w0, sxtw
+    0.00 :   1b39c:  mvn     x1, x0
+    0.00 :   1b3a0:  lsl     x17, x0, #2
+    0.00 :   1b3a4:  cset    w8, ne  // ne = any
+    0.00 :   1b3a8:  add     x22, x28, x17
+    0.00 :   1b3ac:  lsr     x1, x1, #63
+    0.00 :   1b3b0:  ands    w8, w8, w1
+    0.00 :   1b3b4:  b.eq    19d0c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x9cc>  // b.none
+    0.00 :   1b3b8:  ldr     x1, [sp, #320]
+    0.00 :   1b3bc:  add     x0, x1, x0
+    0.00 :   1b3c0:  ldr     x1, [sp, #328]
+    0.00 :   1b3c4:  cmp     x0, x1
+    0.00 :   1b3c8:  csel    w8, w8, wzr, le
+    0.00 :   1b3cc:  b       19d0c <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x9cc>
+    0.00 :   1b3d0:  bl      5740 <__cxa_guard_acquire@plt>
+    0.00 :   1b3d4:  cbz     w0, 19b68 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x828>
+    0.00 :   1b3d8:  adrp    x0, 58000 <typeinfo name for lqcd::Error+0x88>
+    0.00 :   1b3dc:  add     x0, x0, #0x840
+    0.00 :   1b3e0:  bl      5610 <getenv@plt>
+    0.00 :   1b3e4:  cbz     x0, 1b3f4 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x20b4>
+    0.00 :   1b3e8:  ldrb    w1, [x0]
+    0.00 :   1b3ec:  cmp     w1, #0x31
+    0.00 :   1b3f0:  b.eq    1b444 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x2104>  // b.none
+    0.00 :   1b3f4:  mov     w19, #0x0                       // #0
+    0.00 :   1b3f8:  b       1b450 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x2110>
+    0.00 :   1b3fc:  bl      5740 <__cxa_guard_acquire@plt>
+    0.00 :   1b400:  cbz     w0, 19b40 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x800>
+    0.00 :   1b404:  adrp    x0, 58000 <typeinfo name for lqcd::Error+0x88>
+    0.00 :   1b408:  add     x0, x0, #0x828
+    0.00 :   1b40c:  bl      5610 <getenv@plt>
+    0.00 :   1b410:  mov     w1, #0x0                        // #0
+    0.00 :   1b414:  cbz     x0, 1b430 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x20f0>
+    0.00 :   1b418:  ldrb    w2, [x0]
+    0.00 :   1b41c:  cmp     w2, #0x31
+    0.00 :   1b420:  b.ne    1b430 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x20f0>  // b.any
+    0.00 :   1b424:  ldrb    w0, [x0, #1]
+    0.00 :   1b428:  cmp     w0, #0x0
+    0.00 :   1b42c:  csel    w1, w19, wzr, eq  // eq = none
+    0.00 :   1b430:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1b434:  add     x0, x20, #0x6c0
+    0.00 :   1b438:  strb    w1, [x22, #1736]
+    0.00 :   1b43c:  bl      5130 <__cxa_guard_release@plt>
+    0.00 :   1b440:  b       19b40 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x800>
+    0.00 :   1b444:  ldrb    w0, [x0, #1]
+    0.00 :   1b448:  cmp     w0, #0x0
+    0.00 :   1b44c:  csel    w19, w19, wzr, eq  // eq = none
+    0.00 :   1b450:  adrp    x22, 80000 <std::ostream::put(char)@GLIBCXX_3.4>
+    0.00 :   1b454:  add     x0, x20, #0x6b0
+    0.00 :   1b458:  strb    w19, [x22, #1720]
+    0.00 :   1b45c:  bl      5130 <__cxa_guard_release@plt>
+    0.00 :   1b460:  b       19b68 <NativeMG::Impl::local_range(int, float const*, float*, int, bool) const+0x828>
