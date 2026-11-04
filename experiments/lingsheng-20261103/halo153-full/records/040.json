@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+    "-u",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker10_live_task_guard_v4.py",
+    "--plan",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/guard-plan.json",
+    "--plan-sha",
+    "77722b16eb8b04650c198093a1d6062d6394fda3ab9d50abadfcfbd936bff0f1"
+  ],
+  "cwd": "/home/share/nsls_lwb/.cache/mg-opt-20261103",
+  "timeout": 4500,
+  "environment": {
+    "LD_LIBRARY_PATH": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sme/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+    "LD_PRELOAD": "",
+    "LD_DEBUG": "[REDACTED: private environment/credential]",
+    "LD_DEBUG_OUTPUT": "[REDACTED: private environment/credential]",
+    "PERF_COUNTER_ROOT": "",
+    "OMP_WAIT_POLICY": "",
+    "GOMP_SPINCOUNT": "",
+    "LQCD_EXPERIMENT_KUPL_ROOT": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release",
+    "LQCD_EXPERIMENT_CXX_RUNTIME": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64",
+    "LQCD_MPI_FLAGS": "--host;localhost:4;--map-by;ppr:1:numa:PE=2;--bind-to;core"
+  }
+}

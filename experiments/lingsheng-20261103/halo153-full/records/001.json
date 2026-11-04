@@ -1,0 +1,32 @@
+{
+  "complete": true,
+  "id": "148-halo-v2-full-worker10",
+  "task_sha256": "3123bba9e8f417766c17abd0acdaba34b2864dfa36bb883940b9243e913de32f",
+  "original_task_sha256": "9b38dd8eeb58ea7822c132c5251792dc19f8f9b51b7b1c2fde65cc317267eb09",
+  "contract_sha256": "cae6b0e7031f0ef9ba404ce6060374e4aafef839165635094ddcf86c03cb6a68",
+  "publisher_sha256": "699361c397f236edf21092a3833739e22f514547c5d18ec8eb25a6207d2b7319",
+  "dependencies": [
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/151-runtime-confirm-worker10-v7.status.json",
+      "sha256": "2ef8f6203074710cab24b9e37320309c75c43bdee7efa7f03fea6bb91df00901",
+      "task_tag": "dbcb032cdf7b49e9a824fb40de89b4ee"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/150-best-solve-profile-worker10.status.json",
+      "sha256": "59b74ccafce16e458d13c40c903047a50a09b234a6da144e1d18ebf0b7bb7b02",
+      "task_tag": "b16a5e94574c49bd8d1a4c04362f626a"
+    }
+  ],
+  "expected_best": "052-reduce-on",
+  "best_sha256": "a71b1a006f4cbf0a4227620ec6c8e14fcce849fa34fe9d9e55f1068657aa211b",
+  "scheduler_query": {
+    "method": "Original authenticated allocation plus fresh idle heartbeat/held lock and mandatory live exact parent guard before original scientific scope",
+    "initial_query_epoch": 1793783927.2402964,
+    "current_scheduler_query": "not used; last recorded control-plane timeouts retained",
+    "original_allocation_sha256": "a454a02d3ce61c75edec6a54fba4c190e81d5006a2402328b33d7ffada015085",
+    "prior_actual_parent_guard_sha256": "7a052bf3067a00b7f1cd511bc74a1b26623a5edb01ad1d9703173e2c081306f9",
+    "new_guard_plan_sha256": "4b14a3c646a28871c146dda4d48b8822424ecc2d8b294d1635eae3cc8e0fb057"
+  },
+  "heartbeat_sha256": "b821c334e1da4fa8e200c5390ecc32486810090814d5e332ece0a17d83475717",
+  "epoch": 1793791188.1859121
+}

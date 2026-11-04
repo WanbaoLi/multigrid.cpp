@@ -1,0 +1,75 @@
+{
+  "complete": true,
+  "id": "153-halo-v2-remainder-worker10",
+  "task_sha256": "f9c71f3c1ee95e57ffd62fc6e5d2d70360bcac53baab56c38bc624f28e32a227",
+  "startup_sha256": "f3a40ea0e1185e51c0e7e63750ea18c9b0dae9c489003f280ebef739f59a84c2",
+  "dependencies_and_pins": [
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-halo-v2-760/arm_halo_v2_qualify.py",
+      "sha256": "d0d910ff0501d6fdb752d1a64ed1aafb934e27aa1d74b5781f8a3071805bfa7d"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/ctest_remainder_v1.py",
+      "sha256": "52bb4379591fd1840cebfb28281ae3fa0b8630626d72bb017be8c8c81d9f57b4"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/148-halo-v2-full-worker10.status.json",
+      "sha256": "fbcdc67d5afba83a47ad8a2d475d5f807bf08351d18b9d8dec1ecce9b5493a38"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/148-halo-v2-full-worker10-state.json",
+      "sha256": "9e2afe9b89a0802f177c2c9e404a679b2c0e0b6b708419a43dc7861f66206675"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/prior-attempt.json",
+      "sha256": "e517e0c450e578bcbf9593183521400c3808afff2dab9d479566b478e79004a7"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/catalog.json",
+      "sha256": "d4182326e314332c2457ffe983a94473678f86affd927a0076f10dacbead2889"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/mpi-numerical-ctest-000.log",
+      "sha256": "374e8506c4dd972bee7496cde232503e1da8a5d943e6654d21f3694253dcaa7c"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source-manifest.json",
+      "sha256": "d93dde39cb162bd12c845c05e480b73c49dac5385c0fab368abaf8e43bc9fda7"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+      "sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/CTestTestfile.cmake",
+      "sha256": "62c8d7a878a8230794b87a01909c9cea7e3eba68d005056dda59543c9c26bb08"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/recovery-plan.json",
+      "sha256": "406b13127faa3a401c335b9befc174a022e9fd433e933533fe27d2ee28447609"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/original-task.json",
+      "sha256": "198801ebdb5bd5f45c2c03c40cd263a7e14fd2ce90471f6c742ef6a311b45bfd"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/guard-plan.json",
+      "sha256": "77722b16eb8b04650c198093a1d6062d6394fda3ab9d50abadfcfbd936bff0f1"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker10_live_task_guard_v4.py",
+      "sha256": "b882c2175f1a1679bfa753f73e43a884a31377b1bc79d021ed48765c5dcdc175"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/arm_halo_v2_remainder_v1.py",
+      "sha256": "583cb30d6e4e58bfa00202527d7dd5ea302f54cc9b4167a98d19e345716abe55"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/best.json",
+      "sha256": "a71b1a006f4cbf0a4227620ec6c8e14fcce849fa34fe9d9e55f1068657aa211b"
+    }
+  ],
+  "scientific_controller_sha256": "583cb30d6e4e58bfa00202527d7dd5ea302f54cc9b4167a98d19e345716abe55",
+  "state": "/home/share/nsls_lwb/.cache/mg-opt-20261103/153-halo-v2-remainder-worker10-state.json",
+  "main_best_modified": false
+}

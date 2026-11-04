@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "prepared_only": true,
+  "entry_sha256": "a9afbc64994d5c48587d09e27f70dd74cd797516feb4c7adcf1ec45a6e61bb59",
+  "manifest_sha256": "684739d825a50e7e7dbb8ab16fa1b2645725abf27a9aa65a42e2ecf3a9117851",
+  "archive_sha256": "d28f492972d9ae5148236c07858cce88d206359ebd41bec64dac118691b3435e",
+  "archive_bytes": 122326,
+  "tests": {
+    "count": 26,
+    "returncode": 0,
+    "log_sha256": "0c364144013287093f618b39b5df8b025df21fd8f7ea75483e77d3cfc602b08f"
+  }
+}

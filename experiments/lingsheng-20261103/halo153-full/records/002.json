@@ -1,0 +1,63 @@
+{
+  "allocation": "mg-opt-20261103-worker10",
+  "arm_codegen_complete": true,
+  "codegen_files": {
+    "attempts/000-halo-v2-tests/codegen/codegen.json": "693c1dec99d2d1ec6aaf566771568052538ffea58448806a4306a63732223618",
+    "attempts/000-halo-v2-tests/codegen/old052-0.asm": "d02bed5a35d623f5eb067e8ec9f50d24b8ebc3832be895cd718e431a131fa24f",
+    "attempts/000-halo-v2-tests/codegen/v2-0.asm": "4bba675d38524f7f74c95c3a535552e0e9eb6f0582e3a596874145a54fbe6691",
+    "attempts/000-halo-v2-tests/codegen/v2-1.asm": "73c6e8c68d4b25f4857bbfe92624fb8d6b7d0e282fe9984414832cee858d2548",
+    "attempts/000-halo-v2-tests/codegen/v2-2.asm": "0f7e1a3bde06c9b0c7e449537440757bbf3344e22c0b4ab194b787b4a73658a4"
+  },
+  "complete": false,
+  "controller_sha256": "d0d910ff0501d6fdb752d1a64ed1aafb934e27aa1d74b5781f8a3071805bfa7d",
+  "error": "Stage failed; retain evidence: mpi-numerical-ctest",
+  "full_numerical_complete": false,
+  "helper_manifest_sha256": "8923c17bdd89a9be489e131e5f0cad51eb8372cc0d1a6cda7efb79415ce59c27",
+  "host": "cn19486",
+  "library": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+  "library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+  "main_best_unchanged_sha256": "a71b1a006f4cbf0a4227620ec6c8e14fcce849fa34fe9d9e55f1068657aa211b",
+  "mpi_status": "pending",
+  "performance_ranked": false,
+  "production_full12_verified": false,
+  "scope": "full",
+  "snapshot": {
+    "archive_sha256": "dc57fe91b238fbf1eed0606f466b9c7ec8d9c53fad87c82b2072c5d10296f2c9",
+    "build": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build",
+    "git_head": "760666c8ac459ef062c749ee7ee9964c99e7c3c8",
+    "source": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source",
+    "source_manifest_sha256": "d93dde39cb162bd12c845c05e480b73c49dac5385c0fab368abaf8e43bc9fda7"
+  },
+  "source_head": "760666c8ac459ef062c749ee7ee9964c99e7c3c8",
+  "stages": {
+    "arm-codegen": {
+      "log": "arm-codegen-000.log",
+      "reused": true,
+      "status": "passed"
+    },
+    "arm-unit-ctest": {
+      "log": "arm-unit-ctest-000.log",
+      "reused": true,
+      "status": "passed"
+    },
+    "build": {
+      "log": "build-000.log",
+      "reused": true,
+      "status": "passed"
+    },
+    "configure": {
+      "log": "configure-000.log",
+      "reused": true,
+      "status": "passed"
+    },
+    "mpi-numerical-ctest": {
+      "log": "mpi-numerical-ctest-000.log",
+      "reused": false,
+      "status": "timeout"
+    }
+  },
+  "status": "failed",
+  "sve_matrix_status": "pending",
+  "test_attempt": "000-halo-v2-tests",
+  "unit_complete": true
+}

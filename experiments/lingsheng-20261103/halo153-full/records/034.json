@@ -1,0 +1,786 @@
+{
+  "backtraceGraph": {
+    "commands": [
+      "add_test",
+      "include"
+    ],
+    "files": [
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/cmake/Tests.cmake",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/CMakeLists.txt"
+    ],
+    "nodes": [
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 0
+      },
+      {
+        "file": 0,
+        "parent": 1
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 97,
+        "parent": 2
+      },
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 4
+      },
+      {
+        "file": 0,
+        "parent": 5
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 100,
+        "parent": 6
+      },
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 8
+      },
+      {
+        "file": 0,
+        "parent": 9
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 100,
+        "parent": 10
+      },
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 12
+      },
+      {
+        "file": 0,
+        "parent": 13
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 104,
+        "parent": 14
+      },
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 16
+      },
+      {
+        "file": 0,
+        "parent": 17
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 105,
+        "parent": 18
+      },
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 20
+      },
+      {
+        "file": 0,
+        "parent": 21
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 109,
+        "parent": 22
+      },
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 24
+      },
+      {
+        "file": 0,
+        "parent": 25
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 127,
+        "parent": 26
+      },
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 28
+      },
+      {
+        "file": 0,
+        "parent": 29
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 127,
+        "parent": 30
+      },
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 32
+      },
+      {
+        "file": 0,
+        "parent": 33
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 127,
+        "parent": 34
+      },
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 36
+      },
+      {
+        "file": 0,
+        "parent": 37
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 127,
+        "parent": 38
+      },
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 40
+      },
+      {
+        "file": 0,
+        "parent": 41
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 132,
+        "parent": 42
+      },
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 44
+      },
+      {
+        "file": 0,
+        "parent": 45
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 134,
+        "parent": 46
+      },
+      {
+        "file": 1
+      },
+      {
+        "command": 1,
+        "file": 1,
+        "line": 120,
+        "parent": 48
+      },
+      {
+        "file": 0,
+        "parent": 49
+      },
+      {
+        "command": 0,
+        "file": 0,
+        "line": 147,
+        "parent": 50
+      }
+    ]
+  },
+  "kind": "ctestInfo",
+  "tests": [
+    {
+      "backtrace": 3,
+      "command": [
+        "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec",
+        "--host",
+        "localhost:4",
+        "--map-by",
+        "ppr:1:numa:PE=2",
+        "--bind-to",
+        "core",
+        "-n",
+        "2",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_batch12.py"
+      ],
+      "name": "batch12_coarse_reduce_mpi2",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "LQCD_COARSE_BATCH_REDUCE=1",
+            "LQCD_COARSE_BATCH_HALO=0"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 600.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    },
+    {
+      "backtrace": 7,
+      "command": [
+        "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec",
+        "--host",
+        "localhost:4",
+        "--map-by",
+        "ppr:1:numa:PE=2",
+        "--bind-to",
+        "core",
+        "-n",
+        "2",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_batch12.py"
+      ],
+      "name": "batch12_coarse_halo_mpi2",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "LQCD_COARSE_BATCH_REDUCE=1",
+            "LQCD_COARSE_BATCH_HALO=1"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 600.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    },
+    {
+      "backtrace": 11,
+      "command": [
+        "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec",
+        "--host",
+        "localhost:4",
+        "--map-by",
+        "ppr:1:numa:PE=2",
+        "--bind-to",
+        "core",
+        "-n",
+        "4",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_batch12.py"
+      ],
+      "name": "batch12_coarse_halo_mpi4",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "LQCD_COARSE_BATCH_REDUCE=1",
+            "LQCD_COARSE_BATCH_HALO=1"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 600.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    },
+    {
+      "backtrace": 15,
+      "command": [
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_coarse_batch_reduce.py"
+      ],
+      "name": "coarse_batch_reduce_serial",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "OMP_PLACES=cores",
+            "OMP_PROC_BIND=close",
+            "LQCD_COARSE_FUSED=0",
+            "LQCD_ARM_COARSE_SVE=0",
+            "LQCD_HALO_OVERLAP=1",
+            "LQCD_COARSE_SPATIAL_OVERLAP=0"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 600.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    },
+    {
+      "backtrace": 19,
+      "command": [
+        "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec",
+        "--host",
+        "localhost:4",
+        "--map-by",
+        "ppr:1:numa:PE=2",
+        "--bind-to",
+        "core",
+        "-n",
+        "2",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_coarse_batch_reduce.py"
+      ],
+      "name": "coarse_batch_reduce_mpi2",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "OMP_PLACES=cores",
+            "OMP_PROC_BIND=close",
+            "LQCD_COARSE_FUSED=0",
+            "LQCD_ARM_COARSE_SVE=0",
+            "LQCD_HALO_OVERLAP=1",
+            "LQCD_COARSE_SPATIAL_OVERLAP=0"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 600.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    },
+    {
+      "backtrace": 23,
+      "command": [
+        "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec",
+        "--host",
+        "localhost:4",
+        "--map-by",
+        "ppr:1:numa:PE=2",
+        "--bind-to",
+        "core",
+        "-n",
+        "4",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_coarse_batch_reduce.py"
+      ],
+      "name": "coarse_batch_halo_mpi4",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "OMP_PLACES=cores",
+            "OMP_PROC_BIND=close",
+            "LQCD_COARSE_FUSED=0",
+            "LQCD_ARM_COARSE_SVE=0",
+            "LQCD_HALO_OVERLAP=1",
+            "LQCD_COARSE_SPATIAL_OVERLAP=0"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 600.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    },
+    {
+      "backtrace": 27,
+      "command": [
+        "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec",
+        "--host",
+        "localhost:4",
+        "--map-by",
+        "ppr:1:numa:PE=2",
+        "--bind-to",
+        "core",
+        "-n",
+        "4",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_coarse_batch_reduce.py"
+      ],
+      "name": "coarse_batch_halo_blocking",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "OMP_PLACES=cores",
+            "OMP_PROC_BIND=close",
+            "LQCD_TEST_COARSE_HALO_SMOKE=1",
+            "LQCD_COARSE_FUSED=0",
+            "LQCD_ARM_COARSE_SVE=0",
+            "LQCD_HALO_OVERLAP=0",
+            "LQCD_COARSE_SPATIAL_OVERLAP=0"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 600.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    },
+    {
+      "backtrace": 31,
+      "command": [
+        "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec",
+        "--host",
+        "localhost:4",
+        "--map-by",
+        "ppr:1:numa:PE=2",
+        "--bind-to",
+        "core",
+        "-n",
+        "4",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_coarse_batch_reduce.py"
+      ],
+      "name": "coarse_batch_halo_fused",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "OMP_PLACES=cores",
+            "OMP_PROC_BIND=close",
+            "LQCD_TEST_COARSE_HALO_SMOKE=1",
+            "LQCD_COARSE_FUSED=1",
+            "LQCD_ARM_COARSE_SVE=1",
+            "LQCD_HALO_OVERLAP=1",
+            "LQCD_COARSE_SPATIAL_OVERLAP=1"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 600.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    },
+    {
+      "backtrace": 35,
+      "command": [
+        "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec",
+        "--host",
+        "localhost:4",
+        "--map-by",
+        "ppr:1:numa:PE=2",
+        "--bind-to",
+        "core",
+        "-n",
+        "4",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_coarse_batch_reduce.py"
+      ],
+      "name": "coarse_batch_halo_shrunk_team",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "OMP_PLACES=cores",
+            "OMP_PROC_BIND=close",
+            "LQCD_TEST_COARSE_HALO_SMOKE=1",
+            "LQCD_COARSE_FUSED=1",
+            "LQCD_ARM_COARSE_SVE=1",
+            "LQCD_HALO_OVERLAP=1",
+            "LQCD_COARSE_SPATIAL_OVERLAP=1",
+            "OMP_THREAD_LIMIT=1"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 600.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    },
+    {
+      "backtrace": 39,
+      "command": [
+        "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec",
+        "--host",
+        "localhost:4",
+        "--map-by",
+        "ppr:1:numa:PE=2",
+        "--bind-to",
+        "core",
+        "-n",
+        "2",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_coarse_batch_reduce.py"
+      ],
+      "name": "coarse_batch_halo_interior",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "OMP_PLACES=cores",
+            "OMP_PROC_BIND=close",
+            "LQCD_TEST_COARSE_HALO_SMOKE=1",
+            "LQCD_COARSE_FUSED=1",
+            "LQCD_ARM_COARSE_SVE=1",
+            "LQCD_HALO_OVERLAP=1",
+            "LQCD_COARSE_SPATIAL_OVERLAP=1",
+            "LQCD_TEST_COARSE_TEMPORAL_EXTENT=16"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 600.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    },
+    {
+      "backtrace": 43,
+      "command": [
+        "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec",
+        "--host",
+        "localhost:4",
+        "--map-by",
+        "ppr:1:numa:PE=2",
+        "--bind-to",
+        "core",
+        "-n",
+        "2",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_runtime_batch.py"
+      ],
+      "name": "runtime_batch_coarse_reduce",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "LQCD_COARSE_BATCH_REDUCE=1",
+            "LQCD_COARSE_BATCH_HALO=0"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 300.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    },
+    {
+      "backtrace": 47,
+      "command": [
+        "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec",
+        "--host",
+        "localhost:4",
+        "--map-by",
+        "ppr:1:numa:PE=2",
+        "--bind-to",
+        "core",
+        "-n",
+        "2",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_runtime_batch.py"
+      ],
+      "name": "runtime_batch_coarse_halo",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "LQCD_COARSE_BATCH_REDUCE=1",
+            "LQCD_COARSE_BATCH_HALO=1"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 300.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    },
+    {
+      "backtrace": 51,
+      "command": [
+        "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec",
+        "--host",
+        "localhost:4",
+        "--map-by",
+        "ppr:1:numa:PE=2",
+        "--bind-to",
+        "core",
+        "-n",
+        "2",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_mg_tuning.py"
+      ],
+      "name": "mg_tuning",
+      "properties": [
+        {
+          "name": "ENVIRONMENT",
+          "value": [
+            "LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+            "OMP_NUM_THREADS=2",
+            "OPENBLAS_NUM_THREADS=1",
+            "OMPI_MCA_hwloc_base_binding_policy=none",
+            "PYTHONPATH=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/python"
+          ]
+        },
+        {
+          "name": "TIMEOUT",
+          "value": 300.0
+        },
+        {
+          "name": "WORKING_DIRECTORY",
+          "value": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build"
+        }
+      ]
+    }
+  ],
+  "version": {
+    "major": 1,
+    "minor": 0
+  }
+}

@@ -1,0 +1,2 @@
+{"requested_bytes": 64, "actual_bytes": 64, "inherit_exec": true, "command": ["/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/coarse_kernel_test"]}
+PASS coarse SVE pack/double GEMV oracle/add/tails

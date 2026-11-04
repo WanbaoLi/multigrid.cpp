@@ -1,0 +1,1087 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 01b9d01..5d477dd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,6 +62,7 @@ if(LQCD_BUILD_RUNTIME OR LQCD_BUILD_NATIVE_BENCH)
+         src/solver/native/double_operator.cpp
+         src/solver/native/sap.cpp
+         src/solver/native/coarse.cpp
++        src/solver/native/batched_coarse_operator.cpp
+         src/solver/native/cycle.cpp
+         src/solver/native/setup.cpp
+         src/solver/native/solver.cpp
+diff --git a/cmake/Tests.cmake b/cmake/Tests.cmake
+index 7693c31..dfacd44 100644
+--- a/cmake/Tests.cmake
++++ b/cmake/Tests.cmake
+@@ -95,14 +95,44 @@ if(BUILD_TESTING)
+         add_test(NAME batch12_mpi2 COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_batch12.py")
+         set_tests_properties(batch12_mpi2 PROPERTIES TIMEOUT 600 ENVIRONMENT "${LQCD_RUNTIME_ENV}")
+         add_test(NAME batch12_coarse_reduce_mpi2 COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_batch12.py")
+-        set_tests_properties(batch12_coarse_reduce_mpi2 PROPERTIES TIMEOUT 600 ENVIRONMENT "${LQCD_RUNTIME_ENV};LQCD_COARSE_BATCH_REDUCE=1")
++        set_tests_properties(batch12_coarse_reduce_mpi2 PROPERTIES TIMEOUT 600 ENVIRONMENT "${LQCD_RUNTIME_ENV};LQCD_COARSE_BATCH_REDUCE=1;LQCD_COARSE_BATCH_HALO=0")
++        foreach(halo_ranks 2 4)
++            add_test(NAME batch12_coarse_halo_mpi${halo_ranks} COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n ${halo_ranks} "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_batch12.py")
++            set_tests_properties(batch12_coarse_halo_mpi${halo_ranks} PROPERTIES TIMEOUT 600 ENVIRONMENT
++                "${LQCD_RUNTIME_ENV};LQCD_COARSE_BATCH_REDUCE=1;LQCD_COARSE_BATCH_HALO=1")
++        endforeach()
+         add_test(NAME coarse_batch_reduce_serial COMMAND "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_coarse_batch_reduce.py")
+         add_test(NAME coarse_batch_reduce_mpi2 COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_coarse_batch_reduce.py")
+-        set_tests_properties(coarse_batch_reduce_serial coarse_batch_reduce_mpi2 PROPERTIES TIMEOUT 600 ENVIRONMENT "${LQCD_RUNTIME_ENV};OMP_PLACES=cores;OMP_PROC_BIND=close")
++        # Extent8/block2 with four time-slab ranks owns exactly one coarse
++        # time plane. This catches packed face ordering and active-RHS maps
++        # while MPI2 also covers identical lower/upper neighbour ranks.
++        add_test(NAME coarse_batch_halo_mpi4 COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 4 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_coarse_batch_reduce.py")
++        set_tests_properties(coarse_batch_reduce_serial coarse_batch_reduce_mpi2 coarse_batch_halo_mpi4 PROPERTIES TIMEOUT 600 ENVIRONMENT
++            "${LQCD_RUNTIME_ENV};OMP_PLACES=cores;OMP_PROC_BIND=close;LQCD_COARSE_FUSED=0;LQCD_ARM_COARSE_SVE=0;LQCD_HALO_OVERLAP=1;LQCD_COARSE_SPATIAL_OVERLAP=0")
++        # Reuse one independent NumPy probe for the context-time scheduling
++        # modes; the full tests above retain width1/2/4/12 and API-error gates.
++        foreach(mode blocking fused shrunk_team interior)
++            set(coarse_halo_test_ranks 4)
++            set(coarse_halo_test_environment
++                "${LQCD_RUNTIME_ENV};OMP_PLACES=cores;OMP_PROC_BIND=close;LQCD_TEST_COARSE_HALO_SMOKE=1;LQCD_COARSE_FUSED=1;LQCD_ARM_COARSE_SVE=1;LQCD_HALO_OVERLAP=1;LQCD_COARSE_SPATIAL_OVERLAP=1")
++            if(mode STREQUAL "blocking")
++                set(coarse_halo_test_environment
++                    "${LQCD_RUNTIME_ENV};OMP_PLACES=cores;OMP_PROC_BIND=close;LQCD_TEST_COARSE_HALO_SMOKE=1;LQCD_COARSE_FUSED=0;LQCD_ARM_COARSE_SVE=0;LQCD_HALO_OVERLAP=0;LQCD_COARSE_SPATIAL_OVERLAP=0")
++            elseif(mode STREQUAL "shrunk_team")
++                string(APPEND coarse_halo_test_environment ";OMP_THREAD_LIMIT=1")
++            elseif(mode STREQUAL "interior")
++                set(coarse_halo_test_ranks 2)
++                string(APPEND coarse_halo_test_environment ";LQCD_TEST_COARSE_TEMPORAL_EXTENT=16")
++            endif()
++            add_test(NAME coarse_batch_halo_${mode} COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n ${coarse_halo_test_ranks} "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_coarse_batch_reduce.py")
++            set_tests_properties(coarse_batch_halo_${mode} PROPERTIES TIMEOUT 600 ENVIRONMENT "${coarse_halo_test_environment}")
++        endforeach()
+         add_test(NAME runtime_batch COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_runtime_batch.py")
+         set_tests_properties(runtime_batch PROPERTIES TIMEOUT 300 ENVIRONMENT "${LQCD_RUNTIME_ENV}")
+         add_test(NAME runtime_batch_coarse_reduce COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_runtime_batch.py")
+-        set_tests_properties(runtime_batch_coarse_reduce PROPERTIES TIMEOUT 300 ENVIRONMENT "${LQCD_RUNTIME_ENV};LQCD_COARSE_BATCH_REDUCE=1")
++        set_tests_properties(runtime_batch_coarse_reduce PROPERTIES TIMEOUT 300 ENVIRONMENT "${LQCD_RUNTIME_ENV};LQCD_COARSE_BATCH_REDUCE=1;LQCD_COARSE_BATCH_HALO=0")
++        add_test(NAME runtime_batch_coarse_halo COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_runtime_batch.py")
++        set_tests_properties(runtime_batch_coarse_halo PROPERTIES TIMEOUT 300 ENVIRONMENT "${LQCD_RUNTIME_ENV};LQCD_COARSE_BATCH_REDUCE=1;LQCD_COARSE_BATCH_HALO=1")
+         add_test(NAME native_halo COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_native_halo.py")
+         add_test(NAME numa_launcher COMMAND "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_numa_launcher.py")
+         add_test(NAME thread_defaults COMMAND "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_thread_defaults.py")
+diff --git a/docs/coarse-batch-halo-candidate.md b/docs/coarse-batch-halo-candidate.md
+new file mode 100644
+index 0000000..7c162a0
+--- /dev/null
++++ b/docs/coarse-batch-halo-candidate.md
+@@ -0,0 +1,42 @@
++# 默认关闭的粗层多源边界消息合并
++
++基于 `5fe1b5f` 的隔离实验，当前没有性能结论。只读参考为
++`skills/kunpeng-lqcd-reference/`；实验实现、测试和本记录不写入参考目录。
++
++当前批量粗层实现已经合并独立源列的归约，但源码仍按列依次调用
++`coarse_reduced_rhs`、`coarse_schur` 和 `coarse_reconstruct`。每次粗算子
++各自发送两个时间边界。018 的轻量诊断前期每两列粗层边界等待约0.25秒，
++约为完整12列的1.5秒；详细 verbose 阶段扰动更大。这些等待包含进程到达
++不齐，且各项采用独立进程最大值，不能直接当作网络延迟或可回收收益。
++后续新归约路径若已将这部分降到很小，应停止此候选而不继续堆实现。
++
++候选 `LQCD_COARSE_BATCH_HALO=1` 只在既有粗层独立多源归约支持的
++EO/MGS/fused-GCR路径上启用。EO指偶奇消元；MGS指修正Gram–Schmidt
++正交化；GCR指广义共轭残差求解。每列的解、方向历史、停止、重启和真实
++残差刷新保持独立，不形成不同源列之间的Krylov空间。
++
++同阶段活跃源列按既有升序打包为一个下边界消息和一个上边界消息；每次
++调用独立完成四个MPI请求，使用40/41标签。发送和接收工作区均与标量
++路径分离，发送期间不修改，接收完成前不读。MPI仍仅由主线程调用。
++矩阵应用按块在外、源列在内，复用同块系数缓存；每列内部方向和矩阵列
++的单精度累加顺序保持原样。单列、全零、非支持模式退回原标量边界路径。
++
++兼容既有粗矩阵SVE布局、融合/未融合Schur构造、普通内部格点重叠、空
++内部格点的空间前缀重叠，以及实际线程团队缩成1的情形。SVE是Arm可伸缩
++向量指令，在x86上不能验证其实际执行。两面周期邻居为同一进程时仍使用
++独立缓冲区和标签。动态开关必须在每次求解前集体验证，非法值或进程不
++一致不能进入通信。
++
++实际执行证据采用 verbose JSON：`calls`是确实合并多个活跃源列的MPI
++交换次数，`send_bytes`是本进程双面发送字节数，`rhs_slots`是各次交换的
++活跃列数之和，`max_width`是最大实际合并宽度。仅开关打开不算执行证据。
++现有边界profile同时包含合并交换和剩余单列交换，诊断均不参与性能排名。
++
++先用已有NumPy解析解和独立矩阵应用验证1/2/4/12列、部分尾批、混合零列、
++依赖列、不同停止步数和刷新；测试同时覆盖MPI2与MPI4，后者每进程一个
++粗时间平面。检查开关关闭、其他算法回退、非均匀线程数、限制粗层线程、
++融合/SVE选择、关闭重叠和空间前缀重叠。未实际触发的重启或不同刷新次数
++必须记录为未覆盖。共享主仓库、既有canonical性能库和灵晟活动源码不改动。
++
++正确性门通过后由主代理审核，才考虑同组态、同层次、同物理参数的完整
++12列配对普通计时及独立标量残差验证。只有局部消息数减少不能晋升最佳。
+diff --git a/docs/coarse-batch-halo-v2.md b/docs/coarse-batch-halo-v2.md
+new file mode 100644
+index 0000000..e499d49
+--- /dev/null
++++ b/docs/coarse-batch-halo-v2.md
+@@ -0,0 +1,79 @@
++# Halo V2: fixed coarse batch paths
++
++This is a separate candidate based on `71160fa`, with no performance claim.
++The source-owned setup candidate is independent and is not included here.
++
++Before this attempt, read the existing halo proposal and the actual ELF audit
++recorded in `work/halo-codegen-review.md` outside this checkout. The retained
++`5fe1b5f` library has a 448-byte `coarse_solve_batch` frame; the `71160fa` library
++has a 576-byte frame, unconditional empty pointer-vector headers, and ten halo
++member-load sites in its main function. One MGS active-RHS projection loop also
++reloads the state-array base from the stack where the older binary retains it
++in a register. These are static observations, not measured stall costs.
++
++The initial100 ordinary medians (about16.875s new/off and16.604s new/on versus
++about16.034s old control A) do not establish a code-generation regression. The
++old control B and matching profile work counts were not closed when this
++hypothesis was written. The campaign subsequently retained a strict gauge
++metadata rejection, so these observations are not a newly accepted score.
++Identical outer24/25 iteration counts do not prove identical coarse work.
++
++Hypothesis: one entry dispatch to separate non-inlined member specializations
++can remove halo decisions and unused scratch lifetimes from the reduction-only
++path. `Halo` is a compile-time boolean indicating whether independent RHS halo
++messages are combined. `RHS` means an independent right-hand-side column.
++The shared arithmetic body uses `if constexpr`; the false scratch type contains
++no vector objects. This changes code organization only. It does not introduce
++persistent workspaces, alter matrix layout, tune threads, change tolerances or
++limits, or mix independent GCR histories. GCR means generalized conjugate
++residual; MGS means modified Gram-Schmidt projection.
++
++Argument validation/output resizing, scalar fallback, coarse-thread scope,
++source order, zero-source handling, each projection/update, stopping, restart,
++residual refresh and reconstruction retain their established order. Halo
++statistics exist only in the enabled specialization. The existing collective
++flag validation and default-off configuration remain unchanged. Public C ABI
++and `Impl` data layout are unchanged.
++
++Reuse the existing CTest independent NumPy/operator probes, width1/2/4/12 and
++mixed/zero/tail/fallback/error cases, batch12 MPI2/MPI4, thread-team and overlap
++modes. Make reduction-only CTest environments explicitly set halo0 and add the
++existing runtime-batch script with halo1. No implementation-mirroring test is
++needed. A local x86/WSL run cannot validate Arm SVE or Kunpeng runtime behavior.
++
++Before an Arm performance comparison, require an actual compute-node build and
++check both specialized symbols. The false specialization must have no dynamic
++halo-member load/test or pointer-vector initialization/cleanup from this
++candidate. Inspect its frame and MGS base loads without requiring byte identity
++with `5fe1b5f`; the current object/link layout is retained. Reject an unproven
++static mechanism rather than adding unrelated compiler flags or arithmetic
++changes. Static counts alone do not accept a faster version.
++
++Any performance adoption still requires the same fixture, resources, zero
++initial guesses and complete ordinary12-column samples with matched controls.
++Keep the independent scalar double residual gate at1e-8 and frozen solution
++relative-error gate at1e-6. Instrumented profile timings are diagnostic only.
++Retain the best verified binary and failed attempt evidence. Do not modify the
++active remote source, current campaign, immutable references or old receipts.
++
++Validation results and any blocked conditions are recorded below after the
++isolated implementation and checks, without claiming an Arm result.
++
++Local preparation on2026-11-04 used WSL Ubuntu24.04, GCC14.2.0, CMake and the
++real OpenMPI4.1.6 development libraries. A Release runtime build succeeded;
++23 existing C++ CTests passed. Arm/SVE test binaries ran their available x86
++fallback/skip paths, so this is not Arm instruction validation. `nm` confirms
++two separate non-inlined member specializations. The local x86 dispatch tests
++the halo byte once and tail-jumps to them; the false specialization contains
++no access to that member offset or batch-halo helper calls. These x86 sizes
++and stack frames cannot be compared numerically with the old Arm052 ELF.
++
++Python MPI numerical tests remain blocked locally because NumPy/mpi4py and
++the venv ensurepip component are absent. No packages were installed and no
++fake MPI, lowered tolerance or substitute numerical oracle was used. The
++existing equipped Arm environment must still run those tests, actual Arm
++code-generation gates and physical12-column validation before performance.
++The first separate WSL build invocation could not see its earlier `/tmp`
++configuration directory; a single WSL configure/build/test process succeeded.
++Local command/results/failure logs are retained outside the source checkout
++under `outputs/optimization-20261103/halo-v2-local`.
+diff --git a/python/lqcd_cpu/propagator.py b/python/lqcd_cpu/propagator.py
+index 665d9ec..e8c59dd 100644
+--- a/python/lqcd_cpu/propagator.py
++++ b/python/lqcd_cpu/propagator.py
+@@ -23,7 +23,7 @@ SOLVE_TUNING_KEYS = {
+     'LQCD_MG_COARSE_TOL', 'LQCD_CORRECTION_BASE_TOL',
+     'LQCD_FLOAT_CORRECTION_VERIFY', 'LQCD_FINE_TEAM_FUSED',
+     'LQCD_COARSE_CGS2', 'LQCD_RESTRICT_FLOAT', 'LQCD_GCR_FUSED', 'LQCD_COARSE_THREADS',
+-    'LQCD_COARSE_BATCH_REDUCE'}
++    'LQCD_COARSE_BATCH_REDUCE', 'LQCD_COARSE_BATCH_HALO'}
+ 
+ 
+ @contextmanager
+@@ -113,7 +113,7 @@ def solve_lime_propagator(gauge_path, output, *, mass=None, csw=None,
+             'LQCD_ARM_SVE', 'LQCD_ARM_SVE_PLANNED', 'LQCD_ARM_SVE_REUSE',
+             'LQCD_ARM_SVE_TRANSFER', 'LQCD_HBM',
+             'LQCD_COARSE_FUSED', 'LQCD_ARM_COARSE_SVE', 'LQCD_HBW_ALLOC', 'LQCD_COARSE_THREADS',
+-            'LQCD_COARSE_BATCH_REDUCE', 'LQCD_COARSE_SPATIAL_OVERLAP',
++            'LQCD_COARSE_BATCH_REDUCE', 'LQCD_COARSE_BATCH_HALO', 'LQCD_COARSE_SPATIAL_OVERLAP',
+             'LQCD_SAP_EO', 'LQCD_COARSE_EO', 'LQCD_COARSE_CGS2', 'LQCD_SETUP_UPDATE',
+             'LQCD_ADAPTIVE_CORRECTION', 'LQCD_HALO_OVERLAP', 'LQCD_RHS_BATCH')}
+     configs = comm.allgather(options)
+diff --git a/src/solver/native/batched_coarse_operator.cpp b/src/solver/native/batched_coarse_operator.cpp
+new file mode 100644
+index 0000000..a0fd6d8
+--- /dev/null
++++ b/src/solver/native/batched_coarse_operator.cpp
+@@ -0,0 +1,295 @@
++#include "hierarchy.hpp"
++#include "kernels.hpp"
++#include <climits>
++
++using namespace lqcd_native::detail;
++
++// This copy deliberately keeps the scalar row/direction/column accumulation
++// order, including the SVE kernel's add contract. Only ghost ownership differs.
++// The old scalar helper and its scratch buffers remain unchanged.
++void NativeMG::Impl::coarse_block_apply_ghosts(int cb, const FloatField &src, FloatField &out,
++                                               const float *lower, const float *upper,
++                                               int dir_begin, int dir_end, bool add) const {
++#if defined(LQCD_NATIVE_SVE_COARSE)
++    if (coarse_sve) {
++        const size_t stride = (size_t)coarse_dof * coarse_dof * 2;
++        float *dest = out.data() + (size_t)(cb-first_aggregate)*coarse_dof*2;
++        for (int dir = dir_begin; dir < dir_end; ++dir) {
++            const int nb = cneighbor[cb*9+dir];
++            const float *v;
++            if (nb >= first_aggregate && nb < end_aggregate)
++                v = src.data() + (size_t)(nb-first_aggregate)*coarse_dof*2;
++            else
++                v = (dir == 7 ? upper : lower) +
++                    (size_t)(nb%aggregates_per_tslice)*coarse_dof*2;
++            lqcd_native::kernels::coarse_gemv_sve(coarse_dof,
++                coarse_column_block(cb)+(size_t)dir*stride, v, dest, add);
++            add = true;
++        }
++        return;
++    }
++#endif
++    for (int a = 0; a < coarse_dof; a++) {
++        const size_t output = ((size_t)(cb-first_aggregate)*coarse_dof+a)*2;
++        float re = add ? out[output] : 0.f, im = add ? out[output+1] : 0.f;
++        for (int dir = dir_begin; dir < dir_end; dir++) {
++            const int nb = cneighbor[cb*9+dir];
++            const float *v;
++            if (nb >= first_aggregate && nb < end_aggregate)
++                v = src.data() + (size_t)(nb-first_aggregate)*coarse_dof*2;
++            else
++                v = (dir == 7 ? upper : lower) +
++                    (size_t)(nb%aggregates_per_tslice)*coarse_dof*2;
++            const float *row =
++                coarse.data() + ((size_t)(cb*9+dir)*coarse_dof+a)*coarse_dof*2;
++#pragma omp simd reduction(+ : re, im)
++            for (int j = 0; j < coarse_dof; j++) {
++                re += row[2*j]*v[2*j] - row[2*j+1]*v[2*j+1];
++                im += row[2*j]*v[2*j+1] + row[2*j+1]*v[2*j];
++            }
++        }
++        out[output] = re;
++        out[output+1] = im;
++    }
++}
++
++void NativeMG::Impl::coarse_apply_batch(const std::vector<const FloatField *> &sources,
++                                        const std::vector<FloatField *> &outputs,
++                                        int color, bool diagonal) const {
++    const size_t nrhs = sources.size();
++    if (nrhs < 1 || nrhs > 12 || outputs.size() != nrhs)
++        throw std::runtime_error("coarse halo batch requires one to twelve matching fields");
++    // Keep the established scalar behavior whenever there is no MPI message
++    // to combine. A single remaining active RHS is a normal, supported tail.
++    if (!coarse_batch_halo || nrhs == 1 || native_size == 1) {
++        for (size_t r = 0; r < nrhs; ++r)
++            coarse_apply(*sources[r], *outputs[r], color, diagonal);
++        return;
++    }
++    prepare_coarse_columns();
++    const size_t owned = (size_t)(end_aggregate-first_aggregate)*coarse_dof*2;
++    const size_t face = (size_t)aggregates_per_tslice*coarse_dof*2;
++    if (face > (size_t)INT_MAX/nrhs)
++        throw std::runtime_error("coarse batch halo exceeds MPI int count");
++    for (size_t r = 0; r < nrhs; ++r) {
++        if (sources[r]->size() != owned || sources[r] == outputs[r])
++            throw std::runtime_error("coarse batch halo needs distinct owned input/output fields");
++        if (color < 0)
++            outputs[r]->resize(owned);
++        else
++            outputs[r]->assign(owned, 0.f);
++    }
++    HaloTrace trace(coarse_halo_stats, profile_active);
++    const int count = (int)(face*nrhs);
++    coarse_batch_send_lower.resize(count);
++    coarse_batch_send_upper.resize(count);
++    coarse_batch_recv_lower.resize(count);
++    coarse_batch_recv_upper.resize(count);
++    for (size_t r = 0; r < nrhs; ++r) {
++        std::copy_n(sources[r]->data(), face, coarse_batch_send_lower.data()+r*face);
++        std::copy_n(sources[r]->data()+owned-face, face,
++                    coarse_batch_send_upper.data()+r*face);
++    }
++    // Every rank receives the same globally determined active RHS order.
++    // Tags40/41 are distinct from scalar coarse20/21 and double30/31. All
++    // requests finish within this call, including coincident periodic peers.
++    const int prev = (native_rank+native_size-1)%native_size;
++    const int next = (native_rank+1)%native_size;
++    MPI_Request requests[4];
++    MPI_Irecv(coarse_batch_recv_upper.data(), count, MPI_FLOAT, next, 40, native_comm, &requests[0]);
++    MPI_Irecv(coarse_batch_recv_lower.data(), count, MPI_FLOAT, prev, 41, native_comm, &requests[1]);
++    MPI_Isend(coarse_batch_send_lower.data(), count, MPI_FLOAT, prev, 40, native_comm, &requests[2]);
++    MPI_Isend(coarse_batch_send_upper.data(), count, MPI_FLOAT, next, 41, native_comm, &requests[3]);
++    trace.post(count);
++    ++coarse_batch_halo_stats.calls;
++    coarse_batch_halo_stats.send_bytes += 2ULL*count*sizeof(float);
++    coarse_batch_halo_stats.rhs_slots += nrhs;
++    coarse_batch_halo_stats.max_width = std::max(coarse_batch_halo_stats.max_width, (int)nrhs);
++    auto apply_range = [&](int cb, int first, int last, bool add) {
++        // Block outer, RHS inner reuses the coefficient block. No cross-RHS
++        // arithmetic or change to each RHS's direction/column summation order.
++        for (size_t r = 0; r < nrhs; ++r)
++            coarse_block_apply_ghosts(cb, *sources[r], *outputs[r],
++                coarse_batch_recv_lower.data()+r*face,
++                coarse_batch_recv_upper.data()+r*face, first, last, add);
++    };
++    auto whole = [&](int cb) { apply_range(cb, diagonal ? 0 : 1, 9, false); };
++    auto selected = [&](int cb) { return color < 0 || colors[cb] == color; };
++    const int interior_first = first_aggregate+aggregates_per_tslice;
++    const int interior_last = std::max(interior_first, end_aggregate-aggregates_per_tslice);
++    if (halo_overlap && coarse_spatial_overlap && interior_first == interior_last &&
++        omp_get_max_threads() > 1) {
++#pragma omp parallel
++        {
++            const int tid = omp_get_thread_num(), threads = omp_get_num_threads();
++            if (threads == 1) {
++                // OMP_THREAD_LIMIT/dynamic teams may shrink the actual team.
++                const double start = trace.now();
++                MPI_Waitall(4, requests, MPI_STATUSES_IGNORE);
++                trace.wait(start);
++                const double work = trace.now();
++                for (int cb = first_aggregate; cb < end_aggregate; ++cb)
++                    if (selected(cb)) whole(cb);
++                trace.compute_all(work);
++            } else {
++                if (tid == 0) {
++                    const double start = trace.now();
++                    MPI_Waitall(4, requests, MPI_STATUSES_IGNORE);
++                    trace.wait(start);
++                } else {
++                    const double work = trace.now();
++                    const int n = end_aggregate-first_aggregate;
++                    const int begin = first_aggregate+n*(tid-1)/(threads-1);
++                    const int end = first_aggregate+n*tid/(threads-1);
++                    for (int cb = begin; cb < end; ++cb)
++                        if (selected(cb)) apply_range(cb, diagonal ? 0 : 1, 7, false);
++                    trace.interior(tid, work);
++                }
++                // Receives and every local prefix are complete before use.
++#pragma omp barrier
++                if (tid == 0) trace.region();
++                const double work = trace.now();
++#pragma omp for schedule(static)
++                for (int cb = first_aggregate; cb < end_aggregate; ++cb)
++                    if (selected(cb)) apply_range(cb, 7, 9, true);
++                trace.boundary(tid, work);
++            }
++        }
++        return;
++    }
++    if (!halo_overlap || (coarse_empty_interior && interior_first == interior_last)) {
++        const double start = trace.now();
++        MPI_Waitall(4, requests, MPI_STATUSES_IGNORE);
++        trace.wait(start);
++        const double work = trace.now();
++#pragma omp parallel for schedule(static)
++        for (int cb = first_aggregate; cb < end_aggregate; ++cb)
++            if (selected(cb)) whole(cb);
++        trace.compute_all(work);
++        return;
++    }
++#pragma omp parallel
++    {
++        const int tid = omp_get_thread_num(), threads = omp_get_num_threads();
++        if (tid == 0) {
++            const double start = trace.now();
++            MPI_Waitall(4, requests, MPI_STATUSES_IGNORE);
++            trace.wait(start);
++            if (threads == 1) {
++                const double work = trace.now();
++                for (int cb = interior_first; cb < interior_last; ++cb)
++                    if (selected(cb)) whole(cb);
++                trace.interior(tid, work);
++            }
++        } else {
++            const double work = trace.now();
++            const int n = interior_last-interior_first;
++            const int begin = interior_first+n*(tid-1)/(threads-1);
++            const int end = interior_first+n*tid/(threads-1);
++            for (int cb = begin; cb < end; ++cb)
++                if (selected(cb)) whole(cb);
++            trace.interior(tid, work);
++        }
++#pragma omp barrier
++        if (tid == 0) trace.region();
++        const double work = trace.now();
++#pragma omp for schedule(static)
++        for (int i = 0; i < std::min(end_aggregate-first_aggregate, 2*aggregates_per_tslice); ++i) {
++            const int cb = i < aggregates_per_tslice ? first_aggregate+i :
++                end_aggregate-aggregates_per_tslice+i-aggregates_per_tslice;
++            if (selected(cb)) whole(cb);
++        }
++        trace.boundary(tid, work);
++    }
++}
++
++void NativeMG::Impl::coarse_schur_batch(const std::vector<const FloatField *> &sources,
++                                        const std::vector<FloatField *> &outputs) const {
++    const size_t nrhs = sources.size();
++    std::vector<FloatField> hop(nrhs), extended(nrhs);
++    std::vector<const FloatField *> inputs(nrhs);
++    std::vector<FloatField *> targets(nrhs);
++    for (size_t r = 0; r < nrhs; ++r) targets[r] = &hop[r];
++    coarse_apply_batch(sources, targets, 1, false);
++    if (!coarse_fused) {
++        for (size_t r = 0; r < nrhs; ++r) {
++            FloatField eliminated;
++            coarse_diagonal(hop[r], eliminated, 1, true);
++            coarse_copy_color(*sources[r], extended[r], 0);
++            coarse_axpy(extended[r], -1., eliminated);
++        }
++    } else {
++        // Same inverse/negation arithmetic as the established fused Schur.
++        prepare_coarse_columns();
++        for (size_t r = 0; r < nrhs; ++r) extended[r].resize(sources[r]->size());
++#pragma omp parallel for schedule(static)
++        for (int cb = first_aggregate; cb < end_aggregate; ++cb) {
++            const size_t offset = (size_t)(cb-first_aggregate)*coarse_dof*2;
++            for (size_t r = 0; r < nrhs; ++r) {
++                float *dest = extended[r].data()+offset;
++                if (colors[cb] == 0) {
++                    std::copy_n(sources[r]->data()+offset, coarse_dof*2, dest);
++                    continue;
++                }
++                const float *v = hop[r].data()+offset;
++#if defined(LQCD_NATIVE_SVE_COARSE)
++                if (coarse_sve) {
++                    lqcd_native::kernels::coarse_gemv_sve(coarse_dof,
++                        coarse_inverse_column_block(cb), v, dest, false);
++                    for (int a = 0; a < coarse_dof*2; ++a) dest[a] = -dest[a];
++                    continue;
++                }
++#endif
++                for (int a = 0; a < coarse_dof; ++a) {
++                    const float *row = coarse_inverse.data()+((size_t)cb*coarse_dof+a)*coarse_dof*2;
++                    float re = 0, im = 0;
++#pragma omp simd reduction(+ : re, im)
++                    for (int j = 0; j < coarse_dof; ++j) {
++                        re += row[2*j]*v[2*j]-row[2*j+1]*v[2*j+1];
++                        im += row[2*j]*v[2*j+1]+row[2*j+1]*v[2*j];
++                    }
++                    dest[2*a] = -re;
++                    dest[2*a+1] = -im;
++                }
++            }
++        }
++    }
++    for (size_t r = 0; r < nrhs; ++r) inputs[r] = &extended[r];
++    coarse_apply_batch(inputs, outputs, 0, true);
++}
++
++void NativeMG::Impl::coarse_reduced_rhs_batch(const std::vector<const FloatField *> &sources,
++                                              const std::vector<FloatField *> &outputs) const {
++    const size_t nrhs = sources.size();
++    std::vector<FloatField> odd(nrhs), hop(nrhs);
++    std::vector<const FloatField *> inputs(nrhs);
++    std::vector<FloatField *> targets(nrhs);
++    for (size_t r = 0; r < nrhs; ++r) {
++        coarse_diagonal(*sources[r], odd[r], 1, true);
++        inputs[r] = &odd[r];
++        targets[r] = &hop[r];
++    }
++    coarse_apply_batch(inputs, targets, 0, false);
++    for (size_t r = 0; r < nrhs; ++r) {
++        coarse_copy_color(*sources[r], *outputs[r], 0);
++        coarse_axpy(*outputs[r], -1., hop[r]);
++    }
++}
++
++void NativeMG::Impl::coarse_reconstruct_batch(const std::vector<const FloatField *> &sources,
++                                              const std::vector<const FloatField *> &solutions,
++                                              const std::vector<FloatField *> &outputs) const {
++    const size_t nrhs = sources.size();
++    std::vector<FloatField> hop(nrhs);
++    std::vector<FloatField *> targets(nrhs);
++    for (size_t r = 0; r < nrhs; ++r) targets[r] = &hop[r];
++    coarse_apply_batch(solutions, targets, 1, false);
++    for (size_t r = 0; r < nrhs; ++r) {
++        FloatField rhs, odd;
++        coarse_copy_color(*sources[r], rhs, 1);
++        coarse_axpy(rhs, -1., hop[r]);
++        coarse_diagonal(rhs, odd, 1, true);
++        coarse_copy_color(*solutions[r], *outputs[r], 0);
++        coarse_axpy(*outputs[r], 1., odd);
++    }
++}
+diff --git a/src/solver/native/coarse.cpp b/src/solver/native/coarse.cpp
+index ad62cf6..c03f77b 100644
+--- a/src/solver/native/coarse.cpp
++++ b/src/solver/native/coarse.cpp
+@@ -661,12 +661,45 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
+         throw std::runtime_error("coarse batch requires one to twelve matching RHS fields");
+     if (destinations.size() < static_cast<size_t>(nrhs))
+         destinations.resize(nrhs);
++    // The collectively validated mode stays fixed during this call. Keep
++    // halo-only lifetimes/control flow out of the reduction-only function.
++    if (coarse_batch_halo)
++        coarse_solve_batch_impl<true>(sources, destinations, nrhs);
++    else
++        coarse_solve_batch_impl<false>(sources, destinations, nrhs);
++}
++
++namespace {
++template<bool Halo> struct CoarseBatchHaloScratch {};
++template<> struct CoarseBatchHaloScratch<true> {
++    std::vector<const FloatField *> sources, solutions;
++    std::vector<FloatField *> outputs;
++};
++} // namespace
++
++template<bool Halo>
++void NativeMG::Impl::coarse_solve_batch_impl(const std::vector<FloatField> &sources,
++                                           std::vector<FloatField> &destinations,
++                                           int nrhs) const {
++    if constexpr (Halo) coarse_batch_halo_stats = {};
++    auto report_halo_batch = [&]() {
++        if constexpr (Halo) {
++            if (!setting("LQCD_VERBOSE", 0) || native_rank != 0) return;
++            const auto &stats = coarse_batch_halo_stats;
++            std::cerr << "native coarse batch halo {\"calls\":" << stats.calls
++                      << ",\"send_bytes\":" << stats.send_bytes
++                      << ",\"rhs_slots\":" << stats.rhs_slots
++                      << ",\"max_width\":" << stats.max_width
++                      << ",\"aggregation\":\"rank0_local_sums\"}" << std::endl;
++        }
++    };
+     // This first candidate implements precisely the default EO/MGS/fused
+     // algorithm. Other valid modes retain the previously tested scalar path.
+     if (!coarse_batch_reduce || nrhs == 1 || !coarse_eo || coarse_cgs2 ||
+         !setting("LQCD_GCR_FUSED", 1)) {
+         for (int r = 0; r < nrhs; ++r)
+             coarse_solve(sources[r], destinations[r]);
++        if constexpr (Halo) report_halo_batch();
+         return;
+     }
+     CoarseThreadScope coarse_team(coarse_threads);
+@@ -705,6 +738,7 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
+             std::cerr << ']';
+         }
+         std::cerr << '}' << std::endl;
++        if constexpr (Halo) report_halo_batch();
+     };
+     std::vector<double> sums(nrhs, 0.);
+     for (int r = 0; r < nrhs; ++r) {
+@@ -720,15 +754,30 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
+         state.stopped = state.source_norm == 0;
+         nonzero |= !state.stopped;
+         if (state.stopped) continue;
+-        // Matvec/halo calls remain sequential in ascending RHS order. Each
+-        // call completes all communication before shared scratch is reused.
+-        coarse_reduced_rhs(sources[r], state.reduced);
+-        state.residual = state.reduced;
++        if constexpr (!Halo) {
++            // Reduction-only default retains its sequential matvec order.
++            coarse_reduced_rhs(sources[r], state.reduced);
++            state.residual = state.reduced;
++        }
+     }
+     if (!nonzero) {
+         report();
+         return;
+     }
++    // The false specialization has no pointer-vector objects or destructor.
++    CoarseBatchHaloScratch<Halo> halo;
++    if constexpr (Halo) {
++        // Source norms are globally reduced, hence this ascending slot map
++        // agrees across ranks even when zero sources or stopped slots differ.
++        for (int r = 0; r < nrhs; ++r)
++            if (!states[r].stopped) {
++                halo.sources.push_back(&sources[r]);
++                halo.outputs.push_back(&states[r].reduced);
++            }
++        coarse_reduced_rhs_batch(halo.sources, halo.outputs);
++        for (int r = 0; r < nrhs; ++r)
++            if (!states[r].stopped) states[r].residual = states[r].reduced;
++    }
+     std::fill(sums.begin(), sums.end(), 0.);
+     for (int r = 0; r < nrhs; ++r)
+         if (!states[r].stopped)
+@@ -754,10 +803,19 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
+             active.push_back(r);
+             ++state.iterations;
+             coarse_diagonal(state.residual, state.direction, 0, true);
+-            coarse_schur(state.direction, state.image);
++            if constexpr (!Halo) coarse_schur(state.direction, state.image);
+             maximum_history = std::max(maximum_history, state.images.size());
+         }
+         if (active.empty()) break;
++        if constexpr (Halo) {
++            halo.sources.clear();
++            halo.outputs.clear();
++            for (int r : active) {
++                halo.sources.push_back(&states[r].direction);
++                halo.outputs.push_back(&states[r].image);
++            }
++            coarse_schur_batch(halo.sources, halo.outputs);
++        }
+ 
+         // Modified Gram-Schmidt order is retained separately for every RHS:
+         // projection j is applied before projection j+1. The packed reduction
+@@ -808,14 +866,33 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
+                 state.images.size() == 16) {
+                 ++state.refreshes;
+                 state.restarts += state.images.size() == 16;
+-                FloatField actual;
+-                coarse_schur(state.solution, actual);
+-                state.residual = state.reduced;
+-                coarse_axpy(state.residual, -1., actual);
++                if constexpr (!Halo) {
++                    FloatField actual;
++                    coarse_schur(state.solution, actual);
++                    state.residual = state.reduced;
++                    coarse_axpy(state.residual, -1., actual);
++                }
+                 refreshed.push_back(r);
+             }
+         }
+         if (!refreshed.empty()) {
++            if constexpr (Halo) {
++                // Refresh only columns whose own criterion triggered. Never
++                // force another column's refresh/restart to join a message.
++                std::vector<FloatField> actual(refreshed.size());
++                halo.sources.clear();
++                halo.outputs.clear();
++                for (size_t slot = 0; slot < refreshed.size(); ++slot) {
++                    halo.sources.push_back(&states[refreshed[slot]].solution);
++                    halo.outputs.push_back(&actual[slot]);
++                }
++                coarse_schur_batch(halo.sources, halo.outputs);
++                for (size_t slot = 0; slot < refreshed.size(); ++slot) {
++                    auto &state = states[refreshed[slot]];
++                    state.residual = state.reduced;
++                    coarse_axpy(state.residual, -1., actual[slot]);
++                }
++            }
+             std::fill(sums.begin(), sums.end(), 0.);
+             for (int r : refreshed)
+                 sums[r] = coarse_batch_norm_local(states[r].residual);
+@@ -828,8 +905,21 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
+             }
+         }
+     }
+-    for (int r = 0; r < nrhs; ++r)
+-        if (states[r].source_norm != 0)
+-            coarse_reconstruct(sources[r], states[r].solution, destinations[r]);
++    if constexpr (Halo) {
++        halo.sources.clear();
++        halo.solutions.clear();
++        halo.outputs.clear();
++        for (int r = 0; r < nrhs; ++r)
++            if (states[r].source_norm != 0) {
++                halo.sources.push_back(&sources[r]);
++                halo.solutions.push_back(&states[r].solution);
++                halo.outputs.push_back(&destinations[r]);
++            }
++        coarse_reconstruct_batch(halo.sources, halo.solutions, halo.outputs);
++    } else {
++        for (int r = 0; r < nrhs; ++r)
++            if (states[r].source_norm != 0)
++                coarse_reconstruct(sources[r], states[r].solution, destinations[r]);
++    }
+     report();
+ }
+diff --git a/src/solver/native/hierarchy.cpp b/src/solver/native/hierarchy.cpp
+index fffe376..b762d38 100644
+--- a/src/solver/native/hierarchy.cpp
++++ b/src/solver/native/hierarchy.cpp
+@@ -13,12 +13,13 @@ void NativeMG::Impl::configure_solve() {
+     const char *names[] = {"LQCD_MG_SAP_STEPS", "LQCD_MG_SAP_CYCLES", "LQCD_MG_COARSE_IT",
+                           "LQCD_MG_COARSE_TOL", "LQCD_CORRECTION_BASE_TOL",
+                           "LQCD_FLOAT_CORRECTION_VERIFY", "LQCD_FINE_TEAM_FUSED", "LQCD_COARSE_CGS2",
+-                          "LQCD_COARSE_THREADS", "LQCD_COARSE_BATCH_REDUCE", "LQCD_GCR_FUSED"};
++                          "LQCD_COARSE_THREADS", "LQCD_COARSE_BATCH_REDUCE", "LQCD_GCR_FUSED",
++                          "LQCD_COARSE_BATCH_HALO"};
+     double values[] = {(double)setting("NATIVE_SAP_STEPS", 4),
+                        (double)setting("NATIVE_SAP_CYCLES", 2),
+-                       (double)setting("NATIVE_COARSE_IT", 40), .1, 1e-3, 0., 1., 0., 0., 0., 1.};
+-    const double lower[] = {1., 1., 1., 1e-4, 1e-6, 0., 0., 0., 0., 0., 0.};
+-    const double upper[] = {32., 8., 200., .9, .1, 1., 1., 1., 608., 1., 1.};
++                       (double)setting("NATIVE_COARSE_IT", 40), .1, 1e-3, 0., 1., 0., 0., 0., 1., 0.};
++    const double lower[] = {1., 1., 1., 1e-4, 1e-6, 0., 0., 0., 0., 0., 0., 0.};
++    const double upper[] = {32., 8., 200., .9, .1, 1., 1., 1., 608., 1., 1., 1.};
+     constexpr int count = sizeof(values) / sizeof(values[0]);
+     int invalid = 0;
+     for (int i = 0; i < count; i++) {
+@@ -62,6 +63,7 @@ void NativeMG::Impl::configure_solve() {
+     coarse_cgs2 = values[7] != 0;
+     coarse_threads = (int)values[8];
+     coarse_batch_reduce = values[9] != 0;
++    coarse_batch_halo = values[11] != 0;
+     // LQCD_GCR_FUSED is read dynamically by existing scalar/outer code. It also
+     // selects the collective sequence of the optional coarse batch path, so
+     // validate it after setup as well as during context construction.
+diff --git a/src/solver/native/hierarchy.hpp b/src/solver/native/hierarchy.hpp
+index 54f9ec1..663be3a 100644
+--- a/src/solver/native/hierarchy.hpp
++++ b/src/solver/native/hierarchy.hpp
+@@ -3,6 +3,7 @@
+ #include "batched_state.hpp"
+ #include "multigrid.hpp"
+ #include <cstddef>
++#include <cstdint>
+ #include "../../support/hbw_buffer.hpp"
+ 
+ using lqcd_native::detail::FloatField;
+@@ -81,6 +82,12 @@ struct NativeMG::Impl {
+     bool coarse_fused = setting("LQCD_COARSE_FUSED", 0) != 0;
+     bool coarse_sve = setting("LQCD_ARM_COARSE_SVE", 0) != 0;
+     bool coarse_batch_reduce = false;
++    bool coarse_batch_halo = false;
++    struct CoarseBatchHaloStats {
++        std::uint64_t calls = 0, send_bytes = 0, rhs_slots = 0;
++        int max_width = 0;
++    };
++    mutable CoarseBatchHaloStats coarse_batch_halo_stats;
+     mutable bool coarse_pack_ready = false;
+     mutable FloatField coarse_columns, coarse_inverse_columns;
+     void prepare_coarse_columns() const;
+@@ -94,6 +101,10 @@ struct NativeMG::Impl {
+     mutable FloatField send_lower, send_upper, recv_lower, recv_upper;
+     mutable Field double_recv_lower, double_recv_upper;
+     mutable FloatField coarse_send_lower, coarse_send_upper, coarse_recv_lower, coarse_recv_upper;
++    // Dedicated RHS-major faces: no alias with scalar coarse/fine halos and
++    // no send mutation while any request remains active.
++    mutable FloatField coarse_batch_send_lower, coarse_batch_send_upper;
++    mutable FloatField coarse_batch_recv_lower, coarse_batch_recv_upper;
+     bool halo_overlap = setting("LQCD_HALO_OVERLAP", 1) != 0;
+     bool coarse_empty_interior = setting("LQCD_COARSE_EMPTY_INTERIOR", 1) != 0;
+     bool coarse_spatial_overlap = setting("LQCD_COARSE_SPATIAL_OVERLAP", 0) != 0;
+@@ -158,6 +169,22 @@ struct NativeMG::Impl {
+     void coarse_apply(const FloatField &src, FloatField &out, int color = -1,
+                       bool diagonal = true) const;
+ 
++    // Opt-in independent-RHS halo batching. Explicit ghosts preserve scalar
++    // scratch isolation and keep the established scalar matvec untouched.
++    void coarse_block_apply_ghosts(int cb, const FloatField &src, FloatField &out,
++                                   const float *lower, const float *upper,
++                                   int dir_begin, int dir_end, bool add) const;
++    void coarse_apply_batch(const std::vector<const FloatField *> &sources,
++                             const std::vector<FloatField *> &outputs,
++                             int color = -1, bool diagonal = true) const;
++    void coarse_schur_batch(const std::vector<const FloatField *> &sources,
++                             const std::vector<FloatField *> &outputs) const;
++    void coarse_reduced_rhs_batch(const std::vector<const FloatField *> &sources,
++                                   const std::vector<FloatField *> &outputs) const;
++    void coarse_reconstruct_batch(const std::vector<const FloatField *> &sources,
++                                   const std::vector<const FloatField *> &solutions,
++                                   const std::vector<FloatField *> &outputs) const;
++
+     void coarse_diagonal(const FloatField &src, FloatField &out, int color, bool inverse) const;
+ 
+     void coarse_copy_color(const FloatField &src, FloatField &out, int color) const;
+@@ -177,6 +204,15 @@ struct NativeMG::Impl {
+     void coarse_solve_batch(const std::vector<FloatField> &sources,
+                             std::vector<FloatField> &destinations, int nrhs) const;
+ 
++    // Keep two independently reviewable fixed paths, without changing the
++    // opaque runtime object's layout or its public C ABI.
++    template<bool Halo>
++#if defined(__GNUC__) || defined(__clang__)
++    __attribute__((noinline))
++#endif
++    void coarse_solve_batch_impl(const std::vector<FloatField> &sources,
++                                 std::vector<FloatField> &destinations, int nrhs) const;
++
+     void precondition(const Field &b, Field &out);
+ 
+     void encode_fine(const Field &b, FloatField &out) const;
+diff --git a/tests/runtime/test_coarse_batch_reduce.py b/tests/runtime/test_coarse_batch_reduce.py
+index 16ecfe1..f982354 100644
+--- a/tests/runtime/test_coarse_batch_reduce.py
++++ b/tests/runtime/test_coarse_batch_reduce.py
+@@ -1,4 +1,4 @@
+-"""Independent-RHS coarse reduction batching: CPU-only public MPI gate.
++"""Independent-RHS coarse reduction/halo batching: CPU-only public MPI gate.
+ 
+ Uses a small lattice and a separate NumPy Wilson stencil. Different sources,
+ zero/dependent columns, changing widths, fallback modes and collective tuning
+@@ -19,12 +19,17 @@ from lqcd_cpu import Solver
+ from lqcd_cpu.propagator import SOLVE_TUNING_KEYS
+ 
+ comm = MPI.COMM_WORLD
+-assert comm.size in (1, 2)
++assert comm.size in (1, 2, 4)
+ assert 'LQCD_COARSE_BATCH_REDUCE' in SOLVE_TUNING_KEYS
++assert 'LQCD_COARSE_BATCH_HALO' in SOLVE_TUNING_KEYS
+ extent, mass, tolerance = 8, .25, 1e-10
+-local_t = extent // comm.size
++temporal_extent = int(os.environ.get('LQCD_TEST_COARSE_TEMPORAL_EXTENT', str(extent)))
++assert temporal_extent >= 2 * comm.size and temporal_extent % (2 * comm.size) == 0
++smoke = os.environ.get('LQCD_TEST_COARSE_HALO_SMOKE', '0') == '1'
++local_t = temporal_extent // comm.size
+ slab = slice(comm.rank * local_t, (comm.rank + 1) * local_t)
+-shape = (extent,) * 4 + (4, 3)
++shape = (temporal_extent,) + (extent,) * 3 + (4, 3)
++lattice = [extent] * 3 + [temporal_extent]
+ gamma = np.array([
+     [[0,0,0,1j],[0,0,1j,0],[0,-1j,0,0],[-1j,0,0,0]],
+     [[0,0,0,-1],[0,0,1,0],[0,1,0,0],[-1,0,0,0]],
+@@ -51,8 +56,8 @@ rng = np.random.default_rng(8127)
+ known = rng.normal(size=(12,) + shape) + 1j * rng.normal(size=(12,) + shape)
+ # Smooth, localized, zero, dependent and oscillating exact solutions have
+ # distinct coarse/outer convergence histories; scaling alone would not do so.
+-time = np.arange(extent)
+-known[1] = np.broadcast_to(np.exp(1j*np.pi*time[:,None,None,None,None,None]/extent), shape)
++time = np.arange(temporal_extent)
++known[1] = np.broadcast_to(np.exp(1j*np.pi*time[:,None,None,None,None,None]/temporal_extent), shape)
+ known[2] = 0
+ known[2, 0, 0, 0, 0, 1, 2] = 1
+ known[3] = 0
+@@ -73,10 +78,11 @@ def relative(actual, expected):
+     return (difference / norm)**.5 if norm else difference**.5
+ 
+ 
+-def verify(solver, indices, grouping, flag):
++def verify(solver, indices, grouping, flag, halo=0):
+     global maximum_residual
+     os.environ['LQCD_RHS_BATCH'] = str(grouping)
+     os.environ['LQCD_COARSE_BATCH_REDUCE'] = str(flag)
++    os.environ['LQCD_COARSE_BATCH_HALO'] = str(halo)
+     rhs = np.ascontiguousarray(sources[indices])
+     before = rhs.copy()
+     result, stats = solver.solve_many(rhs, tol=tolerance, layout='lex')
+@@ -90,7 +96,7 @@ def verify(solver, indices, grouping, flag):
+             assert np.count_nonzero(result[slot]) == 0 and stats[slot]['iterations'] == 0
+         else:
+             residual = np.linalg.norm((independent_apply(global_result)-whole_sources[column]).ravel()) / norm
+-            assert residual <= tolerance, (grouping, flag, column, residual)
++            assert residual <= tolerance, (grouping, flag, halo, column, residual)
+             maximum_residual = max(maximum_residual, residual)
+             assert relative(result[slot], known[column, slab]) < 1e-8
+     maximum_threads = solver.lib.omp_get_max_threads
+@@ -99,6 +105,69 @@ def verify(solver, indices, grouping, flag):
+     return result, stats
+ 
+ 
++def captured_verify(solver, indices, grouping, flag, halo=0):
++    """Retain native execution counters without interpreting wall timings."""
++    previous_verbose = os.environ.get('LQCD_VERBOSE')
++    previous_stderr = os.dup(2)
++    os.environ['LQCD_VERBOSE'] = '1'
++    try:
++        with tempfile.TemporaryFile(mode='w+b') as capture:
++            try:
++                os.dup2(capture.fileno(), 2)
++                result, stats = verify(solver, indices, grouping, flag, halo)
++            finally:
++                os.dup2(previous_stderr, 2)
++            capture.seek(0)
++            lines = capture.read().decode('utf-8', errors='replace').splitlines()
++    finally:
++        os.close(previous_stderr)
++        if previous_verbose is None:
++            os.environ.pop('LQCD_VERBOSE', None)
++        else:
++            os.environ['LQCD_VERBOSE'] = previous_verbose
++    return result, stats, lines
++
++
++def halo_diagnostic(solver, indices, grouping, flag, halo, supported=True, label=''):
++    result, stats, lines = captured_verify(solver, indices, grouping, flag, halo)
++    prefix = 'native coarse batch halo '
++    records = [json.loads(line[len(prefix):]) for line in lines if line.startswith(prefix)]
++    expected = comm.size > 1 and grouping > 1 and flag and halo and supported
++    error, summary = None, None
++    if comm.rank == 0:
++        try:
++            summary = dict(label=label, ranks=comm.size, grouping=grouping,
++                           reduce=flag, halo=halo, records=len(records),
++                           calls=sum(r['calls'] for r in records),
++                           send_bytes=sum(r['send_bytes'] for r in records),
++                           rhs_slots=sum(r['rhs_slots'] for r in records),
++                           max_width=max((r['max_width'] for r in records), default=0))
++            for record in records:
++                assert all(record[key] >= 0 for key in ('calls', 'send_bytes', 'rhs_slots', 'max_width'))
++                assert record['max_width'] <= grouping
++                if record['calls']:
++                    assert 2 * record['calls'] <= record['rhs_slots'] <= grouping * record['calls']
++                    # Two temporal faces, 48 complex components per spatial
++                    # coarse site, interleaved real/imaginary float32 values.
++                    bytes_per_rhs = 2 * (extent // 2)**3 * 48 * 2 * 4
++                    assert record['send_bytes'] == record['rhs_slots'] * bytes_per_rhs
++            if expected:
++                assert summary['calls'] > 0, 'enabled halo batch produced no actual communication'
++                assert summary['send_bytes'] > 0 and summary['rhs_slots'] > 0
++                assert 2 <= summary['max_width'] <= grouping
++            else:
++                assert summary['calls'] == summary['send_bytes'] == summary['rhs_slots'] == 0
++        except (AssertionError, KeyError, TypeError) as failure:
++            error = repr(failure)
++    error = comm.bcast(error)
++    if error:
++        raise AssertionError(error)
++    summary = comm.bcast(summary)
++    if comm.rank == 0:
++        print('COARSE_BATCH_HALO_DIAGNOSTIC ' + json.dumps(summary, sort_keys=True), flush=True)
++    return result, stats, summary
++
++
+ def rejected_then_recover(solver, name, invalid):
+     previous = os.environ.get(name)
+     os.environ[name] = invalid if comm.rank == 0 else (previous or '0')
+@@ -121,16 +190,7 @@ def diagnostic(solver, cap):
+         'LQCD_VERBOSE', 'LQCD_MG_COARSE_TOL', 'LQCD_MG_COARSE_IT')}
+     os.environ.update(LQCD_VERBOSE='1', LQCD_MG_COARSE_TOL='1e-4',
+                       LQCD_MG_COARSE_IT=str(cap))
+-    previous_stderr = os.dup(2)
+-    with tempfile.TemporaryFile(mode='w+b') as capture:
+-        try:
+-            os.dup2(capture.fileno(), 2)
+-            verify(solver, [1, 0, 2, 5], 4, 1)
+-        finally:
+-            os.dup2(previous_stderr, 2)
+-            os.close(previous_stderr)
+-        capture.seek(0)
+-        lines = capture.read().decode('utf-8', errors='replace').splitlines()
++    _, _, lines = captured_verify(solver, [1, 0, 2, 5], 4, 1, halo=1)
+     prefix = 'native coarse batch reduce '
+     records = [json.loads(line[len(prefix):]) for line in lines if line.startswith(prefix)]
+     error, summary = None, None
+@@ -166,20 +226,39 @@ def diagnostic(solver, cap):
+ 
+ 
+ os.environ.update(LQCD_COARSE_EO='1', LQCD_COARSE_CGS2='0',
+-                 LQCD_GCR_FUSED='1', LQCD_COARSE_BATCH_REDUCE='0')
+-with Solver([extent]*4, [1,1,1,comm.size], mass=mass, csw=1.160920226,
+-            block=[2]*4, threads=1+comm.rank) as solver:
+-    solver.load_gauge(gauge, layout='lex')
+-    solver.setup()
++                 LQCD_GCR_FUSED='1', LQCD_COARSE_BATCH_REDUCE='0',
++                 LQCD_COARSE_BATCH_HALO='0')
++
++
++def exercise(solver):
++    if smoke:
++        # Context-time mode variants share this short probe. The full serial,
++        # MPI2 and MPI4 suites below cover all widths and tuning errors.
++        indices = [1, 0, 3, 2, 5]  # a zero middle slot and a partial width-one tail
++        normal, _ = verify(solver, indices, 4, 1, halo=0)
++        merged, _, _ = halo_diagnostic(solver, indices, 4, 1, 1, label='mode-partial-tail')
++        assert relative(merged, normal) < 1e-8
++        halo_diagnostic(solver, [1, 0], 1, 1, 1, label='mode-single-rhs')
++        return
+     scalar, _ = verify(solver, list(range(12)), 1, 0)
+     # Keep one hierarchy while the active width and history storage grow/shrink.
+     for indices, grouping in [([0],1), ([1,0],2), ([0,1,2,3],4),
+                               (list(range(12)),12), ([11,2],2),
+                               ([3,3,3,3],4), ([3,3,2,3],4)]:
+         normal, _ = verify(solver, indices, grouping, 0)
+-        merged, _ = verify(solver, indices, grouping, 1)
++        reduced, _ = verify(solver, indices, grouping, 1, halo=0)
++        merged, _ = verify(solver, indices, grouping, 1, halo=1)
+         assert relative(merged, normal) < 1e-8
++        assert relative(merged, reduced) < 1e-8
+         assert relative(merged, scalar[indices]) < 1e-8
++    # Flags alone are not execution evidence. Inspect real packed-MPI calls,
++    # bytes and active widths, including an inactive middle slot and tail.
++    halo_diagnostic(solver, [1,0,3,2], 4, 1, 1, label='active-zero')
++    halo_diagnostic(solver, [1,0,3,2,5], 4, 1, 1, label='partial-tail')
++    halo_diagnostic(solver, [1,0], 2, 1, 0, label='halo-off')
++    halo_diagnostic(solver, [1,0], 2, 0, 1, label='reduce-off')
++    halo_diagnostic(solver, [1,0], 1, 1, 1, label='single-rhs')
++    halo_diagnostic(solver, [3,3,3,3], 4, 1, 1, supported=False, label='all-zero')
+     # Observe actual internal cap/restart behavior rather than inferring it
+     # from an outer source shape. The small free-field case may converge before
+     # a restart even at the tightest allowed coarse tolerance; report that gap.
+@@ -196,19 +275,21 @@ with Solver([extent]*4, [1,1,1,comm.size], mass=mass, csw=1.160920226,
+     # A cap applies once around the whole supported coarse batch and restores
+     # the calling task's ICV. The cap is not a performance assertion.
+     os.environ['LQCD_COARSE_THREADS'] = '1'
+-    verify(solver, [1,0], 2, 1)
++    halo_diagnostic(solver, [1,0], 2, 1, 1, label='one-coarse-thread')
+     os.environ['LQCD_COARSE_THREADS'] = '0'
+     # Unsupported orthogonalization/update modes take the old scalar path.
+     for name in ['LQCD_COARSE_CGS2', 'LQCD_GCR_FUSED']:
+         original = os.environ[name]
+         os.environ[name] = '1' if name.endswith('CGS2') else '0'
+-        normal, normal_stats = verify(solver, [1,0], 2, 0)
+-        fallback, fallback_stats = verify(solver, [1,0], 2, 1)
++        normal, normal_stats = verify(solver, [1,0], 2, 0, halo=1)
++        fallback, fallback_stats, _ = halo_diagnostic(
++            solver, [1,0], 2, 1, 1, supported=False, label=name+'-fallback')
+         assert relative(fallback, normal) < 1e-12
+         assert [s['iterations'] for s in normal_stats] == [s['iterations'] for s in fallback_stats]
+         os.environ[name] = original
+-    for invalid in ['2', '-1', '.5', 'nan', 'bad', '']:
+-        rejected_then_recover(solver, 'LQCD_COARSE_BATCH_REDUCE', invalid)
++    for name in ['LQCD_COARSE_BATCH_REDUCE', 'LQCD_COARSE_BATCH_HALO']:
++        for invalid in ['2', '-1', '.5', 'nan', 'bad', '']:
++            rejected_then_recover(solver, name, invalid)
+     # strtod rounds both ranks to zero here, while the existing setting()->atoi
+     # would select fused=1 on rank 0. Reject before either solver branch runs.
+     os.environ['LQCD_GCR_FUSED'] = '0'
+@@ -217,31 +298,42 @@ with Solver([extent]*4, [1,1,1,comm.size], mass=mass, csw=1.160920226,
+     rejected_then_recover(solver, 'LQCD_GCR_FUSED', '.999999999999999999')
+     if comm.size > 1:
+         # Legal local values with an illegal collective disagreement.
+-        os.environ['LQCD_COARSE_BATCH_REDUCE'] = '0' if comm.rank == 0 else '1'
+-        caught = False
+-        try: solver.solve_many(sources[:2], tol=tolerance, layout='lex')
+-        except RuntimeError as error: caught = 'tuning' in str(error)
+-        assert comm.allreduce(int(caught)) == comm.size
+-        os.environ['LQCD_COARSE_BATCH_REDUCE'] = '1'
++        for name in ['LQCD_COARSE_BATCH_REDUCE', 'LQCD_COARSE_BATCH_HALO']:
++            os.environ[name] = '0' if comm.rank == 0 else '1'
++            caught = False
++            try: solver.solve_many(sources[:2], tol=tolerance, layout='lex')
++            except RuntimeError as error: caught = 'tuning' in str(error)
++            assert comm.allreduce(int(caught)) == comm.size, name
++            os.environ[name] = '1'
+         os.environ['LQCD_GCR_FUSED'] = '0' if comm.rank == 0 else '1'
+         caught = False
+         try: solver.solve_many(sources[:2], tol=tolerance, layout='lex')
+         except RuntimeError as error: caught = 'tuning' in str(error)
+         assert comm.allreduce(int(caught)) == comm.size
+         os.environ['LQCD_GCR_FUSED'] = '1'
+-    verify(solver, [1,0], 2, 1)
++    verify(solver, [1,0], 2, 1, halo=1)
+ 
+-# Legacy non-EO coarse mode is a separate context-time configuration. Both flag
+-# values must retain the scalar implementation and the same numerical result.
+-os.environ['LQCD_COARSE_EO'] = '0'
+-with Solver([extent]*4, [1,1,1,comm.size], mass=mass, block=[2]*4,
+-            threads=1+comm.rank) as solver:
++
++with Solver(lattice, [1,1,1,comm.size], mass=mass, csw=1.160920226,
++            block=[2]*4, threads=1+comm.rank%2) as solver:
+     solver.load_gauge(gauge, layout='lex')
+     solver.setup()
+-    normal, _ = verify(solver, [1,0], 2, 0)
+-    fallback, _ = verify(solver, [1,0], 2, 1)
+-    assert relative(fallback, normal) < 1e-12
++    exercise(solver)
++
++# Legacy non-EO coarse mode is a separate context-time configuration. Both flag
++# values must retain the scalar implementation and the same numerical result.
++if not smoke:
++    os.environ['LQCD_COARSE_EO'] = '0'
++    with Solver(lattice, [1,1,1,comm.size], mass=mass, block=[2]*4,
++                threads=1+comm.rank%2) as solver:
++        solver.load_gauge(gauge, layout='lex')
++        solver.setup()
++        normal, _ = verify(solver, [1,0], 2, 0, halo=1)
++        fallback, _, _ = halo_diagnostic(solver, [1,0], 2, 1, 1,
++                                         supported=False, label='non-EO-fallback')
++        assert relative(fallback, normal) < 1e-12
+ 
+ if comm.rank == 0:
+-    print(f'PASS coarse independent-RHS reduction batching ranks={comm.size} '
+-          f'widths=1,2,4,12 max_independent_residual={maximum_residual:.9e}', flush=True)
++    print(f'PASS coarse independent-RHS reduction/halo batching ranks={comm.size} '
++          f'local_coarse_t={local_t//2} smoke={smoke} '
++          f'max_independent_residual={maximum_residual:.9e}', flush=True)

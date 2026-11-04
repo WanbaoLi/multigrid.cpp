@@ -1,0 +1,9 @@
+{
+  "complete": true,
+  "passed": true,
+  "files": 47,
+  "archive": "/home/share/nsls_lwb/.cache/mg-opt-20261103/exports/halo153-full/evidence.tar.gz",
+  "archive_sha256": "0c4c6362cb3eabeb59a85b4b4ab49d6096a9c27474ae9a4b571b33c27dc13acb",
+  "archive_bytes": 131474,
+  "manifest_sha256": "999f09d45644b2ce3a6d6eeffa59ad14fbd90e43c3d84dfad8ed661cd04afb39"
+}

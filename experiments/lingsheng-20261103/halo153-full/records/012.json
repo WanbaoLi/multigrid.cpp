@@ -1,0 +1,76 @@
+{
+  "complete": true,
+  "old": [
+    {
+      "symbol": "_ZNK8NativeMG4Impl18coarse_solve_batchERKSt6vectorIS1_IfN11lqcd_native18WorkspaceAllocatorIfEEESaIS5_EERS7_i",
+      "address": 170528,
+      "size_bytes": 9192,
+      "instructions": 2298,
+      "stack_memory_instructions": 412,
+      "frame_instructions": [
+        "29a20:\ta9a47bfd \tstp\tx29, x30, [sp, #-448]!"
+      ],
+      "direct_halo_flag_offset_references": [
+        "2ad58:\t395ecc40 \tldrb\tw0, [x2, #1971]"
+      ],
+      "halo_batch_calls": [],
+      "disassembly": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/codegen/old052-0.asm",
+      "note": "Static instruction counts are not executed counts or a timing attribution"
+    }
+  ],
+  "new": [
+    {
+      "symbol": "_ZNK8NativeMG4Impl18coarse_solve_batchERKSt6vectorIS1_IfN11lqcd_native18WorkspaceAllocatorIfEEESaIS5_EERS7_i",
+      "address": 170800,
+      "size_bytes": 252,
+      "instructions": 63,
+      "stack_memory_instructions": 13,
+      "frame_instructions": [
+        "29b30:\ta9bc7bfd \tstp\tx29, x30, [sp, #-64]!"
+      ],
+      "direct_halo_flag_offset_references": [
+        "29b90:\t395ecec0 \tldrb\tw0, [x22, #1971]"
+      ],
+      "halo_batch_calls": [],
+      "disassembly": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/codegen/v2-0.asm",
+      "note": "Static instruction counts are not executed counts or a timing attribution"
+    },
+    {
+      "symbol": "_ZNK8NativeMG4Impl23coarse_solve_batch_implILb0EEEvRKSt6vectorIS2_IfN11lqcd_native18WorkspaceAllocatorIfEEESaIS6_EERS8_i",
+      "address": 176576,
+      "size_bytes": 7576,
+      "instructions": 1894,
+      "stack_memory_instructions": 401,
+      "frame_instructions": [
+        "2b1c0:\ta9a17bfd \tstp\tx29, x30, [sp, #-496]!"
+      ],
+      "direct_halo_flag_offset_references": [],
+      "halo_batch_calls": [],
+      "disassembly": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/codegen/v2-1.asm",
+      "note": "Static instruction counts are not executed counts or a timing attribution"
+    },
+    {
+      "symbol": "_ZNK8NativeMG4Impl23coarse_solve_batch_implILb1EEEvRKSt6vectorIS2_IfN11lqcd_native18WorkspaceAllocatorIfEEESaIS6_EERS8_i",
+      "address": 184768,
+      "size_bytes": 7536,
+      "instructions": 1884,
+      "stack_memory_instructions": 442,
+      "frame_instructions": [
+        "2d1c0:\td10943ff \tsub\tsp, sp, #0x250"
+      ],
+      "direct_halo_flag_offset_references": [],
+      "halo_batch_calls": [
+        "2d794:\t94001097 \tbl\t319f0 <NativeMG::Impl::coarse_reduced_rhs_batch(std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*> > const&, std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> >*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> >*> > const&) const>",
+        "2db68:\t94000dfe \tbl\t31360 <NativeMG::Impl::coarse_schur_batch(std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*> > const&, std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> >*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> >*> > const&) const>",
+        "2e288:\t94000c36 \tbl\t31360 <NativeMG::Impl::coarse_schur_batch(std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*> > const&, std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> >*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> >*> > const&) const>",
+        "2e968:\t94000d6e \tbl\t31f20 <NativeMG::Impl::coarse_reconstruct_batch(std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*> > const&, std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*> > const&, std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> >*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> >*> > const&) const>"
+      ],
+      "disassembly": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/codegen/v2-2.asm",
+      "note": "Static instruction counts are not executed counts or a timing attribution"
+    }
+  ],
+  "false_path_no_direct_halo_flag_or_batch_call": true,
+  "scratch_lifetime_proof": "Source template false has empty CoarseBatchHaloScratch; instruction/frame review remains explicit",
+  "performance_claim": false,
+  "executed_native_library": false
+}

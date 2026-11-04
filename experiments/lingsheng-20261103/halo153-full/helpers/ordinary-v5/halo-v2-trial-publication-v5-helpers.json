@@ -1,0 +1,93 @@
+{
+  "complete": true,
+  "preparation_only": true,
+  "controller": "halo_v2_trial_publication_v5.py",
+  "source_head": "760666c8ac459ef062c749ee7ee9964c99e7c3c8",
+  "source_manifest_sha256": "d93dde39cb162bd12c845c05e480b73c49dac5385c0fab368abaf8e43bc9fda7",
+  "arm_library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+  "full_arm_numerical_proof_available": false,
+  "ordinary_performance_run": false,
+  "files": {
+    "ctest_remainder_v1.py": "52bb4379591fd1840cebfb28281ae3fa0b8630626d72bb017be8c8c81d9f57b4",
+    "derived_publication.py": "83b790954b64b0ae7ae8e71ed2978b752f30477bafd7fa48cdfd6ef548b683a6",
+    "file_integrity.py": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+    "fresh_publication_v2.py": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a",
+    "halo-v2-trial-helpers.json": "4a111e4ee0eb9c0fb8c9cd6d7f16a96e06f785685b8b15bd21d97a80dd757972",
+    "halo-v2-trial-publication-v3-helpers.json": "89e7ddd6cf5ad452237814ccd80a389b2a3dcd9d97c4a7fe2456c83aac560612",
+    "halo-v2-trial-publication-v4-helpers.json": "60f0cd04049a98aed888e393fa0fdae6fa2826798d18604ac9be236ab1b03e9f",
+    "halo_publication_audit_v3.py": "499a63a44228e5af9364e37e5e751d66a7a75f665d790e0ba55aca5e5451ce06",
+    "halo_v2_trial.py": "0864909721d0f482c77a06b6a862ac98c9a4ef5de70330be9f9f3d0800ab4be9",
+    "halo_v2_trial_publication_v3.py": "1f7d4f9d28e6d4f4b083877d0ef38c637c047f80888042c58a65957732261fa1",
+    "halo_v2_trial_publication_v4.py": "0ce93af65b68748b332eb9cb5106cc833c7a0b06b144d1e470eac79798b18cf5",
+    "halo_v2_trial_publication_v5.py": "a9afbc64994d5c48587d09e27f70dd74cd797516feb4c7adcf1ec45a6e61bb59",
+    "owned_publication_audit_v3.py": "1264d37ee7e05ae6247a7770351c426ab3c01324ef14d01f8abe614deb6a9103",
+    "phase6_halo.py": "3f3537ca6a09fbe6b22ae06e488a5a50f334cc7e374fd7326d345c6113de63e6",
+    "phase7_cold_entry_v2.py": "d4e733d6a0188543e4ff50c323ea3a4b28dde849fb66497ba81751b1d0cec2f1",
+    "raw_benchmark_publication_v2.py": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+    "raw_benchmark_v4.py": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec",
+    "raw_controller_publication_v2.py": "a5cb583cbb0c911fa1e4236b7bfd026fc64f6902a9fcce2f4bffcb6b630ae78f",
+    "raw_controller_v4.py": "dd2d4049ed2ebd39e08efc03c4528e516c28e518a5c6e2e9de803358715d1b0e",
+    "raw_protocol_derived.py": "a07ccf40e3808d8dd7c6480f1a8f511113d4b1d944e28f627fc5cca092a6fe27",
+    "raw_protocol_publication_v2.py": "b94f04ff48ebefd075cefe770d49e9b6093f3baa50fc2f8261e73319f1e0fe36",
+    "raw_protocol_v4.py": "1fe892d279305be75f6f814d8e7526d2c09531803ac5ffc6f8483f46b1fd0453",
+    "raw_scalar_helper.py": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3",
+    "raw_scalar_helper_derived.py": "25b6fb0d171efb12954edbd0941701ac38fdcb954cf1882de443b50e755659a2",
+    "raw_scalar_helper_publication_v2.py": "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097",
+    "README-publication-v3.md": "2a90b178f7267f61b82ff4a428ea65f95fba44fadf7a9e8a3d99de6e53ec2de8",
+    "README.md": "712db5a62c88b0d58842888af0792e6df3ee185dbc9e02449458671336fffca8",
+    "test_fresh_publication_v2.py": "e5ed79a64f131b11244778550eef4c78e71fd1215c15a06942ebcb3b3cef14ab",
+    "test_halo_v2_publication_v3.py": "09201aa96bfbdba83b1ede2f451a49909925ba95676a3d6ee6c6094f256f30a5",
+    "test_halo_v2_publication_v4.py": "64c556c4230eeb422f05a493da65bf433c96ef9f9d9d378ef472b0e719dd9f16",
+    "test_halo_v2_publication_v5.py": "f21defcd3fe68dbafb607d69c9d929dd29aa4be4561ad162259e4db53fd5e018",
+    "test_halo_v2_trial.py": "c956829a517e6a3aa45f3c643216f3e7936c795f547fa0592434e60eb837864d",
+    "validation-evidence/halo-v2-arm-codegen118/closed-evidence/campaign-halo-v2/attempts/000-halo-v2-tests/attempt.json": "0c81fab432bb5a31645615b93019c77f3bb61c06d53477e495d48935ce411138",
+    "validation-evidence/halo-v2-arm-codegen118/collection-proof.json": "bc73fd0e5d7921bd6cb6e4dd12305c7572aaef509e24b355291bb5b1840e9c3d",
+    "validation-evidence/halo103-comparison/closed-state-proof.json": "d7f8cdc522b045021a1ea568fde57c391d025ac0bbcd7157f33ca102c2c6acdf",
+    "validation-evidence/halo103-comparison/comparison.json": "55fc8e53dc84ef9dae57e1b341268fed3b33b59fac777986c2912a60a1ba2d3b"
+  },
+  "original_entry_sha256": "0864909721d0f482c77a06b6a862ac98c9a4ef5de70330be9f9f3d0800ab4be9",
+  "original_gate_source_sha256": "3f3537ca6a09fbe6b22ae06e488a5a50f334cc7e374fd7326d345c6113de63e6",
+  "factory_sha256": "b94f04ff48ebefd075cefe770d49e9b6093f3baa50fc2f8261e73319f1e0fe36",
+  "helper_sha256": "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097",
+  "tests": {
+    "windows": {
+      "argv": [
+        "C:\\Users\\lwb\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-B",
+        "C:\\Users\\lwb\\Documents\\Codex\\2026-11-02\\simd-lqcd-2\\work\\halo-v2-trial-publication-v3-helpers\\test_halo_v2_publication_v3.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "d02fe32f777735cbd961146bbe571732b8065d918a4e2ed076fbe400a8f2d251"
+    },
+    "wsl": {
+      "argv": [
+        "wsl",
+        "-d",
+        "Ubuntu",
+        "--",
+        "python3",
+        "-B",
+        "/mnt/c/Users/lwb/Documents/Codex/2026-11-02/simd-lqcd-2/work/halo-v2-trial-publication-v3-helpers/test_halo_v2_publication_v3.py"
+      ],
+      "returncode": 0,
+      "log_sha256": "a8750f6fea642e9a8fcd31578475a3f9cc762d1d59f3abe0ce36f277b4654a2a"
+    }
+  },
+  "python39_ast": true,
+  "deployed": false,
+  "queued": false,
+  "new_compute": false,
+  "prepared_only": true,
+  "actual_compute": false,
+  "change": "Validate the immutable timed-out original suite, its actual completed prefix, exact catalog and closed fresh remainder. Scientific Trial class is unchanged after manifest filename normalization.",
+  "tests_v4": {
+    "count": 23,
+    "returncode": 0,
+    "log_sha256": "605e5aa98cb8a0a4e46bcdcaa772e6abb933e58d2dc8e40cbd79452249e0139b"
+  },
+  "tests_v5": {
+    "count": 26,
+    "returncode": 0,
+    "log_sha256": "0c364144013287093f618b39b5df8b025df21fd8f7ea75483e77d3cfc602b08f"
+  }
+}

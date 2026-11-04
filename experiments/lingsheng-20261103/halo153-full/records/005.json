@@ -1,0 +1,723 @@
+{
+  "allocation": "mg-opt-20261103-worker10",
+  "arm_codegen_complete": true,
+  "codegen_files": {
+    "attempts/000-halo-v2-tests/codegen/codegen.json": "693c1dec99d2d1ec6aaf566771568052538ffea58448806a4306a63732223618",
+    "attempts/000-halo-v2-tests/codegen/old052-0.asm": "d02bed5a35d623f5eb067e8ec9f50d24b8ebc3832be895cd718e431a131fa24f",
+    "attempts/000-halo-v2-tests/codegen/v2-0.asm": "4bba675d38524f7f74c95c3a535552e0e9eb6f0582e3a596874145a54fbe6691",
+    "attempts/000-halo-v2-tests/codegen/v2-1.asm": "73c6e8c68d4b25f4857bbfe92624fb8d6b7d0e282fe9984414832cee858d2548",
+    "attempts/000-halo-v2-tests/codegen/v2-2.asm": "0f7e1a3bde06c9b0c7e449537440757bbf3344e22c0b4ab194b787b4a73658a4"
+  },
+  "complete": true,
+  "controller_sha256": "583cb30d6e4e58bfa00202527d7dd5ea302f54cc9b4167a98d19e345716abe55",
+  "ctest_recovery": {
+    "all_tests": [
+      "batch12_coarse_reduce_mpi2",
+      "batch12_coarse_halo_mpi2",
+      "batch12_coarse_halo_mpi4",
+      "coarse_batch_reduce_serial",
+      "coarse_batch_reduce_mpi2",
+      "coarse_batch_halo_mpi4",
+      "coarse_batch_halo_blocking",
+      "coarse_batch_halo_fused",
+      "coarse_batch_halo_shrunk_team",
+      "coarse_batch_halo_interior",
+      "runtime_batch_coarse_reduce",
+      "runtime_batch_coarse_halo",
+      "mg_tuning"
+    ],
+    "catalog_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/catalog.json",
+    "catalog_sha256": "d4182326e314332c2457ffe983a94473678f86affd927a0076f10dacbead2889",
+    "complete": true,
+    "completed_tests": [
+      "batch12_coarse_reduce_mpi2",
+      "batch12_coarse_halo_mpi2",
+      "batch12_coarse_halo_mpi4",
+      "coarse_batch_reduce_serial",
+      "coarse_batch_reduce_mpi2",
+      "coarse_batch_halo_mpi4",
+      "coarse_batch_halo_blocking",
+      "coarse_batch_halo_fused",
+      "coarse_batch_halo_shrunk_team",
+      "coarse_batch_halo_interior",
+      "runtime_batch_coarse_reduce"
+    ],
+    "executed_remaining_tests": [
+      "runtime_batch_coarse_halo",
+      "mg_tuning"
+    ],
+    "expected_library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+    "full_test_coverage": [
+      "batch12_coarse_reduce_mpi2",
+      "batch12_coarse_halo_mpi2",
+      "batch12_coarse_halo_mpi4",
+      "coarse_batch_reduce_serial",
+      "coarse_batch_reduce_mpi2",
+      "coarse_batch_halo_mpi4",
+      "coarse_batch_halo_blocking",
+      "coarse_batch_halo_fused",
+      "coarse_batch_halo_shrunk_team",
+      "coarse_batch_halo_interior",
+      "runtime_batch_coarse_reduce",
+      "runtime_batch_coarse_halo",
+      "mg_tuning"
+    ],
+    "id": "153-halo-v2-remainder-worker10",
+    "meaning": "11 actually passed original cases plus fresh execution of interrupted12th and unstarted13th; original timeout retained",
+    "numerical_tests_or_limits_changed": false,
+    "original_qualifier": "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-halo-v2-760/arm_halo_v2_qualify.py",
+    "original_qualifier_sha256": "d0d910ff0501d6fdb752d1a64ed1aafb934e27aa1d74b5781f8a3071805bfa7d",
+    "pinned_files": [
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-halo-v2-760/arm_halo_v2_qualify.py",
+        "sha256": "d0d910ff0501d6fdb752d1a64ed1aafb934e27aa1d74b5781f8a3071805bfa7d"
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/ctest_remainder_v1.py",
+        "sha256": "52bb4379591fd1840cebfb28281ae3fa0b8630626d72bb017be8c8c81d9f57b4"
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/148-halo-v2-full-worker10.status.json",
+        "sha256": "fbcdc67d5afba83a47ad8a2d475d5f807bf08351d18b9d8dec1ecce9b5493a38"
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/148-halo-v2-full-worker10-state.json",
+        "sha256": "9e2afe9b89a0802f177c2c9e404a679b2c0e0b6b708419a43dc7861f66206675"
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/prior-attempt.json",
+        "sha256": "e517e0c450e578bcbf9593183521400c3808afff2dab9d479566b478e79004a7"
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/catalog.json",
+        "sha256": "d4182326e314332c2457ffe983a94473678f86affd927a0076f10dacbead2889"
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/mpi-numerical-ctest-000.log",
+        "sha256": "374e8506c4dd972bee7496cde232503e1da8a5d943e6654d21f3694253dcaa7c"
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source-manifest.json",
+        "sha256": "d93dde39cb162bd12c845c05e480b73c49dac5385c0fab368abaf8e43bc9fda7"
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+        "sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330"
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/CTestTestfile.cmake",
+        "sha256": "62c8d7a878a8230794b87a01909c9cea7e3eba68d005056dda59543c9c26bb08"
+      }
+    ],
+    "plan_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/recovery-plan.json",
+    "plan_sha256": "406b13127faa3a401c335b9befc174a022e9fd433e933533fe27d2ee28447609",
+    "prior_failure_reason": "Whole-suite1000s cap expired after11 complete tests. No failed CTest case; rerun the interrupted12th and run13th.",
+    "prior_log": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/mpi-numerical-ctest-000.log",
+    "prior_log_sha256": "374e8506c4dd972bee7496cde232503e1da8a5d943e6654d21f3694253dcaa7c",
+    "prior_stage": {
+      "argv": [
+        "ctest",
+        "--test-dir",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build",
+        "--parallel",
+        "1",
+        "--stop-on-failure",
+        "--output-on-failure",
+        "-V",
+        "-R",
+        "^(coarse_batch_reduce_serial|coarse_batch_reduce_mpi2|coarse_batch_halo_mpi4|batch12_coarse_reduce_mpi2|batch12_coarse_halo_mpi[24]|runtime_batch_coarse_reduce|runtime_batch_coarse_halo|mg_tuning|coarse_batch_halo_(blocking|fused|shrunk_team|interior))$"
+      ],
+      "cleanup": {
+        "complete": true,
+        "kill_signals": 0,
+        "method": "same-uid exact tag and verified descendants",
+        "platform": "linux",
+        "surviving_pids": [],
+        "tag_key": "LQCD_OPT_STAGE_ID",
+        "targeted_pids": [
+          3174248,
+          3269121,
+          3269312,
+          3269316
+        ],
+        "term_signals": 4
+      },
+      "command_sha256": "65e1234967597bc6ef4b9222577cbafe3fbd22b5e8981e5e9e2974d6981065d8",
+      "cwd": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build",
+      "ended": "2026-11-04T11:36:39.334506+00:00",
+      "env_overrides": {
+        "CTEST_PARALLEL_LEVEL": "[REDACTED: private environment/credential]",
+        "LD_PRELOAD": "",
+        "LQCD_COARSE_BATCH_HALO": "[REDACTED: private environment/credential]",
+        "LQCD_COARSE_BATCH_REDUCE": "0",
+        "LQCD_HBW_ALLOC": "off",
+        "MKL_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "2",
+        "OMP_PLACES": "cores",
+        "OMP_PROC_BIND": "close",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PERF_COUNTER_ROOT": ""
+      },
+      "host": "cn19486",
+      "log": "mpi-numerical-ctest-000.log",
+      "log_sha256": "374e8506c4dd972bee7496cde232503e1da8a5d943e6654d21f3694253dcaa7c",
+      "pid": 3174248,
+      "prior_runs": [],
+      "returncode": -15,
+      "stage_tag": "4eb5fa9f54634a138b64c49be3cd6727",
+      "started": "2026-11-04T11:19:56.256024+00:00",
+      "status": "timeout",
+      "timeout_seconds": 1000
+    },
+    "prior_task": "148-halo-v2-full-worker10",
+    "remainder_log": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/mpi-numerical-ctest-remainder-v1-000.log",
+    "remainder_log_sha256": "43a28905dea9a84155595d1dd55240239b78aba189a4505896e34e53d00f1b60",
+    "remaining_tests": [
+      "runtime_batch_coarse_halo",
+      "mg_tuning"
+    ],
+    "scope": "full-with-ctest-remainder-v1"
+  },
+  "full_numerical_complete": true,
+  "helper_manifest_sha256": "8923c17bdd89a9be489e131e5f0cad51eb8372cc0d1a6cda7efb79415ce59c27",
+  "host": "cn19486",
+  "library": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+  "library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+  "main_best_unchanged_sha256": "a71b1a006f4cbf0a4227620ec6c8e14fcce849fa34fe9d9e55f1068657aa211b",
+  "mpi_status": "passed",
+  "performance_ranked": false,
+  "production_full12_verified": false,
+  "scope": "full",
+  "snapshot": {
+    "archive_sha256": "dc57fe91b238fbf1eed0606f466b9c7ec8d9c53fad87c82b2072c5d10296f2c9",
+    "build": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build",
+    "git_head": "760666c8ac459ef062c749ee7ee9964c99e7c3c8",
+    "source": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source",
+    "source_manifest_sha256": "d93dde39cb162bd12c845c05e480b73c49dac5385c0fab368abaf8e43bc9fda7"
+  },
+  "source_head": "760666c8ac459ef062c749ee7ee9964c99e7c3c8",
+  "stages": {
+    "arm-codegen": {
+      "log": "arm-codegen-000.log",
+      "reused": true,
+      "status": "passed"
+    },
+    "arm-unit-ctest": {
+      "log": "arm-unit-ctest-000.log",
+      "reused": true,
+      "status": "passed"
+    },
+    "build": {
+      "log": "build-000.log",
+      "reused": true,
+      "status": "passed"
+    },
+    "configure": {
+      "log": "configure-000.log",
+      "reused": true,
+      "status": "passed"
+    },
+    "mpi-numerical-ctest-remainder-v1": {
+      "log": "mpi-numerical-ctest-remainder-v1-000.log",
+      "reused": false,
+      "status": "passed"
+    },
+    "sve-compiled-coarse": {
+      "log": "sve-compiled-coarse-000.log",
+      "reused": false,
+      "status": "passed"
+    },
+    "sve-dense-vl16": {
+      "log": "sve-dense-vl16-000.log",
+      "reused": false,
+      "status": "passed"
+    },
+    "sve-dense-vl32": {
+      "log": "sve-dense-vl32-000.log",
+      "reused": false,
+      "status": "passed"
+    },
+    "sve-dense-vl64": {
+      "log": "sve-dense-vl64-000.log",
+      "reused": false,
+      "status": "passed"
+    },
+    "sve-ghost-mpi4-vl16": {
+      "log": "sve-ghost-mpi4-vl16-000.log",
+      "reused": false,
+      "status": "passed"
+    },
+    "sve-ghost-mpi4-vl32": {
+      "log": "sve-ghost-mpi4-vl32-000.log",
+      "reused": false,
+      "status": "passed"
+    },
+    "sve-ghost-mpi4-vl64": {
+      "log": "sve-ghost-mpi4-vl64-000.log",
+      "reused": false,
+      "status": "passed"
+    }
+  },
+  "status": "passed",
+  "sve_matrix": {
+    "16": {
+      "actual": [
+        {
+          "calls": 90,
+          "grouping": 4,
+          "halo": 1,
+          "label": "active-zero",
+          "max_width": 3,
+          "ranks": 4,
+          "records": 8,
+          "reduce": 1,
+          "rhs_slots": 240,
+          "send_bytes": 11796480
+        },
+        {
+          "calls": 90,
+          "grouping": 4,
+          "halo": 1,
+          "label": "partial-tail",
+          "max_width": 3,
+          "ranks": 4,
+          "records": 8,
+          "reduce": 1,
+          "rhs_slots": 240,
+          "send_bytes": 11796480
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 0,
+          "label": "halo-off",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 1,
+          "label": "reduce-off",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 0,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 1,
+          "halo": 1,
+          "label": "single-rhs",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 4,
+          "halo": 1,
+          "label": "all-zero",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 66,
+          "grouping": 2,
+          "halo": 1,
+          "label": "one-coarse-thread",
+          "max_width": 2,
+          "ranks": 4,
+          "records": 7,
+          "reduce": 1,
+          "rhs_slots": 132,
+          "send_bytes": 6488064
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 1,
+          "label": "LQCD_COARSE_CGS2-fallback",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 7,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 1,
+          "label": "LQCD_GCR_FUSED-fallback",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 1,
+          "label": "non-EO-fallback",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 9,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        }
+      ],
+      "ranks": {
+        "complete": true,
+        "library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+        "ranks": [
+          {
+            "actual_bytes": 16,
+            "inherit_exec": true,
+            "rank": 0
+          },
+          {
+            "actual_bytes": 16,
+            "inherit_exec": true,
+            "rank": 1
+          },
+          {
+            "actual_bytes": 16,
+            "inherit_exec": true,
+            "rank": 2
+          },
+          {
+            "actual_bytes": 16,
+            "inherit_exec": true,
+            "rank": 3
+          }
+        ],
+        "requested_bytes": 16,
+        "test": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_coarse_batch_reduce.py"
+      }
+    },
+    "32": {
+      "actual": [
+        {
+          "calls": 90,
+          "grouping": 4,
+          "halo": 1,
+          "label": "active-zero",
+          "max_width": 3,
+          "ranks": 4,
+          "records": 8,
+          "reduce": 1,
+          "rhs_slots": 240,
+          "send_bytes": 11796480
+        },
+        {
+          "calls": 90,
+          "grouping": 4,
+          "halo": 1,
+          "label": "partial-tail",
+          "max_width": 3,
+          "ranks": 4,
+          "records": 8,
+          "reduce": 1,
+          "rhs_slots": 240,
+          "send_bytes": 11796480
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 0,
+          "label": "halo-off",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 1,
+          "label": "reduce-off",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 0,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 1,
+          "halo": 1,
+          "label": "single-rhs",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 4,
+          "halo": 1,
+          "label": "all-zero",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 66,
+          "grouping": 2,
+          "halo": 1,
+          "label": "one-coarse-thread",
+          "max_width": 2,
+          "ranks": 4,
+          "records": 7,
+          "reduce": 1,
+          "rhs_slots": 132,
+          "send_bytes": 6488064
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 1,
+          "label": "LQCD_COARSE_CGS2-fallback",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 7,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 1,
+          "label": "LQCD_GCR_FUSED-fallback",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 1,
+          "label": "non-EO-fallback",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 9,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        }
+      ],
+      "ranks": {
+        "complete": true,
+        "library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+        "ranks": [
+          {
+            "actual_bytes": 32,
+            "inherit_exec": true,
+            "rank": 0
+          },
+          {
+            "actual_bytes": 32,
+            "inherit_exec": true,
+            "rank": 1
+          },
+          {
+            "actual_bytes": 32,
+            "inherit_exec": true,
+            "rank": 2
+          },
+          {
+            "actual_bytes": 32,
+            "inherit_exec": true,
+            "rank": 3
+          }
+        ],
+        "requested_bytes": 32,
+        "test": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_coarse_batch_reduce.py"
+      }
+    },
+    "64": {
+      "actual": [
+        {
+          "calls": 90,
+          "grouping": 4,
+          "halo": 1,
+          "label": "active-zero",
+          "max_width": 3,
+          "ranks": 4,
+          "records": 8,
+          "reduce": 1,
+          "rhs_slots": 240,
+          "send_bytes": 11796480
+        },
+        {
+          "calls": 90,
+          "grouping": 4,
+          "halo": 1,
+          "label": "partial-tail",
+          "max_width": 3,
+          "ranks": 4,
+          "records": 8,
+          "reduce": 1,
+          "rhs_slots": 240,
+          "send_bytes": 11796480
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 0,
+          "label": "halo-off",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 1,
+          "label": "reduce-off",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 0,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 1,
+          "halo": 1,
+          "label": "single-rhs",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 4,
+          "halo": 1,
+          "label": "all-zero",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 66,
+          "grouping": 2,
+          "halo": 1,
+          "label": "one-coarse-thread",
+          "max_width": 2,
+          "ranks": 4,
+          "records": 7,
+          "reduce": 1,
+          "rhs_slots": 132,
+          "send_bytes": 6488064
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 1,
+          "label": "LQCD_COARSE_CGS2-fallback",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 7,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 1,
+          "label": "LQCD_GCR_FUSED-fallback",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 0,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        },
+        {
+          "calls": 0,
+          "grouping": 2,
+          "halo": 1,
+          "label": "non-EO-fallback",
+          "max_width": 0,
+          "ranks": 4,
+          "records": 9,
+          "reduce": 1,
+          "rhs_slots": 0,
+          "send_bytes": 0
+        }
+      ],
+      "ranks": {
+        "complete": true,
+        "library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+        "ranks": [
+          {
+            "actual_bytes": 64,
+            "inherit_exec": true,
+            "rank": 0
+          },
+          {
+            "actual_bytes": 64,
+            "inherit_exec": true,
+            "rank": 1
+          },
+          {
+            "actual_bytes": 64,
+            "inherit_exec": true,
+            "rank": 2
+          },
+          {
+            "actual_bytes": 64,
+            "inherit_exec": true,
+            "rank": 3
+          }
+        ],
+        "requested_bytes": 64,
+        "test": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source/tests/runtime/test_coarse_batch_reduce.py"
+      }
+    }
+  },
+  "sve_matrix_status": "passed",
+  "test_attempt": "000-halo-v2-tests",
+  "unit_complete": true
+}

@@ -1,0 +1,16 @@
+{
+  "complete": true,
+  "prepared_not_queued": true,
+  "task_sha256": "9b38dd8eeb58ea7822c132c5251792dc19f8f9b51b7b1c2fde65cc317267eb09",
+  "source_head": "760666c8ac459ef062c749ee7ee9964c99e7c3c8",
+  "reused_passed_stage_names": [
+    "arm-codegen",
+    "arm-unit-ctest",
+    "build",
+    "configure"
+  ],
+  "prior_library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+  "startup_sha256": "f3a40ea0e1185e51c0e7e63750ea18c9b0dae9c489003f280ebef739f59a84c2",
+  "minimum_dispatch_remaining_seconds": 4590,
+  "gate": "147 terminal and cleaned; same actual parent592/SVE/HBW; unchanged main best; no concurrent numerical task"
+}

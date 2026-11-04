@@ -1,0 +1,46 @@
+{
+  "complete": true,
+  "preparation_only": true,
+  "controller": "halo_v2_trial.py",
+  "source_head": "760666c8ac459ef062c749ee7ee9964c99e7c3c8",
+  "source_manifest_sha256": "d93dde39cb162bd12c845c05e480b73c49dac5385c0fab368abaf8e43bc9fda7",
+  "arm_library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+  "full_arm_numerical_proof_available": false,
+  "ordinary_performance_run": false,
+  "files": {
+    "derived_publication.py": "83b790954b64b0ae7ae8e71ed2978b752f30477bafd7fa48cdfd6ef548b683a6",
+    "file_integrity.py": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+    "halo_v2_trial.py": "0864909721d0f482c77a06b6a862ac98c9a4ef5de70330be9f9f3d0800ab4be9",
+    "phase6_halo.py": "3f3537ca6a09fbe6b22ae06e488a5a50f334cc7e374fd7326d345c6113de63e6",
+    "raw_benchmark_v4.py": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec",
+    "raw_controller_v4.py": "dd2d4049ed2ebd39e08efc03c4528e516c28e518a5c6e2e9de803358715d1b0e",
+    "raw_protocol_derived.py": "a07ccf40e3808d8dd7c6480f1a8f511113d4b1d944e28f627fc5cca092a6fe27",
+    "raw_protocol_v4.py": "1fe892d279305be75f6f814d8e7526d2c09531803ac5ffc6f8483f46b1fd0453",
+    "raw_scalar_helper.py": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3",
+    "raw_scalar_helper_derived.py": "25b6fb0d171efb12954edbd0941701ac38fdcb954cf1882de443b50e755659a2",
+    "README.md": "712db5a62c88b0d58842888af0792e6df3ee185dbc9e02449458671336fffca8",
+    "test_halo_v2_trial.py": "c956829a517e6a3aa45f3c643216f3e7936c795f547fa0592434e60eb837864d",
+    "validation-evidence/halo-v2-arm-codegen118/closed-evidence/campaign-halo-v2/attempts/000-halo-v2-tests/attempt.json": "0c81fab432bb5a31645615b93019c77f3bb61c06d53477e495d48935ce411138",
+    "validation-evidence/halo-v2-arm-codegen118/collection-proof.json": "bc73fd0e5d7921bd6cb6e4dd12305c7572aaef509e24b355291bb5b1840e9c3d",
+    "validation-evidence/halo103-comparison/closed-state-proof.json": "d7f8cdc522b045021a1ea568fde57c391d025ac0bbcd7157f33ca102c2c6acdf",
+    "validation-evidence/halo103-comparison/comparison.json": "55fc8e53dc84ef9dae57e1b341268fed3b33b59fac777986c2912a60a1ba2d3b"
+  },
+  "original_gate_source_sha256": "3f3537ca6a09fbe6b22ae06e488a5a50f334cc7e374fd7326d345c6113de63e6",
+  "factory_sha256": "a07ccf40e3808d8dd7c6480f1a8f511113d4b1d944e28f627fc5cca092a6fe27",
+  "derived_helper_sha256": "25b6fb0d171efb12954edbd0941701ac38fdcb954cf1882de443b50e755659a2",
+  "tests": {
+    "local_linux_contracts_passed": 12,
+    "local_windows_passed": 11,
+    "windows_production_pread_skipped": 1,
+    "real_metadata_regression": [
+      "090/103 actual142 reduction records",
+      "103 actual3VL4rank SVE shape, retains original V1 library identity",
+      "118 actualcodegen scope rejected as full proof"
+    ],
+    "synthetic_full_proof_only": true
+  },
+  "deployment": false,
+  "queued": false,
+  "new_compute": false,
+  "main_or_numerical_source_modified": false
+}
