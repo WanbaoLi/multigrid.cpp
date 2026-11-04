@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "passed": true,
+  "protocol": "fresh-output-publication-v2",
+  "startup_sha256": "aea4b9e71623f8d369e5f0545581eaa69ad312c86ce7499b82d6cf918b16440a",
+  "entry_sha256": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+  "base_wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec",
+  "publication_module_sha256": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a",
+  "parent_raw_artifacts": {
+    "protocol.json": {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/checksum-audit/benchmark/rank00003/protocol.json",
+      "sha256": "b1b0de47ebcf1569c13248b8bcd9087504ea11e516d1728c00f826814f01729a"
+    },
+    "manifest.json": {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/checksum-audit/benchmark/rank00003/manifest.json",
+      "sha256": "6b3fe1a0129c6b7f5681678a9a61ad68e320bcbc0f8411898112aabc85625a12"
+    }
+  },
+  "published_outputs": [],
+  "rank": 3
+}

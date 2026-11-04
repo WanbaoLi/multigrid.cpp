@@ -1,0 +1,11 @@
+Prepared local HaloV2 ordinary-group entry with fresh-publication-v2 metadata routes.
+
+No package deployment, queue submission, numerical source edit, build or HPC compute was performed by this preparation. It is not a new V2 full ARM numerical/performance proof. Original086 entry and original3f gate module remain exact original bytes in this package.
+
+Use the NEW halo_v2_trial_publication_v3.py directly with its NEW halo-v2-trial-publication-v3-helpers.json. Do not add an outer controller to already adapted stages. The b94 factory emits one f55 producer wrapper and c70 independent helper wrapper. Every case uses a fresh independent-publication-v2 verification directory. The existing external full ARM760 tests and a new same-allocation fully verified old052 profile are still required; codegen-only118 is still rejected.
+
+The dedicated halo_publication_audit_v3.py checks every planned case, exactly one receipt per declared root output, zero nonroot outputs, all rank manifests, startup plan SHA/declarations, exact producer and verify-case scopes, both frozen parent artifacts, every publication receipt and the separate canonical-gauge helper receipt. Missing/extra/duplicate cases or receipts fail. Resume/completed checks revalidate checkpoint and evidence SHAs.
+
+Original phase3f selection thresholds, seven ordinary repeats, three diagnostic repeats, clocks, zero guesses, coarse independent GCR rules and scheduling/budget functions are unchanged. AST tests remove only the new metadata audit statements and normalize the explicit new verification-directory/manifest filenames before comparing original method bodies. The initial AST harness forgot to normalize the manifest filename, then failed; only the harness was corrected. No production numerical failure was involved.
+
+Package tests: nineteen tests pass under WSL, including two real tiny NPY outputs with independent bounded publication tokens (one timestamp-only before-read rejection retained, then two complete strict reads; the other passes its first strict read). Windows runs the same nineteen with two Linux-specific skips. Synthetic structural proofs and old closed metadata fixtures are not relabelled as fresh numerical execution. Production full-size constants and all frozen wrapper modules remain SHA-pinned.

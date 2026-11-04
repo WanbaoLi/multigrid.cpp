@@ -1,0 +1,148 @@
+{
+  "complete": true,
+  "passed": true,
+  "protocol_version": 4,
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "evidence_sha256": "85873cf85085481ffb72122ad035d1d9956bacab9bbd520126185c868f8062c5",
+  "protocol_sha256": "8e6f6d4f6765aedf348e57c828eb01f9f72c5d1fe9f65cfccf3bbd951ccef41b",
+  "fresh_publication_protocol": "fresh-output-publication-v2",
+  "publication_module_sha256": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a",
+  "publications": [
+    {
+      "protocol": "fresh-output-publication-v2",
+      "complete": true,
+      "passed": true,
+      "receipt": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/receipt.json",
+      "receipt_sha256": "48daa5f38a6466281dbf4c48e8a4e74f750103336eb78c55cd58a7eea598d5ef",
+      "strict_calls": 1,
+      "full_reads": 1,
+      "parent_protocol": {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/checksum-audit/independent/helper/protocol.json",
+        "sha256": "8e6f6d4f6765aedf348e57c828eb01f9f72c5d1fe9f65cfccf3bbd951ccef41b"
+      },
+      "full_proof": {
+        "protocol": "fresh-output-publication-v2",
+        "complete": true,
+        "passed": true,
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/measurements/full12/independent/gauge.bin",
+        "eligibility": {
+          "protocol": "fresh-output-publication-v2",
+          "complete": true,
+          "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/measurements/full12/independent",
+          "output_absent_at_cli_start": true,
+          "checked_epoch": 1793789541.5797207,
+          "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/measurements/full12",
+          "parent_identity": {
+            "dev": 60,
+            "inode": 135108516118561473
+          },
+          "declarations": [
+            {
+              "relative": "gauge.bin",
+              "kind": "canonical-gauge",
+              "expected_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+              "bytes": 509607936
+            }
+          ],
+          "maximum_strict_calls_per_output": 3,
+          "parent_protocol": null,
+          "immutable_inputs_use_original_strict_reader": true
+        },
+        "parent_protocol": {
+          "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/checksum-audit/independent/helper/protocol.json",
+          "sha256": "8e6f6d4f6765aedf348e57c828eb01f9f72c5d1fe9f65cfccf3bbd951ccef41b"
+        },
+        "reads": [
+          {
+            "complete": true,
+            "passed": true,
+            "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/measurements/full12/independent/gauge.bin",
+            "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+            "block_bytes": 4194304,
+            "expected_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+            "required_bytes": 509607936,
+            "initial": {
+              "dev": 60,
+              "inode": 63050616869660864,
+              "bytes": 509607936,
+              "mtime_ns": 1793789570014469500,
+              "ctime_ns": 1793789570014469500
+            },
+            "original_open_mode": "O_RDONLY",
+            "same_immutable_bytes": true,
+            "started": 1793789569.9964502,
+            "fd_before": {
+              "dev": 60,
+              "inode": 63050616869660864,
+              "bytes": 509607936,
+              "mtime_ns": 1793789570014469500,
+              "ctime_ns": 1793789570014469500
+            },
+            "last_request_offset": 509607936,
+            "last_request_bytes": 1,
+            "last_returned_bytes": 0,
+            "fd_after": {
+              "dev": 60,
+              "inode": 63050616869660864,
+              "bytes": 509607936,
+              "mtime_ns": 1793789570014469500,
+              "ctime_ns": 1793789570014469500
+            },
+            "path_after": {
+              "dev": 60,
+              "inode": 63050616869660864,
+              "bytes": 509607936,
+              "mtime_ns": 1793789570014469500,
+              "ctime_ns": 1793789570014469500
+            },
+            "read_bytes": 509607936,
+            "pread_calls": 123,
+            "positive_short_reads": 0,
+            "eof_probe_bytes": 0,
+            "openssl_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+            "software_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+            "seconds": 6.9649035930633545,
+            "metadata_stable": true,
+            "byte_count_exact": true
+          }
+        ],
+        "progress": [
+          {
+            "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/progress-000.json",
+            "sha256": "3ba8b745a9f3f0ced5d1ac4071394187870a83d0d891884a9f4f365922afb341"
+          },
+          {
+            "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/progress-001.json",
+            "sha256": "bad84e11ecea09f58b99369061cf0d2d66063868a6dcd57cb682e023856e8eb6"
+          }
+        ],
+        "strict_calls": 1,
+        "full_reads": 1,
+        "maximum_strict_calls": 3,
+        "first_rejection_accepted": false,
+        "expected_previously_published": true,
+        "mode": "original-first-strict-pass",
+        "published_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+        "rejected_read_count": 0
+      }
+    }
+  ],
+  "rows": [
+    {
+      "path": "hash-000.json",
+      "sha256": "6a6e74997e0f100f1d65b28bda1f171db65e1b9b2d9251115c248e838743a2e3"
+    },
+    {
+      "path": "hash-001.json",
+      "sha256": "19f488306829958dc4e6173ffbdced53f1d588505fb34427197bd0c6eb8bba39"
+    },
+    {
+      "path": "hash-002.json",
+      "sha256": "dead316b5ebe3895cf5dbb97ca9465226f384a98c1f3724033da3f348710caca"
+    },
+    {
+      "path": "hash-003.json",
+      "sha256": "b591b678c88872bc7ff94d14a242962ad054517dd989da43d87fba3bc4f8b265"
+    }
+  ]
+}

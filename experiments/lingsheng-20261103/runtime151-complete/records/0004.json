@@ -1,0 +1,235 @@
+{
+  "conclusions": [
+    {
+      "conclusion": "Phase5 fresh-process bracket: no adoption; Gain against last control -0.212% below 3.0%; Candidate timing range overlaps last control",
+      "evidence": [
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/151-runtime-confirm-worker10-v7-state.json",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/report.json"
+      ],
+      "status": "inconclusive",
+      "time": "2026-11-04T11:05:23.562915+00:00"
+    }
+  ],
+  "created": "2026-11-04T10:45:38.119567+00:00",
+  "id": "p5w10v7-old-default",
+  "proposal": {
+    "bottleneck": "147 default control drift exceeded5%; repeat all default-runtime measurements in three fresh processes. No old controls or candidate timings are reused.",
+    "change": {
+      "plan": {
+        "cases": [
+          {
+            "batch": 2,
+            "environment": {
+              "LQCD_COARSE_BATCH_REDUCE": 1
+            },
+            "id": "full12",
+            "threads": 32
+          }
+        ],
+        "context_environment": {
+          "LD_LIBRARY_PATH": "/home/share/nsls_lwb/.cache/runtime-oldgomp-only-20261104:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sme/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+          "LQCD_ARM_COARSE_SVE": 0,
+          "LQCD_ARM_SVE": 1,
+          "LQCD_ARM_SVE_PLANNED": 0,
+          "LQCD_ARM_SVE_REUSE": 1,
+          "LQCD_ARM_SVE_TRANSFER": 0,
+          "LQCD_COARSE_FUSED": 0,
+          "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+          "LQCD_HBM": "off",
+          "LQCD_HBW_ALLOC": "require"
+        },
+        "placement_threads": 37,
+        "setup_threads": 37
+      },
+      "source": "reuse exact frozen best, no rebuild"
+    },
+    "history_links": [
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/phase4-state.json",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/151-runtime-confirm-worker10-v7-state.json",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/report.json",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/profile-hbw"
+    ],
+    "history_read_token": "5162d9c4ba309aebc94fce1bdcd5ddcdd04d97ad05a985cca1cf58f8fad090a6",
+    "hypothesis": "p5w10v7-old-default: Only single-GOMP search directory; same baseline wait settings; no preload",
+    "mechanism": "Only single-GOMP search directory; same baseline wait settings; no preload",
+    "retry_conditions": "Fresh one-case process in same host/allocation; preserve failed artifacts; no automatic failed/running stage retry or verification directory reuse"
+  },
+  "report": {
+    "library_sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+    "maximum_seconds": 14.45803915100987,
+    "median_seconds": 14.440682654007105,
+    "minimum_seconds": 14.438423585001146,
+    "relative_spread": 0.001358354482174096,
+    "sha256": "336deff43c6abaadcfcddc0b704da659e8f4a07ce0de820786bb2a37e75f6003",
+    "steady_repeats": [
+      1,
+      2,
+      3
+    ],
+    "steady_samples": [
+      14.438423585001146,
+      14.45803915100987,
+      14.440682654007105
+    ]
+  },
+  "schema": 1,
+  "snapshot": {
+    "archive_sha256": "fa93287c359f6143cd3f207eceb0c04333f5ce50df0207dad318b0612034240d",
+    "build": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/build",
+    "git_head": "5fe1b5fd2702f799488a2b8119002c450de5b4cd",
+    "origin_attempt": "052-reduce-on",
+    "origin_library_sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+    "origin_report_sha256": "254f36efaa6ef145a2af2542718fbd5da7ea94897fa964a2d51598a77d929651",
+    "source": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/source",
+    "source_manifest_sha256": "78b429dc13a8b113792aa45bd27fc93134a8c4b39359da9ade05558c93d590ae"
+  },
+  "stages": {
+    "benchmark": {
+      "argv": [
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/source/tools/run_numa.py",
+        "--threads",
+        "37",
+        "--",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "-u",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-runtime-confirm-v7/runtime_benchmark_capture_v6.py",
+        "--expected-self-sha",
+        "430d6e4260d13fcdb14b6f61f4b6495c2c18fbc08140ac9fb2d6ce8945296b68",
+        "--capture-output",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/151-runtime-confirm-worker10-v7-runtime-audit/p5w10v7-old-default.json",
+        "--attempt",
+        "p5w10v7-old-default",
+        "--",
+        "--benchmark",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/source/tools/optimization/bench_full12.py",
+        "--audit-output",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/checksum-audit/benchmark",
+        "--expected-benchmark-sha",
+        "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1",
+        "--expected-wrapper-sha",
+        "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+        "--expected-reader-sha",
+        "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+        "--expected-helper-sha",
+        "bc441c56af7ffe65781816c8d18427578e8097f0b35168349a27629655fa2074",
+        "--helper-wrapper",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-runtime-confirm-v7/raw_scalar_helper_publication_v2.py",
+        "--expected-helper-wrapper-sha",
+        "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097",
+        "--fixture",
+        "/home/share/nsls_lwb/.cache/mg-20261102/propagator",
+        "--plan",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/plan.json",
+        "--library",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so",
+        "--backend",
+        "arm",
+        "--output",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/measurements",
+        "--allocation",
+        "mg-opt-20261103-worker10",
+        "--snapshot-sha",
+        "78b429dc13a8b113792aa45bd27fc93134a8c4b39359da9ade05558c93d590ae",
+        "--reference-propagator",
+        "/home/share/nsls_lwb/.cache/mg-20261102/propagator/propagator.npy"
+      ],
+      "cleanup": {
+        "complete": true,
+        "kill_signals": 0,
+        "method": "same-uid exact tag and verified descendants",
+        "platform": "linux",
+        "surviving_pids": [],
+        "tag_key": "LQCD_OPT_STAGE_ID",
+        "targeted_pids": [],
+        "term_signals": 0
+      },
+      "command_sha256": "68867ed26bba893a99eb071daee5fe54178dddc273f95023ffb8ca78bd70a8c7",
+      "cwd": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/build",
+      "ended": "2026-11-04T10:51:17.596182+00:00",
+      "env_overrides": {
+        "LD_LIBRARY_PATH": "/home/share/nsls_lwb/.cache/runtime-oldgomp-only-20261104:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sme/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+        "LQCD_ARM_COARSE_SVE": "0",
+        "LQCD_ARM_SVE": "1",
+        "LQCD_ARM_SVE_PLANNED": "0",
+        "LQCD_ARM_SVE_REUSE": "1",
+        "LQCD_ARM_SVE_TRANSFER": "0",
+        "LQCD_COARSE_FUSED": "0",
+        "LQCD_COARSE_SPATIAL_OVERLAP": "1",
+        "LQCD_HBM": "off",
+        "LQCD_HBW_ALLOC": "require"
+      },
+      "host": "cn19486",
+      "log": "benchmark-000.log",
+      "log_sha256": "18030885df9e33a42c356a7445311636976882a953f0e2dea37ea36e1438d21e",
+      "pid": 2974055,
+      "prior_runs": [],
+      "returncode": 0,
+      "stage_tag": "b3e2d2ef0a7548b2bdaf2830ed085994",
+      "started": "2026-11-04T10:45:41.570935+00:00",
+      "status": "passed",
+      "timeout_seconds": 1800
+    },
+    "independent": {
+      "argv": [
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-runtime-confirm-v7/raw_benchmark_publication_v2.py",
+        "--benchmark",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/source/tools/optimization/bench_full12.py",
+        "--audit-output",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/checksum-audit/independent",
+        "--expected-benchmark-sha",
+        "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1",
+        "--expected-wrapper-sha",
+        "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+        "--expected-reader-sha",
+        "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+        "--expected-helper-sha",
+        "bc441c56af7ffe65781816c8d18427578e8097f0b35168349a27629655fa2074",
+        "--helper-wrapper",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-runtime-confirm-v7/raw_scalar_helper_publication_v2.py",
+        "--expected-helper-wrapper-sha",
+        "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097",
+        "--expected-gold-sha",
+        "31d5cb29eeaa2714b4db003424da1215668d369288a6706bff03a1e0fb2e71cd",
+        "--verify",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/measurements/full12",
+        "--reference",
+        "/home/share/nsls_lwb/.cache/mg-20261102/source/build/validation/multigrid",
+        "--extractor",
+        "/home/share/nsls_lwb/.cache/mg-20261102/source/build/validation/extract_columns",
+        "--verification-output",
+        "independent"
+      ],
+      "cleanup": {
+        "complete": true,
+        "kill_signals": 0,
+        "method": "same-uid exact tag and verified descendants",
+        "platform": "linux",
+        "surviving_pids": [],
+        "tag_key": "LQCD_OPT_STAGE_ID",
+        "targeted_pids": [],
+        "term_signals": 0
+      },
+      "command_sha256": "565767b8aeb3c98ea45cba633edebcb2dfd6b1552d84261915ed011bbaf3c59e",
+      "cwd": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-old-default/build",
+      "ended": "2026-11-04T10:55:15.592115+00:00",
+      "env_overrides": {
+        "OMP_NUM_THREADS": "4",
+        "OMP_PLACES": "cores",
+        "OMP_PROC_BIND": "close"
+      },
+      "host": "cn19486",
+      "log": "independent-000.log",
+      "log_sha256": "d0fc721d6ee16c6fec63cad5c2ab2483f740d939f21e3e9d868078bb8841ebaa",
+      "pid": 3007097,
+      "prior_runs": [],
+      "returncode": 0,
+      "stage_tag": "bcc9ab4b613e4df49ecce924e083df0f",
+      "started": "2026-11-04T10:51:18.517473+00:00",
+      "status": "passed",
+      "timeout_seconds": 1200
+    }
+  },
+  "status": "inconclusive"
+}

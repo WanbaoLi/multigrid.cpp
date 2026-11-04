@@ -1,0 +1,23 @@
+{
+  "protocol": "fresh-output-publication-v2",
+  "complete": true,
+  "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-sdk-b/measurements",
+  "output_absent_at_cli_start": true,
+  "checked_epoch": 1793789732.8965924,
+  "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-sdk-b",
+  "parent_identity": {
+    "dev": 60,
+    "inode": 36029324602980033
+  },
+  "declarations": [
+    {
+      "relative": "full12/propagator.npy",
+      "kind": "npy-propagator",
+      "expected_sha256": null,
+      "bytes": 2038431872
+    }
+  ],
+  "maximum_strict_calls_per_output": 3,
+  "parent_protocol": null,
+  "immutable_inputs_use_original_strict_reader": true
+}

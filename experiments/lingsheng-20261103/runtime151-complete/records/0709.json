@@ -1,0 +1,45 @@
+{
+  "complete": true,
+  "only_sha_body_changed": true,
+  "original_ast_sha256": "16d542026108b00758e614f6c29836f670a51b7b880f2ab0f08a2a31bf25d457",
+  "transformed_ast_sha256": "c1993d4ac29afddc6b8e2ead6adda10b6107def9c04ee0896f01e8968a31f51a",
+  "unchanged_nodes_original_sha256": "57f18f366b31e9faaa87063e881a16745da838f79cc0c87865c1ca2298cd23bf",
+  "unchanged_nodes_transformed_sha256": "57f18f366b31e9faaa87063e881a16745da838f79cc0c87865c1ca2298cd23bf",
+  "original_sha_ast_sha256": "61efa55ddaf6cbc3fd00cbe2dbe958da87cfb79d31c3ae4b55e9426810bd31f5",
+  "protocol_version": 4,
+  "helper_sha256": "bc441c56af7ffe65781816c8d18427578e8097f0b35168349a27629655fa2074",
+  "wrapper_sha256": "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097",
+  "reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "helper_source_unchanged": true,
+  "numerical_commands_unchanged": true,
+  "thresholds_unchanged": true,
+  "evidence_not_rewritten": true,
+  "fresh_publication_protocol": "fresh-output-publication-v2",
+  "fresh_publication_module_sha256": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a",
+  "original_adapter_sha256": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3",
+  "eligibility": {
+    "protocol": "fresh-output-publication-v2",
+    "complete": true,
+    "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-sdk-b/measurements/full12/independent",
+    "output_absent_at_cli_start": true,
+    "checked_epoch": 1793790139.0369668,
+    "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-sdk-b/measurements/full12",
+    "parent_identity": {
+      "dev": 60,
+      "inode": 527610888065
+    },
+    "declarations": [
+      {
+        "relative": "gauge.bin",
+        "kind": "canonical-gauge",
+        "expected_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+        "bytes": 509607936
+      }
+    ],
+    "maximum_strict_calls_per_output": 3,
+    "parent_protocol": null,
+    "immutable_inputs_use_original_strict_reader": true
+  },
+  "immutable_files_use_unchanged_strict_reader": true
+}

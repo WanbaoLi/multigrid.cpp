@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "batch": 2,
+      "environment": {
+        "LQCD_COARSE_BATCH_REDUCE": 1
+      },
+      "id": "full12",
+      "threads": 32
+    }
+  ],
+  "context_environment": {
+    "LD_LIBRARY_PATH": "/home/share/nsls_lwb/.cache/runtime-oldgomp-only-20261104:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sme/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+    "LQCD_ARM_COARSE_SVE": 0,
+    "LQCD_ARM_SVE": 1,
+    "LQCD_ARM_SVE_PLANNED": 0,
+    "LQCD_ARM_SVE_REUSE": 1,
+    "LQCD_ARM_SVE_TRANSFER": 0,
+    "LQCD_COARSE_FUSED": 0,
+    "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+    "LQCD_HBM": "off",
+    "LQCD_HBW_ALLOC": "require"
+  },
+  "placement_threads": 37,
+  "setup_threads": 37
+}

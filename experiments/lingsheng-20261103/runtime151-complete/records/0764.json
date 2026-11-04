@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "id": "151-runtime-confirm-worker10-v7",
+  "task_sha256": "e6f774f3c2d4aba90fe2f9363f053e765e6a3a0198c6bb93921166e62073762c",
+  "contract_sha256": "3771f64210cea527c4dce99aea96a7ec48c6783e921e466047a24a4f31662798",
+  "publisher_sha256": "38d54cbdf1e1e3010833f7933609a38ed6954c86608b5ca5d8e270465eac7053",
+  "scheduler_query": {
+    "method": "Initial authenticated allocation plus fresh idle worker heartbeat/held lock and mandatory actual parent identity guard before any computation",
+    "current_scheduler_query": "unavailable; timed out",
+    "query_failure_evidence_sha256": "1f0508aba032581e7efbd8afa77a9e253cdf13558563cfd71fdd417df83eaccc",
+    "initial_allocation_sha256": "a454a02d3ce61c75edec6a54fba4c190e81d5006a2402328b33d7ffada015085",
+    "actual_parent_guard": "/home/share/nsls_lwb/.cache/mg-opt-20261103/runtime151-actual-parent-guard.json",
+    "initial_query_epoch": 1793783927.2402964
+  },
+  "heartbeat_sha256": "4924361b8602399b10277c40b66b2cbb60a1db817f299f343cd574a39e5ddd1e",
+  "smoke_status_sha256": "acc35e083d6664bc72596d1f193ca66ee55abfeb29af148e055bf95b0bf6b98f",
+  "smoke_maps_sha256": "bfc65d884cb64ed14c4530f7233c44e8cf6814ba056f1c99c180cc6e05461a1e",
+  "expected_best": "052-reduce-on",
+  "case_ids": [
+    "p5w10v7-sdk-a",
+    "p5w10v7-old-default",
+    "p5w10v7-sdk-b"
+  ],
+  "historical_profile_not_a_timing_control": true,
+  "epoch": 1793788546.137008
+}

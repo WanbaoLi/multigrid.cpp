@@ -1,0 +1,15 @@
+{
+  "complete": true,
+  "read_only": true,
+  "argv": [
+    "djob",
+    "-J",
+    "-l",
+    "2025061"
+  ],
+  "epoch": 1793788463.657954,
+  "timeout_seconds": 6,
+  "error": "TimeoutExpired",
+  "stdout": null,
+  "stderr": null
+}

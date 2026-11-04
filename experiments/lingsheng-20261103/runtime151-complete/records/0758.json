@@ -1,0 +1,1373 @@
+{
+  "complete": true,
+  "completed_before_steady": true,
+  "attempt": "146-old-runtime-capture-smoke-worker10",
+  "host": "cn19486",
+  "allocation": "mg-opt-20261103-worker10",
+  "library_sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+  "benchmark_stage_tag": "bdc1e73b04ed4daba7e78ee98a5fa981",
+  "task_tag": "850176c68ad6453f921f675e4d6e024f",
+  "ranks": [
+    {
+      "rank": 0,
+      "pid": 2480853,
+      "pid_starttime": 11280947,
+      "captured_epoch": 1793784077.7005212,
+      "host": "cn19486",
+      "libraries": [
+        {
+          "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so",
+          "sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+          "bytes": 518240
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/mpi4py/MPI.openmpi.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "cdce8306edcf3403b5fa538047242b859acd3eada8364aa799a085ad81980313",
+          "bytes": 2188528
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_tests.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "88b722d4fa2c8680190c3afe226ab0db802ff24e6bad47ed8ba87df00414d9d5",
+          "bytes": 160592
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_umath.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "2ff1d58e9d86dbf49e4c2ce168f89dbcaadef536167bc31d6a16d87f97f443f9",
+          "bytes": 5138313
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "9b5de6d63ca7e40448335d5107c36b1457908d6bea3735c399e402777a4a6fe0",
+          "bytes": 331977
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0",
+          "sha256": "8c13f44b44e4dd0005632ea4173f5f5014d2829d50aa12b2054034297c07f233",
+          "bytes": 1671529
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so",
+          "sha256": "f3e216db23e3393127cf7753cab8085da83454fed795c9a1cb544d57ce633f35",
+          "bytes": 22982609
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgcc_s.so.1",
+          "sha256": "8deda699d7e7b293072b0308aef99a4dd7e78068f23aa23d140b776db168b37f",
+          "bytes": 132960
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libstdc++.so.6.0.30",
+          "sha256": "dee572b4b9b108960270f1769aa739c7c6d040fe1037772b90626b29623cf5bd",
+          "bytes": 2239528
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_dstore.so.1.0.2",
+          "sha256": "d6d27a445ba3dbafc69cc92376b13d6ccc89267d3bebccbd6f3545f9696e5a98",
+          "bytes": 67664
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_sm.so.40.30.0",
+          "sha256": "14e3fe6c243b050f01e395223ed2d4e70dc69d78f2bfdc656f10f96bbf7385a7",
+          "bytes": 67664
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_ucx.so.40.30.2",
+          "sha256": "eca409bc1df53f622dd2a6c3808ffcea54bb577e86993c4f6a6a0f89a97a7453",
+          "bytes": 68256
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmpi.so.40.30.6",
+          "sha256": "821468060a9b551dcef627b0d0772344d8b0318af766d942a9511e2b5d9307ec",
+          "bytes": 1179240
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-pal.so.40.30.3",
+          "sha256": "e2ae5fb1adf8d00749286ace7b4856506c0d89752acbbd80a7bf9dc527453396",
+          "bytes": 1066712
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-rte.so.40.30.3",
+          "sha256": "9f15ff0b1fbef55fb8d320da776c737bf5aa828275aecf57b01e37e0ac09e818",
+          "bytes": 799464
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libpmix.so.2.2.35",
+          "sha256": "b22abd5b92de18b4fe759302538946ff36bd47a5c22a4cc976b56899d7f29469",
+          "bytes": 866568
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_basic.so",
+          "sha256": "d67d48a4692473c1e98b53cea9ffe061fdc959aeedd7b1a5529e757505686257",
+          "bytes": 67952
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_bucket.so",
+          "sha256": "d275603d288c33540d6c660b0b5bcb8406b0ad7aaeddeea0fe8f5cf2042f56fe",
+          "bytes": 67872
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_bml_r2.so",
+          "sha256": "80483fe49582d9e1e6ca4894eb1db06f7d2d84ea21acf8e951a16e46d2d00b75",
+          "bytes": 68000
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_self.so",
+          "sha256": "54150bf94baab5a6889c1b54a6957f6db2cdf7007b2932502dbb625f16161e0f",
+          "bytes": 69696
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_tcp.so",
+          "sha256": "2209c6808b1c35377c956db26e14a14e0bf93e50c03b47f36eab1525d0f03919",
+          "bytes": 71152
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_vader.so",
+          "sha256": "4ff2608e6fd4e4d76d738c9385daf21a1c6846cc22027f8cbe84c961b090962d",
+          "bytes": 74544
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_adapt.so",
+          "sha256": "6e7ff7cbbfe13e8ca0554fc98446a0c85d3ea11274ba3b6234dd9b3a595dc5b4",
+          "bytes": 68544
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_basic.so",
+          "sha256": "315f855376b44eb736b2d0bc595b9879d3ea0250d469e33cdbd93a95a4248f29",
+          "bytes": 67760
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_han.so",
+          "sha256": "9ff74ceb32af86f4759181ba8d56f8ef17a5ab5c4b69d7fca9d6be36e4889911",
+          "bytes": 134120
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_inter.so",
+          "sha256": "2522e3b049f3a09c33b7e1c0196d0bc43099e0a0173a17b7993d8e79c14eeee6",
+          "bytes": 67760
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_libnbc.so",
+          "sha256": "8cc111b675582effe656bab34a90454165b98d84fa2c21210b0f2ed03eed9ef1",
+          "bytes": 134616
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_self.so",
+          "sha256": "1f0a42da21e6b36d97de7613d0689685ea059a4ecff41c1aae48f857d774da5e",
+          "bytes": 67752
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sm.so",
+          "sha256": "3c53597e4dfca5f07151b3421763c7dbae0755d187aadf87898cfec99f5f82de",
+          "bytes": 67992
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sync.so",
+          "sha256": "9581d7c70335135c6f5786e1635584291373119606890c8e1ecec18a9487a16b",
+          "bytes": 67968
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_tuned.so",
+          "sha256": "50e9020e3d69fab901fd9a07a5fb7a413d7aade6fe86b87cbd8a40f726a6d466",
+          "bytes": 133616
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_ucg.so",
+          "sha256": "4e763395995fae23c4b760d9114526d50b200ec8afe2070f97110d90ce3efb19",
+          "bytes": 134104
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_errmgr_default_app.so",
+          "sha256": "556be79c3679df44e18c660a09496d9f6946a5957e97e052c0a455e548746450",
+          "bytes": 67928
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_ess_pmi.so",
+          "sha256": "43db545908164a248235cc3abb28f9a5c8d7a5b8413873b348559751461e3d53",
+          "bytes": 67896
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_mpool_hugepage.so",
+          "sha256": "9cef117941f0f87dd4d8610345efc7b0182a75e31b905f8efe20bba2667e8b87",
+          "bytes": 68032
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_pt2pt.so",
+          "sha256": "4be6f6842f8f1b2a69c9f69fb683be70ab41b3e6ae5d52350e59fe2a291b2cd1",
+          "bytes": 136488
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_rdma.so",
+          "sha256": "0cf03a0e437f18d4d96b2d429370a5a4757db2893326220282929a9e1e9f2f1c",
+          "bytes": 135536
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_sm.so",
+          "sha256": "1f7f94614249819e9d8f95dfb51938ce98b534efc63f0efcd417802e08fc514f",
+          "bytes": 72464
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_ucx.so",
+          "sha256": "82b99c9a12ed257af496386ad1e39e76bec5d33ff07eeacd433623f8221d113e",
+          "bytes": 103168
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pmix_pmix3x.so",
+          "sha256": "5472d4abb02e95285dfea5e7b0c42a325c694bf9e943572c62ccea4770ef7d24",
+          "bytes": 134696
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pml_ob1.so",
+          "sha256": "8ec0aab1e393bf738a8a490077962f79b768af200ac02082aaf5268d6acb10f3",
+          "bytes": 136480
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_rcache_grdma.so",
+          "sha256": "399eb507e8fc51626e0254043f5be1b6035ec9b36649dd1196f6c8be6fb982ee",
+          "bytes": 68032
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_reachable_netlink.so",
+          "sha256": "7bbaa97fa3098178c1ee142f6336858de8a9bd9822ae87b0b39c696dd5fd1ed1",
+          "bytes": 68136
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_donau.so",
+          "sha256": "b2e533766a47f3880893701e37d544bb1d2162de80f881e5f8815852ba669d08",
+          "bytes": 67944
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_flux.so",
+          "sha256": "5db0d0c39609ce13120d5d4f4b9606aaea28b365b51bfeddd2f179e1fe71246c",
+          "bytes": 67944
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_jsm.so",
+          "sha256": "a2f2c6ef5517983292480093812c17d5488d08a31d131f75e55b8dea25d5b662",
+          "bytes": 67944
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_ompi.so",
+          "sha256": "411f036997317048bf92e3cdef3a9b0a03d79290c1829115c6a1c50a431fef5e",
+          "bytes": 74640
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_orte.so",
+          "sha256": "b642701101c2e276fb7d697feab98a8ba95fea7c618f737908c010ac77eadbbd",
+          "bytes": 67944
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_slurm.so",
+          "sha256": "697b5006ac08f13ae7b150ab90bf947552ad5dea96a10fb65ed44b0668959725",
+          "bytes": 67944
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_shmem_mmap.so",
+          "sha256": "95bb845c38d6e48a64095656e35914d568b803d61c6d09b6f82655ae5a193de2",
+          "bytes": 67960
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_state_app.so",
+          "sha256": "7fb310b011266fe9ed5143ac9a7f8ca29d1ebe3f5c9484a1600b62477c40dbb6",
+          "bytes": 67968
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v12.so",
+          "sha256": "d03cd84ce9785ad17dd6735ab36348a8c04a3111b7efd28b5941b584dc8622dd",
+          "bytes": 133576
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v20.so",
+          "sha256": "f5ec4bb70bdd648ea0db6cf8edd37ae50742de2778eb51381c7e92b1142829ab",
+          "bytes": 133576
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v21.so",
+          "sha256": "788656250db222a3f6e030e65bfdbd32471648192bc368777462d38b3c0fc047",
+          "bytes": 68040
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v3.so",
+          "sha256": "0cf107caf4c9075ca292d9653ac029decd757f8d77d4314740c3ad905b76e732",
+          "bytes": 68040
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds12.so",
+          "sha256": "c67de714839d761531d1ab5973c11b88038c1f5c617ee4e4cc8ebe51aab338c4",
+          "bytes": 68264
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds21.so",
+          "sha256": "1fff88422c1dd7b12181b3acf3029fc3c388334908274baeaddf166e9a3bdd0a",
+          "bytes": 68216
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_hash.so",
+          "sha256": "076cc60540ae75804196abcb03657723062d450eb36fb481bbe0fac9c7bd37fe",
+          "bytes": 133784
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pcompress_zlib.so",
+          "sha256": "f43b7b80e8961916e5708a3b2f5005da0648db7db31da156b3b86aaa71a003ae",
+          "bytes": 67896
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_default.so",
+          "sha256": "1f28ddf59c644dc872e3b1bf8c9ad87f9aa8d2d0271ce1efa284c750bf92f0b7",
+          "bytes": 67968
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_stdfd.so",
+          "sha256": "45aa6f1e3b51366737eee8b8625ee0fe129ff71e73038c647ad7ba30ce68a379",
+          "bytes": 67904
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_syslog.so",
+          "sha256": "218c57d6ba6c4bb09fd3573bde7427b528aec30a82048e18ed49d3f1b4f2d272",
+          "bytes": 67936
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_compress.so",
+          "sha256": "0ef97de4a35204e2a45892fe4c2aadaa90e43edc0a6242037d2f1ec1dc31c311",
+          "bytes": 67888
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_native.so",
+          "sha256": "39f950e6b67b76c0b7f435b35437997fd74a899a61c84fd808460aa11fd0f48a",
+          "bytes": 67888
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psec_native.so",
+          "sha256": "5b9024fde2b8ebfb07f979a908167ca91a6dfd75e60169fc544216a53c67ca82",
+          "bytes": 67944
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pshmem_mmap.so",
+          "sha256": "19bba59e55f498edbc4ee52b0f3c99339e78719df15b07a303161361511ecfeb",
+          "bytes": 67920
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_flex128.so",
+          "sha256": "a4e90b13fd82f19d7adcf371807d7a827a130e8fd4237dcbb6c5a2327e79f2c7",
+          "bytes": 67920
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_native.so",
+          "sha256": "58f3a1c6736d0a32360741a045522ad72c77179d3d05a6e6266cec7b0d9a9669",
+          "bytes": 67920
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_tcp.so",
+          "sha256": "84a065fa5ea0481d0183bd06156104e24e04cc80625144bf093378050a345d54",
+          "bytes": 68192
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_usock.so",
+          "sha256": "768f63ab09b20a78432dea6cbada188cd79bc62a126202b68c9907f9d9975032",
+          "bytes": 68088
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucm.so.0.0.0",
+          "sha256": "9146e5755564230b8dcb3423ecb9a02b3e665b7c5593ce745b32b4e5da05c9bc",
+          "bytes": 135480
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucp.so.0.0.0",
+          "sha256": "e21ed2497ce1525c210a53236e987ed559b14b40e36241f0b2fdb69bfa2eb440",
+          "bytes": 872584
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucs.so.0.0.0",
+          "sha256": "ad032c795c9c3e7a8b3aeb3867ce7fc3b9e4bc6e2e210b39f90a72e687f3c5a3",
+          "bytes": 402272
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libuct.so.0.0.0",
+          "sha256": "e1240abd25de3f4606b533f49fe7ee45ecdfca4a91fd4f5cd2758f6db8583486",
+          "bytes": 277408
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_cma.so.0.0.0",
+          "sha256": "befc376992726b7f6c4dc92ebcd520477c34af3640ed18f60e3bb9600f98139f",
+          "bytes": 69096
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_ib.so.0.0.0",
+          "sha256": "0fb10a1a9949936cf49f7e21cde8de19e52922f443d8a83ccd41083cacb29fd5",
+          "bytes": 611688
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_rdmacm.so.0.0.0",
+          "sha256": "6ec4f25bdf77aafc57386f4c8bfe6af6a5be51ca8fad542e516118f97a33da63",
+          "bytes": 68984
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_sdma.so.0.0.0",
+          "sha256": "e58cb1238d775fdc44fd89ed756bfd0b605bf471ade0ed975f8c91b6bb9eadfa",
+          "bytes": 69360
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/libucg.so.25.1.0.SPC001",
+          "sha256": "29a4b4a402a9778a14fb4550a27f50e53190c635b2f2849813f275d5eb982c89",
+          "bytes": 156064
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_stars.so.25.1.0.SPC001",
+          "sha256": "dfcde42710d2d900d582abdd976f184a1211764f2cdcc6c2bd2be93e33ec935f",
+          "bytes": 401168
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_ucx.so.25.1.0.SPC001",
+          "sha256": "8b67c186834a800903c1722be9c88a0f41839cc1821ae3d5d9def5ba5e934d8d",
+          "bytes": 264376
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planm_ucx_hicoll.so.25.1.0.SPC001",
+          "sha256": "3b654a6f7f6f80da09dba45cc6f8ed41181b180774065cc89b7facb310a470e7",
+          "bytes": 136120
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib/libkupl.so.25.1.0.SPC001",
+          "sha256": "5955055a872388c2a9ae27280c0f602880538244b4acdd3985e713a5bb79964f",
+          "bytes": 199136
+        },
+        {
+          "path": "/usr/lib/ld-linux-aarch64.so.1",
+          "sha256": "d029a3643d97a4624d9b7229de196dbf8b258a1b4fc42ecf551b40a924fa1214",
+          "bytes": 204056
+        },
+        {
+          "path": "/usr/lib64/libbz2.so.1.0.8",
+          "sha256": "6cc53370db2dcca81e1681557e5b31b2c1ae4dc66f70cc9e9142491fe45dc6f4",
+          "bytes": 70624
+        },
+        {
+          "path": "/usr/lib64/libc.so.6",
+          "sha256": "b1a2d5afee9ededcce206673aea3a5b4fbe6c790e10f956b6f934d51e0dca4fa",
+          "bytes": 1661256
+        },
+        {
+          "path": "/usr/lib64/libcrypt.so.1.1.0",
+          "sha256": "dd5f950bffc6fc09bf03cc4c7deaffed4e6ed2c0decd7bdc3e15705d1767f61f",
+          "bytes": 264240
+        },
+        {
+          "path": "/usr/lib64/libcrypto.so.1.1.1wa",
+          "sha256": "8a117f63d660700ae23f3b429325a507d068b2325fbc9a87f0045158c27ccbc0",
+          "bytes": 2832848
+        },
+        {
+          "path": "/usr/lib64/libffi.so.8.1.0",
+          "sha256": "376cf133dcddb785b546c80a0c43ecaed2ffade1e8d769f30bfa1d7b7a32cdf5",
+          "bytes": 67680
+        },
+        {
+          "path": "/usr/lib64/libhns.so.1.0.41.0",
+          "sha256": "93557b081ff19d57fd511bda9dcdd0548558f47a484952ef0666dfd30e4e747c",
+          "bytes": 67632
+        },
+        {
+          "path": "/usr/lib64/libibverbs.so.1.14.41.0",
+          "sha256": "9f730a8bcae20e7c5bd72b2c809db170c9c1107298914801efe34e010240c7e7",
+          "bytes": 133800
+        },
+        {
+          "path": "/usr/lib64/liblzma.so.5.2.5",
+          "sha256": "443fd1da55ece7e9b1ebc1ffedde1b2d8787b1fa7cabe68c26deb77c9bd2524d",
+          "bytes": 198704
+        },
+        {
+          "path": "/usr/lib64/libm.so.6",
+          "sha256": "a07c01ae23267a0951e7af5291553f3422a196072bd9a686eabfe04cfef0db60",
+          "bytes": 591984
+        },
+        {
+          "path": "/usr/lib64/libmlx5.so.1.23.41.0",
+          "sha256": "5ba649c58efee2f321239376ef8a305c10a7172c5d0aec67e4ff3282c18f66d6",
+          "bytes": 463120
+        },
+        {
+          "path": "/usr/lib64/libnl-3.so.200.26.0",
+          "sha256": "b0726837f097aef9fe3a10cb0199f5ed8100d1fc50ce9cb1839dc4f1dd3921a9",
+          "bytes": 198800
+        },
+        {
+          "path": "/usr/lib64/libnl-route-3.so.200.26.0",
+          "sha256": "148a74f74f093ea899c12eda2080f3b15004a63a47bd2f361a621fb1f38f42f5",
+          "bytes": 608144
+        },
+        {
+          "path": "/usr/lib64/libnuma.so.1.0.0",
+          "sha256": "1027b39a0942390ec3a448f741b819d396777f3a948962cee33a9af883dee4fc",
+          "bytes": 67912
+        },
+        {
+          "path": "/usr/lib64/libpthread.so.0",
+          "sha256": "1bd641be5a351759c6e222dd2835c7f8865a1cfc815bb9bc98034b3bbea75757",
+          "bytes": 67624
+        },
+        {
+          "path": "/usr/lib64/libpython3.9.so.1.0",
+          "sha256": "ecfd34c47a2d6b5967c026ea6f729178a78244645c9d7473a119acc01702f81a",
+          "bytes": 3565104
+        },
+        {
+          "path": "/usr/lib64/librdmacm.so.1.3.41.0",
+          "sha256": "305af7dfc2e8b261ab375e26679adbd0533e2f4c2a52e20f8f65628eb6ad2b26",
+          "bytes": 134096
+        },
+        {
+          "path": "/usr/lib64/librt.so.1",
+          "sha256": "75843798003baa90dd191f843ac11abcc7b6f6737d4934ae56f8b73f0b346ca1",
+          "bytes": 67688
+        },
+        {
+          "path": "/usr/lib64/libsdma_dk.so",
+          "sha256": "2dee6f0b8b5498d8d39ab9ba6146236745098f95ffc432a9e645eefbe00a444e",
+          "bytes": 75000
+        },
+        {
+          "path": "/usr/lib64/libssl.so.1.1.1wa",
+          "sha256": "5f30a99bfe8263c28422413820ff8bde3eaf707f7735e2cce42882a0b4d0794a",
+          "bytes": 608144
+        },
+        {
+          "path": "/usr/lib64/libz.so.1.2.11",
+          "sha256": "bf3c7515f6ad0c9ff3e5fd7c5cc44b9811598a5c1dc3f9fe8b9146402228ff09",
+          "bytes": 133168
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_blake2.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "3c279d55739fcd15b62177e355b6fc6fcc9fc6e8deb20b82f944d9d282eccd09",
+          "bytes": 69264
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_bz2.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "bc23fd1cc88b50f3abf343803663feabf2c73c7da9bf172739da6ef0adc61df5",
+          "bytes": 68912
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_contextvars.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "74f9e3d8c88f51fd77d5f114e9067a8bd5179ee23361d6fedb7d8870e94b4018",
+          "bytes": 67704
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_ctypes.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "afceab83258f663ed283b53d3c0bdeb0db049361e237144ba003f42cdadaf3ab",
+          "bytes": 146712
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_datetime.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "9c1b45ce9eb8cc89c8aba0e85dd79031ba306c615b838e4708f08cbaa6ff5050",
+          "bytes": 141192
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_hashlib.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "0a459a2e8d9c314de2ceb13f72bd65fbe2c7b0bfee93f502e5227eb87d9acee4",
+          "bytes": 70816
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_heapq.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "f0ca48e745d4ba2edc956888248ee26fb8dd2409126e971fd34a5e05b5d6d53e",
+          "bytes": 67920
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_json.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "498e5c701c7c08cd452b6176c5a841608dd9bc749c3032622e5ec24e7216781f",
+          "bytes": 68864
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_lzma.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "33624d122d74d5dc83d38f34d13f855334b3af5593629e2a728cdd51a988f09e",
+          "bytes": 69480
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_pickle.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "5e1be4a013f42190b1c692cc1e37492de14e198fe811dffe5dd2bf0a1956bf41",
+          "bytes": 137504
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_posixsubprocess.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "ae4ab65b72a4996a71d14943037be3e28ef9c7ba3ffaade2bf1e844d2d1bd8f1",
+          "bytes": 67672
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_sha256.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "7138d49caa31fdabe887a6efd739001c109c40fb557365027d8105ac53419ef7",
+          "bytes": 69080
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_socket.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "bf0efbfd87a3a5033347a5ee58be23ed46ffa91aac3eb7c3b5ff343fa19890c2",
+          "bytes": 135896
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_struct.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "87e183531623bc914a0e029dea24162c3f83d13c8e7d03d2f2ccbb65df773498",
+          "bytes": 70520
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/array.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "485b6fa68509526a5488b80ea9c8870877e3406290a7e14d1b500842d54ce59d",
+          "bytes": 69784
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/grp.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "2a58f1ca5fec654613f8ab7718c9cd2155a5ad21cb35bb362e13a284e69f1fcd",
+          "bytes": 68048
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/math.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "8e491a87ff466d90fa2d496718f0321c26a53e48f5c9b6f01e6e5e7c8856dba5",
+          "bytes": 69640
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/select.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "74771741195e323e8e9e832faaa0e8ce0d5cdc2915038fa2b22fb1b39241f4ad",
+          "bytes": 68896
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/zlib.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "659102560d24aef077b82bb46b9677c5cfecfb8b075929db3a6570b3754e60b8",
+          "bytes": 68944
+        },
+        {
+          "path": "/work_ssd/system/os_jasmine_v01/vroot/usr/lib64/libgomp.so.1.0.0",
+          "sha256": "252cbdb01681c56080bba6a94d3461bf5704a03f987a42517341ad464d19da27",
+          "bytes": 264920
+        }
+      ],
+      "runtime_environment": {
+        "LD_LIBRARY_PATH": "/home/share/nsls_lwb/.cache/runtime-oldgomp-only-20261104:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sme/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+        "OMP_WAIT_POLICY": null,
+        "GOMP_SPINCOUNT": null,
+        "LD_PRELOAD_present": "[REDACTED: private environment/credential]",
+        "LD_DEBUG_present": "[REDACTED: private environment/credential]",
+        "PERF_COUNTER_ROOT_present": "[REDACTED: private environment/credential]"
+      },
+      "thread_affinity": [
+        {
+          "tid": 2480853,
+          "Name": "python",
+          "State": "R (running)",
+          "Cpus_allowed_list": "0",
+          "Mems_allowed_list": "0-31"
+        },
+        {
+          "tid": 2481408,
+          "Name": "python",
+          "State": "S (sleeping)",
+          "Cpus_allowed_list": "0-1",
+          "Mems_allowed_list": "0-31"
+        },
+        {
+          "tid": 2481411,
+          "Name": "python",
+          "State": "S (sleeping)",
+          "Cpus_allowed_list": "0-1",
+          "Mems_allowed_list": "0-31"
+        },
+        {
+          "tid": 2481993,
+          "Name": "async",
+          "State": "S (sleeping)",
+          "Cpus_allowed_list": "0-1",
+          "Mems_allowed_list": "0-31"
+        },
+        {
+          "tid": 2482177,
+          "Name": "python",
+          "State": "S (sleeping)",
+          "Cpus_allowed_list": "1",
+          "Mems_allowed_list": "0-31"
+        }
+      ],
+      "capture_point": "after gauge load, immediately before original Solver.setup call"
+    },
+    {
+      "rank": 8,
+      "pid": 2480867,
+      "pid_starttime": 11280969,
+      "captured_epoch": 1793784077.7369776,
+      "host": "cn19486",
+      "libraries": [
+        {
+          "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so",
+          "sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+          "bytes": 518240
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/mpi4py/MPI.openmpi.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "cdce8306edcf3403b5fa538047242b859acd3eada8364aa799a085ad81980313",
+          "bytes": 2188528
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_tests.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "88b722d4fa2c8680190c3afe226ab0db802ff24e6bad47ed8ba87df00414d9d5",
+          "bytes": 160592
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_umath.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "2ff1d58e9d86dbf49e4c2ce168f89dbcaadef536167bc31d6a16d87f97f443f9",
+          "bytes": 5138313
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "9b5de6d63ca7e40448335d5107c36b1457908d6bea3735c399e402777a4a6fe0",
+          "bytes": 331977
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0",
+          "sha256": "8c13f44b44e4dd0005632ea4173f5f5014d2829d50aa12b2054034297c07f233",
+          "bytes": 1671529
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so",
+          "sha256": "f3e216db23e3393127cf7753cab8085da83454fed795c9a1cb544d57ce633f35",
+          "bytes": 22982609
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgcc_s.so.1",
+          "sha256": "8deda699d7e7b293072b0308aef99a4dd7e78068f23aa23d140b776db168b37f",
+          "bytes": 132960
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libstdc++.so.6.0.30",
+          "sha256": "dee572b4b9b108960270f1769aa739c7c6d040fe1037772b90626b29623cf5bd",
+          "bytes": 2239528
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_dstore.so.1.0.2",
+          "sha256": "d6d27a445ba3dbafc69cc92376b13d6ccc89267d3bebccbd6f3545f9696e5a98",
+          "bytes": 67664
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_sm.so.40.30.0",
+          "sha256": "14e3fe6c243b050f01e395223ed2d4e70dc69d78f2bfdc656f10f96bbf7385a7",
+          "bytes": 67664
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_ucx.so.40.30.2",
+          "sha256": "eca409bc1df53f622dd2a6c3808ffcea54bb577e86993c4f6a6a0f89a97a7453",
+          "bytes": 68256
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmpi.so.40.30.6",
+          "sha256": "821468060a9b551dcef627b0d0772344d8b0318af766d942a9511e2b5d9307ec",
+          "bytes": 1179240
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-pal.so.40.30.3",
+          "sha256": "e2ae5fb1adf8d00749286ace7b4856506c0d89752acbbd80a7bf9dc527453396",
+          "bytes": 1066712
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-rte.so.40.30.3",
+          "sha256": "9f15ff0b1fbef55fb8d320da776c737bf5aa828275aecf57b01e37e0ac09e818",
+          "bytes": 799464
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libpmix.so.2.2.35",
+          "sha256": "b22abd5b92de18b4fe759302538946ff36bd47a5c22a4cc976b56899d7f29469",
+          "bytes": 866568
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_basic.so",
+          "sha256": "d67d48a4692473c1e98b53cea9ffe061fdc959aeedd7b1a5529e757505686257",
+          "bytes": 67952
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_bucket.so",
+          "sha256": "d275603d288c33540d6c660b0b5bcb8406b0ad7aaeddeea0fe8f5cf2042f56fe",
+          "bytes": 67872
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_bml_r2.so",
+          "sha256": "80483fe49582d9e1e6ca4894eb1db06f7d2d84ea21acf8e951a16e46d2d00b75",
+          "bytes": 68000
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_self.so",
+          "sha256": "54150bf94baab5a6889c1b54a6957f6db2cdf7007b2932502dbb625f16161e0f",
+          "bytes": 69696
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_tcp.so",
+          "sha256": "2209c6808b1c35377c956db26e14a14e0bf93e50c03b47f36eab1525d0f03919",
+          "bytes": 71152
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_vader.so",
+          "sha256": "4ff2608e6fd4e4d76d738c9385daf21a1c6846cc22027f8cbe84c961b090962d",
+          "bytes": 74544
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_adapt.so",
+          "sha256": "6e7ff7cbbfe13e8ca0554fc98446a0c85d3ea11274ba3b6234dd9b3a595dc5b4",
+          "bytes": 68544
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_basic.so",
+          "sha256": "315f855376b44eb736b2d0bc595b9879d3ea0250d469e33cdbd93a95a4248f29",
+          "bytes": 67760
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_han.so",
+          "sha256": "9ff74ceb32af86f4759181ba8d56f8ef17a5ab5c4b69d7fca9d6be36e4889911",
+          "bytes": 134120
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_inter.so",
+          "sha256": "2522e3b049f3a09c33b7e1c0196d0bc43099e0a0173a17b7993d8e79c14eeee6",
+          "bytes": 67760
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_libnbc.so",
+          "sha256": "8cc111b675582effe656bab34a90454165b98d84fa2c21210b0f2ed03eed9ef1",
+          "bytes": 134616
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_self.so",
+          "sha256": "1f0a42da21e6b36d97de7613d0689685ea059a4ecff41c1aae48f857d774da5e",
+          "bytes": 67752
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sm.so",
+          "sha256": "3c53597e4dfca5f07151b3421763c7dbae0755d187aadf87898cfec99f5f82de",
+          "bytes": 67992
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sync.so",
+          "sha256": "9581d7c70335135c6f5786e1635584291373119606890c8e1ecec18a9487a16b",
+          "bytes": 67968
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_tuned.so",
+          "sha256": "50e9020e3d69fab901fd9a07a5fb7a413d7aade6fe86b87cbd8a40f726a6d466",
+          "bytes": 133616
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_ucg.so",
+          "sha256": "4e763395995fae23c4b760d9114526d50b200ec8afe2070f97110d90ce3efb19",
+          "bytes": 134104
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_errmgr_default_app.so",
+          "sha256": "556be79c3679df44e18c660a09496d9f6946a5957e97e052c0a455e548746450",
+          "bytes": 67928
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_ess_pmi.so",
+          "sha256": "43db545908164a248235cc3abb28f9a5c8d7a5b8413873b348559751461e3d53",
+          "bytes": 67896
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_mpool_hugepage.so",
+          "sha256": "9cef117941f0f87dd4d8610345efc7b0182a75e31b905f8efe20bba2667e8b87",
+          "bytes": 68032
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_pt2pt.so",
+          "sha256": "4be6f6842f8f1b2a69c9f69fb683be70ab41b3e6ae5d52350e59fe2a291b2cd1",
+          "bytes": 136488
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_rdma.so",
+          "sha256": "0cf03a0e437f18d4d96b2d429370a5a4757db2893326220282929a9e1e9f2f1c",
+          "bytes": 135536
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_sm.so",
+          "sha256": "1f7f94614249819e9d8f95dfb51938ce98b534efc63f0efcd417802e08fc514f",
+          "bytes": 72464
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_ucx.so",
+          "sha256": "82b99c9a12ed257af496386ad1e39e76bec5d33ff07eeacd433623f8221d113e",
+          "bytes": 103168
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pmix_pmix3x.so",
+          "sha256": "5472d4abb02e95285dfea5e7b0c42a325c694bf9e943572c62ccea4770ef7d24",
+          "bytes": 134696
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pml_ob1.so",
+          "sha256": "8ec0aab1e393bf738a8a490077962f79b768af200ac02082aaf5268d6acb10f3",
+          "bytes": 136480
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_rcache_grdma.so",
+          "sha256": "399eb507e8fc51626e0254043f5be1b6035ec9b36649dd1196f6c8be6fb982ee",
+          "bytes": 68032
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_reachable_netlink.so",
+          "sha256": "7bbaa97fa3098178c1ee142f6336858de8a9bd9822ae87b0b39c696dd5fd1ed1",
+          "bytes": 68136
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_donau.so",
+          "sha256": "b2e533766a47f3880893701e37d544bb1d2162de80f881e5f8815852ba669d08",
+          "bytes": 67944
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_flux.so",
+          "sha256": "5db0d0c39609ce13120d5d4f4b9606aaea28b365b51bfeddd2f179e1fe71246c",
+          "bytes": 67944
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_jsm.so",
+          "sha256": "a2f2c6ef5517983292480093812c17d5488d08a31d131f75e55b8dea25d5b662",
+          "bytes": 67944
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_ompi.so",
+          "sha256": "411f036997317048bf92e3cdef3a9b0a03d79290c1829115c6a1c50a431fef5e",
+          "bytes": 74640
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_orte.so",
+          "sha256": "b642701101c2e276fb7d697feab98a8ba95fea7c618f737908c010ac77eadbbd",
+          "bytes": 67944
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_slurm.so",
+          "sha256": "697b5006ac08f13ae7b150ab90bf947552ad5dea96a10fb65ed44b0668959725",
+          "bytes": 67944
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_shmem_mmap.so",
+          "sha256": "95bb845c38d6e48a64095656e35914d568b803d61c6d09b6f82655ae5a193de2",
+          "bytes": 67960
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_state_app.so",
+          "sha256": "7fb310b011266fe9ed5143ac9a7f8ca29d1ebe3f5c9484a1600b62477c40dbb6",
+          "bytes": 67968
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v12.so",
+          "sha256": "d03cd84ce9785ad17dd6735ab36348a8c04a3111b7efd28b5941b584dc8622dd",
+          "bytes": 133576
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v20.so",
+          "sha256": "f5ec4bb70bdd648ea0db6cf8edd37ae50742de2778eb51381c7e92b1142829ab",
+          "bytes": 133576
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v21.so",
+          "sha256": "788656250db222a3f6e030e65bfdbd32471648192bc368777462d38b3c0fc047",
+          "bytes": 68040
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v3.so",
+          "sha256": "0cf107caf4c9075ca292d9653ac029decd757f8d77d4314740c3ad905b76e732",
+          "bytes": 68040
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds12.so",
+          "sha256": "c67de714839d761531d1ab5973c11b88038c1f5c617ee4e4cc8ebe51aab338c4",
+          "bytes": 68264
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds21.so",
+          "sha256": "1fff88422c1dd7b12181b3acf3029fc3c388334908274baeaddf166e9a3bdd0a",
+          "bytes": 68216
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_hash.so",
+          "sha256": "076cc60540ae75804196abcb03657723062d450eb36fb481bbe0fac9c7bd37fe",
+          "bytes": 133784
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pcompress_zlib.so",
+          "sha256": "f43b7b80e8961916e5708a3b2f5005da0648db7db31da156b3b86aaa71a003ae",
+          "bytes": 67896
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_default.so",
+          "sha256": "1f28ddf59c644dc872e3b1bf8c9ad87f9aa8d2d0271ce1efa284c750bf92f0b7",
+          "bytes": 67968
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_stdfd.so",
+          "sha256": "45aa6f1e3b51366737eee8b8625ee0fe129ff71e73038c647ad7ba30ce68a379",
+          "bytes": 67904
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_syslog.so",
+          "sha256": "218c57d6ba6c4bb09fd3573bde7427b528aec30a82048e18ed49d3f1b4f2d272",
+          "bytes": 67936
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_compress.so",
+          "sha256": "0ef97de4a35204e2a45892fe4c2aadaa90e43edc0a6242037d2f1ec1dc31c311",
+          "bytes": 67888
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_native.so",
+          "sha256": "39f950e6b67b76c0b7f435b35437997fd74a899a61c84fd808460aa11fd0f48a",
+          "bytes": 67888
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psec_native.so",
+          "sha256": "5b9024fde2b8ebfb07f979a908167ca91a6dfd75e60169fc544216a53c67ca82",
+          "bytes": 67944
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pshmem_mmap.so",
+          "sha256": "19bba59e55f498edbc4ee52b0f3c99339e78719df15b07a303161361511ecfeb",
+          "bytes": 67920
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_flex128.so",
+          "sha256": "a4e90b13fd82f19d7adcf371807d7a827a130e8fd4237dcbb6c5a2327e79f2c7",
+          "bytes": 67920
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_native.so",
+          "sha256": "58f3a1c6736d0a32360741a045522ad72c77179d3d05a6e6266cec7b0d9a9669",
+          "bytes": 67920
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_tcp.so",
+          "sha256": "84a065fa5ea0481d0183bd06156104e24e04cc80625144bf093378050a345d54",
+          "bytes": 68192
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_usock.so",
+          "sha256": "768f63ab09b20a78432dea6cbada188cd79bc62a126202b68c9907f9d9975032",
+          "bytes": 68088
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucm.so.0.0.0",
+          "sha256": "9146e5755564230b8dcb3423ecb9a02b3e665b7c5593ce745b32b4e5da05c9bc",
+          "bytes": 135480
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucp.so.0.0.0",
+          "sha256": "e21ed2497ce1525c210a53236e987ed559b14b40e36241f0b2fdb69bfa2eb440",
+          "bytes": 872584
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucs.so.0.0.0",
+          "sha256": "ad032c795c9c3e7a8b3aeb3867ce7fc3b9e4bc6e2e210b39f90a72e687f3c5a3",
+          "bytes": 402272
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libuct.so.0.0.0",
+          "sha256": "e1240abd25de3f4606b533f49fe7ee45ecdfca4a91fd4f5cd2758f6db8583486",
+          "bytes": 277408
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_cma.so.0.0.0",
+          "sha256": "befc376992726b7f6c4dc92ebcd520477c34af3640ed18f60e3bb9600f98139f",
+          "bytes": 69096
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_ib.so.0.0.0",
+          "sha256": "0fb10a1a9949936cf49f7e21cde8de19e52922f443d8a83ccd41083cacb29fd5",
+          "bytes": 611688
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_rdmacm.so.0.0.0",
+          "sha256": "6ec4f25bdf77aafc57386f4c8bfe6af6a5be51ca8fad542e516118f97a33da63",
+          "bytes": 68984
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_sdma.so.0.0.0",
+          "sha256": "e58cb1238d775fdc44fd89ed756bfd0b605bf471ade0ed975f8c91b6bb9eadfa",
+          "bytes": 69360
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/libucg.so.25.1.0.SPC001",
+          "sha256": "29a4b4a402a9778a14fb4550a27f50e53190c635b2f2849813f275d5eb982c89",
+          "bytes": 156064
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_stars.so.25.1.0.SPC001",
+          "sha256": "dfcde42710d2d900d582abdd976f184a1211764f2cdcc6c2bd2be93e33ec935f",
+          "bytes": 401168
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_ucx.so.25.1.0.SPC001",
+          "sha256": "8b67c186834a800903c1722be9c88a0f41839cc1821ae3d5d9def5ba5e934d8d",
+          "bytes": 264376
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planm_ucx_hicoll.so.25.1.0.SPC001",
+          "sha256": "3b654a6f7f6f80da09dba45cc6f8ed41181b180774065cc89b7facb310a470e7",
+          "bytes": 136120
+        },
+        {
+          "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib/libkupl.so.25.1.0.SPC001",
+          "sha256": "5955055a872388c2a9ae27280c0f602880538244b4acdd3985e713a5bb79964f",
+          "bytes": 199136
+        },
+        {
+          "path": "/usr/lib/ld-linux-aarch64.so.1",
+          "sha256": "d029a3643d97a4624d9b7229de196dbf8b258a1b4fc42ecf551b40a924fa1214",
+          "bytes": 204056
+        },
+        {
+          "path": "/usr/lib64/libbz2.so.1.0.8",
+          "sha256": "6cc53370db2dcca81e1681557e5b31b2c1ae4dc66f70cc9e9142491fe45dc6f4",
+          "bytes": 70624
+        },
+        {
+          "path": "/usr/lib64/libc.so.6",
+          "sha256": "b1a2d5afee9ededcce206673aea3a5b4fbe6c790e10f956b6f934d51e0dca4fa",
+          "bytes": 1661256
+        },
+        {
+          "path": "/usr/lib64/libcrypt.so.1.1.0",
+          "sha256": "dd5f950bffc6fc09bf03cc4c7deaffed4e6ed2c0decd7bdc3e15705d1767f61f",
+          "bytes": 264240
+        },
+        {
+          "path": "/usr/lib64/libcrypto.so.1.1.1wa",
+          "sha256": "8a117f63d660700ae23f3b429325a507d068b2325fbc9a87f0045158c27ccbc0",
+          "bytes": 2832848
+        },
+        {
+          "path": "/usr/lib64/libffi.so.8.1.0",
+          "sha256": "376cf133dcddb785b546c80a0c43ecaed2ffade1e8d769f30bfa1d7b7a32cdf5",
+          "bytes": 67680
+        },
+        {
+          "path": "/usr/lib64/libhns.so.1.0.41.0",
+          "sha256": "93557b081ff19d57fd511bda9dcdd0548558f47a484952ef0666dfd30e4e747c",
+          "bytes": 67632
+        },
+        {
+          "path": "/usr/lib64/libibverbs.so.1.14.41.0",
+          "sha256": "9f730a8bcae20e7c5bd72b2c809db170c9c1107298914801efe34e010240c7e7",
+          "bytes": 133800
+        },
+        {
+          "path": "/usr/lib64/liblzma.so.5.2.5",
+          "sha256": "443fd1da55ece7e9b1ebc1ffedde1b2d8787b1fa7cabe68c26deb77c9bd2524d",
+          "bytes": 198704
+        },
+        {
+          "path": "/usr/lib64/libm.so.6",
+          "sha256": "a07c01ae23267a0951e7af5291553f3422a196072bd9a686eabfe04cfef0db60",
+          "bytes": 591984
+        },
+        {
+          "path": "/usr/lib64/libmlx5.so.1.23.41.0",
+          "sha256": "5ba649c58efee2f321239376ef8a305c10a7172c5d0aec67e4ff3282c18f66d6",
+          "bytes": 463120
+        },
+        {
+          "path": "/usr/lib64/libnl-3.so.200.26.0",
+          "sha256": "b0726837f097aef9fe3a10cb0199f5ed8100d1fc50ce9cb1839dc4f1dd3921a9",
+          "bytes": 198800
+        },
+        {
+          "path": "/usr/lib64/libnl-route-3.so.200.26.0",
+          "sha256": "148a74f74f093ea899c12eda2080f3b15004a63a47bd2f361a621fb1f38f42f5",
+          "bytes": 608144
+        },
+        {
+          "path": "/usr/lib64/libnuma.so.1.0.0",
+          "sha256": "1027b39a0942390ec3a448f741b819d396777f3a948962cee33a9af883dee4fc",
+          "bytes": 67912
+        },
+        {
+          "path": "/usr/lib64/libpthread.so.0",
+          "sha256": "1bd641be5a351759c6e222dd2835c7f8865a1cfc815bb9bc98034b3bbea75757",
+          "bytes": 67624
+        },
+        {
+          "path": "/usr/lib64/libpython3.9.so.1.0",
+          "sha256": "ecfd34c47a2d6b5967c026ea6f729178a78244645c9d7473a119acc01702f81a",
+          "bytes": 3565104
+        },
+        {
+          "path": "/usr/lib64/librdmacm.so.1.3.41.0",
+          "sha256": "305af7dfc2e8b261ab375e26679adbd0533e2f4c2a52e20f8f65628eb6ad2b26",
+          "bytes": 134096
+        },
+        {
+          "path": "/usr/lib64/librt.so.1",
+          "sha256": "75843798003baa90dd191f843ac11abcc7b6f6737d4934ae56f8b73f0b346ca1",
+          "bytes": 67688
+        },
+        {
+          "path": "/usr/lib64/libsdma_dk.so",
+          "sha256": "2dee6f0b8b5498d8d39ab9ba6146236745098f95ffc432a9e645eefbe00a444e",
+          "bytes": 75000
+        },
+        {
+          "path": "/usr/lib64/libssl.so.1.1.1wa",
+          "sha256": "5f30a99bfe8263c28422413820ff8bde3eaf707f7735e2cce42882a0b4d0794a",
+          "bytes": 608144
+        },
+        {
+          "path": "/usr/lib64/libz.so.1.2.11",
+          "sha256": "bf3c7515f6ad0c9ff3e5fd7c5cc44b9811598a5c1dc3f9fe8b9146402228ff09",
+          "bytes": 133168
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_blake2.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "3c279d55739fcd15b62177e355b6fc6fcc9fc6e8deb20b82f944d9d282eccd09",
+          "bytes": 69264
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_bz2.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "bc23fd1cc88b50f3abf343803663feabf2c73c7da9bf172739da6ef0adc61df5",
+          "bytes": 68912
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_contextvars.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "74f9e3d8c88f51fd77d5f114e9067a8bd5179ee23361d6fedb7d8870e94b4018",
+          "bytes": 67704
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_ctypes.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "afceab83258f663ed283b53d3c0bdeb0db049361e237144ba003f42cdadaf3ab",
+          "bytes": 146712
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_datetime.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "9c1b45ce9eb8cc89c8aba0e85dd79031ba306c615b838e4708f08cbaa6ff5050",
+          "bytes": 141192
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_hashlib.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "0a459a2e8d9c314de2ceb13f72bd65fbe2c7b0bfee93f502e5227eb87d9acee4",
+          "bytes": 70816
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_heapq.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "f0ca48e745d4ba2edc956888248ee26fb8dd2409126e971fd34a5e05b5d6d53e",
+          "bytes": 67920
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_json.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "498e5c701c7c08cd452b6176c5a841608dd9bc749c3032622e5ec24e7216781f",
+          "bytes": 68864
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_lzma.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "33624d122d74d5dc83d38f34d13f855334b3af5593629e2a728cdd51a988f09e",
+          "bytes": 69480
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_pickle.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "5e1be4a013f42190b1c692cc1e37492de14e198fe811dffe5dd2bf0a1956bf41",
+          "bytes": 137504
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_posixsubprocess.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "ae4ab65b72a4996a71d14943037be3e28ef9c7ba3ffaade2bf1e844d2d1bd8f1",
+          "bytes": 67672
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_sha256.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "7138d49caa31fdabe887a6efd739001c109c40fb557365027d8105ac53419ef7",
+          "bytes": 69080
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_socket.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "bf0efbfd87a3a5033347a5ee58be23ed46ffa91aac3eb7c3b5ff343fa19890c2",
+          "bytes": 135896
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/_struct.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "87e183531623bc914a0e029dea24162c3f83d13c8e7d03d2f2ccbb65df773498",
+          "bytes": 70520
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/array.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "485b6fa68509526a5488b80ea9c8870877e3406290a7e14d1b500842d54ce59d",
+          "bytes": 69784
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/grp.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "2a58f1ca5fec654613f8ab7718c9cd2155a5ad21cb35bb362e13a284e69f1fcd",
+          "bytes": 68048
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/math.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "8e491a87ff466d90fa2d496718f0321c26a53e48f5c9b6f01e6e5e7c8856dba5",
+          "bytes": 69640
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/select.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "74771741195e323e8e9e832faaa0e8ce0d5cdc2915038fa2b22fb1b39241f4ad",
+          "bytes": 68896
+        },
+        {
+          "path": "/usr/lib64/python3.9/lib-dynload/zlib.cpython-39-aarch64-linux-gnu.so",
+          "sha256": "659102560d24aef077b82bb46b9677c5cfecfb8b075929db3a6570b3754e60b8",
+          "bytes": 68944
+        },
+        {
+          "path": "/work_ssd/system/os_jasmine_v01/vroot/usr/lib64/libgomp.so.1.0.0",
+          "sha256": "252cbdb01681c56080bba6a94d3461bf5704a03f987a42517341ad464d19da27",
+          "bytes": 264920
+        }
+      ],
+      "runtime_environment": {
+        "LD_LIBRARY_PATH": "/home/share/nsls_lwb/.cache/runtime-oldgomp-only-20261104:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sme/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+        "OMP_WAIT_POLICY": null,
+        "GOMP_SPINCOUNT": null,
+        "LD_PRELOAD_present": "[REDACTED: private environment/credential]",
+        "LD_DEBUG_present": "[REDACTED: private environment/credential]",
+        "PERF_COUNTER_ROOT_present": "[REDACTED: private environment/credential]"
+      },
+      "thread_affinity": [
+        {
+          "tid": 2480867,
+          "Name": "python",
+          "State": "R (running)",
+          "Cpus_allowed_list": "304",
+          "Mems_allowed_list": "0-31"
+        },
+        {
+          "tid": 2481421,
+          "Name": "python",
+          "State": "S (sleeping)",
+          "Cpus_allowed_list": "304-305",
+          "Mems_allowed_list": "0-31"
+        },
+        {
+          "tid": 2481433,
+          "Name": "python",
+          "State": "S (sleeping)",
+          "Cpus_allowed_list": "304-305",
+          "Mems_allowed_list": "0-31"
+        },
+        {
+          "tid": 2481916,
+          "Name": "async",
+          "State": "S (sleeping)",
+          "Cpus_allowed_list": "304-305",
+          "Mems_allowed_list": "0-31"
+        },
+        {
+          "tid": 2482170,
+          "Name": "python",
+          "State": "S (sleeping)",
+          "Cpus_allowed_list": "305",
+          "Mems_allowed_list": "0-31"
+        }
+      ],
+      "capture_point": "after gauge load, immediately before original Solver.setup call"
+    }
+  ],
+  "capture_point": "after gauge load, immediately before original setup",
+  "captured_during_setup": false,
+  "setup_launch_window_used": false,
+  "known_mpi_launch_prefix": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:",
+  "explicit_context_path_overwrites_launch_environment": true,
+  "actual_runtime_environment_not_normalized": true,
+  "wrapper_sha256": "430d6e4260d13fcdb14b6f61f4b6495c2c18fbc08140ac9fb2d6ce8945296b68",
+  "solver_python_sha256": "0b87424381da035ab27ae3bf9022aebf277b052cad502e09284f469e8f34716c",
+  "benchmark_sha256": "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1",
+  "frozen_publication_wrapper_sha256": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+  "ordinary_solve_observer_running": false
+}

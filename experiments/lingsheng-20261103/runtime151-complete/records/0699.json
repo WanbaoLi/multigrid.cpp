@@ -1,0 +1,23 @@
+{
+  "protocol": "fresh-output-publication-v2",
+  "complete": true,
+  "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-sdk-b/measurements/full12/independent",
+  "output_absent_at_cli_start": true,
+  "checked_epoch": 1793790139.0369668,
+  "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w10v7-sdk-b/measurements/full12",
+  "parent_identity": {
+    "dev": 60,
+    "inode": 527610888065
+  },
+  "declarations": [
+    {
+      "relative": "gauge.bin",
+      "kind": "canonical-gauge",
+      "expected_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+      "bytes": 509607936
+    }
+  ],
+  "maximum_strict_calls_per_output": 3,
+  "parent_protocol": null,
+  "immutable_inputs_use_original_strict_reader": true
+}

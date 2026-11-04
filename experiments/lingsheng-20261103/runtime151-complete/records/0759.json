@@ -1,0 +1,20 @@
+{
+  "complete": true,
+  "passed": true,
+  "ranks": 16,
+  "maps_sha256": "bfc65d884cb64ed14c4530f7233c44e8cf6814ba056f1c99c180cc6e05461a1e",
+  "actual_old_gomp": [
+    {
+      "path": "/work_ssd/system/os_jasmine_v01/vroot/usr/lib64/libgomp.so.1.0.0",
+      "sha256": "252cbdb01681c56080bba6a94d3461bf5704a03f987a42517341ad464d19da27",
+      "bytes": 264920
+    },
+    {
+      "path": "/work_ssd/system/os_jasmine_v01/vroot/usr/lib64/libgomp.so.1.0.0",
+      "sha256": "252cbdb01681c56080bba6a94d3461bf5704a03f987a42517341ad464d19da27",
+      "bytes": 264920
+    }
+  ],
+  "full12_precision_accepted": false,
+  "performance_sample": false
+}
