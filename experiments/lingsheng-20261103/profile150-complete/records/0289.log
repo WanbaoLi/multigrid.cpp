@@ -1,0 +1,2 @@
+[ perf record: Woken up 109 times to write data ]
+[ perf record: Captured and wrote 55.551 MB /home/share/nsls_lwb/.cache/mg-opt-20261103/solve-profile-worker10-150/150-best-solve-profile-worker10/rank00008.perf.data (13033 samples) ]

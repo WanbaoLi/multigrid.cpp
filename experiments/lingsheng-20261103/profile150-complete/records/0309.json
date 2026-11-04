@@ -1,0 +1,18 @@
+{
+  "complete": true,
+  "passed": true,
+  "selected_ranks": [
+    0,
+    8
+  ],
+  "rank_count": 16,
+  "actual_profiled_stats_checked": true,
+  "wrapper_sha256": "53c7bcde4eb17349baf6705ba94d494bbb57e47c5c85729901ba258050f92546",
+  "frozen_profile_sha256": "0f8f91305635ae7085d6bb9dcaa96b4c0607b3dfbeb4b83cc3b34526f714bc98",
+  "unranked": true,
+  "recording_frequency_hz": 49,
+  "call_graph": "dwarf,4096",
+  "flat_decode_call_graph": "none",
+  "thread_key": "pid (perf5.10 command and task TID; not a tid sort key)",
+  "thread_key_primary_source": "https://raw.githubusercontent.com/torvalds/linux/v5.10/tools/perf/Documentation/perf-report.txt"
+}

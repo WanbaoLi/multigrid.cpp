@@ -1,0 +1,133 @@
+{
+  "rank": 3,
+  "complete": true,
+  "wrapper_sha256": "53c7bcde4eb17349baf6705ba94d494bbb57e47c5c85729901ba258050f92546",
+  "frozen_profile_sha256": "0f8f91305635ae7085d6bb9dcaa96b4c0607b3dfbeb4b83cc3b34526f714bc98",
+  "frozen_publication_sha256": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+  "actual_profiled_stats": [
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 4.199180979999994,
+      "api_seconds": 4.323353101999999,
+      "true_residual": 4.818858112299297e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 4.199180979999994,
+      "api_seconds": 4.323353101999999,
+      "true_residual": 3.198730450276016e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.6107702180000274,
+      "api_seconds": 3.685944764999988,
+      "true_residual": 3.933255204469823e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.6107702180000274,
+      "api_seconds": 3.685944764999988,
+      "true_residual": 3.1414370125449498e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.727330098999971,
+      "api_seconds": 3.8025641859999837,
+      "true_residual": 4.0893419114669625e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.727330098999971,
+      "api_seconds": 3.8025641859999837,
+      "true_residual": 4.07601433330568e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.6740457540000193,
+      "api_seconds": 3.7274217560000125,
+      "true_residual": 3.6561943945856878e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.6740457540000193,
+      "api_seconds": 3.7274217560000125,
+      "true_residual": 2.835005475197606e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 25,
+      "refinement_steps": 0,
+      "solver_seconds": 4.098611183000003,
+      "api_seconds": 4.173140055000033,
+      "true_residual": 2.640742707864398e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 4.098611183000003,
+      "api_seconds": 4.173140055000033,
+      "true_residual": 3.773108178575985e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.731049072000019,
+      "api_seconds": 3.806631992000007,
+      "true_residual": 4.279980975646583e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    },
+    {
+      "converged": 1,
+      "iterations": 24,
+      "refinement_steps": 0,
+      "solver_seconds": 3.731049072000019,
+      "api_seconds": 3.806631992000007,
+      "true_residual": 2.612836489860153e-09,
+      "batch_size": 2,
+      "timing_scope": "shared_batch"
+    }
+  ],
+  "actual_profiled_stats_checked": true,
+  "independently_verified_saved_output_scope": "Last light diagnostic sample; final verbose sampled output is not saved",
+  "timing_scope": "Auxiliary diagnostic only; no ordinary performance acceptance",
+  "error": null
+}

@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+    "-u",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker10_live_task_guard_v2.py",
+    "--plan",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-profile150-live-v2/guard-plan.json",
+    "--plan-sha",
+    "9266fdeb756753935548a62548cc801c36490cf79f0ff1dda57f0597d119332e"
+  ],
+  "cwd": "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-solve-profile-v7",
+  "timeout": 3600,
+  "environment": {
+    "LD_LIBRARY_PATH": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sme/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+    "LD_PRELOAD": "",
+    "LD_DEBUG": "[REDACTED: private environment/credential]",
+    "LD_DEBUG_OUTPUT": "[REDACTED: private environment/credential]",
+    "PERF_COUNTER_ROOT": "",
+    "OMP_WAIT_POLICY": "",
+    "GOMP_SPINCOUNT": "",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "LQCD_OPT_SOLVE_PROFILE_OUTPUT": "[REDACTED: private environment/credential]"
+  }
+}

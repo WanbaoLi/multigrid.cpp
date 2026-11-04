@@ -1,0 +1,37 @@
+{
+  "tol": 1e-08,
+  "restart": 8,
+  "maxiter": 100,
+  "initial_guess": "zero",
+  "solve_type": "DIRECT",
+  "mass": -0.277,
+  "coarse_dof": 48,
+  "nu_pre": 0,
+  "nu_post": 1,
+  "coarse_tol": 0.5,
+  "coarse_maxiter": 8,
+  "coarse_solver": "GCR",
+  "smoother": "CA_GCR",
+  "threads": 4,
+  "mg_enabled": true,
+  "lattice": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "mg_block": [
+    [
+      6,
+      6,
+      6,
+      4
+    ]
+  ],
+  "nvec": 24,
+  "kappa": 0.13430029546065003,
+  "clover_coeff_t": 1.160920226,
+  "clover_coeff_r": 1.160920226,
+  "anisotropy": 1,
+  "t_boundary": -1
+}

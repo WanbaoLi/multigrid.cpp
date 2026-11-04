@@ -1,0 +1,12 @@
+{
+  "complete": true,
+  "id": "150-best-solve-profile-worker10",
+  "guard_sha256": "574ae0c5224bc1fd37ead3bad57045ae035653f536ffe3d6e4f7cad47e5446d3",
+  "original_task": {
+    "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-profile150-worker10/task.json",
+    "sha256": "24cbe141940f8a318e29becd696209688ff14273f7d6e94cced86884114d34de"
+  },
+  "original_entry_sha256": "1f1645d2b35b032fabcdd36c8133112b8d8276ff142d688a0fa88f7e2b9f4f3f",
+  "task_timeout_seconds": 3600,
+  "numerical_or_acceptance_gate_changes": false
+}

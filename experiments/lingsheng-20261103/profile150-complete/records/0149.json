@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "passed": true,
+  "protocol": "fresh-output-publication-v2",
+  "startup_sha256": "5d2768c53a4761eab2328858f227b8d9e1faf29a425df7a2c4c5addafc72dfdc",
+  "entry_sha256": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+  "base_wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec",
+  "publication_module_sha256": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a",
+  "parent_raw_artifacts": {
+    "protocol.json": {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/150-best-solve-profile-worker10/checksum-audit/benchmark/rank00013/protocol.json",
+      "sha256": "d7eb364b1c378f6df0f4fb0f3a5f3cb2ba6bd2554733b1b9f6d738ab677c17f7"
+    },
+    "manifest.json": {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/150-best-solve-profile-worker10/checksum-audit/benchmark/rank00013/manifest.json",
+      "sha256": "560d3516a1b27cb079787ecc096d4b536bb693e2e60ff1b0379eb5d075274e10"
+    }
+  },
+  "published_outputs": [],
+  "rank": 13
+}

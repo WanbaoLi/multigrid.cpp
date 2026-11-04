@@ -1,0 +1,27 @@
+{
+  "complete": true,
+  "id": "150-best-solve-profile-worker10",
+  "task_sha256": "b602b97874d02567b43975ce2dec53435d9513d11c8b156f14aaacdc629aeb74",
+  "original_task_sha256": "24cbe141940f8a318e29becd696209688ff14273f7d6e94cced86884114d34de",
+  "contract_sha256": "6997e3a07367e1c9639bb183887827d90fc79559b4470de4f3230edf056de45b",
+  "publisher_sha256": "699361c397f236edf21092a3833739e22f514547c5d18ec8eb25a6207d2b7319",
+  "dependencies": [
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/151-runtime-confirm-worker10-v7.status.json",
+      "sha256": "2ef8f6203074710cab24b9e37320309c75c43bdee7efa7f03fea6bb91df00901",
+      "task_tag": "dbcb032cdf7b49e9a824fb40de89b4ee"
+    }
+  ],
+  "expected_best": "052-reduce-on",
+  "best_sha256": "a71b1a006f4cbf0a4227620ec6c8e14fcce849fa34fe9d9e55f1068657aa211b",
+  "scheduler_query": {
+    "method": "Original authenticated allocation plus fresh idle heartbeat/held lock and mandatory live exact parent guard before original scientific scope",
+    "initial_query_epoch": 1793783927.2402964,
+    "current_scheduler_query": "not used; last recorded control-plane timeouts retained",
+    "original_allocation_sha256": "a454a02d3ce61c75edec6a54fba4c190e81d5006a2402328b33d7ffada015085",
+    "prior_actual_parent_guard_sha256": "7a052bf3067a00b7f1cd511bc74a1b26623a5edb01ad1d9703173e2c081306f9",
+    "new_guard_plan_sha256": "9266fdeb756753935548a62548cc801c36490cf79f0ff1dda57f0597d119332e"
+  },
+  "heartbeat_sha256": "bedbf4a0771abf14066c697b11464b1daf31a87fe1331f0014ea86b0b476f396",
+  "epoch": 1793790446.4545782
+}
