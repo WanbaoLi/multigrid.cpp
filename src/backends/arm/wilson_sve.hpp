@@ -51,8 +51,66 @@ inline svint32_t sve_indices(svbool_t pg, const std::ptrdiff_t *p, int count) {
     for (int lane = 0; lane < count; ++lane) narrow[lane] = static_cast<int32_t>(p[lane]);
     return svld1_s32(pg, narrow);
 }
+inline bool sve_clover_reuse_enabled() {
+    static const bool enabled = [] {
+        const char *value = std::getenv("LQCD_ARM_SVE_CLOVER_REUSE");
+        return value && value[0] == '1' && value[1] == '\0';
+    }();
+    return enabled;
+}
+
+template<int Column>
+inline svfloat32x2_t clover_reuse_accumulate(svbool_t pg, int B, const float *row,
+                                            svfloat32_t xr, svfloat32_t xi,
+                                            svfloat32x2_t sum) {
+    const float *entry = row + Column * 2 * B;
+    const auto mr = svld1_f32(pg, entry), mi = svld1_f32(pg, entry + B);
+    auto yr = svget2_f32(sum, 0), yi = svget2_f32(sum, 1);
+    yr = svadd_f32_x(pg, yr, svsub_f32_x(pg, svmul_f32_x(pg, mr, xr), svmul_f32_x(pg, mi, xi)));
+    yi = svadd_f32_x(pg, yi, svadd_f32_x(pg, svmul_f32_x(pg, mr, xi), svmul_f32_x(pg, mi, xr)));
+    return svcreate2_f32(yr, yi);
+}
+
+// Separate opt-in body prevents its register needs from expanding the legacy
+// caller's arithmetic loop. Source/output remain distinct, as in the caller.
+__attribute__((noinline)) inline void clover_range_sve_reused(
+    int B, const float *matrix, const float *src, float *out, int begin, int end) {
+    for (int chirality = 0; chirality < 2; ++chirality)
+        for (int site = begin; site < end; site += svcntw()) {
+            const svbool_t pg = svwhilelt_b32((uint64_t)site, (uint64_t)end);
+            const float *input = src + chirality * 12 * B + site;
+            // Three ACLE tuples hold six complex input components. Load once
+            // per site tile, then reuse them across all six output rows.
+            const auto x01 = svcreate4_f32(svld1_f32(pg, input), svld1_f32(pg, input + B),
+                svld1_f32(pg, input + 2*B), svld1_f32(pg, input + 3*B));
+            const auto x23 = svcreate4_f32(svld1_f32(pg, input + 4*B), svld1_f32(pg, input + 5*B),
+                svld1_f32(pg, input + 6*B), svld1_f32(pg, input + 7*B));
+            const auto x45 = svcreate4_f32(svld1_f32(pg, input + 8*B), svld1_f32(pg, input + 9*B),
+                svld1_f32(pg, input + 10*B), svld1_f32(pg, input + 11*B));
+            for (int row = 0; row < 6; ++row) {
+                const int component = chirality * 6 + row;
+                const float *coefficients = matrix + component * 12 * B + site;
+                auto sum = svcreate2_f32(svdup_f32(0), svdup_f32(0));
+                // Preserve the original column order and separate multiply,
+                // subtract/add operations; this only changes input reuse.
+                sum = clover_reuse_accumulate<0>(pg,B,coefficients,svget4_f32(x01,0),svget4_f32(x01,1),sum);
+                sum = clover_reuse_accumulate<1>(pg,B,coefficients,svget4_f32(x01,2),svget4_f32(x01,3),sum);
+                sum = clover_reuse_accumulate<2>(pg,B,coefficients,svget4_f32(x23,0),svget4_f32(x23,1),sum);
+                sum = clover_reuse_accumulate<3>(pg,B,coefficients,svget4_f32(x23,2),svget4_f32(x23,3),sum);
+                sum = clover_reuse_accumulate<4>(pg,B,coefficients,svget4_f32(x45,0),svget4_f32(x45,1),sum);
+                sum = clover_reuse_accumulate<5>(pg,B,coefficients,svget4_f32(x45,2),svget4_f32(x45,3),sum);
+                svst1_f32(pg, out + 2*component*B + site, svget2_f32(sum,0));
+                svst1_f32(pg, out + (2*component+1)*B + site, svget2_f32(sum,1));
+            }
+        }
+}
+
 inline void clover_range_sve(int B, const float *matrix, const float *src,
                              float *out, int begin, int end) {
+    if (sve_clover_reuse_enabled()) {
+        clover_range_sve_reused(B, matrix, src, out, begin, end);
+        return;
+    }
     for (int a = 0; a < 12; ++a)
         for (int site = begin; site < end; site += svcntw()) {
             const svbool_t pg = svwhilelt_b32((uint64_t)site, (uint64_t)end);

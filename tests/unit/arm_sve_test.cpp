@@ -12,11 +12,11 @@ int main() {
 #else
     std::mt19937 gen(2601);
     std::uniform_real_distribution<float> u(-.5f,.5f);
-    for (int B : {3,7,17,31,64,864}) {
+    for (int B : {1,2,3,7,17,31,64,432,864}) {
         std::vector<float> matrix(144*B), src(24*B), got(24*B, 19.f), ref=got;
         for (float &x : matrix) x=u(gen);
         for (float &x : src) x=u(gen);
-        const int begin = B > 7 ? 3 : 1, end = B-1;
+        const int begin = B > 7 ? 3 : (B > 2 ? 1 : 0), end = B-1;
         for (int a=0; a<12; ++a) for (int s=begin; s<end; ++s) {
             double re=0, im=0;
             for (int j=0;j<6;++j) {
@@ -27,8 +27,13 @@ int main() {
             ref[2*a*B+s]=(float)re; ref[(2*a+1)*B+s]=(float)im;
         }
         lqcd_native::arm::clover_range_sve(B,matrix.data(),src.data(),got.data(),begin,end);
+        // Exercise the new body independently of the process-wide dispatch
+        // flag, including empty ranges, tails and untouched sentinel sites.
+        auto reused = std::vector<float>(24*B, 19.f);
+        lqcd_native::arm::clover_range_sve_reused(B,matrix.data(),src.data(),reused.data(),begin,end);
         for (size_t i=0;i<got.size();++i)
-            if (!std::isfinite(got[i]) || !std::isfinite(ref[i]) || !std::isfinite(got[i]-ref[i]) || std::abs(got[i]-ref[i])>2e-5f)
+            if (!std::isfinite(got[i]) || !std::isfinite(ref[i]) || !std::isfinite(reused[i]) ||
+                !std::isfinite(got[i]-ref[i]) || std::abs(got[i]-ref[i])>2e-5f || std::abs(reused[i]-ref[i])>2e-5f)
                 throw std::runtime_error("SVE clover mismatch or tail overwrite");
     }
     int gp[4][4]={{3,2,1,0},{3,2,1,0},{2,3,0,1},{2,3,0,1}};
