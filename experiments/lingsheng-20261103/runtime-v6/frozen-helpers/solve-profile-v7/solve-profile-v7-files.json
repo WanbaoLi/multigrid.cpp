@@ -1,0 +1,29 @@
+{
+  "files": {
+    "cold_full12.py": "245ecd8201c1268c8e3a78ba64383ce7dce6334709fe5856deac8033ed39a1de",
+    "file_integrity.py": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+    "fresh_publication_v2.py": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a",
+    "phase5_worker7_allocation_v3.py": "ad253df6ea118b16380d8a39b78f1fcba4df48c4e3c44929b4f581aa11490295",
+    "phase7_cold_entry_v2.py": "d4e733d6a0188543e4ff50c323ea3a4b28dde849fb66497ba81751b1d0cec2f1",
+    "post_phase4_profile.py": "4b903cf20ec4845e3be402c740a503915fd1ed0fbd186008f879f5d38dfafc97",
+    "prepare_solve_profile_v7.py": "979feb220374d4f6abbede3b9b50650fa8fddab096b1c83ae57790941f651cb9",
+    "profile_benchmark_publication_v7.py": "53c7bcde4eb17349baf6705ba94d494bbb57e47c5c85729901ba258050f92546",
+    "profile_full12.py": "0f8f91305635ae7085d6bb9dcaa96b4c0607b3dfbeb4b83cc3b34526f714bc98",
+    "raw_benchmark_publication_v2.py": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+    "raw_benchmark_v4.py": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec",
+    "raw_cold_adapter.py": "c65c2da816c9a68f992a6db4cdbbef98e02954a17015abf8405ea474d780cc69",
+    "raw_controller_publication_v2.py": "a5cb583cbb0c911fa1e4236b7bfd026fc64f6902a9fcce2f4bffcb6b630ae78f",
+    "raw_controller_solve_profile_v7.py": "1f1645d2b35b032fabcdd36c8133112b8d8276ff142d688a0fa88f7e2b9f4f3f",
+    "raw_controller_v4.py": "dd2d4049ed2ebd39e08efc03c4528e516c28e518a5c6e2e9de803358715d1b0e",
+    "raw_protocol_publication_v2.py": "b94f04ff48ebefd075cefe770d49e9b6093f3baa50fc2f8261e73319f1e0fe36",
+    "raw_protocol_v4.py": "1fe892d279305be75f6f814d8e7526d2c09531803ac5ffc6f8483f46b1fd0453",
+    "raw_scalar_helper.py": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3",
+    "raw_scalar_helper_publication_v2.py": "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097",
+    "solve_profile_scope_v7.py": "dc0130664568832258c2c591320208caa54e03ab74e30bdf48cf06830def9eef",
+    "test_solve_profile_v7.py": "a1530844c165045dba877998ebfc6fef688a180eec07e7e2c3ffb10bbb246a14"
+  },
+  "prepared_not_executed": true,
+  "profile_scope": "auxiliary sampled final verbose call only; ordinary promotion prohibited",
+  "compatibility": "perf5.10 pid sort key contains task TID; verified on old data before dispatch",
+  "preceding_failed_phase": "Terminal clean failure may permit an unchanged-best diagnostic; failure retained, no performance acceptance"
+}

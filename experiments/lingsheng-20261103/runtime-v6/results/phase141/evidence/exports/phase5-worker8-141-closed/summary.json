@@ -1,0 +1,220 @@
+{
+  "complete": false,
+  "task_terminal": true,
+  "status": "failed",
+  "best_unchanged": "052-reduce-on",
+  "fixed_team": {
+    "reason": "No candidate passed both bracket gates and <=5% drift",
+    "status": "no_adoption"
+  },
+  "trials": {
+    "p5w8v5-team32-a": {
+      "status": "measured",
+      "steady_seconds": [
+        17.019086144005996,
+        16.96318100899225,
+        16.966942706989357
+      ],
+      "median_seconds": 16.966942706989357,
+      "scalar_max_residual": 4.81878449575349e-09,
+      "gold_max_relative_error": 1.2232293127295584e-11,
+      "report_sha256": "fa7479bc7ee20a29b971893ed6d51e9225794984962dca247b3601d426e9dd31",
+      "configuration": {
+        "batch": 2,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "context_environment": {
+          "LQCD_ARM_COARSE_SVE": 0,
+          "LQCD_ARM_SVE": 1,
+          "LQCD_ARM_SVE_PLANNED": 0,
+          "LQCD_ARM_SVE_REUSE": 1,
+          "LQCD_ARM_SVE_TRANSFER": 0,
+          "LQCD_COARSE_FUSED": 0,
+          "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+          "LQCD_HBM": "off",
+          "LQCD_HBW_ALLOC": "require"
+        },
+        "placement_threads": 37,
+        "ranks": 16,
+        "seed": 1024,
+        "setup_threads": 37,
+        "solve_environment": {
+          "LQCD_COARSE_BATCH_REDUCE": 1
+        },
+        "threads": 32
+      }
+    },
+    "p5w8v5-team32-b": {
+      "status": "measured",
+      "steady_seconds": [
+        15.965526651998516,
+        16.048008958998253,
+        16.159177777008153
+      ],
+      "median_seconds": 16.048008958998253,
+      "scalar_max_residual": 4.818858112534332e-09,
+      "gold_max_relative_error": 1.7191732932621374e-16,
+      "report_sha256": "308b2ba95c29619b6424a96c98665f2f7b98768de5df5aa9fa42fd98a48aa0dd",
+      "configuration": {
+        "batch": 2,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "context_environment": {
+          "LQCD_ARM_COARSE_SVE": 0,
+          "LQCD_ARM_SVE": 1,
+          "LQCD_ARM_SVE_PLANNED": 0,
+          "LQCD_ARM_SVE_REUSE": 1,
+          "LQCD_ARM_SVE_TRANSFER": 0,
+          "LQCD_COARSE_FUSED": 0,
+          "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+          "LQCD_HBM": "off",
+          "LQCD_HBW_ALLOC": "require"
+        },
+        "placement_threads": 37,
+        "ranks": 16,
+        "seed": 1024,
+        "setup_threads": 37,
+        "solve_environment": {
+          "LQCD_COARSE_BATCH_REDUCE": 1
+        },
+        "threads": 32
+      }
+    },
+    "p5w8v5-team37": {
+      "status": "measured",
+      "steady_seconds": [
+        17.23133411598974,
+        17.36902558300062,
+        17.2284351640119
+      ],
+      "median_seconds": 17.23133411598974,
+      "scalar_max_residual": 4.81878449575349e-09,
+      "gold_max_relative_error": 1.2232293127295584e-11,
+      "report_sha256": "32e18999c9e7dfb6ec779b3cbdbf487fbfe8dc49628744c5062ee5d0a127f853",
+      "configuration": {
+        "batch": 2,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "context_environment": {
+          "LQCD_ARM_COARSE_SVE": 0,
+          "LQCD_ARM_SVE": 1,
+          "LQCD_ARM_SVE_PLANNED": 0,
+          "LQCD_ARM_SVE_REUSE": 1,
+          "LQCD_ARM_SVE_TRANSFER": 0,
+          "LQCD_COARSE_FUSED": 0,
+          "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+          "LQCD_HBM": "off",
+          "LQCD_HBW_ALLOC": "require"
+        },
+        "ranks": 16,
+        "seed": 1024,
+        "solve_environment": {
+          "LQCD_COARSE_BATCH_REDUCE": 1
+        },
+        "threads": 37
+      }
+    },
+    "p5w8v5-old-default": {
+      "status": "failed"
+    },
+    "p5w8v5-sdk-a": {
+      "status": "measured",
+      "steady_seconds": [
+        16.270775251992745,
+        16.143727747010416,
+        16.296979724997072
+      ],
+      "median_seconds": 16.270775251992745,
+      "scalar_max_residual": 4.818858112534332e-09,
+      "gold_max_relative_error": 1.7191732932621374e-16,
+      "report_sha256": "6379b676b3fd90c0371d265c89ca3a559578a02a5e80f91cccd30ae3b86c793c",
+      "configuration": {
+        "batch": 2,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "context_environment": {
+          "LQCD_ARM_COARSE_SVE": 0,
+          "LQCD_ARM_SVE": 1,
+          "LQCD_ARM_SVE_PLANNED": 0,
+          "LQCD_ARM_SVE_REUSE": 1,
+          "LQCD_ARM_SVE_TRANSFER": 0,
+          "LQCD_COARSE_FUSED": 0,
+          "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+          "LQCD_HBM": "off",
+          "LQCD_HBW_ALLOC": "require"
+        },
+        "placement_threads": 37,
+        "ranks": 16,
+        "seed": 1024,
+        "setup_threads": 37,
+        "solve_environment": {
+          "LQCD_COARSE_BATCH_REDUCE": 1
+        },
+        "threads": 32
+      }
+    },
+    "p5w8v5-sdk-passive": {
+      "status": "measured",
+      "steady_seconds": [
+        37.31478409199917,
+        37.15762404400448,
+        36.70112095300283
+      ],
+      "median_seconds": 37.15762404400448,
+      "scalar_max_residual": 4.818858112534332e-09,
+      "gold_max_relative_error": 1.7191732932621374e-16,
+      "report_sha256": "4742d53b04f2869b2abc7e81b56f8571a58a3cc845ea88d69b1330c69074df2e",
+      "configuration": {
+        "batch": 2,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "context_environment": {
+          "GOMP_SPINCOUNT": 0,
+          "LQCD_ARM_COARSE_SVE": 0,
+          "LQCD_ARM_SVE": 1,
+          "LQCD_ARM_SVE_PLANNED": 0,
+          "LQCD_ARM_SVE_REUSE": 1,
+          "LQCD_ARM_SVE_TRANSFER": 0,
+          "LQCD_COARSE_FUSED": 0,
+          "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+          "LQCD_HBM": "off",
+          "LQCD_HBW_ALLOC": "require",
+          "OMP_WAIT_POLICY": "PASSIVE"
+        },
+        "placement_threads": 37,
+        "ranks": 16,
+        "seed": 1024,
+        "setup_threads": 37,
+        "solve_environment": {
+          "LQCD_COARSE_BATCH_REDUCE": 1
+        },
+        "threads": 32
+      }
+    }
+  },
+  "runtime_conclusion": "Incomplete: old-default failed before original setup; no runtime-group adoption or performance conclusion",
+  "attribution": "Frozen bench applies explicit context LD_LIBRARY_PATH after MPI launch. v5 incorrectly added MPI prefix even for an explicit override. New code must model both cases and preserve actual sidecars.",
+  "ordinary_failed_case_samples": 0,
+  "large_arrays_opened": false,
+  "original_files_modified": false
+}

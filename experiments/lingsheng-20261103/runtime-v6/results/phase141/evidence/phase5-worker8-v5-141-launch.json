@@ -1,0 +1,33 @@
+{
+  "complete": true,
+  "prepared_contract_sha256": "f3e9d9f163f22a6e8c64ba53c9675962c8945abb274b813f9665cb318d161bc2",
+  "task_sha256": "cb8c432f5d10c4d73744e4870dae0c7efe9563fee93965d6aca92731275f01c2",
+  "publisher_sha256": "899abc74b25da18011b77f9cd0c4d53c6a2edee4a548fc4450625f20b9554dfd",
+  "scheduler_query": {
+    "argv": [
+      "/opt/batch/cli/bin/djob",
+      "-J",
+      "-l",
+      "2023152"
+    ],
+    "request_id": "req-49154cc7-9181-439e-a791-74bc406db256",
+    "code": "success"
+  },
+  "actual_capture_smoke_status_sha256": "0f5c15454ae7f1e4ef40debd8669e6865fbfe0da107ecbbc6abd92aca9a4ded5",
+  "actual_capture_result_sha256": "d98c900e8b3ed5c56e69ede2906f01b40de26cc03d923e4b7e4e9fb5f9cfca1c",
+  "actual_capture_maps_sha256": "1a5d8623ad1d164e9b325301122df31a153d0b20fb60ebff71fc2e4229930b44",
+  "fresh_idle_heartbeat_sha256": "fc79ca578a741a9622b4438be736b30203a3b9c4119f21a2e6e498450b1febe4",
+  "fresh_idle_heartbeat_snapshot": "/home/share/nsls_lwb/.cache/mg-opt-20261103/phase5-worker8-v5-141-heartbeat-at-dispatch.json",
+  "expected_best": "052-reduce-on",
+  "case_ids": [
+    "p5w8v5-team32-a",
+    "p5w8v5-team37",
+    "p5w8v5-team32-b",
+    "p5w8v5-sdk-a",
+    "p5w8v5-sdk-passive",
+    "p5w8v5-old-default",
+    "p5w8v5-old-passive",
+    "p5w8v5-sdk-b"
+  ],
+  "epoch": 1793766868.4075978
+}

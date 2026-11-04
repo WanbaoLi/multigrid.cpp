@@ -1,0 +1,233 @@
+{
+  "conclusions": [
+    {
+      "conclusion": "Phase5 completed matched control; full12 precision passed; retained for two-sided drift/gain/range gates",
+      "evidence": [
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/141-phase5-worker8-v5-state.json",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/report.json"
+      ],
+      "status": "inconclusive",
+      "time": "2026-11-04T05:06:08.478157+00:00"
+    }
+  ],
+  "created": "2026-11-04T04:55:43.970604+00:00",
+  "id": "p5w8v5-team32-b",
+  "proposal": {
+    "bottleneck": "Interleaved37->32 team histories confound oldstandalone37 result; isolate stable production teams using same frozen binary/physics/batch and three independent processes",
+    "change": {
+      "plan": {
+        "cases": [
+          {
+            "batch": 2,
+            "environment": {
+              "LQCD_COARSE_BATCH_REDUCE": 1
+            },
+            "id": "full12",
+            "threads": 32
+          }
+        ],
+        "context_environment": {
+          "LQCD_ARM_COARSE_SVE": 0,
+          "LQCD_ARM_SVE": 1,
+          "LQCD_ARM_SVE_PLANNED": 0,
+          "LQCD_ARM_SVE_REUSE": 1,
+          "LQCD_ARM_SVE_TRANSFER": 0,
+          "LQCD_COARSE_FUSED": 0,
+          "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+          "LQCD_HBM": "off",
+          "LQCD_HBW_ALLOC": "require"
+        },
+        "placement_threads": 37,
+        "setup_threads": 37
+      },
+      "source": "reuse exact frozen best, no rebuild"
+    },
+    "history_links": [
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/phase4-state.json",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/141-phase5-worker8-v5-state.json",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/report.json",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/profile-hbw"
+    ],
+    "history_read_token": "066d2d2a696ad166daf66fd4d921bda49db5a42380feeba3466ec7efacd9583b",
+    "hypothesis": "p5w8v5-team32-b: Last fresh-process fixed-team control brackets time drift",
+    "mechanism": "Last fresh-process fixed-team control brackets time drift",
+    "retry_conditions": "Fresh one-case process in same host/allocation; preserve failed artifacts; no automatic failed/running stage retry or verification directory reuse"
+  },
+  "report": {
+    "library_sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+    "maximum_seconds": 16.159177777008153,
+    "median_seconds": 16.048008958998253,
+    "minimum_seconds": 15.965526651998516,
+    "relative_spread": 0.012066987593564093,
+    "sha256": "308b2ba95c29619b6424a96c98665f2f7b98768de5df5aa9fa42fd98a48aa0dd",
+    "steady_repeats": [
+      1,
+      2,
+      3
+    ],
+    "steady_samples": [
+      15.965526651998516,
+      16.048008958998253,
+      16.159177777008153
+    ]
+  },
+  "schema": 1,
+  "snapshot": {
+    "archive_sha256": "fa93287c359f6143cd3f207eceb0c04333f5ce50df0207dad318b0612034240d",
+    "build": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/build",
+    "git_head": "5fe1b5fd2702f799488a2b8119002c450de5b4cd",
+    "origin_attempt": "052-reduce-on",
+    "origin_library_sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+    "origin_report_sha256": "254f36efaa6ef145a2af2542718fbd5da7ea94897fa964a2d51598a77d929651",
+    "source": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/source",
+    "source_manifest_sha256": "78b429dc13a8b113792aa45bd27fc93134a8c4b39359da9ade05558c93d590ae"
+  },
+  "stages": {
+    "benchmark": {
+      "argv": [
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/source/tools/run_numa.py",
+        "--threads",
+        "37",
+        "--",
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "-u",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-phase5-worker8-v5/runtime_benchmark_capture_v5.py",
+        "--expected-self-sha",
+        "a131af14babc8471f8bc416e9ba6b8b7c075823d8ad46602ab22e5aca7c2f97d",
+        "--capture-output",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/141-phase5-worker8-v5-runtime-audit/p5w8v5-team32-b.json",
+        "--attempt",
+        "p5w8v5-team32-b",
+        "--",
+        "--benchmark",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/source/tools/optimization/bench_full12.py",
+        "--audit-output",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/checksum-audit/benchmark",
+        "--expected-benchmark-sha",
+        "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1",
+        "--expected-wrapper-sha",
+        "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+        "--expected-reader-sha",
+        "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+        "--expected-helper-sha",
+        "bc441c56af7ffe65781816c8d18427578e8097f0b35168349a27629655fa2074",
+        "--helper-wrapper",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-phase5-worker8-v5/raw_scalar_helper_publication_v2.py",
+        "--expected-helper-wrapper-sha",
+        "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097",
+        "--fixture",
+        "/home/share/nsls_lwb/.cache/mg-20261102/propagator",
+        "--plan",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/plan.json",
+        "--library",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so",
+        "--backend",
+        "arm",
+        "--output",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/measurements",
+        "--allocation",
+        "mg-opt-20261103-worker8",
+        "--snapshot-sha",
+        "78b429dc13a8b113792aa45bd27fc93134a8c4b39359da9ade05558c93d590ae",
+        "--reference-propagator",
+        "/home/share/nsls_lwb/.cache/mg-20261102/propagator/propagator.npy"
+      ],
+      "cleanup": {
+        "complete": true,
+        "kill_signals": 0,
+        "method": "same-uid exact tag and verified descendants",
+        "platform": "linux",
+        "surviving_pids": [],
+        "tag_key": "LQCD_OPT_STAGE_ID",
+        "targeted_pids": [],
+        "term_signals": 0
+      },
+      "command_sha256": "765b1f1d5a4035852c20ed5a874c297cdba1e162628048dc977e2c09f365732c",
+      "cwd": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/build",
+      "ended": "2026-11-04T05:01:52.732194+00:00",
+      "env_overrides": {
+        "LQCD_ARM_COARSE_SVE": "0",
+        "LQCD_ARM_SVE": "1",
+        "LQCD_ARM_SVE_PLANNED": "0",
+        "LQCD_ARM_SVE_REUSE": "1",
+        "LQCD_ARM_SVE_TRANSFER": "0",
+        "LQCD_COARSE_FUSED": "0",
+        "LQCD_COARSE_SPATIAL_OVERLAP": "1",
+        "LQCD_HBM": "off",
+        "LQCD_HBW_ALLOC": "require"
+      },
+      "host": "cn19483",
+      "log": "benchmark-000.log",
+      "log_sha256": "912ad78f92ad8d29fcdf99837aff8e7efe4db89fc3870335ccd81718ce4210eb",
+      "pid": 1509828,
+      "prior_runs": [],
+      "returncode": 0,
+      "stage_tag": "9678206c346045c79420968fd09d632f",
+      "started": "2026-11-04T04:55:47.143843+00:00",
+      "status": "passed",
+      "timeout_seconds": 1800
+    },
+    "independent": {
+      "argv": [
+        "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-phase5-worker8-v5/raw_benchmark_publication_v2.py",
+        "--benchmark",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/source/tools/optimization/bench_full12.py",
+        "--audit-output",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/checksum-audit/independent",
+        "--expected-benchmark-sha",
+        "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1",
+        "--expected-wrapper-sha",
+        "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+        "--expected-reader-sha",
+        "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+        "--expected-helper-sha",
+        "bc441c56af7ffe65781816c8d18427578e8097f0b35168349a27629655fa2074",
+        "--helper-wrapper",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-phase5-worker8-v5/raw_scalar_helper_publication_v2.py",
+        "--expected-helper-wrapper-sha",
+        "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097",
+        "--expected-gold-sha",
+        "31d5cb29eeaa2714b4db003424da1215668d369288a6706bff03a1e0fb2e71cd",
+        "--verify",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/measurements/full12",
+        "--reference",
+        "/home/share/nsls_lwb/.cache/mg-20261102/source/build/validation/multigrid",
+        "--extractor",
+        "/home/share/nsls_lwb/.cache/mg-20261102/source/build/validation/extract_columns",
+        "--verification-output",
+        "independent"
+      ],
+      "cleanup": {
+        "complete": true,
+        "kill_signals": 0,
+        "method": "same-uid exact tag and verified descendants",
+        "platform": "linux",
+        "surviving_pids": [],
+        "tag_key": "LQCD_OPT_STAGE_ID",
+        "targeted_pids": [],
+        "term_signals": 0
+      },
+      "command_sha256": "c8013720c99ab85d60e5ebe5b15e0a725abff2d34aa1c79b4866bd34f949b8e6",
+      "cwd": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-team32-b/build",
+      "ended": "2026-11-04T05:06:02.312887+00:00",
+      "env_overrides": {
+        "OMP_NUM_THREADS": "4",
+        "OMP_PLACES": "cores",
+        "OMP_PROC_BIND": "close"
+      },
+      "host": "cn19483",
+      "log": "independent-000.log",
+      "log_sha256": "76c7c5e3d166ff84b735e4d87798e2176a9641fc41c81aa610e50a13a6e5934e",
+      "pid": 1545323,
+      "prior_runs": [],
+      "returncode": 0,
+      "stage_tag": "ef79ef48ce604805a230c30a98b6fd06",
+      "started": "2026-11-04T05:01:53.440134+00:00",
+      "status": "passed",
+      "timeout_seconds": 1200
+    }
+  },
+  "status": "inconclusive"
+}

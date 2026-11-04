@@ -1,0 +1,33 @@
+{
+  "source_root": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94",
+  "expected_source_head": "f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+  "source_tools_sha256": {
+    "tools/optimization/worker.py": "bc7edf47cc464a670ce0e48158e1d95231eba649c233774fcbc003e0350334bb",
+    "tools/optimization/process_tree.py": "45238789c0919be0ad9b836372f99779e5c39e5defa9fd9bcc8c74f40f1c0864",
+    "tools/probe_host.py": "cc4ab89bc87ccdc6d9b1faf524f1d52d6e19f4b9c481774b74b032d309d288a9",
+    "tools/run_numa.py": "4babd5c47a69431e63d98d2e7268184f9d70292a219bb9da2eae9fd7ae151b64",
+    "tools/pin_build.py": "bc3c377fbcc95fdc4aa5a18613aa53ddc8a4ff77492e92ec47e608e2d64a710a"
+  },
+  "schema": "worker8-login-allocation-v1",
+  "complete": true,
+  "allocation": "mg-opt-20261103-worker8",
+  "expected_host": "cn19483",
+  "scheduler_job": "2023152",
+  "requested_job_id": "2023152",
+  "previous_job": "2022100",
+  "writer_host": "login04",
+  "writer_uid": 29301,
+  "djob_path": "/opt/batch/cli/bin/djob",
+  "query_epoch": 1793764834.9702334,
+  "scheduler_start_epoch": 1793764830.0,
+  "scheduler_hard_end_epoch": 1793779230.0,
+  "safe_deadline_epoch": 1793778930.0,
+  "scheduler_authentication": "[REDACTED: private environment/credential]",
+  "wrapper_sha256": {
+    "worker8.sh": "f054d0650950f45b98db76b653f0aff4dc6f1457c2a13dde5dc439664affae55",
+    "worker8_entry.py": "96d2d9b808ce86db1bc82b9e5663ccd3dbf989c9acc531d9f1837d6e43c942a5",
+    "worker8_preflight.py": "1d33af369f62799d8414ff2e2d88f7587139fae6500fc023afb8e859cae560ac",
+    "worker8_login_record.py": "b4d4e5ec7a065493b22df8059eb1ed108fd01d63ba14119b2a32320e38b2211a",
+    "worker8_runtime_probe.py": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201"
+  }
+}

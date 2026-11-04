@@ -1,0 +1,31 @@
+{
+  "task": {
+    "argv": [
+      "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-old-default/source/tools/run_numa.py",
+      "--threads",
+      "37",
+      "--",
+      "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+      "-u",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/runtime_environment_probe142.py"
+    ],
+    "cwd": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/p5w8v5-old-default/build",
+    "environment": {
+      "LD_LIBRARY_PATH": "/home/share/nsls_lwb/.cache/runtime-oldgomp-only-20261104:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sme/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+      "LQCD_ARM_COARSE_SVE": "0",
+      "LQCD_ARM_SVE": "1",
+      "LQCD_ARM_SVE_PLANNED": "0",
+      "LQCD_ARM_SVE_REUSE": "1",
+      "LQCD_ARM_SVE_TRANSFER": "0",
+      "LQCD_COARSE_FUSED": "0",
+      "LQCD_COARSE_SPATIAL_OVERLAP": "1",
+      "LQCD_HBM": "off",
+      "LQCD_HBW_ALLOC": "require"
+    },
+    "timeout": 120
+  },
+  "source_stage_sha256": "adcd4c02249a9afcabc12d7d9bbb008e0cec0269ef590f9781e81627665149b6",
+  "probe_sha256": "987aca8ad4a06a8bedf1466efa2944195746c1eea8f4e5cda295be17f755c14d",
+  "scope": "Exact failed launcher prefix and stage environment; no solver or timing"
+}

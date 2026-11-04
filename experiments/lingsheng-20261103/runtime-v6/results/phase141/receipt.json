@@ -1,0 +1,11 @@
+{
+  "complete": true,
+  "experiment_complete": false,
+  "task_status": "failed",
+  "archive": "/home/share/nsls_lwb/.cache/mg-opt-20261103/exports/phase5-worker8-141-closed/evidence.tar.gz",
+  "archive_sha256": "dab33de0f5e4d88305f06d84ff0c49454374d375f2e0828d8cb25929aa9ac4b6",
+  "archive_bytes": 350851,
+  "files": 66,
+  "manifest_sha256": "0dedf0e3ad660256ed59bddbc801b7883c8494165818417aa3f7d40e41b1ee04",
+  "summary_sha256": "d66a6226ae620e92d4a08c0c47af251bce2bdba610c3a787eba3462ee9de6a4c"
+}
