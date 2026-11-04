@@ -1,0 +1,10 @@
+{
+  "complete": true,
+  "passed": true,
+  "adopted": false,
+  "files": 1286,
+  "archive": "/home/share/nsls_lwb/.cache/mg-opt-20261103/exports/runtime147-complete/evidence.tar.gz",
+  "archive_sha256": "fd88ae1805b4d97265e53827d5570037f69f6ad7bfd6909520d811079abbbc7b",
+  "archive_bytes": 581101,
+  "manifest_sha256": "f44f56ff91f04b2fc1382f8b4c908692db191be7ab19844d052d7408a1a52ee4"
+}

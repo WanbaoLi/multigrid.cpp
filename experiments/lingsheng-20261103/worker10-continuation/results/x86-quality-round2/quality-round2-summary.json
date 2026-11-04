@@ -1,0 +1,279 @@
+{
+  "complete": true,
+  "scope": "Actual repeated canonical full12 x86 quality experiment; no ARM acceptance or main best change",
+  "outcomes": {
+    "quality-230-control-a": {
+      "passes": 2,
+      "updates_per_pass": 3,
+      "setup_mode": "inverse",
+      "median": 6.139538818039,
+      "minimum": 6.114516778849065,
+      "maximum": 6.1406457694247365,
+      "spread": 0.004255855586237164,
+      "steady_seconds": [
+        6.114516778849065,
+        6.1406457694247365,
+        6.139538818039
+      ],
+      "iterations": [
+        [
+          25,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          22,
+          21,
+          21,
+          21
+        ],
+        [
+          25,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          22,
+          21,
+          21,
+          21
+        ],
+        [
+          25,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          22,
+          21,
+          21,
+          21
+        ]
+      ],
+      "setup_seconds": 113.42660238,
+      "native_setup_seconds": null,
+      "scalar_max": 9.169762991574491e-09,
+      "gold_max": 9.915888557081041e-08,
+      "report_sha256": "02c1072f7fc4b99a565e50bfe226d3f09bfa9f66cc807c36bb809d0a5efb8c84"
+    },
+    "quality-231-refresh3x2": {
+      "passes": 3,
+      "updates_per_pass": 2,
+      "setup_mode": "inverse",
+      "median": 6.181937321089208,
+      "minimum": 6.159737938083708,
+      "maximum": 6.185337195172906,
+      "spread": 0.004140976486750799,
+      "steady_seconds": [
+        6.159737938083708,
+        6.181937321089208,
+        6.185337195172906
+      ],
+      "iterations": [
+        [
+          21,
+          21,
+          21,
+          21,
+          23,
+          21,
+          21,
+          20,
+          22,
+          21,
+          23,
+          20
+        ],
+        [
+          21,
+          21,
+          21,
+          21,
+          23,
+          21,
+          21,
+          20,
+          22,
+          21,
+          23,
+          20
+        ],
+        [
+          21,
+          21,
+          21,
+          21,
+          23,
+          21,
+          21,
+          20,
+          22,
+          21,
+          23,
+          20
+        ]
+      ],
+      "setup_seconds": 152.973135316,
+      "native_setup_seconds": null,
+      "scalar_max": 8.013866129556803e-09,
+      "gold_max": 1.3222860622276817e-07,
+      "report_sha256": "70b44c6bbe7bc5d742913e4af5cd0a88eefa54d679f806e9b567326cb9a16b94"
+    },
+    "quality-232-paper": {
+      "passes": 2,
+      "updates_per_pass": 3,
+      "setup_mode": "paper",
+      "median": 6.195844256319106,
+      "minimum": 6.174428420141339,
+      "maximum": 6.210766074247658,
+      "spread": 0.005864843046895245,
+      "steady_seconds": [
+        6.174428420141339,
+        6.195844256319106,
+        6.210766074247658
+      ],
+      "iterations": [
+        [
+          25,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          22,
+          21,
+          21,
+          21
+        ],
+        [
+          25,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          22,
+          21,
+          21,
+          21
+        ],
+        [
+          25,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          22,
+          21,
+          21,
+          21
+        ]
+      ],
+      "setup_seconds": 112.966212986,
+      "native_setup_seconds": null,
+      "scalar_max": 8.847968796245134e-09,
+      "gold_max": 9.902161579508707e-08,
+      "report_sha256": "fbceb0983d535dad4e372b6b89765fdddf6da752b96acfe5f976864302040a4d"
+    },
+    "quality-233-control-b": {
+      "passes": 2,
+      "updates_per_pass": 3,
+      "setup_mode": "inverse",
+      "median": 6.175542221404612,
+      "minimum": 6.15568430442363,
+      "maximum": 6.184546277858317,
+      "spread": 0.004673593410899242,
+      "steady_seconds": [
+        6.15568430442363,
+        6.184546277858317,
+        6.175542221404612
+      ],
+      "iterations": [
+        [
+          25,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          22,
+          21,
+          21,
+          21
+        ],
+        [
+          25,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          22,
+          21,
+          21,
+          21
+        ],
+        [
+          25,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          22,
+          21,
+          21,
+          21
+        ]
+      ],
+      "setup_seconds": 111.532308848,
+      "native_setup_seconds": null,
+      "scalar_max": 9.169762991574491e-09,
+      "gold_max": 9.915888557081041e-08,
+      "report_sha256": "1b38c81b8777d76325023a2ea2eb1349c06086843c9d548d7b420368e6009037"
+    }
+  },
+  "gates": {
+    "quality-231-refresh3x2": {
+      "passed": false,
+      "control_drift": 0.00586418694183152,
+      "gains": [
+        -0.006905812359331298,
+        -0.001035552742628898
+      ]
+    },
+    "quality-232-paper": {
+      "passed": false,
+      "control_drift": 0.00586418694183152,
+      "gains": [
+        -0.009170955661143676,
+        -0.003287490261847159
+      ]
+    }
+  },
+  "historical_profile_scope": "ARM143 motivates hypothesis only; all performance controls are fresh node5005",
+  "direct_ssh_not_scheduler_exclusive": true,
+  "main_arm_best_unchanged": true
+}

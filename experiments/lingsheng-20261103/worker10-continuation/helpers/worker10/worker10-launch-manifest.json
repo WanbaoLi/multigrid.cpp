@@ -1,0 +1,44 @@
+{
+  "files": {
+    "prepare_worker10.py": {
+      "sha256": "74ec9459e605d64b0a8d5e3eb62993e548234bf3e11f9d9b6d965badbf787765",
+      "bytes": 2534
+    },
+    "submit_worker10_terminal_v2.py": {
+      "sha256": "f220b53cf65c952bf24cb83c2cf956c60990da0475490cc53c87c5c206ddf936",
+      "bytes": 9665
+    },
+    "test_prepare_worker10.py": {
+      "sha256": "dbfd747dda16d9c5a4f7dd88640cca9bd7d6416e483cf57d238f7cefb41a6fab",
+      "bytes": 1013
+    },
+    "worker10.sh": {
+      "sha256": "f5b9b79f25dbbfbefd6d62235368debd36ed7d9eb894df3e493bf85af2e51c12",
+      "bytes": 2336
+    },
+    "worker10_entry.py": {
+      "sha256": "cabd068bb9b2395092d27513f793ac04f9d109d37ca1fcfd4c0f2fcefdf585aa",
+      "bytes": 12325
+    },
+    "worker10_logic_tests.py": {
+      "sha256": "d36740f5883d67c10cba020a8a5b37813801ef1519f2ef28a6b0ab17533273bc",
+      "bytes": 15557
+    },
+    "worker10_login_record.py": {
+      "sha256": "e5447d72b56fecbf072d8c76bae400cde7d9e66f86ae7f1495a8fff66d2349c1",
+      "bytes": 5732
+    },
+    "worker10_preflight.py": {
+      "sha256": "369fac8fd4c7403bf7167ba3ff83159dadf8560552469abf030b60e95d1063b3",
+      "bytes": 6321
+    },
+    "worker10_runtime_probe.py": {
+      "sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "bytes": 2363
+    }
+  },
+  "previous_running_job": "2023152",
+  "cancelled_pending_job": "2024986",
+  "host": "cn19486",
+  "previous_host": "cn19483"
+}

@@ -1,0 +1,45 @@
+{
+  "prepared_only": true,
+  "previous_job": "2023152",
+  "source_head": "f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+  "files": {
+    "prepare_worker9.py": {
+      "sha256": "753744f8bbd834378bbcfd3fef7f5b7279039d64f652cf8f3dd5ed818dec31b5",
+      "bytes": 2522
+    },
+    "submit_worker9_terminal_v2.py": {
+      "sha256": "8ad2bb990843c5e51c1adc1ce37c04c5d2d674caf001fdc9a771a5af8f71f00b",
+      "bytes": 9645
+    },
+    "test_prepare_worker9.py": {
+      "sha256": "8c42a6128e8011069ca7d4f76d397f55bd8b8e7f69ad270d77de47dbd7a0c230",
+      "bytes": 1012
+    },
+    "worker9.sh": {
+      "sha256": "1cb806994e126f251249b364e47d571ac611c561b2899e7770497c322ba1d693",
+      "bytes": 2333
+    },
+    "worker9_entry.py": {
+      "sha256": "12faa00037bf3153acc4f911c19e0fc2f20951ae0a06db06b2b5caef779cfda3",
+      "bytes": 12303
+    },
+    "worker9_logic_tests.py": {
+      "sha256": "ee1deb8bb6dca062918e99db45f4ab728a31cfd67bfa35751d027fcc0237b445",
+      "bytes": 15525
+    },
+    "worker9_login_record.py": {
+      "sha256": "a76e75d949c0f7b4c016e079235e0223e9d7d67f07790aed3c79e0f884d57ae9",
+      "bytes": 5724
+    },
+    "worker9_preflight.py": {
+      "sha256": "cf310fa2cf8d39f99cbdcb305855a386914b447747584c678fdd4c65d627445a",
+      "bytes": 6318
+    },
+    "worker9_runtime_probe.py": {
+      "sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "bytes": 2363
+    }
+  },
+  "resources_unchanged": true,
+  "task_parent_full_affinity_and_child_probes_unchanged": true
+}

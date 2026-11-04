@@ -1,0 +1,227 @@
+{
+  "source_root": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94",
+  "expected_source_head": "f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+  "source_tools_sha256": {
+    "tools/optimization/worker.py": "bc7edf47cc464a670ce0e48158e1d95231eba649c233774fcbc003e0350334bb",
+    "tools/optimization/process_tree.py": "45238789c0919be0ad9b836372f99779e5c39e5defa9fd9bcc8c74f40f1c0864",
+    "tools/probe_host.py": "cc4ab89bc87ccdc6d9b1faf524f1d52d6e19f4b9c481774b74b032d309d288a9",
+    "tools/run_numa.py": "4babd5c47a69431e63d98d2e7268184f9d70292a219bb9da2eae9fd7ae151b64",
+    "tools/pin_build.py": "bc3c377fbcc95fdc4aa5a18613aa53ddc8a4ff77492e92ec47e608e2d64a710a"
+  },
+  "schema": "worker10-login-allocation-v1",
+  "complete": true,
+  "allocation": "mg-opt-20261103-worker10",
+  "expected_host": "cn19486",
+  "scheduler_job": "2025061",
+  "requested_job_id": "2025061",
+  "previous_job": "2023152",
+  "writer_host": "login09",
+  "writer_uid": 29301,
+  "djob_path": "/opt/batch/cli/bin/djob",
+  "query_epoch": 1793783927.2402964,
+  "scheduler_start_epoch": 1793783895.0,
+  "scheduler_hard_end_epoch": 1793798295.0,
+  "safe_deadline_epoch": 1793797995.0,
+  "scheduler_authentication": {
+    "job": {
+      "jobId": "2025061",
+      "jobName": "mg-opt-worker10",
+      "state": "RUNNING",
+      "user": "nsls_lwb",
+      "cmd": "/bin/bash /home/share/nsls_lwb/.cache/mg-opt-20261103/worker10.sh --source /home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94 --expected-source-head f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+      "execPath": "/home/share/nsls_lwb/.cache/mg-opt-20261103",
+      "queue": "q_hpcapp",
+      "account": "common",
+      "exclusive": true,
+      "taskExecNodes": "cn19486",
+      "taskExecNodesCount": 1,
+      "startTime": "2026-11-04T09:18:15Z",
+      "endTime": "-",
+      "jobWallClockLimit": 14400,
+      "resGroups": [
+        {
+          "taskGroupName": "rg0",
+          "minReplica": 1,
+          "replica": 1,
+          "nnodes": "1",
+          "preferNodes": "cn19486",
+          "nodeSelectPolicyReq": "-",
+          "nodeSelectPolicyEff": "SEQUENCE",
+          "taskLabels": "queue_q_hpcapp aarch64",
+          "resReq": {
+            "cpu": 592,
+            "mem": 480000,
+            "gpu": {
+              "amount": 0,
+              "type": "gpu"
+            },
+            "npu": {
+              "count": 0,
+              "name": "npu"
+            },
+            "license": {}
+          },
+          "resAlloc": {
+            "cpu": 592,
+            "mem": 480000,
+            "gpu": {
+              "amount": 0,
+              "type": "gpu"
+            },
+            "npu": {
+              "count": 0,
+              "name": "npu"
+            },
+            "license": {}
+          },
+          "nodeResUsages": [
+            {
+              "tPreCheckRunTime": 0,
+              "execNode": "cn19486",
+              "resIndex": "0/1",
+              "userCpuTime": 0,
+              "systemCpuTime": 0,
+              "memswMax": 1,
+              "memMax": 1,
+              "memAvg": 0,
+              "memReal": 0,
+              "rss": 0,
+              "cache": 0,
+              "preHookRunTime": 0,
+              "postHookRunTime": 0,
+              "hostPreHookRunTime": 10,
+              "hostPostHookRunTime": 0,
+              "swap": 0,
+              "swapMax": 0,
+              "wallclockDuration": 0,
+              "sstoppedTime": 0,
+              "cpuUtilAvg": 0,
+              "cpuUtilRecent": 0,
+              "gpuUtilAvg": [],
+              "gpuUtilRecent": [],
+              "npuUtilRecent": [],
+              "pids": "2465331",
+              "hwThreads": "-",
+              "gpuIds": "-",
+              "npuIds": "-"
+            }
+          ]
+        }
+      ],
+      "submitNode": "login09"
+    },
+    "previous": {
+      "jobId": "2023152",
+      "jobName": "mg-opt-worker8",
+      "state": "SUCCEEDED",
+      "user": "nsls_lwb",
+      "cmd": "/bin/bash /home/share/nsls_lwb/.cache/mg-opt-20261103/worker8.sh --source /home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94 --expected-source-head f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+      "execPath": "/home/share/nsls_lwb/.cache/mg-opt-20261103",
+      "queue": "q_hpcapp",
+      "account": "common",
+      "exclusive": true,
+      "taskExecNodes": "cn19483",
+      "taskExecNodesCount": 1,
+      "startTime": "2026-11-04T04:00:30Z",
+      "endTime": "2026-11-04T06:52:48Z",
+      "jobWallClockLimit": 14400,
+      "resGroups": [
+        {
+          "taskGroupName": "rg0",
+          "replica": 1,
+          "nnodes": "1",
+          "preferNodes": "cn19483",
+          "nodeSelectPolicyReq": "-",
+          "nodeSelectPolicyEff": "SEQUENCE",
+          "taskLabels": "queue_q_hpcapp aarch64",
+          "resReq": {
+            "cpu": 592,
+            "mem": 480000,
+            "gpu": {
+              "amount": 0,
+              "type": "gpu"
+            },
+            "npu": {
+              "count": 0,
+              "name": "npu"
+            },
+            "license": {}
+          },
+          "resAlloc": {
+            "cpu": 592,
+            "mem": 480000,
+            "gpu": {
+              "amount": 0,
+              "type": "gpu"
+            },
+            "npu": {
+              "count": 0,
+              "name": "npu"
+            },
+            "license": {}
+          },
+          "nodeResUsages": [
+            {
+              "tPreCheckRunTime": 0,
+              "execNode": "cn19483",
+              "resIndex": "0/1",
+              "userCpuTime": 612677,
+              "systemCpuTime": 24418,
+              "memswMax": 358245,
+              "memMax": 358238,
+              "memAvg": 58002,
+              "memReal": 0,
+              "rss": 0,
+              "cache": 13515,
+              "preHookRunTime": 0,
+              "postHookRunTime": 0,
+              "hostPreHookRunTime": 10,
+              "hostPostHookRunTime": 0,
+              "swap": 0,
+              "swapMax": 0,
+              "wallclockDuration": 10327,
+              "sstoppedTime": 0,
+              "cpuUtilAvg": 6166,
+              "cpuUtilRecent": 0,
+              "gpuUtilAvg": [],
+              "gpuUtilRecent": [],
+              "npuUtilRecent": [],
+              "pids": "-",
+              "hwThreads": "-",
+              "gpuIds": "-",
+              "npuIds": "-"
+            }
+          ]
+        }
+      ],
+      "submitNode": "login04"
+    },
+    "job_query": {
+      "argv": [
+        "/opt/batch/cli/bin/djob",
+        "-J",
+        "-l",
+        "2025061"
+      ],
+      "request_id": "req-2b62bf04-2fd0-4b45-ab16-a6c8e2e9305b",
+      "code": "success"
+    },
+    "previous_query": {
+      "argv": [
+        "/opt/batch/cli/bin/djob",
+        "-J",
+        "-l",
+        "2023152"
+      ],
+      "request_id": "req-e9d28e98-6eb3-4085-a6ae-484c4c3317f3",
+      "code": "success"
+    }
+  },
+  "wrapper_sha256": {
+    "worker10.sh": "f5b9b79f25dbbfbefd6d62235368debd36ed7d9eb894df3e493bf85af2e51c12",
+    "worker10_entry.py": "cabd068bb9b2395092d27513f793ac04f9d109d37ca1fcfd4c0f2fcefdf585aa",
+    "worker10_preflight.py": "369fac8fd4c7403bf7167ba3ff83159dadf8560552469abf030b60e95d1063b3",
+    "worker10_login_record.py": "e5447d72b56fecbf072d8c76bae400cde7d9e66f86ae7f1495a8fff66d2349c1",
+    "worker10_runtime_probe.py": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201"
+  }
+}

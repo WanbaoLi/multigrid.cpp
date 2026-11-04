@@ -1,0 +1,263 @@
+{
+  "complete": true,
+  "passed": true,
+  "ordinary_timing": true,
+  "adopted": false,
+  "decision": {
+    "reason": "No candidate passed both bracket gates and <=5% drift",
+    "status": "no_adoption"
+  },
+  "assessments": {
+    "p5w10v6-old-default": {
+      "control_median_drift": 0.08778006652475522,
+      "gains": [
+        0.0925126926076616,
+        0.012853396394391203
+      ],
+      "passed": false,
+      "reasons": [
+        "Control median drift 8.778% exceeds 5%",
+        "Gain against last control 1.285% below 3.0%"
+      ]
+    },
+    "p5w10v6-old-passive": {
+      "control_median_drift": 0.08778006652475522,
+      "gains": [
+        -0.8194941816472829,
+        -0.9792095019536864
+      ],
+      "passed": false,
+      "reasons": [
+        "Control median drift 8.778% exceeds 5%",
+        "Gain against first control -81.949% below 3.0%",
+        "Candidate timing range overlaps first control",
+        "Gain against last control -97.921% below 3.0%",
+        "Candidate timing range overlaps last control"
+      ]
+    },
+    "p5w10v6-sdk-passive": {
+      "control_median_drift": 0.08778006652475522,
+      "gains": [
+        -0.8610374424498228,
+        -1.0243994329531287
+      ],
+      "passed": false,
+      "reasons": [
+        "Control median drift 8.778% exceeds 5%",
+        "Gain against first control -86.104% below 3.0%",
+        "Candidate timing range overlaps first control",
+        "Gain against last control -102.440% below 3.0%",
+        "Candidate timing range overlaps last control"
+      ]
+    }
+  },
+  "runtime_audit_complete": true,
+  "actual_runtime_environment_not_normalized": true,
+  "host": "cn19486",
+  "allocation": "mg-opt-20261103-worker10",
+  "source_manifest_sha256": "78b429dc13a8b113792aa45bd27fc93134a8c4b39359da9ade05558c93d590ae",
+  "library_sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+  "cases": {
+    "p5w10v6-old-default": {
+      "steady_seconds": [
+        14.769226589996833,
+        14.76764967199415,
+        14.677586049001548
+      ],
+      "median_seconds": 14.76764967199415,
+      "scalar_max": 4.81878449575349e-09,
+      "gold_max": 1.2232293127295584e-11,
+      "report_sha256": "161876946ccfbe2da9faba1a1fe10a88d2fe251110e941226e343a8fc0bf0c63",
+      "configuration": {
+        "batch": 2,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "context_environment": {
+          "LD_LIBRARY_PATH": "/home/share/nsls_lwb/.cache/runtime-oldgomp-only-20261104:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sme/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+          "LQCD_ARM_COARSE_SVE": 0,
+          "LQCD_ARM_SVE": 1,
+          "LQCD_ARM_SVE_PLANNED": 0,
+          "LQCD_ARM_SVE_REUSE": 1,
+          "LQCD_ARM_SVE_TRANSFER": 0,
+          "LQCD_COARSE_FUSED": 0,
+          "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+          "LQCD_HBM": "off",
+          "LQCD_HBW_ALLOC": "require"
+        },
+        "placement_threads": 37,
+        "ranks": 16,
+        "seed": 1024,
+        "setup_threads": 37,
+        "solve_environment": {
+          "LQCD_COARSE_BATCH_REDUCE": 1
+        },
+        "threads": 32
+      }
+    },
+    "p5w10v6-old-passive": {
+      "steady_seconds": [
+        29.757894962996943,
+        29.60884679699666,
+        29.395977807987947
+      ],
+      "median_seconds": 29.60884679699666,
+      "scalar_max": 4.818858112534332e-09,
+      "gold_max": 1.7191732932621374e-16,
+      "report_sha256": "b0083dccce33fa5dbf8e66c076142018c6f786fb67fc3d386d8ddcd0bbfa2466",
+      "configuration": {
+        "batch": 2,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "context_environment": {
+          "GOMP_SPINCOUNT": 0,
+          "LD_LIBRARY_PATH": "/home/share/nsls_lwb/.cache/runtime-oldgomp-only-20261104:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sme/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+          "LQCD_ARM_COARSE_SVE": 0,
+          "LQCD_ARM_SVE": 1,
+          "LQCD_ARM_SVE_PLANNED": 0,
+          "LQCD_ARM_SVE_REUSE": 1,
+          "LQCD_ARM_SVE_TRANSFER": 0,
+          "LQCD_COARSE_FUSED": 0,
+          "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+          "LQCD_HBM": "off",
+          "LQCD_HBW_ALLOC": "require",
+          "OMP_WAIT_POLICY": "PASSIVE"
+        },
+        "placement_threads": 37,
+        "ranks": 16,
+        "seed": 1024,
+        "setup_threads": 37,
+        "solve_environment": {
+          "LQCD_COARSE_BATCH_REDUCE": 1
+        },
+        "threads": 32
+      }
+    },
+    "p5w10v6-sdk-a": {
+      "steady_seconds": [
+        16.227326605003327,
+        16.29129488900071,
+        16.273119802004658
+      ],
+      "median_seconds": 16.273119802004658,
+      "scalar_max": 4.818858112534332e-09,
+      "gold_max": 1.7191732932621374e-16,
+      "report_sha256": "0e4539b91c35f34f82dc5caede8ea381cc82937fc2adbdcc5b3b6f2b1133e4a9",
+      "configuration": {
+        "batch": 2,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "context_environment": {
+          "LQCD_ARM_COARSE_SVE": 0,
+          "LQCD_ARM_SVE": 1,
+          "LQCD_ARM_SVE_PLANNED": 0,
+          "LQCD_ARM_SVE_REUSE": 1,
+          "LQCD_ARM_SVE_TRANSFER": 0,
+          "LQCD_COARSE_FUSED": 0,
+          "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+          "LQCD_HBM": "off",
+          "LQCD_HBW_ALLOC": "require"
+        },
+        "placement_threads": 37,
+        "ranks": 16,
+        "seed": 1024,
+        "setup_threads": 37,
+        "solve_environment": {
+          "LQCD_COARSE_BATCH_REDUCE": 1
+        },
+        "threads": 32
+      }
+    },
+    "p5w10v6-sdk-b": {
+      "steady_seconds": [
+        14.971338624993223,
+        14.945786694006529,
+        14.959935655002482
+      ],
+      "median_seconds": 14.959935655002482,
+      "scalar_max": 4.81878449575349e-09,
+      "gold_max": 1.2232293127295584e-11,
+      "report_sha256": "0a5db3f0838d2e651a359b30de64e04f8e69af715c6abba520597c424f00c15f",
+      "configuration": {
+        "batch": 2,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "context_environment": {
+          "LQCD_ARM_COARSE_SVE": 0,
+          "LQCD_ARM_SVE": 1,
+          "LQCD_ARM_SVE_PLANNED": 0,
+          "LQCD_ARM_SVE_REUSE": 1,
+          "LQCD_ARM_SVE_TRANSFER": 0,
+          "LQCD_COARSE_FUSED": 0,
+          "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+          "LQCD_HBM": "off",
+          "LQCD_HBW_ALLOC": "require"
+        },
+        "placement_threads": 37,
+        "ranks": 16,
+        "seed": 1024,
+        "setup_threads": 37,
+        "solve_environment": {
+          "LQCD_COARSE_BATCH_REDUCE": 1
+        },
+        "threads": 32
+      }
+    },
+    "p5w10v6-sdk-passive": {
+      "steady_seconds": [
+        30.543626965009025,
+        30.21909171299194,
+        30.284885257002315
+      ],
+      "median_seconds": 30.284885257002315,
+      "scalar_max": 4.818858112534332e-09,
+      "gold_max": 1.7191732932621374e-16,
+      "report_sha256": "1e21a7647450e9b5c4eaf0246c5146c399fa9f312e2ce932cb4c3b129211559c",
+      "configuration": {
+        "batch": 2,
+        "block": [
+          6,
+          6,
+          6,
+          4
+        ],
+        "context_environment": {
+          "GOMP_SPINCOUNT": 0,
+          "LQCD_ARM_COARSE_SVE": 0,
+          "LQCD_ARM_SVE": 1,
+          "LQCD_ARM_SVE_PLANNED": 0,
+          "LQCD_ARM_SVE_REUSE": 1,
+          "LQCD_ARM_SVE_TRANSFER": 0,
+          "LQCD_COARSE_FUSED": 0,
+          "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+          "LQCD_HBM": "off",
+          "LQCD_HBW_ALLOC": "require",
+          "OMP_WAIT_POLICY": "PASSIVE"
+        },
+        "placement_threads": 37,
+        "ranks": 16,
+        "seed": 1024,
+        "setup_threads": 37,
+        "solve_environment": {
+          "LQCD_COARSE_BATCH_REDUCE": 1
+        },
+        "threads": 32
+      }
+    }
+  }
+}

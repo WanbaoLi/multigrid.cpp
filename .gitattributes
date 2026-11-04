@@ -15,3 +15,4 @@ experiments/lingsheng-20261103/runtime-v6/frozen-helpers/** -text whitespace=cr-
 experiments/lingsheng-20261103/runtime-v6/results/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 experiments/lingsheng-20261103/profile143-complete/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
 experiments/lingsheng-20261103/clover-reuse-v1/candidate.patch -text
+experiments/lingsheng-20261103/worker10-continuation/** -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
