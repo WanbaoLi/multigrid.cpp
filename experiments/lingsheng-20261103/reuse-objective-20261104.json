@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "decision_date": "2026-11-04",
+  "decision_source": "Explicit user clarification in this conversation",
+  "user_statement": "复用建层求多个源点，12列求解耗时优先",
+  "workload": "One hierarchy per gauge configuration, reused for several source points",
+  "primary_objective": "full12_api_wall_seconds",
+  "primary_statistic": "Median of at least three complete 12-column ordinary steady solves, following one complete 12-column warmup",
+  "hierarchy_rebuilt_between_timed_solves": false,
+  "zero_initial_guess_each_column": true,
+  "secondary_metrics": [
+    "gauge input and preparation time",
+    "hierarchy setup time",
+    "continuous input-to-first-full12 wall time",
+    "first full12 API wall time",
+    "output and independent verification time"
+  ],
+  "promotion": {
+    "existing_precision_and_noise_gates_unchanged": true,
+    "minimum_steady_gain": 0.03,
+    "both_bracketing_controls_required": true,
+    "setup_gain_alone_can_promote_steady_best": false,
+    "true_double_precision_relative_residual_limit_each_column": 1e-8,
+    "matched_reference_solution_relative_error_limit_each_column": 1e-6
+  },
+  "current_evidence_boundary": {
+    "frozen_benchmark_source_xyzt": [0, 0, 0, 0],
+    "same_hierarchy_repeated_origin_source": true,
+    "different_source_points_qualified": false,
+    "historical_reports_or_frozen_readonly_skill_modified": false,
+    "retained_arm_steady_best_attempt": "052-reduce-on",
+    "retained_arm_best_source_commit": "5fe1b5fd2702f799488a2b8119002c450de5b4cd",
+    "new_arm_results_claimed_by_this_decision": false
+  },
+  "priority_order": [
+    {
+      "task": "Complete independent fixed-team and finite runtime/wait comparisons on the retained steady best",
+      "evidence": "Existing OpenMP wait samples and independent 32/37-thread control requirement",
+      "change": "Independent accepted-team/alternative-team/accepted-team processes, followed by the prepared runtime 2x2 with bracketing controls",
+      "mechanism": "Reduce idle workers and exposed synchronization without changing numerical work",
+      "execution_status": "Pending ARM connectivity, fresh allocation binding and reliable actual-process library capture",
+      "known_capture_issue": "The prepared observer expires 20 seconds after stage launch; input checks can consume that interval before solver loading. A new explicit capture contract is required before runtime-effect acceptance; old pending maps remain pending."
+    },
+    {
+      "task": "Obtain a fresh solve-phase profile of the retained correct steady best",
+      "change": "Separate diagnostic run on representative ranks, outside ordinary timing",
+      "mechanism": "Choose subsequent communication, cache, fusion or scheduling changes from current evidence rather than setup-only profiles",
+      "execution_status": "Pending ARM execution"
+    },
+    {
+      "task": "Close the second halo implementation's full ARM tests and decide whether an ordinary trial remains justified",
+      "evidence": "First halo version did not meet the steady promotion gate; second version removes measured code-generation overhead but has only partial ARM qualification",
+      "execution_status": "Pending full MPI/SVE ARM tests; no performance gain claimed"
+    },
+    {
+      "task": "Run fresh matched DDR/best/DDR full12 controls and node5005 comparison",
+      "execution_status": "Pending ARM execution; historical cross-allocation numbers are not a fresh matched speedup"
+    },
+    {
+      "task": "Qualify several different source coordinates using one retained hierarchy",
+      "change": "Separate prospective source-coordinate contract with identical coordinates/order on ARM and x86 and independent checks of all 12 columns at each coordinate",
+      "execution_status": "Not yet implemented or measured; existing origin-only measurements remain valid within their original scope"
+    },
+    {
+      "task": "Continue source-owned setup and cold-start experiments when resources permit",
+      "execution_status": "Secondary priority; failed133 and its missing runtime evidence remain unchanged, no cold promotion from partial results"
+    }
+  ],
+  "completion_status": "Ongoing; steady optimization, fresh final comparison and multi-source qualification remain outstanding"
+}
