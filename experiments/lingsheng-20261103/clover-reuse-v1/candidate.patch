@@ -1,0 +1,175 @@
+diff --git a/cmake/Tests.cmake b/cmake/Tests.cmake
+index 7693c31..fdd6002 100644
+--- a/cmake/Tests.cmake
++++ b/cmake/Tests.cmake
+@@ -14,6 +14,8 @@ if(BUILD_TESTING)
+     set_tests_properties(arm_sve PROPERTIES ENVIRONMENT "LQCD_ARM_SVE=1;LQCD_WILSON_SIMD=1;LQCD_ARM_SVE_REUSE=0")
+     add_test(NAME arm_sve_reuse COMMAND arm_sve_test)
+     set_tests_properties(arm_sve_reuse PROPERTIES ENVIRONMENT "LQCD_ARM_SVE=1;LQCD_WILSON_SIMD=1;LQCD_ARM_SVE_REUSE=1")
++    add_test(NAME arm_sve_clover_reuse COMMAND arm_sve_test)
++    set_tests_properties(arm_sve_clover_reuse PROPERTIES ENVIRONMENT "LQCD_ARM_SVE=1;LQCD_WILSON_SIMD=1;LQCD_ARM_SVE_REUSE=1;LQCD_ARM_SVE_CLOVER_REUSE=1")
+     add_executable(arm_sve_plan_test tests/unit/arm_sve_plan_test.cpp)
+     target_link_libraries(arm_sve_plan_test PRIVATE multigrid_core)
+     target_include_directories(arm_sve_plan_test PRIVATE src/backends/arm)
+diff --git a/docs/arm-clover-reuse-candidate.md b/docs/arm-clover-reuse-candidate.md
+new file mode 100644
+index 0000000..6daef70
+--- /dev/null
++++ b/docs/arm-clover-reuse-candidate.md
+@@ -0,0 +1,52 @@
++# ARM Clover input reuse candidate
++
++Unaccepted experiment, based exactly on accepted052 source5fe1b5f. The separate
++haloV1/V2 and source-owned setup changes are absent. The accepted binary and
++main campaign best are unchanged. Enable only in a fresh process through
++`LQCD_ARM_SVE_CLOVER_REUSE=1`; default is off.
++
++The completed143 solve profile independently passed all12 scalar/reference
++checks. At two representative ranks, exact sampled user-cycle fractions were
++54.14/54.77% native code and41.20/40.75% GOMP. Individual native leaf costs
++included local_range8.58/8.17%, fine_apply_batch9.03/9.18%, and standalone
++clover_range about2.6-2.8%. Clover also runs inside some local/global fine
++paths. The standalone cost alone does not establish enough end-to-end gain;
++whole-solve measurement remains necessary. Samples describe final diagnostic
++execution at ranks0/8, not elapsed-time proportions for the whole node.
++
++The legacy Clover loop visits an output component first, then every site tile.
++Its six rows in each chirality reload the same six complex source components.
++The experiment visits a chirality and site tile first, loads those inputs once
++into three SVE tuples, and reuses them for six output rows. Matrix coefficients
++already use contiguous SoA loads; this is not a coefficient-gather replacement.
++Coefficient storage, column accumulation order, multiply/add/subtract sequence,
++tail predicates and distinct source/output contract are retained. No packing,
++allocation, extra thread pool, precision reduction or algorithm change is added.
++
++The optional body is a separate noinline function to keep its input-register
++requirements out of the old arithmetic loop. That is a hypothesis about code
++layout, not a nonregression proof. Actual target assembly must show whether the
++inputs stay in registers, whether SVE spill/reload traffic appears, and whether
++the default-off caller changes its frame/code enough to matter. Prior haloV1
++showed why a same-binary on/off win is insufficient without an old-binary
++bracket and a default-off whole-version check.
++
++Required qualification: existing dense independent double Clover oracle,
++sentinel/range/tail checks and Wilson local/global tests; actual16/32/64-byte
++SVE runs, complete configured CTest including MPI/runtime tests with the option
++enabled, then full12 independent scalar residual<=1e-8 and reference error<=1e-6
++for every ordinary comparison. The added test directly exercises the new body
++regardless of the process dispatch flag and also enables it through the public
++ARM dispatch in another CTest instance. Non-ARM skips do not qualify SVE.
++
++Run old control, new off, new on, and old closing control as separate processes,
++each with its own hierarchy, one full12 warmup and at least three steady rounds.
++Use identical current best runtime, placement, setup/solve teams and physical
++input on one exclusive allocation. Reject adoption if control drift/noise is
++too large, if any accuracy check fails, or if the new on version fails the
++existing >=3% two-sided gain and disjoint-range gates. Retain all failures.
++If this first layout fails, inspect codegen and native microbench evidence;
++changes to register grouping or arithmetic predicates require a separately
++recorded next round, followed by the same whole-solve gates.
++
++No target build, target numerical pass or speedup is claimed by this proposal.
+diff --git a/src/backends/arm/wilson_sve.hpp b/src/backends/arm/wilson_sve.hpp
+index 62a46a4..d59a78e 100644
+--- a/src/backends/arm/wilson_sve.hpp
++++ b/src/backends/arm/wilson_sve.hpp
+@@ -51,8 +51,66 @@ inline svint32_t sve_indices(svbool_t pg, const std::ptrdiff_t *p, int count) {
+     for (int lane = 0; lane < count; ++lane) narrow[lane] = static_cast<int32_t>(p[lane]);
+     return svld1_s32(pg, narrow);
+ }
++inline bool sve_clover_reuse_enabled() {
++    static const bool enabled = [] {
++        const char *value = std::getenv("LQCD_ARM_SVE_CLOVER_REUSE");
++        return value && value[0] == '1' && value[1] == '\0';
++    }();
++    return enabled;
++}
++
++template<int Column>
++inline svfloat32x2_t clover_reuse_accumulate(svbool_t pg, int B, const float *row,
++                                            svfloat32_t xr, svfloat32_t xi,
++                                            svfloat32x2_t sum) {
++    const float *entry = row + Column * 2 * B;
++    const auto mr = svld1_f32(pg, entry), mi = svld1_f32(pg, entry + B);
++    auto yr = svget2_f32(sum, 0), yi = svget2_f32(sum, 1);
++    yr = svadd_f32_x(pg, yr, svsub_f32_x(pg, svmul_f32_x(pg, mr, xr), svmul_f32_x(pg, mi, xi)));
++    yi = svadd_f32_x(pg, yi, svadd_f32_x(pg, svmul_f32_x(pg, mr, xi), svmul_f32_x(pg, mi, xr)));
++    return svcreate2_f32(yr, yi);
++}
++
++// Separate opt-in body prevents its register needs from expanding the legacy
++// caller's arithmetic loop. Source/output remain distinct, as in the caller.
++__attribute__((noinline)) inline void clover_range_sve_reused(
++    int B, const float *matrix, const float *src, float *out, int begin, int end) {
++    for (int chirality = 0; chirality < 2; ++chirality)
++        for (int site = begin; site < end; site += svcntw()) {
++            const svbool_t pg = svwhilelt_b32((uint64_t)site, (uint64_t)end);
++            const float *input = src + chirality * 12 * B + site;
++            // Three ACLE tuples hold six complex input components. Load once
++            // per site tile, then reuse them across all six output rows.
++            const auto x01 = svcreate4_f32(svld1_f32(pg, input), svld1_f32(pg, input + B),
++                svld1_f32(pg, input + 2*B), svld1_f32(pg, input + 3*B));
++            const auto x23 = svcreate4_f32(svld1_f32(pg, input + 4*B), svld1_f32(pg, input + 5*B),
++                svld1_f32(pg, input + 6*B), svld1_f32(pg, input + 7*B));
++            const auto x45 = svcreate4_f32(svld1_f32(pg, input + 8*B), svld1_f32(pg, input + 9*B),
++                svld1_f32(pg, input + 10*B), svld1_f32(pg, input + 11*B));
++            for (int row = 0; row < 6; ++row) {
++                const int component = chirality * 6 + row;
++                const float *coefficients = matrix + component * 12 * B + site;
++                auto sum = svcreate2_f32(svdup_f32(0), svdup_f32(0));
++                // Preserve the original column order and separate multiply,
++                // subtract/add operations; this only changes input reuse.
++                sum = clover_reuse_accumulate<0>(pg,B,coefficients,svget4_f32(x01,0),svget4_f32(x01,1),sum);
++                sum = clover_reuse_accumulate<1>(pg,B,coefficients,svget4_f32(x01,2),svget4_f32(x01,3),sum);
++                sum = clover_reuse_accumulate<2>(pg,B,coefficients,svget4_f32(x23,0),svget4_f32(x23,1),sum);
++                sum = clover_reuse_accumulate<3>(pg,B,coefficients,svget4_f32(x23,2),svget4_f32(x23,3),sum);
++                sum = clover_reuse_accumulate<4>(pg,B,coefficients,svget4_f32(x45,0),svget4_f32(x45,1),sum);
++                sum = clover_reuse_accumulate<5>(pg,B,coefficients,svget4_f32(x45,2),svget4_f32(x45,3),sum);
++                svst1_f32(pg, out + 2*component*B + site, svget2_f32(sum,0));
++                svst1_f32(pg, out + (2*component+1)*B + site, svget2_f32(sum,1));
++            }
++        }
++}
++
+ inline void clover_range_sve(int B, const float *matrix, const float *src,
+                              float *out, int begin, int end) {
++    if (sve_clover_reuse_enabled()) {
++        clover_range_sve_reused(B, matrix, src, out, begin, end);
++        return;
++    }
+     for (int a = 0; a < 12; ++a)
+         for (int site = begin; site < end; site += svcntw()) {
+             const svbool_t pg = svwhilelt_b32((uint64_t)site, (uint64_t)end);
+diff --git a/tests/unit/arm_sve_test.cpp b/tests/unit/arm_sve_test.cpp
+index 26e1f59..32f1942 100644
+--- a/tests/unit/arm_sve_test.cpp
++++ b/tests/unit/arm_sve_test.cpp
+@@ -12,11 +12,11 @@ int main() {
+ #else
+     std::mt19937 gen(2601);
+     std::uniform_real_distribution<float> u(-.5f,.5f);
+-    for (int B : {3,7,17,31,64,864}) {
++    for (int B : {1,2,3,7,17,31,64,432,864}) {
+         std::vector<float> matrix(144*B), src(24*B), got(24*B, 19.f), ref=got;
+         for (float &x : matrix) x=u(gen);
+         for (float &x : src) x=u(gen);
+-        const int begin = B > 7 ? 3 : 1, end = B-1;
++        const int begin = B > 7 ? 3 : (B > 2 ? 1 : 0), end = B-1;
+         for (int a=0; a<12; ++a) for (int s=begin; s<end; ++s) {
+             double re=0, im=0;
+             for (int j=0;j<6;++j) {
+@@ -27,8 +27,13 @@ int main() {
+             ref[2*a*B+s]=(float)re; ref[(2*a+1)*B+s]=(float)im;
+         }
+         lqcd_native::arm::clover_range_sve(B,matrix.data(),src.data(),got.data(),begin,end);
++        // Exercise the new body independently of the process-wide dispatch
++        // flag, including empty ranges, tails and untouched sentinel sites.
++        auto reused = std::vector<float>(24*B, 19.f);
++        lqcd_native::arm::clover_range_sve_reused(B,matrix.data(),src.data(),reused.data(),begin,end);
+         for (size_t i=0;i<got.size();++i)
+-            if (!std::isfinite(got[i]) || !std::isfinite(ref[i]) || !std::isfinite(got[i]-ref[i]) || std::abs(got[i]-ref[i])>2e-5f)
++            if (!std::isfinite(got[i]) || !std::isfinite(ref[i]) || !std::isfinite(reused[i]) ||
++                !std::isfinite(got[i]-ref[i]) || std::abs(got[i]-ref[i])>2e-5f || std::abs(reused[i]-ref[i])>2e-5f)
+                 throw std::runtime_error("SVE clover mismatch or tail overwrite");
+     }
+     int gp[4][4]={{3,2,1,0},{3,2,1,0},{2,3,0,1},{2,3,0,1}};

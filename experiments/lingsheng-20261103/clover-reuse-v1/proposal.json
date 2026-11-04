@@ -1,0 +1,19 @@
+{
+  "source_commit": "861613c703117c6b5b671e245a7142e217b09501",
+  "parent": "5fe1b5fd2702f799488a2b8119002c450de5b4cd",
+  "flag": "LQCD_ARM_SVE_CLOVER_REUSE",
+  "default": 0,
+  "adopted": false,
+  "arm_compiled": false,
+  "arm_precision_qualified": false,
+  "physical_full12_measured": false,
+  "actual_x86_regression": {
+    "selected": 32,
+    "reported_failed": 0,
+    "explicit_arm_sve_skip": 9,
+    "actual_non_sve_cases": 23,
+    "library_sha256": "868a97c25e1dcae918534a7f644bc5869fc2080a4ef80c4714551263e9e0cbbd"
+  },
+  "source_patch_sha256": "82425310c236a86ad3a1d3cf13856a3e41e57089ed2d4487ac7fe870852f3060",
+  "scope": "Separate exact accepted-source-base numerical experiment; no haloV1 or source-owned setup changes"
+}

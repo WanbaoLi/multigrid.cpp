@@ -1,0 +1,25 @@
+{
+  "task": "/public2/home/lwb_720/.cache/mg-opt-clover-reuse-v1-20261104/queue/000-correctness.running.json",
+  "host": "node5005",
+  "started": 1793784764.8410091,
+  "argv": [
+    "/public2/home/lwb_720/miniconda3/envs/pyquda/bin/python",
+    "-u",
+    "/public2/home/lwb_720/.cache/mg-opt-clover-reuse-v1-20261104/x86_clover_reuse_tests.py"
+  ],
+  "status": "passed",
+  "task_tag": "af21203606a54091b3aa5026a61beb2c",
+  "pid": 4044264,
+  "returncode": 0,
+  "cleanup": {
+    "complete": true,
+    "platform": "linux",
+    "method": "same-uid exact tag and verified descendants",
+    "tag_key": "LQCD_OPT_TASK_ID",
+    "targeted_pids": [],
+    "term_signals": 0,
+    "kill_signals": 0,
+    "surviving_pids": []
+  },
+  "ended": 1793785030.6284254
+}
