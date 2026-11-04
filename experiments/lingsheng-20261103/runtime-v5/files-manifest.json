@@ -1,0 +1,198 @@
+{
+  "frozen_source_and_test_bytes": {
+    "frozen-helpers/capture-v4-package-manifest.json": {
+      "bytes": 4068,
+      "sha256": "08bcc9e94e0b75f4b35eb295f384439794c3e3b67a630eea315a95be465b9d6e"
+    },
+    "frozen-helpers/capture-v5-package-manifest.json": {
+      "bytes": 4879,
+      "sha256": "2de5df16026d4d7371cbd6498ba2ab3916944aababf3b02edadb7c2f49be518a"
+    },
+    "frozen-helpers/cold_full12.py": {
+      "bytes": 20558,
+      "sha256": "245ecd8201c1268c8e3a78ba64383ce7dce6334709fe5856deac8033ed39a1de"
+    },
+    "frozen-helpers/deploy_phase5_worker8_v5.py": {
+      "bytes": 2042,
+      "sha256": "d29895958190a79d6e1ba818cd664da3f2c7120341c14dd29f2aedd0b6d2ab22"
+    },
+    "frozen-helpers/deploy_worker8_validated.py": {
+      "bytes": 3888,
+      "sha256": "fae76055fa3961e5bd17291446b429606e2214c6b5c2dfebf10bc38c8dbc4c87"
+    },
+    "frozen-helpers/file_integrity.py": {
+      "bytes": 7628,
+      "sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"
+    },
+    "frozen-helpers/fresh_publication_v2.py": {
+      "bytes": 13484,
+      "sha256": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a"
+    },
+    "frozen-helpers/owned_publication_audit_v3.py": {
+      "bytes": 9619,
+      "sha256": "1264d37ee7e05ae6247a7770351c426ab3c01324ef14d01f8abe614deb6a9103"
+    },
+    "frozen-helpers/package-manifest.json": {
+      "bytes": 3745,
+      "sha256": "c0be0686dfdb4ad38ccb5a7c53ec1e7d831a766f11db6d3d8835e14674f74d04"
+    },
+    "frozen-helpers/phase5_progress_compact.py": {
+      "bytes": 1052,
+      "sha256": "44c21c5c54333998f3f6d367b1a7b964901abde475de05dd4b1bf9b7c609b9c6"
+    },
+    "frozen-helpers/phase5_setup_capture_v5.py": {
+      "bytes": 3290,
+      "sha256": "413f83a0559ee70dd594a340da8d15e953678243d1738f21b76c2d48cac25a87"
+    },
+    "frozen-helpers/phase5_validation_shim.py": {
+      "bytes": 51917,
+      "sha256": "c5a8a8b3c14d697c9062bf04172e2eb616ffebda66298a99aa123ca80419d9fe"
+    },
+    "frozen-helpers/phase5_worker7_allocation_v3.py": {
+      "bytes": 5259,
+      "sha256": "ad253df6ea118b16380d8a39b78f1fcba4df48c4e3c44929b4f581aa11490295"
+    },
+    "frozen-helpers/phase5_worker7_v3.py": {
+      "bytes": 6840,
+      "sha256": "84c71468e4bf64da1aa5ea254caf2de65b92531421cbad3a18faf896337f3937"
+    },
+    "frozen-helpers/phase7_cold_entry_v2.py": {
+      "bytes": 5299,
+      "sha256": "d4e733d6a0188543e4ff50c323ea3a4b28dde849fb66497ba81751b1d0cec2f1"
+    },
+    "frozen-helpers/prepare-argv.json": {
+      "bytes": 2307,
+      "sha256": "574abd3269645985cd2edd4754bce68a5d5e20a6440bdaa2a145bacd831c4469"
+    },
+    "frozen-helpers/prepare_phase5_setup_capture_v4.py": {
+      "bytes": 20146,
+      "sha256": "7554f955af09fc7a64a712ace10500b11442804a8427cac861591fe039b786ac"
+    },
+    "frozen-helpers/prepare_phase5_setup_capture_v5.py": {
+      "bytes": 20273,
+      "sha256": "f609d883cd3ab4f6239d81f88f37f2b9dd615633f54e6a13165aea5762d28864"
+    },
+    "frozen-helpers/prepare_phase5_worker7_v3.py": {
+      "bytes": 19260,
+      "sha256": "2ad4041bb8697832d2ec5fb7657919b0aa36a04e8c44fd3bfba46cd3d4dabe3b"
+    },
+    "frozen-helpers/profile_benchmark_publication_v6.py": {
+      "bytes": 6063,
+      "sha256": "8695a82a826b17d7dc3781c1c323ac7c70eac7759f829312e087babf8767bd7e"
+    },
+    "frozen-helpers/profile_full12.py": {
+      "bytes": 14506,
+      "sha256": "0f8f91305635ae7085d6bb9dcaa96b4c0607b3dfbeb4b83cc3b34526f714bc98"
+    },
+    "frozen-helpers/publish_capture_v5_sdk139d.py": {
+      "bytes": 3638,
+      "sha256": "2ed7285574f11b7e19b2e3cca70500681d13c93446410220ccc59cafc0722e20"
+    },
+    "frozen-helpers/publish_phase5_worker8_v5_141b.py": {
+      "bytes": 5005,
+      "sha256": "899abc74b25da18011b77f9cd0c4d53c6a2edee4a548fc4450625f20b9554dfd"
+    },
+    "frozen-helpers/raw_benchmark_publication_v2.py": {
+      "bytes": 6401,
+      "sha256": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60"
+    },
+    "frozen-helpers/raw_benchmark_v4.py": {
+      "bytes": 20375,
+      "sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec"
+    },
+    "frozen-helpers/raw_cold_adapter.py": {
+      "bytes": 11647,
+      "sha256": "c65c2da816c9a68f992a6db4cdbbef98e02954a17015abf8405ea474d780cc69"
+    },
+    "frozen-helpers/raw_controller_publication_v2.py": {
+      "bytes": 8957,
+      "sha256": "a5cb583cbb0c911fa1e4236b7bfd026fc64f6902a9fcce2f4bffcb6b630ae78f"
+    },
+    "frozen-helpers/raw_controller_setup_capture_v4.py": {
+      "bytes": 2659,
+      "sha256": "151989b219f0ac02a403c1fa98e800bbb028402897a10d8d020136c5b6b76997"
+    },
+    "frozen-helpers/raw_controller_setup_capture_v5.py": {
+      "bytes": 2659,
+      "sha256": "989b3779efbc6609f47751398c4f3ee3e21d2d587350efa0439442df7afa628f"
+    },
+    "frozen-helpers/raw_controller_solve_profile_v6.py": {
+      "bytes": 2739,
+      "sha256": "0a3c2091b4dc45da3d8c8930b6b22b3e34b70969aabd0ccf7a6111cc8667f9f1"
+    },
+    "frozen-helpers/raw_controller_v4.py": {
+      "bytes": 8245,
+      "sha256": "dd2d4049ed2ebd39e08efc03c4528e516c28e518a5c6e2e9de803358715d1b0e"
+    },
+    "frozen-helpers/raw_protocol_publication_v2.py": {
+      "bytes": 3873,
+      "sha256": "b94f04ff48ebefd075cefe770d49e9b6093f3baa50fc2f8261e73319f1e0fe36"
+    },
+    "frozen-helpers/raw_protocol_v4.py": {
+      "bytes": 2600,
+      "sha256": "1fe892d279305be75f6f814d8e7526d2c09531803ac5ffc6f8483f46b1fd0453"
+    },
+    "frozen-helpers/raw_scalar_helper.py": {
+      "bytes": 6995,
+      "sha256": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3"
+    },
+    "frozen-helpers/raw_scalar_helper_publication_v2.py": {
+      "bytes": 6582,
+      "sha256": "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097"
+    },
+    "frozen-helpers/README.md": {
+      "bytes": 4860,
+      "sha256": "28ce5fd672d76b8fb7c6070d89df231a814b5d64637c037c47891eb5dd205f9a"
+    },
+    "frozen-helpers/runtime-shim-manifest-v3.json": {
+      "bytes": 29274,
+      "sha256": "d443cb30fc0fee77c5f46e5ca0613fcf0c7cee30b65fd14937b25b0b1e0d4443"
+    },
+    "frozen-helpers/runtime-shim-manifest-worker8-v3.json": {
+      "bytes": 29274,
+      "sha256": "ca285729f24ab5ee01e75a2ba5626bce6d654dc05d93d5276aab446476fa4a1e"
+    },
+    "frozen-helpers/runtime_benchmark_capture_v4.py": {
+      "bytes": 8154,
+      "sha256": "cb5a963dd397664393d7efaacc1f5a06f8c8fc270b39a404495a5a75a8092d30"
+    },
+    "frozen-helpers/runtime_benchmark_capture_v5.py": {
+      "bytes": 8531,
+      "sha256": "a131af14babc8471f8bc416e9ba6b8b7c075823d8ad46602ab22e5aca7c2f97d"
+    },
+    "frozen-helpers/runtime_capture_v5_sdk_smoke_worker8.py": {
+      "bytes": 2004,
+      "sha256": "79aff603b927cb4d328c4633de0164a1f83ad2ceef0cc9d927b432709f2e0c25"
+    },
+    "frozen-helpers/submit_worker8_once.py": {
+      "bytes": 8803,
+      "sha256": "79f5c8ad45767169b06cd345dc9266abd7c0f22670d6dd4eaaee99e0f64b9f22"
+    },
+    "frozen-helpers/submit_worker8_terminal_v2.py": {
+      "bytes": 9645,
+      "sha256": "e820d32771f537f7dcca5134db453f71e38479921c019ce19559bca304cbe8e6"
+    },
+    "tests/test_runtime_capture_v4.py": {
+      "bytes": 3886,
+      "sha256": "ed1ec3fe7ed31852f9dcf76ea27f07b9597f8421dd9b0c57fd179b77ed207093"
+    },
+    "tests/test_runtime_capture_v5.py": {
+      "bytes": 2231,
+      "sha256": "32e84cd85d711d8c87992b07aa9b901bcde9061566c0678f74e54cfa6345b350"
+    },
+    "tests/test_solve_profile_v6.py": {
+      "bytes": 4583,
+      "sha256": "185c435344809766d242d6349e05ad634efaeddfb22f7c3285fcbb0c3b557ef0"
+    },
+    "tests/test_submit_worker8_once.py": {
+      "bytes": 5038,
+      "sha256": "43609ccd67a107c4db1f2d9e4c94eb11bbff0342e3e447083f153476aeb3e9d1"
+    },
+    "tests/test_submit_worker8_terminal_v2.py": {
+      "bytes": 2403,
+      "sha256": "213f75aee261352d25ff95d4551537d91a1699ac15cdaea6913500fe7d11706c"
+    }
+  },
+  "production_best_unchanged": true,
+  "actual_full8_status": "running; no group result yet"
+}

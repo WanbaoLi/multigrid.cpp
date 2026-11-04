@@ -8,3 +8,5 @@
 *.pdf binary
 *.docx binary
 skills/kunpeng-lqcd-reference/** -text
+experiments/lingsheng-20261103/runtime-v5/frozen-helpers/** -text
+experiments/lingsheng-20261103/runtime-v5/tests/** -text
