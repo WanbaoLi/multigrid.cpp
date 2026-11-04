@@ -1,0 +1,31 @@
+{
+  "inspected_date": "2026-11-04",
+  "inspection_host": "login04",
+  "native_build_or_kernel_executed": false,
+  "sdk_root": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001",
+  "observed_compilers": [
+    {
+      "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/bin/g++",
+      "version": "g++ (gcc for openEuler 3.0.3) 12.3.1"
+    },
+    {
+      "path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/bin/clang++",
+      "version": "BiSheng Enterprise 4.2.0.2.B002 clang version 17.0.6 (2261d9fde4e0)",
+      "target": "aarch64-unknown-linux-gnu"
+    }
+  ],
+  "commands_scope": "Read-only --version with a child-only matching SDK runtime search path",
+  "previous_bisheng_observation": {
+    "path": "docs/lingsheng-scaling.md",
+    "normal_draws": 100000,
+    "bisheng_seconds": 0.219,
+    "gcc_seconds": 0.0049,
+    "checksum_agreed": true,
+    "whole_setup_not_completed": true,
+    "scope": "Historical Oct26 observation, not a newly run probe",
+    "observed_local_sha256": "1412489c16819faf35fcb26c3bddb830af7bab4bc1dc930b65673383f991c97c",
+    "git_source_sha256": "8597e38bd031092d0c2428545eba991ce1082e20f5c705e999aa3bf3775ef889"
+  },
+  "original_kunpeng_reference_manifest_sha256": "77f4ad86e632866d302e84b12fbfa3858b62250953e08858369bdb898189e8bf",
+  "experiment_policy": "Compiler binaries/flags/runtime identity are pinned afresh in each candidate attempt; no performance result inferred from availability"
+}
