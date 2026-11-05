@@ -1,0 +1,20 @@
+{
+  "complete": true,
+  "id": "158-clover-arm-qualify-worker13",
+  "plan_sha256": "65ab7acf5dc67302a07c204709c1d502bdafeaed9af7494256c29e67cbaa7321",
+  "task_sha256": "5a268c289b80c8b006479f905cceb2dd5ad231b5f37b2c29623e25433d9a0193",
+  "startup_sha256": "08f7e2ae01b1db9ebd567a5496375a0bc42ca79755e889b59034362e8bd4d212",
+  "publisher_sha256": "b5e2e08441d4b55d585d6d6f9bb85c224978ec18bb3168924d73a8cf672272b6",
+  "heartbeat_sha256": "445b587a676ad62b8e0e2d5af3c98ee29d559b2a38ddce70abb2d0b1d425d2b8",
+  "scheduler_query": {
+    "argv": [
+      "/opt/batch/cli/bin/djob",
+      "-J",
+      "-l",
+      "2035635"
+    ],
+    "request_id": "req-fb73d9c7-a386-4108-8b24-3a773556e60a",
+    "code": "success"
+  },
+  "epoch": 1793854301.9221172
+}

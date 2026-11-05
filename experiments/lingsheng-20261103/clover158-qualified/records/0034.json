@@ -1,0 +1,23 @@
+{
+  "complete": true,
+  "prepared_only": true,
+  "id": "159-clover-full12-worker13",
+  "entry_sha256": "750b095c4c0dbec650324973bbb153aa2e425d680ff146fbaa8fe36dbab20932",
+  "qualification_state_sha256": "02b89b5e129f56ed1d656ffdaef4568143aa682c9dfb043cd00c294dc4194d71",
+  "qualification_status_sha256": "ad40a12d08c87eebceee54d90826b34654c055d02cabc51a054ae59646446fe2",
+  "startup_sha256": "08f7e2ae01b1db9ebd567a5496375a0bc42ca79755e889b59034362e8bd4d212",
+  "performance_ranked": false,
+  "main_best_modified": false,
+  "order": [
+    "old052-A",
+    "861-off",
+    "861-on",
+    "old052-B"
+  ],
+  "each_fresh_process": true,
+  "minimum_gain": 0.03,
+  "max_control_drift": 0.05,
+  "maximum_relative_spread": 0.1,
+  "scalar_limit": 1e-08,
+  "solution_limit": 1e-06
+}

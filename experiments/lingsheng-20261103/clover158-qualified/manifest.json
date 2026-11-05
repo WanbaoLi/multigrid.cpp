@@ -1,0 +1,333 @@
+{
+  "files": [
+    {
+      "path": "158-clover-arm-qualify-worker13-launch.json",
+      "bytes": 741,
+      "original_sha256": "f12a45cc515709a419f3b2cc39337ea484f9f5f128abdf4bdaa96ef8b287f046",
+      "export_sha256": "f12a45cc515709a419f3b2cc39337ea484f9f5f128abdf4bdaa96ef8b287f046",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "158-clover-arm-qualify-worker13-state.json",
+      "bytes": 2104,
+      "original_sha256": "02b89b5e129f56ed1d656ffdaef4568143aa682c9dfb043cd00c294dc4194d71",
+      "export_sha256": "4797030b12a6707924cbf4a1677d9c19970645f95d76afbfd955973907c1ef7f",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "159-clover-full12-worker13-launch.json",
+      "bytes": 652,
+      "original_sha256": "8a2382c0ef8db9adb2d10414ac3502563f689c80c75240cfc816a1c41a9e55c7",
+      "export_sha256": "8a2382c0ef8db9adb2d10414ac3502563f689c80c75240cfc816a1c41a9e55c7",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "160-clover-full12-worker13-launch.json",
+      "bytes": 652,
+      "original_sha256": "dd7690e264a306c7f999d36ef31510303a4f18ceec1b71e5b5a44643afd73921",
+      "export_sha256": "dd7690e264a306c7f999d36ef31510303a4f18ceec1b71e5b5a44643afd73921",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "aux-arm-clover-v1/arm-clover-v1-files.json",
+      "bytes": 763,
+      "original_sha256": "1836042fc66ce0be549713432d4a007af4e5a148d1c07dd2894ca1eb7d360e47",
+      "export_sha256": "1836042fc66ce0be549713432d4a007af4e5a148d1c07dd2894ca1eb7d360e47",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "aux-arm-clover-v1/arm_clover_qualify_v1.py",
+      "bytes": 9116,
+      "original_sha256": "ed4654b748f1024a3c362ac58416e2315fc0363b9dfcd7a8757d7d3bd6a6d27e",
+      "export_sha256": "10e563e0feb5fa064d00eb7b12921fc15fc831255059efb62e21c5d7f269040f",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "aux-arm-clover-v1/clover_codegen_audit.py",
+      "bytes": 2785,
+      "original_sha256": "dff1e7ca70b8f8752ab34053cd5c819d4cc5aba33b9b94f6e11f11f3d3e0dc35",
+      "export_sha256": "dff1e7ca70b8f8752ab34053cd5c819d4cc5aba33b9b94f6e11f11f3d3e0dc35",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "aux-arm-clover-v1/phase6_sve_probe.py",
+      "bytes": 4964,
+      "original_sha256": "afcd58ab6d271fea42434861764ed19eed3911dbe6436a0bba54fc7772b69788",
+      "export_sha256": "afcd58ab6d271fea42434861764ed19eed3911dbe6436a0bba54fc7772b69788",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/attempt.json",
+      "bytes": 22740,
+      "original_sha256": "ec9b66092a5473d05ab407f634f895cb2848807386ec477c44d05d9cca782e50",
+      "export_sha256": "2d7d8c742b4746784760f152701eb22d0310d1eafe6213735e79852af881d45e",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/build-000.log",
+      "bytes": 5365,
+      "original_sha256": "d6b0e9bf29a707eaecce5c811d2d798ec24b00b5c252f8936ae0b63b39681308",
+      "export_sha256": "d6b0e9bf29a707eaecce5c811d2d798ec24b00b5c252f8936ae0b63b39681308",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/catalog-000.log",
+      "bytes": 36761,
+      "original_sha256": "9a7612f57a9f13fc5ae39039113265bef7811559a58378e32411f1d0c884c476",
+      "export_sha256": "9a7612f57a9f13fc5ae39039113265bef7811559a58378e32411f1d0c884c476",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/codegen/new-clover-assembly.txt",
+      "bytes": 111920,
+      "original_sha256": "bc54dc5e271bc9336f7da34ac667889c2f7ccf574ca192d38b94111bd30e4d38",
+      "export_sha256": "bc54dc5e271bc9336f7da34ac667889c2f7ccf574ca192d38b94111bd30e4d38",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/codegen/old-clover-assembly.txt",
+      "bytes": 100710,
+      "original_sha256": "d9ee981bbab1b6eea1d9d36604f3625e02423fb2ff8bc7fd125f60eb8df01820",
+      "export_sha256": "d9ee981bbab1b6eea1d9d36604f3625e02423fb2ff8bc7fd125f60eb8df01820",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/codegen/report.json",
+      "bytes": 2589,
+      "original_sha256": "657abaf686e44985771bfce1b5b6865d8999e7dc63917c9cf5d6fda9b7c4ee18",
+      "export_sha256": "657abaf686e44985771bfce1b5b6865d8999e7dc63917c9cf5d6fda9b7c4ee18",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/codegen-000.log",
+      "bytes": 2051,
+      "original_sha256": "48ddee62cc93128c20da3fb17aba8279e8b79c234ae99894dd5a73988962817b",
+      "export_sha256": "48ddee62cc93128c20da3fb17aba8279e8b79c234ae99894dd5a73988962817b",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/configure-000.log",
+      "bytes": 1291,
+      "original_sha256": "91ddcbd8d07be9f4c6e7ebec4c98306d4c6af896f59e8ed89aea0517401970ee",
+      "export_sha256": "91ddcbd8d07be9f4c6e7ebec4c98306d4c6af896f59e8ed89aea0517401970ee",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/ctest-000.log",
+      "bytes": 111347,
+      "original_sha256": "6e5adadbc5fe45175e65a49551e25b8fd92ee0f2dcfba7ba21364835e4ec3f73",
+      "export_sha256": "6e5adadbc5fe45175e65a49551e25b8fd92ee0f2dcfba7ba21364835e4ec3f73",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/dense-vl16-000.log",
+      "bytes": 244,
+      "original_sha256": "d4e655a7580ccb0aa576e9966e62439e1f16481b965579c98ef467efffbf147c",
+      "export_sha256": "d4e655a7580ccb0aa576e9966e62439e1f16481b965579c98ef467efffbf147c",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/dense-vl32-000.log",
+      "bytes": 244,
+      "original_sha256": "672340790bfea07d0292480b3128d43a48c16f8755087aaba7b0cfe2cfe8a44c",
+      "export_sha256": "672340790bfea07d0292480b3128d43a48c16f8755087aaba7b0cfe2cfe8a44c",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/dense-vl64-000.log",
+      "bytes": 244,
+      "original_sha256": "8987f961fd5867ee35575754a1f81295604d78e885a586f057ee1fcce0945b3a",
+      "export_sha256": "8987f961fd5867ee35575754a1f81295604d78e885a586f057ee1fcce0945b3a",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/native-mpi2-vl16-000.log",
+      "bytes": 9949,
+      "original_sha256": "c4b3792d27ba78a7dd510dd3f7d76809c99c196cdb2219b89045552ef41f0d81",
+      "export_sha256": "c4b3792d27ba78a7dd510dd3f7d76809c99c196cdb2219b89045552ef41f0d81",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/native-mpi2-vl32-000.log",
+      "bytes": 9949,
+      "original_sha256": "39db51f839f03b5fe5394fb484a0419475b2871fd177ef12ba81c26f8cd16fad",
+      "export_sha256": "39db51f839f03b5fe5394fb484a0419475b2871fd177ef12ba81c26f8cd16fad",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/native-mpi2-vl64-000.log",
+      "bytes": 9949,
+      "original_sha256": "fe8428aa4b2f7ba792a72ee690b29f386eedb1e278b672c4399bf02a6e339bb9",
+      "export_sha256": "fe8428aa4b2f7ba792a72ee690b29f386eedb1e278b672c4399bf02a6e339bb9",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "campaign-clover-reuse-v1/attempts/000-arm-clover-tests/source-manifest.json",
+      "bytes": 36871,
+      "original_sha256": "121e4ecbcfc0ccef51d9c6584af3d956fed4167202519edb30b3ab3b01a13e68",
+      "export_sha256": "b4d02a0ff45c69afaf3952f75d6b6ab6566f96bf99c2c4e7ea1274f9ab2908d2",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "check_clover160_dependencies.py",
+      "bytes": 1530,
+      "original_sha256": "91c8152d6ee753b0cd3566a3dd4aca149ecd4816241083b07de8b08d4389bb6a",
+      "export_sha256": "91c8152d6ee753b0cd3566a3dd4aca149ecd4816241083b07de8b08d4389bb6a",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "clover_full12_worker13_v1.py",
+      "bytes": 11189,
+      "original_sha256": "750b095c4c0dbec650324973bbb153aa2e425d680ff146fbaa8fe36dbab20932",
+      "export_sha256": "750b095c4c0dbec650324973bbb153aa2e425d680ff146fbaa8fe36dbab20932",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "clover_full12_worker13_v2.py",
+      "bytes": 11327,
+      "original_sha256": "cc3bed2d3af3f16fd68d2e526757344d2c160a63a46820b7b04d84faa1e25518",
+      "export_sha256": "cc3bed2d3af3f16fd68d2e526757344d2c160a63a46820b7b04d84faa1e25518",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "export_clover158.py",
+      "bytes": 4771,
+      "original_sha256": "1aab712082ff15d5438626adb40f39ae5a0f8101b24f1c9d66424c7c96d33943",
+      "export_sha256": "1aab712082ff15d5438626adb40f39ae5a0f8101b24f1c9d66424c7c96d33943",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "exports/clover158-qualified/summary.json",
+      "bytes": 1006,
+      "original_sha256": "2318a719aff317423ce8877b9826c975a5928afad52843ae3c3c90f86621d064",
+      "export_sha256": "2318a719aff317423ce8877b9826c975a5928afad52843ae3c3c90f86621d064",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "prepare_clover158_worker13.py",
+      "bytes": 4786,
+      "original_sha256": "b5e2e08441d4b55d585d6d6f9bb85c224978ec18bb3168924d73a8cf672272b6",
+      "export_sha256": "b5e2e08441d4b55d585d6d6f9bb85c224978ec18bb3168924d73a8cf672272b6",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "prepare_clover159_worker13.py",
+      "bytes": 4362,
+      "original_sha256": "ae79a8361992b6d266f5feabe5f62d1e98c850c76d7543417303456b377676df",
+      "export_sha256": "ae79a8361992b6d266f5feabe5f62d1e98c850c76d7543417303456b377676df",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "prepare_clover160_worker13.py",
+      "bytes": 4362,
+      "original_sha256": "ce1255931ab1f1dce4bca3cc37f7879e34ab954df40e0eb674b55053faa65358",
+      "export_sha256": "ce1255931ab1f1dce4bca3cc37f7879e34ab954df40e0eb674b55053faa65358",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "prepared-clover158-worker13/plan.json",
+      "bytes": 2188,
+      "original_sha256": "65ab7acf5dc67302a07c204709c1d502bdafeaed9af7494256c29e67cbaa7321",
+      "export_sha256": "65ab7acf5dc67302a07c204709c1d502bdafeaed9af7494256c29e67cbaa7321",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "prepared-clover158-worker13/task.json",
+      "bytes": 2073,
+      "original_sha256": "5a268c289b80c8b006479f905cceb2dd5ad231b5f37b2c29623e25433d9a0193",
+      "export_sha256": "7b663c9e85d69e10ff2745c28593f4b5373c6861c65983d09c514a08ebaa8dd5",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "prepared-clover159-worker13/contract.json",
+      "bytes": 770,
+      "original_sha256": "919c31dc394fc4cfcbc72fac58a1c527091db75fe06c5aceed51872ad4674139",
+      "export_sha256": "919c31dc394fc4cfcbc72fac58a1c527091db75fe06c5aceed51872ad4674139",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "prepared-clover159-worker13/task.json",
+      "bytes": 1947,
+      "original_sha256": "1d2a914f996b5c04cd27581f5e49e732343d56c4208f0b9d661cdcccfc358557",
+      "export_sha256": "e505326b8f5d844d4ca31c7d4fd15bb52d776d9df8e6fce1016e836c4d2a561c",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "prepared-clover160-worker13/contract.json",
+      "bytes": 770,
+      "original_sha256": "bd90491780bef049de24e855650bbb27b89a213b810b78243d663bdbea3d6bfa",
+      "export_sha256": "bd90491780bef049de24e855650bbb27b89a213b810b78243d663bdbea3d6bfa",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "prepared-clover160-worker13/task.json",
+      "bytes": 1947,
+      "original_sha256": "0704406850ff26e34f9dc4888370db9bdf5da7ac92493decb28ec4e736ee0424",
+      "export_sha256": "1c8d206be9031f2f574b7004c9ff25aa21ca5f3adc9b3077a3dd0950733e411f",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "queue13/158-clover-arm-qualify-worker13.finished.json",
+      "bytes": 2073,
+      "original_sha256": "5a268c289b80c8b006479f905cceb2dd5ad231b5f37b2c29623e25433d9a0193",
+      "export_sha256": "7b663c9e85d69e10ff2745c28593f4b5373c6861c65983d09c514a08ebaa8dd5",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "queue13/158-clover-arm-qualify-worker13.log",
+      "bytes": 672,
+      "original_sha256": "771c589f92ec591e61f56f5c750e284f88c07a6b3708801e381c5ceb50e8f3b9",
+      "export_sha256": "771c589f92ec591e61f56f5c750e284f88c07a6b3708801e381c5ceb50e8f3b9",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "queue13/158-clover-arm-qualify-worker13.status.json",
+      "bytes": 951,
+      "original_sha256": "ad40a12d08c87eebceee54d90826b34654c055d02cabc51a054ae59646446fe2",
+      "export_sha256": "ad40a12d08c87eebceee54d90826b34654c055d02cabc51a054ae59646446fe2",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "queue13/159-clover-full12-worker13.finished.json",
+      "bytes": 1947,
+      "original_sha256": "1d2a914f996b5c04cd27581f5e49e732343d56c4208f0b9d661cdcccfc358557",
+      "export_sha256": "e505326b8f5d844d4ca31c7d4fd15bb52d776d9df8e6fce1016e836c4d2a561c",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "queue13/159-clover-full12-worker13.log",
+      "bytes": 1524,
+      "original_sha256": "da9b34f558c89d0fa6456cd287ba611c646591c4df2d738dbef136a8e5dd5ab5",
+      "export_sha256": "da9b34f558c89d0fa6456cd287ba611c646591c4df2d738dbef136a8e5dd5ab5",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "queue13/159-clover-full12-worker13.status.json",
+      "bytes": 838,
+      "original_sha256": "610fe743fe3f96c0958fdea6a2bd0df1cf376624cb72942b60fd5c0b5f3cde13",
+      "export_sha256": "610fe743fe3f96c0958fdea6a2bd0df1cf376624cb72942b60fd5c0b5f3cde13",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "test_clover_full12_worker13_v1.py",
+      "bytes": 1710,
+      "original_sha256": "09364696b21a07bb571b0aeee3949b2753d560fe213ec5d510eb7e80a5a608bb",
+      "export_sha256": "09364696b21a07bb571b0aeee3949b2753d560fe213ec5d510eb7e80a5a608bb",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "worker13-allocation.json",
+      "bytes": 1751,
+      "original_sha256": "61acda22b726babe61490571e87fe369bcb89db3be18f5478fce540817d93c40",
+      "export_sha256": "20456751f624b0224211f9698d5c5b999d26708335aef1a636e679cfa57f55b1",
+      "transformation": "Existing redactor; originals unchanged"
+    },
+    {
+      "path": "worker13-startup.json",
+      "bytes": 29259,
+      "original_sha256": "08f7e2ae01b1db9ebd567a5496375a0bc42ca79755e889b59034362e8bd4d212",
+      "export_sha256": "08f7e2ae01b1db9ebd567a5496375a0bc42ca79755e889b59034362e8bd4d212",
+      "transformation": "Existing redactor; originals unchanged"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "actual_sve_widths": [
+    16,
+    32,
+    64
+  ],
+  "allocation": "mg-opt-20261103-worker13",
+  "complete": true,
+  "host": "cn19480",
+  "library": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/000-arm-clover-tests/build/liblqcd_cpu.so.0.2.0",
+  "library_sha256": "045fd4d62c27179b68e8d557bcd9fdfe9aeb707c4ec93b93b37ce02ebf6ceb10",
+  "main_best_unchanged": true,
+  "performance_ranked": false,
+  "physical_full12": false,
+  "scope": "arm-clover-full-qualification-v1",
+  "selected_tests": 32,
+  "snapshot": {
+    "archive_sha256": "326fb8deb632f32f4312bfc4ee412e2e75abf4868cf677fd1c79e3d016daef96",
+    "build": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/000-arm-clover-tests/build",
+    "git_head": "861613c703117c6b5b671e245a7142e217b09501",
+    "source": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/000-arm-clover-tests/source",
+    "source_manifest_sha256": "121e4ecbcfc0ccef51d9c6584af3d956fed4167202519edb30b3ab3b01a13e68"
+  },
+  "source_head": "861613c703117c6b5b671e245a7142e217b09501",
+  "stages": {
+    "build": {
+      "log": "build-000.log",
+      "status": "passed"
+    },
+    "catalog": {
+      "log": "catalog-000.log",
+      "status": "passed"
+    },
+    "codegen": {
+      "log": "codegen-000.log",
+      "status": "passed"
+    },
+    "configure": {
+      "log": "configure-000.log",
+      "status": "passed"
+    },
+    "ctest": {
+      "log": "ctest-000.log",
+      "status": "passed"
+    },
+    "dense-vl16": {
+      "log": "dense-vl16-000.log",
+      "status": "passed"
+    },
+    "dense-vl32": {
+      "log": "dense-vl32-000.log",
+      "status": "passed"
+    },
+    "dense-vl64": {
+      "log": "dense-vl64-000.log",
+      "status": "passed"
+    },
+    "native-mpi2-vl16": {
+      "log": "native-mpi2-vl16-000.log",
+      "status": "passed"
+    },
+    "native-mpi2-vl32": {
+      "log": "native-mpi2-vl32-000.log",
+      "status": "passed"
+    },
+    "native-mpi2-vl64": {
+      "log": "native-mpi2-vl64-000.log",
+      "status": "passed"
+    }
+  },
+  "status": "passed"
+}

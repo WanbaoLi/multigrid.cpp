@@ -1,0 +1,19 @@
+{
+  "complete": true,
+  "id": "159-clover-full12-worker13",
+  "task_sha256": "1d2a914f996b5c04cd27581f5e49e732343d56c4208f0b9d661cdcccfc358557",
+  "contract_sha256": "919c31dc394fc4cfcbc72fac58a1c527091db75fe06c5aceed51872ad4674139",
+  "publisher_sha256": "ae79a8361992b6d266f5feabe5f62d1e98c850c76d7543417303456b377676df",
+  "scheduler_query": {
+    "argv": [
+      "/opt/batch/cli/bin/djob",
+      "-J",
+      "-l",
+      "2035635"
+    ],
+    "request_id": "req-c40d430a-fabd-4ab2-9d1e-af9480a97b19",
+    "code": "success"
+  },
+  "heartbeat_sha256": "9b5fce5be8209ec306d20001d4e1c7b2940e4d3ea209684b3820333bf3db74e5",
+  "epoch": 1793855220.3792238
+}

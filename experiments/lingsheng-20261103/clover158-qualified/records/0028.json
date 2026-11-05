@@ -1,0 +1,28 @@
+{
+  "complete": true,
+  "passed": true,
+  "physical_full12": false,
+  "ordinary_performance": false,
+  "source_head": "861613c703117c6b5b671e245a7142e217b09501",
+  "library_sha256": "045fd4d62c27179b68e8d557bcd9fdfe9aeb707c4ec93b93b37ce02ebf6ceb10",
+  "source_manifest_sha256": "121e4ecbcfc0ccef51d9c6584af3d956fed4167202519edb30b3ab3b01a13e68",
+  "host": "cn19480",
+  "allocation": "mg-opt-20261103-worker13",
+  "selected_ctest": 32,
+  "actual_sve_dense_and_mpi2_widths": [
+    16,
+    32,
+    64
+  ],
+  "task_cleanup": {
+    "complete": true,
+    "platform": "linux",
+    "method": "same-uid exact tag and verified descendants",
+    "tag_key": "LQCD_OPT_TASK_ID",
+    "targeted_pids": [],
+    "term_signals": 0,
+    "kill_signals": 0,
+    "surviving_pids": []
+  },
+  "failed159_preserved": "Wrong queue12 metadata dependency path, before experiment state/attempt or numerical launch. New160 uses shared path helper and actual closed158 dependency integration check. Source/binary/tolerance unchanged."
+}

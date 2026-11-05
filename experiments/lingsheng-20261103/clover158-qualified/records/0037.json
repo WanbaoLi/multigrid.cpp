@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+    "-u",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/clover_full12_worker13_v2.py",
+    "--expected-self-sha",
+    "cc3bed2d3af3f16fd68d2e526757344d2c160a63a46820b7b04d84faa1e25518"
+  ],
+  "cwd": "/home/share/nsls_lwb/.cache/mg-opt-20261103",
+  "timeout": 6300,
+  "environment": {
+    "LD_LIBRARY_PATH": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sme/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+    "LD_PRELOAD": "",
+    "LD_DEBUG": "[REDACTED: private environment/credential]",
+    "LD_DEBUG_OUTPUT": "[REDACTED: private environment/credential]",
+    "PERF_COUNTER_ROOT": "",
+    "OMP_WAIT_POLICY": "",
+    "GOMP_SPINCOUNT": ""
+  }
+}
