@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "new_recording": false,
+  "files": [
+    {
+      "path": "caller-analysis.json",
+      "sha256": "7bee982a6724c56eaef3d38014ee46aac58404903a795f48b34e13a90c2d8cfe",
+      "bytes": 4655
+    },
+    {
+      "path": "rank00000.caller-graph.txt",
+      "sha256": "2b2ea43761e1002a5e9011ea496de88b5336457873047967c921bd4aa3448410",
+      "bytes": 253860
+    },
+    {
+      "path": "rank00008.caller-graph.txt",
+      "sha256": "b65c51938957c586bcf7993a903d8912a99966578df8b7a41754fa225d301efb",
+      "bytes": 272791
+    }
+  ]
+}

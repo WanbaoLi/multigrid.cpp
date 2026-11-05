@@ -1,0 +1,191 @@
+{
+  "complete": true,
+  "passed": true,
+  "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/measurements/full12/propagator.npy",
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "expected_sha256": null,
+  "required_bytes": 2038431872,
+  "initial": {
+    "dev": 60,
+    "inode": 135108210981181312,
+    "bytes": 2038431872,
+    "mtime_ns": 1793858916330585170,
+    "ctime_ns": 1793858916330585170
+  },
+  "original_open_mode": "O_RDONLY",
+  "same_immutable_bytes": true,
+  "started": 1793858916.3546872,
+  "fd_before": {
+    "dev": 60,
+    "inode": 135108210981181312,
+    "bytes": 2038431872,
+    "mtime_ns": 1793858916330585170,
+    "ctime_ns": 1793858916330585170
+  },
+  "last_request_offset": 2038431872,
+  "last_request_bytes": 1,
+  "last_returned_bytes": 0,
+  "fd_after": {
+    "dev": 60,
+    "inode": 135108210981181312,
+    "bytes": 2038431872,
+    "mtime_ns": 1793858916330585170,
+    "ctime_ns": 1793858916330585170
+  },
+  "path_after": {
+    "dev": 60,
+    "inode": 135108210981181312,
+    "bytes": 2038431872,
+    "mtime_ns": 1793858916330585170,
+    "ctime_ns": 1793858916330585170
+  },
+  "read_bytes": 2038431872,
+  "pread_calls": 488,
+  "positive_short_reads": 0,
+  "eof_probe_bytes": 0,
+  "openssl_sha256": "912921e1414b51fb423702826ab6f54fee7f965ee61ee12cf7c88a7dfc1d90e1",
+  "software_sha256": "912921e1414b51fb423702826ab6f54fee7f965ee61ee12cf7c88a7dfc1d90e1",
+  "seconds": 26.858394622802734,
+  "metadata_stable": true,
+  "byte_count_exact": true,
+  "fresh_output_publication": {
+    "protocol": "fresh-output-publication-v2",
+    "complete": true,
+    "passed": true,
+    "receipt": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/receipt.json",
+    "receipt_sha256": "beb7a3115e0349f7b8432131df1522c9e12859cf9299dd73d940674642667d08",
+    "strict_calls": 1,
+    "full_reads": 1,
+    "parent_protocol": {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/checksum-audit/benchmark/rank00000/protocol.json",
+      "sha256": "ebae2276f779e68509ebf1e7c179cb6dca49c6bd2b71e7a257d441f9cfc0a224",
+      "startup_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/startup.json",
+      "startup_sha256": "a4b03691d75b7c1d3026baec750a3fc70a369bfc5e5b7ae302ccb0df8851382c"
+    },
+    "full_proof": {
+      "protocol": "fresh-output-publication-v2",
+      "complete": true,
+      "passed": true,
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/measurements/full12/propagator.npy",
+      "eligibility": {
+        "protocol": "fresh-output-publication-v2",
+        "complete": true,
+        "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/measurements",
+        "output_absent_at_cli_start": true,
+        "checked_epoch": 1793858670.1706283,
+        "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a",
+        "parent_identity": {
+          "dev": 60,
+          "inode": 135108517864339905
+        },
+        "declarations": [
+          {
+            "relative": "full12/propagator.npy",
+            "kind": "npy-propagator",
+            "expected_sha256": null,
+            "bytes": 2038431872
+          }
+        ],
+        "maximum_strict_calls_per_output": 3,
+        "parent_protocol": null,
+        "immutable_inputs_use_original_strict_reader": true
+      },
+      "parent_protocol": {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/checksum-audit/benchmark/rank00000/protocol.json",
+        "sha256": "ebae2276f779e68509ebf1e7c179cb6dca49c6bd2b71e7a257d441f9cfc0a224",
+        "startup_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/startup.json",
+        "startup_sha256": "a4b03691d75b7c1d3026baec750a3fc70a369bfc5e5b7ae302ccb0df8851382c"
+      },
+      "reads": [
+        {
+          "complete": true,
+          "passed": true,
+          "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/measurements/full12/propagator.npy",
+          "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+          "block_bytes": 4194304,
+          "expected_sha256": null,
+          "required_bytes": 2038431872,
+          "initial": {
+            "dev": 60,
+            "inode": 135108210981181312,
+            "bytes": 2038431872,
+            "mtime_ns": 1793858916330585170,
+            "ctime_ns": 1793858916330585170
+          },
+          "original_open_mode": "O_RDONLY",
+          "same_immutable_bytes": true,
+          "started": 1793858916.3546872,
+          "fd_before": {
+            "dev": 60,
+            "inode": 135108210981181312,
+            "bytes": 2038431872,
+            "mtime_ns": 1793858916330585170,
+            "ctime_ns": 1793858916330585170
+          },
+          "last_request_offset": 2038431872,
+          "last_request_bytes": 1,
+          "last_returned_bytes": 0,
+          "fd_after": {
+            "dev": 60,
+            "inode": 135108210981181312,
+            "bytes": 2038431872,
+            "mtime_ns": 1793858916330585170,
+            "ctime_ns": 1793858916330585170
+          },
+          "path_after": {
+            "dev": 60,
+            "inode": 135108210981181312,
+            "bytes": 2038431872,
+            "mtime_ns": 1793858916330585170,
+            "ctime_ns": 1793858916330585170
+          },
+          "read_bytes": 2038431872,
+          "pread_calls": 488,
+          "positive_short_reads": 0,
+          "eof_probe_bytes": 0,
+          "openssl_sha256": "912921e1414b51fb423702826ab6f54fee7f965ee61ee12cf7c88a7dfc1d90e1",
+          "software_sha256": "912921e1414b51fb423702826ab6f54fee7f965ee61ee12cf7c88a7dfc1d90e1",
+          "seconds": 26.858394622802734,
+          "metadata_stable": true,
+          "byte_count_exact": true
+        }
+      ],
+      "progress": [
+        {
+          "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-000.json",
+          "sha256": "185ff76a22560a9c043313f1996dfb7cc77b8ffaa6cfe6168b69509af6d1ad80"
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-001.json",
+          "sha256": "1fd322f6d28940e652dbad37f23118a65e7e2df71c1d6b37757555f8adb4d1f0"
+        }
+      ],
+      "strict_calls": 1,
+      "full_reads": 1,
+      "maximum_strict_calls": 3,
+      "first_rejection_accepted": false,
+      "expected_previously_published": false,
+      "mode": "original-first-strict-pass",
+      "closed_npy_header": {
+        "complete": true,
+        "passed": true,
+        "header_bytes": 128,
+        "dtype": "<c16",
+        "shape": [
+          64,
+          24,
+          24,
+          24,
+          4,
+          4,
+          3,
+          3
+        ],
+        "fortran_order": false
+      },
+      "published_sha256": "912921e1414b51fb423702826ab6f54fee7f965ee61ee12cf7c88a7dfc1d90e1",
+      "rejected_read_count": 0
+    }
+  }
+}

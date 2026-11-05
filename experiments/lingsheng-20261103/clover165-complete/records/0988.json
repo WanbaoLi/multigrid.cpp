@@ -1,0 +1,82 @@
+{
+  "complete": true,
+  "run": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-new-on/measurements/full12",
+  "reference": "/home/share/nsls_lwb/.cache/mg-20261102/source/build/validation/multigrid",
+  "reference_sha256": "1534d9c0653a019dcac4df98965f47f14d052cb324c35e568faa760d50878e9c",
+  "run_report_sha256": "a163a7b268fcfbc71eada7c8a8e32fc9985eff272a4afa7b9af49c63fdddf2a6",
+  "propagator_sha256": "912921e1414b51fb423702826ab6f54fee7f965ee61ee12cf7c88a7dfc1d90e1",
+  "method": "byte-only column extraction + independent scalar C++",
+  "source_xyzt": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_scale": 1.0,
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "normalization": "mass",
+  "columns": [
+    {
+      "source_spin": 0,
+      "source_color": 0,
+      "residual": 4.81878449575349e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 1,
+      "residual": 3.1987232657469915e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 2,
+      "residual": 3.933319143063532e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 0,
+      "residual": 3.1414741334596257e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 1,
+      "residual": 4.089293916996384e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 2,
+      "residual": 4.075962156117472e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 0,
+      "residual": 3.6561970709099204e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 1,
+      "residual": 2.834974777569663e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 2,
+      "residual": 2.640762942178473e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 0,
+      "residual": 3.773112289550888e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 1,
+      "residual": 4.279940778266243e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 2,
+      "residual": 2.612865913430912e-09
+    }
+  ],
+  "assembled_gauge_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834"
+}

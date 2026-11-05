@@ -1,0 +1,25 @@
+{
+  "complete": true,
+  "original_result_sha256": "84f60101a0308953bd3207961e86b575f98588e2d6220895ffd2018317c02f44",
+  "original_controller_sha256": "746c48e91385f7c7f4f41c38b3b87823ae37755ba862b0e78240c032bce0d2df",
+  "original_result_unchanged": true,
+  "metadata_field_error": "compile_argv contains final run argv because the controller reused its command variable",
+  "compile_argv_reconstructed_from_pinned_controller": [
+    "/public2/home/lwb_720/miniconda3/bin/g++",
+    "-O3",
+    "-std=c++17",
+    "-march=native",
+    "-mtune=native",
+    "-fopenmp",
+    "-I/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/source",
+    "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/cpu_bench_current.cpp",
+    "-o",
+    "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/component-probe-current-v1/probe"
+  ],
+  "independent_external_compile_argv_receipt": false,
+  "evidence": [
+    "Controller contains the exact construction and subprocess call; original files retained",
+    "Compiled program reports native compiler and AVX512 capability; portable oracle passes"
+  ],
+  "numerical_or_timer_changes": false
+}

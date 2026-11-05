@@ -1,0 +1,24 @@
+{
+  "complete": true,
+  "pinned_files": {
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00000/manifest.json": "af88f9b143d4b5a0a8ca0c2ceb9af0d2a8da1a37cfa02fd20f703cb6084e9118",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/receipt.json": "96c1802b2fd3cd9b563eb07aa8fac6eb7109459fe9b76cb8715554d8f515869c",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00001/manifest.json": "ac78e1de02fd5f4c754de95a686b571f79f5344b7e82af45d272b43a6b7377d3",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00002/manifest.json": "000d514d80aac7d359529e9d8d95b9074fd6eeeb056a186901e709a99cf03c7e",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00003/manifest.json": "f4c1c481c0ba7de664912ae529484f27e44dd9bacad1a02b65f71fc5065e9f72",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00004/manifest.json": "5b7ab5df048e17e00e7229537fc72b81e0c3b8144464f1fe8438ef04b96708d0",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00005/manifest.json": "97712f5cdac1199b2991ebdcf7dec4552c092b379c6b45de7e862a39dd9343ed",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00006/manifest.json": "5ff29f0a2bbc70918fb5a9b5c5129132cdffb3c929254466089f07507d1d5ecf",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00007/manifest.json": "11df070c3de71f4baf5bd39904c03f48f73f41aa6ba44934484ee222be134477",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00008/manifest.json": "040b5885adb25e52ff6d4eeb011ec8aeee22b7cb8697c63b38a620740e6090f3",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00009/manifest.json": "050ef77a22738456073c97842a9127aba626aaeb6503f3f4ab3f9da055dde93d",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00010/manifest.json": "ce8e707653effc9018fc43722f3e7ff54108a59c770546b72e147d2c72afd60d",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00011/manifest.json": "b7c25753c2c33be81624dbd23fcade55d26dae8f1d82117a96365fc581474cb9",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00012/manifest.json": "990d48f9133fcd67ce5a52904bfc4cc11dfcd7f9fe225274682c400780351946",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00013/manifest.json": "40e98bc516af773152ee100b51ac5f497a424f52f4eae20a07f2cb763150af9e",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00014/manifest.json": "635a265b6ff408911a47ae63c9c44159a891eab2b4440bf8cf396bdcd8b45a2d",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/benchmark-fresh-publication-v2/rank00015/manifest.json": "b530f534a3309cc8745a3eaf90ec07df2ecab90180e88efc54f2a16e1d0b5b91",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/receipt.json": "84b264c317334bfb2994b4350494b38022a7e4a478030a5eb775b90688fcba86",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/checksum-audit/independent/helper/manifest.json": "fd5425bd9c02894bd5fa80d13110475b1e29748fe92b1b14f30c34d49d52eef4"
+  }
+}

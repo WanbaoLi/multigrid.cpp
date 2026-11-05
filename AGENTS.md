@@ -3,9 +3,11 @@
 CPU Wilson-Clover solver runtime with a stable C ABI and PyQUDA-compatible host
 fields. Production backends are hardware targets (x86, arm, sw), not library
 names. DDalphaAMG is an external reference adapter, not self-developed MG.
-The current acceptance target is project-owned MG under 5 seconds on the real
-24^3x64 fixture with full relative residual <=1e-8. Previous DD wrapper timings
-do NOT satisfy this target. See `docs/roadmap.md` for scope
+The user revised the current delivery target on 2026-11-05 to project-owned MG
+under 15 seconds for one source's complete 12-column solve after hierarchy reuse,
+on the real 24^3x64 fixture with full relative residual <=1e-8. The earlier
+under-5-second research goal is not this delivery's acceptance requirement.
+Previous DD wrapper timings do NOT satisfy this target. See `docs/roadmap.md` for scope
 and `docs/backend-architecture.md` for field, normalization and MPI contracts.
 
 - Public API: `include/lqcd/lqcd.h`; implementation: `src/runtime/`,

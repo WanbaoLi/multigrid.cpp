@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "passed": true,
+  "protocol": "fresh-output-publication-v2",
+  "startup_sha256": "d991ddbcf692ea815b9d336f4c989d8336f310ed61f99790c0fb975900c06c75",
+  "entry_sha256": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+  "base_wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec",
+  "publication_module_sha256": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a",
+  "parent_raw_artifacts": {
+    "protocol.json": {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/checksum-audit/independent/protocol.json",
+      "sha256": "847fc8bbb2c32cb60283ab68ed069ef74c3c383a64b95d57c17080a3f75d20c6"
+    },
+    "manifest.json": {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-a/checksum-audit/independent/manifest.json",
+      "sha256": "53b54eac806bcfaa5d9fcf09aea1aafe5c4d0ec9dcfe5e82d8aa30eecbd1518c"
+    }
+  },
+  "published_outputs": [],
+  "rank": 0
+}

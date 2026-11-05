@@ -1,0 +1,13 @@
+{
+  "threads": 1,
+  "compiler": "14.4.0",
+  "sve_bytes": 0,
+  "avx512": true,
+  "dependent_double_ns": 0.963080907241,
+  "cache_fp32_gflops": 83.8656049988,
+  "triad_effective_GBps": 44.2893099374,
+  "kernel_relative_error": 7.77637059824e-08,
+  "hot_eo_wilson_us": 25.5061189334,
+  "streamed_1024_blocks_seconds": 0.0899756758784,
+  "checksum": -0.00629999674857
+}

@@ -1,0 +1,82 @@
+{
+  "complete": true,
+  "run": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/165-clover-control-b/measurements/full12",
+  "reference": "/home/share/nsls_lwb/.cache/mg-20261102/source/build/validation/multigrid",
+  "reference_sha256": "1534d9c0653a019dcac4df98965f47f14d052cb324c35e568faa760d50878e9c",
+  "run_report_sha256": "889c4e1fc7475ac476920e3e66501c6473bc6ec2faa9e692ccafbc517acef946",
+  "propagator_sha256": "efac46691cad8bcd1a9e5ae8ddf7cb521d58a041234f1cb65218a5c0b4223dbf",
+  "method": "byte-only column extraction + independent scalar C++",
+  "source_xyzt": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_scale": 1.0,
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "normalization": "mass",
+  "columns": [
+    {
+      "source_spin": 0,
+      "source_color": 0,
+      "residual": 4.818856990201116e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 1,
+      "residual": 3.1987774537939656e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 2,
+      "residual": 3.933249821024162e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 0,
+      "residual": 3.1414177242043794e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 1,
+      "residual": 4.089349632814044e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 2,
+      "residual": 4.0759747971207065e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 0,
+      "residual": 3.6561691960128037e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 1,
+      "residual": 2.834992234353923e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 2,
+      "residual": 2.6407749154645565e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 0,
+      "residual": 3.773107751552601e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 1,
+      "residual": 4.279956848587865e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 2,
+      "residual": 2.6128431331850916e-09
+    }
+  ],
+  "assembled_gauge_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834"
+}

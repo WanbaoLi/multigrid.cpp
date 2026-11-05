@@ -1,0 +1,10 @@
+{
+  "threads": 256,
+  "compiler": "14.4.0",
+  "sve_bytes": 0,
+  "avx512": true,
+  "triad_effective_GBps": 1501.91204546,
+  "kernel_relative_error": 7.77637059824e-08,
+  "streamed_1024_blocks_seconds": 0.000271143391728,
+  "checksum": -0.00629999674857
+}

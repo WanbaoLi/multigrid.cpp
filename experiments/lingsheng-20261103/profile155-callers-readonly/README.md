@@ -1,0 +1,1 @@
+Read-only caller decoding of existing155 perf recordings. No new numerical/profile run. Inclusive caller shares are not additive or elapsed wall-time attribution. Original155 export remains unchanged.

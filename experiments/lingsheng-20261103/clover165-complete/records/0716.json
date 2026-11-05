@@ -1,0 +1,8 @@
+{
+  "complete": true,
+  "passed": true,
+  "protocol_version": 4,
+  "fresh_publication_protocol": "fresh-output-publication-v2",
+  "publication_module_sha256": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a",
+  "manifest_sha256": "16510f296fa290b86c5d94a4bbcafee82f0b59db3ae9053dbf33f1c3ddc21a40"
+}
