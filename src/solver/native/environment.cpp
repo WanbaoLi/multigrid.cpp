@@ -33,6 +33,19 @@ Complex distributed_dot(const Field &a, const Field &b) {
         MPI_Allreduce(MPI_IN_PLACE, sum, 2, MPI_DOUBLE, MPI_SUM, native_comm);
     return {sum[0], sum[1]};
 }
+double distributed_residual_norm(const Field &rhs, const Field &image, Field &residual) {
+    residual.resize(rhs.size());
+    double sum = 0;
+#pragma omp parallel for reduction(+ : sum) schedule(static)
+    for (size_t i = 0; i < rhs.size(); ++i) {
+        const Complex value = rhs[i] - image[i];
+        residual[i] = value;
+        sum += std::norm(value);
+    }
+    if (native_size > 1)
+        MPI_Allreduce(MPI_IN_PLACE, &sum, 1, MPI_DOUBLE, MPI_SUM, native_comm);
+    return std::sqrt(sum);
+}
 double fine_norm(const FloatField &v) {
     double sum = 0;
     // Fine fields retain global-index storage, with only this slab owned.

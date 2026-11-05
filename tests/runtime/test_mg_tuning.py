@@ -30,8 +30,8 @@ with Solver(lat,grid,mass=.05,csw=1.160920226,block=(2,2,2,2),threads=2+comm.ran
  baseline=check()
  # Switch outer precision collectively on the same ready hierarchy. Both the
  # scalar entry and batch fallback must reproduce this independent eigenmode.
- for outer in ('0','1'):
-  os.environ['LQCD_OUTER_FLOAT']=outer
+ for outer,fused in (('0','0'),('0','1'),('1','0'),('1','1')):
+  os.environ.update(LQCD_OUTER_FLOAT=outer,LQCD_RELIABLE_FUSED=fused)
   check()
   os.environ['LQCD_RHS_BATCH']='2'
   batched,stats=solver.solve_many(np.stack([rhs,2*rhs]),tol=1e-10,layout='lex')
@@ -50,7 +50,7 @@ with Solver(lat,grid,mass=.05,csw=1.160920226,block=(2,2,2,2),threads=2+comm.ran
  settings=dict(LQCD_MG_SAP_STEPS='2',LQCD_MG_SAP_CYCLES='1',LQCD_MG_COARSE_IT='20',
                LQCD_MG_COARSE_TOL='.3',LQCD_CORRECTION_BASE_TOL='.01',
                LQCD_FLOAT_CORRECTION_VERIFY='0',LQCD_FINE_TEAM_FUSED='1',LQCD_COARSE_THREADS='0',
-               LQCD_COARSE_BATCH_REDUCE='0',LQCD_GCR_FUSED='1',LQCD_OUTER_FLOAT='1')
+               LQCD_COARSE_BATCH_REDUCE='0',LQCD_GCR_FUSED='1',LQCD_OUTER_FLOAT='1',LQCD_RELIABLE_FUSED='0')
  os.environ.update(settings);check()
  for verify in ('0','1'):
   for team in ('0','1'):
@@ -60,7 +60,8 @@ with Solver(lat,grid,mass=.05,csw=1.160920226,block=(2,2,2,2),threads=2+comm.ran
                  ('LQCD_COARSE_THREADS','-1'),('LQCD_COARSE_THREADS','1.5'),
                  ('LQCD_COARSE_THREADS','609'),('LQCD_COARSE_BATCH_REDUCE','2'),
                  ('LQCD_COARSE_BATCH_REDUCE','nan'),('LQCD_GCR_FUSED','2'),
-                 ('LQCD_OUTER_FLOAT','2'),('LQCD_OUTER_FLOAT','nan'),('LQCD_OUTER_FLOAT','.5')]:
+                 ('LQCD_OUTER_FLOAT','2'),('LQCD_OUTER_FLOAT','nan'),('LQCD_OUTER_FLOAT','.5'),
+                 ('LQCD_RELIABLE_FUSED','2'),('LQCD_RELIABLE_FUSED','nan')]:
   good=os.environ.get(key)
   os.environ[key]=bad if comm.rank==0 else settings[key]
   try:solver.solve(rhs,layout='lex')
@@ -69,6 +70,11 @@ with Solver(lat,grid,mass=.05,csw=1.160920226,block=(2,2,2,2),threads=2+comm.ran
   if good is None:os.environ.pop(key,None)
   else:os.environ[key]=good
  if comm.size>1:
+  os.environ['LQCD_RELIABLE_FUSED']='0' if comm.rank==0 else '1'
+  try:solver.solve(rhs,layout='lex')
+  except RuntimeError as exc:assert 'tuning' in str(exc)
+  else:raise AssertionError('rank-inconsistent reliable fusion accepted')
+  os.environ['LQCD_RELIABLE_FUSED']='0'
   os.environ['LQCD_OUTER_FLOAT']='0' if comm.rank==0 else '1'
   try:solver.solve(rhs,layout='lex')
   except RuntimeError as exc:assert 'tuning' in str(exc)

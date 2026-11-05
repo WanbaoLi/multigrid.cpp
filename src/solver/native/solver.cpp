@@ -151,9 +151,13 @@ void NativeMG::solve(const Field &b, Field &x, double tol, int maxiter, int rest
             impl->decode_fine(fx, dx);
             axpy(x, 1., dx);
             apply(x, ax);
-            r = b;
-            axpy(r, -1., ax);
-            current_relative = distributed_norm(r) / bn;
+            if (impl->reliable_fused)
+                current_relative = distributed_residual_norm(b, ax, r) / bn;
+            else {
+                r = b;
+                axpy(r, -1., ax);
+                current_relative = distributed_norm(r) / bn;
+            }
             if (!std::isfinite(current_relative))
                 throw std::runtime_error("native reliable residual nonfinite");
             if (verbose)
@@ -202,9 +206,15 @@ void NativeMG::solve(const Field &b, Field &x, double tol, int maxiter, int rest
         qs.push_back(std::move(q));
         if (rn < tol || qs.size() == (size_t)restart) {
             apply(x, ax);
-            r = b;
-            axpy(r, -1., ax);
-            if (distributed_norm(r) / bn < tol) {
+            double refreshed;
+            if (impl->reliable_fused)
+                refreshed = distributed_residual_norm(b, ax, r) / bn;
+            else {
+                r = b;
+                axpy(r, -1., ax);
+                refreshed = distributed_norm(r) / bn;
+            }
+            if (refreshed < tol) {
                 if (verbose)
                     std::cerr << "native profile R " << impl->restrict_seconds << " coarse "
                           << impl->coarse_seconds << " P " << impl->prolong_seconds << " SAP "

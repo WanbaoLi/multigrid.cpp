@@ -88,6 +88,7 @@ struct HaloTrace {
 
 int setting(const char *name, int fallback);
 double distributed_norm(const Field &field);
+double distributed_residual_norm(const Field &rhs, const Field &image, Field &residual);
 Complex distributed_dot(const Field &a, const Field &b);
 double fine_norm(const FloatField &field);
 double coarse_norm(const FloatField &field);

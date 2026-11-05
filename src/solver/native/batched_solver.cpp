@@ -201,9 +201,13 @@ std::vector<int> NativeMG::solve_batch(const std::vector<Field> &b, std::vector<
             impl->decode_fine(w.x, w.delta);
             axpy(x[i], 1., w.delta);
             apply(x[i], w.image);
-            w.residual = b[i];
-            axpy(w.residual, -1., w.image);
-            w.relative = distributed_norm(w.residual) / w.bn;
+            if (impl->reliable_fused)
+                w.relative = distributed_residual_norm(b[i], w.image, w.residual) / w.bn;
+            else {
+                w.residual = b[i];
+                axpy(w.residual, -1., w.image);
+                w.relative = distributed_norm(w.residual) / w.bn;
+            }
             if (!std::isfinite(w.relative))
                 throw std::runtime_error("nonfinite batch reliable residual");
             w.converged = w.relative < tol;

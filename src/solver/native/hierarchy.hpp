@@ -194,4 +194,5 @@ struct NativeMG::Impl {
 
     int solve_float_gcr(const FloatField &b, FloatField &solution, double tol, int budget,
                         int restart);
+    bool reliable_fused = false;
 };
