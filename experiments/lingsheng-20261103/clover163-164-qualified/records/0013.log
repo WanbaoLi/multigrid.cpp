@@ -1,0 +1,3154 @@
+UpdateCTestConfiguration  from :/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/DartConfiguration.tcl
+Parse Config file:/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/DartConfiguration.tcl
+Parse Config file:/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/DartConfiguration.tcl
+Test project /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+      Start  1: core
+
+1: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/multigrid_core_test
+1: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+1: Environment variables: 
+1:  OMP_NUM_THREADS=2
+1: Test timeout computed to be: 1500
+1: GCR iter 1 residual 0.181576
+1: GCR iter 1 residual 0.303151
+1: core tests PASS
+ 1/32 Test  #1: core .............................   Passed    1.30 sec
+test 2
+      Start  2: arm_kernel
+
+2: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/arm_kernel_test
+2: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+2: Test timeout computed to be: 1500
+2: ARM kernel independent double clover oracle passed
+ 2/32 Test  #2: arm_kernel .......................   Passed    0.09 sec
+test 3
+      Start  3: arm_sve
+
+3: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/arm_sve_test
+3: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+3: Environment variables: 
+3:  LQCD_ARM_SVE=1
+3:  LQCD_WILSON_SIMD=1
+3:  LQCD_ARM_SVE_REUSE=0
+3: Test timeout computed to be: 1500
+3: PASS ARM SVE predicated clover oracle/tails
+ 3/32 Test  #3: arm_sve ..........................   Passed    0.10 sec
+test 4
+      Start  4: arm_sve_reuse
+
+4: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/arm_sve_test
+4: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+4: Environment variables: 
+4:  LQCD_ARM_SVE=1
+4:  LQCD_WILSON_SIMD=1
+4:  LQCD_ARM_SVE_REUSE=1
+4: Test timeout computed to be: 1500
+4: PASS ARM SVE predicated clover oracle/tails
+ 4/32 Test  #4: arm_sve_reuse ....................   Passed    0.14 sec
+test 5
+      Start  5: arm_sve_clover_reuse
+
+5: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/arm_sve_test
+5: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+5: Environment variables: 
+5:  LQCD_ARM_SVE=1
+5:  LQCD_WILSON_SIMD=1
+5:  LQCD_ARM_SVE_REUSE=1
+5:  LQCD_ARM_SVE_CLOVER_REUSE=1
+5: Test timeout computed to be: 1500
+5: PASS ARM SVE predicated clover oracle/tails
+ 5/32 Test  #5: arm_sve_clover_reuse .............   Passed    0.22 sec
+test 6
+      Start  6: arm_sve_plan
+
+6: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/arm_sve_plan_test
+6: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+6: Environment variables: 
+6:  LQCD_ARM_SVE=1
+6:  LQCD_WILSON_SIMD=1
+6:  LQCD_ARM_SVE_PLANNED=1
+6:  LQCD_ARM_SVE_REUSE=0
+6: Test timeout computed to be: 1500
+6: PASS SVE local plans, holes, half/tail fallback, alias and compact global offsets
+ 6/32 Test  #6: arm_sve_plan .....................   Passed    0.16 sec
+test 7
+      Start  7: arm_sve_plan_baseline
+
+7: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/arm_sve_plan_test
+7: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+7: Environment variables: 
+7:  LQCD_ARM_SVE=1
+7:  LQCD_WILSON_SIMD=1
+7:  LQCD_ARM_SVE_PLANNED=0
+7:  LQCD_ARM_SVE_REUSE=0
+7: Test timeout computed to be: 1500
+7: PASS SVE local plans, holes, half/tail fallback, alias and compact global offsets
+ 7/32 Test  #7: arm_sve_plan_baseline ............   Passed    0.15 sec
+test 8
+      Start  8: arm_sve_plan_reuse
+
+8: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/arm_sve_plan_test
+8: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+8: Environment variables: 
+8:  LQCD_ARM_SVE=1
+8:  LQCD_WILSON_SIMD=1
+8:  LQCD_ARM_SVE_PLANNED=1
+8:  LQCD_ARM_SVE_REUSE=1
+8: Test timeout computed to be: 1500
+8: PASS SVE local plans, holes, half/tail fallback, alias and compact global offsets
+ 8/32 Test  #8: arm_sve_plan_reuse ...............   Passed    0.14 sec
+test 9
+      Start  9: arm_sve_plan_reuse_gather
+
+9: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/arm_sve_plan_test
+9: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+9: Environment variables: 
+9:  LQCD_ARM_SVE=1
+9:  LQCD_WILSON_SIMD=1
+9:  LQCD_ARM_SVE_PLANNED=0
+9:  LQCD_ARM_SVE_REUSE=1
+9: Test timeout computed to be: 1500
+9: PASS SVE local plans, holes, half/tail fallback, alias and compact global offsets
+ 9/32 Test  #9: arm_sve_plan_reuse_gather ........   Passed    0.15 sec
+test 10
+      Start 10: arm_sve_plan_portable
+
+10: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/arm_sve_plan_test
+10: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+10: Environment variables: 
+10:  LQCD_ARM_SVE_PLANNED=1
+10:  LQCD_ARM_SVE=0
+10: Test timeout computed to be: 1500
+10: PASS SVE local plans, holes, half/tail fallback, alias and compact global offsets
+10/32 Test #10: arm_sve_plan_portable ............   Passed    0.17 sec
+test 11
+      Start 11: arm_sve_transfer
+
+11: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/arm_sve_transfer_test
+11: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+11: Test timeout computed to be: 1500
+11: PASS SVE prolongation double oracle, nonzero accumulation, unaligned output and tails
+11/32 Test #11: arm_sve_transfer .................   Passed    0.10 sec
+test 12
+      Start 12: hbm_placement
+
+12: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/hbm_placement_test
+12: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+12: Test timeout computed to be: 1500
+12: PASS HBM parsing, injected topology, cpuset filtering, alignment, off/error paths
+12/32 Test #12: hbm_placement ....................   Passed    0.05 sec
+test 13
+      Start 13: hbw_buffer
+
+13: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/hbw_buffer_test
+13: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+13: Test timeout computed to be: 1500
+13: PASS HBW ownership, original-pointer pairing, moves, overalignment, overflow, limits, null fallback, page query
+13/32 Test #13: hbw_buffer .......................   Passed    0.10 sec
+test 14
+      Start 14: coarse_kernel
+
+14: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/coarse_kernel_test
+14: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+14: Test timeout computed to be: 1500
+14: PASS coarse SVE pack/double GEMV oracle/add/tails
+14/32 Test #14: coarse_kernel ....................   Passed    0.09 sec
+test 15
+      Start 15: wilson_local
+
+15: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/wilson_local_test
+15: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+15: Test timeout computed to be: 1500
+15: PASS local Wilson clover/hop/parity-alias/tails max_relative_error=0 implementation=generic
+15/32 Test #15: wilson_local .....................   Passed    0.11 sec
+test 16
+      Start 16: wilson_global
+
+16: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/wilson_global_test
+16: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+16: Test timeout computed to be: 1500
+16: PASS global Wilson SIMD/tails/cross-block/clover/hop/oversized guard max_error=0
+16/32 Test #16: wilson_global ....................   Passed    0.13 sec
+test 17
+      Start 17: wilson_packed
+
+17: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/wilson_packed_test
+17: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+17: Test timeout computed to be: 1500
+17: PASS packed Wilson both-edge-mask/global/local/clover/hop/alias max_error=0 packed_calls=0
+17/32 Test #17: wilson_packed ....................   Passed    0.13 sec
+test 18
+      Start 18: wilson_contiguous
+
+18: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/wilson_contiguous_test
+18: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+18: Test timeout computed to be: 1500
+18: SKIP contiguous Wilson requires AVX512
+18/32 Test #18: wilson_contiguous ................   Passed    0.07 sec
+test 19
+      Start 19: wilson_packed_fallback
+
+19: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/wilson_packed_test
+19: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+19: Environment variables: 
+19:  LQCD_WILSON_SIMD=0
+19: Test timeout computed to be: 1500
+19: PASS packed Wilson both-edge-mask/global/local/clover/hop/alias max_error=0 packed_calls=0
+19/32 Test #19: wilson_packed_fallback ...........   Passed    0.13 sec
+test 20
+      Start 20: wilson_global_fallback
+
+20: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/wilson_global_test
+20: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+20: Environment variables: 
+20:  LQCD_WILSON_SIMD=0
+20: Test timeout computed to be: 1500
+20: PASS global Wilson SIMD/tails/cross-block/clover/hop/oversized guard max_error=0
+20/32 Test #20: wilson_global_fallback ...........   Passed    0.12 sec
+test 24
+      Start 24: native_allocator
+
+24: Test command: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/native_allocator_test
+24: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+24: Test timeout computed to be: 1500
+24: native allocator: alignment, copy/move/fill, over-aligned type, overflow passed
+21/32 Test #24: native_allocator .................   Passed    0.05 sec
+test 26
+      Start 26: cpu_backend_mpi2
+
+26: Test command: /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec "--host" "localhost:4" "--map-by" "ppr:1:numa:PE=2" "--bind-to" "core" "-n" "2" "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python" "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/source/tests/runtime/test_cpu_backend.py"
+26: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+26: Environment variables: 
+26:  LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/liblqcd_cpu.so.0.2.0
+26:  OMP_NUM_THREADS=2
+26:  OPENBLAS_NUM_THREADS=1
+26:  OMPI_MCA_hwloc_base_binding_policy=none
+26: Test timeout computed to be: 240
+26: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+26: setup vector 1 norm setup vector 1 norm 3.13089
+26: 3.13089
+26: setup vector 2 norm setup vector 2 norm 4.09586
+26: 4.09586
+26: setup vector 3 norm setup vector 3 norm 3.09808
+26: 3.09808
+26: setup vector 4 norm setup vector 4 norm 2.91924
+26: 2.91924
+26: setup vector 5 norm setup vector 5 norm 3.11947
+26: 3.11947
+26: setup vector 6 norm setup vector 6 norm 2.98507
+26: 2.98507
+26: setup vector 7 norm setup vector 7 norm 3.13374
+26: 3.13374
+26: setup vector 8setup vector 8 norm  norm 2.85459
+26: 2.85459
+26: setup vector 9 norm setup vector 9 norm 2.84447
+26: 2.84447
+26: setup vector 10 norm setup vector 10 norm 2.82289
+26: 2.82289
+26: setup vector 11 norm setup vector 11 norm 2.22117
+26: 2.22117
+26: setup vector 12 norm setup vector 12 norm 3.42095
+26: 3.42095
+26: setup vector 13 norm setup vector 13 norm 3.17156
+26: 3.17156
+26: setup vector 14 norm setup vector 14 norm 3.22345
+26: 3.22345
+26: setup vector 15 norm setup vector 15 norm 3.177653.17765
+26: 
+26: setup vector 16 norm setup vector 16 norm 3.73024
+26: 3.73024
+26: setup vector 17 norm setup vector 17 norm 2.79785
+26: 2.79785
+26: setup vector 18 norm setup vector 18 norm 2.73747
+26: 2.73747
+26: setup vector 19setup vector 19 norm  norm 2.64828
+26: 2.64828
+26: setup vector 20 norm setup vector 20 norm 3.40142
+26: 3.40142
+26: setup vector 21 norm setup vector 21 norm 3.33052
+26: 3.33052
+26: setup vector 22 norm setup vector 22 norm 2.96034
+26: 2.96034
+26: setup vector 23 norm setup vector 23 norm 2.84352
+26: 2.84352
+26: setup vector 24 norm setup vector 24 norm 3.05271
+26: 3.05271
+26: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+26: setup vector 1 norm setup vector 1 norm 1
+26: 1
+26: setup vector 2 norm setup vector 2 norm 1
+26: 1
+26: setup vector 3 norm setup vector 3 norm 1
+26: 1
+26: setup vector 4setup vector 4 norm  norm 1
+26: 1
+26: setup vector 5setup vector 5 norm  norm 1
+26: 1
+26: setup vector 6setup vector 6 norm  norm 1
+26: 1
+26: setup vector 7 norm setup vector 7 norm 1
+26: 1
+26: setup vector 8setup vector 8 norm  norm 1
+26: 1
+26: setup vector 9 norm setup vector 9 norm 1
+26: 1
+26: setup vector 10setup vector 10 norm  norm 1
+26: 1
+26: setup vector 11 norm setup vector 11 norm 1
+26: 1
+26: setup vector 12 norm setup vector 12 norm 1
+26: 1
+26: setup vector 13 norm setup vector 13 norm 1
+26: 1
+26: setup vector 14 norm setup vector 14 norm 1
+26: 1
+26: setup vector 15 norm setup vector 15 norm 1
+26: 1
+26: setup vector 16 norm setup vector 16 norm 1
+26: 1
+26: setup vector 17 norm setup vector 17 norm 1
+26: 1
+26: setup vector 18 norm setup vector 18 norm 1
+26: 1
+26: setup vector 19 norm setup vector 19 norm 1
+26: 1
+26: setup vector 20 norm setup vector 20 norm 1
+26: 1
+26: setup vector 21 norm setup vector 21 norm 1
+26: 1
+26: setup vector 22 norm setup vector 22 norm 1
+26: 1
+26: setup vector 23setup vector 23 norm  norm 1
+26: 1
+26: setup vector 24 norm setup vector 24 norm 1
+26: 1
+26: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+26: setup vector 1 norm setup vector 1 norm 1
+26: 1
+26: setup vector 2 norm setup vector 2 norm 1
+26: 1
+26: setup vector 3 norm setup vector 3 norm 1
+26: 1
+26: setup vector 4 norm setup vector 4 norm 1
+26: 1
+26: setup vector 5 norm setup vector 5 norm 1
+26: 1
+26: setup vector 6 norm setup vector 6 norm 1
+26: 1
+26: setup vector 7 norm setup vector 7 norm 1
+26: 1
+26: setup vector 8 norm setup vector 8 norm 1
+26: 1
+26: setup vector 9 norm setup vector 9 norm 1
+26: 1
+26: setup vector 10 norm setup vector 10 norm 1
+26: 1
+26: setup vector 11 norm setup vector 11 norm 1
+26: 1
+26: setup vector 12 norm setup vector 12 norm 1
+26: 1
+26: setup vector 13 norm setup vector 13 norm 1
+26: 1
+26: setup vector 14 norm setup vector 14 norm 1
+26: 1
+26: setup vector 15 norm setup vector 15 norm 1
+26: 1
+26: setup vector 16 norm setup vector 16 norm 1
+26: 1
+26: setup vector 17 norm setup vector 17 norm 1
+26: 1
+26: setup vector 18 norm setup vector 18 norm 1
+26: 1
+26: setup vector 19 norm setup vector 19 norm 1
+26: 1
+26: setup vector 20setup vector 20 norm  norm 1
+26: 1
+26: setup vector 21 norm setup vector 21 norm 1
+26: 1
+26: setup vector 22 norm setup vector 22 norm 1
+26: 1
+26: setup vector 23 norm setup vector 23 norm 1
+26: 1
+26: setup vector 24 norm setup vector 24 norm 1
+26: 1
+26: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+26: native coarse EO gate Schur_reconstruction=1.8731e-07
+26: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+26: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+26: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+26: setup vector 1 norm setup vector 1 norm 3.13089
+26: 3.13089
+26: setup vector 2 norm setup vector 2 norm 4.09586
+26: 4.09586
+26: setup vector 3 norm setup vector 3 norm 3.09808
+26: 3.09808
+26: setup vector 4 norm setup vector 4 norm 2.91924
+26: 2.91924
+26: setup vector 5 norm setup vector 5 norm 3.11947
+26: 3.11947
+26: setup vector 6 norm setup vector 6 norm 2.98507
+26: 2.98507
+26: setup vector 7 norm setup vector 7 norm 3.13374
+26: 3.13374
+26: setup vector 8 norm setup vector 8 norm 2.85459
+26: 2.85459
+26: setup vector 9 norm setup vector 9 norm 2.84447
+26: 2.84447
+26: setup vector 10setup vector 10 norm  norm 2.82289
+26: 2.82289
+26: setup vector 11 norm setup vector 11 norm 2.22117
+26: 2.22117
+26: setup vector 12 norm setup vector 12 norm 3.42095
+26: 3.42095
+26: setup vector 13setup vector 13 norm  norm 3.17156
+26: 3.17156
+26: setup vector 14 norm setup vector 14 norm 3.22345
+26: 3.22345
+26: setup vector 15 norm setup vector 15 norm 3.17765
+26: 3.17765
+26: setup vector 16 norm setup vector 16 norm 3.73024
+26: 3.73024
+26: setup vector 17 norm setup vector 17 norm 2.79785
+26: 2.79785
+26: setup vector 18 norm setup vector 18 norm 2.73747
+26: 2.73747
+26: setup vector 19 norm setup vector 19 norm 2.64828
+26: 2.64828
+26: setup vector setup vector 20 norm 20 norm 3.40142
+26: 3.40142
+26: setup vector 21 norm setup vector 21 norm 3.33052
+26: 3.33052
+26: setup vector 22 norm setup vector 22 norm 2.96034
+26: 2.96034
+26: setup vector 23 norm setup vector 23 norm 2.84352
+26: 2.84352
+26: setup vector 24 norm setup vector 24 norm 3.05271
+26: 3.05271
+26: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+26: setup vector 1 norm setup vector 1 norm 1
+26: 1
+26: setup vector 2 norm setup vector 2 norm 1
+26: 1
+26: setup vector 3 norm setup vector 3 norm 1
+26: 1
+26: setup vector 4 norm setup vector 4 norm 1
+26: 1
+26: setup vector 5 norm setup vector 5 norm 1
+26: 1
+26: setup vector 6 norm setup vector 6 norm 1
+26: 1
+26: setup vector 7 norm setup vector 7 norm 1
+26: 1
+26: setup vector 8 norm setup vector 8 norm 1
+26: 1
+26: setup vector 9 norm setup vector 9 norm 1
+26: 1
+26: setup vector 10 norm setup vector 10 norm 1
+26: 1
+26: setup vector 11 norm setup vector 11 norm 1
+26: 1
+26: setup vector 12 norm setup vector 12 norm 1
+26: 1
+26: setup vector 13 norm setup vector 13 norm 1
+26: 1
+26: setup vector 14 norm setup vector 14 norm 1
+26: 1
+26: setup vector 15 norm setup vector 15 norm 1
+26: 1
+26: setup vector 16setup vector 16 norm  norm 1
+26: 1
+26: setup vector 17 norm setup vector 17 norm 1
+26: 1
+26: setup vector 18 norm setup vector 18 norm 1
+26: 1
+26: setup vector 19 norm setup vector 19 norm 1
+26: 1
+26: setup vector 20setup vector 20 norm  norm 1
+26: 1
+26: setup vector 21 norm setup vector 21 norm 1
+26: 1
+26: setup vector 22 norm setup vector 22 norm 1
+26: 1
+26: setup vector 23 norm setup vector 23 norm 1
+26: 1
+26: setup vector 24 norm setup vector 24 norm 1
+26: 1
+26: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+26: setup vector 1setup vector 1 norm  norm 1
+26: 1
+26: setup vector 2 norm setup vector 2 norm 1
+26: 1
+26: setup vector setup vector 3 norm 3 norm 1
+26: 1
+26: setup vector 4 norm setup vector 4 norm 1
+26: 1
+26: setup vector 5 norm setup vector 5 norm 1
+26: 1
+26: setup vector 6 norm setup vector 6 norm 1
+26: 1
+26: setup vector 7 norm setup vector 7 norm 1
+26: 1
+26: setup vector 8 norm setup vector 8 norm 1
+26: 1
+26: setup vector 9 norm setup vector 9 norm 1
+26: 1
+26: setup vector 10 norm setup vector 10 norm 1
+26: 1
+26: setup vector 11 norm setup vector 11 norm 1
+26: 1
+26: setup vector 12 norm setup vector 12 norm 1
+26: 1
+26: setup vector 13 norm setup vector 13 norm 1
+26: 1
+26: setup vector 14 norm setup vector 14 norm 1
+26: 1
+26: setup vector 15setup vector 15 norm  norm 1
+26: 1
+26: setup vector 16 norm setup vector 16 norm 1
+26: 1
+26: setup vector 17setup vector 17 norm  norm 1
+26: 1
+26: setup vector 18 norm setup vector 18 norm 1
+26: 1
+26: setup vector 19 norm setup vector 19 norm 1
+26: 1
+26: setup vector 20 norm setup vector 20 norm 1
+26: 1
+26: setup vector 21 norm setup vector 21 norm 1
+26: 1
+26: setup vector 22 norm setup vector 22 norm 1
+26: 1
+26: setup vector 23 norm setup vector 23 norm 1
+26: 1
+26: setup vector 24 norm setup vector 24 norm 1
+26: 1
+26: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+26: native coarse EO gate Schur_reconstruction=1.8731e-07
+26: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+26: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+26: PASS: CPU backend independent full operator/residual, mass/kappa, two random RHS scalar/batch, zero, EO/lex, source preservation and unavailable backend recovery
+22/32 Test #26: cpu_backend_mpi2 .................   Passed   34.78 sec
+test 30
+      Start 30: batch12_mpi2
+
+30: Test command: /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec "--host" "localhost:4" "--map-by" "ppr:1:numa:PE=2" "--bind-to" "core" "-n" "2" "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python" "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/source/tests/runtime/test_batch12.py"
+30: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+30: Environment variables: 
+30:  LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/liblqcd_cpu.so.0.2.0
+30:  OMP_NUM_THREADS=2
+30:  OPENBLAS_NUM_THREADS=1
+30:  OMPI_MCA_hwloc_base_binding_policy=none
+30: Test timeout computed to be: 600
+30: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+30: setup vector 1 norm setup vector 1 norm 3.13089
+30: 3.13089
+30: setup vector 2 norm setup vector 2 norm 4.09586
+30: 4.09586
+30: setup vector 3 norm setup vector 3 norm 3.09808
+30: 3.09808
+30: setup vector 4 norm setup vector 4 norm 2.91924
+30: 2.91924
+30: setup vector 5 norm setup vector 5 norm 3.11947
+30: 3.11947
+30: setup vector 6 norm setup vector 6 norm 2.98507
+30: 2.98507
+30: setup vector 7 norm setup vector 7 norm 3.13374
+30: 3.13374
+30: setup vector 8 norm setup vector 8 norm 2.854592.85459
+30: 
+30: setup vector 9 norm setup vector 9 norm 2.84447
+30: 2.84447
+30: setup vector 10 norm setup vector 10 norm 2.82289
+30: 2.82289
+30: setup vector 11 norm setup vector 11 norm 2.22117
+30: 2.22117
+30: setup vector 12 norm setup vector 12 norm 3.42095
+30: 3.42095
+30: setup vector 13 norm setup vector 13 norm 3.17156
+30: 3.17156
+30: setup vector 14 norm setup vector 14 norm 3.223453.22345
+30: 
+30: setup vector 15setup vector 15 norm  norm 3.17765
+30: 3.17765
+30: setup vector 16setup vector 16 norm  norm 3.73024
+30: 3.73024
+30: setup vector 17 norm setup vector 17 norm 2.79785
+30: 2.79785
+30: setup vector 18 norm setup vector 18 norm 2.73747
+30: 2.73747
+30: setup vector 19 norm setup vector 19 norm 2.64828
+30: 2.64828
+30: setup vector 20 norm setup vector 20 norm 3.40142
+30: 3.40142
+30: setup vector 21 norm setup vector 21 norm 3.33052
+30: 3.33052
+30: setup vector 22 norm setup vector 22 norm 2.96034
+30: 2.96034
+30: setup vector 23 norm setup vector 23 norm 2.84352
+30: 2.84352
+30: setup vector 24 norm setup vector 24 norm 3.05271
+30: 3.05271
+30: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+30: setup vector 1 norm setup vector 1 norm 1
+30: 1
+30: setup vector 2 norm setup vector 2 norm 1
+30: 1
+30: setup vector 3setup vector 3 norm  norm 1
+30: 1
+30: setup vector 4 norm setup vector 4 norm 1
+30: 1
+30: setup vector 5 norm setup vector 5 norm 1
+30: 1
+30: setup vector 6 norm setup vector 6 norm 1
+30: 1
+30: setup vector 7setup vector 7 norm  norm 1
+30: 1
+30: setup vector 8 norm setup vector 8 norm 1
+30: 1
+30: setup vector 9 norm setup vector 9 norm 1
+30: 1
+30: setup vector 10setup vector 10 norm  norm 1
+30: 1
+30: setup vector 11 norm setup vector 11 norm 1
+30: 1
+30: setup vector 12 norm setup vector 12 norm 1
+30: 1
+30: setup vector 13 norm setup vector 13 norm 1
+30: 1
+30: setup vector 14setup vector 14 norm  norm 1
+30: 1
+30: setup vector 15 norm setup vector 15 norm 1
+30: 1
+30: setup vector 16 norm setup vector 16 norm 1
+30: 1
+30: setup vector 17 norm setup vector 17 norm 1
+30: 1
+30: setup vector 18 norm setup vector 18 norm 1
+30: 1
+30: setup vector 19 norm setup vector 19 norm 1
+30: 1
+30: setup vector 20 norm setup vector 20 norm 1
+30: 1
+30: setup vector 21 norm setup vector 21 norm 1
+30: 1
+30: setup vector 22 norm setup vector 22 norm 1
+30: 1
+30: setup vector 23 norm setup vector 23 norm 1
+30: 1
+30: setup vector 24 norm setup vector 24 norm 1
+30: 1
+30: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+30: setup vector 1 norm setup vector 1 norm 1
+30: 1
+30: setup vector 2setup vector 2 norm  norm 1
+30: 1
+30: setup vector 3 norm setup vector 3 norm 1
+30: 1
+30: setup vector 4 norm setup vector 4 norm 1
+30: 1
+30: setup vector 5setup vector 5 norm  norm 1
+30: 1
+30: setup vector 6 norm setup vector 6 norm 1
+30: 1
+30: setup vector setup vector 7 norm 7 norm 1
+30: 1
+30: setup vector 8setup vector 8 norm  norm 1
+30: 1
+30: setup vector 9 norm setup vector 9 norm 1
+30: 1
+30: setup vector 10 norm setup vector 10 norm 1
+30: 1
+30: setup vector 11 norm setup vector 11 norm 1
+30: 1
+30: setup vector 12 norm setup vector 12 norm 1
+30: 1
+30: setup vector 13setup vector 13 norm  norm 1
+30: 1
+30: setup vector 14 norm setup vector 14 norm 1
+30: 1
+30: setup vector 15 norm setup vector 15 norm 1
+30: 1
+30: setup vector 16 norm setup vector 16 norm 1
+30: 1
+30: setup vector 17 norm setup vector 17 norm 1
+30: 1
+30: setup vector 18 norm setup vector 18 norm 1
+30: 1
+30: setup vector 19 norm setup vector 19 norm 1
+30: 1
+30: setup vector 20setup vector 20 norm  norm 1
+30: 1
+30: setup vector 21 norm setup vector 21 norm 1
+30: 1
+30: setup vector 22 norm setup vector 22 norm 1
+30: 1
+30: setup vector 23 norm setup vector 23 norm 1
+30: 1
+30: setup vector 24 norm setup vector 24 norm 1
+30: 1
+30: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+30: native coarse EO gate Schur_reconstruction=1.8731e-07
+30: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+30: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+30: BATCH12 PASS ranks=2 max_independent_residual=4.736088157e-09
+23/32 Test #30: batch12_mpi2 .....................   Passed   45.61 sec
+test 31
+      Start 31: batch12_coarse_reduce_mpi2
+
+31: Test command: /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec "--host" "localhost:4" "--map-by" "ppr:1:numa:PE=2" "--bind-to" "core" "-n" "2" "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python" "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/source/tests/runtime/test_batch12.py"
+31: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+31: Environment variables: 
+31:  LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/liblqcd_cpu.so.0.2.0
+31:  OMP_NUM_THREADS=2
+31:  OPENBLAS_NUM_THREADS=1
+31:  OMPI_MCA_hwloc_base_binding_policy=none
+31:  LQCD_COARSE_BATCH_REDUCE=1
+31: Test timeout computed to be: 600
+31: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+31: setup vector 1 norm setup vector 1 norm 3.13089
+31: 3.13089
+31: setup vector 2 norm setup vector 2 norm 4.09586
+31: 4.09586
+31: setup vector 3 norm setup vector 3 norm 3.09808
+31: 3.09808
+31: setup vector 4 norm setup vector 4 norm 2.91924
+31: 2.91924
+31: setup vector 5 norm setup vector 5 norm 3.11947
+31: 3.11947
+31: setup vector 6 norm setup vector 6 norm 2.98507
+31: 2.98507
+31: setup vector 7 norm setup vector 7 norm 3.133743.13374
+31: 
+31: setup vector 8 norm setup vector 8 norm 2.85459
+31: 2.85459
+31: setup vector 9 norm setup vector 9 norm 2.84447
+31: 2.84447
+31: setup vector 10 norm setup vector 10 norm 2.82289
+31: 2.82289
+31: setup vector 11 norm setup vector 11 norm 2.22117
+31: 2.22117
+31: setup vector 12 norm setup vector 12 norm 3.420953.42095
+31: 
+31: setup vector 13 norm setup vector 13 norm 3.17156
+31: 3.17156
+31: setup vector 14 norm setup vector 14 norm 3.22345
+31: 3.22345
+31: setup vector 15 norm setup vector 15 norm 3.17765
+31: 3.17765
+31: setup vector 16 norm setup vector 16 norm 3.730243.73024
+31: 
+31: setup vector 17 norm setup vector 17 norm 2.79785
+31: 2.79785
+31: setup vector 18 norm setup vector 18 norm 2.73747
+31: 2.73747
+31: setup vector 19 norm setup vector 19 norm 2.64828
+31: 2.64828
+31: setup vector 20 norm setup vector 20 norm 3.40142
+31: 3.40142
+31: setup vector 21 norm setup vector 21 norm 3.33052
+31: 3.33052
+31: setup vector 22 norm setup vector 22 norm 2.96034
+31: 2.96034
+31: setup vector 23 norm setup vector 23 norm 2.843522.84352
+31: 
+31: setup vector 24 norm setup vector 24 norm 3.05271
+31: 3.05271
+31: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+31: setup vector 1 norm setup vector 1 norm 1
+31: 1
+31: setup vector 2 norm setup vector 2 norm 1
+31: 1
+31: setup vector 3 norm setup vector 3 norm 1
+31: 1
+31: setup vector 4 norm setup vector 4 norm 1
+31: 1
+31: setup vector 5 norm setup vector 5 norm 1
+31: 1
+31: setup vector 6 norm setup vector 6 norm 1
+31: 1
+31: setup vector 7 norm setup vector 7 norm 1
+31: 1
+31: setup vector 8setup vector 8 norm  norm 1
+31: 1
+31: setup vector 9 norm setup vector 9 norm 1
+31: 1
+31: setup vector 10 norm setup vector 10 norm 1
+31: 1
+31: setup vector 11 norm setup vector 11 norm 1
+31: 1
+31: setup vector 12 norm setup vector 12 norm 1
+31: 1
+31: setup vector 13 norm setup vector 13 norm 1
+31: 1
+31: setup vector 14 norm setup vector 14 norm 1
+31: 1
+31: setup vector 15 norm setup vector 15 norm 1
+31: 1
+31: setup vector 16 norm setup vector 16 norm 1
+31: 1
+31: setup vector 17 norm setup vector 17 norm 1
+31: 1
+31: setup vector 18 norm setup vector 18 norm 1
+31: 1
+31: setup vector 19 norm setup vector 19 norm 1
+31: 1
+31: setup vector 20 norm setup vector 20 norm 1
+31: 1
+31: setup vector 21 norm setup vector 21 norm 1
+31: 1
+31: setup vector 22 norm setup vector 22 norm 1
+31: 1
+31: setup vector 23 norm setup vector 23 norm 1
+31: 1
+31: setup vector 24 norm setup vector 24 norm 1
+31: 1
+31: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+31: setup vector 1 norm setup vector 1 norm 1
+31: 1
+31: setup vector 2 norm setup vector 2 norm 1
+31: 1
+31: setup vector 3 norm setup vector 3 norm 1
+31: 1
+31: setup vector 4 norm setup vector 4 norm 1
+31: 1
+31: setup vector 5 norm setup vector 5 norm 1
+31: 1
+31: setup vector 6 norm setup vector 6 norm 1
+31: 1
+31: setup vector 7 norm setup vector 7 norm 1
+31: 1
+31: setup vector 8 norm setup vector 8 norm 1
+31: 1
+31: setup vector 9 norm setup vector 9 norm 1
+31: 1
+31: setup vector 10 norm setup vector 10 norm 1
+31: 1
+31: setup vector 11 norm setup vector 11 norm 1
+31: 1
+31: setup vector 12 norm setup vector 12 norm 1
+31: 1
+31: setup vector 13 norm setup vector 13 norm 1
+31: 1
+31: setup vector 14 norm setup vector 14 norm 1
+31: 1
+31: setup vector 15 norm setup vector 15 norm 1
+31: 1
+31: setup vector 16 norm setup vector 16 norm 1
+31: 1
+31: setup vector 17 norm setup vector 17 norm 1
+31: 1
+31: setup vector 18setup vector 18 norm  norm 1
+31: 1
+31: setup vector 19setup vector 19 norm  norm 1
+31: 1
+31: setup vector 20setup vector 20 norm  norm 1
+31: 1
+31: setup vector 21 norm setup vector 21 norm 1
+31: 1
+31: setup vector 22setup vector 22 norm  norm 1
+31: 1
+31: setup vector 23 norm setup vector 23 norm 1
+31: 1
+31: setup vector 24 norm setup vector 24 norm 1
+31: 1
+31: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+31: native coarse EO gate Schur_reconstruction=1.8731e-07
+31: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+31: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+31: BATCH12 PASS ranks=2 max_independent_residual=4.736088157e-09
+24/32 Test #31: batch12_coarse_reduce_mpi2 .......   Passed   43.96 sec
+test 32
+      Start 32: coarse_batch_reduce_serial
+
+32: Test command: /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/source/tests/runtime/test_coarse_batch_reduce.py"
+32: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+32: Environment variables: 
+32:  LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/liblqcd_cpu.so.0.2.0
+32:  OMP_NUM_THREADS=2
+32:  OPENBLAS_NUM_THREADS=1
+32:  OMPI_MCA_hwloc_base_binding_policy=none
+32:  OMP_PLACES=cores
+32:  OMP_PROC_BIND=close
+32: Test timeout computed to be: 600
+32: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+32: setup vector 1 norm 0.360367
+32: setup vector 2 norm 0.473325
+32: setup vector 3 norm 0.357603
+32: setup vector 4 norm 0.337545
+32: setup vector 5 norm 0.360478
+32: setup vector 6 norm 0.345591
+32: setup vector 7 norm 0.362276
+32: setup vector 8 norm 0.329287
+32: setup vector 9 norm 0.330762
+32: setup vector 10 norm 0.327259
+32: setup vector 11 norm 0.258269
+32: setup vector 12 norm 0.392849
+32: setup vector 13 norm 0.366517
+32: setup vector 14 norm 0.372088
+32: setup vector 15 norm 0.36569
+32: setup vector 16 norm 0.426913
+32: setup vector 17 norm 0.323103
+32: setup vector 18 norm 0.314772
+32: setup vector 19 norm 0.305552
+32: setup vector 20 norm 0.392718
+32: setup vector 21 norm 0.38356
+32: setup vector 22 norm 0.340681
+32: setup vector 23 norm 0.328521
+32: setup vector 24 norm 0.352389
+32: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+32: setup vector 1 norm 1
+32: setup vector 2 norm 1
+32: setup vector 3 norm 1
+32: setup vector 4 norm 1
+32: setup vector 5 norm 1
+32: setup vector 6 norm 1
+32: setup vector 7 norm 1
+32: setup vector 8 norm 1
+32: setup vector 9 norm 1
+32: setup vector 10 norm 1
+32: setup vector 11 norm 1
+32: setup vector 12 norm 1
+32: setup vector 13 norm 1
+32: setup vector 14 norm 1
+32: setup vector 15 norm 1
+32: setup vector 16 norm 1
+32: setup vector 17 norm 1
+32: setup vector 18 norm 1
+32: setup vector 19 norm 1
+32: setup vector 20 norm 1
+32: setup vector 21 norm 1
+32: setup vector 22 norm 1
+32: setup vector 23 norm 1
+32: setup vector 24 norm 1
+32: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+32: setup vector 1 norm 1
+32: setup vector 2 norm 1
+32: setup vector 3 norm 1
+32: setup vector 4 norm 1
+32: setup vector 5 norm 1
+32: setup vector 6 norm 1
+32: setup vector 7 norm 1
+32: setup vector 8 norm 1
+32: setup vector 9 norm 1
+32: setup vector 10 norm 1
+32: setup vector 11 norm 1
+32: setup vector 12 norm 1
+32: setup vector 13 norm 1
+32: setup vector 14 norm 1
+32: setup vector 15 norm 1
+32: setup vector 16 norm 1
+32: setup vector 17 norm 1
+32: setup vector 18 norm 1
+32: setup vector 19 norm 1
+32: setup vector 20 norm 1
+32: setup vector 21 norm 1
+32: setup vector 22 norm 1
+32: setup vector 23 norm 1
+32: setup vector 24 norm 1
+32: native EO gates clover_inverse=0 Schur_reconstruction=8.73354e-08
+32: native coarse EO gate Schur_reconstruction=1.88361e-07
+32: native gates double=1.59655e-16 fine=7.17548e-08 R*P=5.43767e-08 RAP=1.7885e-07
+32: COARSE_BATCH_DIAGNOSTIC {"allreduce_calls": 0, "calls": 12, "cap": 1, "capped": 48, "differing_iterations": false, "differing_refreshes": false, "restarts": 0}
+32: COARSE_BATCH_DIAGNOSTIC {"allreduce_calls": 0, "calls": 8, "cap": 40, "capped": 0, "differing_iterations": true, "differing_refreshes": false, "restarts": 0}
+32: COARSE_BATCH_DIAGNOSTIC {"allreduce_calls": 0, "calls": 8, "cap": 200, "capped": 0, "differing_iterations": true, "differing_refreshes": false, "restarts": 0}
+32: COARSE_BATCH_COVERAGE {"different_refreshes_observed": false, "different_stops_observed": true, "restart_observed": false}
+32: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=0
+32: setup vector 1 norm 0.360367
+32: setup vector 2 norm 0.473325
+32: setup vector 3 norm 0.357603
+32: setup vector 4 norm 0.337545
+32: setup vector 5 norm 0.360478
+32: setup vector 6 norm 0.345591
+32: setup vector 7 norm 0.362276
+32: setup vector 8 norm 0.329287
+32: setup vector 9 norm 0.330762
+32: setup vector 10 norm 0.327259
+32: setup vector 11 norm 0.258269
+32: setup vector 12 norm 0.392849
+32: setup vector 13 norm 0.366517
+32: setup vector 14 norm 0.372088
+32: setup vector 15 norm 0.36569
+32: setup vector 16 norm 0.426913
+32: setup vector 17 norm 0.323103
+32: setup vector 18 norm 0.314772
+32: setup vector 19 norm 0.305552
+32: setup vector 20 norm 0.392718
+32: setup vector 21 norm 0.38356
+32: setup vector 22 norm 0.340681
+32: setup vector 23 norm 0.328521
+32: setup vector 24 norm 0.352389
+32: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=0
+32: setup vector 1 norm 1
+32: setup vector 2 norm 1
+32: setup vector 3 norm 1
+32: setup vector 4 norm 1
+32: setup vector 5 norm 1
+32: setup vector 6 norm 1
+32: setup vector 7 norm 1
+32: setup vector 8 norm 1
+32: setup vector 9 norm 1
+32: setup vector 10 norm 1
+32: setup vector 11 norm 1
+32: setup vector 12 norm 1
+32: setup vector 13 norm 1
+32: setup vector 14 norm 1
+32: setup vector 15 norm 1
+32: setup vector 16 norm 1
+32: setup vector 17 norm 1
+32: setup vector 18 norm 1
+32: setup vector 19 norm 1
+32: setup vector 20 norm 1
+32: setup vector 21 norm 1
+32: setup vector 22 norm 1
+32: setup vector 23 norm 1
+32: setup vector 24 norm 1
+32: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=0
+32: setup vector 1 norm 1
+32: setup vector 2 norm 1
+32: setup vector 3 norm 1
+32: setup vector 4 norm 1
+32: setup vector 5 norm 1
+32: setup vector 6 norm 1
+32: setup vector 7 norm 1
+32: setup vector 8 norm 1
+32: setup vector 9 norm 1
+32: setup vector 10 norm 1
+32: setup vector 11 norm 1
+32: setup vector 12 norm 1
+32: setup vector 13 norm 1
+32: setup vector 14 norm 1
+32: setup vector 15 norm 1
+32: setup vector 16 norm 1
+32: setup vector 17 norm 1
+32: setup vector 18 norm 1
+32: setup vector 19 norm 1
+32: setup vector 20 norm 1
+32: setup vector 21 norm 1
+32: setup vector 22 norm 1
+32: setup vector 23 norm 1
+32: setup vector 24 norm 1
+32: native EO gates clover_inverse=0 Schur_reconstruction=8.73354e-08
+32: native gates double=1.59655e-16 fine=7.17548e-08 R*P=5.50739e-08 RAP=1.75866e-07
+32: PASS coarse independent-RHS reduction batching ranks=1 widths=1,2,4,12 max_independent_residual=3.966979217e-11
+25/32 Test #32: coarse_batch_reduce_serial .......   Passed  129.48 sec
+test 33
+      Start 33: coarse_batch_reduce_mpi2
+
+33: Test command: /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec "--host" "localhost:4" "--map-by" "ppr:1:numa:PE=2" "--bind-to" "core" "-n" "2" "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python" "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/source/tests/runtime/test_coarse_batch_reduce.py"
+33: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+33: Environment variables: 
+33:  LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/liblqcd_cpu.so.0.2.0
+33:  OMP_NUM_THREADS=2
+33:  OPENBLAS_NUM_THREADS=1
+33:  OMPI_MCA_hwloc_base_binding_policy=none
+33:  OMP_PLACES=cores
+33:  OMP_PROC_BIND=close
+33: Test timeout computed to be: 600
+33: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+33: setup vector 1 norm setup vector 1 norm 0.360367
+33: 0.360367
+33: setup vector 2 norm setup vector 2 norm 0.473325
+33: 0.473325
+33: setup vector 3 norm setup vector 3 norm 0.357603
+33: 0.357603
+33: setup vector 4 norm setup vector 4 norm 0.337545
+33: 0.337545
+33: setup vector 5 norm setup vector 5 norm 0.360478
+33: 0.360478
+33: setup vector 6 norm setup vector 6 norm 0.345591
+33: 0.345591
+33: setup vector 7 norm setup vector 7 norm 0.362276
+33: 0.362276
+33: setup vector 8 norm setup vector 8 norm 0.329287
+33: 0.329287
+33: setup vector 9 norm setup vector 9 norm 0.330762
+33: 0.330762
+33: setup vector 10 norm setup vector 10 norm 0.327259
+33: 0.327259
+33: setup vector 11 norm setup vector 11 norm 0.258269
+33: 0.258269
+33: setup vector 12 norm setup vector 12 norm 0.392849
+33: 0.392849
+33: setup vector 13 norm setup vector 13 norm 0.366517
+33: 0.366517
+33: setup vector 14 norm setup vector 14 norm 0.372088
+33: 0.372088
+33: setup vector 15 norm setup vector 15 norm 0.36569
+33: 0.36569
+33: setup vector 16 norm setup vector 16 norm 0.426913
+33: 0.426913
+33: setup vector 17 norm setup vector 17 norm 0.323103
+33: 0.323103
+33: setup vector 18 norm setup vector 18 norm 0.314772
+33: 0.314772
+33: setup vector 19 norm setup vector 19 norm 0.305552
+33: 0.305552
+33: setup vector 20 norm setup vector 20 norm 0.392718
+33: 0.392718
+33: setup vector 21 norm setup vector 21 norm 0.38356
+33: 0.38356
+33: setup vector 22 norm setup vector 22 norm 0.340681
+33: 0.340681
+33: setup vector 23 norm setup vector 23 norm 0.328521
+33: 0.328521
+33: setup vector 24 norm setup vector 24 norm 0.352389
+33: 0.352389
+33: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+33: setup vector 1setup vector 1 norm  norm 1
+33: 1
+33: setup vector 2 norm setup vector 2 norm 1
+33: 1
+33: setup vector 3 norm setup vector 3 norm 1
+33: 1
+33: setup vector 4 norm setup vector 4 norm 1
+33: 1
+33: setup vector 5 norm setup vector 5 norm 1
+33: 1
+33: setup vector 6 norm setup vector 6 norm 1
+33: 1
+33: setup vector 7 norm setup vector 7 norm 1
+33: 1
+33: setup vector 8 norm setup vector 8 norm 1
+33: 1
+33: setup vector 9 norm setup vector 9 norm 1
+33: 1
+33: setup vector 10 norm setup vector 10 norm 1
+33: 1
+33: setup vector 11 norm setup vector 11 norm 1
+33: 1
+33: setup vector 12 norm setup vector 12 norm 1
+33: 1
+33: setup vector 13 norm setup vector 13 norm 1
+33: 1
+33: setup vector 14 norm setup vector 14 norm 1
+33: 1
+33: setup vector 15 norm setup vector 15 norm 1
+33: 1
+33: setup vector 16 norm setup vector 16 norm 1
+33: 1
+33: setup vector 17 norm setup vector 17 norm 1
+33: 1
+33: setup vector 18 norm setup vector 18 norm 1
+33: 1
+33: setup vector 19 norm setup vector 19 norm 1
+33: 1
+33: setup vector 20 norm setup vector 20 norm 1
+33: 1
+33: setup vector 21 norm setup vector 21 norm 1
+33: 1
+33: setup vector 22setup vector 22 norm  norm 1
+33: 1
+33: setup vector 23 norm setup vector 23 norm 1
+33: 1
+33: setup vector 24setup vector 24 norm  norm 1
+33: 1
+33: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+33: setup vector 1 norm setup vector 1 norm 1
+33: 1
+33: setup vector 2 norm setup vector 2 norm 11
+33: 
+33: setup vector 3 norm setup vector 3 norm 1
+33: 1
+33: setup vector 4 norm setup vector 4 norm 1
+33: 1
+33: setup vector 5 norm setup vector 5 norm 1
+33: 1
+33: setup vector 6 norm setup vector 6 norm 1
+33: 1
+33: setup vector 7 norm setup vector 7 norm 1
+33: 1
+33: setup vector 8setup vector 8 norm  norm 1
+33: 1
+33: setup vector 9 norm setup vector 9 norm 1
+33: 1
+33: setup vector 10 norm setup vector 10 norm 1
+33: 1
+33: setup vector 11 norm setup vector 11 norm 1
+33: 1
+33: setup vector 12 norm setup vector 12 norm 1
+33: 1
+33: setup vector 13 norm setup vector 13 norm 1
+33: 1
+33: setup vector 14 norm setup vector 14 norm 1
+33: 1
+33: setup vector 15 norm setup vector 15 norm 1
+33: 1
+33: setup vector 16 norm setup vector 16 norm 11
+33: 
+33: setup vector 17 norm setup vector 17 norm 1
+33: 1
+33: setup vector 18 norm setup vector 18 norm 1
+33: 1
+33: setup vector 19 norm setup vector 19 norm 1
+33: 1
+33: setup vector 20 norm setup vector 20 norm 1
+33: 1
+33: setup vector 21 norm setup vector 21 norm 1
+33: 1
+33: setup vector 22 norm setup vector 22 norm 1
+33: 1
+33: setup vector 23 norm setup vector 23 norm 1
+33: 1
+33: setup vector 24 norm setup vector 24 norm 1
+33: 1
+33: native EO gates clover_inverse=0 Schur_reconstruction=8.73354e-08
+33: native coarse EO gate Schur_reconstruction=1.88361e-07
+33: native gates double=1.59655e-16 fine=7.17548e-08 R*P=5.43767e-08 RAP=1.7885e-07
+33: native gates double=1.59655e-16 fine=7.17548e-08 R*P=5.43767e-08 RAP=1.7885e-07
+33: COARSE_BATCH_DIAGNOSTIC {"allreduce_calls": 48, "calls": 12, "cap": 1, "capped": 48, "differing_iterations": false, "differing_refreshes": false, "restarts": 0}
+33: COARSE_BATCH_DIAGNOSTIC {"allreduce_calls": 734, "calls": 8, "cap": 40, "capped": 0, "differing_iterations": true, "differing_refreshes": false, "restarts": 0}
+33: COARSE_BATCH_DIAGNOSTIC {"allreduce_calls": 734, "calls": 8, "cap": 200, "capped": 0, "differing_iterations": true, "differing_refreshes": false, "restarts": 0}
+33: COARSE_BATCH_COVERAGE {"different_refreshes_observed": false, "different_stops_observed": true, "restart_observed": false}
+33: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=0
+33: setup vector 1 norm setup vector 1 norm 0.360367
+33: 0.360367
+33: setup vector 2 norm setup vector 2 norm 0.473325
+33: 0.473325
+33: setup vector 3 norm setup vector 3 norm 0.357603
+33: 0.357603
+33: setup vector 4 norm setup vector 4 norm 0.337545
+33: 0.337545
+33: setup vector 5 norm setup vector 5 norm 0.360478
+33: 0.360478
+33: setup vector 6 norm setup vector 6 norm 0.345591
+33: 0.345591
+33: setup vector 7 norm setup vector 7 norm 0.362276
+33: 0.362276
+33: setup vector 8 norm setup vector 8 norm 0.329287
+33: 0.329287
+33: setup vector 9 norm setup vector 9 norm 0.330762
+33: 0.330762
+33: setup vector 10 norm setup vector 10 norm 0.327259
+33: 0.327259
+33: setup vector 11 norm setup vector 11 norm 0.258269
+33: 0.258269
+33: setup vector 12 norm setup vector 12 norm 0.392849
+33: 0.392849
+33: setup vector 13 norm setup vector 13 norm 0.366517
+33: 0.366517
+33: setup vector 14 norm setup vector 14 norm 0.372088
+33: 0.372088
+33: setup vector 15 norm setup vector 15 norm 0.36569
+33: 0.36569
+33: setup vector 16 norm setup vector 16 norm 0.426913
+33: 0.426913
+33: setup vector 17 norm setup vector 17 norm 0.323103
+33: 0.323103
+33: setup vector 18 norm setup vector 18 norm 0.314772
+33: 0.314772
+33: setup vector 19 norm setup vector 19 norm 0.305552
+33: 0.305552
+33: setup vector 20 norm setup vector 20 norm 0.392718
+33: 0.392718
+33: setup vector 21 norm setup vector 21 norm 0.38356
+33: 0.38356
+33: setup vector 22 norm setup vector 22 norm 0.340681
+33: 0.340681
+33: setup vector 23 norm setup vector 23 norm 0.328521
+33: 0.328521
+33: setup vector 24 norm setup vector 24 norm 0.352389
+33: 0.352389
+33: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=0
+33: setup vector 1 norm setup vector 1 norm 1
+33: 1
+33: setup vector 2 norm setup vector 2 norm 1
+33: 1
+33: setup vector 3 norm setup vector 3 norm 1
+33: 1
+33: setup vector 4 norm setup vector 4 norm 1
+33: 1
+33: setup vector 5 norm setup vector 5 norm 1
+33: 1
+33: setup vector 6setup vector 6 norm  norm 1
+33: 1
+33: setup vector 7 norm setup vector 7 norm 1
+33: 1
+33: setup vector 8 norm setup vector 8 norm 1
+33: 1
+33: setup vector 9 norm setup vector 9 norm 1
+33: 1
+33: setup vector 10 norm setup vector 10 norm 1
+33: 1
+33: setup vector 11setup vector 11 norm  norm 1
+33: 1
+33: setup vector 12 norm setup vector 12 norm 1
+33: 1
+33: setup vector 13 norm setup vector 13 norm 1
+33: 1
+33: setup vector 14 norm setup vector 14 norm 1
+33: 1
+33: setup vector 15 norm setup vector 15 norm 1
+33: 1
+33: setup vector 16 norm setup vector 16 norm 1
+33: 1
+33: setup vector 17 norm setup vector 17 norm 11
+33: 
+33: setup vector 18 norm setup vector 18 norm 1
+33: 1
+33: setup vector 19 norm setup vector 19 norm 1
+33: 1
+33: setup vector 20 norm setup vector 20 norm 1
+33: 1
+33: setup vector 21setup vector 21 norm  norm 1
+33: 1
+33: setup vector 22 norm setup vector 22 norm 1
+33: 1
+33: setup vector 23 norm setup vector 23 norm 1
+33: 1
+33: setup vector 24 norm setup vector 24 norm 1
+33: 1
+33: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=0
+33: setup vector 1 norm setup vector 1 norm 1
+33: 1
+33: setup vector 2 norm setup vector 2 norm 1
+33: 1
+33: setup vector 3 norm setup vector 3 norm 1
+33: 1
+33: setup vector 4 norm setup vector 4 norm 1
+33: 1
+33: setup vector 5 norm setup vector 5 norm 1
+33: 1
+33: setup vector 6 norm setup vector 6 norm 1
+33: 1
+33: setup vector 7 norm setup vector 7 norm 1
+33: 1
+33: setup vector 8 norm setup vector 8 norm 1
+33: 1
+33: setup vector 9 norm setup vector 9 norm 1
+33: 1
+33: setup vector 10 norm setup vector 10 norm 1
+33: 1
+33: setup vector 11setup vector 11 norm  norm 1
+33: 1
+33: setup vector 12 norm setup vector 12 norm 1
+33: 1
+33: setup vector 13 norm setup vector 13 norm 1
+33: 1
+33: setup vector 14 norm setup vector 14 norm 1
+33: 1
+33: setup vector 15 norm setup vector 15 norm 1
+33: 1
+33: setup vector 16 norm setup vector 16 norm 1
+33: 1
+33: setup vector 17 norm setup vector 17 norm 1
+33: 1
+33: setup vector 18 norm setup vector 18 norm 1
+33: 1
+33: setup vector 19 norm setup vector 19 norm 1
+33: 1
+33: setup vector 20 norm setup vector 20 norm 1
+33: 1
+33: setup vector 21 norm setup vector 21 norm 1
+33: 1
+33: setup vector 22 norm setup vector 22 norm 1
+33: 1
+33: setup vector 23 norm setup vector 23 norm 1
+33: 1
+33: setup vector 24 norm setup vector 24 norm 1
+33: 1
+33: native EO gates clover_inverse=0 Schur_reconstruction=8.73354e-08
+33: native gates double=1.59655e-16 fine=7.17548e-08 R*P=5.52998e-08 RAP=1.77948e-07
+33: native gates double=1.59655e-16 fine=7.17548e-08 R*P=5.52998e-08 RAP=1.77948e-07
+33: PASS coarse independent-RHS reduction batching ranks=2 widths=1,2,4,12 max_independent_residual=3.966979217e-11
+26/32 Test #33: coarse_batch_reduce_mpi2 .........   Passed   96.14 sec
+test 34
+      Start 34: runtime_batch
+
+34: Test command: /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec "--host" "localhost:4" "--map-by" "ppr:1:numa:PE=2" "--bind-to" "core" "-n" "2" "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python" "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/source/tests/runtime/test_runtime_batch.py"
+34: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+34: Environment variables: 
+34:  LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/liblqcd_cpu.so.0.2.0
+34:  OMP_NUM_THREADS=2
+34:  OPENBLAS_NUM_THREADS=1
+34:  OMPI_MCA_hwloc_base_binding_policy=none
+34: Test timeout computed to be: 300
+34: PyQUDA INFO: Using default grid mapping
+34: PyQUDA INFO: Using grid size [1, 1, 1, 2]
+34: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+34: setup vector 1 norm 3.13089
+34: setup vector 1 norm 3.13089
+34: setup vector 2 norm setup vector 2 norm 4.09586
+34: 4.09586
+34: setup vector 3 norm setup vector 3 norm 3.09808
+34: 3.09808
+34: setup vector 4setup vector 4 norm  norm 2.91924
+34: 2.91924
+34: setup vector 5 norm setup vector 5 norm 3.11947
+34: 3.11947
+34: setup vector 6 norm setup vector 6 norm 2.98507
+34: 2.98507
+34: setup vector 7 norm setup vector 7 norm 3.13374
+34: 3.13374
+34: setup vector 8 norm setup vector 8 norm 2.85459
+34: 2.85459
+34: setup vector 9 norm setup vector 9 norm 2.84447
+34: 2.84447
+34: setup vector 10 norm setup vector 10 norm 2.822892.82289
+34: 
+34: setup vector 11setup vector 11 norm  norm 2.22117
+34: 2.22117
+34: setup vector 12 norm setup vector 12 norm 3.42095
+34: 3.42095
+34: setup vector 13setup vector 13 norm  norm 3.17156
+34: 3.17156
+34: setup vector 14 norm setup vector 14 norm 3.22345
+34: 3.22345
+34: setup vector 15setup vector 15 norm  norm 3.17765
+34: 3.17765
+34: setup vector 16 norm setup vector 16 norm 3.730243.73024
+34: 
+34: setup vector 17setup vector 17 norm  norm 2.79785
+34: 2.79785
+34: setup vector 18 norm setup vector 18 norm 2.73747
+34: 2.73747
+34: setup vector 19 norm setup vector 19 norm 2.64828
+34: 2.64828
+34: setup vector 20setup vector 20 norm  norm 3.40142
+34: 3.40142
+34: setup vector 21 norm setup vector 21 norm 3.33052
+34: 3.33052
+34: setup vector 22 norm setup vector 22 norm 2.96034
+34: 2.96034
+34: setup vector 23setup vector 23 norm  norm 2.84352
+34: 2.84352
+34: setup vector 24 norm setup vector 24 norm 3.05271
+34: 3.05271
+34: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+34: setup vector 1 norm setup vector 1 norm 1
+34: 1
+34: setup vector 2 norm setup vector 2 norm 1
+34: 1
+34: setup vector 3 norm setup vector 3 norm 1
+34: 1
+34: setup vector 4 norm setup vector 4 norm 1
+34: 1
+34: setup vector 5 norm setup vector 5 norm 1
+34: 1
+34: setup vector 6 norm setup vector 6 norm 1
+34: 1
+34: setup vector 7 norm setup vector 7 norm 1
+34: 1
+34: setup vector 8 norm setup vector 8 norm 1
+34: 1
+34: setup vector 9 norm setup vector 9 norm 1
+34: 1
+34: setup vector 10setup vector 10 norm  norm 1
+34: 1
+34: setup vector 11setup vector 11 norm  norm 1
+34: 1
+34: setup vector 12 norm setup vector 12 norm 1
+34: 1
+34: setup vector 13 norm setup vector 13 norm 1
+34: 1
+34: setup vector 14 norm setup vector 14 norm 1
+34: 1
+34: setup vector 15 norm setup vector 15 norm 1
+34: 1
+34: setup vector 16 norm setup vector 16 norm 1
+34: 1
+34: setup vector 17 norm setup vector 17 norm 1
+34: 1
+34: setup vector 18 norm setup vector 18 norm 1
+34: 1
+34: setup vector 19 norm setup vector 19 norm 1
+34: 1
+34: setup vector 20 norm setup vector 20 norm 1
+34: 1
+34: setup vector 21 norm setup vector 21 norm 1
+34: 1
+34: setup vector 22 norm setup vector 22 norm 1
+34: 1
+34: setup vector 23 norm setup vector 23 norm 1
+34: 1
+34: setup vector 24 norm setup vector 24 norm 1
+34: 1
+34: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+34: setup vector 1 norm setup vector 1 norm 1
+34: 1
+34: setup vector 2 norm setup vector 2 norm 1
+34: 1
+34: setup vector 3 norm setup vector 3 norm 1
+34: 1
+34: setup vector 4 norm setup vector 4 norm 1
+34: 1
+34: setup vector 5 norm setup vector 5 norm 1
+34: 1
+34: setup vector 6 norm setup vector 6 norm 1
+34: 1
+34: setup vector 7 norm setup vector 7 norm 11
+34: 
+34: setup vector 8 norm setup vector 8 norm 1
+34: 1
+34: setup vector 9 norm setup vector 9 norm 1
+34: 1
+34: setup vector 10 norm setup vector 10 norm 1
+34: 1
+34: setup vector 11 norm setup vector 11 norm 1
+34: 1
+34: setup vector 12 norm setup vector 12 norm 1
+34: 1
+34: setup vector 13 norm setup vector 13 norm 1
+34: 1
+34: setup vector 14 norm setup vector 14 norm 1
+34: 1
+34: setup vector 15 norm setup vector 15 norm 1
+34: 1
+34: setup vector 16 norm setup vector 16 norm 1
+34: 1
+34: setup vector 17 norm setup vector 17 norm 1
+34: 1
+34: setup vector 18setup vector 18 norm  norm 1
+34: 1
+34: setup vector 19 norm setup vector 19 norm 1
+34: 1
+34: setup vector 20 norm setup vector 20 norm 1
+34: 1
+34: setup vector 21 norm setup vector 21 norm 1
+34: 1
+34: setup vector 22 norm setup vector 22 norm 1
+34: 1
+34: setup vector 23 norm setup vector 23 norm 1
+34: 1
+34: setup vector 24 norm setup vector 24 norm 1
+34: 1
+34: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+34: native coarse EO gate Schur_reconstruction=1.8731e-07
+34: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+34: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+34: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+34: setup vector 1 norm setup vector 1 norm 3.13089
+34: 3.13089
+34: setup vector 2 norm setup vector 2 norm 4.09586
+34: 4.09586
+34: setup vector 3 norm setup vector 3 norm 3.09808
+34: 3.09808
+34: setup vector 4setup vector 4 norm  norm 2.91924
+34: 2.91924
+34: setup vector 5setup vector 5 norm  norm 3.11947
+34: 3.11947
+34: setup vector 6 norm setup vector 6 norm 2.98507
+34: 2.98507
+34: setup vector 7 norm setup vector 7 norm 3.13374
+34: 3.13374
+34: setup vector 8setup vector 8 norm  norm 2.85459
+34: 2.85459
+34: setup vector 9 norm setup vector 9 norm 2.84447
+34: 2.84447
+34: setup vector 10 norm setup vector 10 norm 2.82289
+34: 2.82289
+34: setup vector 11setup vector 11 norm  norm 2.22117
+34: 2.22117
+34: setup vector 12 norm setup vector 12 norm 3.42095
+34: 3.42095
+34: setup vector 13 norm setup vector 13 norm 3.17156
+34: 3.17156
+34: setup vector 14 norm setup vector 14 norm 3.22345
+34: 3.22345
+34: setup vector 15 norm setup vector 15 norm 3.17765
+34: 3.17765
+34: setup vector 16 norm setup vector 16 norm 3.73024
+34: 3.73024
+34: setup vector 17 norm setup vector 17 norm 2.79785
+34: 2.79785
+34: setup vector 18setup vector 18 norm  norm 2.73747
+34: 2.73747
+34: setup vector 19setup vector 19 norm  norm 2.64828
+34: 2.64828
+34: setup vector 20 norm setup vector 20 norm 3.40142
+34: 3.40142
+34: setup vector 21 norm setup vector 21 norm 3.33052
+34: 3.33052
+34: setup vector 22 norm setup vector 22 norm 2.96034
+34: 2.96034
+34: setup vector 23setup vector 23 norm  norm 2.84352
+34: 2.84352
+34: setup vector 24setup vector 24 norm  norm 3.05271
+34: 3.05271
+34: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+34: setup vector 1 norm setup vector 1 norm 1
+34: 1
+34: setup vector 2 norm setup vector 2 norm 1
+34: 1
+34: setup vector 3 norm setup vector 3 norm 1
+34: 1
+34: setup vector 4 norm setup vector 4 norm 1
+34: 1
+34: setup vector 5 norm setup vector 5 norm 1
+34: 1
+34: setup vector 6 norm setup vector 6 norm 1
+34: 1
+34: setup vector 7 norm setup vector 7 norm 1
+34: 1
+34: setup vector 8 norm setup vector 8 norm 1
+34: 1
+34: setup vector 9 norm setup vector 9 norm 1
+34: 1
+34: setup vector 10 norm setup vector 10 norm 1
+34: 1
+34: setup vector 11 norm setup vector 11 norm 1
+34: 1
+34: setup vector 12 norm setup vector 12 norm 1
+34: 1
+34: setup vector 13 norm setup vector 13 norm 1
+34: 1
+34: setup vector 14 norm setup vector 14 norm 1
+34: 1
+34: setup vector 15 norm setup vector 15 norm 1
+34: 1
+34: setup vector 16 norm setup vector 16 norm 1
+34: 1
+34: setup vector 17 norm setup vector 17 norm 1
+34: 1
+34: setup vector 18 norm setup vector 18 norm 1
+34: 1
+34: setup vector 19 norm setup vector 19 norm 1
+34: 1
+34: setup vector 20 norm setup vector 20 norm 1
+34: 1
+34: setup vector 21 norm setup vector 21 norm 1
+34: 1
+34: setup vector 22 norm setup vector 22 norm 1
+34: 1
+34: setup vector 23 norm setup vector 23 norm 1
+34: 1
+34: setup vector 24 norm setup vector 24 norm 1
+34: 1
+34: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+34: setup vector 1 norm setup vector 1 norm 1
+34: 1
+34: setup vector 2 norm setup vector 2 norm 1
+34: 1
+34: setup vector 3 norm setup vector 3 norm 1
+34: 1
+34: setup vector 4 norm setup vector 4 norm 1
+34: 1
+34: setup vector 5 norm setup vector 5 norm 1
+34: 1
+34: setup vector 6 norm setup vector 6 norm 1
+34: 1
+34: setup vector 7 norm setup vector 7 norm 11
+34: 
+34: setup vector 8 norm setup vector 8 norm 1
+34: 1
+34: setup vector 9 norm setup vector 9 norm 1
+34: 1
+34: setup vector 10 norm setup vector 10 norm 1
+34: 1
+34: setup vector 11 norm setup vector 11 norm 1
+34: 1
+34: setup vector 12 norm setup vector 12 norm 1
+34: 1
+34: setup vector 13 norm setup vector 13 norm 1
+34: 1
+34: setup vector 14 norm setup vector 14 norm 1
+34: 1
+34: setup vector 15 norm setup vector 15 norm 1
+34: 1
+34: setup vector 16 norm setup vector 16 norm 1
+34: 1
+34: setup vector 17 norm setup vector 17 norm 1
+34: 1
+34: setup vector 18 norm setup vector 18 norm 1
+34: 1
+34: setup vector 19 norm setup vector 19 norm 1
+34: 1
+34: setup vector 20 norm setup vector 20 norm 1
+34: 1
+34: setup vector 21setup vector 21 norm  norm 1
+34: 1
+34: setup vector 22 norm setup vector 22 norm 1
+34: 1
+34: setup vector 23 norm setup vector 23 norm 1
+34: 1
+34: setup vector 24 norm setup vector 24 norm 1
+34: 1
+34: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+34: native coarse EO gate Schur_reconstruction=1.8731e-07
+34: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+34: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+34: PASS batch independent RHS, zero/repeated/odd tail/strides, zero starts, scalar and independent stencil gates
+27/32 Test #34: runtime_batch ....................   Passed   76.50 sec
+test 35
+      Start 35: runtime_batch_coarse_reduce
+
+35: Test command: /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec "--host" "localhost:4" "--map-by" "ppr:1:numa:PE=2" "--bind-to" "core" "-n" "2" "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python" "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/source/tests/runtime/test_runtime_batch.py"
+35: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+35: Environment variables: 
+35:  LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/liblqcd_cpu.so.0.2.0
+35:  OMP_NUM_THREADS=2
+35:  OPENBLAS_NUM_THREADS=1
+35:  OMPI_MCA_hwloc_base_binding_policy=none
+35:  LQCD_COARSE_BATCH_REDUCE=1
+35: Test timeout computed to be: 300
+35: PyQUDA INFO: Using default grid mapping
+35: PyQUDA INFO: Using grid size [1, 1, 1, 2]
+35: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+35: setup vector 1 norm setup vector 3.13089
+35: 1 norm 3.13089
+35: setup vector 2 norm setup vector 2 norm 4.09586
+35: 4.09586
+35: setup vector 3setup vector 3 norm  norm 3.09808
+35: 3.09808
+35: setup vector 4 norm setup vector 4 norm 2.91924
+35: 2.91924
+35: setup vector 5 norm setup vector 5 norm 3.11947
+35: 3.11947
+35: setup vector 6setup vector 6 norm  norm 2.98507
+35: 2.98507
+35: setup vector 7setup vector 7 norm  norm 3.13374
+35: 3.13374
+35: setup vector 8 norm setup vector 8 norm 2.85459
+35: 2.85459
+35: setup vector 9 norm setup vector 9 norm 2.84447
+35: 2.84447
+35: setup vector 10 norm setup vector 10 norm 2.82289
+35: 2.82289
+35: setup vector 11 norm setup vector 11 norm 2.22117
+35: 2.22117
+35: setup vector 12setup vector 12 norm  norm 3.42095
+35: 3.42095
+35: setup vector 13setup vector 13 norm  norm 3.17156
+35: 3.17156
+35: setup vector 14setup vector 14 norm  norm 3.22345
+35: 3.22345
+35: setup vector 15 norm setup vector 15 norm 3.17765
+35: 3.17765
+35: setup vector 16 norm setup vector 16 norm 3.73024
+35: 3.73024
+35: setup vector 17 norm setup vector 17 norm 2.79785
+35: 2.79785
+35: setup vector 18 norm setup vector 18 norm 2.73747
+35: 2.73747
+35: setup vector 19setup vector 19 norm  norm 2.64828
+35: 2.64828
+35: setup vector 20 norm setup vector 20 norm 3.40142
+35: 3.40142
+35: setup vector 21setup vector 21 norm  norm 3.33052
+35: 3.33052
+35: setup vector 22setup vector 22 norm  norm 2.96034
+35: 2.96034
+35: setup vector 23 norm setup vector 23 norm 2.84352
+35: 2.84352
+35: setup vector 24 norm setup vector 24 norm 3.05271
+35: 3.05271
+35: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+35: setup vector 1 norm setup vector 1 norm 1
+35: 1
+35: setup vector 2 norm setup vector 2 norm 1
+35: 1
+35: setup vector 3 norm setup vector 3 norm 1
+35: 1
+35: setup vector 4 norm setup vector 4 norm 1
+35: 1
+35: setup vector 5 norm setup vector 5 norm 1
+35: 1
+35: setup vector 6 norm setup vector 6 norm 1
+35: 1
+35: setup vector 7 norm setup vector 7 norm 1
+35: 1
+35: setup vector 8 norm setup vector 8 norm 1
+35: 1
+35: setup vector 9 norm setup vector 9 norm 1
+35: 1
+35: setup vector 10 norm setup vector 10 norm 1
+35: 1
+35: setup vector 11 norm setup vector 11 norm 1
+35: 1
+35: setup vector 12 norm setup vector 12 norm 1
+35: 1
+35: setup vector 13 norm setup vector 13 norm 1
+35: 1
+35: setup vector 14 norm setup vector 14 norm 1
+35: 1
+35: setup vector 15 norm setup vector 15 norm 1
+35: 1
+35: setup vector 16 norm setup vector 16 norm 1
+35: 1
+35: setup vector 17 norm setup vector 17 norm 1
+35: 1
+35: setup vector 18 norm setup vector 18 norm 1
+35: 1
+35: setup vector 19 norm setup vector 19 norm 1
+35: 1
+35: setup vector 20 norm setup vector 20 norm 1
+35: 1
+35: setup vector 21 norm setup vector 21 norm 1
+35: 1
+35: setup vector 22 norm setup vector 22 norm 1
+35: 1
+35: setup vector 23 norm setup vector 23 norm 1
+35: 1
+35: setup vector 24setup vector 24 norm  norm 1
+35: 1
+35: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+35: setup vector 1setup vector 1 norm  norm 1
+35: 1
+35: setup vector 2 norm setup vector 2 norm 1
+35: 1
+35: setup vector 3 norm setup vector 3 norm 1
+35: 1
+35: setup vector 4 norm setup vector 4 norm 1
+35: 1
+35: setup vector 5 norm setup vector 5 norm 1
+35: 1
+35: setup vector 6 norm setup vector 6 norm 1
+35: 1
+35: setup vector 7setup vector 7 norm  norm 1
+35: 1
+35: setup vector 8 norm setup vector 8 norm 1
+35: 1
+35: setup vector 9 norm setup vector 9 norm 1
+35: 1
+35: setup vector 10 norm setup vector 10 norm 1
+35: 1
+35: setup vector 11 norm setup vector 11 norm 1
+35: 1
+35: setup vector 12 norm setup vector 12 norm 1
+35: 1
+35: setup vector 13 norm setup vector 13 norm 1
+35: 1
+35: setup vector 14 norm setup vector 14 norm 11
+35: 
+35: setup vector 15 norm setup vector 15 norm 1
+35: 1
+35: setup vector 16 norm setup vector 16 norm 1
+35: 1
+35: setup vector 17 norm setup vector 17 norm 1
+35: 1
+35: setup vector 18 norm setup vector 18 norm 1
+35: 1
+35: setup vector 19 norm setup vector 19 norm 1
+35: 1
+35: setup vector 20 norm setup vector 20 norm 1
+35: 1
+35: setup vector 21 norm setup vector 21 norm 1
+35: 1
+35: setup vector 22 norm setup vector 22 norm 1
+35: 1
+35: setup vector 23 norm setup vector 23 norm 1
+35: 1
+35: setup vector 24 norm setup vector 24 norm 1
+35: 1
+35: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+35: native coarse EO gate Schur_reconstruction=1.8731e-07
+35: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+35: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+35: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+35: setup vector 1 norm setup vector 1 norm 3.13089
+35: 3.13089
+35: setup vector 2setup vector 2 norm  norm 4.09586
+35: 4.09586
+35: setup vector 3 norm setup vector 3 norm 3.09808
+35: 3.09808
+35: setup vector 4 norm setup vector 4 norm 2.91924
+35: 2.91924
+35: setup vector 5 norm setup vector 5 norm 3.11947
+35: 3.11947
+35: setup vector 6 norm setup vector 6 norm 2.98507
+35: 2.98507
+35: setup vector 7 norm setup vector 7 norm 3.13374
+35: 3.13374
+35: setup vector 8 norm setup vector 8 norm 2.85459
+35: 2.85459
+35: setup vector 9setup vector 9 norm  norm 2.84447
+35: 2.84447
+35: setup vector 10setup vector 10 norm  norm 2.82289
+35: 2.82289
+35: setup vector 11 norm setup vector 11 norm 2.22117
+35: 2.22117
+35: setup vector 12 norm setup vector 12 norm 3.420953.42095
+35: 
+35: setup vector 13setup vector 13 norm  norm 3.17156
+35: 3.17156
+35: setup vector 14 norm setup vector 14 norm 3.22345
+35: 3.22345
+35: setup vector 15 norm setup vector 15 norm 3.17765
+35: 3.17765
+35: setup vector 16 norm setup vector 16 norm 3.73024
+35: 3.73024
+35: setup vector 17 norm setup vector 17 norm 2.79785
+35: 2.79785
+35: setup vector 18 norm setup vector 18 norm 2.73747
+35: 2.73747
+35: setup vector 19 norm setup vector 19 norm 2.648282.64828
+35: 
+35: setup vector 20 norm setup vector 20 norm 3.40142
+35: 3.40142
+35: setup vector 21 norm setup vector 21 norm 3.33052
+35: 3.33052
+35: setup vector 22 norm setup vector 22 norm 2.96034
+35: 2.96034
+35: setup vector 23 norm setup vector 23 norm 2.84352
+35: 2.84352
+35: setup vector 24 norm setup vector 24 norm 3.05271
+35: 3.05271
+35: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+35: setup vector 1 norm setup vector 1 norm 1
+35: 1
+35: setup vector 2 norm setup vector 2 norm 11
+35: 
+35: setup vector 3 norm setup vector 3 norm 11
+35: 
+35: setup vector 4 norm setup vector 4 norm 1
+35: 1
+35: setup vector 5 norm setup vector 5 norm 1
+35: 1
+35: setup vector 6 norm setup vector 6 norm 1
+35: 1
+35: setup vector 7 norm setup vector 7 norm 1
+35: 1
+35: setup vector 8 norm setup vector 8 norm 1
+35: 1
+35: setup vector 9 norm setup vector 9 norm 1
+35: 1
+35: setup vector 10 norm setup vector 10 norm 1
+35: 1
+35: setup vector 11 norm setup vector 11 norm 1
+35: 1
+35: setup vector 12 norm setup vector 12 norm 1
+35: 1
+35: setup vector 13 norm setup vector 13 norm 1
+35: 1
+35: setup vector 14 norm setup vector 14 norm 1
+35: 1
+35: setup vector 15 norm setup vector 15 norm 1
+35: 1
+35: setup vector 16 norm setup vector 16 norm 1
+35: 1
+35: setup vector 17 norm setup vector 17 norm 1
+35: 1
+35: setup vector 18 norm setup vector 18 norm 1
+35: 1
+35: setup vector 19 norm setup vector 19 norm 1
+35: 1
+35: setup vector 20 norm setup vector 20 norm 1
+35: 1
+35: setup vector 21setup vector 21 norm  norm 1
+35: 1
+35: setup vector 22 norm setup vector 22 norm 1
+35: 1
+35: setup vector 23 norm setup vector 23 norm 1
+35: 1
+35: setup vector 24 norm setup vector 24 norm 1
+35: 1
+35: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+35: setup vector 1 norm setup vector 1 norm 11
+35: 
+35: setup vector 2 norm setup vector 2 norm 1
+35: 1
+35: setup vector 3 norm setup vector 3 norm 1
+35: 1
+35: setup vector 4 norm setup vector 4 norm 1
+35: 1
+35: setup vector 5 norm setup vector 5 norm 1
+35: 1
+35: setup vector 6 norm setup vector 6 norm 1
+35: 1
+35: setup vector 7setup vector 7 norm  norm 1
+35: 1
+35: setup vector 8 norm setup vector 8 norm 1
+35: 1
+35: setup vector 9 norm setup vector 9 norm 1
+35: 1
+35: setup vector 10 norm setup vector 10 norm 1
+35: 1
+35: setup vector 11 norm setup vector 11 norm 1
+35: 1
+35: setup vector 12 norm setup vector 12 norm 1
+35: 1
+35: setup vector 13setup vector 13 norm  norm 1
+35: 1
+35: setup vector 14 norm setup vector 14 norm 1
+35: 1
+35: setup vector 15 norm setup vector 15 norm 1
+35: 1
+35: setup vector 16 norm setup vector 16 norm 1
+35: 1
+35: setup vector 17 norm setup vector 17 norm 1
+35: 1
+35: setup vector 18 norm setup vector 18 norm 1
+35: 1
+35: setup vector 19 norm setup vector 19 norm 1
+35: 1
+35: setup vector 20 norm setup vector 20 norm 1
+35: 1
+35: setup vector 21 norm setup vector 21 norm 1
+35: 1
+35: setup vector 22 norm setup vector 22 norm 1
+35: 1
+35: setup vector 23 norm setup vector 23 norm 1
+35: 1
+35: setup vector 24 norm setup vector 24 norm 1
+35: 1
+35: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+35: native coarse EO gate Schur_reconstruction=1.8731e-07
+35: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+35: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+35: PASS batch independent RHS, zero/repeated/odd tail/strides, zero starts, scalar and independent stencil gates
+28/32 Test #35: runtime_batch_coarse_reduce ......   Passed   79.15 sec
+test 46
+      Start 46: mg_tuning
+
+46: Test command: /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec "--host" "localhost:4" "--map-by" "ppr:1:numa:PE=2" "--bind-to" "core" "-n" "2" "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python" "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/source/tests/runtime/test_mg_tuning.py"
+46: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+46: Environment variables: 
+46:  LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/liblqcd_cpu.so.0.2.0
+46:  OMP_NUM_THREADS=2
+46:  OPENBLAS_NUM_THREADS=1
+46:  OMPI_MCA_hwloc_base_binding_policy=none
+46:  PYTHONPATH=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/source/python
+46: Test timeout computed to be: 300
+46: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+46: setup vector 1 norm setup vector 3.13089
+46: 1 norm 3.13089
+46: setup vector 2 norm setup vector 2 norm 4.09586
+46: 4.09586
+46: setup vector 3 norm setup vector 3 norm 3.09808
+46: 3.09808
+46: setup vector 4 norm setup vector 4 norm 2.91924
+46: 2.91924
+46: setup vector 5 norm setup vector 5 norm 3.11947
+46: 3.11947
+46: setup vector 6 norm setup vector 6 norm 2.98507
+46: 2.98507
+46: setup vector 7 norm setup vector 7 norm 3.13374
+46: 3.13374
+46: setup vector 8 norm setup vector 8 norm 2.85459
+46: 2.85459
+46: setup vector 9 norm setup vector 9 norm 2.84447
+46: 2.84447
+46: setup vector 10 norm setup vector 10 norm 2.82289
+46: 2.82289
+46: setup vector 11 norm setup vector 11 norm 2.22117
+46: 2.22117
+46: setup vector 12 norm setup vector 12 norm 3.42095
+46: 3.42095
+46: setup vector 13setup vector 13 norm  norm 3.17156
+46: 3.17156
+46: setup vector 14 norm setup vector 14 norm 3.22345
+46: 3.22345
+46: setup vector 15 norm setup vector 15 norm 3.17765
+46: 3.17765
+46: setup vector 16 norm setup vector 16 norm 3.73024
+46: 3.73024
+46: setup vector 17 norm setup vector 17 norm 2.79785
+46: 2.79785
+46: setup vector 18 norm setup vector 18 norm 2.73747
+46: 2.73747
+46: setup vector 19setup vector 19 norm  norm 2.64828
+46: 2.64828
+46: setup vector 20 norm setup vector 20 norm 3.40142
+46: 3.40142
+46: setup vector 21setup vector 21 norm  norm 3.33052
+46: 3.33052
+46: setup vector 22 norm setup vector 22 norm 2.96034
+46: 2.96034
+46: setup vector 23 norm setup vector 23 norm 2.84352
+46: 2.84352
+46: setup vector 24setup vector 24 norm  norm 3.05271
+46: 3.05271
+46: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+46: setup vector 1 norm setup vector 1 norm 1
+46: 1
+46: setup vector 2 norm setup vector 2 norm 1
+46: 1
+46: setup vector 3 norm setup vector 3 norm 1
+46: 1
+46: setup vector 4 norm setup vector 4 norm 1
+46: 1
+46: setup vector 5 norm setup vector 5 norm 1
+46: 1
+46: setup vector 6 norm setup vector 6 norm 1
+46: 1
+46: setup vector 7 norm setup vector 7 norm 1
+46: 1
+46: setup vector 8 norm setup vector 8 norm 1
+46: 1
+46: setup vector 9 norm setup vector 9 norm 1
+46: 1
+46: setup vector 10 norm setup vector 10 norm 1
+46: 1
+46: setup vector 11 norm setup vector 11 norm 1
+46: 1
+46: setup vector 12 norm setup vector 12 norm 1
+46: 1
+46: setup vector 13 norm setup vector 13 norm 1
+46: 1
+46: setup vector 14 norm setup vector 14 norm 11
+46: 
+46: setup vector 15 norm setup vector 15 norm 1
+46: 1
+46: setup vector 16 norm setup vector 16 norm 1
+46: 1
+46: setup vector 17 norm setup vector 17 norm 1
+46: 1
+46: setup vector 18 norm setup vector 18 norm 1
+46: 1
+46: setup vector 19 norm setup vector 19 norm 1
+46: 1
+46: setup vector 20 norm setup vector 20 norm 1
+46: 1
+46: setup vector 21 norm setup vector 21 norm 1
+46: 1
+46: setup vector 22 norm setup vector 22 norm 1
+46: 1
+46: setup vector 23 norm setup vector 23 norm 1
+46: 1
+46: setup vector 24 norm setup vector 24 norm 1
+46: 1
+46: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+46: setup vector 1 norm setup vector 1 norm 1
+46: 1
+46: setup vector 2setup vector 2 norm  norm 1
+46: 1
+46: setup vector 3setup vector 3 norm  norm 1
+46: 1
+46: setup vector 4 norm setup vector 4 norm 1
+46: 1
+46: setup vector 5 norm setup vector 5 norm 1
+46: 1
+46: setup vector 6 norm setup vector 6 norm 1
+46: 1
+46: setup vector 7 norm setup vector 7 norm 1
+46: 1
+46: setup vector 8 norm setup vector 8 norm 1
+46: 1
+46: setup vector 9 norm setup vector 9 norm 1
+46: 1
+46: setup vector 10 norm setup vector 10 norm 1
+46: 1
+46: setup vector 11 norm setup vector 11 norm 1
+46: 1
+46: setup vector 12 norm setup vector 12 norm 1
+46: 1
+46: setup vector 13 norm setup vector 13 norm 1
+46: 1
+46: setup vector 14 norm setup vector 14 norm 1
+46: 1
+46: setup vector 15 norm setup vector 15 norm 1
+46: 1
+46: setup vector 16 norm setup vector 16 norm 1
+46: 1
+46: setup vector 17 norm setup vector 17 norm 1
+46: 1
+46: setup vector 18 norm setup vector 18 norm 1
+46: 1
+46: setup vector 19 norm setup vector 19 norm 1
+46: 1
+46: setup vector 20 norm setup vector 20 norm 1
+46: 1
+46: setup vector 21 norm setup vector 21 norm 1
+46: 1
+46: setup vector 22 norm setup vector 22 norm 1
+46: 1
+46: setup vector 23setup vector 23 norm  norm 1
+46: 1
+46: setup vector 24 norm setup vector 24 norm 1
+46: 1
+46: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+46: native coarse EO gate Schur_reconstruction=1.8731e-07
+46: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+46: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+46: PASS MG tuning: one hierarchy, coarse thread cap/restoration, verify/team modes, plane-wave residual, invalid/mismatched settings and recovery
+29/32 Test #46: mg_tuning ........................   Passed   27.16 sec
+test 47
+      Start 47: coarse_overlap_scalar
+
+47: Test command: /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec "--host" "localhost:4" "--map-by" "ppr:1:numa:PE=2" "--bind-to" "core" "-n" "2" "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python" "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/source/tests/runtime/test_cpu_backend.py"
+47: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+47: Environment variables: 
+47:  LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/liblqcd_cpu.so.0.2.0
+47:  OMP_NUM_THREADS=2
+47:  OPENBLAS_NUM_THREADS=1
+47:  OMPI_MCA_hwloc_base_binding_policy=none
+47:  LQCD_COARSE_SPATIAL_OVERLAP=1
+47:  LQCD_COARSE_FUSED=1
+47:  LQCD_ARM_COARSE_SVE=0
+47: Test timeout computed to be: 300
+47: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+47: setup vector 1 norm setup vector 3.13089
+47: 1 norm 3.13089
+47: setup vector 2 norm setup vector 2 norm 4.09586
+47: 4.09586
+47: setup vector 3 norm setup vector 3 norm 3.09808
+47: 3.09808
+47: setup vector 4 norm setup vector 4 norm 2.919242.91924
+47: 
+47: setup vector 5 norm setup vector 5 norm 3.11947
+47: 3.11947
+47: setup vector 6 norm setup vector 6 norm 2.98507
+47: 2.98507
+47: setup vector 7 norm setup vector 7 norm 3.13374
+47: 3.13374
+47: setup vector 8 norm setup vector 8 norm 2.85459
+47: 2.85459
+47: setup vector 9 norm setup vector 9 norm 2.84447
+47: 2.84447
+47: setup vector 10 norm setup vector 10 norm 2.82289
+47: 2.82289
+47: setup vector 11 norm setup vector 11 norm 2.22117
+47: 2.22117
+47: setup vector 12 norm setup vector 12 norm 3.42095
+47: 3.42095
+47: setup vector 13 norm setup vector 13 norm 3.17156
+47: 3.17156
+47: setup vector setup vector 14 norm 14 norm 3.22345
+47: 3.22345
+47: setup vector 15 norm setup vector 15 norm 3.17765
+47: 3.17765
+47: setup vector 16 norm setup vector 16 norm 3.73024
+47: 3.73024
+47: setup vector 17 norm setup vector 17 norm 2.79785
+47: 2.79785
+47: setup vector 18setup vector 18 norm  norm 2.73747
+47: 2.73747
+47: setup vector 19 norm setup vector 19 norm 2.64828
+47: 2.64828
+47: setup vector 20 norm setup vector 20 norm 3.40142
+47: 3.40142
+47: setup vector 21 norm setup vector 21 norm 3.33052
+47: 3.33052
+47: setup vector 22 norm setup vector 22 norm 2.96034
+47: 2.96034
+47: setup vector 23 norm setup vector 23 norm 2.84352
+47: 2.84352
+47: setup vector 24 norm setup vector 24 norm 3.05271
+47: 3.05271
+47: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+47: setup vector 1 norm setup vector 1 norm 1
+47: 1
+47: setup vector 2 norm setup vector 2 norm 1
+47: 1
+47: setup vector 3 norm setup vector 3 norm 1
+47: 1
+47: setup vector 4setup vector 4 norm  norm 1
+47: 1
+47: setup vector 5setup vector 5 norm  norm 1
+47: 1
+47: setup vector 6 norm setup vector 6 norm 1
+47: 1
+47: setup vector 7setup vector 7 norm  norm 1
+47: 1
+47: setup vector 8 norm setup vector 8 norm 1
+47: 1
+47: setup vector 9 norm setup vector 9 norm 1
+47: 1
+47: setup vector 10 norm setup vector 10 norm 1
+47: 1
+47: setup vector 11 norm setup vector 11 norm 1
+47: 1
+47: setup vector 12 norm setup vector 12 norm 1
+47: 1
+47: setup vector 13 norm setup vector 13 norm 1
+47: 1
+47: setup vector 14setup vector 14 norm  norm 1
+47: 1
+47: setup vector 15setup vector 15 norm  norm 1
+47: 1
+47: setup vector 16 norm setup vector 16 norm 1
+47: 1
+47: setup vector 17 norm setup vector 17 norm 1
+47: 1
+47: setup vector 18 norm setup vector 18 norm 1
+47: 1
+47: setup vector 19 norm setup vector 19 norm 1
+47: 1
+47: setup vector 20 norm setup vector 20 norm 1
+47: 1
+47: setup vector setup vector 21 norm 21 norm 1
+47: 1
+47: setup vector 22setup vector 22 norm  norm 1
+47: 1
+47: setup vector 23 norm setup vector 23 norm 1
+47: 1
+47: setup vector 24 norm setup vector 24 norm 1
+47: 1
+47: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+47: setup vector 1 norm setup vector 1 norm 1
+47: 1
+47: setup vector 2setup vector 2 norm  norm 1
+47: 1
+47: setup vector 3setup vector 3 norm  norm 1
+47: 1
+47: setup vector 4 norm setup vector 4 norm 1
+47: 1
+47: setup vector 5setup vector 5 norm  norm 1
+47: 1
+47: setup vector 6 norm setup vector 6 norm 1
+47: 1
+47: setup vector 7 norm setup vector 7 norm 1
+47: 1
+47: setup vector 8 norm setup vector 8 norm 1
+47: 1
+47: setup vector 9 norm setup vector 9 norm 1
+47: 1
+47: setup vector 10 norm setup vector 10 norm 1
+47: 1
+47: setup vector 11 norm setup vector 11 norm 1
+47: 1
+47: setup vector 12 norm setup vector 12 norm 1
+47: 1
+47: setup vector 13 norm setup vector 13 norm 1
+47: 1
+47: setup vector 14 norm setup vector 14 norm 1
+47: 1
+47: setup vector 15 norm setup vector 15 norm 1
+47: 1
+47: setup vector 16 norm setup vector 16 norm 1
+47: 1
+47: setup vector 17 norm setup vector 17 norm 1
+47: 1
+47: setup vector 18 norm setup vector 18 norm 1
+47: 1
+47: setup vector 19 norm setup vector 19 norm 11
+47: 
+47: setup vector 20 norm setup vector 20 norm 1
+47: 1
+47: setup vector 21 norm setup vector 21 norm 1
+47: 1
+47: setup vector 22 norm setup vector 22 norm 1
+47: 1
+47: setup vector 23 norm setup vector 23 norm 1
+47: 1
+47: setup vector 24 norm setup vector 24 norm 1
+47: 1
+47: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+47: native coarse EO gate Schur_reconstruction=1.8731e-07
+47: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+47: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+47: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+47: setup vector 1 norm setup vector 1 norm 3.13089
+47: 3.13089
+47: setup vector 2 norm setup vector 2 norm 4.09586
+47: 4.09586
+47: setup vector 3 norm setup vector 3 norm 3.09808
+47: 3.09808
+47: setup vector 4 norm setup vector 4 norm 2.91924
+47: 2.91924
+47: setup vector 5 norm setup vector 5 norm 3.11947
+47: 3.11947
+47: setup vector 6 norm setup vector 6 norm 2.98507
+47: 2.98507
+47: setup vector 7 norm setup vector 7 norm 3.13374
+47: 3.13374
+47: setup vector 8 norm setup vector 8 norm 2.85459
+47: 2.85459
+47: setup vector 9 norm setup vector 9 norm 2.84447
+47: 2.84447
+47: setup vector 10 norm setup vector 10 norm 2.82289
+47: 2.82289
+47: setup vector 11 norm setup vector 11 norm 2.22117
+47: 2.22117
+47: setup vector 12 norm setup vector 12 norm 3.42095
+47: 3.42095
+47: setup vector 13 norm setup vector 13 norm 3.17156
+47: 3.17156
+47: setup vector 14 norm setup vector 14 norm 3.22345
+47: 3.22345
+47: setup vector 15 norm setup vector 15 norm 3.17765
+47: 3.17765
+47: setup vector 16 norm setup vector 16 norm 3.73024
+47: 3.73024
+47: setup vector 17setup vector 17 norm  norm 2.79785
+47: 2.79785
+47: setup vector 18 norm setup vector 18 norm 2.73747
+47: 2.73747
+47: setup vector 19 norm setup vector 19 norm 2.64828
+47: 2.64828
+47: setup vector 20 norm setup vector 20 norm 3.40142
+47: 3.40142
+47: setup vector 21 norm setup vector 21 norm 3.33052
+47: 3.33052
+47: setup vector 22 norm setup vector 22 norm 2.96034
+47: 2.96034
+47: setup vector 23setup vector 23 norm  norm 2.84352
+47: 2.84352
+47: setup vector setup vector 24 norm 24 norm 3.05271
+47: 3.05271
+47: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+47: setup vector 1 norm setup vector 1 norm 1
+47: 1
+47: setup vector 2setup vector 2 norm  norm 1
+47: 1
+47: setup vector 3 norm setup vector 3 norm 1
+47: 1
+47: setup vector 4 norm setup vector 4 norm 1
+47: 1
+47: setup vector 5 norm setup vector 5 norm 1
+47: 1
+47: setup vector 6setup vector 6 norm  norm 1
+47: 1
+47: setup vector 7 norm setup vector 7 norm 1
+47: 1
+47: setup vector 8 norm setup vector 8 norm 1
+47: 1
+47: setup vector 9 norm setup vector 9 norm 1
+47: 1
+47: setup vector 10setup vector 10 norm  norm 1
+47: 1
+47: setup vector 11 norm setup vector 11 norm 1
+47: 1
+47: setup vector setup vector 12 norm 12 norm 1
+47: 1
+47: setup vector 13 norm setup vector 13 norm 1
+47: 1
+47: setup vector 14setup vector 14 norm  norm 1
+47: 1
+47: setup vector 15setup vector 15 norm  norm 1
+47: 1
+47: setup vector 16 norm setup vector 16 norm 1
+47: 1
+47: setup vector 17 norm setup vector 17 norm 1
+47: 1
+47: setup vector 18 norm setup vector 18 norm 1
+47: 1
+47: setup vector 19 norm setup vector 19 norm 1
+47: 1
+47: setup vector 20 norm setup vector 20 norm 1
+47: 1
+47: setup vector 21setup vector 21 norm  norm 1
+47: 1
+47: setup vector 22setup vector 22 norm  norm 1
+47: 1
+47: setup vector 23setup vector 23 norm  norm 1
+47: 1
+47: setup vector 24 norm setup vector 24 norm 1
+47: 1
+47: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+47: setup vector 1 norm setup vector 1 norm 1
+47: 1
+47: setup vector 2 norm setup vector 2 norm 1
+47: 1
+47: setup vector 3 norm setup vector 3 norm 1
+47: 1
+47: setup vector 4 norm setup vector 4 norm 1
+47: 1
+47: setup vector 5 norm setup vector 5 norm 1
+47: 1
+47: setup vector 6 norm setup vector 6 norm 1
+47: 1
+47: setup vector 7 norm setup vector 7 norm 1
+47: 1
+47: setup vector 8setup vector 8 norm  norm 1
+47: 1
+47: setup vector 9 norm setup vector 9 norm 1
+47: 1
+47: setup vector 10 norm setup vector 10 norm 1
+47: 1
+47: setup vector 11 norm setup vector 11 norm 1
+47: 1
+47: setup vector 12 norm setup vector 12 norm 1
+47: 1
+47: setup vector setup vector 13 norm 13 norm 1
+47: 1
+47: setup vector 14 norm setup vector 14 norm 1
+47: 1
+47: setup vector 15 norm setup vector 15 norm 1
+47: 1
+47: setup vector 16 norm setup vector 16 norm 1
+47: 1
+47: setup vector 17setup vector 17 norm  norm 1
+47: 1
+47: setup vector 18 norm setup vector 18 norm 1
+47: 1
+47: setup vector 19 norm setup vector 19 norm 1
+47: 1
+47: setup vector 20 norm setup vector 20 norm 1
+47: 1
+47: setup vector 21 norm setup vector 21 norm 1
+47: 1
+47: setup vector 22 norm setup vector 22 norm 1
+47: 1
+47: setup vector 23 norm setup vector 23 norm 1
+47: 1
+47: setup vector 24 norm setup vector 24 norm 1
+47: 1
+47: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+47: native coarse EO gate Schur_reconstruction=1.8731e-07
+47: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+47: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+47: PASS: CPU backend independent full operator/residual, mass/kappa, two random RHS scalar/batch, zero, EO/lex, source preservation and unavailable backend recovery
+30/32 Test #47: coarse_overlap_scalar ............   Passed   37.53 sec
+test 48
+      Start 48: coarse_overlap_sve
+
+48: Test command: /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec "--host" "localhost:4" "--map-by" "ppr:1:numa:PE=2" "--bind-to" "core" "-n" "2" "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python" "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/source/tests/runtime/test_cpu_backend.py"
+48: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+48: Environment variables: 
+48:  LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/liblqcd_cpu.so.0.2.0
+48:  OMP_NUM_THREADS=2
+48:  OPENBLAS_NUM_THREADS=1
+48:  OMPI_MCA_hwloc_base_binding_policy=none
+48:  LQCD_COARSE_SPATIAL_OVERLAP=1
+48:  LQCD_COARSE_FUSED=1
+48:  LQCD_ARM_COARSE_SVE=1
+48: Test timeout computed to be: 300
+48: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+48: setup vector 1 norm setup vector 1 norm 3.13089
+48: 3.13089
+48: setup vector 2 norm setup vector 2 norm 4.09586
+48: 4.09586
+48: setup vector 3 norm setup vector 3 norm 3.09808
+48: 3.09808
+48: setup vector 4 norm setup vector 4 norm 2.91924
+48: 2.91924
+48: setup vector 5 norm setup vector 5 norm 3.11947
+48: 3.11947
+48: setup vector 6 norm setup vector 6 norm 2.98507
+48: 2.98507
+48: setup vector 7 norm setup vector 7 norm 3.13374
+48: 3.13374
+48: setup vector 8 norm setup vector 8 norm 2.85459
+48: 2.85459
+48: setup vector 9 norm setup vector 9 norm 2.84447
+48: 2.84447
+48: setup vector 10 norm setup vector 10 norm 2.82289
+48: 2.82289
+48: setup vector 11setup vector 11 norm  norm 2.22117
+48: 2.22117
+48: setup vector 12 norm setup vector 12 norm 3.42095
+48: 3.42095
+48: setup vector 13 norm setup vector 13 norm 3.17156
+48: 3.17156
+48: setup vector 14setup vector 14 norm  norm 3.22345
+48: 3.22345
+48: setup vector 15setup vector 15 norm  norm 3.17765
+48: 3.17765
+48: setup vector 16 norm setup vector 16 norm 3.73024
+48: 3.73024
+48: setup vector 17 norm setup vector 17 norm 2.79785
+48: 2.79785
+48: setup vector 18 norm setup vector 18 norm 2.73747
+48: 2.73747
+48: setup vector 19setup vector 19 norm  norm 2.64828
+48: 2.64828
+48: setup vector 20 norm setup vector 20 norm 3.40142
+48: 3.40142
+48: setup vector 21 norm setup vector 21 norm 3.33052
+48: 3.33052
+48: setup vector 22 norm setup vector 22 norm 2.96034
+48: 2.96034
+48: setup vector 23 norm setup vector 23 norm 2.84352
+48: 2.84352
+48: setup vector 24 norm setup vector 24 norm 3.05271
+48: 3.05271
+48: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+48: setup vector 1 norm setup vector 1 norm 1
+48: 1
+48: setup vector setup vector 2 norm 2 norm 1
+48: 1
+48: setup vector 3setup vector 3 norm  norm 1
+48: 1
+48: setup vector 4setup vector 4 norm  norm 1
+48: 1
+48: setup vector 5 norm setup vector 5 norm 1
+48: 1
+48: setup vector 6setup vector 6 norm  norm 1
+48: 1
+48: setup vector 7 norm setup vector 7 norm 1
+48: 1
+48: setup vector 8 norm setup vector 8 norm 1
+48: 1
+48: setup vector 9setup vector 9 norm  norm 1
+48: 1
+48: setup vector 10 norm setup vector 10 norm 1
+48: 1
+48: setup vector 11 norm setup vector 11 norm 1
+48: 1
+48: setup vector 12setup vector 12 norm  norm 1
+48: 1
+48: setup vector 13setup vector 13 norm  norm 1
+48: 1
+48: setup vector 14 norm setup vector 14 norm 1
+48: 1
+48: setup vector 15 norm setup vector 15 norm 1
+48: 1
+48: setup vector 16setup vector 16 norm  norm 1
+48: 1
+48: setup vector 17 norm setup vector 17 norm 1
+48: 1
+48: setup vector 18 norm setup vector 18 norm 1
+48: 1
+48: setup vector 19 norm setup vector 19 norm 1
+48: 1
+48: setup vector 20setup vector 20 norm  norm 1
+48: 1
+48: setup vector 21setup vector 21 norm  norm 1
+48: 1
+48: setup vector 22 norm setup vector 22 norm 1
+48: 1
+48: setup vector 23 norm setup vector 23 norm 1
+48: 1
+48: setup vector 24 norm setup vector 24 norm 1
+48: 1
+48: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+48: setup vector 1setup vector 1 norm  norm 1
+48: 1
+48: setup vector 2 norm setup vector 2 norm 1
+48: 1
+48: setup vector 3setup vector 3 norm  norm 1
+48: 1
+48: setup vector 4 norm setup vector 4 norm 1
+48: 1
+48: setup vector 5setup vector 5 norm  norm 1
+48: 1
+48: setup vector 6setup vector 6 norm  norm 1
+48: 1
+48: setup vector 7setup vector 7 norm  norm 1
+48: 1
+48: setup vector 8 norm setup vector 8 norm 1
+48: 1
+48: setup vector 9setup vector 9 norm  norm 1
+48: 1
+48: setup vector 10setup vector 10 norm  norm 1
+48: 1
+48: setup vector 11 norm setup vector 11 norm 1
+48: 1
+48: setup vector 12setup vector 12 norm  norm 1
+48: 1
+48: setup vector setup vector 13 norm 13 norm 1
+48: 1
+48: setup vector 14 norm setup vector 14 norm 1
+48: 1
+48: setup vector 15 norm setup vector 15 norm 1
+48: 1
+48: setup vector 16setup vector 16 norm  norm 1
+48: 1
+48: setup vector 17setup vector 17 norm  norm 1
+48: 1
+48: setup vector 18 norm setup vector 18 norm 1
+48: 1
+48: setup vector 19setup vector 19 norm  norm 1
+48: 1
+48: setup vector 20 norm setup vector 20 norm 1
+48: 1
+48: setup vector 21 norm setup vector 21 norm 1
+48: 1
+48: setup vector 22 norm setup vector 22 norm 1
+48: 1
+48: setup vector 23setup vector 23 norm  norm 1
+48: 1
+48: setup vector 24 norm setup vector 24 norm 1
+48: 1
+48: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+48: native coarse EO gate Schur_reconstruction=5.6259e-07
+48: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.41527e-08 RAP=5.04077e-07
+48: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.41527e-08 RAP=5.04077e-07
+48: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+48: setup vector 1 norm setup vector 1 norm 3.13089
+48: 3.13089
+48: setup vector 2 norm setup vector 2 norm 4.09586
+48: 4.09586
+48: setup vector 3 norm setup vector 3 norm 3.09808
+48: 3.09808
+48: setup vector 4 norm setup vector 4 norm 2.91924
+48: 2.91924
+48: setup vector 5 norm setup vector 5 norm 3.11947
+48: 3.11947
+48: setup vector 6 norm setup vector 6 norm 2.98507
+48: 2.98507
+48: setup vector 7 norm setup vector 7 norm 3.13374
+48: 3.13374
+48: setup vector 8 norm setup vector 8 norm 2.85459
+48: 2.85459
+48: setup vector 9 norm setup vector 9 norm 2.84447
+48: 2.84447
+48: setup vector 10 norm setup vector 10 norm 2.82289
+48: 2.82289
+48: setup vector 11setup vector 11 norm  norm 2.22117
+48: 2.22117
+48: setup vector 12 norm setup vector 12 norm 3.420953.42095
+48: 
+48: setup vector 13 norm setup vector 13 norm 3.17156
+48: 3.17156
+48: setup vector 14 norm setup vector 14 norm 3.22345
+48: 3.22345
+48: setup vector 15 norm setup vector 15 norm 3.17765
+48: 3.17765
+48: setup vector 16 norm setup vector 16 norm 3.73024
+48: 3.73024
+48: setup vector 17setup vector 17 norm  norm 2.79785
+48: 2.79785
+48: setup vector 18 norm setup vector 18 norm 2.73747
+48: 2.73747
+48: setup vector 19 norm setup vector 19 norm 2.64828
+48: 2.64828
+48: setup vector 20 norm setup vector 20 norm 3.40142
+48: 3.40142
+48: setup vector 21 norm setup vector 21 norm 3.330523.33052
+48: 
+48: setup vector 22setup vector 22 norm  norm 2.96034
+48: 2.96034
+48: setup vector 23 norm setup vector 23 norm 2.84352
+48: 2.84352
+48: setup vector 24 norm setup vector 24 norm 3.05271
+48: 3.05271
+48: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+48: setup vector 1 norm setup vector 1 norm 1
+48: 1
+48: setup vector 2 norm setup vector 2 norm 1
+48: 1
+48: setup vector 3 norm setup vector 3 norm 1
+48: 1
+48: setup vector 4 norm setup vector 4 norm 1
+48: 1
+48: setup vector 5 norm setup vector 5 norm 1
+48: 1
+48: setup vector 6 norm setup vector 6 norm 1
+48: 1
+48: setup vector 7setup vector 7 norm  norm 1
+48: 1
+48: setup vector 8 norm setup vector 8 norm 1
+48: 1
+48: setup vector 9 norm setup vector 9 norm 1
+48: 1
+48: setup vector 10 norm setup vector 10 norm 1
+48: 1
+48: setup vector 11 norm setup vector 11 norm 1
+48: 1
+48: setup vector 12 norm setup vector 12 norm 1
+48: 1
+48: setup vector 13 norm setup vector 13 norm 1
+48: 1
+48: setup vector 14setup vector 14 norm  norm 1
+48: 1
+48: setup vector 15setup vector 15 norm  norm 1
+48: 1
+48: setup vector 16 norm setup vector 16 norm 1
+48: 1
+48: setup vector 17setup vector 17 norm  norm 1
+48: 1
+48: setup vector 18setup vector 18 norm  norm 1
+48: 1
+48: setup vector 19 norm setup vector 19 norm 1
+48: 1
+48: setup vector 20setup vector 20 norm  norm 1
+48: 1
+48: setup vector 21setup vector 21 norm  norm 1
+48: 1
+48: setup vector 22 norm setup vector 22 norm 1
+48: 1
+48: setup vector 23 norm setup vector 23 norm 1
+48: 1
+48: setup vector 24 norm setup vector 24 norm 1
+48: 1
+48: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+48: setup vector 1 norm setup vector 1 norm 1
+48: 1
+48: setup vector 2setup vector 2 norm  norm 1
+48: 1
+48: setup vector 3setup vector 3 norm  norm 1
+48: 1
+48: setup vector 4 norm setup vector 4 norm 1
+48: 1
+48: setup vector 5 norm setup vector 5 norm 1
+48: 1
+48: setup vector 6 norm setup vector 6 norm 1
+48: 1
+48: setup vector 7setup vector 7 norm  norm 1
+48: 1
+48: setup vector setup vector 8 norm 8 norm 1
+48: 1
+48: setup vector setup vector 9 norm 9 norm 1
+48: 1
+48: setup vector setup vector 10 norm 10 norm 1
+48: 1
+48: setup vector 11 norm setup vector 11 norm 1
+48: 1
+48: setup vector 12 norm setup vector 12 norm 1
+48: 1
+48: setup vector 13setup vector 13 norm  norm 1
+48: 1
+48: setup vector 14 norm setup vector 14 norm 1
+48: 1
+48: setup vector 15setup vector 15 norm  norm 1
+48: 1
+48: setup vector 16 norm setup vector 16 norm 1
+48: 1
+48: setup vector 17 norm setup vector 17 norm 1
+48: 1
+48: setup vector 18 norm setup vector 18 norm 1
+48: 1
+48: setup vector setup vector 19 norm 19 norm 1
+48: 1
+48: setup vector 20setup vector 20 norm  norm 1
+48: 1
+48: setup vector 21setup vector 21 norm  norm 1
+48: 1
+48: setup vector 22 norm setup vector 22 norm 1
+48: 1
+48: setup vector 23 norm setup vector 23 norm 1
+48: 1
+48: setup vector 24setup vector 24 norm  norm 1
+48: 1
+48: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+48: native coarse EO gate Schur_reconstruction=5.6259e-07
+48: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.41527e-08 RAP=5.04077e-07
+48: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.41527e-08 RAP=5.04077e-07
+48: PASS: CPU backend independent full operator/residual, mass/kappa, two random RHS scalar/batch, zero, EO/lex, source preservation and unavailable backend recovery
+31/32 Test #48: coarse_overlap_sve ...............   Passed   34.36 sec
+test 49
+      Start 49: coarse_overlap_shrunk_team
+
+49: Test command: /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/bin/mpiexec "--host" "localhost:4" "--map-by" "ppr:1:numa:PE=2" "--bind-to" "core" "-n" "2" "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python" "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/source/tests/runtime/test_cpu_backend.py"
+49: Working Directory: /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build
+49: Environment variables: 
+49:  LQCD_CPU_LIBRARY=/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/liblqcd_cpu.so.0.2.0
+49:  OMP_NUM_THREADS=2
+49:  OPENBLAS_NUM_THREADS=1
+49:  OMPI_MCA_hwloc_base_binding_policy=none
+49:  LQCD_COARSE_SPATIAL_OVERLAP=1
+49:  LQCD_COARSE_FUSED=1
+49:  LQCD_ARM_COARSE_SVE=0
+49:  OMP_THREAD_LIMIT=1
+49: Test timeout computed to be: 300
+49: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+49: setup vector 1 norm setup vector 1 norm 3.13089
+49: 3.13089
+49: setup vector 2 norm setup vector 2 norm 4.09586
+49: 4.09586
+49: setup vector 3 norm setup vector 3 norm 3.09808
+49: 3.09808
+49: setup vector 4 norm setup vector 4 norm 2.91924
+49: 2.91924
+49: setup vector 5 norm setup vector 5 norm 3.11947
+49: 3.11947
+49: setup vector 6 norm setup vector 6 norm 2.98507
+49: 2.98507
+49: setup vector 7 norm setup vector 7 norm 3.13374
+49: 3.13374
+49: setup vector 8 norm setup vector 8 norm 2.85459
+49: 2.85459
+49: setup vector 9 norm setup vector 9 norm 2.84447
+49: 2.84447
+49: setup vector 10 norm setup vector 10 norm 2.82289
+49: 2.82289
+49: setup vector 11 norm setup vector 11 norm 2.22117
+49: 2.22117
+49: setup vector 12 norm setup vector 12 norm 3.42095
+49: 3.42095
+49: setup vector 13 norm setup vector 13 norm 3.17156
+49: 3.17156
+49: setup vector 14 norm setup vector 14 norm 3.22345
+49: 3.22345
+49: setup vector 15 norm setup vector 15 norm 3.17765
+49: 3.17765
+49: setup vector 16 norm setup vector 16 norm 3.73024
+49: 3.73024
+49: setup vector 17 norm setup vector 17 norm 2.79785
+49: 2.79785
+49: setup vector 18 norm setup vector 18 norm 2.73747
+49: 2.73747
+49: setup vector 19 norm setup vector 19 norm 2.64828
+49: 2.64828
+49: setup vector 20 norm setup vector 20 norm 3.40142
+49: 3.40142
+49: setup vector 21 norm setup vector 21 norm 3.33052
+49: 3.33052
+49: setup vector 22 norm setup vector 22 norm 2.96034
+49: 2.96034
+49: setup vector 23 norm setup vector 23 norm 2.84352
+49: 2.84352
+49: setup vector 24 norm setup vector 24 norm 3.05271
+49: 3.05271
+49: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+49: setup vector 1 norm setup vector 1 norm 1
+49: 1
+49: setup vector 2setup vector 2 norm  norm 1
+49: 1
+49: setup vector 3 norm setup vector 3 norm 1
+49: 1
+49: setup vector 4 norm setup vector 4 norm 1
+49: 1
+49: setup vector 5 norm setup vector 5 norm 1
+49: 1
+49: setup vector 6 norm setup vector 6 norm 1
+49: 1
+49: setup vector 7 norm setup vector 7 norm 1
+49: 1
+49: setup vector 8 norm setup vector 8 norm 1
+49: 1
+49: setup vector 9 norm setup vector 9 norm 1
+49: 1
+49: setup vector 10 norm setup vector 10 norm 1
+49: 1
+49: setup vector 11 norm setup vector 11 norm 1
+49: 1
+49: setup vector 12 norm setup vector 12 norm 1
+49: 1
+49: setup vector 13 norm setup vector 13 norm 1
+49: 1
+49: setup vector 14 norm setup vector 14 norm 1
+49: 1
+49: setup vector 15 norm setup vector 15 norm 1
+49: 1
+49: setup vector 16 norm setup vector 16 norm 1
+49: 1
+49: setup vector 17 norm setup vector 17 norm 1
+49: 1
+49: setup vector 18 norm setup vector 18 norm 1
+49: 1
+49: setup vector 19 norm setup vector 19 norm 1
+49: 1
+49: setup vector 20 norm setup vector 20 norm 1
+49: 1
+49: setup vector 21 norm setup vector 21 norm 1
+49: 1
+49: setup vector 22setup vector 22 norm  norm 1
+49: 1
+49: setup vector 23 norm setup vector 23 norm 1
+49: 1
+49: setup vector 24 norm setup vector 24 norm 1
+49: 1
+49: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+49: setup vector 1 norm setup vector 1 norm 1
+49: 1
+49: setup vector 2 norm setup vector 2 norm 1
+49: 1
+49: setup vector 3 norm setup vector 3 norm 1
+49: 1
+49: setup vector 4 norm setup vector 4 norm 1
+49: 1
+49: setup vector 5 norm setup vector 5 norm 1
+49: 1
+49: setup vector 6 norm setup vector 6 norm 1
+49: 1
+49: setup vector 7 norm setup vector 7 norm 1
+49: 1
+49: setup vector 8 norm setup vector 8 norm 1
+49: 1
+49: setup vector 9 norm setup vector 9 norm 1
+49: 1
+49: setup vector 10 norm setup vector 10 norm 1
+49: 1
+49: setup vector 11 norm setup vector 11 norm 1
+49: 1
+49: setup vector 12 norm setup vector 12 norm 1
+49: 1
+49: setup vector 13 norm setup vector 13 norm 1
+49: 1
+49: setup vector 14 norm setup vector 14 norm 1
+49: 1
+49: setup vector 15 norm setup vector 15 norm 1
+49: 1
+49: setup vector 16 norm setup vector 16 norm 1
+49: 1
+49: setup vector 17 norm setup vector 17 norm 1
+49: 1
+49: setup vector 18 norm setup vector 18 norm 1
+49: 1
+49: setup vector 19 norm setup vector 19 norm 1
+49: 1
+49: setup vector 20 norm setup vector 20 norm 1
+49: 1
+49: setup vector 21 norm setup vector 21 norm 1
+49: 1
+49: setup vector 22 norm setup vector 22 norm 1
+49: 1
+49: setup vector setup vector 23 norm 23 norm 1
+49: 1
+49: setup vector 24 norm setup vector 24 norm 1
+49: 1
+49: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+49: native coarse EO gate Schur_reconstruction=1.8731e-07
+49: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+49: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+49: native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+49: setup vector 1 norm setup vector 1 norm 3.13089
+49: 3.13089
+49: setup vector 2 norm setup vector 2 norm 4.09586
+49: 4.09586
+49: setup vector 3 norm setup vector 3 norm 3.09808
+49: 3.09808
+49: setup vector 4 norm setup vector 4 norm 2.91924
+49: 2.91924
+49: setup vector 5 norm setup vector 5 norm 3.11947
+49: 3.11947
+49: setup vector 6 norm setup vector 6 norm 2.98507
+49: 2.98507
+49: setup vector 7 norm setup vector 7 norm 3.13374
+49: 3.13374
+49: setup vector 8 norm setup vector 8 norm 2.85459
+49: 2.85459
+49: setup vector 9 norm setup vector 9 norm 2.84447
+49: 2.84447
+49: setup vector 10 norm setup vector 10 norm 2.82289
+49: 2.82289
+49: setup vector 11 norm setup vector 11 norm 2.22117
+49: 2.22117
+49: setup vector 12 norm setup vector 12 norm 3.42095
+49: 3.42095
+49: setup vector 13 norm setup vector 13 norm 3.17156
+49: 3.17156
+49: setup vector 14 norm setup vector 14 norm 3.22345
+49: 3.22345
+49: setup vector 15 norm setup vector 15 norm 3.17765
+49: 3.17765
+49: setup vector 16 norm setup vector 16 norm 3.73024
+49: 3.73024
+49: setup vector 17 norm setup vector 17 norm 2.79785
+49: 2.79785
+49: setup vector 18 norm setup vector 18 norm 2.73747
+49: 2.73747
+49: setup vector 19 norm setup vector 19 norm 2.64828
+49: 2.64828
+49: setup vector 20 norm setup vector 20 norm 3.40142
+49: 3.40142
+49: setup vector 21 norm setup vector 21 norm 3.33052
+49: 3.33052
+49: setup vector 22 norm setup vector 22 norm 2.960342.96034
+49: 
+49: setup vector 23 norm setup vector 23 norm 2.84352
+49: 2.84352
+49: setup vector 24 norm setup vector 24 norm 3.05271
+49: 3.05271
+49: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+49: setup vector 1 norm setup vector 1 norm 1
+49: 1
+49: setup vector 2 norm setup vector 2 norm 1
+49: 1
+49: setup vector 3 norm setup vector 3 norm 1
+49: 1
+49: setup vector 4 norm setup vector 4 norm 1
+49: 1
+49: setup vector 5 norm setup vector 5 norm 1
+49: 1
+49: setup vector 6 norm setup vector 6 norm 1
+49: 1
+49: setup vector 7 norm setup vector 7 norm 1
+49: 1
+49: setup vector 8 norm setup vector 8 norm 1
+49: 1
+49: setup vector 9 norm setup vector 9 norm 1
+49: 1
+49: setup vector 10 norm setup vector 10 norm 1
+49: 1
+49: setup vector 11 norm setup vector 11 norm 1
+49: 1
+49: setup vector 12 norm setup vector 12 norm 1
+49: 1
+49: setup vector 13 norm setup vector 13 norm 1
+49: 1
+49: setup vector 14 norm setup vector 14 norm 1
+49: 1
+49: setup vector 15 norm setup vector 15 norm 1
+49: 1
+49: setup vector 16 norm setup vector 16 norm 1
+49: 1
+49: setup vector 17 norm setup vector 17 norm 1
+49: 1
+49: setup vector 18 norm setup vector 18 norm 1
+49: 1
+49: setup vector 19 norm setup vector 19 norm 1
+49: 1
+49: setup vector 20 norm setup vector 20 norm 1
+49: 1
+49: setup vector 21 norm setup vector 21 norm 1
+49: 1
+49: setup vector 22 norm setup vector 22 norm 1
+49: 1
+49: setup vector 23 norm setup vector 23 norm 1
+49: 1
+49: setup vector 24 norm setup vector 24 norm 1
+49: 1
+49: native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+49: setup vector 1 norm setup vector 1 norm 1
+49: 1
+49: setup vector 2 norm setup vector 2 norm 1
+49: 1
+49: setup vector 3 norm setup vector 3 norm 1
+49: 1
+49: setup vector 4 norm setup vector 4 norm 1
+49: 1
+49: setup vector 5 norm setup vector 5 norm 11
+49: 
+49: setup vector 6 norm setup vector 6 norm 1
+49: 1
+49: setup vector 7 norm setup vector 7 norm 1
+49: 1
+49: setup vector 8 norm setup vector 8 norm 1
+49: 1
+49: setup vector 9 norm setup vector 9 norm 1
+49: 1
+49: setup vector 10 norm setup vector 10 norm 1
+49: 1
+49: setup vector 11 norm setup vector 11 norm 1
+49: 1
+49: setup vector 12 norm setup vector 12 norm 1
+49: 1
+49: setup vector 13 norm setup vector 13 norm 1
+49: 1
+49: setup vector 14 norm setup vector 14 norm 1
+49: 1
+49: setup vector 15 norm setup vector 15 norm 1
+49: 1
+49: setup vector 16 norm setup vector 16 norm 1
+49: 1
+49: setup vector 17 norm setup vector 17 norm 1
+49: 1
+49: setup vector 18 norm setup vector 18 norm 1
+49: 1
+49: setup vector 19 norm setup vector 19 norm 1
+49: 1
+49: setup vector 20 norm setup vector 20 norm 1
+49: 1
+49: setup vector 21 norm setup vector 21 norm 1
+49: 1
+49: setup vector 22 norm setup vector 22 norm 11
+49: 
+49: setup vector 23 norm setup vector 23 norm 1
+49: 1
+49: setup vector 24 norm setup vector 24 norm 1
+49: 1
+49: native EO gates clover_inverse=0 Schur_reconstruction=8.86329e-08
+49: native coarse EO gate Schur_reconstruction=1.8731e-07
+49: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+49: native gates double=1.59662e-16 fine=7.17671e-08 R*P=5.40585e-08 RAP=1.80146e-07
+49: PASS: CPU backend independent full operator/residual, mass/kappa, two random RHS scalar/batch, zero, EO/lex, source preservation and unavailable backend recovery
+32/32 Test #49: coarse_overlap_shrunk_team .......   Passed   64.39 sec
+
+The following tests passed:
+	core
+	arm_kernel
+	arm_sve
+	arm_sve_reuse
+	arm_sve_clover_reuse
+	arm_sve_plan
+	arm_sve_plan_baseline
+	arm_sve_plan_reuse
+	arm_sve_plan_reuse_gather
+	arm_sve_plan_portable
+	arm_sve_transfer
+	hbm_placement
+	hbw_buffer
+	coarse_kernel
+	wilson_local
+	wilson_global
+	wilson_packed
+	wilson_contiguous
+	wilson_packed_fallback
+	wilson_global_fallback
+	native_allocator
+	cpu_backend_mpi2
+	batch12_mpi2
+	batch12_coarse_reduce_mpi2
+	coarse_batch_reduce_serial
+	coarse_batch_reduce_mpi2
+	runtime_batch
+	runtime_batch_coarse_reduce
+	mg_tuning
+	coarse_overlap_scalar
+	coarse_overlap_sve
+	coarse_overlap_shrunk_team
+
+100% tests passed, 0 tests failed out of 32
+
+Total Test time (real) = 672.90 sec
