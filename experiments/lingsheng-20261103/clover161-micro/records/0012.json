@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python",
+    "-u",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/clover_micro_task_v1.py"
+  ],
+  "cwd": "/home/share/nsls_lwb/.cache/mg-opt-20261103",
+  "timeout": 600,
+  "environment": {
+    "LD_PRELOAD": "",
+    "LD_DEBUG": "[REDACTED: private environment/credential]",
+    "LD_DEBUG_OUTPUT": "[REDACTED: private environment/credential]",
+    "PERF_COUNTER_ROOT": ""
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "complete": true,
+  "files": [
+    {
+      "path": "161-clover-reuse-micro-worker13-launch.json",
+      "bytes": 8078,
+      "original_sha256": "042dceb47d6c6014c6eb68b1067182f4ef7104656ffd644f0b38fc8ed32a0b25",
+      "export_sha256": "042dceb47d6c6014c6eb68b1067182f4ef7104656ffd644f0b38fc8ed32a0b25",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0000.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "clover-micro-161-v1/432-off-a.log",
+      "bytes": 970,
+      "original_sha256": "5a07809cdfccf26ff51b1f5fe72477857a8bc41f89ea03af4d6dec729a039c9e",
+      "export_sha256": "5a07809cdfccf26ff51b1f5fe72477857a8bc41f89ea03af4d6dec729a039c9e",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0001.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "clover-micro-161-v1/432-off-b.log",
+      "bytes": 965,
+      "original_sha256": "2e29f1f515e8cd3b8c6cf7036118de03cf6651fc6229de7be2da051f9a940f8a",
+      "export_sha256": "2e29f1f515e8cd3b8c6cf7036118de03cf6651fc6229de7be2da051f9a940f8a",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0002.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "clover-micro-161-v1/432-on.log",
+      "bytes": 963,
+      "original_sha256": "9254c7f329f64fd841d9322142decdc6857cffe5215fa405df82bc3d6921e943",
+      "export_sha256": "9254c7f329f64fd841d9322142decdc6857cffe5215fa405df82bc3d6921e943",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0003.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "clover-micro-161-v1/864-off-a.log",
+      "bytes": 970,
+      "original_sha256": "96650f63bbd4fc06eccbdbca57e30591d6fbe31df9cb2055d2b447840f4e9e48",
+      "export_sha256": "96650f63bbd4fc06eccbdbca57e30591d6fbe31df9cb2055d2b447840f4e9e48",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0004.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "clover-micro-161-v1/864-off-b.log",
+      "bytes": 970,
+      "original_sha256": "b779c2a0f4af1742117edf7f9b679b577f3307403c696832c1dba3e94549d9b4",
+      "export_sha256": "b779c2a0f4af1742117edf7f9b679b577f3307403c696832c1dba3e94549d9b4",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0005.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "clover-micro-161-v1/864-on.log",
+      "bytes": 965,
+      "original_sha256": "28e790a7fe1ad8d4ab2422a1cf8a5d5a94a5a2f0cc0781f6bd676e7f3ccafe90",
+      "export_sha256": "28e790a7fe1ad8d4ab2422a1cf8a5d5a94a5a2f0cc0781f6bd676e7f3ccafe90",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0006.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "clover-micro-161-v1/compile.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0007.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "clover-micro-161-v1/result.json",
+      "bytes": 13148,
+      "original_sha256": "5b2d9994270692974700a9d58439bba164100ccb29fb6a14957a37f3ca4683da",
+      "export_sha256": "5b2d9994270692974700a9d58439bba164100ccb29fb6a14957a37f3ca4683da",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0008.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "clover_micro_task_v1.py",
+      "bytes": 3589,
+      "original_sha256": "173b27a4f1596f42e0cd847d6d0a4c0449571d7be05dce16c974fb60904f9e12",
+      "export_sha256": "173b27a4f1596f42e0cd847d6d0a4c0449571d7be05dce16c974fb60904f9e12",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0009.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "clover_reuse_micro.cpp",
+      "bytes": 2852,
+      "original_sha256": "94865112e916cbe92ec70d75b831af81e025e677ffab287ed527047c638f9a8f",
+      "export_sha256": "94865112e916cbe92ec70d75b831af81e025e677ffab287ed527047c638f9a8f",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0010.cpp",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "publish_clover161_micro.py",
+      "bytes": 3141,
+      "original_sha256": "d8acb80b8bb112222069242c1a5c4f4a601736f21d7e3deb843072c17432e74f",
+      "export_sha256": "d8acb80b8bb112222069242c1a5c4f4a601736f21d7e3deb843072c17432e74f",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0011.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "queue13/161-clover-reuse-micro-worker13.finished.json",
+      "bytes": 456,
+      "original_sha256": "1a56fe4fe864a8a6c120f6b402eb8a32ba42d00a186d755fd454999d327283d8",
+      "export_sha256": "3b716570356882b409a73564b40589c7da3f6b53e7434ff66c909aa6a7aadc75",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0012.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "queue13/161-clover-reuse-micro-worker13.log",
+      "bytes": 133,
+      "original_sha256": "09063b8a9d91dc111f99701236f4111becf8102fa600d5d6d3b81a419f73d736",
+      "export_sha256": "09063b8a9d91dc111f99701236f4111becf8102fa600d5d6d3b81a419f73d736",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0013.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "queue13/161-clover-reuse-micro-worker13.status.json",
+      "bytes": 739,
+      "original_sha256": "26b6a612c42c1b9a9227af9403235887327f145d2007d1dd703eb585d3791ae8",
+      "export_sha256": "26b6a612c42c1b9a9227af9403235887327f145d2007d1dd703eb585d3791ae8",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0014.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "read161_micro.py",
+      "bytes": 634,
+      "original_sha256": "62d85ed9afd1ed249e649588660346fcd6d306489d1f43055bdc8633970807f2",
+      "export_sha256": "62d85ed9afd1ed249e649588660346fcd6d306489d1f43055bdc8633970807f2",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/clover161-micro/records/0015.py",
+      "raw_perf_retained_outside_git": false
+    }
+  ]
+}

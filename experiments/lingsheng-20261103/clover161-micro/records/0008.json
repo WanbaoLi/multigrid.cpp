@@ -1,0 +1,466 @@
+{
+  "complete": true,
+  "status": "passed",
+  "host": "cn19480",
+  "allocation": "mg-opt-20261103-worker13",
+  "performance_ranked": false,
+  "full12_metric": false,
+  "purpose": "Attribute actual whole-solve Clover result to local reuse/cache behavior; same native compilation flags, one pinned core, off/on/off controls",
+  "source_manifest_sha256": "121e4ecbcfc0ccef51d9c6584af3d956fed4167202519edb30b3ab3b01a13e68",
+  "prior160_state_sha256": "9949a752663648cc269ddc1581edfafdbd39d06d50f906b6e18af79f5b733158",
+  "cpu": 0,
+  "rows": [
+    {
+      "sites": 432,
+      "mode": 0,
+      "label": "off-a",
+      "results": [
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 0,
+          "calls": 30000,
+          "seconds": 0.122291972,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        },
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 1,
+          "calls": 30000,
+          "seconds": 0.118500546,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        },
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 2,
+          "calls": 30000,
+          "seconds": 0.122336043,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        },
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 3,
+          "calls": 30000,
+          "seconds": 0.122301992,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        },
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 4,
+          "calls": 30000,
+          "seconds": 0.122311032,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        }
+      ],
+      "argv": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/clover-micro-161-v1/micro",
+        "432",
+        "30000"
+      ]
+    },
+    {
+      "sites": 432,
+      "mode": 1,
+      "label": "on",
+      "results": [
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": true,
+          "repeat": 0,
+          "calls": 30000,
+          "seconds": 0.196215177,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        },
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": true,
+          "repeat": 1,
+          "calls": 30000,
+          "seconds": 0.19640893,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        },
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": true,
+          "repeat": 2,
+          "calls": 30000,
+          "seconds": 0.195880472,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        },
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": true,
+          "repeat": 3,
+          "calls": 30000,
+          "seconds": 0.19510267,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        },
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": true,
+          "repeat": 4,
+          "calls": 30000,
+          "seconds": 0.195372434,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        }
+      ],
+      "argv": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/clover-micro-161-v1/micro",
+        "432",
+        "30000"
+      ]
+    },
+    {
+      "sites": 432,
+      "mode": 0,
+      "label": "off-b",
+      "results": [
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 0,
+          "calls": 30000,
+          "seconds": 0.12224459,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        },
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 1,
+          "calls": 30000,
+          "seconds": 0.118447784,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        },
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 2,
+          "calls": 30000,
+          "seconds": 0.12219849,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        },
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 3,
+          "calls": 30000,
+          "seconds": 0.1222185,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        },
+        {
+          "sites": 432,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 4,
+          "calls": 30000,
+          "seconds": 0.12220717,
+          "max_abs_oracle_error": 1.04573209647e-07,
+          "checksum": 98499.4095483,
+          "full12_metric": false
+        }
+      ],
+      "argv": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/clover-micro-161-v1/micro",
+        "432",
+        "30000"
+      ]
+    },
+    {
+      "sites": 864,
+      "mode": 0,
+      "label": "off-a",
+      "results": [
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 0,
+          "calls": 30000,
+          "seconds": 0.310984683,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        },
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 1,
+          "calls": 30000,
+          "seconds": 0.310418815,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        },
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 2,
+          "calls": 30000,
+          "seconds": 0.311181846,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        },
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 3,
+          "calls": 30000,
+          "seconds": 0.310670277,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        },
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 4,
+          "calls": 30000,
+          "seconds": 0.310712288,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        }
+      ],
+      "argv": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/clover-micro-161-v1/micro",
+        "864",
+        "30000"
+      ]
+    },
+    {
+      "sites": 864,
+      "mode": 1,
+      "label": "on",
+      "results": [
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": true,
+          "repeat": 0,
+          "calls": 30000,
+          "seconds": 0.371148111,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        },
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": true,
+          "repeat": 1,
+          "calls": 30000,
+          "seconds": 0.371092129,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        },
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": true,
+          "repeat": 2,
+          "calls": 30000,
+          "seconds": 0.371074199,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        },
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": true,
+          "repeat": 3,
+          "calls": 30000,
+          "seconds": 0.370979116,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        },
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": true,
+          "repeat": 4,
+          "calls": 30000,
+          "seconds": 0.370969745,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        }
+      ],
+      "argv": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/clover-micro-161-v1/micro",
+        "864",
+        "30000"
+      ]
+    },
+    {
+      "sites": 864,
+      "mode": 0,
+      "label": "off-b",
+      "results": [
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 0,
+          "calls": 30000,
+          "seconds": 0.276605489,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        },
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 1,
+          "calls": 30000,
+          "seconds": 0.276180322,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        },
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 2,
+          "calls": 30000,
+          "seconds": 0.275919308,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        },
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 3,
+          "calls": 30000,
+          "seconds": 0.276256773,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        },
+        {
+          "sites": 864,
+          "vector_bytes": 64,
+          "reuse": false,
+          "repeat": 4,
+          "calls": 30000,
+          "seconds": 0.276334254,
+          "max_abs_oracle_error": 1.13747619324e-07,
+          "checksum": 196998.176291,
+          "full12_metric": false
+        }
+      ],
+      "argv": [
+        "taskset",
+        "-c",
+        "0",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/clover-micro-161-v1/micro",
+        "864",
+        "30000"
+      ]
+    }
+  ],
+  "compile_argv": [
+    "/work_ssd/system/os_jasmine_v01/vroot/usr/bin/g++",
+    "-DLQCD_BACKEND_ARM=1",
+    "-DLQCD_HAVE_KUPL=1",
+    "-Dlqcd_cpu_EXPORTS",
+    "-I/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/000-arm-clover-tests/source/include",
+    "-I/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/000-arm-clover-tests/source/src/runtime",
+    "-I/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/include",
+    "-isystem",
+    "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/include",
+    "-isystem",
+    "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/include/openmpi",
+    "-isystem",
+    "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/include/openmpi/opal/mca/hwloc/hwloc201/hwloc/include",
+    "-isystem",
+    "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/include/openmpi/opal/mca/event/libevent2022/libevent",
+    "-isystem",
+    "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/include/openmpi/opal/mca/event/libevent2022/libevent/include",
+    "-O3",
+    "-DNDEBUG",
+    "-std=c++17",
+    "-fPIC",
+    "-fvisibility=hidden",
+    "-fvisibility-inlines-hidden",
+    "-march=native",
+    "-mtune=native",
+    "-fopenmp",
+    "-I/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/000-arm-clover-tests/source/src/backends/arm",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/clover_reuse_micro.cpp",
+    "-o",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/clover-micro-161-v1/micro"
+  ]
+}
