@@ -87,7 +87,7 @@ std::vector<int> NativeMG::solve_batch(const std::vector<Field> &b, std::vector<
     impl->configure_solve();
     x.resize(b.size());
     std::vector<int> counts(b.size(), 0);
-    if (b.size() == 1 || !setting("NATIVE_OUTER_FLOAT", 1) || !setting("LQCD_GCR_FUSED", 1)) {
+    if (b.size() == 1 || !impl->outer_float || !setting("LQCD_GCR_FUSED", 1)) {
         for (size_t i = 0; i < b.size(); ++i) {
             solve(b[i], x[i], tol, maxiter, restart);
             counts[i] = iterations;

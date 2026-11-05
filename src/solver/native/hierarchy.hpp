@@ -14,6 +14,7 @@ namespace hbm = lqcd_native::hbm;
 // Aggregate-major storage; method bodies are grouped by algorithm in .cpp files.
 struct NativeMG::Impl {
     std::vector<BatchKrylovWorkspace> batch_workspace;
+    bool outer_float = true;
     std::vector<FloatField> batch_coarse_rhs, batch_coarse_correction, batch_sap_image;
     void fine_apply_batch(const std::vector<const FloatField *> &src,
                           const std::vector<FloatField *> &out, int color = -1) const;

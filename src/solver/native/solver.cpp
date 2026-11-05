@@ -131,7 +131,7 @@ void NativeMG::solve(const Field &b, Field &x, double tol, int maxiter, int rest
         impl->report_halo_profile();
         return;
     }
-    if (setting("NATIVE_OUTER_FLOAT", 1)) {
+    if (impl->outer_float) {
         double current_relative = 1.;
         for (int correction = 0; correction < 12 && iterations < maxiter; correction++) {
             auto &fb = impl->outer_rhs;
