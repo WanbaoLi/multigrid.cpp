@@ -1,0 +1,16 @@
+Extracted 12 columns without arithmetic
+0 4.81878449575349e-09
+1 3.198723265746992e-09
+2 3.933319143063532e-09
+3 3.1414741334596257e-09
+4 4.089293916996384e-09
+5 4.075962156117472e-09
+6 3.6561970709099204e-09
+7 2.834974777569663e-09
+8 2.640762942178473e-09
+9 3.773112244739589e-09
+10 4.279940778266243e-09
+11 2.612865913430912e-09
+{"complete": true, "passed": true, "columns": 12, "max_true_residual": 4.81878449575349e-09, "reference_sha256": "1534d9c0653a019dcac4df98965f47f14d052cb324c35e568faa760d50878e9c", "method": "byte-only column extraction + independent scalar C++", "evidence_sha256": "caad1f962f84f1904715b64856e89e093dbf56fe77bb23df98eb32fbce73780c", "evidence_relative_path": "independent-publication-v2/verification.json", "verification_driver_sha256": "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1", "propagator_sha256": "d49b6db942df7668e8203ebb776d88b34b928f800f6be2e5fbc38fa97fe1b0ef", "extractor_sha256": "efd900b99630c3cf2ea4ba285b38a5a123faa8e9d5d7cbbaf0f3169a8a58cc5b", "solution_relative_error": 1.2232293127295584e-11, "solution_relative_errors": [1.2232293127295584e-11, 1.131774449724164e-11, 1.1439293226352382e-11, 8.391922060630377e-12, 9.289894266779247e-12, 1.078637008955183e-11, 1.161711522986551e-11, 8.809139097191768e-12, 6.41279153682573e-12, 9.919994937115361e-12, 1.1208074388994474e-11, 6.975852978342312e-12], "reference_propagator_sha256": "31d5cb29eeaa2714b4db003424da1215668d369288a6706bff03a1e0fb2e71cd"}
+RAW_AUDITED_VERIFY_COMPLETE {"checks": 45, "manifest_sha256": "fb0ae7eb17a48c2b2bba469c630135c45f5c415ca249909f6cb8d7fcd2ff6e37"}
+FRESH_WARM_PUBLICATION {"complete": true, "rank": 0, "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-control-a/checksum-audit/verify-full12-fresh-publication-v2/rank00000/manifest.json", "sha256": "3d9a715ea10704822ba3b54a8f3ef1292298a7ddd392a9992ea74416991a4896"}

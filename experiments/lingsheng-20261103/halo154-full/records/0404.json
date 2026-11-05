@@ -1,0 +1,52 @@
+{
+  "complete": true,
+  "passed": true,
+  "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-control-b/measurements/full12/propagator.npy",
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "expected_sha256": "805ebc992752c4127c342c40b491d897a2451b8095adab4a553eb172ba2507a0",
+  "required_bytes": 2038431872,
+  "initial": {
+    "dev": 60,
+    "inode": 72057816042450368,
+    "bytes": 2038431872,
+    "mtime_ns": 1793796161678706820,
+    "ctime_ns": 1793796161678706820
+  },
+  "original_open_mode": "O_RDONLY",
+  "same_immutable_bytes": true,
+  "started": 1793796199.1742737,
+  "fd_before": {
+    "dev": 60,
+    "inode": 72057816042450368,
+    "bytes": 2038431872,
+    "mtime_ns": 1793796161678706820,
+    "ctime_ns": 1793796161678706820
+  },
+  "last_request_offset": 2038431872,
+  "last_request_bytes": 1,
+  "last_returned_bytes": 0,
+  "fd_after": {
+    "dev": 60,
+    "inode": 72057816042450368,
+    "bytes": 2038431872,
+    "mtime_ns": 1793796161678706820,
+    "ctime_ns": 1793796161678706820
+  },
+  "path_after": {
+    "dev": 60,
+    "inode": 72057816042450368,
+    "bytes": 2038431872,
+    "mtime_ns": 1793796161678706820,
+    "ctime_ns": 1793796161678706820
+  },
+  "read_bytes": 2038431872,
+  "pread_calls": 488,
+  "positive_short_reads": 0,
+  "eof_probe_bytes": 0,
+  "openssl_sha256": "805ebc992752c4127c342c40b491d897a2451b8095adab4a553eb172ba2507a0",
+  "software_sha256": "805ebc992752c4127c342c40b491d897a2451b8095adab4a553eb172ba2507a0",
+  "seconds": 29.085099697113037,
+  "metadata_stable": true,
+  "byte_count_exact": true
+}

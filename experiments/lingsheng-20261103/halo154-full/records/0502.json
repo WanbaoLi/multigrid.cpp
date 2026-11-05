@@ -1,0 +1,69 @@
+{
+  "conclusions": [
+    {
+      "conclusion": "Not adopted: Gain below threshold against first control; Gain below threshold against last control",
+      "evidence": [
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/v2-w10v5-state.json",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-on/report.json"
+      ],
+      "status": "inconclusive",
+      "time": "2026-11-04T12:47:42.424664+00:00"
+    }
+  ],
+  "created": "2026-11-04T12:24:52.322115+00:00",
+  "id": "v2-w10v5-halo-on",
+  "proposal": {
+    "bottleneck": "Closed103 message reduction without accepted ordinary gain; actual711 off-path control/stack mechanism",
+    "change": "Same-hierarchy760 halo-on",
+    "history_links": [
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/150-best-solve-profile-worker10-state.json",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/153-halo-v2-remainder-worker10-state.json",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/old052-import-proof.json",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/103-halo-recovered-state.json",
+      "docs/coarse-batch-halo-v2.md"
+    ],
+    "history_read_token": "3d93ba9dceac8e045d26c0943ea3e053ed5d7bf1a2cec000081db9d240cdd28e",
+    "hypothesis": "v2-w10v5-halo-on: constant halo-mode specialization preserves GCR work and removes measured static off-path mechanism",
+    "mechanism": "Change only dynamic halo flag; retained independent GCR states and zero guesses",
+    "retry_conditions": "New760 fixed-mode body and completed external ARM tests; explicit new ordinary epoch. No failed stage automatic retry."
+  },
+  "report": {
+    "library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+    "maximum_seconds": 14.613443131005624,
+    "median_seconds": 14.457430415001,
+    "minimum_seconds": 14.445143566001207,
+    "relative_spread": 0.01164104271460234,
+    "sha256": "2d65940628de30d9c6224b929184e52265dd8732707047f20883b17e29623fa3",
+    "steady_repeats": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "steady_samples": [
+      14.613443131005624,
+      14.473240782986977,
+      14.446125075002783,
+      14.534121175995097,
+      14.457430415001,
+      14.452102444003685,
+      14.445143566001207
+    ]
+  },
+  "schema": 1,
+  "snapshot": {
+    "archive_sha256": "19fe9cd75132d655e5a7ced21f7b9db55beacec95ed8a6eee5b6c77c6ab57d02",
+    "build": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-on/build",
+    "git_head": "760666c8ac459ef062c749ee7ee9964c99e7c3c8",
+    "origin_attempt": "v2-w10v5-new-off",
+    "origin_library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+    "origin_report_sha256": "16cea4ad87ed0b08a9125523c8b081388065dfbab8620449c129f383479f9a1b",
+    "source": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-on/source",
+    "source_manifest_sha256": "d93dde39cb162bd12c845c05e480b73c49dac5385c0fab368abaf8e43bc9fda7"
+  },
+  "stages": {},
+  "status": "inconclusive"
+}

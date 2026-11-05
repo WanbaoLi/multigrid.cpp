@@ -96,37 +96,9 @@ if(BUILD_TESTING)
         set_tests_properties(batch12_mpi2 PROPERTIES TIMEOUT 600 ENVIRONMENT "${LQCD_RUNTIME_ENV}")
         add_test(NAME batch12_coarse_reduce_mpi2 COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_batch12.py")
         set_tests_properties(batch12_coarse_reduce_mpi2 PROPERTIES TIMEOUT 600 ENVIRONMENT "${LQCD_RUNTIME_ENV};LQCD_COARSE_BATCH_REDUCE=1")
-        foreach(halo_ranks 2 4)
-            add_test(NAME batch12_coarse_halo_mpi${halo_ranks} COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n ${halo_ranks} "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_batch12.py")
-            set_tests_properties(batch12_coarse_halo_mpi${halo_ranks} PROPERTIES TIMEOUT 600 ENVIRONMENT
-                "${LQCD_RUNTIME_ENV};LQCD_COARSE_BATCH_REDUCE=1;LQCD_COARSE_BATCH_HALO=1")
-        endforeach()
         add_test(NAME coarse_batch_reduce_serial COMMAND "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_coarse_batch_reduce.py")
         add_test(NAME coarse_batch_reduce_mpi2 COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_coarse_batch_reduce.py")
-        # Extent8/block2 with four time-slab ranks owns exactly one coarse
-        # time plane. This catches packed face ordering and active-RHS maps
-        # while MPI2 also covers identical lower/upper neighbour ranks.
-        add_test(NAME coarse_batch_halo_mpi4 COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 4 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_coarse_batch_reduce.py")
-        set_tests_properties(coarse_batch_reduce_serial coarse_batch_reduce_mpi2 coarse_batch_halo_mpi4 PROPERTIES TIMEOUT 600 ENVIRONMENT
-            "${LQCD_RUNTIME_ENV};OMP_PLACES=cores;OMP_PROC_BIND=close;LQCD_COARSE_FUSED=0;LQCD_ARM_COARSE_SVE=0;LQCD_HALO_OVERLAP=1;LQCD_COARSE_SPATIAL_OVERLAP=0")
-        # Reuse one independent NumPy probe for the context-time scheduling
-        # modes; the full tests above retain width1/2/4/12 and API-error gates.
-        foreach(mode blocking fused shrunk_team interior)
-            set(coarse_halo_test_ranks 4)
-            set(coarse_halo_test_environment
-                "${LQCD_RUNTIME_ENV};OMP_PLACES=cores;OMP_PROC_BIND=close;LQCD_TEST_COARSE_HALO_SMOKE=1;LQCD_COARSE_FUSED=1;LQCD_ARM_COARSE_SVE=1;LQCD_HALO_OVERLAP=1;LQCD_COARSE_SPATIAL_OVERLAP=1")
-            if(mode STREQUAL "blocking")
-                set(coarse_halo_test_environment
-                    "${LQCD_RUNTIME_ENV};OMP_PLACES=cores;OMP_PROC_BIND=close;LQCD_TEST_COARSE_HALO_SMOKE=1;LQCD_COARSE_FUSED=0;LQCD_ARM_COARSE_SVE=0;LQCD_HALO_OVERLAP=0;LQCD_COARSE_SPATIAL_OVERLAP=0")
-            elseif(mode STREQUAL "shrunk_team")
-                string(APPEND coarse_halo_test_environment ";OMP_THREAD_LIMIT=1")
-            elseif(mode STREQUAL "interior")
-                set(coarse_halo_test_ranks 2)
-                string(APPEND coarse_halo_test_environment ";LQCD_TEST_COARSE_TEMPORAL_EXTENT=16")
-            endif()
-            add_test(NAME coarse_batch_halo_${mode} COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n ${coarse_halo_test_ranks} "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_coarse_batch_reduce.py")
-            set_tests_properties(coarse_batch_halo_${mode} PROPERTIES TIMEOUT 600 ENVIRONMENT "${coarse_halo_test_environment}")
-        endforeach()
+        set_tests_properties(coarse_batch_reduce_serial coarse_batch_reduce_mpi2 PROPERTIES TIMEOUT 600 ENVIRONMENT "${LQCD_RUNTIME_ENV};OMP_PLACES=cores;OMP_PROC_BIND=close")
         add_test(NAME runtime_batch COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_runtime_batch.py")
         set_tests_properties(runtime_batch PROPERTIES TIMEOUT 300 ENVIRONMENT "${LQCD_RUNTIME_ENV}")
         add_test(NAME runtime_batch_coarse_reduce COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_runtime_batch.py")

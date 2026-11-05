@@ -1,0 +1,39 @@
+{
+  "complete": true,
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "rows": [
+    {
+      "path": "hash-000.json",
+      "sha256": "4fc3c715f27d3201a4a9aff149f194ef576f3f867b14695e9abb424a52047e38"
+    },
+    {
+      "path": "hash-001.json",
+      "sha256": "29a282b657a0cd78b7e67281763bdfc15cd87187f1dcb05da425e3784306f255"
+    },
+    {
+      "path": "hash-002.json",
+      "sha256": "32a2a8ae990bc09a6701536bde03463dcea5d28d121c892120b666721be1629f"
+    },
+    {
+      "path": "hash-003.json",
+      "sha256": "016725a4bda234c50335b88ae0ee04797896ff55a606ddfa1dcca6b679dd0406"
+    },
+    {
+      "path": "hash-004.json",
+      "sha256": "0b9f854380d7c5d056b5b77c57e10920a77418094b08155ae719b7dcf6690680"
+    },
+    {
+      "path": "hash-005.json",
+      "sha256": "2d3571caca514f4dd06485789196b810d877d0cfd695c7af62497f82109a7634"
+    },
+    {
+      "path": "hash-006.json",
+      "sha256": "2b8f71daee48a5975ed2f76ed26164b68fa407dcd07faef7392601a84dc82396"
+    },
+    {
+      "path": "hash-007.json",
+      "sha256": "e3076b0377c8e4a29f1c0dc36d4bb56a897ae70b0a0442f12af09a43224ab14b"
+    }
+  ]
+}

@@ -1,0 +1,1163 @@
+{
+  "host": "cn19486",
+  "pid": 3868126,
+  "rank": 8,
+  "captured_at": 1793798914.1290898,
+  "phase": "after setup, before final diagnostic call and perf attachment",
+  "benchmark": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/155-best-solve-profile-worker11/source/tools/optimization/bench_full12.py",
+  "benchmark_sha256": "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1",
+  "allowed_cpus": [
+    304
+  ],
+  "affinity_scope": "calling thread only; OpenMP team placement is recorded in OMP_PLACES",
+  "maps": "40003a715000-40003a73d000 r-xp 00000000 00:2e 51844                      /usr/lib/ld-linux-aarch64.so.1\n40003a73d000-40003a73f000 r--p 00000000 00:00 0                          [vvar]\n40003a73f000-40003a740000 r-xp 00000000 00:00 0                          [vdso]\n40003a740000-40003a742000 rw-p 00000000 00:00 0 \n40003a742000-40003a749000 r--s 00000000 00:2e 59037                      /usr/lib64/gconv/gconv-modules.cache\n40003a749000-40003a74a000 rw-s 00000000 00:30 20502                      /tmp/ompi.cn19486.29301/pid.3867999/pmix_dstor_ds21_3867999/smlockseg-2256404481\n40003a74a000-40003a74b000 r--s 00000000 00:30 20501                      /tmp/ompi.cn19486.29301/pid.3867999/pmix_dstor_ds21_3867999/initial-pmix_shared-segment-0\n40003a74b000-40003a74c000 rw-s 00000000 00:30 20504                      /tmp/ompi.cn19486.29301/pid.3867999/pmix_dstor_ds12_3867999/dstore_sm.lock\n40003a74c000-40003a74d000 r--s 00000000 00:30 20503                      /tmp/ompi.cn19486.29301/pid.3867999/pmix_dstor_ds12_3867999/initial-pmix_shared-segment-0\n40003a74d000-40003a74e000 r--s 00001000 00:05 342                        /dev/infiniband/uverbs0\n40003a74e000-40003a74f000 rw-s 00000000 00:05 342                        /dev/infiniband/uverbs0\n40003a74f000-40003a753000 rw-p 00000000 00:00 0 \n40003a753000-40003a755000 r--p 0002e000 00:2e 51844                      /usr/lib/ld-linux-aarch64.so.1\n40003a755000-40003a757000 rw-p 00030000 00:2e 51844                      /usr/lib/ld-linux-aarch64.so.1\n40003a757000-40003a758000 r--s 00001000 00:05 343                        /dev/infiniband/uverbs1\n40003a758000-40003a759000 rw-s 00000000 00:05 343                        /dev/infiniband/uverbs1\n40003a759000-40003a75a000 r--s 00001000 00:05 344                        /dev/infiniband/uverbs2\n40003a75a000-40003a75b000 rw-s 00000000 00:05 344                        /dev/infiniband/uverbs2\n40003a75b000-40003a75c000 r--s 00001000 00:05 345                        /dev/infiniband/uverbs3\n40003a75c000-40003a75d000 rw-s 00000000 00:05 345                        /dev/infiniband/uverbs3\n40003a75d000-40003a75e000 r--s 00001000 00:05 346                        /dev/infiniband/uverbs4\n40003a75e000-40003a75f000 rw-s 00000000 00:05 346                        /dev/infiniband/uverbs4\n40003a75f000-40003a760000 r--s 00001000 00:05 347                        /dev/infiniband/uverbs5\n40003a760000-40003aa7a000 r-xp 00000000 00:2e 59276                      /usr/lib64/libpython3.9.so.1.0\n40003aa7a000-40003aa98000 ---p 0031a000 00:2e 59276                      /usr/lib64/libpython3.9.so.1.0\n40003aa98000-40003aaa0000 r--p 00328000 00:2e 59276                      /usr/lib64/libpython3.9.so.1.0\n40003aaa0000-40003aad6000 rw-p 00330000 00:2e 59276                      /usr/lib64/libpython3.9.so.1.0\n40003aad6000-40003aaf8000 rw-p 00000000 00:00 0 \n40003aaf8000-40003aaff000 ---p 00000000 00:00 0 \n40003aaff000-40003ab00000 rw-s 00000000 00:05 347                        /dev/infiniband/uverbs5\n40003ab00000-40003ab32000 r-xp 00000000 00:2e 66803                      /usr/lib64/libcrypt.so.1.1.0\n40003ab32000-40003ab4f000 ---p 00032000 00:2e 66803                      /usr/lib64/libcrypt.so.1.1.0\n40003ab4f000-40003ab50000 r--p 0003f000 00:2e 66803                      /usr/lib64/libcrypt.so.1.1.0\n40003ab50000-40003ab51000 rw-p 00040000 00:2e 66803                      /usr/lib64/libcrypt.so.1.1.0\n40003ab51000-40003ab59000 rw-p 00000000 00:00 0 \n40003ab59000-40003ab68000 ---p 00000000 00:00 0 \n40003ab68000-40003ab69000 r--s 00001000 00:05 348                        /dev/infiniband/uverbs6\n40003ab69000-40003ab6a000 rw-s 00000000 00:05 348                        /dev/infiniband/uverbs6\n40003ab6a000-40003ab6b000 r--s 00001000 00:05 349                        /dev/infiniband/uverbs7\n40003ab6b000-40003ab6c000 rw-s 00000000 00:05 349                        /dev/infiniband/uverbs7\n40003ab6c000-40003ab6f000 rw-s 00000000 00:01 17301525                   /SYSV00000000 (deleted)\n40003ab6f000-40003ab70000 rw-p 00000000 00:00 0 \n40003ab70000-40003abf3000 r-xp 00000000 00:2e 60072                      /usr/lib64/libm.so.6\n40003abf3000-40003ac0f000 ---p 00083000 00:2e 60072                      /usr/lib64/libm.so.6\n40003ac0f000-40003ac10000 r--p 0008f000 00:2e 60072                      /usr/lib64/libm.so.6\n40003ac10000-40003ac11000 rw-p 00090000 00:2e 60072                      /usr/lib64/libm.so.6\n40003ac11000-40003ac19000 ---p 00000000 00:00 0 \n40003ac19000-40003ac1c000 rw-s 00000000 00:19 1932125                    /dev/shm/ucx_shm_posix_351a59f6 (deleted)\n40003ac1c000-40003ac20000 rw-p 00000000 00:00 0 \n40003ac20000-40003ad01000 r-xp 00000000 00:2e 66753                      /usr/lib64/libc.so.6\n40003ad01000-40003ad02000 r-xp 000e1000 00:2e 66753                      /usr/lib64/libc.so.6\n40003ad02000-40003ad05000 r-xp 000e2000 00:2e 66753                      /usr/lib64/libc.so.6\n40003ad05000-40003ad06000 r-xp 000e5000 00:2e 66753                      /usr/lib64/libc.so.6\n40003ad06000-40003ad0a000 r-xp 000e6000 00:2e 66753                      /usr/lib64/libc.so.6\n40003ad0a000-40003ad0b000 r-xp 000ea000 00:2e 66753                      /usr/lib64/libc.so.6\n40003ad0b000-40003ad0c000 r-xp 000eb000 00:2e 66753                      /usr/lib64/libc.so.6\n40003ad0c000-40003ad0d000 r-xp 000ec000 00:2e 66753                      /usr/lib64/libc.so.6\n40003ad0d000-40003ada4000 r-xp 000ed000 00:2e 66753                      /usr/lib64/libc.so.6\n40003ada4000-40003adbd000 ---p 00184000 00:2e 66753                      /usr/lib64/libc.so.6\n40003adbd000-40003adc0000 r--p 0018d000 00:2e 66753                      /usr/lib64/libc.so.6\n40003adc0000-40003adc3000 rw-p 00190000 00:2e 66753                      /usr/lib64/libc.so.6\n40003adc3000-40003adcf000 rw-p 00000000 00:00 0 \n40003adcf000-40003add8000 ---p 00000000 00:00 0 \n40003add8000-40003c000000 r--p 00000000 00:2e 51594                      /usr/lib/locale/locale-archive\n40003c000000-40003c140000 rw-p 00000000 00:00 0 \n40003c140000-40003c14c000 rw-p 00000000 00:00 0 \n40003c14c000-40003c15c000 -w-s 00002000 00:05 342                        /dev/infiniband/uverbs0\n40003c15c000-40003c164000 rw-p 00000000 00:00 0 \n40003c164000-40003c165000 rw-p 00000000 00:00 0 \n40003c165000-40003c265000 rw-p 00000000 00:00 0 \n40003c265000-40003c270000 rw-p 00000000 00:00 0 \n40003c270000-40003c274000 r-xp 00000000 00:2e 61586                      /usr/lib64/python3.9/lib-dynload/_heapq.cpython-39-aarch64-linux-gnu.so\n40003c274000-40003c28f000 ---p 00004000 00:2e 61586                      /usr/lib64/python3.9/lib-dynload/_heapq.cpython-39-aarch64-linux-gnu.so\n40003c28f000-40003c290000 r--p 0000f000 00:2e 61586                      /usr/lib64/python3.9/lib-dynload/_heapq.cpython-39-aarch64-linux-gnu.so\n40003c290000-40003c291000 rw-p 00010000 00:2e 61586                      /usr/lib64/python3.9/lib-dynload/_heapq.cpython-39-aarch64-linux-gnu.so\n40003c291000-40003c296000 ---p 00000000 00:00 0 \n40003c296000-40003c316000 rw-p 00000000 00:00 0 \n40003c316000-40003c320000 rw-p 00000000 00:00 0 \n40003c320000-40003c328000 r-xp 00000000 00:2e 61606                      /usr/lib64/python3.9/lib-dynload/_json.cpython-39-aarch64-linux-gnu.so\n40003c328000-40003c33f000 ---p 00008000 00:2e 61606                      /usr/lib64/python3.9/lib-dynload/_json.cpython-39-aarch64-linux-gnu.so\n40003c33f000-40003c340000 r--p 0000f000 00:2e 61606                      /usr/lib64/python3.9/lib-dynload/_json.cpython-39-aarch64-linux-gnu.so\n40003c340000-40003c341000 rw-p 00010000 00:2e 61606                      /usr/lib64/python3.9/lib-dynload/_json.cpython-39-aarch64-linux-gnu.so\n40003c341000-40003c347000 ---p 00000000 00:00 0 \n40003c347000-40003c350000 rw-p 00000000 00:00 0 \n40003c350000-40003c35d000 r-xp 00000000 00:2e 61569                      /usr/lib64/python3.9/lib-dynload/math.cpython-39-aarch64-linux-gnu.so\n40003c35d000-40003c36f000 ---p 0000d000 00:2e 61569                      /usr/lib64/python3.9/lib-dynload/math.cpython-39-aarch64-linux-gnu.so\n40003c36f000-40003c370000 r--p 0000f000 00:2e 61569                      /usr/lib64/python3.9/lib-dynload/math.cpython-39-aarch64-linux-gnu.so\n40003c370000-40003c371000 rw-p 00010000 00:2e 61569                      /usr/lib64/python3.9/lib-dynload/math.cpython-39-aarch64-linux-gnu.so\n40003c371000-40003c378000 ---p 00000000 00:00 0 \n40003c378000-40003c478000 rw-p 00000000 00:00 0 \n40003c478000-40003c480000 rw-p 00000000 00:00 0 \n40003c480000-40003c488000 r-xp 00000000 00:2e 61583                      /usr/lib64/python3.9/lib-dynload/zlib.cpython-39-aarch64-linux-gnu.so\n40003c488000-40003c49f000 ---p 00008000 00:2e 61583                      /usr/lib64/python3.9/lib-dynload/zlib.cpython-39-aarch64-linux-gnu.so\n40003c49f000-40003c4a0000 r--p 0000f000 00:2e 61583                      /usr/lib64/python3.9/lib-dynload/zlib.cpython-39-aarch64-linux-gnu.so\n40003c4a0000-40003c4a1000 rw-p 00010000 00:2e 61583                      /usr/lib64/python3.9/lib-dynload/zlib.cpython-39-aarch64-linux-gnu.so\n40003c4a1000-40003c4a9000 ---p 00000000 00:00 0 \n40003c4a9000-40003c4b0000 rw-p 00000000 00:00 0 \n40003c4b0000-40003c4c5000 r-xp 00000000 00:2e 68475                      /usr/lib64/libz.so.1.2.11\n40003c4c5000-40003c4df000 ---p 00015000 00:2e 68475                      /usr/lib64/libz.so.1.2.11\n40003c4df000-40003c4e0000 r--p 0001f000 00:2e 68475                      /usr/lib64/libz.so.1.2.11\n40003c4e0000-40003c4e1000 rw-p 00020000 00:2e 68475                      /usr/lib64/libz.so.1.2.11\n40003c4e1000-40003c4ea000 ---p 00000000 00:00 0 \n40003c4ea000-40003c4f0000 rw-p 00000000 00:00 0 \n40003c4f0000-40003c4f4000 r-xp 00000000 00:2e 61554                      /usr/lib64/python3.9/lib-dynload/_bz2.cpython-39-aarch64-linux-gnu.so\n40003c4f4000-40003c50f000 ---p 00004000 00:2e 61554                      /usr/lib64/python3.9/lib-dynload/_bz2.cpython-39-aarch64-linux-gnu.so\n40003c50f000-40003c510000 r--p 0000f000 00:2e 61554                      /usr/lib64/python3.9/lib-dynload/_bz2.cpython-39-aarch64-linux-gnu.so\n40003c510000-40003c511000 rw-p 00010000 00:2e 61554                      /usr/lib64/python3.9/lib-dynload/_bz2.cpython-39-aarch64-linux-gnu.so\n40003c511000-40003c51b000 ---p 00000000 00:00 0 \n40003c51b000-40003c520000 rw-p 00000000 00:00 0 \n40003c520000-40003c530000 r-xp 00000000 00:2e 60170                      /usr/lib64/libbz2.so.1.0.8\n40003c530000-40003c53f000 ---p 00010000 00:2e 60170                      /usr/lib64/libbz2.so.1.0.8\n40003c53f000-40003c540000 r--p 0000f000 00:2e 60170                      /usr/lib64/libbz2.so.1.0.8\n40003c540000-40003c541000 rw-p 00010000 00:2e 60170                      /usr/lib64/libbz2.so.1.0.8\n40003c541000-40003c54c000 ---p 00000000 00:00 0 \n40003c54c000-40003c54e000 rw-p 00000000 00:00 0 \n40003c54e000-40003c54f000 r--s 00001000 00:05 342                        /dev/infiniband/uverbs0\n40003c54f000-40003c550000 rw-s 00000000 00:05 342                        /dev/infiniband/uverbs0\n40003c550000-40003c557000 r-xp 00000000 00:2e 61603                      /usr/lib64/python3.9/lib-dynload/_lzma.cpython-39-aarch64-linux-gnu.so\n40003c557000-40003c56f000 ---p 00007000 00:2e 61603                      /usr/lib64/python3.9/lib-dynload/_lzma.cpython-39-aarch64-linux-gnu.so\n40003c56f000-40003c570000 r--p 0000f000 00:2e 61603                      /usr/lib64/python3.9/lib-dynload/_lzma.cpython-39-aarch64-linux-gnu.so\n40003c570000-40003c571000 rw-p 00010000 00:2e 61603                      /usr/lib64/python3.9/lib-dynload/_lzma.cpython-39-aarch64-linux-gnu.so\n40003c571000-40003c57d000 ---p 00000000 00:00 0 \n40003c57d000-40003c580000 rw-s 00270000 00:05 583                        /dev/sdma2\n40003c580000-40003c5a4000 r-xp 00000000 00:2e 59500                      /usr/lib64/liblzma.so.5.2.5\n40003c5a4000-40003c5bf000 ---p 00024000 00:2e 59500                      /usr/lib64/liblzma.so.5.2.5\n40003c5bf000-40003c5c0000 r--p 0002f000 00:2e 59500                      /usr/lib64/liblzma.so.5.2.5\n40003c5c0000-40003c5c1000 rw-p 00030000 00:2e 59500                      /usr/lib64/liblzma.so.5.2.5\n40003c5c1000-40003c5ce000 ---p 00000000 00:00 0 \n40003c5ce000-40003c5cf000 r--s 00001000 00:05 343                        /dev/infiniband/uverbs1\n40003c5cf000-40003c5d0000 rw-s 00000000 00:05 343                        /dev/infiniband/uverbs1\n40003c5d0000-40003c5d3000 r-xp 00000000 00:2e 61604                      /usr/lib64/python3.9/lib-dynload/grp.cpython-39-aarch64-linux-gnu.so\n40003c5d3000-40003c5ef000 ---p 00003000 00:2e 61604                      /usr/lib64/python3.9/lib-dynload/grp.cpython-39-aarch64-linux-gnu.so\n40003c5ef000-40003c5f0000 r--p 0000f000 00:2e 61604                      /usr/lib64/python3.9/lib-dynload/grp.cpython-39-aarch64-linux-gnu.so\n40003c5f0000-40003c5f1000 rw-p 00010000 00:2e 61604                      /usr/lib64/python3.9/lib-dynload/grp.cpython-39-aarch64-linux-gnu.so\n40003c5f1000-40003c5ff000 ---p 00000000 00:00 0 \n40003c5ff000-40003c63f000 rw-p 00000000 00:00 0 \n40003c63f000-40003c640000 r--s 00001000 00:05 344                        /dev/infiniband/uverbs2\n40003c640000-40003c644000 r-xp 00000000 00:2e 61592                      /usr/lib64/python3.9/lib-dynload/_posixsubprocess.cpython-39-aarch64-linux-gnu.so\n40003c644000-40003c65f000 ---p 00004000 00:2e 61592                      /usr/lib64/python3.9/lib-dynload/_posixsubprocess.cpython-39-aarch64-linux-gnu.so\n40003c65f000-40003c660000 r--p 0000f000 00:2e 61592                      /usr/lib64/python3.9/lib-dynload/_posixsubprocess.cpython-39-aarch64-linux-gnu.so\n40003c660000-40003c661000 rw-p 00010000 00:2e 61592                      /usr/lib64/python3.9/lib-dynload/_posixsubprocess.cpython-39-aarch64-linux-gnu.so\n40003c661000-40003c670000 ---p 00000000 00:00 0 \n40003c670000-40003c677000 r-xp 00000000 00:2e 61612                      /usr/lib64/python3.9/lib-dynload/select.cpython-39-aarch64-linux-gnu.so\n40003c677000-40003c68f000 ---p 00007000 00:2e 61612                      /usr/lib64/python3.9/lib-dynload/select.cpython-39-aarch64-linux-gnu.so\n40003c68f000-40003c690000 r--p 0000f000 00:2e 61612                      /usr/lib64/python3.9/lib-dynload/select.cpython-39-aarch64-linux-gnu.so\n40003c690000-40003c691000 rw-p 00010000 00:2e 61612                      /usr/lib64/python3.9/lib-dynload/select.cpython-39-aarch64-linux-gnu.so\n40003c691000-40003c6a1000 ---p 00000000 00:00 0 \n40003c6a1000-40003c6ad000 rw-p 00000000 00:00 0 \n40003c6ad000-40003c6ae000 rw-s 00000000 00:05 344                        /dev/infiniband/uverbs2\n40003c6ae000-40003c6af000 r--s 00001000 00:05 345                        /dev/infiniband/uverbs3\n40003c6af000-40003c6b0000 rw-s 00000000 00:05 345                        /dev/infiniband/uverbs3\n40003c6b0000-40003c6bc000 r-xp 00000000 00:2e 61598                      /usr/lib64/python3.9/lib-dynload/_hashlib.cpython-39-aarch64-linux-gnu.so\n40003c6bc000-40003c6cf000 ---p 0000c000 00:2e 61598                      /usr/lib64/python3.9/lib-dynload/_hashlib.cpython-39-aarch64-linux-gnu.so\n40003c6cf000-40003c6d0000 r--p 0000f000 00:2e 61598                      /usr/lib64/python3.9/lib-dynload/_hashlib.cpython-39-aarch64-linux-gnu.so\n40003c6d0000-40003c6d1000 rw-p 00010000 00:2e 61598                      /usr/lib64/python3.9/lib-dynload/_hashlib.cpython-39-aarch64-linux-gnu.so\n40003c6d1000-40003c6d2000 ---p 00000000 00:00 0 \n40003c6d2000-40003c6da000 rw-p 00000000 00:00 0 \n40003c6da000-40003c6de000 rw-s 00130000 00:05 583                        /dev/sdma2\n40003c6de000-40003c6df000 r--s 00001000 00:05 346                        /dev/infiniband/uverbs4\n40003c6df000-40003c6e0000 rw-s 00000000 00:05 346                        /dev/infiniband/uverbs4\n40003c6e0000-40003c767000 r-xp 00000000 00:2e 68365                      /usr/lib64/libssl.so.1.1.1wa\n40003c767000-40003c776000 ---p 00087000 00:2e 68365                      /usr/lib64/libssl.so.1.1.1wa\n40003c776000-40003c780000 r--p 00086000 00:2e 68365                      /usr/lib64/libssl.so.1.1.1wa\n40003c780000-40003c784000 rw-p 00090000 00:2e 68365                      /usr/lib64/libssl.so.1.1.1wa\n40003c784000-40003c785000 rw-p 00000000 00:00 0 \n40003c785000-40003c787000 ---p 00000000 00:00 0 \n40003c787000-40003c78f000 rw-p 00000000 00:00 0 \n40003c78f000-40003c790000 r--s 00001000 00:05 347                        /dev/infiniband/uverbs5\n40003c790000-40003ca0e000 r-xp 00000000 00:2e 68163                      /usr/lib64/libcrypto.so.1.1.1wa\n40003ca0e000-40003ca26000 ---p 0027e000 00:2e 68163                      /usr/lib64/libcrypto.so.1.1.1wa\n40003ca26000-40003ca50000 r--p 00286000 00:2e 68163                      /usr/lib64/libcrypto.so.1.1.1wa\n40003ca50000-40003ca54000 rw-p 002b0000 00:2e 68163                      /usr/lib64/libcrypto.so.1.1.1wa\n40003ca54000-40003ca58000 rw-p 00000000 00:00 0 \n40003ca58000-40003ca5f000 ---p 00000000 00:00 0 \n40003ca5f000-40003ca60000 rw-s 00000000 00:05 347                        /dev/infiniband/uverbs5\n40003ca60000-40003ca69000 r-xp 00000000 00:2e 61620                      /usr/lib64/python3.9/lib-dynload/_blake2.cpython-39-aarch64-linux-gnu.so\n40003ca69000-40003ca7f000 ---p 00009000 00:2e 61620                      /usr/lib64/python3.9/lib-dynload/_blake2.cpython-39-aarch64-linux-gnu.so\n40003ca7f000-40003ca80000 r--p 0000f000 00:2e 61620                      /usr/lib64/python3.9/lib-dynload/_blake2.cpython-39-aarch64-linux-gnu.so\n40003ca80000-40003ca81000 rw-p 00010000 00:2e 61620                      /usr/lib64/python3.9/lib-dynload/_blake2.cpython-39-aarch64-linux-gnu.so\n40003ca81000-40003ca90000 ---p 00000000 00:00 0 \n40003ca90000-40003cad0000 rw-p 00000000 00:00 0 \n40003cad0000-40003cad4000 r-xp 00000000 00:2e 61601                      /usr/lib64/python3.9/lib-dynload/_sha256.cpython-39-aarch64-linux-gnu.so\n40003cad4000-40003caef000 ---p 00004000 00:2e 61601                      /usr/lib64/python3.9/lib-dynload/_sha256.cpython-39-aarch64-linux-gnu.so\n40003caef000-40003caf0000 r--p 0000f000 00:2e 61601                      /usr/lib64/python3.9/lib-dynload/_sha256.cpython-39-aarch64-linux-gnu.so\n40003caf0000-40003caf1000 rw-p 00010000 00:2e 61601                      /usr/lib64/python3.9/lib-dynload/_sha256.cpython-39-aarch64-linux-gnu.so\n40003caf1000-40003cb01000 ---p 00000000 00:00 0 \n40003cb01000-40003cb09000 rw-p 00000000 00:00 0 \n40003cb09000-40003cb0a000 r--s 00001000 00:05 348                        /dev/infiniband/uverbs6\n40003cb0a000-40003cb0b000 rw-s 00000000 00:05 348                        /dev/infiniband/uverbs6\n40003cb0b000-40003cb0c000 r--s 00001000 00:05 349                        /dev/infiniband/uverbs7\n40003cb0c000-40003cb0d000 rw-s 00000000 00:05 349                        /dev/infiniband/uverbs7\n40003cb10000-40003cb2d000 r-xp 00000000 00:2e 61580                      /usr/lib64/python3.9/lib-dynload/_ctypes.cpython-39-aarch64-linux-gnu.so\n40003cb2d000-40003cb3f000 ---p 0001d000 00:2e 61580                      /usr/lib64/python3.9/lib-dynload/_ctypes.cpython-39-aarch64-linux-gnu.so\n40003cb3f000-40003cb40000 r--p 0001f000 00:2e 61580                      /usr/lib64/python3.9/lib-dynload/_ctypes.cpython-39-aarch64-linux-gnu.so\n40003cb40000-40003cb44000 rw-p 00020000 00:2e 61580                      /usr/lib64/python3.9/lib-dynload/_ctypes.cpython-39-aarch64-linux-gnu.so\n40003cb44000-40003cb45000 ---p 00000000 00:00 0 \n40003cb50000-40003cb58000 r-xp 00000000 00:2e 68124                      /usr/lib64/libffi.so.8.1.0\n40003cb58000-40003cb6f000 ---p 00008000 00:2e 68124                      /usr/lib64/libffi.so.8.1.0\n40003cb6f000-40003cb70000 r--p 0000f000 00:2e 68124                      /usr/lib64/libffi.so.8.1.0\n40003cb70000-40003cb71000 rw-p 00010000 00:2e 68124                      /usr/lib64/libffi.so.8.1.0\n40003cb71000-40003cb76000 ---p 00000000 00:00 0 \n40003cb80000-40003cb8a000 r-xp 00000000 00:2e 61572                      /usr/lib64/python3.9/lib-dynload/_struct.cpython-39-aarch64-linux-gnu.so\n40003cb8a000-40003cb9f000 ---p 0000a000 00:2e 61572                      /usr/lib64/python3.9/lib-dynload/_struct.cpython-39-aarch64-linux-gnu.so\n40003cb9f000-40003cba0000 r--p 0000f000 00:2e 61572                      /usr/lib64/python3.9/lib-dynload/_struct.cpython-39-aarch64-linux-gnu.so\n40003cba0000-40003cba1000 rw-p 00010000 00:2e 61572                      /usr/lib64/python3.9/lib-dynload/_struct.cpython-39-aarch64-linux-gnu.so\n40003cba1000-40003cba7000 ---p 00000000 00:00 0 \n40003cbb0000-40003cbc7000 r-xp 00000000 00:2e 61565                      /usr/lib64/python3.9/lib-dynload/_socket.cpython-39-aarch64-linux-gnu.so\n40003cbc7000-40003cbdf000 ---p 00017000 00:2e 61565                      /usr/lib64/python3.9/lib-dynload/_socket.cpython-39-aarch64-linux-gnu.so\n40003cbdf000-40003cbe0000 r--p 0001f000 00:2e 61565                      /usr/lib64/python3.9/lib-dynload/_socket.cpython-39-aarch64-linux-gnu.so\n40003cbe0000-40003cbe1000 rw-p 00020000 00:2e 61565                      /usr/lib64/python3.9/lib-dynload/_socket.cpython-39-aarch64-linux-gnu.so\n40003cbe1000-40003cbe8000 ---p 00000000 00:00 0 \n40003cbe8000-40003cc28000 rw-p 00000000 00:00 0 \n40003cc30000-40003cc3c000 r-xp 00000000 00:2e 61551                      /usr/lib64/python3.9/lib-dynload/array.cpython-39-aarch64-linux-gnu.so\n40003cc3c000-40003cc4f000 ---p 0000c000 00:2e 61551                      /usr/lib64/python3.9/lib-dynload/array.cpython-39-aarch64-linux-gnu.so\n40003cc4f000-40003cc50000 r--p 0000f000 00:2e 61551                      /usr/lib64/python3.9/lib-dynload/array.cpython-39-aarch64-linux-gnu.so\n40003cc50000-40003cc51000 rw-p 00010000 00:2e 61551                      /usr/lib64/python3.9/lib-dynload/array.cpython-39-aarch64-linux-gnu.so\n40003cc51000-40003cc59000 ---p 00000000 00:00 0 \n40003cc59000-40003cc99000 rw-p 00000000 00:00 0 \n40003cca0000-40003cda0000 r-xp 00000000 00:3c 9007203784827904           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmpi.so.40.30.6\n40003cda0000-40003cdbd000 ---p 00100000 00:3c 9007203784827904           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmpi.so.40.30.6\n40003cdbd000-40003cdc0000 r--p 0010d000 00:3c 9007203784827904           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmpi.so.40.30.6\n40003cdc0000-40003cdd0000 rw-p 00110000 00:3c 9007203784827904           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmpi.so.40.30.6\n40003cdd0000-40003cde1000 rw-p 00000000 00:00 0 \n40003cde1000-40003cdea000 ---p 00000000 00:00 0 \n40003cdf0000-40003ce9f000 r-xp 00000000 00:3c 45036000803792192          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-rte.so.40.30.3\n40003ce9f000-40003cebe000 ---p 000af000 00:3c 45036000803792192          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-rte.so.40.30.3\n40003cebe000-40003cec0000 r--p 000be000 00:3c 45036000803792192          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-rte.so.40.30.3\n40003cec0000-40003cec3000 rw-p 000c0000 00:3c 45036000803792192          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-rte.so.40.30.3\n40003cec3000-40003cec5000 rw-p 00000000 00:00 0 \n40003cec5000-40003cecf000 ---p 00000000 00:00 0 \n40003ced0000-40003cfca000 r-xp 00000000 00:3c 45036000803792768          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-pal.so.40.30.3\n40003cfca000-40003cfdb000 ---p 000fa000 00:3c 45036000803792768          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-pal.so.40.30.3\n40003cfdb000-40003cfe0000 r--p 000fb000 00:3c 45036000803792768          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-pal.so.40.30.3\n40003cfe0000-40003cfe4000 rw-p 00100000 00:3c 45036000803792768          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-pal.so.40.30.3\n40003cfe4000-40003cfeb000 rw-p 00000000 00:00 0 \n40003cfeb000-40003cffa000 ---p 00000000 00:00 0 \n40003d000000-40003d208000 r-xp 00000000 00:3c 2648391936                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libstdc++.so.6.0.30\n40003d208000-40003d215000 ---p 00208000 00:3c 2648391936                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libstdc++.so.6.0.30\n40003d215000-40003d220000 r--p 00215000 00:3c 2648391936                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libstdc++.so.6.0.30\n40003d220000-40003d223000 rw-p 00220000 00:3c 2648391936                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libstdc++.so.6.0.30\n40003d223000-40003d226000 rw-p 00000000 00:00 0 \n40003d226000-40003d230000 ---p 00000000 00:00 0 \n40003d230000-40003d244000 r-xp 00000000 00:3c 2598872640                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgcc_s.so.1\n40003d244000-40003d25f000 ---p 00014000 00:3c 2598872640                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgcc_s.so.1\n40003d25f000-40003d260000 r--p 0001f000 00:3c 2598872640                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgcc_s.so.1\n40003d260000-40003d261000 rw-p 00020000 00:3c 2598872640                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgcc_s.so.1\n40003d261000-40003d271000 ---p 00000000 00:00 0 \n40003d280000-40003d2b9000 r--p 00000000 00:3c 108086603901265600         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/mpi4py/MPI.openmpi.cpython-39-aarch64-linux-gnu.so\n40003d2b9000-40003d2c0000 ---p 00039000 00:3c 108086603901265600         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/mpi4py/MPI.openmpi.cpython-39-aarch64-linux-gnu.so\n40003d2c0000-40003d3cc000 r-xp 00040000 00:3c 108086603901265600         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/mpi4py/MPI.openmpi.cpython-39-aarch64-linux-gnu.so\n40003d3cc000-40003d3d0000 ---p 0014c000 00:3c 108086603901265600         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/mpi4py/MPI.openmpi.cpython-39-aarch64-linux-gnu.so\n40003d3d0000-40003d40f000 r--p 00150000 00:3c 108086603901265600         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/mpi4py/MPI.openmpi.cpython-39-aarch64-linux-gnu.so\n40003d40f000-40003d417000 ---p 0018f000 00:3c 108086603901265600         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/mpi4py/MPI.openmpi.cpython-39-aarch64-linux-gnu.so\n40003d417000-40003d420000 r--p 00197000 00:3c 108086603901265600         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/mpi4py/MPI.openmpi.cpython-39-aarch64-linux-gnu.so\n40003d420000-40003d433000 rw-p 001a0000 00:3c 108086603901265600         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/mpi4py/MPI.openmpi.cpython-39-aarch64-linux-gnu.so\n40003d433000-40003d43b000 rw-p 00000000 00:00 0 \n40003d43b000-40003d43c000 ---p 00000000 00:00 0 \n40003d440000-40003d441000 r-xp 00000000 00:2e 59306                      /usr/lib64/libpthread.so.0\n40003d441000-40003d45f000 ---p 00001000 00:2e 59306                      /usr/lib64/libpthread.so.0\n40003d45f000-40003d460000 r--p 0000f000 00:2e 59306                      /usr/lib64/libpthread.so.0\n40003d460000-40003d461000 rw-p 00010000 00:2e 59306                      /usr/lib64/libpthread.so.0\n40003d461000-40003d46d000 ---p 00000000 00:00 0 \n40003d46d000-40003d4ad000 rw-p 00000000 00:00 0 \n40003d4ad000-40003d4cd000 rw-p 00000000 00:00 0 \n40003d4d1000-40003d4de000 ---p 00000000 00:00 0 \n40003d4de000-40003d4fa000 rw-p 00000000 00:00 0 \n40003d501000-40003d50f000 ---p 00000000 00:00 0 \n40003d510000-40003d513000 r-xp 00000000 00:3c 4578740096                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_shmem_mmap.so\n40003d513000-40003d52f000 ---p 00003000 00:3c 4578740096                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_shmem_mmap.so\n40003d52f000-40003d530000 r--p 0000f000 00:3c 4578740096                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_shmem_mmap.so\n40003d530000-40003d531000 rw-p 00010000 00:3c 4578740096                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_shmem_mmap.so\n40003d531000-40003d540000 ---p 00000000 00:00 0 \n40003d540000-40003d560000 rw-p 00000000 00:00 0 \n40003d561000-40003d571000 ---p 00000000 00:00 0 \n40003d580000-40003d582000 r-xp 00000000 00:3c 4597618688                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_reachable_netlink.so\n40003d582000-40003d59f000 ---p 00002000 00:3c 4597618688                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_reachable_netlink.so\n40003d59f000-40003d5a0000 r--p 0000f000 00:3c 4597618688                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_reachable_netlink.so\n40003d5a0000-40003d5a1000 rw-p 00010000 00:3c 4597618688                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_reachable_netlink.so\n40003d5a1000-40003d5a2000 ---p 00000000 00:00 0 \n40003d5b0000-40003d5d0000 r-xp 00000000 00:2e 67129                      /usr/lib64/libnl-3.so.200.26.0\n40003d5d0000-40003d5ee000 ---p 00020000 00:2e 67129                      /usr/lib64/libnl-3.so.200.26.0\n40003d5ee000-40003d5f0000 r--p 0002e000 00:2e 67129                      /usr/lib64/libnl-3.so.200.26.0\n40003d5f0000-40003d5f1000 rw-p 00030000 00:2e 67129                      /usr/lib64/libnl-3.so.200.26.0\n40003d5f1000-40003d5f3000 ---p 00000000 00:00 0 \n40003d600000-40003d686000 r-xp 00000000 00:2e 68477                      /usr/lib64/libnl-route-3.so.200.26.0\n40003d686000-40003d69c000 ---p 00086000 00:2e 68477                      /usr/lib64/libnl-route-3.so.200.26.0\n40003d69c000-40003d6a0000 r--p 0008c000 00:2e 68477                      /usr/lib64/libnl-route-3.so.200.26.0\n40003d6a0000-40003d6a4000 rw-p 00090000 00:2e 68477                      /usr/lib64/libnl-route-3.so.200.26.0\n40003d6a4000-40003d6a7000 rw-p 00000000 00:00 0 \n40003d6a7000-40003d6aa000 ---p 00000000 00:00 0 \n40003d6b0000-40003d6b1000 r-xp 00000000 00:3c 99079196399718592          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_donau.so\n40003d6b1000-40003d6cf000 ---p 00001000 00:3c 99079196399718592          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_donau.so\n40003d6cf000-40003d6d0000 r--p 0000f000 00:3c 99079196399718592          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_donau.so\n40003d6d0000-40003d6d1000 rw-p 00010000 00:3c 99079196399718592          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_donau.so\n40003d6d1000-40003d6db000 ---p 00000000 00:00 0 \n40003d6e0000-40003d6e2000 r-xp 00000000 00:3c 135107993399843584         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_slurm.so\n40003d6e2000-40003d6ff000 ---p 00002000 00:3c 135107993399843584         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_slurm.so\n40003d6ff000-40003d700000 r--p 0000f000 00:3c 135107993399843584         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_slurm.so\n40003d700000-40003d701000 rw-p 00010000 00:3c 135107993399843584         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_slurm.so\n40003d701000-40003d70c000 ---p 00000000 00:00 0 \n40003d710000-40003d711000 r-xp 00000000 00:3c 4597570560                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_jsm.so\n40003d711000-40003d72f000 ---p 00001000 00:3c 4597570560                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_jsm.so\n40003d72f000-40003d730000 r--p 0000f000 00:3c 4597570560                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_jsm.so\n40003d730000-40003d731000 rw-p 00010000 00:3c 4597570560                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_jsm.so\n40003d731000-40003d73d000 ---p 00000000 00:00 0 \n40003d740000-40003d741000 r-xp 00000000 00:3c 4578740352                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_orte.so\n40003d741000-40003d75f000 ---p 00001000 00:3c 4578740352                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_orte.so\n40003d75f000-40003d760000 r--p 0000f000 00:3c 4578740352                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_orte.so\n40003d760000-40003d761000 rw-p 00010000 00:3c 4578740352                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_orte.so\n40003d761000-40003d76e000 ---p 00000000 00:00 0 \n40003d770000-40003d778000 r-xp 00000000 00:3c 72057598635520512          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_ompi.so\n40003d778000-40003d78f000 ---p 00008000 00:3c 72057598635520512          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_ompi.so\n40003d78f000-40003d790000 r--p 0000f000 00:3c 72057598635520512          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_ompi.so\n40003d790000-40003d792000 rw-p 00010000 00:3c 72057598635520512          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_ompi.so\n40003d792000-40003d7a0000 ---p 00000000 00:00 0 \n40003d7a0000-40003d7a1000 r-xp 00000000 00:3c 108086395654488448         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_flux.so\n40003d7a1000-40003d7bf000 ---p 00001000 00:3c 108086395654488448         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_flux.so\n40003d7bf000-40003d7c0000 r--p 0000f000 00:3c 108086395654488448         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_flux.so\n40003d7c0000-40003d7c1000 rw-p 00010000 00:3c 108086395654488448         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_flux.so\n40003d7c1000-40003d7d1000 ---p 00000000 00:00 0 \n40003d7e0000-40003d7e5000 r-xp 00000000 00:3c 72057598616683456          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_ess_pmi.so\n40003d7e5000-40003d7ff000 ---p 00005000 00:3c 72057598616683456          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_ess_pmi.so\n40003d7ff000-40003d800000 r--p 0000f000 00:3c 72057598616683456          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_ess_pmi.so\n40003d800000-40003d801000 rw-p 00010000 00:3c 72057598616683456          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_ess_pmi.so\n40003d801000-40003d812000 ---p 00000000 00:00 0 \n40003d812000-40003da12000 rw-p 00000000 00:00 0 \n40003da20000-40003da3f000 r-xp 00000000 00:3c 4597569600                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pmix_pmix3x.so\n40003da3f000-40003da4f000 ---p 0001f000 00:3c 4597569600                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pmix_pmix3x.so\n40003da4f000-40003da50000 r--p 0001f000 00:3c 4597569600                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pmix_pmix3x.so\n40003da50000-40003da51000 rw-p 00020000 00:3c 4597569600                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pmix_pmix3x.so\n40003da51000-40003da53000 ---p 00000000 00:00 0 \n40003da60000-40003db29000 r-xp 00000000 00:3c 45036000803792256          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libpmix.so.2.2.35\n40003db29000-40003db3e000 ---p 000c9000 00:3c 45036000803792256          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libpmix.so.2.2.35\n40003db3e000-40003db40000 r--p 000ce000 00:3c 45036000803792256          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libpmix.so.2.2.35\n40003db40000-40003db44000 rw-p 000d0000 00:3c 45036000803792256          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libpmix.so.2.2.35\n40003db44000-40003db47000 rw-p 00000000 00:00 0 \n40003db47000-40003db4a000 ---p 00000000 00:00 0 \n40003db4a000-40003db70000 rw-p 00000000 00:00 0 \n40003db71000-40003db7b000 ---p 00000000 00:00 0 \n40003db80000-40003db82000 r-xp 00000000 00:3c 108086395635587200         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_native.so\n40003db82000-40003db9f000 ---p 00002000 00:3c 108086395635587200         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_native.so\n40003db9f000-40003dba0000 r--p 0000f000 00:3c 108086395635587200         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_native.so\n40003dba0000-40003dba1000 rw-p 00010000 00:3c 108086395635587200         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_native.so\n40003dba1000-40003dbac000 ---p 00000000 00:00 0 \n40003dbb0000-40003dbb2000 r-xp 00000000 00:3c 108086395635587456         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_flex128.so\n40003dbb2000-40003dbcf000 ---p 00002000 00:3c 108086395635587456         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_flex128.so\n40003dbcf000-40003dbd0000 r--p 0000f000 00:3c 108086395635587456         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_flex128.so\n40003dbd0000-40003dbd1000 rw-p 00010000 00:3c 108086395635587456         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_flex128.so\n40003dbd1000-40003dbdd000 ---p 00000000 00:00 0 \n40003dbe0000-40003dbe7000 r-xp 00000000 00:3c 108086395635588416         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v21.so\n40003dbe7000-40003dbff000 ---p 00007000 00:3c 108086395635588416         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v21.so\n40003dbff000-40003dc00000 r--p 0000f000 00:3c 108086395635588416         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v21.so\n40003dc00000-40003dc01000 rw-p 00010000 00:3c 108086395635588416         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v21.so\n40003dc01000-40003dc0e000 ---p 00000000 00:00 0 \n40003dc10000-40003dc2a000 r-xp 00000000 00:3c 9007203833438464           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v20.so\n40003dc2a000-40003dc3f000 ---p 0001a000 00:3c 9007203833438464           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v20.so\n40003dc3f000-40003dc40000 r--p 0001f000 00:3c 9007203833438464           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v20.so\n40003dc40000-40003dc41000 rw-p 00020000 00:3c 9007203833438464           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v20.so\n40003dc41000-40003dc4f000 ---p 00000000 00:00 0 \n40003dc50000-40003dc57000 r-xp 00000000 00:3c 9007203833438528           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v3.so\n40003dc57000-40003dc6f000 ---p 00007000 00:3c 9007203833438528           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v3.so\n40003dc6f000-40003dc70000 r--p 0000f000 00:3c 9007203833438528           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v3.so\n40003dc70000-40003dc71000 rw-p 00010000 00:3c 9007203833438528           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v3.so\n40003dc71000-40003dc80000 ---p 00000000 00:00 0 \n40003dc80000-40003dc93000 r-xp 00000000 00:3c 9007203833438656           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v12.so\n40003dc93000-40003dcaf000 ---p 00013000 00:3c 9007203833438656           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v12.so\n40003dcaf000-40003dcb0000 r--p 0001f000 00:3c 9007203833438656           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v12.so\n40003dcb0000-40003dcb1000 rw-p 00020000 00:3c 9007203833438656           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v12.so\n40003dcb1000-40003dcc1000 ---p 00000000 00:00 0 \n40003dcd0000-40003dcd2000 r-xp 00000000 00:3c 108086395635588672         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pcompress_zlib.so\n40003dcd2000-40003dcef000 ---p 00002000 00:3c 108086395635588672         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pcompress_zlib.so\n40003dcef000-40003dcf0000 r--p 0000f000 00:3c 108086395635588672         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pcompress_zlib.so\n40003dcf0000-40003dcf1000 rw-p 00010000 00:3c 108086395635588672         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pcompress_zlib.so\n40003dcf1000-40003dcf2000 ---p 00000000 00:00 0 \n40003dd00000-40003dd07000 r-xp 00000000 00:3c 108086395635587072         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_usock.so\n40003dd07000-40003dd1f000 ---p 00007000 00:3c 108086395635587072         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_usock.so\n40003dd1f000-40003dd20000 r--p 0000f000 00:3c 108086395635587072         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_usock.so\n40003dd20000-40003dd21000 rw-p 00010000 00:3c 108086395635587072         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_usock.so\n40003dd21000-40003dd23000 ---p 00000000 00:00 0 \n40003dd30000-40003dd3f000 r-xp 00000000 00:3c 108086395635588608         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_tcp.so\n40003dd3f000-40003dd4f000 ---p 0000f000 00:3c 108086395635588608         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_tcp.so\n40003dd4f000-40003dd50000 r--p 0000f000 00:3c 108086395635588608         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_tcp.so\n40003dd50000-40003dd51000 rw-p 00010000 00:3c 108086395635588608         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_tcp.so\n40003dd51000-40003dd54000 ---p 00000000 00:00 0 \n40003dd60000-40003dd62000 r-xp 00000000 00:3c 108086395635589184         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psec_native.so\n40003dd62000-40003dd7f000 ---p 00002000 00:3c 108086395635589184         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psec_native.so\n40003dd7f000-40003dd80000 r--p 0000f000 00:3c 108086395635589184         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psec_native.so\n40003dd80000-40003dd81000 rw-p 00010000 00:3c 108086395635589184         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psec_native.so\n40003dd81000-40003dd85000 ---p 00000000 00:00 0 \n40003dd90000-40003dd94000 r-xp 00000000 00:3c 72057598616622976          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds21.so\n40003dd94000-40003ddaf000 ---p 00004000 00:3c 72057598616622976          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds21.so\n40003ddaf000-40003ddb0000 r--p 0000f000 00:3c 72057598616622976          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds21.so\n40003ddb0000-40003ddb1000 rw-p 00010000 00:3c 72057598616622976          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds21.so\n40003ddb1000-40003ddb6000 ---p 00000000 00:00 0 \n40003ddc0000-40003ddcc000 r-xp 00000000 00:3c 81064797822757248          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_dstore.so.1.0.2\n40003ddcc000-40003dddf000 ---p 0000c000 00:3c 81064797822757248          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_dstore.so.1.0.2\n40003dddf000-40003dde0000 r--p 0000f000 00:3c 81064797822757248          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_dstore.so.1.0.2\n40003dde0000-40003dde1000 rw-p 00010000 00:3c 81064797822757248          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_dstore.so.1.0.2\n40003dde1000-40003dde7000 ---p 00000000 00:00 0 \n40003ddf0000-40003de01000 r-xp 00000000 00:3c 9007203833438592           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_hash.so\n40003de01000-40003de1f000 ---p 00011000 00:3c 9007203833438592           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_hash.so\n40003de1f000-40003de20000 r--p 0001f000 00:3c 9007203833438592           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_hash.so\n40003de20000-40003de21000 rw-p 00020000 00:3c 9007203833438592           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_hash.so\n40003de21000-40003de28000 ---p 00000000 00:00 0 \n40003de30000-40003de34000 r-xp 00000000 00:3c 9007203833439232           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds12.so\n40003de34000-40003de4f000 ---p 00004000 00:3c 9007203833439232           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds12.so\n40003de4f000-40003de50000 r--p 0000f000 00:3c 9007203833439232           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds12.so\n40003de50000-40003de51000 rw-p 00010000 00:3c 9007203833439232           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds12.so\n40003de51000-40003de59000 ---p 00000000 00:00 0 \n40003de60000-40003de62000 r-xp 00000000 00:3c 9007203833438912           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pshmem_mmap.so\n40003de62000-40003de7f000 ---p 00002000 00:3c 9007203833438912           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pshmem_mmap.so\n40003de7f000-40003de80000 r--p 0000f000 00:3c 9007203833438912           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pshmem_mmap.so\n40003de80000-40003de81000 rw-p 00010000 00:3c 9007203833438912           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pshmem_mmap.so\n40003de81000-40003de8a000 ---p 00000000 00:00 0 \n40003de90000-40003de92000 r-xp 00000000 00:3c 72057598616622848          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_compress.so\n40003de92000-40003deaf000 ---p 00002000 00:3c 72057598616622848          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_compress.so\n40003deaf000-40003deb0000 r--p 0000f000 00:3c 72057598616622848          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_compress.so\n40003deb0000-40003deb1000 rw-p 00010000 00:3c 72057598616622848          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_compress.so\n40003deb1000-40003debb000 ---p 00000000 00:00 0 \n40003dec0000-40003dec4000 r-xp 00000000 00:3c 108086395635589248         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_native.so\n40003dec4000-40003dedf000 ---p 00004000 00:3c 108086395635589248         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_native.so\n40003dedf000-40003dee0000 r--p 0000f000 00:3c 108086395635589248         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_native.so\n40003dee0000-40003dee1000 rw-p 00010000 00:3c 108086395635589248         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_native.so\n40003dee1000-40003deec000 ---p 00000000 00:00 0 \n40003def0000-40003def1000 r-xp 00000000 00:3c 108086395635588928         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_stdfd.so\n40003def1000-40003df0f000 ---p 00001000 00:3c 108086395635588928         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_stdfd.so\n40003df0f000-40003df10000 r--p 0000f000 00:3c 108086395635588928         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_stdfd.so\n40003df10000-40003df11000 rw-p 00010000 00:3c 108086395635588928         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_stdfd.so\n40003df11000-40003df1d000 ---p 00000000 00:00 0 \n40003df20000-40003df22000 r-xp 00000000 00:3c 9007203833439424           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_default.so\n40003df22000-40003df3f000 ---p 00002000 00:3c 9007203833439424           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_default.so\n40003df3f000-40003df40000 r--p 0000f000 00:3c 9007203833439424           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_default.so\n40003df40000-40003df41000 rw-p 00010000 00:3c 9007203833439424           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_default.so\n40003df41000-40003df4e000 ---p 00000000 00:00 0 \n40003df50000-40003df52000 r-xp 00000000 00:3c 9007203833439744           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_syslog.so\n40003df52000-40003df6f000 ---p 00002000 00:3c 9007203833439744           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_syslog.so\n40003df6f000-40003df70000 r--p 0000f000 00:3c 9007203833439744           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_syslog.so\n40003df70000-40003df71000 rw-p 00010000 00:3c 9007203833439744           /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_syslog.so\n40003df71000-40003df8f000 ---p 00000000 00:00 0 \n40003df8f000-40003e18f000 rw-p 00000000 00:00 0 \n40003e18f000-40003e58f000 r--s 00000000 00:30 20505                      /tmp/ompi.cn19486.29301/pid.3867999/pmix_dstor_ds21_3867999/smseg-2256404481-0\n40003e58f000-40003e98f000 r--s 00000000 00:30 20506                      /tmp/ompi.cn19486.29301/pid.3867999/pmix_dstor_ds21_3867999/smdataseg-2256404481-0\n40003e98f000-40003e9ab000 rw-p 00000000 00:00 0 \n40003e9b1000-40003e9c0000 ---p 00000000 00:00 0 \n40003e9c0000-40003e9d0000 -w-s 00002000 00:05 343                        /dev/infiniband/uverbs1\n40003e9d0000-40003e9e0000 -w-s 00002000 00:05 344                        /dev/infiniband/uverbs2\n40003e9e1000-40003e9f1000 ---p 00000000 00:00 0 \n40003e9f1000-40003ea16000 rw-p 00000000 00:00 0 \n40003ea21000-40003ea22000 ---p 00000000 00:00 0 \n40003ea30000-40003ea32000 r-xp 00000000 00:3c 72057598635521024          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_state_app.so\n40003ea32000-40003ea4f000 ---p 00002000 00:3c 72057598635521024          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_state_app.so\n40003ea4f000-40003ea50000 r--p 0000f000 00:3c 72057598635521024          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_state_app.so\n40003ea50000-40003ea51000 rw-p 00010000 00:3c 72057598635521024          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_state_app.so\n40003ea51000-40003ea53000 ---p 00000000 00:00 0 \n40003ea53000-40003ea78000 rw-p 00000000 00:00 0 \n40003ea81000-40003ea84000 ---p 00000000 00:00 0 \n40003ea84000-40003eaa4000 rw-p 00000000 00:00 0 \n40003eab1000-40003eab5000 ---p 00000000 00:00 0 \n40003eac0000-40003eac2000 r-xp 00000000 00:3c 4597581184                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_errmgr_default_app.so\n40003eac2000-40003eadf000 ---p 00002000 00:3c 4597581184                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_errmgr_default_app.so\n40003eadf000-40003eae0000 r--p 0000f000 00:3c 4597581184                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_errmgr_default_app.so\n40003eae0000-40003eae1000 rw-p 00010000 00:3c 4597581184                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_errmgr_default_app.so\n40003eae1000-40003eae6000 ---p 00000000 00:00 0 \n40003eae6000-40003eb02000 rw-p 00000000 00:00 0 \n40003eb11000-40003eb17000 ---p 00000000 00:00 0 \n40003eb17000-40003eb3c000 rw-p 00000000 00:00 0 \n40003eb41000-40003eb48000 ---p 00000000 00:00 0 \n40003eb50000-40003eb52000 r-xp 00000000 00:3c 135107993418684288         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_bucket.so\n40003eb52000-40003eb6f000 ---p 00002000 00:3c 135107993418684288         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_bucket.so\n40003eb6f000-40003eb70000 r--p 0000f000 00:3c 135107993418684288         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_bucket.so\n40003eb70000-40003eb71000 rw-p 00010000 00:3c 135107993418684288         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_bucket.so\n40003eb71000-40003eb79000 ---p 00000000 00:00 0 \n40003eb80000-40003eb82000 r-xp 00000000 00:3c 4578780480                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_basic.so\n40003eb82000-40003eb9f000 ---p 00002000 00:3c 4578780480                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_basic.so\n40003eb9f000-40003eba0000 r--p 0000f000 00:3c 4578780480                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_basic.so\n40003eba0000-40003eba1000 rw-p 00010000 00:3c 4578780480                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_basic.so\n40003eba1000-40003ebaa000 ---p 00000000 00:00 0 \n40003ebb0000-40003ebb3000 r-xp 00000000 00:3c 36028801597709952          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_rcache_grdma.so\n40003ebb3000-40003ebcf000 ---p 00003000 00:3c 36028801597709952          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_rcache_grdma.so\n40003ebcf000-40003ebd0000 r--p 0000f000 00:3c 36028801597709952          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_rcache_grdma.so\n40003ebd0000-40003ebd1000 rw-p 00010000 00:3c 36028801597709952          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_rcache_grdma.so\n40003ebd1000-40003ebdb000 ---p 00000000 00:00 0 \n40003ebe0000-40003ebe3000 r-xp 00000000 00:3c 108086395635661824         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_mpool_hugepage.so\n40003ebe3000-40003ebff000 ---p 00003000 00:3c 108086395635661824         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_mpool_hugepage.so\n40003ebff000-40003ec00000 r--p 0000f000 00:3c 108086395635661824         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_mpool_hugepage.so\n40003ec00000-40003ec01000 rw-p 00010000 00:3c 108086395635661824         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_mpool_hugepage.so\n40003ec01000-40003ec0c000 ---p 00000000 00:00 0 \n40003ec10000-40003ec14000 r-xp 00000000 00:3c 108086395635652672         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_bml_r2.so\n40003ec14000-40003ec2f000 ---p 00004000 00:3c 108086395635652672         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_bml_r2.so\n40003ec2f000-40003ec30000 r--p 0000f000 00:3c 108086395635652672         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_bml_r2.so\n40003ec30000-40003ec31000 rw-p 00010000 00:3c 108086395635652672         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_bml_r2.so\n40003ec31000-40003ec3d000 ---p 00000000 00:00 0 \n40003ec40000-40003ec4f000 r-xp 00000000 00:3c 99079196380876928          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_tcp.so\n40003ec4f000-40003ec5f000 ---p 0000f000 00:3c 99079196380876928          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_tcp.so\n40003ec5f000-40003ec60000 r--p 0000f000 00:3c 99079196380876928          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_tcp.so\n40003ec60000-40003ec61000 rw-p 00010000 00:3c 99079196380876928          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_tcp.so\n40003ec61000-40003ec6e000 ---p 00000000 00:00 0 \n40003ec70000-40003ec73000 r-xp 00000000 00:3c 36028801597699072          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_self.so\n40003ec73000-40003ec8f000 ---p 00003000 00:3c 36028801597699072          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_self.so\n40003ec8f000-40003ec90000 r--p 0000f000 00:3c 36028801597699072          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_self.so\n40003ec90000-40003ec91000 rw-p 00010000 00:3c 36028801597699072          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_self.so\n40003ec91000-40003ec9f000 ---p 00000000 00:00 0 \n40003eca0000-40003eca9000 r-xp 00000000 00:3c 36028801597706624          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_vader.so\n40003eca9000-40003ecbf000 ---p 00009000 00:3c 36028801597706624          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_vader.so\n40003ecbf000-40003ecc0000 r--p 0000f000 00:3c 36028801597706624          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_vader.so\n40003ecc0000-40003ecc2000 rw-p 00010000 00:3c 36028801597706624          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_vader.so\n40003ecc2000-40003ecd1000 ---p 00000000 00:00 0 \n40003ecd1000-40003f0d2000 rw-s 00000000 00:19 1932119                    /dev/shm/vader_segment.cn19486.29301.867e0001.8\n40003f0e0000-40003f0fa000 r-xp 00000000 00:3c 4578778624                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pml_ob1.so\n40003f0fa000-40003f10f000 ---p 0001a000 00:3c 4578778624                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pml_ob1.so\n40003f10f000-40003f110000 r--p 0001f000 00:3c 4578778624                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pml_ob1.so\n40003f110000-40003f111000 rw-p 00020000 00:3c 4578778624                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pml_ob1.so\n40003f111000-40003f113000 ---p 00000000 00:00 0 \n40003f120000-40003f122000 r-xp 00000000 00:3c 135107993399843264         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_self.so\n40003f122000-40003f13f000 ---p 00002000 00:3c 135107993399843264         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_self.so\n40003f13f000-40003f140000 r--p 0000f000 00:3c 135107993399843264         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_self.so\n40003f140000-40003f141000 rw-p 00010000 00:3c 135107993399843264         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_self.so\n40003f141000-40003f144000 ---p 00000000 00:00 0 \n40003f144000-40003f164000 rw-p 00000000 00:00 0 \n40003f171000-40003f175000 ---p 00000000 00:00 0 \n40003f180000-40003f18c000 r-xp 00000000 00:2e 68454                      /usr/lib64/libnuma.so.1.0.0\n40003f18c000-40003f19f000 ---p 0000c000 00:2e 68454                      /usr/lib64/libnuma.so.1.0.0\n40003f19f000-40003f1a0000 r--p 0000f000 00:2e 68454                      /usr/lib64/libnuma.so.1.0.0\n40003f1a0000-40003f1a1000 rw-p 00010000 00:2e 68454                      /usr/lib64/libnuma.so.1.0.0\n40003f1a1000-40003f1a5000 rw-p 00000000 00:00 0 \n40003f1a5000-40003f1aa000 ---p 00000000 00:00 0 \n40003f1aa000-40003f1c6000 rw-p 00000000 00:00 0 \n40003f1d1000-40003f1d6000 ---p 00000000 00:00 0 \n40003f1d6000-40003f1e6000 -w-s 00002000 00:05 345                        /dev/infiniband/uverbs3\n40003f1e6000-40003f1f6000 -w-s 00002000 00:05 346                        /dev/infiniband/uverbs4\n40003f201000-40003f207000 ---p 00000000 00:00 0 \n40003f210000-40003f228000 r-xp 00000000 00:3c 36028801597697728          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_han.so\n40003f228000-40003f23f000 ---p 00018000 00:3c 36028801597697728          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_han.so\n40003f23f000-40003f240000 r--p 0001f000 00:3c 36028801597697728          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_han.so\n40003f240000-40003f241000 rw-p 00020000 00:3c 36028801597697728          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_han.so\n40003f241000-40003f248000 ---p 00000000 00:00 0 \n40003f250000-40003f253000 r-xp 00000000 00:3c 72057598635505856          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sync.so\n40003f253000-40003f26f000 ---p 00003000 00:3c 72057598635505856          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sync.so\n40003f26f000-40003f270000 r--p 0000f000 00:3c 72057598635505856          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sync.so\n40003f270000-40003f271000 rw-p 00010000 00:3c 72057598635505856          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sync.so\n40003f271000-40003f279000 ---p 00000000 00:00 0 \n40003f280000-40003f283000 r-xp 00000000 00:3c 108086395654472128         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_inter.so\n40003f283000-40003f29f000 ---p 00003000 00:3c 108086395654472128         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_inter.so\n40003f29f000-40003f2a0000 r--p 0000f000 00:3c 108086395654472128         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_inter.so\n40003f2a0000-40003f2a1000 rw-p 00010000 00:3c 108086395654472128         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_inter.so\n40003f2a1000-40003f2aa000 ---p 00000000 00:00 0 \n40003f2b0000-40003f2b5000 r-xp 00000000 00:3c 4578742272                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sm.so\n40003f2b5000-40003f2cf000 ---p 00005000 00:3c 4578742272                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sm.so\n40003f2cf000-40003f2d0000 r--p 0000f000 00:3c 4578742272                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sm.so\n40003f2d0000-40003f2d1000 rw-p 00010000 00:3c 4578742272                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sm.so\n40003f2d1000-40003f2db000 ---p 00000000 00:00 0 \n40003f2e0000-40003f2e2000 r-xp 00000000 00:3c 45036000803792640          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_sm.so.40.30.0\n40003f2e2000-40003f2ff000 ---p 00002000 00:3c 45036000803792640          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_sm.so.40.30.0\n40003f2ff000-40003f300000 r--p 0000f000 00:3c 45036000803792640          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_sm.so.40.30.0\n40003f300000-40003f301000 rw-p 00010000 00:3c 45036000803792640          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_sm.so.40.30.0\n40003f301000-40003f30c000 ---p 00000000 00:00 0 \n40003f310000-40003f320000 r-xp 00000000 00:3c 72057598616685632          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_tuned.so\n40003f320000-40003f33f000 ---p 00010000 00:3c 72057598616685632          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_tuned.so\n40003f33f000-40003f340000 r--p 0001f000 00:3c 72057598616685632          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_tuned.so\n40003f340000-40003f341000 rw-p 00020000 00:3c 72057598616685632          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_tuned.so\n40003f341000-40003f34d000 ---p 00000000 00:00 0 \n40003f350000-40003f359000 r-xp 00000000 00:3c 108086395654493184         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_adapt.so\n40003f359000-40003f36f000 ---p 00009000 00:3c 108086395654493184         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_adapt.so\n40003f36f000-40003f370000 r--p 0000f000 00:3c 108086395654493184         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_adapt.so\n40003f370000-40003f371000 rw-p 00010000 00:3c 108086395654493184         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_adapt.so\n40003f371000-40003f37e000 ---p 00000000 00:00 0 \n40003f3a1000-40003f3af000 ---p 00000000 00:00 0 \n40003f3d1000-40003f3e0000 ---p 00000000 00:00 0 \n40003f3e0000-40003f3eb000 r-xp 00000000 00:3c 4597611520                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_basic.so\n40003f3eb000-40003f3ff000 ---p 0000b000 00:3c 4597611520                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_basic.so\n40003f3ff000-40003f400000 r--p 0000f000 00:3c 4597611520                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_basic.so\n40003f400000-40003f401000 rw-p 00010000 00:3c 4597611520                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_basic.so\n40003f401000-40003f411000 ---p 00000000 00:00 0 \n40003f420000-40003f43d000 r-xp 00000000 00:3c 4578782016                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_libnbc.so\n40003f43d000-40003f44f000 ---p 0001d000 00:3c 4578782016                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_libnbc.so\n40003f44f000-40003f450000 r--p 0001f000 00:3c 4578782016                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_libnbc.so\n40003f450000-40003f451000 rw-p 00020000 00:3c 4578782016                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_libnbc.so\n40003f451000-40003f452000 ---p 00000000 00:00 0 \n40003f460000-40003f478000 r-xp 00000000 00:3c 4578785792                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_ucg.so\n40003f478000-40003f48f000 ---p 00018000 00:3c 4578785792                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_ucg.so\n40003f48f000-40003f490000 r--p 0001f000 00:3c 4578785792                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_ucg.so\n40003f490000-40003f491000 rw-p 00020000 00:3c 4578785792                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_ucg.so\n40003f491000-40003f493000 ---p 00000000 00:00 0 \n40003f4a0000-40003f4b7000 r-xp 00000000 00:3c 117093594801789056         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/libucg.so.25.1.0.SPC001\n40003f4b7000-40003f4cf000 ---p 00017000 00:3c 117093594801789056         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/libucg.so.25.1.0.SPC001\n40003f4cf000-40003f4d0000 r--p 0001f000 00:3c 117093594801789056         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/libucg.so.25.1.0.SPC001\n40003f4d0000-40003f4d1000 rw-p 00020000 00:3c 117093594801789056         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/libucg.so.25.1.0.SPC001\n40003f4d1000-40003f4d4000 ---p 00000000 00:00 0 \n40003f4e0000-40003f536000 r-xp 00000000 00:3c 54043199978076928          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucs.so.0.0.0\n40003f536000-40003f54e000 ---p 00056000 00:3c 54043199978076928          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucs.so.0.0.0\n40003f54e000-40003f550000 r--p 0005e000 00:3c 54043199978076928          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucs.so.0.0.0\n40003f550000-40003f552000 rw-p 00060000 00:3c 54043199978076928          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucs.so.0.0.0\n40003f552000-40003f557000 rw-p 00000000 00:00 0 \n40003f557000-40003f55b000 ---p 00000000 00:00 0 \n40003f560000-40003f578000 r-xp 00000000 00:3c 54043199978076672          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucm.so.0.0.0\n40003f578000-40003f58f000 ---p 00018000 00:3c 54043199978076672          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucm.so.0.0.0\n40003f58f000-40003f590000 r--p 0001f000 00:3c 54043199978076672          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucm.so.0.0.0\n40003f590000-40003f591000 rw-p 00020000 00:3c 54043199978076672          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucm.so.0.0.0\n40003f591000-40003f59c000 ---p 00000000 00:00 0 \n40003f5a0000-40003f5e2000 r-xp 00000000 00:3c 81064797838150720          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_stars.so.25.1.0.SPC001\n40003f5e2000-40003f5ff000 ---p 00042000 00:3c 81064797838150720          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_stars.so.25.1.0.SPC001\n40003f5ff000-40003f600000 r--p 0004f000 00:3c 81064797838150720          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_stars.so.25.1.0.SPC001\n40003f600000-40003f605000 rw-p 00050000 00:3c 81064797838150720          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_stars.so.25.1.0.SPC001\n40003f605000-40003f606000 rw-p 00000000 00:00 0 \n40003f606000-40003f612000 ---p 00000000 00:00 0 \n40003f620000-40003f63c000 r-xp 00000000 00:2e 59196                      /usr/lib64/libibverbs.so.1.14.41.0\n40003f63c000-40003f64f000 ---p 0001c000 00:2e 59196                      /usr/lib64/libibverbs.so.1.14.41.0\n40003f64f000-40003f650000 r--p 0001f000 00:2e 59196                      /usr/lib64/libibverbs.so.1.14.41.0\n40003f650000-40003f651000 rw-p 00020000 00:2e 59196                      /usr/lib64/libibverbs.so.1.14.41.0\n40003f651000-40003f653000 ---p 00000000 00:00 0 \n40003f660000-40003f66f000 r-xp 00000000 00:2e 58550                      /usr/lib64/libhns.so.1.0.41.0\n40003f66f000-40003f67f000 ---p 0000f000 00:2e 58550                      /usr/lib64/libhns.so.1.0.41.0\n40003f67f000-40003f680000 r--p 0000f000 00:2e 58550                      /usr/lib64/libhns.so.1.0.41.0\n40003f680000-40003f681000 rw-p 00010000 00:2e 58550                      /usr/lib64/libhns.so.1.0.41.0\n40003f681000-40003f684000 ---p 00000000 00:00 0 \n40003f690000-40003f757000 r-xp 00000000 00:3c 54043199978076544          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucp.so.0.0.0\n40003f757000-40003f76d000 ---p 000c7000 00:3c 54043199978076544          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucp.so.0.0.0\n40003f76d000-40003f770000 r--p 000cd000 00:3c 54043199978076544          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucp.so.0.0.0\n40003f770000-40003f775000 rw-p 000d0000 00:3c 54043199978076544          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucp.so.0.0.0\n40003f775000-40003f779000 ---p 00000000 00:00 0 \n40003f780000-40003f7b5000 r-xp 00000000 00:3c 54043199978076736          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libuct.so.0.0.0\n40003f7b5000-40003f7ce000 ---p 00035000 00:3c 54043199978076736          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libuct.so.0.0.0\n40003f7ce000-40003f7d0000 r--p 0003e000 00:3c 54043199978076736          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libuct.so.0.0.0\n40003f7d0000-40003f7d4000 rw-p 00040000 00:3c 54043199978076736          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libuct.so.0.0.0\n40003f7d4000-40003f7dd000 ---p 00000000 00:00 0 \n40003f7e0000-40003f807000 r-xp 00000000 00:3c 45036000819186688          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_ucx.so.25.1.0.SPC001\n40003f807000-40003f81f000 ---p 00027000 00:3c 45036000819186688          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_ucx.so.25.1.0.SPC001\n40003f81f000-40003f820000 r--p 0002f000 00:3c 45036000819186688          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_ucx.so.25.1.0.SPC001\n40003f820000-40003f827000 rw-p 00030000 00:3c 45036000819186688          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_ucx.so.25.1.0.SPC001\n40003f827000-40003f828000 rw-p 00000000 00:00 0 \n40003f828000-40003f835000 ---p 00000000 00:00 0 \n40003f840000-40003f858000 r-xp 00000000 00:3c 81064797838151424          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planm_ucx_hicoll.so.25.1.0.SPC001\n40003f858000-40003f86f000 ---p 00018000 00:3c 81064797838151424          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planm_ucx_hicoll.so.25.1.0.SPC001\n40003f86f000-40003f870000 r--p 0001f000 00:3c 81064797838151424          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planm_ucx_hicoll.so.25.1.0.SPC001\n40003f870000-40003f871000 rw-p 00020000 00:3c 81064797838151424          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planm_ucx_hicoll.so.25.1.0.SPC001\n40003f871000-40003f876000 ---p 00000000 00:00 0 \n40003f880000-40003f90d000 r-xp 00000000 00:3c 108086395576176384         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_ib.so.0.0.0\n40003f90d000-40003f91e000 ---p 0008d000 00:3c 108086395576176384         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_ib.so.0.0.0\n40003f91e000-40003f920000 r--p 0008e000 00:3c 108086395576176384         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_ib.so.0.0.0\n40003f920000-40003f925000 rw-p 00090000 00:3c 108086395576176384         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_ib.so.0.0.0\n40003f925000-40003f92b000 ---p 00000000 00:00 0 \n40003f930000-40003f999000 r-xp 00000000 00:2e 68362                      /usr/lib64/libmlx5.so.1.23.41.0\n40003f999000-40003f9ae000 ---p 00069000 00:2e 68362                      /usr/lib64/libmlx5.so.1.23.41.0\n40003f9ae000-40003f9b0000 r--p 0006e000 00:2e 68362                      /usr/lib64/libmlx5.so.1.23.41.0\n40003f9b0000-40003f9b1000 rw-p 00070000 00:2e 68362                      /usr/lib64/libmlx5.so.1.23.41.0\n40003f9b1000-40003f9b3000 rw-p 00000000 00:00 0 \n40003f9b3000-40003f9be000 ---p 00000000 00:00 0 \n40003f9c0000-40003f9cb000 r-xp 00000000 00:3c 108086395576175936         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_rdmacm.so.0.0.0\n40003f9cb000-40003f9df000 ---p 0000b000 00:3c 108086395576175936         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_rdmacm.so.0.0.0\n40003f9df000-40003f9e0000 r--p 0000f000 00:3c 108086395576175936         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_rdmacm.so.0.0.0\n40003f9e0000-40003f9e1000 rw-p 00010000 00:3c 108086395576175936         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_rdmacm.so.0.0.0\n40003f9e1000-40003f9ef000 ---p 00000000 00:00 0 \n40003f9f0000-40003fa07000 r-xp 00000000 00:2e 60203                      /usr/lib64/librdmacm.so.1.3.41.0\n40003fa07000-40003fa1f000 ---p 00017000 00:2e 60203                      /usr/lib64/librdmacm.so.1.3.41.0\n40003fa1f000-40003fa20000 r--p 0001f000 00:2e 60203                      /usr/lib64/librdmacm.so.1.3.41.0\n40003fa20000-40003fa21000 rw-p 00020000 00:2e 60203                      /usr/lib64/librdmacm.so.1.3.41.0\n40003fa21000-40003fa22000 rw-p 00000000 00:00 0 \n40003fa22000-40003fa31000 ---p 00000000 00:00 0 \n40003fa40000-40003fa44000 r-xp 00000000 00:3c 108086395576175744         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_cma.so.0.0.0\n40003fa44000-40003fa5f000 ---p 00004000 00:3c 108086395576175744         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_cma.so.0.0.0\n40003fa5f000-40003fa60000 r--p 0000f000 00:3c 108086395576175744         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_cma.so.0.0.0\n40003fa60000-40003fa61000 rw-p 00010000 00:3c 108086395576175744         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_cma.so.0.0.0\n40003fa61000-40003fa62000 ---p 00000000 00:00 0 \n40003fa70000-40003fa78000 r-xp 00000000 00:3c 108086395576176896         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_sdma.so.0.0.0\n40003fa78000-40003fa8f000 ---p 00008000 00:3c 108086395576176896         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_sdma.so.0.0.0\n40003fa8f000-40003fa90000 r--p 0000f000 00:3c 108086395576176896         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_sdma.so.0.0.0\n40003fa90000-40003fa91000 rw-p 00010000 00:3c 108086395576176896         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_sdma.so.0.0.0\n40003fa91000-40003fa93000 ---p 00000000 00:00 0 \n40003faa0000-40003faa7000 r-xp 00000000 00:2e 58552                      /usr/lib64/libsdma_dk.so\n40003faa7000-40003fabf000 ---p 00007000 00:2e 58552                      /usr/lib64/libsdma_dk.so\n40003fabf000-40003fac0000 r--p 0000f000 00:2e 58552                      /usr/lib64/libsdma_dk.so\n40003fac0000-40003fac1000 rw-p 00010000 00:2e 58552                      /usr/lib64/libsdma_dk.so\n40003fac1000-40003fad4000 ---p 00000000 00:00 0 \n40003fad4000-40003fcd4000 rw-p 00000000 00:00 0 \n40003fcd4000-40003fffe000 rw-p 00000000 00:00 0 \n400040000000-400040021000 rw-p 00000000 00:00 0 \n400040021000-400044000000 ---p 00000000 00:00 0 \n400044000000-400044419000 rw-s 00000000 00:01 17301526                   /SYSV00000000 (deleted)\n400044419000-400044832000 rw-s 00000000 00:19 1932126                    /dev/shm/ucx_shm_posix_3bf035de (deleted)\n400044832000-400044ab7000 rw-p 00000000 00:00 0 \n400044ab7000-400044b3c000 rw-p 00000000 00:00 0 \n400044b3c000-400044b61000 rw-p 00000000 00:00 0 \n400044b61000-400044c7d000 rw-p 00000000 00:00 0 \n400044c7d000-400044d02000 rw-p 00000000 00:00 0 \n400044d02000-400044d27000 rw-p 00000000 00:00 0 \n400044d27000-400044e63000 rw-p 00000000 00:00 0 \n400044e63000-400044e73000 -w-s 00002000 00:05 347                        /dev/infiniband/uverbs5\n400044e73000-400044ef8000 rw-p 00000000 00:00 0 \n400044ef8000-400044f1d000 rw-p 00000000 00:00 0 \n400044f1d000-400045059000 rw-p 00000000 00:00 0 \n400045059000-400045069000 -w-s 00002000 00:05 348                        /dev/infiniband/uverbs6\n400045069000-4000450ee000 rw-p 00000000 00:00 0 \n4000450ee000-400045113000 rw-p 00000000 00:00 0 \n400045113000-40004524f000 rw-p 00000000 00:00 0 \n40004524f000-40004525f000 -w-s 00002000 00:05 349                        /dev/infiniband/uverbs7\n40004525f000-4000452e4000 rw-p 00000000 00:00 0 \n4000452e4000-40004598a000 rw-p 00000000 00:00 0 \n40004598a000-40004599a000 rw-s 00000000 00:01 17301529                   /SYSVb83cebc1 (deleted)\n4000459a0000-4000459ae000 r-xp 00000000 00:3c 36028801616536768          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_ucx.so\n4000459ae000-4000459bf000 ---p 0000e000 00:3c 36028801616536768          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_ucx.so\n4000459bf000-4000459c0000 r--p 0000f000 00:3c 36028801616536768          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_ucx.so\n4000459c0000-4000459c9000 rw-p 00010000 00:3c 36028801616536768          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_ucx.so\n4000459c9000-4000459d3000 ---p 00000000 00:00 0 \n4000459e0000-4000459e4000 r-xp 00000000 00:3c 81064797822757056          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_ucx.so.40.30.2\n4000459e4000-4000459ff000 ---p 00004000 00:3c 81064797822757056          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_ucx.so.40.30.2\n4000459ff000-400045a00000 r--p 0000f000 00:3c 81064797822757056          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_ucx.so.40.30.2\n400045a00000-400045a01000 rw-p 00010000 00:3c 81064797822757056          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_ucx.so.40.30.2\n400045a01000-400045a04000 ---p 00000000 00:00 0 \n400045a10000-400045a26000 r-xp 00000000 00:3c 108086395635631104         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_pt2pt.so\n400045a26000-400045a3f000 ---p 00016000 00:3c 108086395635631104         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_pt2pt.so\n400045a3f000-400045a40000 r--p 0001f000 00:3c 108086395635631104         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_pt2pt.so\n400045a40000-400045a41000 rw-p 00020000 00:3c 108086395635631104         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_pt2pt.so\n400045a41000-400045a45000 ---p 00000000 00:00 0 \n400045a50000-400045a56000 r-xp 00000000 00:3c 4597582336                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_sm.so\n400045a56000-400045a6f000 ---p 00006000 00:3c 4597582336                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_sm.so\n400045a6f000-400045a70000 r--p 0000f000 00:3c 4597582336                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_sm.so\n400045a70000-400045a72000 rw-p 00010000 00:3c 4597582336                 /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_sm.so\n400045a72000-400045a77000 ---p 00000000 00:00 0 \n400045a80000-400045a97000 r-xp 00000000 00:3c 36028801616550784          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_rdma.so\n400045a97000-400045aaf000 ---p 00017000 00:3c 36028801616550784          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_rdma.so\n400045aaf000-400045ab0000 r--p 0001f000 00:3c 36028801616550784          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_rdma.so\n400045ab0000-400045ab1000 rw-p 00020000 00:3c 36028801616550784          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_rdma.so\n400045ab1000-400045ab8000 ---p 00000000 00:00 0 \n400045ae1000-400045ae9000 ---p 00000000 00:00 0 \n400045ae9000-400045eea000 rw-s 00000000 00:19 1932124                    /dev/shm/vader_segment.cn19486.29301.867e0001.0\n400045eea000-4000462eb000 rw-s 00000000 00:19 1932129                    /dev/shm/vader_segment.cn19486.29301.867e0001.1\n4000462eb000-4000466ec000 rw-s 00000000 00:19 1932138                    /dev/shm/vader_segment.cn19486.29301.867e0001.2\n4000466ec000-400046aed000 rw-s 00000000 00:19 1932148                    /dev/shm/vader_segment.cn19486.29301.867e0001.3\n400046aed000-400046eee000 rw-s 00000000 00:19 1932151                    /dev/shm/vader_segment.cn19486.29301.867e0001.4\n400046eee000-4000472ef000 rw-s 00000000 00:19 1932147                    /dev/shm/vader_segment.cn19486.29301.867e0001.5\n4000472ef000-4000476f0000 rw-s 00000000 00:19 1932149                    /dev/shm/vader_segment.cn19486.29301.867e0001.6\n4000476f0000-400047af1000 rw-s 00000000 00:19 1932150                    /dev/shm/vader_segment.cn19486.29301.867e0001.7\n400047af1000-400047ef2000 rw-s 00000000 00:19 1932114                    /dev/shm/vader_segment.cn19486.29301.867e0001.9\n400047ef2000-400047f32000 rw-p 00000000 00:00 0 \n400047f40000-400047f59000 r-xp 00000000 00:2e 61615                      /usr/lib64/python3.9/lib-dynload/_pickle.cpython-39-aarch64-linux-gnu.so\n400047f59000-400047f6f000 ---p 00019000 00:2e 61615                      /usr/lib64/python3.9/lib-dynload/_pickle.cpython-39-aarch64-linux-gnu.so\n400047f6f000-400047f70000 r--p 0001f000 00:2e 61615                      /usr/lib64/python3.9/lib-dynload/_pickle.cpython-39-aarch64-linux-gnu.so\n400047f70000-400047f72000 rw-p 00020000 00:2e 61615                      /usr/lib64/python3.9/lib-dynload/_pickle.cpython-39-aarch64-linux-gnu.so\n400047f72000-400047f74000 ---p 00000000 00:00 0 \n400047f74000-400047ff4000 rw-p 00000000 00:00 0 \n400048000000-400048021000 rw-p 00000000 00:00 0 \n400048021000-40004c000000 ---p 00000000 00:00 0 \n40004c000000-40004c401000 rw-s 00000000 00:19 1932118                    /dev/shm/vader_segment.cn19486.29301.867e0001.10\n40004c401000-40004c802000 rw-s 00000000 00:19 1932115                    /dev/shm/vader_segment.cn19486.29301.867e0001.11\n40004c802000-40004cc03000 rw-s 00000000 00:19 1932137                    /dev/shm/vader_segment.cn19486.29301.867e0001.12\n40004cc03000-40004d004000 rw-s 00000000 00:19 1932130                    /dev/shm/vader_segment.cn19486.29301.867e0001.13\n40004d004000-40004d405000 rw-s 00000000 00:19 1932133                    /dev/shm/vader_segment.cn19486.29301.867e0001.14\n40004d405000-40004d806000 rw-s 00000000 00:19 1932134                    /dev/shm/vader_segment.cn19486.29301.867e0001.15\n40004d810000-40004dc43000 r-xp 00000000 00:3c 108086604191021056         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_umath.cpython-39-aarch64-linux-gnu.so\n40004dc43000-40004dc5d000 ---p 00433000 00:3c 108086604191021056         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_umath.cpython-39-aarch64-linux-gnu.so\n40004dc5d000-40004dc60000 r--p 0043d000 00:3c 108086604191021056         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_umath.cpython-39-aarch64-linux-gnu.so\n40004dc60000-40004dc85000 rw-p 00440000 00:3c 108086604191021056         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_umath.cpython-39-aarch64-linux-gnu.so\n40004dc85000-40004dca5000 rw-p 00000000 00:00 0 \n40004dca5000-40004dcb0000 ---p 00495000 00:3c 108086604191021056         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_umath.cpython-39-aarch64-linux-gnu.so\n40004dcb0000-40004dcb8000 rw-p 004d0000 00:3c 108086604191021056         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_umath.cpython-39-aarch64-linux-gnu.so\n40004dcb8000-40004dcc0000 ---p 004a8000 00:3c 108086604191021056         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_umath.cpython-39-aarch64-linux-gnu.so\n40004dcc0000-40004dcc7000 rw-p 004e0000 00:3c 108086604191021056         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_umath.cpython-39-aarch64-linux-gnu.so\n40004dcc7000-40004dccd000 ---p 00000000 00:00 0 \n40004dcd0000-40004efb3000 r-xp 00000000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004efb3000-40004efca000 ---p 012e3000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004efca000-40004efd0000 r--p 012ea000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004efd0000-40004efe2000 rw-p 012f0000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004efe2000-40004efe8000 rw-p 00000000 00:00 0 \n40004efe8000-40004eff0000 ---p 01318000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004eff0000-40004f041000 rw-p 01490000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004f041000-40004f050000 ---p 01371000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004f050000-40004f08c000 rw-p 014f0000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004f08c000-40004f090000 ---p 013bc000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004f090000-40004f0cb000 rw-p 01530000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004f0cb000-40004f0d0000 ---p 013fb000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004f0d0000-40004f10c000 rw-p 01570000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004f10c000-40004f110000 ---p 0143c000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004f110000-40004f14b000 rw-p 015b0000 00:3c 108086603901264448         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so\n40004f14b000-40004f158000 ---p 00000000 00:00 0 \n40004f160000-40004f2a7000 r-xp 00000000 00:3c 108086603901264512         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0\n40004f2a7000-40004f2bf000 ---p 00147000 00:3c 108086603901264512         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0\n40004f2bf000-40004f2c0000 r--p 0014f000 00:3c 108086603901264512         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0\n40004f2c0000-40004f2c1000 rw-p 00150000 00:3c 108086603901264512         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0\n40004f2c1000-40004f2c2000 rw-p 00000000 00:00 0 \n40004f2c2000-40004f2d0000 ---p 00162000 00:3c 108086603901264512         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0\n40004f2d0000-40004f2db000 rw-p 00160000 00:3c 108086603901264512         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0\n40004f2db000-40004f2e0000 ---p 0017b000 00:3c 108086603901264512         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0\n40004f2e0000-40004f2e9000 rw-p 00170000 00:3c 108086603901264512         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0\n40004f2e9000-40004f2f0000 ---p 00189000 00:3c 108086603901264512         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0\n40004f2f0000-40004f2f8000 rw-p 00180000 00:3c 108086603901264512         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0\n40004f2f8000-40004f300000 ---p 00198000 00:3c 108086603901264512         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0\n40004f300000-40004f309000 rw-p 00190000 00:3c 108086603901264512         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0\n40004f309000-40004f311000 ---p 00000000 00:00 0 \n40004f311000-40004f351000 rw-p 00000000 00:00 0 \n40004f360000-40004f376000 r-xp 00000000 00:2e 61595                      /usr/lib64/python3.9/lib-dynload/_datetime.cpython-39-aarch64-linux-gnu.so\n40004f376000-40004f38f000 ---p 00016000 00:2e 61595                      /usr/lib64/python3.9/lib-dynload/_datetime.cpython-39-aarch64-linux-gnu.so\n40004f38f000-40004f390000 r--p 0001f000 00:2e 61595                      /usr/lib64/python3.9/lib-dynload/_datetime.cpython-39-aarch64-linux-gnu.so\n40004f390000-40004f392000 rw-p 00020000 00:2e 61595                      /usr/lib64/python3.9/lib-dynload/_datetime.cpython-39-aarch64-linux-gnu.so\n40004f392000-40004f393000 rw-p 00000000 00:00 0 \n40004f393000-40004f394000 ---p 00000000 00:00 0 \n40004f394000-40004f4d4000 rw-p 00000000 00:00 0 \n40004f4e0000-40004f4e1000 r-xp 00000000 00:2e 61570                      /usr/lib64/python3.9/lib-dynload/_contextvars.cpython-39-aarch64-linux-gnu.so\n40004f4e1000-40004f4ff000 ---p 00001000 00:2e 61570                      /usr/lib64/python3.9/lib-dynload/_contextvars.cpython-39-aarch64-linux-gnu.so\n40004f4ff000-40004f500000 r--p 0000f000 00:2e 61570                      /usr/lib64/python3.9/lib-dynload/_contextvars.cpython-39-aarch64-linux-gnu.so\n40004f500000-40004f501000 rw-p 00010000 00:2e 61570                      /usr/lib64/python3.9/lib-dynload/_contextvars.cpython-39-aarch64-linux-gnu.so\n40004f501000-40004f505000 ---p 00000000 00:00 0 \n40004f505000-40004f545000 rw-p 00000000 00:00 0 \n40004f550000-40004f570000 r-xp 00000000 00:3c 108086604191021504         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_tests.cpython-39-aarch64-linux-gnu.so\n40004f570000-40004f57f000 ---p 00020000 00:3c 108086604191021504         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_tests.cpython-39-aarch64-linux-gnu.so\n40004f57f000-40004f580000 r--p 0001f000 00:3c 108086604191021504         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_tests.cpython-39-aarch64-linux-gnu.so\n40004f580000-40004f582000 rw-p 00020000 00:3c 108086604191021504         /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_tests.cpython-39-aarch64-linux-gnu.so\n40004f582000-40004f587000 ---p 00000000 00:00 0 \n40004f587000-40004f607000 rw-p 00000000 00:00 0 \n40004f610000-40004f636000 r-xp 00000000 00:3c 63050607837977856          /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-aarch64-linux-gnu.so\n40004f636000-40004f64f000 ---p 00026000 00:3c 63050607837977856          /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-aarch64-linux-gnu.so\n40004f64f000-40004f650000 r--p 0002f000 00:3c 63050607837977856          /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-aarch64-linux-gnu.so\n40004f650000-40004f651000 rw-p 00030000 00:3c 63050607837977856          /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-aarch64-linux-gnu.so\n40004f651000-40004f652000 rw-p 00000000 00:00 0 \n40004f652000-40004f660000 ---p 00042000 00:3c 63050607837977856          /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-aarch64-linux-gnu.so\n40004f660000-40004f662000 rw-p 00040000 00:3c 63050607837977856          /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-aarch64-linux-gnu.so\n40004f662000-40004f670000 ---p 00052000 00:3c 63050607837977856          /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-aarch64-linux-gnu.so\n40004f670000-40004f672000 rw-p 00050000 00:3c 63050607837977856          /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-aarch64-linux-gnu.so\n40004f672000-40004f679000 ---p 00000000 00:00 0 \n40004f679000-40004f7f9000 rw-p 00000000 00:00 0 \n40004f800000-40004f803000 r-xp 00000000 00:2e 61602                      /usr/lib64/python3.9/lib-dynload/_bisect.cpython-39-aarch64-linux-gnu.so\n40004f803000-40004f81f000 ---p 00003000 00:2e 61602                      /usr/lib64/python3.9/lib-dynload/_bisect.cpython-39-aarch64-linux-gnu.so\n40004f81f000-40004f820000 r--p 0000f000 00:2e 61602                      /usr/lib64/python3.9/lib-dynload/_bisect.cpython-39-aarch64-linux-gnu.so\n40004f820000-40004f821000 rw-p 00010000 00:2e 61602                      /usr/lib64/python3.9/lib-dynload/_bisect.cpython-39-aarch64-linux-gnu.so\n40004f821000-40004f82a000 ---p 00000000 00:00 0 \n40004f830000-40004f833000 r-xp 00000000 00:2e 61552                      /usr/lib64/python3.9/lib-dynload/_random.cpython-39-aarch64-linux-gnu.so\n40004f833000-40004f84f000 ---p 00003000 00:2e 61552                      /usr/lib64/python3.9/lib-dynload/_random.cpython-39-aarch64-linux-gnu.so\n40004f84f000-40004f850000 r--p 0000f000 00:2e 61552                      /usr/lib64/python3.9/lib-dynload/_random.cpython-39-aarch64-linux-gnu.so\n40004f850000-40004f851000 rw-p 00010000 00:2e 61552                      /usr/lib64/python3.9/lib-dynload/_random.cpython-39-aarch64-linux-gnu.so\n40004f851000-40004f85b000 ---p 00000000 00:00 0 \n40004f860000-40004f865000 r-xp 00000000 00:2e 61591                      /usr/lib64/python3.9/lib-dynload/_sha512.cpython-39-aarch64-linux-gnu.so\n40004f865000-40004f87f000 ---p 00005000 00:2e 61591                      /usr/lib64/python3.9/lib-dynload/_sha512.cpython-39-aarch64-linux-gnu.so\n40004f87f000-40004f880000 r--p 0000f000 00:2e 61591                      /usr/lib64/python3.9/lib-dynload/_sha512.cpython-39-aarch64-linux-gnu.so\n40004f880000-40004f881000 rw-p 00010000 00:2e 61591                      /usr/lib64/python3.9/lib-dynload/_sha512.cpython-39-aarch64-linux-gnu.so\n40004f881000-40004f88c000 ---p 00000000 00:00 0 \n40004f890000-40004f8d8000 r-xp 00000000 00:2e 61619                      /usr/lib64/python3.9/lib-dynload/_decimal.cpython-39-aarch64-linux-gnu.so\n40004f8d8000-40004f8ef000 ---p 00048000 00:2e 61619                      /usr/lib64/python3.9/lib-dynload/_decimal.cpython-39-aarch64-linux-gnu.so\n40004f8ef000-40004f8f0000 r--p 0004f000 00:2e 61619                      /usr/lib64/python3.9/lib-dynload/_decimal.cpython-39-aarch64-linux-gnu.so\n40004f8f0000-40004f8f3000 rw-p 00050000 00:2e 61619                      /usr/lib64/python3.9/lib-dynload/_decimal.cpython-39-aarch64-linux-gnu.so\n40004f8f3000-40004f8ff000 ---p 00000000 00:00 0 \n40004f900000-40004f902000 r-xp 00000000 00:2e 61618                      /usr/lib64/python3.9/lib-dynload/_statistics.cpython-39-aarch64-linux-gnu.so\n40004f902000-40004f91f000 ---p 00002000 00:2e 61618                      /usr/lib64/python3.9/lib-dynload/_statistics.cpython-39-aarch64-linux-gnu.so\n40004f91f000-40004f920000 r--p 0000f000 00:2e 61618                      /usr/lib64/python3.9/lib-dynload/_statistics.cpython-39-aarch64-linux-gnu.so\n40004f920000-40004f921000 rw-p 00010000 00:2e 61618                      /usr/lib64/python3.9/lib-dynload/_statistics.cpython-39-aarch64-linux-gnu.so\n40004f921000-40004f930000 ---p 00000000 00:00 0 \n40004f930000-40004f9f0000 rw-p 00000000 00:00 0 \n40004f9f0000-40004fa00000 r-xp 00000000 00:2e 61574                      /usr/lib64/python3.9/lib-dynload/_elementtree.cpython-39-aarch64-linux-gnu.so\n40004fa00000-40004fa1f000 ---p 00010000 00:2e 61574                      /usr/lib64/python3.9/lib-dynload/_elementtree.cpython-39-aarch64-linux-gnu.so\n40004fa1f000-40004fa20000 r--p 0001f000 00:2e 61574                      /usr/lib64/python3.9/lib-dynload/_elementtree.cpython-39-aarch64-linux-gnu.so\n40004fa20000-40004fa22000 rw-p 00020000 00:2e 61574                      /usr/lib64/python3.9/lib-dynload/_elementtree.cpython-39-aarch64-linux-gnu.so\n40004fa22000-40004fa32000 ---p 00000000 00:00 0 \n40004fa40000-40004fa68000 r-xp 00000000 00:2e 68356                      /usr/lib64/libexpat.so.1.8.1\n40004fa68000-40004fa7e000 ---p 00028000 00:2e 68356                      /usr/lib64/libexpat.so.1.8.1\n40004fa7e000-40004fa80000 r--p 0002e000 00:2e 68356                      /usr/lib64/libexpat.so.1.8.1\n40004fa80000-40004fa81000 rw-p 00030000 00:2e 68356                      /usr/lib64/libexpat.so.1.8.1\n40004fa81000-40004fa83000 ---p 00000000 00:00 0 \n40004fa90000-40004fa9f000 r-xp 00000000 00:2e 61561                      /usr/lib64/python3.9/lib-dynload/pyexpat.cpython-39-aarch64-linux-gnu.so\n40004fa9f000-40004faaf000 ---p 0000f000 00:2e 61561                      /usr/lib64/python3.9/lib-dynload/pyexpat.cpython-39-aarch64-linux-gnu.so\n40004faaf000-40004fab0000 r--p 0000f000 00:2e 61561                      /usr/lib64/python3.9/lib-dynload/pyexpat.cpython-39-aarch64-linux-gnu.so\n40004fab0000-40004fab2000 rw-p 00010000 00:2e 61561                      /usr/lib64/python3.9/lib-dynload/pyexpat.cpython-39-aarch64-linux-gnu.so\n40004fab2000-40004fab5000 ---p 00000000 00:00 0 \n40004fac0000-40004fac6000 r-xp 00000000 00:2e 61605                      /usr/lib64/python3.9/lib-dynload/mmap.cpython-39-aarch64-linux-gnu.so\n40004fac6000-40004fadf000 ---p 00006000 00:2e 61605                      /usr/lib64/python3.9/lib-dynload/mmap.cpython-39-aarch64-linux-gnu.so\n40004fadf000-40004fae0000 r--p 0000f000 00:2e 61605                      /usr/lib64/python3.9/lib-dynload/mmap.cpython-39-aarch64-linux-gnu.so\n40004fae0000-40004fae1000 rw-p 00010000 00:2e 61605                      /usr/lib64/python3.9/lib-dynload/mmap.cpython-39-aarch64-linux-gnu.so\n40004fae1000-40004fae6000 ---p 00000000 00:00 0 \n40004fae6000-400051947000 r--s 00000000 00:3c 108086610391522816         /home/share/nsls_lwb/.cache/mg-20261102/propagator/gauge_rank00008.npy\n400051950000-4000519b2000 r-xp 00000000 00:3c 220923755072               /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so\n4000519b2000-4000519cf000 ---p 00062000 00:3c 220923755072               /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so\n4000519cf000-4000519d0000 r--p 0006f000 00:3c 220923755072               /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so\n4000519d0000-4000519d1000 rw-p 00070000 00:3c 220923755072               /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so\n4000519d1000-4000519d8000 ---p 00000000 00:00 0 \n4000519e0000-400051a0d000 r-xp 00000000 00:3c 126100792705227712         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib/libkupl.so.25.1.0.SPC001\n400051a0d000-400051a1f000 ---p 0002d000 00:3c 126100792705227712         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib/libkupl.so.25.1.0.SPC001\n400051a1f000-400051a20000 r--p 0002f000 00:3c 126100792705227712         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib/libkupl.so.25.1.0.SPC001\n400051a20000-400051a21000 rw-p 00030000 00:3c 126100792705227712         /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib/libkupl.so.25.1.0.SPC001\n400051a21000-400051a44000 rw-p 00000000 00:00 0 \n400051a44000-400051a4c000 ---p 00000000 00:00 0 \n400051a50000-400051a92000 r-xp 00000000 00:3c 72057596636807104          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgomp.so.1.0.0\n400051a92000-400051aaf000 ---p 00042000 00:3c 72057596636807104          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgomp.so.1.0.0\n400051aaf000-400051ab0000 r--p 0004f000 00:3c 72057596636807104          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgomp.so.1.0.0\n400051ab0000-400051ab1000 rw-p 00050000 00:3c 72057596636807104          /home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgomp.so.1.0.0\n400051ab1000-400051abd000 ---p 00000000 00:00 0 \n400051ac0000-400051ac1000 r-xp 00000000 00:2e 68438                      /usr/lib64/librt.so.1\n400051ac1000-400051adf000 ---p 00001000 00:2e 68438                      /usr/lib64/librt.so.1\n400051adf000-400051ae0000 r--p 0000f000 00:2e 68438                      /usr/lib64/librt.so.1\n400051ae0000-400051ae1000 rw-p 00010000 00:2e 68438                      /usr/lib64/librt.so.1\n400051ae1000-400051aee000 ---p 00000000 00:00 0 \n400051af0000-400051af1000 r-xp 00000000 00:2e 66794                      /usr/lib64/libdl.so.2\n400051af1000-400051b0f000 ---p 00001000 00:2e 66794                      /usr/lib64/libdl.so.2\n400051b0f000-400051b10000 r--p 0000f000 00:2e 66794                      /usr/lib64/libdl.so.2\n400051b10000-400051b11000 rw-p 00010000 00:2e 66794                      /usr/lib64/libdl.so.2\n400051b11000-400051b2f000 ---p 00000000 00:00 0 \n400051b2f000-400051d2f000 rw-p 00000000 00:00 0 \n400051d2f000-400051d3f000 ---p 00000000 00:00 0 \n400051d3f000-400051f3f000 rw-p 00000000 00:00 0 \n400051f3f000-400051f4f000 ---p 00000000 00:00 0 \n400051f4f000-40005214f000 rw-p 00000000 00:00 0 \n40005214f000-40005215f000 ---p 00000000 00:00 0 \n40005215f000-40005235f000 rw-p 00000000 00:00 0 \n40005235f000-40005236f000 ---p 00000000 00:00 0 \n40005236f000-40005256f000 rw-p 00000000 00:00 0 \n40005256f000-40005257f000 ---p 00000000 00:00 0 \n40005257f000-40005277f000 rw-p 00000000 00:00 0 \n40005277f000-40005278f000 ---p 00000000 00:00 0 \n40005278f000-40005298f000 rw-p 00000000 00:00 0 \n40005298f000-40005299f000 ---p 00000000 00:00 0 \n40005299f000-400052b9f000 rw-p 00000000 00:00 0 \n400052b9f000-400052baf000 ---p 00000000 00:00 0 \n400052baf000-400052daf000 rw-p 00000000 00:00 0 \n400052daf000-400052dbf000 ---p 00000000 00:00 0 \n400052dbf000-400052fbf000 rw-p 00000000 00:00 0 \n400052fbf000-400052fcf000 ---p 00000000 00:00 0 \n400052fcf000-4000531cf000 rw-p 00000000 00:00 0 \n4000531cf000-4000531df000 ---p 00000000 00:00 0 \n4000531df000-4000533df000 rw-p 00000000 00:00 0 \n4000533df000-4000533ef000 ---p 00000000 00:00 0 \n4000533ef000-4000535ef000 rw-p 00000000 00:00 0 \n4000537a8000-4000537a9000 rw-p 00000000 00:00 0 \n4000537a9000-400055609000 rw-p 00000000 00:00 0 \n400055609000-400055619000 ---p 00000000 00:00 0 \n400055619000-400055819000 rw-p 00000000 00:00 0 \n400055819000-400055829000 ---p 00000000 00:00 0 \n400055829000-400055a29000 rw-p 00000000 00:00 0 \n400055a29000-400055a39000 ---p 00000000 00:00 0 \n400055a39000-400055c39000 rw-p 00000000 00:00 0 \n400055c39000-400055c49000 ---p 00000000 00:00 0 \n400055c49000-400055e49000 rw-p 00000000 00:00 0 \n400055e49000-400055e59000 ---p 00000000 00:00 0 \n400055e59000-400056059000 rw-p 00000000 00:00 0 \n400056059000-400056069000 ---p 00000000 00:00 0 \n400056069000-400056269000 rw-p 00000000 00:00 0 \n400056269000-400056279000 ---p 00000000 00:00 0 \n400056279000-400056479000 rw-p 00000000 00:00 0 \n400056479000-400056489000 ---p 00000000 00:00 0 \n400056489000-400056689000 rw-p 00000000 00:00 0 \n400056689000-400056699000 ---p 00000000 00:00 0 \n400056699000-400056899000 rw-p 00000000 00:00 0 \n400056899000-4000568a9000 ---p 00000000 00:00 0 \n4000568a9000-400056aa9000 rw-p 00000000 00:00 0 \n400056aa9000-400056ab9000 ---p 00000000 00:00 0 \n400056ab9000-400056cb9000 rw-p 00000000 00:00 0 \n400056cb9000-400056cc9000 ---p 00000000 00:00 0 \n400056cc9000-400056ec9000 rw-p 00000000 00:00 0 \n400056ec9000-400056ed9000 ---p 00000000 00:00 0 \n400056ed9000-4000570d9000 rw-p 00000000 00:00 0 \n4000570d9000-4000570e9000 ---p 00000000 00:00 0 \n4000570e9000-4000572e9000 rw-p 00000000 00:00 0 \n4000572e9000-4000572f9000 ---p 00000000 00:00 0 \n4000572f9000-4000574f9000 rw-p 00000000 00:00 0 \n4000574f9000-400057509000 ---p 00000000 00:00 0 \n400057509000-400057709000 rw-p 00000000 00:00 0 \n400057709000-400057719000 ---p 00000000 00:00 0 \n400057719000-400057919000 rw-p 00000000 00:00 0 \n400057919000-400057929000 ---p 00000000 00:00 0 \n400057929000-400057b29000 rw-p 00000000 00:00 0 \n400057b29000-400057b39000 ---p 00000000 00:00 0 \n400057b39000-400057d39000 rw-p 00000000 00:00 0 \n400057d39000-400057d49000 ---p 00000000 00:00 0 \n400057d49000-400057f49000 rw-p 00000000 00:00 0 \n400057f49000-400057f59000 ---p 00000000 00:00 0 \n400057f59000-400058159000 rw-p 00000000 00:00 0 \n400058159000-400058169000 ---p 00000000 00:00 0 \n400058169000-400058369000 rw-p 00000000 00:00 0 \n400058369000-400058379000 ---p 00000000 00:00 0 \n400058379000-4002ea77d000 rw-p 00000000 00:00 0 \n4002ea77d000-4002f7c21000 rw-p 00000000 00:00 0 \n400306f23000-400362135000 rw-p 00000000 00:00 0 \n400363f95000-4003b4fa5000 rw-p 00000000 00:00 0 \n4003ba09b000-4003ce49f000 rw-p 00000000 00:00 0 \n4003d0000000-4003d136d000 rw-p 00000000 00:00 0 \n4003d136d000-4003d4000000 ---p 00000000 00:00 0 \n4003d4000000-4003d536d000 rw-p 00000000 00:00 0 \n4003d536d000-4003d8000000 ---p 00000000 00:00 0 \n4003d8000000-4003d936d000 rw-p 00000000 00:00 0 \n4003d936d000-4003dc000000 ---p 00000000 00:00 0 \n4003dc000000-4003dd36d000 rw-p 00000000 00:00 0 \n4003dd36d000-4003e0000000 ---p 00000000 00:00 0 \n4003e0000000-4003e136d000 rw-p 00000000 00:00 0 \n4003e136d000-4003e4000000 ---p 00000000 00:00 0 \n4003e4000000-4003e536d000 rw-p 00000000 00:00 0 \n4003e536d000-4003e8000000 ---p 00000000 00:00 0 \n4003e8000000-4003e936d000 rw-p 00000000 00:00 0 \n4003e936d000-4003ec000000 ---p 00000000 00:00 0 \n4003ec000000-4003ed36d000 rw-p 00000000 00:00 0 \n4003ed36d000-4003f0000000 ---p 00000000 00:00 0 \n4003f0000000-4003f136d000 rw-p 00000000 00:00 0 \n4003f136d000-4003f4000000 ---p 00000000 00:00 0 \n4003f4000000-4003f536d000 rw-p 00000000 00:00 0 \n4003f536d000-4003f8000000 ---p 00000000 00:00 0 \n4003f8000000-4003f936d000 rw-p 00000000 00:00 0 \n4003f936d000-4003fc000000 ---p 00000000 00:00 0 \n4003fc000000-4003ff601000 rw-p 00000000 00:00 0 \n400400000000-40040136d000 rw-p 00000000 00:00 0 \n40040136d000-400404000000 ---p 00000000 00:00 0 \n400408000000-40040936d000 rw-p 00000000 00:00 0 \n40040936d000-40040c000000 ---p 00000000 00:00 0 \n400410000000-40041136d000 rw-p 00000000 00:00 0 \n40041136d000-400414000000 ---p 00000000 00:00 0 \n400418000000-40041936d000 rw-p 00000000 00:00 0 \n40041936d000-40041c000000 ---p 00000000 00:00 0 \n400420000000-40042136d000 rw-p 00000000 00:00 0 \n40042136d000-400424000000 ---p 00000000 00:00 0 \n400428000000-40042936d000 rw-p 00000000 00:00 0 \n40042936d000-40042c000000 ---p 00000000 00:00 0 \n400430000000-40043136d000 rw-p 00000000 00:00 0 \n40043136d000-400434000000 ---p 00000000 00:00 0 \n400438000000-40043936d000 rw-p 00000000 00:00 0 \n40043936d000-40043c000000 ---p 00000000 00:00 0 \n400440000000-40044136d000 rw-p 00000000 00:00 0 \n40044136d000-400444000000 ---p 00000000 00:00 0 \n400448000000-40044936d000 rw-p 00000000 00:00 0 \n40044936d000-40044c000000 ---p 00000000 00:00 0 \n400450000000-40045136d000 rw-p 00000000 00:00 0 \n40045136d000-400454000000 ---p 00000000 00:00 0 \n400458000000-40045936d000 rw-p 00000000 00:00 0 \n40045936d000-40045c000000 ---p 00000000 00:00 0 \n400460000000-40046136d000 rw-p 00000000 00:00 0 \n40046136d000-400464000000 ---p 00000000 00:00 0 \n400468000000-40046936d000 rw-p 00000000 00:00 0 \n40046936d000-40046c000000 ---p 00000000 00:00 0 \n400470000000-40047136d000 rw-p 00000000 00:00 0 \n40047136d000-400474000000 ---p 00000000 00:00 0 \n400478000000-40047936d000 rw-p 00000000 00:00 0 \n40047936d000-40047c000000 ---p 00000000 00:00 0 \n400480000000-40048136d000 rw-p 00000000 00:00 0 \n40048136d000-400484000000 ---p 00000000 00:00 0 \n400488000000-40048936d000 rw-p 00000000 00:00 0 \n40048936d000-40048c000000 ---p 00000000 00:00 0 \n40048c000000-40048d36d000 rw-p 00000000 00:00 0 \n40048d36d000-400490000000 ---p 00000000 00:00 0 \n400494000000-40049536d000 rw-p 00000000 00:00 0 \n40049536d000-400498000000 ---p 00000000 00:00 0 \n400498000000-40049936d000 rw-p 00000000 00:00 0 \n40049936d000-40049c000000 ---p 00000000 00:00 0 \n40049c000000-40049d36d000 rw-p 00000000 00:00 0 \n40049d36d000-4004a0000000 ---p 00000000 00:00 0 \n4004a4000000-4004a536d000 rw-p 00000000 00:00 0 \n4004a536d000-4004a8000000 ---p 00000000 00:00 0 \n4004ac000000-4004ad36d000 rw-p 00000000 00:00 0 \n4004ad36d000-4004b0000000 ---p 00000000 00:00 0 \n4004b4000000-4004b536d000 rw-p 00000000 00:00 0 \n4004b536d000-4004b8000000 ---p 00000000 00:00 0 \n4004b8000000-40064d02a000 rw-p 00000000 00:00 0 \n40064d02a000-4006549aa000 rw-p 00000000 00:00 0 \naaaacba30000-aaaacba31000 r-xp 00000000 00:2e 4854                       /usr/bin/python3.9\naaaacba4f000-aaaacba50000 r--p 0000f000 00:2e 4854                       /usr/bin/python3.9\naaaacba50000-aaaacba51000 rw-p 00010000 00:2e 4854                       /usr/bin/python3.9\naaaafffe2000-aaab1f4c0000 rw-p 00000000 00:00 0                          [heap]\nffffecc97000-ffffeccbc000 rw-p 00000000 00:00 0                          [stack]\n",
+  "mapped_libraries": [
+    {
+      "mapped_path": "/usr/lib/ld-linux-aarch64.so.1",
+      "resolved_path": "/usr/lib/ld-linux-aarch64.so.1",
+      "sha256": "d029a3643d97a4624d9b7229de196dbf8b258a1b4fc42ecf551b40a924fa1214",
+      "bytes": 204056
+    },
+    {
+      "mapped_path": "/usr/lib64/libpython3.9.so.1.0",
+      "resolved_path": "/usr/lib64/libpython3.9.so.1.0",
+      "sha256": "ecfd34c47a2d6b5967c026ea6f729178a78244645c9d7473a119acc01702f81a",
+      "bytes": 3565104
+    },
+    {
+      "mapped_path": "/usr/lib64/libcrypt.so.1.1.0",
+      "resolved_path": "/usr/lib64/libcrypt.so.1.1.0",
+      "sha256": "dd5f950bffc6fc09bf03cc4c7deaffed4e6ed2c0decd7bdc3e15705d1767f61f",
+      "bytes": 264240
+    },
+    {
+      "mapped_path": "/usr/lib64/libm.so.6",
+      "resolved_path": "/usr/lib64/libm.so.6",
+      "sha256": "a07c01ae23267a0951e7af5291553f3422a196072bd9a686eabfe04cfef0db60",
+      "bytes": 591984
+    },
+    {
+      "mapped_path": "/usr/lib64/libc.so.6",
+      "resolved_path": "/usr/lib64/libc.so.6",
+      "sha256": "b1a2d5afee9ededcce206673aea3a5b4fbe6c790e10f956b6f934d51e0dca4fa",
+      "bytes": 1661256
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_heapq.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_heapq.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "f0ca48e745d4ba2edc956888248ee26fb8dd2409126e971fd34a5e05b5d6d53e",
+      "bytes": 67920
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_json.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_json.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "498e5c701c7c08cd452b6176c5a841608dd9bc749c3032622e5ec24e7216781f",
+      "bytes": 68864
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/math.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/math.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "8e491a87ff466d90fa2d496718f0321c26a53e48f5c9b6f01e6e5e7c8856dba5",
+      "bytes": 69640
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/zlib.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/zlib.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "659102560d24aef077b82bb46b9677c5cfecfb8b075929db3a6570b3754e60b8",
+      "bytes": 68944
+    },
+    {
+      "mapped_path": "/usr/lib64/libz.so.1.2.11",
+      "resolved_path": "/usr/lib64/libz.so.1.2.11",
+      "sha256": "bf3c7515f6ad0c9ff3e5fd7c5cc44b9811598a5c1dc3f9fe8b9146402228ff09",
+      "bytes": 133168
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_bz2.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_bz2.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "bc23fd1cc88b50f3abf343803663feabf2c73c7da9bf172739da6ef0adc61df5",
+      "bytes": 68912
+    },
+    {
+      "mapped_path": "/usr/lib64/libbz2.so.1.0.8",
+      "resolved_path": "/usr/lib64/libbz2.so.1.0.8",
+      "sha256": "6cc53370db2dcca81e1681557e5b31b2c1ae4dc66f70cc9e9142491fe45dc6f4",
+      "bytes": 70624
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_lzma.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_lzma.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "33624d122d74d5dc83d38f34d13f855334b3af5593629e2a728cdd51a988f09e",
+      "bytes": 69480
+    },
+    {
+      "mapped_path": "/usr/lib64/liblzma.so.5.2.5",
+      "resolved_path": "/usr/lib64/liblzma.so.5.2.5",
+      "sha256": "443fd1da55ece7e9b1ebc1ffedde1b2d8787b1fa7cabe68c26deb77c9bd2524d",
+      "bytes": 198704
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/grp.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/grp.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "2a58f1ca5fec654613f8ab7718c9cd2155a5ad21cb35bb362e13a284e69f1fcd",
+      "bytes": 68048
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_posixsubprocess.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_posixsubprocess.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "ae4ab65b72a4996a71d14943037be3e28ef9c7ba3ffaade2bf1e844d2d1bd8f1",
+      "bytes": 67672
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/select.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/select.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "74771741195e323e8e9e832faaa0e8ce0d5cdc2915038fa2b22fb1b39241f4ad",
+      "bytes": 68896
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_hashlib.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_hashlib.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "0a459a2e8d9c314de2ceb13f72bd65fbe2c7b0bfee93f502e5227eb87d9acee4",
+      "bytes": 70816
+    },
+    {
+      "mapped_path": "/usr/lib64/libssl.so.1.1.1wa",
+      "resolved_path": "/usr/lib64/libssl.so.1.1.1wa",
+      "sha256": "5f30a99bfe8263c28422413820ff8bde3eaf707f7735e2cce42882a0b4d0794a",
+      "bytes": 608144
+    },
+    {
+      "mapped_path": "/usr/lib64/libcrypto.so.1.1.1wa",
+      "resolved_path": "/usr/lib64/libcrypto.so.1.1.1wa",
+      "sha256": "8a117f63d660700ae23f3b429325a507d068b2325fbc9a87f0045158c27ccbc0",
+      "bytes": 2832848
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_blake2.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_blake2.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "3c279d55739fcd15b62177e355b6fc6fcc9fc6e8deb20b82f944d9d282eccd09",
+      "bytes": 69264
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_sha256.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_sha256.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "7138d49caa31fdabe887a6efd739001c109c40fb557365027d8105ac53419ef7",
+      "bytes": 69080
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_ctypes.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_ctypes.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "afceab83258f663ed283b53d3c0bdeb0db049361e237144ba003f42cdadaf3ab",
+      "bytes": 146712
+    },
+    {
+      "mapped_path": "/usr/lib64/libffi.so.8.1.0",
+      "resolved_path": "/usr/lib64/libffi.so.8.1.0",
+      "sha256": "376cf133dcddb785b546c80a0c43ecaed2ffade1e8d769f30bfa1d7b7a32cdf5",
+      "bytes": 67680
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_struct.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_struct.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "87e183531623bc914a0e029dea24162c3f83d13c8e7d03d2f2ccbb65df773498",
+      "bytes": 70520
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_socket.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_socket.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "bf0efbfd87a3a5033347a5ee58be23ed46ffa91aac3eb7c3b5ff343fa19890c2",
+      "bytes": 135896
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/array.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/array.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "485b6fa68509526a5488b80ea9c8870877e3406290a7e14d1b500842d54ce59d",
+      "bytes": 69784
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmpi.so.40.30.6",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmpi.so.40.30.6",
+      "sha256": "821468060a9b551dcef627b0d0772344d8b0318af766d942a9511e2b5d9307ec",
+      "bytes": 1179240
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-rte.so.40.30.3",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-rte.so.40.30.3",
+      "sha256": "9f15ff0b1fbef55fb8d320da776c737bf5aa828275aecf57b01e37e0ac09e818",
+      "bytes": 799464
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-pal.so.40.30.3",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libopen-pal.so.40.30.3",
+      "sha256": "e2ae5fb1adf8d00749286ace7b4856506c0d89752acbbd80a7bf9dc527453396",
+      "bytes": 1066712
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libstdc++.so.6.0.30",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libstdc++.so.6.0.30",
+      "sha256": "dee572b4b9b108960270f1769aa739c7c6d040fe1037772b90626b29623cf5bd",
+      "bytes": 2239528
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgcc_s.so.1",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgcc_s.so.1",
+      "sha256": "8deda699d7e7b293072b0308aef99a4dd7e78068f23aa23d140b776db168b37f",
+      "bytes": 132960
+    },
+    {
+      "mapped_path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/mpi4py/MPI.openmpi.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/mpi4py/MPI.openmpi.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "cdce8306edcf3403b5fa538047242b859acd3eada8364aa799a085ad81980313",
+      "bytes": 2188528
+    },
+    {
+      "mapped_path": "/usr/lib64/libpthread.so.0",
+      "resolved_path": "/usr/lib64/libpthread.so.0",
+      "sha256": "1bd641be5a351759c6e222dd2835c7f8865a1cfc815bb9bc98034b3bbea75757",
+      "bytes": 67624
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_shmem_mmap.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_shmem_mmap.so",
+      "sha256": "95bb845c38d6e48a64095656e35914d568b803d61c6d09b6f82655ae5a193de2",
+      "bytes": 67960
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_reachable_netlink.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_reachable_netlink.so",
+      "sha256": "7bbaa97fa3098178c1ee142f6336858de8a9bd9822ae87b0b39c696dd5fd1ed1",
+      "bytes": 68136
+    },
+    {
+      "mapped_path": "/usr/lib64/libnl-3.so.200.26.0",
+      "resolved_path": "/usr/lib64/libnl-3.so.200.26.0",
+      "sha256": "b0726837f097aef9fe3a10cb0199f5ed8100d1fc50ce9cb1839dc4f1dd3921a9",
+      "bytes": 198800
+    },
+    {
+      "mapped_path": "/usr/lib64/libnl-route-3.so.200.26.0",
+      "resolved_path": "/usr/lib64/libnl-route-3.so.200.26.0",
+      "sha256": "148a74f74f093ea899c12eda2080f3b15004a63a47bd2f361a621fb1f38f42f5",
+      "bytes": 608144
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_donau.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_donau.so",
+      "sha256": "b2e533766a47f3880893701e37d544bb1d2162de80f881e5f8815852ba669d08",
+      "bytes": 67944
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_slurm.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_slurm.so",
+      "sha256": "697b5006ac08f13ae7b150ab90bf947552ad5dea96a10fb65ed44b0668959725",
+      "bytes": 67944
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_jsm.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_jsm.so",
+      "sha256": "a2f2c6ef5517983292480093812c17d5488d08a31d131f75e55b8dea25d5b662",
+      "bytes": 67944
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_orte.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_orte.so",
+      "sha256": "b642701101c2e276fb7d697feab98a8ba95fea7c618f737908c010ac77eadbbd",
+      "bytes": 67944
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_ompi.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_ompi.so",
+      "sha256": "411f036997317048bf92e3cdef3a9b0a03d79290c1829115c6a1c50a431fef5e",
+      "bytes": 74640
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_flux.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_schizo_flux.so",
+      "sha256": "5db0d0c39609ce13120d5d4f4b9606aaea28b365b51bfeddd2f179e1fe71246c",
+      "bytes": 67944
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_ess_pmi.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_ess_pmi.so",
+      "sha256": "43db545908164a248235cc3abb28f9a5c8d7a5b8413873b348559751461e3d53",
+      "bytes": 67896
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pmix_pmix3x.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pmix_pmix3x.so",
+      "sha256": "5472d4abb02e95285dfea5e7b0c42a325c694bf9e943572c62ccea4770ef7d24",
+      "bytes": 134696
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libpmix.so.2.2.35",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libpmix.so.2.2.35",
+      "sha256": "b22abd5b92de18b4fe759302538946ff36bd47a5c22a4cc976b56899d7f29469",
+      "bytes": 866568
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_native.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_native.so",
+      "sha256": "58f3a1c6736d0a32360741a045522ad72c77179d3d05a6e6266cec7b0d9a9669",
+      "bytes": 67920
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_flex128.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psquash_flex128.so",
+      "sha256": "a4e90b13fd82f19d7adcf371807d7a827a130e8fd4237dcbb6c5a2327e79f2c7",
+      "bytes": 67920
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v21.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v21.so",
+      "sha256": "788656250db222a3f6e030e65bfdbd32471648192bc368777462d38b3c0fc047",
+      "bytes": 68040
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v20.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v20.so",
+      "sha256": "f5ec4bb70bdd648ea0db6cf8edd37ae50742de2778eb51381c7e92b1142829ab",
+      "bytes": 133576
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v3.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v3.so",
+      "sha256": "0cf107caf4c9075ca292d9653ac029decd757f8d77d4314740c3ad905b76e732",
+      "bytes": 68040
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v12.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_bfrops_v12.so",
+      "sha256": "d03cd84ce9785ad17dd6735ab36348a8c04a3111b7efd28b5941b584dc8622dd",
+      "bytes": 133576
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pcompress_zlib.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pcompress_zlib.so",
+      "sha256": "f43b7b80e8961916e5708a3b2f5005da0648db7db31da156b3b86aaa71a003ae",
+      "bytes": 67896
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_usock.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_usock.so",
+      "sha256": "768f63ab09b20a78432dea6cbada188cd79bc62a126202b68c9907f9d9975032",
+      "bytes": 68088
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_tcp.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_ptl_tcp.so",
+      "sha256": "84a065fa5ea0481d0183bd06156104e24e04cc80625144bf093378050a345d54",
+      "bytes": 68192
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psec_native.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_psec_native.so",
+      "sha256": "5b9024fde2b8ebfb07f979a908167ca91a6dfd75e60169fc544216a53c67ca82",
+      "bytes": 67944
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds21.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds21.so",
+      "sha256": "1fff88422c1dd7b12181b3acf3029fc3c388334908274baeaddf166e9a3bdd0a",
+      "bytes": 68216
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_dstore.so.1.0.2",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_dstore.so.1.0.2",
+      "sha256": "d6d27a445ba3dbafc69cc92376b13d6ccc89267d3bebccbd6f3545f9696e5a98",
+      "bytes": 67664
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_hash.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_hash.so",
+      "sha256": "076cc60540ae75804196abcb03657723062d450eb36fb481bbe0fac9c7bd37fe",
+      "bytes": 133784
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds12.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_gds_ds12.so",
+      "sha256": "c67de714839d761531d1ab5973c11b88038c1f5c617ee4e4cc8ebe51aab338c4",
+      "bytes": 68264
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pshmem_mmap.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_pshmem_mmap.so",
+      "sha256": "19bba59e55f498edbc4ee52b0f3c99339e78719df15b07a303161361511ecfeb",
+      "bytes": 67920
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_compress.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_compress.so",
+      "sha256": "0ef97de4a35204e2a45892fe4c2aadaa90e43edc0a6242037d2f1ec1dc31c311",
+      "bytes": 67888
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_native.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_preg_native.so",
+      "sha256": "39f950e6b67b76c0b7f435b35437997fd74a899a61c84fd808460aa11fd0f48a",
+      "bytes": 67888
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_stdfd.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_stdfd.so",
+      "sha256": "45aa6f1e3b51366737eee8b8625ee0fe129ff71e73038c647ad7ba30ce68a379",
+      "bytes": 67904
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_default.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_default.so",
+      "sha256": "1f28ddf59c644dc872e3b1bf8c9ad87f9aa8d2d0271ce1efa284c750bf92f0b7",
+      "bytes": 67968
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_syslog.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/pmix/mca_plog_syslog.so",
+      "sha256": "218c57d6ba6c4bb09fd3573bde7427b528aec30a82048e18ed49d3f1b4f2d272",
+      "bytes": 67936
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_state_app.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_state_app.so",
+      "sha256": "7fb310b011266fe9ed5143ac9a7f8ca29d1ebe3f5c9484a1600b62477c40dbb6",
+      "bytes": 67968
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_errmgr_default_app.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_errmgr_default_app.so",
+      "sha256": "556be79c3679df44e18c660a09496d9f6946a5957e97e052c0a455e548746450",
+      "bytes": 67928
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_bucket.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_bucket.so",
+      "sha256": "d275603d288c33540d6c660b0b5bcb8406b0ad7aaeddeea0fe8f5cf2042f56fe",
+      "bytes": 67872
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_basic.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_allocator_basic.so",
+      "sha256": "d67d48a4692473c1e98b53cea9ffe061fdc959aeedd7b1a5529e757505686257",
+      "bytes": 67952
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_rcache_grdma.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_rcache_grdma.so",
+      "sha256": "399eb507e8fc51626e0254043f5be1b6035ec9b36649dd1196f6c8be6fb982ee",
+      "bytes": 68032
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_mpool_hugepage.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_mpool_hugepage.so",
+      "sha256": "9cef117941f0f87dd4d8610345efc7b0182a75e31b905f8efe20bba2667e8b87",
+      "bytes": 68032
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_bml_r2.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_bml_r2.so",
+      "sha256": "80483fe49582d9e1e6ca4894eb1db06f7d2d84ea21acf8e951a16e46d2d00b75",
+      "bytes": 68000
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_tcp.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_tcp.so",
+      "sha256": "2209c6808b1c35377c956db26e14a14e0bf93e50c03b47f36eab1525d0f03919",
+      "bytes": 71152
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_self.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_self.so",
+      "sha256": "54150bf94baab5a6889c1b54a6957f6db2cdf7007b2932502dbb625f16161e0f",
+      "bytes": 69696
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_vader.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_btl_vader.so",
+      "sha256": "4ff2608e6fd4e4d76d738c9385daf21a1c6846cc22027f8cbe84c961b090962d",
+      "bytes": 74544
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pml_ob1.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_pml_ob1.so",
+      "sha256": "8ec0aab1e393bf738a8a490077962f79b768af200ac02082aaf5268d6acb10f3",
+      "bytes": 136480
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_self.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_self.so",
+      "sha256": "1f0a42da21e6b36d97de7613d0689685ea059a4ecff41c1aae48f857d774da5e",
+      "bytes": 67752
+    },
+    {
+      "mapped_path": "/usr/lib64/libnuma.so.1.0.0",
+      "resolved_path": "/usr/lib64/libnuma.so.1.0.0",
+      "sha256": "1027b39a0942390ec3a448f741b819d396777f3a948962cee33a9af883dee4fc",
+      "bytes": 67912
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_han.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_han.so",
+      "sha256": "9ff74ceb32af86f4759181ba8d56f8ef17a5ab5c4b69d7fca9d6be36e4889911",
+      "bytes": 134120
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sync.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sync.so",
+      "sha256": "9581d7c70335135c6f5786e1635584291373119606890c8e1ecec18a9487a16b",
+      "bytes": 67968
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_inter.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_inter.so",
+      "sha256": "2522e3b049f3a09c33b7e1c0196d0bc43099e0a0173a17b7993d8e79c14eeee6",
+      "bytes": 67760
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sm.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_sm.so",
+      "sha256": "3c53597e4dfca5f07151b3421763c7dbae0755d187aadf87898cfec99f5f82de",
+      "bytes": 67992
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_sm.so.40.30.0",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_sm.so.40.30.0",
+      "sha256": "14e3fe6c243b050f01e395223ed2d4e70dc69d78f2bfdc656f10f96bbf7385a7",
+      "bytes": 67664
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_tuned.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_tuned.so",
+      "sha256": "50e9020e3d69fab901fd9a07a5fb7a413d7aade6fe86b87cbd8a40f726a6d466",
+      "bytes": 133616
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_adapt.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_adapt.so",
+      "sha256": "6e7ff7cbbfe13e8ca0554fc98446a0c85d3ea11274ba3b6234dd9b3a595dc5b4",
+      "bytes": 68544
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_basic.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_basic.so",
+      "sha256": "315f855376b44eb736b2d0bc595b9879d3ea0250d469e33cdbd93a95a4248f29",
+      "bytes": 67760
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_libnbc.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_libnbc.so",
+      "sha256": "8cc111b675582effe656bab34a90454165b98d84fa2c21210b0f2ed03eed9ef1",
+      "bytes": 134616
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_ucg.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_coll_ucg.so",
+      "sha256": "4e763395995fae23c4b760d9114526d50b200ec8afe2070f97110d90ce3efb19",
+      "bytes": 134104
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/libucg.so.25.1.0.SPC001",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/libucg.so.25.1.0.SPC001",
+      "sha256": "29a4b4a402a9778a14fb4550a27f50e53190c635b2f2849813f275d5eb982c89",
+      "bytes": 156064
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucs.so.0.0.0",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucs.so.0.0.0",
+      "sha256": "ad032c795c9c3e7a8b3aeb3867ce7fc3b9e4bc6e2e210b39f90a72e687f3c5a3",
+      "bytes": 402272
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucm.so.0.0.0",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucm.so.0.0.0",
+      "sha256": "9146e5755564230b8dcb3423ecb9a02b3e665b7c5593ce745b32b4e5da05c9bc",
+      "bytes": 135480
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_stars.so.25.1.0.SPC001",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_stars.so.25.1.0.SPC001",
+      "sha256": "dfcde42710d2d900d582abdd976f184a1211764f2cdcc6c2bd2be93e33ec935f",
+      "bytes": 401168
+    },
+    {
+      "mapped_path": "/usr/lib64/libibverbs.so.1.14.41.0",
+      "resolved_path": "/usr/lib64/libibverbs.so.1.14.41.0",
+      "sha256": "9f730a8bcae20e7c5bd72b2c809db170c9c1107298914801efe34e010240c7e7",
+      "bytes": 133800
+    },
+    {
+      "mapped_path": "/usr/lib64/libhns.so.1.0.41.0",
+      "resolved_path": "/usr/lib64/libhns.so.1.0.41.0",
+      "sha256": "93557b081ff19d57fd511bda9dcdd0548558f47a484952ef0666dfd30e4e747c",
+      "bytes": 67632
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucp.so.0.0.0",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libucp.so.0.0.0",
+      "sha256": "e21ed2497ce1525c210a53236e987ed559b14b40e36241f0b2fdb69bfa2eb440",
+      "bytes": 872584
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libuct.so.0.0.0",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/libuct.so.0.0.0",
+      "sha256": "e1240abd25de3f4606b533f49fe7ee45ecdfca4a91fd4f5cd2758f6db8583486",
+      "bytes": 277408
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_ucx.so.25.1.0.SPC001",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planc_ucx.so.25.1.0.SPC001",
+      "sha256": "8b67c186834a800903c1722be9c88a0f41839cc1821ae3d5d9def5ba5e934d8d",
+      "bytes": 264376
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planm_ucx_hicoll.so.25.1.0.SPC001",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib/planc/libucg_planm_ucx_hicoll.so.25.1.0.SPC001",
+      "sha256": "3b654a6f7f6f80da09dba45cc6f8ed41181b180774065cc89b7facb310a470e7",
+      "bytes": 136120
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_ib.so.0.0.0",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_ib.so.0.0.0",
+      "sha256": "0fb10a1a9949936cf49f7e21cde8de19e52922f443d8a83ccd41083cacb29fd5",
+      "bytes": 611688
+    },
+    {
+      "mapped_path": "/usr/lib64/libmlx5.so.1.23.41.0",
+      "resolved_path": "/usr/lib64/libmlx5.so.1.23.41.0",
+      "sha256": "5ba649c58efee2f321239376ef8a305c10a7172c5d0aec67e4ff3282c18f66d6",
+      "bytes": 463120
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_rdmacm.so.0.0.0",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_rdmacm.so.0.0.0",
+      "sha256": "6ec4f25bdf77aafc57386f4c8bfe6af6a5be51ca8fad542e516118f97a33da63",
+      "bytes": 68984
+    },
+    {
+      "mapped_path": "/usr/lib64/librdmacm.so.1.3.41.0",
+      "resolved_path": "/usr/lib64/librdmacm.so.1.3.41.0",
+      "sha256": "305af7dfc2e8b261ab375e26679adbd0533e2f4c2a52e20f8f65628eb6ad2b26",
+      "bytes": 134096
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_cma.so.0.0.0",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_cma.so.0.0.0",
+      "sha256": "befc376992726b7f6c4dc92ebcd520477c34af3640ed18f60e3bb9600f98139f",
+      "bytes": 69096
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_sdma.so.0.0.0",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib/ucx/libuct_sdma.so.0.0.0",
+      "sha256": "e58cb1238d775fdc44fd89ed756bfd0b605bf471ade0ed975f8c91b6bb9eadfa",
+      "bytes": 69360
+    },
+    {
+      "mapped_path": "/usr/lib64/libsdma_dk.so",
+      "resolved_path": "/usr/lib64/libsdma_dk.so",
+      "sha256": "2dee6f0b8b5498d8d39ab9ba6146236745098f95ffc432a9e645eefbe00a444e",
+      "bytes": 75000
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_ucx.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_ucx.so",
+      "sha256": "82b99c9a12ed257af496386ad1e39e76bec5d33ff07eeacd433623f8221d113e",
+      "bytes": 103168
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_ucx.so.40.30.2",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/libmca_common_ucx.so.40.30.2",
+      "sha256": "eca409bc1df53f622dd2a6c3808ffcea54bb577e86993c4f6a6a0f89a97a7453",
+      "bytes": 68256
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_pt2pt.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_pt2pt.so",
+      "sha256": "4be6f6842f8f1b2a69c9f69fb683be70ab41b3e6ae5d52350e59fe2a291b2cd1",
+      "bytes": 136488
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_sm.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_sm.so",
+      "sha256": "1f7f94614249819e9d8f95dfb51938ce98b534efc63f0efcd417802e08fc514f",
+      "bytes": 72464
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_rdma.so",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib/openmpi/mca_osc_rdma.so",
+      "sha256": "0cf03a0e437f18d4d96b2d429370a5a4757db2893326220282929a9e1e9f2f1c",
+      "bytes": 135536
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_pickle.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_pickle.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "5e1be4a013f42190b1c692cc1e37492de14e198fe811dffe5dd2bf0a1956bf41",
+      "bytes": 137504
+    },
+    {
+      "mapped_path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_umath.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_umath.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "2ff1d58e9d86dbf49e4c2ce168f89dbcaadef536167bc31d6a16d87f97f443f9",
+      "bytes": 5138313
+    },
+    {
+      "mapped_path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so",
+      "resolved_path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libscipy_openblas64_-0f683016.so",
+      "sha256": "f3e216db23e3393127cf7753cab8085da83454fed795c9a1cb544d57ce633f35",
+      "bytes": 22982609
+    },
+    {
+      "mapped_path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0",
+      "resolved_path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy.libs/libgfortran-daac5196-038a5e3c.so.5.0.0",
+      "sha256": "8c13f44b44e4dd0005632ea4173f5f5014d2829d50aa12b2054034297c07f233",
+      "bytes": 1671529
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_datetime.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_datetime.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "9c1b45ce9eb8cc89c8aba0e85dd79031ba306c615b838e4708f08cbaa6ff5050",
+      "bytes": 141192
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_contextvars.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_contextvars.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "74f9e3d8c88f51fd77d5f114e9067a8bd5179ee23361d6fedb7d8870e94b4018",
+      "bytes": 67704
+    },
+    {
+      "mapped_path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_tests.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/_core/_multiarray_tests.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "88b722d4fa2c8680190c3afe226ab0db802ff24e6bad47ed8ba87df00414d9d5",
+      "bytes": 160592
+    },
+    {
+      "mapped_path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "9b5de6d63ca7e40448335d5107c36b1457908d6bea3735c399e402777a4a6fe0",
+      "bytes": 331977
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_bisect.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_bisect.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "a964f08966bc5600d5b7ea17a1fc9cdded954e1690f0000041675014317284bc",
+      "bytes": 68120
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_random.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_random.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "ddfd7339b51626e44017dd671ba44cfa94cc922e082e20a47167e0df28ef45ff",
+      "bytes": 67904
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_sha512.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_sha512.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "8809ec42b74a551484c3d8eafb411df18db2b1df212659a15dd9314ec7948fa9",
+      "bytes": 69080
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_decimal.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_decimal.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "764608f4bf92d747033161d7728208217f51d60ccd913d7e77bb3c3b6463074e",
+      "bytes": 338800
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_statistics.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_statistics.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "9cb9e8fac4821f7aa5e6ca2fb7f0a21a36ab0887ec98fd2c40145f98ed45b2f1",
+      "bytes": 67672
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/_elementtree.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/_elementtree.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "2d9835972a1e202efd43ce9eb244c2393cebfdfaa474a3c54c49c79ef1c8cc91",
+      "bytes": 137344
+    },
+    {
+      "mapped_path": "/usr/lib64/libexpat.so.1.8.1",
+      "resolved_path": "/usr/lib64/libexpat.so.1.8.1",
+      "sha256": "e12069912412c72843f11ffd11d8e7290723f4b8c629066e9325df50e6aad9d9",
+      "bytes": 198632
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/pyexpat.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/pyexpat.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "98efc98e2639495e7d95ba56a62a3c99bd211fd91b340fb0f74d21319e48fee5",
+      "bytes": 73320
+    },
+    {
+      "mapped_path": "/usr/lib64/python3.9/lib-dynload/mmap.cpython-39-aarch64-linux-gnu.so",
+      "resolved_path": "/usr/lib64/python3.9/lib-dynload/mmap.cpython-39-aarch64-linux-gnu.so",
+      "sha256": "ee6ee39dbc80aea16f9a12c499ef6427a6ec2a1c3486504d7a274cac512a3d8c",
+      "bytes": 68864
+    },
+    {
+      "mapped_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so",
+      "resolved_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so",
+      "sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+      "bytes": 518240
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib/libkupl.so.25.1.0.SPC001",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib/libkupl.so.25.1.0.SPC001",
+      "sha256": "5955055a872388c2a9ae27280c0f602880538244b4acdd3985e713a5bb79964f",
+      "bytes": 199136
+    },
+    {
+      "mapped_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgomp.so.1.0.0",
+      "resolved_path": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64/libgomp.so.1.0.0",
+      "sha256": "642029e630ff46a26f12343760e75c745354ada14ad7eab980e85e35eaa149a1",
+      "bytes": 330360
+    },
+    {
+      "mapped_path": "/usr/lib64/librt.so.1",
+      "resolved_path": "/usr/lib64/librt.so.1",
+      "sha256": "75843798003baa90dd191f843ac11abcc7b6f6737d4934ae56f8b73f0b346ca1",
+      "bytes": 67688
+    },
+    {
+      "mapped_path": "/usr/lib64/libdl.so.2",
+      "resolved_path": "/usr/lib64/libdl.so.2",
+      "sha256": "76cbc71f1511a3d8264db9a869b294386897000c51a039ccd77b8cd917a61c88",
+      "bytes": 67616
+    }
+  ],
+  "tasks": [
+    {
+      "tid": 3868126,
+      "Name": "python",
+      "State": "R (running)",
+      "Cpus_allowed_list": "304",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3868613,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "304-340",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3868615,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "304-340",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869080,
+      "Name": "async",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "304-340",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869373,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "305",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869395,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "306",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869412,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "307",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869425,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "308",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869438,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "309",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869451,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "310",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869463,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "311",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869478,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "312",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869488,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "313",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869503,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "314",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869518,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "315",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869532,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "316",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869545,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "317",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869558,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "318",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869570,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "319",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869587,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "320",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869598,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "321",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869611,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "322",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869626,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "323",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869639,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "324",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869654,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "325",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869670,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "326",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869684,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "327",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869698,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "328",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869710,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "329",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869725,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "330",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869735,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "331",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869749,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "332",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869757,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "333",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869771,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "334",
+      "Mems_allowed_list": "0-31"
+    },
+    {
+      "tid": 3869782,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "335",
+      "Mems_allowed_list": "0-31"
+    }
+  ],
+  "task_count": 35,
+  "loader_environment": {
+    "LD_LIBRARY_PATH": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kutacc/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/bisheng/release/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/noarch/kvml/single:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sve512/kspblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib/sme/kblas/multi:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kml/bisheng/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hucx/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/xucg/lib:/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/bisheng/lib:",
+    "LD_PRELOAD": null
+  },
+  "tuning_environment": {
+    "OMPI_MCA_coll_tuned_dynamic_rules_filename": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_btl": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_pml": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_coll_tuned_use_dynamic_rules": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_plm": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_ras": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_plm_rsh_agent": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_hwloc_base_binding_policy": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_pmix": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_orte_precondition_transports": "[REDACTED: private environment/credential]",
+    "LQCD_EXPERIMENT_CXX_RUNTIME": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/compiler/gcc/lib64",
+    "LQCD_TEST_PYTHON": "[REDACTED: private environment/credential]",
+    "LQCD_OPT_EXPECTED_HOST": "[REDACTED: private environment/credential]",
+    "LQCD_MPI_FLAGS": "--host;localhost:4;--map-by;ppr:1:numa:PE=2;--bind-to;core",
+    "LQCD_EXPERIMENT_KUPL_ROOT": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/kupl/gcc/release",
+    "OMP_PROC_BIND": "close",
+    "LQCD_OPT_ALLOCATION": "[REDACTED: private environment/credential]",
+    "LQCD_OPT_DEADLINE_EPOCH": "[REDACTED: private environment/credential]",
+    "LQCD_OPT_SOLVE_PROFILE_OUTPUT": "[REDACTED: private environment/credential]",
+    "LQCD_OPT_TASK_ID": "ded9ff729a2c476b8c5cb0f2d8679835",
+    "LQCD_OPT_POST_PHASE4_PROFILE_TAG": "[REDACTED: private environment/credential]",
+    "LQCD_ARM_COARSE_SVE": "0",
+    "LQCD_ARM_SVE": "1",
+    "LQCD_ARM_SVE_PLANNED": "0",
+    "LQCD_ARM_SVE_REUSE": "1",
+    "LQCD_ARM_SVE_TRANSFER": "0",
+    "LQCD_COARSE_FUSED": "0",
+    "LQCD_COARSE_SPATIAL_OVERLAP": "1",
+    "LQCD_HBM": "off",
+    "LQCD_HBW_ALLOC": "require",
+    "LQCD_OPT_STAGE_ID": "02459ebae6d84885b4e3c49c89fe05dd",
+    "OMPI_MCA_orte_local_daemon_uri": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_orte_hnp_uri": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_mpi_oversubscribe": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_orte_app_num": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_orte_num_nodes": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_shmem_RUNTIME_QUERY_hint": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_ess": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_orte_ess_num_procs": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_orte_tmpdir_base": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_orte_top_session_dir": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_orte_jobfam_session_dir": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_initial_wdir": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_orte_launch": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_ess_base_jobid": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_ess_base_vpid": "[REDACTED: private environment/credential]",
+    "OMPI_MCA_orte_ess_node_rank": "[REDACTED: private environment/credential]",
+    "OMP_NUM_THREADS": "37",
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_PLACES": "{304},{305},{306},{307},{308},{309},{310},{311},{312},{313},{314},{315},{316},{317},{318},{319},{320},{321},{322},{323},{324},{325},{326},{327},{328},{329},{330},{331},{332},{333},{334},{335},{336},{337},{338},{339},{340}",
+    "LQCD_NUMA_NODE": "[REDACTED: private environment/credential]",
+    "LQCD_CPU_THREADS": "[REDACTED: private environment/credential]",
+    "LQCD_CPU_LIBRARY": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so",
+    "LQCD_VERBOSE": "1",
+    "LQCD_HALO_PROFILE": "1",
+    "LQCD_COARSE_BATCH_REDUCE": "1",
+    "LQCD_RHS_BATCH": "2"
+  },
+  "compiler": {
+    "argv": [
+      "/work_ssd/system/os_jasmine_v01/vroot/usr/bin/g++",
+      "--version"
+    ],
+    "returncode": 0,
+    "stdout": "g++ (GCC) 10.3.1\nCopyright (C) 2020 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "stderr": ""
+  },
+  "mpi_library_version": "Open MPI v4.1.6rc4, package: Open MPI root@localhost Distribution, ident: 4.1.6rc4, repo rev: 35f4724, Unreleased developer copy\u0000",
+  "mpi_thread_support": 3,
+  "lscpu": {
+    "argv": [
+      "lscpu"
+    ],
+    "returncode": 0,
+    "stdout": "Architecture:                       aarch64\nCPU op-mode(s):                     64-bit\nByte Order:                         Little Endian\nCPU(s):                             608\nOn-line CPU(s) list:                0-607\nVendor ID:                          HiSilicon\nModel:                              0\nThread(s) per core:                 1\nCore(s) per socket:                 304\nSocket(s):                          2\nStepping:                           0x0\nFrequency boost:                    enabled\nCPU max MHz:                        2000.0000\nCPU min MHz:                        1200.0000\nBogoMIPS:                           200.00\nFlags:                              fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp sha512 sve asimdfhm dit uscat ilrcpc flagm ssbs sb paca pacg dcpodp sve2 sveaes svepmull svebitperm svesha3 svesm4 flagm2 frint svei8mm svebf16 i8mm bf16 dgh ecv afp rpres sme smef64f64 smei8i32 smef16f32 smeb16f32 smef32f32 smefa64 wfxt\nL1d cache:                          19 MiB (608 instances)\nL1i cache:                          19 MiB (608 instances)\nL2 cache:                           456 MiB (608 instances)\nNUMA node(s):                       32\nNUMA node0 CPU(s):                  0-37\nNUMA node1 CPU(s):                  38-75\nNUMA node2 CPU(s):                  76-113\nNUMA node3 CPU(s):                  114-151\nNUMA node4 CPU(s):                  152-189\nNUMA node5 CPU(s):                  190-227\nNUMA node6 CPU(s):                  228-265\nNUMA node7 CPU(s):                  266-303\nNUMA node8 CPU(s):                  304-341\nNUMA node9 CPU(s):                  342-379\nNUMA node10 CPU(s):                 380-417\nNUMA node11 CPU(s):                 418-455\nNUMA node12 CPU(s):                 456-493\nNUMA node13 CPU(s):                 494-531\nNUMA node14 CPU(s):                 532-569\nNUMA node15 CPU(s):                 570-607\nNUMA node16 CPU(s):                 \nNUMA node17 CPU(s):                 \nNUMA node18 CPU(s):                 \nNUMA node19 CPU(s):                 \nNUMA node20 CPU(s):                 \nNUMA node21 CPU(s):                 \nNUMA node22 CPU(s):                 \nNUMA node23 CPU(s):                 \nNUMA node24 CPU(s):                 \nNUMA node25 CPU(s):                 \nNUMA node26 CPU(s):                 \nNUMA node27 CPU(s):                 \nNUMA node28 CPU(s):                 \nNUMA node29 CPU(s):                 \nNUMA node30 CPU(s):                 \nNUMA node31 CPU(s):                 \nVulnerability Gather data sampling: Not affected\nVulnerability Itlb multihit:        Not affected\nVulnerability L1tf:                 Not affected\nVulnerability Mds:                  Not affected\nVulnerability Meltdown:             Not affected\nVulnerability Mmio stale data:      Not affected\nVulnerability Retbleed:             Not affected\nVulnerability Spec rstack overflow: Not affected\nVulnerability Spec store bypass:    Not affected\nVulnerability Spectre v1:           Mitigation; __user pointer sanitization\nVulnerability Spectre v2:           Mitigation; CSV2, but not BHB\nVulnerability Srbds:                Not affected\nVulnerability Tsx async abort:      Not affected\n",
+    "stderr": ""
+  },
+  "sve": {
+    "hwcap": 4294967295,
+    "hwcap2": 4273533951,
+    "sve": true,
+    "vector_bytes": 64
+  },
+  "cpu_frequency_snapshot": {
+    "/sys/devices/system/cpu/cpu304/cpufreq/scaling_governor": "userspace",
+    "/sys/devices/system/cpu/cpu304/cpufreq/scaling_cur_freq": "1550006",
+    "/sys/devices/system/cpu/cpu304/cpufreq/scaling_min_freq": "1200000",
+    "/sys/devices/system/cpu/cpu304/cpufreq/scaling_max_freq": "2000000"
+  },
+  "frequency_interpretation": "Instantaneous read of the first allowed CPU only; not a measured all-core operating frequency"
+}

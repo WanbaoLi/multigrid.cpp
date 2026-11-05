@@ -1,0 +1,13 @@
+{
+  "complete": true,
+  "id": "154-halo-v2-ordinary-remainder-worker10",
+  "task_sha256": "401db3bddf94cd53d217de44cf1918c052f2d1db4fe57c1bae74042a64e11dd7",
+  "contract_sha256": "d812a869a133aaa165e5472e1afb52ca0148969ff96dd80a68127fb9117de5b5",
+  "publisher_sha256": "d2da5c54eac464fcf25652641c478425f683387ed96b8682c0b49cbb86856b02",
+  "actual_entry_parent_guard": true,
+  "scheduler_query": "Original authenticated allocation; fresh idle heartbeat and held lock. Live original-parent proof mandatory at entry; current scheduler query unavailable.",
+  "original_allocation_sha256": "a454a02d3ce61c75edec6a54fba4c190e81d5006a2402328b33d7ffada015085",
+  "heartbeat_sha256": "50593c358f52c0688592cb3b43defbc788cb840e78e9912b372e39c4ea1a26f0",
+  "best_sha256": "a71b1a006f4cbf0a4227620ec6c8e14fcce849fa34fe9d9e55f1068657aa211b",
+  "epoch": 1793793306.5397382
+}

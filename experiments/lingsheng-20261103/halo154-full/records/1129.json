@@ -1,0 +1,289 @@
+{
+  "actual_halo_diagnostic": {
+    "actual": {
+      "calls": 4700,
+      "max_width": 2,
+      "records": 142,
+      "rhs_slots": 9400,
+      "send_bytes": 462028800
+    },
+    "coarse_state_coverage": {
+      "capped": 0,
+      "different_iteration_counts": true,
+      "different_refresh_counts": true,
+      "different_restart_counts": true,
+      "maximum_iterations": 23,
+      "packed_allreduce_calls": 19746,
+      "records": 142,
+      "refreshes": 427,
+      "restarts": 172
+    },
+    "diagnostic_log_sha256": "9df963519730abd7f60e95d276fc483e4b1a1cf91d596c18b46300f39a6c4fcf",
+    "independent_gcr_records_equal": true,
+    "note": "RHS-equivalent counts are distinct from physical message calls; rank-max timing envelopes are nonadditive and unranked",
+    "parent_profile_coarse_state_coverage": {
+      "capped": 0,
+      "different_iteration_counts": true,
+      "different_refresh_counts": true,
+      "different_restart_counts": true,
+      "maximum_iterations": 23,
+      "packed_allreduce_calls": 19746,
+      "records": 142,
+      "refreshes": 427,
+      "restarts": 172
+    },
+    "report": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-profile/measurements/halo-on/result.json",
+    "report_sha256": "1a46adebbb8f763033c494f0ae22e7f7717cda2cfa800d6a603c33268e19ad90",
+    "verification": {
+      "checksum_audit": {
+        "benchmark_sha256": "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1",
+        "complete": true,
+        "helper_call_sha256": "510dd0b4eebd4a8835b61f7fcd7e4484c79842ff4823c13775d7b3c20e2b101d",
+        "helper_manifest_sha256": "69cd99841f0d9504132d3574742f6d49d1363a85a02fba6618c71030592b62a9",
+        "helper_protocol_sha256": "13b8dd7fd36ab8d1a7f2ab58bdaee3f111baacfb54dd9f15c7f06de5a7b951bf",
+        "helper_sha256": "bc441c56af7ffe65781816c8d18427578e8097f0b35168349a27629655fa2074",
+        "helper_status_sha256": "9dfe15610e01375e375fc91c24bb89a84774f4f453984d016757cb81d3581393",
+        "helper_wrapper_sha256": "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097",
+        "independent_modules": {
+          "known_vectors_passed": 3,
+          "openssl_module": "_hashlib",
+          "software_module": "_sha256"
+        },
+        "manifest_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-profile/checksum-audit/verify-halo-on/manifest.json",
+        "manifest_sha256": "e6b33c42a196942907d4fe6fe8d3b25611f26f6ee6b72942832b526cf53ca18c",
+        "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+        "passed": true,
+        "prior_failure_root_cause": "unresolved",
+        "prior_report_sha256": "6becca14b39ff161c17b56fdd37aeb9b88edda0a572522034b3ac4b81e2c2efa",
+        "protocol_sha256": "847fc8bbb2c32cb60283ab68ed069ef74c3c383a64b95d57c17080a3f75d20c6",
+        "protocol_version": 4,
+        "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+        "status": "passed",
+        "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec"
+      },
+      "columns": 12,
+      "complete": true,
+      "evidence_relative_path": "independent-publication-v2/verification.json",
+      "evidence_sha256": "f246f4ee180512bc39ce304e30321107fbd632a64b40f8f49bfe766723466af4",
+      "extractor_sha256": "efd900b99630c3cf2ea4ba285b38a5a123faa8e9d5d7cbbaf0f3169a8a58cc5b",
+      "max_true_residual": 4.818858112534332e-09,
+      "method": "byte-only column extraction + independent scalar C++",
+      "passed": true,
+      "propagator_sha256": "31d5cb29eeaa2714b4db003424da1215668d369288a6706bff03a1e0fb2e71cd",
+      "reference_propagator_sha256": "31d5cb29eeaa2714b4db003424da1215668d369288a6706bff03a1e0fb2e71cd",
+      "reference_sha256": "1534d9c0653a019dcac4df98965f47f14d052cb324c35e568faa760d50878e9c",
+      "solution_relative_error": 0.0,
+      "solution_relative_errors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "verification_driver_sha256": "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1"
+    }
+  },
+  "allocation": "mg-opt-20261103-worker10",
+  "assessments": {
+    "v2-w10v5-halo-on": {
+      "control_median_drift": 0.00195592967854155,
+      "gains": [
+        0.01700936260378194,
+        0.018928269917428575
+      ],
+      "passed": false,
+      "reasons": [
+        "Gain below threshold against first control",
+        "Gain below threshold against last control"
+      ]
+    },
+    "v2-w10v5-new-off": {
+      "control_median_drift": 0.00195592967854155,
+      "gains": [
+        -0.0016585870930205804,
+        0.00029676213964457965
+      ],
+      "passed": false,
+      "reasons": [
+        "Gain below threshold against first control",
+        "Timing ranges overlap first control",
+        "Gain below threshold against last control",
+        "Timing ranges overlap last control"
+      ]
+    }
+  },
+  "best": "052-reduce-on",
+  "case_report_sha256": {
+    "v2-w10v5-control-a/full12": "bdfdddd2c6961428890e770265c895876f213d83769d3226997d585f5df229cd",
+    "v2-w10v5-control-b/full12": "152702aa60430afb08351a7de590567c63912e7cee10de0a94a736bdb86efd5a",
+    "v2-w10v5-halo-profile/halo-on": "1a46adebbb8f763033c494f0ae22e7f7717cda2cfa800d6a603c33268e19ad90",
+    "v2-w10v5-new-off/halo-on": "495c19a3c1b62506d932a66d5cbb5ac23d62fe365e6c0f3edf10e99fdb291db5",
+    "v2-w10v5-new-off/new-off": "c36c57181c8775fee3bac1e82d322444e954acab81ff2069aad2057949a10214"
+  },
+  "complete": true,
+  "completed_budget_scopes": [
+    "a-benchmark",
+    "a-verify",
+    "b-benchmark",
+    "b-verify",
+    "candidate-benchmark",
+    "candidate-verify-off",
+    "candidate-verify-on",
+    "diagnostic-benchmark",
+    "diagnostic-verify"
+  ],
+  "controller_sha256": "a9afbc64994d5c48587d09e27f70dd74cd797516feb4c7adcf1ec45a6e61bb59",
+  "decision_scope": "Independent V2 ordinary campaign only; main best unchanged",
+  "derived_helper_sha256": "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097",
+  "external_ctest_proof": {
+    "actual_vector_lengths": [
+      16,
+      32,
+      64
+    ],
+    "complete": true,
+    "files": {
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/148-halo-v2-full-worker10-state.json": "9e2afe9b89a0802f177c2c9e404a679b2c0e0b6b708419a43dc7861f66206675",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/153-halo-v2-remainder-worker10-actual-parent-guard-v4.json": "1222ade0f07ac2d977d8164a95551df458881d5d873541cea5b24d38f428f1e3",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/153-halo-v2-remainder-worker10-state.json": "fabc42db9558abb216d727e1dbcb192e0f4fc1774d3bc0015db2c3e96baa203f",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/arm_halo_v2_remainder_v1.py": "583cb30d6e4e58bfa00202527d7dd5ea302f54cc9b4167a98d19e345716abe55",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-halo-v2-760/arm_halo_v2_codegen.py": "b7b3907d3351f3b2ab51ff8da18745f47734733898cd24c271cdaa7374ad5274",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-halo-v2-760/arm_halo_v2_qualify.py": "d0d910ff0501d6fdb752d1a64ed1aafb934e27aa1d74b5781f8a3071805bfa7d",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-halo-v2-760/file_integrity.py": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-halo-v2-760/halo-v2-arm-helpers.json": "8923c17bdd89a9be489e131e5f0cad51eb8372cc0d1a6cda7efb79415ce59c27",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-halo-v2-760/phase6_sve_probe.py": "afcd58ab6d271fea42434861764ed19eed3911dbe6436a0bba54fc7772b69788",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-halo-v2-publication-v5/ctest_remainder_v1.py": "52bb4379591fd1840cebfb28281ae3fa0b8630626d72bb017be8c8c81d9f57b4",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/arm-codegen-000.log": "27c54a8fadba22cac3749c2c68daf855cc3010b82d85fbb03bb63a9d94aa3bac",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/arm-unit-ctest-000.log": "d37286702c2f56d52ec452cbbad06d931f801ce3b9fa257a01ca268c14b90d38",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/attempt.json": "24423cc7cea3fe807c147fa15878f742f4d7081db000b75b22bb4acf4c7d8693",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build-000.log": "cc763928238f34ba6c942482e3f3bdfb8f0dcf4df1018caab1babf3c40753b06",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/CTestTestfile.cmake": "62c8d7a878a8230794b87a01909c9cea7e3eba68d005056dda59543c9c26bb08",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/codegen/codegen.json": "693c1dec99d2d1ec6aaf566771568052538ffea58448806a4306a63732223618",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/codegen/old052-0.asm": "d02bed5a35d623f5eb067e8ec9f50d24b8ebc3832be895cd718e431a131fa24f",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/codegen/v2-0.asm": "4bba675d38524f7f74c95c3a535552e0e9eb6f0582e3a596874145a54fbe6691",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/codegen/v2-1.asm": "73c6e8c68d4b25f4857bbfe92624fb8d6b7d0e282fe9984414832cee858d2548",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/codegen/v2-2.asm": "0f7e1a3bde06c9b0c7e449537440757bbf3344e22c0b4ab194b787b4a73658a4",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/configure-000.log": "2e8f5e3b7954d6ca890a69510eb610ac9a70e54a19cbc2cc3df6e41d9500fcab",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/mpi-numerical-ctest-000.log": "374e8506c4dd972bee7496cde232503e1da8a5d943e6654d21f3694253dcaa7c",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/mpi-numerical-ctest-remainder-v1-000.log": "43a28905dea9a84155595d1dd55240239b78aba189a4505896e34e53d00f1b60",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/source-manifest.json": "d93dde39cb162bd12c845c05e480b73c49dac5385c0fab368abaf8e43bc9fda7",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/sve-compiled-coarse-000.log": "98754b28ff98f74654cdb5fa33c75aced21efa0e5caac40dde59993a548ff4c5",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/sve-dense-vl16-000.log": "e4e60e3b333d832e215282945fc06c789df1b2c81b9b96d7d5e286b08339167d",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/sve-dense-vl32-000.log": "38df4d3f460858be322561c0eff30a3f0db7e48b6e878a358fb998671c4a5241",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/sve-dense-vl64-000.log": "9f5dd9d77ea50c44cf0ffff0c75f7b6a2a7d0c62e39d9559f2d7f00ffed8a2e7",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/sve-ghost-mpi4-vl16-000.log": "644347f5014bd06ea1f3076306eb6eca1f5bb2739122b88579cc98b1b4b1f525",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/sve-ghost-mpi4-vl32-000.log": "bbd77987ba53c280fc7d85d5bcb0071d5b0ab6bba7287a006ff8242a8bcacc0d",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/sve-ghost-mpi4-vl64-000.log": "4a058113174d204b5bd65df6e357a6bddc7ae2d362337d2a52989fa29a1e6b70",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/ctest_remainder_v1.py": "52bb4379591fd1840cebfb28281ae3fa0b8630626d72bb017be8c8c81d9f57b4",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/catalog.json": "d4182326e314332c2457ffe983a94473678f86affd927a0076f10dacbead2889",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/guard-plan.json": "77722b16eb8b04650c198093a1d6062d6394fda3ab9d50abadfcfbd936bff0f1",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/original-task.json": "198801ebdb5bd5f45c2c03c40cd263a7e14fd2ce90471f6c742ef6a311b45bfd",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/prior-attempt.json": "e517e0c450e578bcbf9593183521400c3808afff2dab9d479566b478e79004a7",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo153-worker10/recovery-plan.json": "406b13127faa3a401c335b9befc174a022e9fd433e933533fe27d2ee28447609",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/148-halo-v2-full-worker10.status.json": "fbcdc67d5afba83a47ad8a2d475d5f807bf08351d18b9d8dec1ecce9b5493a38",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/153-halo-v2-remainder-worker10.status.json": "41a52d8c484cd2de6424177710967800fb2cebe7df379f50cdd216d1cf3ced68",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker10_live_task_guard_v4.py": "b882c2175f1a1679bfa753f73e43a884a31377b1bc79d021ed48765c5dcdc175"
+    },
+    "host": "cn19486",
+    "kind": "External closed ARM CTest/SVE proof; no inherited timing or physical full12 precision",
+    "library": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+    "library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+    "new_build": false,
+    "new_test_execution": false,
+    "original_allocation": "mg-opt-20261103-worker10",
+    "original_owner": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests",
+    "performance_evidence": false,
+    "physical_full12_evidence": false,
+    "source_head": "760666c8ac459ef062c749ee7ee9964c99e7c3c8",
+    "source_manifest_sha256": "d93dde39cb162bd12c845c05e480b73c49dac5385c0fab368abaf8e43bc9fda7",
+    "test_stages": [
+      "configure",
+      "build",
+      "arm-codegen",
+      "arm-unit-ctest",
+      "mpi-numerical-ctest-remainder-v1",
+      "sve-compiled-coarse",
+      "sve-dense-vl16",
+      "sve-ghost-mpi4-vl16",
+      "sve-dense-vl32",
+      "sve-ghost-mpi4-vl32",
+      "sve-dense-vl64",
+      "sve-ghost-mpi4-vl64"
+    ]
+  },
+  "factory_sha256": "b94f04ff48ebefd075cefe770d49e9b6093f3baa50fc2f8261e73319f1e0fe36",
+  "fresh_publication_audits": {
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-control-a/fresh-publication-audit-v3-benchmark.json": "4cc943b239feb414c7ba5160e02ea5b3a5fc8f20924152b3242dfb2ae2ffb1e6",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-control-b/fresh-publication-audit-v3-benchmark.json": "d0bb9c4e00703b3d94f0250f30d84a9fce90f2614d8128d7bc92b2466082ded5",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-profile/fresh-publication-audit-v3-diagnostic.json": "f321fdf22f5f6b576345dcfb502aeb4edf71870ccf805b3e8ce85c096105b0cd",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off/fresh-publication-audit-v3-benchmark.json": "de998fac7b8b860266134b79ef641bd1a1571100c8dfab1edbdb66585bbbe523"
+  },
+  "frozen_phase6_sha256": "3f3537ca6a09fbe6b22ae06e488a5a50f334cc7e374fd7326d345c6113de63e6",
+  "halo_increment": {
+    "gain": 0.018637038545219364,
+    "passed": true,
+    "reason": "Halo must have a positive, separated range against new-code reduce-only"
+  },
+  "helper_manifest_sha256": "684739d825a50e7e7dbb8ab16fa1b2645725abf27a9aa65a42e2ecf3a9117851",
+  "host": "cn19486",
+  "initial_best": "052-reduce-on",
+  "initial_configuration": {
+    "batch": 2,
+    "block": [
+      6,
+      6,
+      6,
+      4
+    ],
+    "context_environment": {
+      "LQCD_ARM_COARSE_SVE": 0,
+      "LQCD_ARM_SVE": 1,
+      "LQCD_ARM_SVE_PLANNED": 0,
+      "LQCD_ARM_SVE_REUSE": 1,
+      "LQCD_ARM_SVE_TRANSFER": 0,
+      "LQCD_COARSE_FUSED": 0,
+      "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+      "LQCD_HBM": "off",
+      "LQCD_HBW_ALLOC": "require"
+    },
+    "placement_threads": 37,
+    "ranks": 16,
+    "seed": 1024,
+    "setup_threads": 37,
+    "solve_environment": {
+      "LQCD_COARSE_BATCH_REDUCE": 1
+    },
+    "threads": 32
+  },
+  "main_best_modified": false,
+  "main_best_sha256": "a71b1a006f4cbf0a4227620ec6c8e14fcce849fa34fe9d9e55f1068657aa211b",
+  "next_candidate": {
+    "condition": "Reassess closed profile and mechanism evidence; no bundled workspace optimization"
+  },
+  "old052_import_proof_sha256": "f95fbaf309b6366305bee13fb8011dcd31a1d917756d807e2ab81c7aae94ea5b",
+  "ordinary_group_floor_seconds": 4000,
+  "profile_state": "/home/share/nsls_lwb/.cache/mg-opt-20261103/150-best-solve-profile-worker10-state.json",
+  "profile_state_sha256": "d3b4424ff4e0395d0be02382c574500f926e432e6486d1bf5d71c969ab557a3d",
+  "profile_status_sha256": "59b74ccafce16e458d13c40c903047a50a09b234a6da144e1d18ebf0b7bb7b02",
+  "repeats": 7,
+  "reused_external_library": {
+    "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2/attempts/000-halo-v2-tests/build/liblqcd_cpu.so.0.2.0",
+    "recompiled": false,
+    "sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330"
+  },
+  "source_head": "760666c8ac459ef062c749ee7ee9964c99e7c3c8",
+  "status": "complete",
+  "tested_library_sha256": "e24e387876329698070784ce80cf4f9a453f7e6fbe315c3e62f2264377e6c330",
+  "tests_state": "/home/share/nsls_lwb/.cache/mg-opt-20261103/153-halo-v2-remainder-worker10-state.json",
+  "tests_state_sha256": "fabc42db9558abb216d727e1dbcb192e0f4fc1774d3bc0015db2c3e96baa203f",
+  "tests_status_sha256": "41a52d8c484cd2de6424177710967800fb2cebe7df379f50cdd216d1cf3ced68",
+  "winner": null
+}

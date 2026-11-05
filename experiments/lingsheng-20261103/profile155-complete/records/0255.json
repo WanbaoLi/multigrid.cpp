@@ -1,0 +1,1051 @@
+{
+  "complete": true,
+  "unranked": true,
+  "scope": "User cycles in one final diagnostic full12 at selected ranks only",
+  "warning": "CPU-cycle fractions across threads are not elapsed-time savings; OpenMP wait includes arrival skew",
+  "ranks": [
+    {
+      "rank": 0,
+      "total_period": 405109428525,
+      "total_samples": 14697,
+      "thread_count": 32,
+      "main_tid": 3868114,
+      "dso": [
+        {
+          "key": "liblqcd_cpu.so",
+          "period": 223003962206,
+          "fraction": 0.5504783312942272
+        },
+        {
+          "key": "libgomp.so.1.0.0",
+          "period": 165847812464,
+          "fraction": 0.40939015679751145
+        },
+        {
+          "key": "libc.so.6",
+          "period": 8370273105,
+          "fraction": 0.02066175831916846
+        },
+        {
+          "key": "mca_btl_vader.so",
+          "period": 4378995515,
+          "fraction": 0.010809413967341825
+        },
+        {
+          "key": "[vdso]",
+          "period": 1354302800,
+          "fraction": 0.003343054258033453
+        },
+        {
+          "key": "libucg.so.25.1.0.SPC001",
+          "period": 582636920,
+          "fraction": 0.0014382210804655326
+        },
+        {
+          "key": "libucp.so.0.0.0",
+          "period": 314651016,
+          "fraction": 0.000776706227612726
+        },
+        {
+          "key": "libopen-pal.so.40.30.3",
+          "period": 285767545,
+          "fraction": 0.0007054082795369073
+        },
+        {
+          "key": "mca_pml_ob1.so",
+          "period": 242812466,
+          "fraction": 0.0005993750056227478
+        },
+        {
+          "key": "libmpi.so.40.30.6",
+          "period": 148641145,
+          "fraction": 0.00036691603436928423
+        },
+        {
+          "key": "[unknown]",
+          "period": 146202889,
+          "fraction": 0.00036089727541598694
+        },
+        {
+          "key": "mca_coll_libnbc.so",
+          "period": 91502350,
+          "fraction": 0.00022587069951237443
+        },
+        {
+          "key": "libucg_planc_ucx.so.25.1.0.SPC001",
+          "period": 90230277,
+          "fraction": 0.00022273062695313627
+        },
+        {
+          "key": "_multiarray_umath.cpython-39-aarch64-linux-gnu.so",
+          "period": 73031826,
+          "fraction": 0.00018027678661024568
+        },
+        {
+          "key": "mca_coll_ucg.so",
+          "period": 70464211,
+          "fraction": 0.00017393870899662739
+        },
+        {
+          "key": "libstdc++.so.6.0.30",
+          "period": 56354921,
+          "fraction": 0.0001391103663155602
+        },
+        {
+          "key": "ld-linux-aarch64.so.1",
+          "period": 31039959,
+          "fraction": 7.662117150177479e-05
+        },
+        {
+          "key": "mca_coll_tuned.so",
+          "period": 20746910,
+          "fraction": 5.121310080473645e-05
+        }
+      ],
+      "top_symbols": [
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x000000000001e1b0"
+          ],
+          "period": 70254349741,
+          "fraction": 0.17342067301863473
+        },
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x000000000001e460"
+          ],
+          "period": 52717026894,
+          "fraction": 0.13013033808159502
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::fine_apply_batch(std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*> > const&, std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> >*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> >*> > const&, int) const::{lambda(int, int, int)#4}::operator()"
+          ],
+          "period": 39054152259,
+          "fraction": 0.09640395781751078
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::local_range"
+          ],
+          "period": 36056428009,
+          "fraction": 0.08900416892364403
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::apply_vcycle_batch"
+          ],
+          "period": 26623019245,
+          "fraction": 0.0657180933604389
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] lqcd_native::arm::wilson_sve_impl<true, int, true, true>"
+          ],
+          "period": 26275530053,
+          "fraction": 0.06486032711869724
+        },
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x000000000001e46c"
+          ],
+          "period": 18931539458,
+          "fraction": 0.046731915193703524
+        },
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x000000000001e1bc"
+          ],
+          "period": 15333975704,
+          "fraction": 0.03785144117684665
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::fine_axpy"
+          ],
+          "period": 14675936133,
+          "fraction": 0.03622709100213974
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::coarse_block_apply_range"
+          ],
+          "period": 14522982155,
+          "fraction": 0.03584952887390959
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::clover_range"
+          ],
+          "period": 11185391759,
+          "fraction": 0.027610790989797292
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::apply_double(std::vector<std::complex<double>, std::allocator<std::complex<double> > > const&, std::vector<std::complex<double>, std::allocator<std::complex<double> > >&) const::{lambda(unsigned long)#1}::operator()"
+          ],
+          "period": 10926152007,
+          "fraction": 0.02697086574060255
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::solve_sap_block_eo"
+          ],
+          "period": 9988871695,
+          "fraction": 0.024657218498639732
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::batch_gcr_update"
+          ],
+          "period": 9976934602,
+          "fraction": 0.024627752156561586
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::fine_dot"
+          ],
+          "period": 7052405102,
+          "fraction": 0.017408642222121927
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::sap_batch"
+          ],
+          "period": 4201551507,
+          "fraction": 0.010371398963232758
+        },
+        {
+          "key": [
+            "mca_btl_vader.so",
+            "[.] 0x000000000000420c"
+          ],
+          "period": 2953468752,
+          "fraction": 0.007290545576175689
+        },
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x000000000001e478"
+          ],
+          "period": 2560970035,
+          "fraction": 0.006321674724591008
+        },
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x0000000000035374"
+          ],
+          "period": 2412665607,
+          "fraction": 0.0059555898656432045
+        },
+        {
+          "key": [
+            "libc.so.6",
+            "[.] 0x000000000009c188"
+          ],
+          "period": 2116994126,
+          "fraction": 0.0052257340287239365
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::coarse_diagonal"
+          ],
+          "period": 2004562038,
+          "fraction": 0.0049481989231862445
+        },
+        {
+          "key": [
+            "libc.so.6",
+            "[.] 0x000000000009d954"
+          ],
+          "period": 1845603387,
+          "fraction": 0.004555814446777569
+        },
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x000000000001e1c8"
+          ],
+          "period": 1510700599,
+          "fraction": 0.0037291173510832568
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::coarse_apply"
+          ],
+          "period": 1359183525,
+          "fraction": 0.003355102175599259
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::decode_fine"
+          ],
+          "period": 1175510040,
+          "fraction": 0.0029017099016431735
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] lqcd_native::detail::coarse_axpy"
+          ],
+          "period": 1026662296,
+          "fraction": 0.0025342838840805774
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] axpy"
+          ],
+          "period": 1009658578,
+          "fraction": 0.0024923107360797754
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] lqcd_native::arm::try_wilson_global_simd<true>"
+          ],
+          "period": 955470428,
+          "fraction": 0.0023585489764552255
+        },
+        {
+          "key": [
+            "libc.so.6",
+            "[.] 0x000000000009c170"
+          ],
+          "period": 878057254,
+          "fraction": 0.002167456968841725
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::encode_fine"
+          ],
+          "period": 769235707,
+          "fraction": 0.0018988343712482345
+        }
+      ],
+      "main_thread_period": 19664642720,
+      "thread_periods": [
+        {
+          "key": 3868114,
+          "period": 19664642720,
+          "fraction": 0.04854155775045473
+        },
+        {
+          "key": 3869476,
+          "period": 12524562100,
+          "fraction": 0.030916491244357913
+        },
+        {
+          "key": 3869539,
+          "period": 12471233848,
+          "fraction": 0.0307848521161496
+        },
+        {
+          "key": 3869786,
+          "period": 12460031743,
+          "fraction": 0.03075720006904522
+        },
+        {
+          "key": 3869746,
+          "period": 12455294275,
+          "fraction": 0.030745505776919636
+        },
+        {
+          "key": 3869424,
+          "period": 12452801047,
+          "fraction": 0.030739351321297417
+        },
+        {
+          "key": 3869873,
+          "period": 12452687353,
+          "fraction": 0.03073907067120143
+        },
+        {
+          "key": 3869377,
+          "period": 12452565056,
+          "fraction": 0.030738768784868038
+        },
+        {
+          "key": 3869840,
+          "period": 12450436378,
+          "fraction": 0.03073351420956045
+        },
+        {
+          "key": 3869882,
+          "period": 12450364711,
+          "fraction": 0.030733337301804286
+        },
+        {
+          "key": 3869890,
+          "period": 12449356181,
+          "fraction": 0.03073084777692783
+        },
+        {
+          "key": 3869856,
+          "period": 12445056072,
+          "fraction": 0.030720233091864446
+        },
+        {
+          "key": 3869706,
+          "period": 12443103657,
+          "fraction": 0.03071541361627952
+        },
+        {
+          "key": 3869688,
+          "period": 12439632685,
+          "fraction": 0.030706845630062467
+        },
+        {
+          "key": 3869405,
+          "period": 12437598404,
+          "fraction": 0.03070182407080771
+        },
+        {
+          "key": 3869803,
+          "period": 12437456088,
+          "fraction": 0.030701472768196663
+        },
+        {
+          "key": 3869517,
+          "period": 12437160695,
+          "fraction": 0.030700743599781415
+        },
+        {
+          "key": 3869769,
+          "period": 12434355364,
+          "fraction": 0.030693818727629673
+        },
+        {
+          "key": 3869865,
+          "period": 12433383031,
+          "fraction": 0.03069141855391972
+        },
+        {
+          "key": 3869630,
+          "period": 12433379442,
+          "fraction": 0.030691409694585062
+        },
+        {
+          "key": 3869499,
+          "period": 12433235484,
+          "fraction": 0.030691054338748188
+        },
+        {
+          "key": 3869724,
+          "period": 12429493602,
+          "fraction": 0.03068181761963843
+        },
+        {
+          "key": 3869575,
+          "period": 12429483529,
+          "fraction": 0.030681792754751833
+        },
+        {
+          "key": 3869819,
+          "period": 12417491094,
+          "fraction": 0.030652189802671294
+        },
+        {
+          "key": 3869648,
+          "period": 12417321463,
+          "fraction": 0.030651771073833958
+        },
+        {
+          "key": 3869592,
+          "period": 12411899069,
+          "fraction": 0.030638386063221532
+        },
+        {
+          "key": 3869613,
+          "period": 12410734832,
+          "fraction": 0.030635512180467832
+        },
+        {
+          "key": 3869458,
+          "period": 12401256530,
+          "fraction": 0.030612115287350555
+        },
+        {
+          "key": 3869557,
+          "period": 12398338845,
+          "fraction": 0.030604913072851073
+        },
+        {
+          "key": 3869441,
+          "period": 12396522848,
+          "fraction": 0.03060043034084799
+        },
+        {
+          "key": 3869897,
+          "period": 12381854295,
+          "fraction": 0.030564221474879583
+        },
+        {
+          "key": 3869667,
+          "period": 12356696084,
+          "fraction": 0.030502119215024506
+        }
+      ],
+      "data_sha256": "e93217d41dc93325d920cf69facba725565dea6d294b6c64eda1685ad29b39f1",
+      "csv_sha256": "8c4f573ab4c151227f4963dcdc2a3f83bc9946949dc3bf8936b4700c821d7b7f",
+      "argv": [
+        "perf",
+        "report",
+        "--stdio",
+        "--no-children",
+        "--call-graph",
+        "none",
+        "--sort",
+        "comm,pid,dso,symbol",
+        "--percent-limit",
+        "0",
+        "--field-separator",
+        ";",
+        "--fields",
+        "period,sample,comm,pid,dso,symbol",
+        "--input",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.perf.data"
+      ]
+    },
+    {
+      "rank": 8,
+      "total_period": 423842315155,
+      "total_samples": 13848,
+      "thread_count": 32,
+      "main_tid": 3868126,
+      "dso": [
+        {
+          "key": "liblqcd_cpu.so",
+          "period": 227730515438,
+          "fraction": 0.5373000932073488
+        },
+        {
+          "key": "libgomp.so.1.0.0",
+          "period": 178924326749,
+          "fraction": 0.4221483328854671
+        },
+        {
+          "key": "libc.so.6",
+          "period": 8092053557,
+          "fraction": 0.019092132304063883
+        },
+        {
+          "key": "mca_btl_vader.so",
+          "period": 4968801762,
+          "fraction": 0.01172323192926808
+        },
+        {
+          "key": "libopen-pal.so.40.30.3",
+          "period": 1015115705,
+          "fraction": 0.0023950315216374044
+        },
+        {
+          "key": "libucg.so.25.1.0.SPC001",
+          "period": 972274718,
+          "fraction": 0.002293953867358518
+        },
+        {
+          "key": "libucp.so.0.0.0",
+          "period": 888021304,
+          "fraction": 0.0020951690575662526
+        },
+        {
+          "key": "libstdc++.so.6.0.30",
+          "period": 257190624,
+          "fraction": 0.0006068073309432185
+        },
+        {
+          "key": "libucg_planc_ucx.so.25.1.0.SPC001",
+          "period": 208126628,
+          "fraction": 0.0004910473082988131
+        },
+        {
+          "key": "mca_pml_ob1.so",
+          "period": 205118636,
+          "fraction": 0.00048395034819727166
+        },
+        {
+          "key": "[vdso]",
+          "period": 201888023,
+          "fraction": 0.00047632814322979796
+        },
+        {
+          "key": "mca_coll_libnbc.so",
+          "period": 100061557,
+          "fraction": 0.00023608203669661272
+        },
+        {
+          "key": "libmpi.so.40.30.6",
+          "period": 97676132,
+          "fraction": 0.0002304539412594508
+        },
+        {
+          "key": "_multiarray_umath.cpython-39-aarch64-linux-gnu.so",
+          "period": 77856312,
+          "fraction": 0.0001836916919716423
+        },
+        {
+          "key": "[unknown]",
+          "period": 56322621,
+          "fraction": 0.00013288579027179647
+        },
+        {
+          "key": "mca_coll_tuned.so",
+          "period": 23554237,
+          "fraction": 5.5573113296595146e-05
+        },
+        {
+          "key": "mca_coll_ucg.so",
+          "period": 23411152,
+          "fraction": 5.5235523124769864e-05
+        }
+      ],
+      "top_symbols": [
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x000000000001e1b0"
+          ],
+          "period": 73500234401,
+          "fraction": 0.17341410183200046
+        },
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x000000000001e460"
+          ],
+          "period": 61730765449,
+          "fraction": 0.14564559328255117
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::fine_apply_batch(std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> > const*> > const&, std::vector<std::vector<float, lqcd_native::WorkspaceAllocator<float> >*, std::allocator<std::vector<float, lqcd_native::WorkspaceAllocator<float> >*> > const&, int) const::{lambda(int, int, int)#4}::operator()"
+          ],
+          "period": 36971590107,
+          "fraction": 0.08722958700685517
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::local_range"
+          ],
+          "period": 34800132260,
+          "fraction": 0.08210631882584334
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::apply_vcycle_batch"
+          ],
+          "period": 29760221064,
+          "fraction": 0.07021531357272959
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] lqcd_native::arm::wilson_sve_impl<true, int, true, true>"
+          ],
+          "period": 24427799043,
+          "fraction": 0.057634167636298195
+        },
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x000000000001e46c"
+          ],
+          "period": 22825656785,
+          "fraction": 0.053854124444022565
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::fine_axpy"
+          ],
+          "period": 15891625422,
+          "fraction": 0.03749419266027839
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::coarse_block_apply_range"
+          ],
+          "period": 14812657041,
+          "fraction": 0.03494850917748262
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::apply_double(std::vector<std::complex<double>, std::allocator<std::complex<double> > > const&, std::vector<std::complex<double>, std::allocator<std::complex<double> > >&) const::{lambda(unsigned long)#1}::operator()"
+          ],
+          "period": 14464027653,
+          "fraction": 0.03412596415181074
+        },
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x000000000001e1bc"
+          ],
+          "period": 13249584735,
+          "fraction": 0.03126064638013927
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::clover_range"
+          ],
+          "period": 11629114847,
+          "fraction": 0.02743736156392787
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::batch_gcr_update"
+          ],
+          "period": 10982880815,
+          "fraction": 0.02591265766133695
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::solve_sap_block_eo"
+          ],
+          "period": 9626593405,
+          "fraction": 0.022712676532732547
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::fine_dot"
+          ],
+          "period": 8303266728,
+          "fraction": 0.019590461903180853
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::sap_batch"
+          ],
+          "period": 4826634517,
+          "fraction": 0.011387807079231553
+        },
+        {
+          "key": [
+            "mca_btl_vader.so",
+            "[.] 0x000000000000420c"
+          ],
+          "period": 2731322122,
+          "fraction": 0.006444194041836408
+        },
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x000000000001e478"
+          ],
+          "period": 2615541677,
+          "fraction": 0.006171025363627252
+        },
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x0000000000035374"
+          ],
+          "period": 2384160738,
+          "fraction": 0.005625112577841851
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::coarse_diagonal"
+          ],
+          "period": 2168007250,
+          "fraction": 0.005115126952831869
+        },
+        {
+          "key": [
+            "libc.so.6",
+            "[.] 0x000000000009c188"
+          ],
+          "period": 1906463648,
+          "fraction": 0.004498049344843736
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::coarse_apply"
+          ],
+          "period": 1661538330,
+          "fraction": 0.003920180384519588
+        },
+        {
+          "key": [
+            "libgomp.so.1.0.0",
+            "[.] 0x000000000001e1c8"
+          ],
+          "period": 1426801185,
+          "fraction": 0.003366349073660132
+        },
+        {
+          "key": [
+            "libc.so.6",
+            "[.] 0x000000000009d954"
+          ],
+          "period": 1412531655,
+          "fraction": 0.003332682001048985
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] NativeMG::Impl::decode_fine"
+          ],
+          "period": 1310340799,
+          "fraction": 0.0030915761644063444
+        },
+        {
+          "key": [
+            "libc.so.6",
+            "[.] pthread_spin_lock"
+          ],
+          "period": 1227884900,
+          "fraction": 0.002897032354004012
+        },
+        {
+          "key": [
+            "libucg.so.25.1.0.SPC001",
+            "[.] ucg_progress"
+          ],
+          "period": 923227412,
+          "fraction": 0.0021782332225662128
+        },
+        {
+          "key": [
+            "liblqcd_cpu.so",
+            "[.] lqcd_native::detail::coarse_axpy"
+          ],
+          "period": 914761821,
+          "fraction": 0.0021582597779682988
+        },
+        {
+          "key": [
+            "mca_btl_vader.so",
+            "[.] 0x00000000000043f0"
+          ],
+          "period": 900079743,
+          "fraction": 0.002123619352803032
+        },
+        {
+          "key": [
+            "libucp.so.0.0.0",
+            "[.] ucp_worker_progress"
+          ],
+          "period": 888021304,
+          "fraction": 0.0020951690575662526
+        }
+      ],
+      "main_thread_period": 22061288722,
+      "thread_periods": [
+        {
+          "key": 3868126,
+          "period": 22061288722,
+          "fraction": 0.05205069888770342
+        },
+        {
+          "key": 3869395,
+          "period": 13041206679,
+          "fraction": 0.03076900586066024
+        },
+        {
+          "key": 3869373,
+          "period": 13036197723,
+          "fraction": 0.030757187890106338
+        },
+        {
+          "key": 3869782,
+          "period": 12987139095,
+          "fraction": 0.030641440532549413
+        },
+        {
+          "key": 3869425,
+          "period": 12984401910,
+          "fraction": 0.030634982505820772
+        },
+        {
+          "key": 3869451,
+          "period": 12983194392,
+          "fraction": 0.03063213352647911
+        },
+        {
+          "key": 3869611,
+          "period": 12982392348,
+          "fraction": 0.030630241209522256
+        },
+        {
+          "key": 3869412,
+          "period": 12982377792,
+          "fraction": 0.03063020686656149
+        },
+        {
+          "key": 3869626,
+          "period": 12978672263,
+          "fraction": 0.030621464159975798
+        },
+        {
+          "key": 3869463,
+          "period": 12973104743,
+          "fraction": 0.03060832833138831
+        },
+        {
+          "key": 3869749,
+          "period": 12967739133,
+          "fraction": 0.030595668882795884
+        },
+        {
+          "key": 3869598,
+          "period": 12964637280,
+          "fraction": 0.030588350470053483
+        },
+        {
+          "key": 3869438,
+          "period": 12964555259,
+          "fraction": 0.030588156952329866
+        },
+        {
+          "key": 3869478,
+          "period": 12962707067,
+          "fraction": 0.03058379638724725
+        },
+        {
+          "key": 3869488,
+          "period": 12962684260,
+          "fraction": 0.03058374257714103
+        },
+        {
+          "key": 3869570,
+          "period": 12960327587,
+          "fraction": 0.030578182318252912
+        },
+        {
+          "key": 3869670,
+          "period": 12959992710,
+          "fraction": 0.03057739222017156
+        },
+        {
+          "key": 3869698,
+          "period": 12956704221,
+          "fraction": 0.030569633464421094
+        },
+        {
+          "key": 3869771,
+          "period": 12956323047,
+          "fraction": 0.030568734134678945
+        },
+        {
+          "key": 3869710,
+          "period": 12956023617,
+          "fraction": 0.030568027669115472
+        },
+        {
+          "key": 3869545,
+          "period": 12955039510,
+          "fraction": 0.03056570579854047
+        },
+        {
+          "key": 3869518,
+          "period": 12952893799,
+          "fraction": 0.03056064327664665
+        },
+        {
+          "key": 3869558,
+          "period": 12944199719,
+          "fraction": 0.03054013074241131
+        },
+        {
+          "key": 3869725,
+          "period": 12944069439,
+          "fraction": 0.030539823363946866
+        },
+        {
+          "key": 3869684,
+          "period": 12941801142,
+          "fraction": 0.030534471616566073
+        },
+        {
+          "key": 3869503,
+          "period": 12941108279,
+          "fraction": 0.030532836897768006
+        },
+        {
+          "key": 3869532,
+          "period": 12939155211,
+          "fraction": 0.03052822889160589
+        },
+        {
+          "key": 3869639,
+          "period": 12930582805,
+          "fraction": 0.030508003431113904
+        },
+        {
+          "key": 3869735,
+          "period": 12930021630,
+          "fraction": 0.03050667941277044
+        },
+        {
+          "key": 3869587,
+          "period": 12924492111,
+          "fraction": 0.030493633242526734
+        },
+        {
+          "key": 3869654,
+          "period": 12915071532,
+          "fraction": 0.03047140662979092
+        },
+        {
+          "key": 3869757,
+          "period": 12902210130,
+          "fraction": 0.030441061849338084
+        }
+      ],
+      "data_sha256": "7b2eee67bf18e1d2e30a52fced44d0e9cf9bc75a7cb7fd6dbce2177882806695",
+      "csv_sha256": "230313701d6d3ee2944383c05051ed8ee2d96b8e5fbf377230be9fda9cea63c2",
+      "argv": [
+        "perf",
+        "report",
+        "--stdio",
+        "--no-children",
+        "--call-graph",
+        "none",
+        "--sort",
+        "comm,pid,dso,symbol",
+        "--percent-limit",
+        "0",
+        "--field-separator",
+        ";",
+        "--fields",
+        "period,sample,comm,pid,dso,symbol",
+        "--input",
+        "/home/share/nsls_lwb/.cache/mg-opt-20261103/solve-profile-worker11-155/155-best-solve-profile-worker11/rank00008.perf.data"
+      ]
+    }
+  ]
+}

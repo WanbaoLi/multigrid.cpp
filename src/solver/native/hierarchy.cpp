@@ -13,13 +13,12 @@ void NativeMG::Impl::configure_solve() {
     const char *names[] = {"LQCD_MG_SAP_STEPS", "LQCD_MG_SAP_CYCLES", "LQCD_MG_COARSE_IT",
                           "LQCD_MG_COARSE_TOL", "LQCD_CORRECTION_BASE_TOL",
                           "LQCD_FLOAT_CORRECTION_VERIFY", "LQCD_FINE_TEAM_FUSED", "LQCD_COARSE_CGS2",
-                          "LQCD_COARSE_THREADS", "LQCD_COARSE_BATCH_REDUCE", "LQCD_GCR_FUSED",
-                          "LQCD_COARSE_BATCH_HALO"};
+                          "LQCD_COARSE_THREADS", "LQCD_COARSE_BATCH_REDUCE", "LQCD_GCR_FUSED"};
     double values[] = {(double)setting("NATIVE_SAP_STEPS", 4),
                        (double)setting("NATIVE_SAP_CYCLES", 2),
-                       (double)setting("NATIVE_COARSE_IT", 40), .1, 1e-3, 0., 1., 0., 0., 0., 1., 0.};
-    const double lower[] = {1., 1., 1., 1e-4, 1e-6, 0., 0., 0., 0., 0., 0., 0.};
-    const double upper[] = {32., 8., 200., .9, .1, 1., 1., 1., 608., 1., 1., 1.};
+                       (double)setting("NATIVE_COARSE_IT", 40), .1, 1e-3, 0., 1., 0., 0., 0., 1.};
+    const double lower[] = {1., 1., 1., 1e-4, 1e-6, 0., 0., 0., 0., 0., 0.};
+    const double upper[] = {32., 8., 200., .9, .1, 1., 1., 1., 608., 1., 1.};
     constexpr int count = sizeof(values) / sizeof(values[0]);
     int invalid = 0;
     for (int i = 0; i < count; i++) {
@@ -63,7 +62,6 @@ void NativeMG::Impl::configure_solve() {
     coarse_cgs2 = values[7] != 0;
     coarse_threads = (int)values[8];
     coarse_batch_reduce = values[9] != 0;
-    coarse_batch_halo = values[11] != 0;
     // LQCD_GCR_FUSED is read dynamically by existing scalar/outer code. It also
     // selects the collective sequence of the optional coarse batch path, so
     // validate it after setup as well as during context construction.

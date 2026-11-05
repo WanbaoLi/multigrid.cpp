@@ -1,0 +1,43 @@
+{
+  "complete": true,
+  "passed": true,
+  "rank": 0,
+  "host": "cn19486",
+  "pid": 3868114,
+  "selected": true,
+  "event": "cycles:u",
+  "frequency": 49,
+  "call_graph": "dwarf,4096",
+  "errors": [],
+  "coverage": "one final diagnostic full12 call; sampled ranks only; not an accepted timing sample",
+  "record_argv": [
+    "/usr/bin/perf",
+    "record",
+    "-e",
+    "cycles:u",
+    "-F",
+    "49",
+    "--call-graph",
+    "dwarf,4096",
+    "-p",
+    "3868114",
+    "-o",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.perf.data"
+  ],
+  "solver_completed": true,
+  "record_returncode": -2,
+  "stop_requested_sigint": true,
+  "report_argv": [
+    "/usr/bin/perf",
+    "report",
+    "--stdio",
+    "--no-children",
+    "--sort",
+    "symbol",
+    "--input",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.perf.data"
+  ],
+  "report_returncode": 0,
+  "perf_data_sha256": "e93217d41dc93325d920cf69facba725565dea6d294b6c64eda1685ad29b39f1",
+  "flat_report_sha256": "352be5a0c28427443a3e386d4968b413e0a99ea1d244981adcb4783ef660a93c"
+}

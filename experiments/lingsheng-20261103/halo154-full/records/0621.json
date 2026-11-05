@@ -1,0 +1,23 @@
+{
+  "protocol": "fresh-output-publication-v2",
+  "complete": true,
+  "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-profile/measurements",
+  "output_absent_at_cli_start": true,
+  "checked_epoch": 1793795109.8078818,
+  "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-profile",
+  "parent_identity": {
+    "dev": 60,
+    "inode": 63050922283632129
+  },
+  "declarations": [
+    {
+      "relative": "halo-on/propagator.npy",
+      "kind": "npy-propagator",
+      "expected_sha256": null,
+      "bytes": 2038431872
+    }
+  ],
+  "maximum_strict_calls_per_output": 3,
+  "parent_protocol": null,
+  "immutable_inputs_use_original_strict_reader": true
+}

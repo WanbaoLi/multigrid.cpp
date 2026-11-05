@@ -1,0 +1,1031 @@
+{
+  "complete": true,
+  "physical_full12_verified": true,
+  "adopted": false,
+  "best": "052-reduce-on",
+  "ordinary": {
+    "control-a": {
+      "unranked": false,
+      "steady": [
+        14.707597269996768,
+        14.672064878002857,
+        14.78505302099802,
+        14.702589370994247,
+        14.71330550199491,
+        14.691551482013892,
+        14.745962357003009
+      ],
+      "scalar_max": 4.81878449575349e-09,
+      "gold_max": 1.2232293127295584e-11,
+      "report_sha256": "59d3dc7aa80737f33a6db202f969ccb49e1a99b588b2b7afe04651020246be74",
+      "median": 14.707597269996768
+    },
+    "new-off": {
+      "unranked": false,
+      "steady": [
+        14.766813005990116,
+        14.728215201990679,
+        14.767301546991803,
+        14.694167149005807,
+        14.811082330008503,
+        14.728445440006908,
+        14.73199110099813
+      ],
+      "scalar_max": 4.818858112534332e-09,
+      "gold_max": 1.7191732932621374e-16,
+      "report_sha256": "16cea4ad87ed0b08a9125523c8b081388065dfbab8620449c129f383479f9a1b",
+      "median": 14.73199110099813
+    },
+    "halo-on": {
+      "unranked": false,
+      "steady": [
+        14.613443131005624,
+        14.473240782986977,
+        14.446125075002783,
+        14.534121175995097,
+        14.457430415001,
+        14.452102444003685,
+        14.445143566001207
+      ],
+      "scalar_max": 4.818858112534332e-09,
+      "gold_max": 1.7191732932621374e-16,
+      "report_sha256": "2d65940628de30d9c6224b929184e52265dd8732707047f20883b17e29623fa3",
+      "median": 14.457430415001
+    },
+    "control-b": {
+      "unranked": false,
+      "steady": [
+        14.697951333990204,
+        14.725148322002497,
+        14.6539620100084,
+        14.793486115988344,
+        14.746035780000966,
+        14.736364295997191,
+        14.742190856995876
+      ],
+      "scalar_max": 4.81878449575349e-09,
+      "gold_max": 1.2232293127295584e-11,
+      "report_sha256": "8b2eab81832a5400d7b826e840c411d337496864827eac9067b60045b63a391c",
+      "median": 14.736364295997191
+    },
+    "halo-profile": {
+      "unranked": true,
+      "steady": [
+        14.724083399007213,
+        14.709794921989669,
+        14.771617386999424
+      ],
+      "scalar_max": 4.818858112534332e-09,
+      "gold_max": 0.0,
+      "report_sha256": "1a46adebbb8f763033c494f0ae22e7f7717cda2cfa800d6a603c33268e19ad90",
+      "median": 14.724083399007213
+    }
+  },
+  "assessments": {
+    "v2-w10v5-halo-on": {
+      "control_median_drift": 0.00195592967854155,
+      "gains": [
+        0.01700936260378194,
+        0.018928269917428575
+      ],
+      "passed": false,
+      "reasons": [
+        "Gain below threshold against first control",
+        "Gain below threshold against last control"
+      ]
+    },
+    "v2-w10v5-new-off": {
+      "control_median_drift": 0.00195592967854155,
+      "gains": [
+        -0.0016585870930205804,
+        0.00029676213964457965
+      ],
+      "passed": false,
+      "reasons": [
+        "Gain below threshold against first control",
+        "Timing ranges overlap first control",
+        "Gain below threshold against last control",
+        "Timing ranges overlap last control"
+      ]
+    }
+  },
+  "halo_increment": {
+    "gain": 0.018637038545219364,
+    "passed": true,
+    "reason": "Halo must have a positive, separated range against new-code reduce-only"
+  },
+  "actual_halo_diagnostic": {
+    "actual": {
+      "calls": 4700,
+      "max_width": 2,
+      "records": 142,
+      "rhs_slots": 9400,
+      "send_bytes": 462028800
+    },
+    "coarse_state_coverage": {
+      "capped": 0,
+      "different_iteration_counts": true,
+      "different_refresh_counts": true,
+      "different_restart_counts": true,
+      "maximum_iterations": 23,
+      "packed_allreduce_calls": 19746,
+      "records": 142,
+      "refreshes": 427,
+      "restarts": 172
+    },
+    "diagnostic_log_sha256": "9df963519730abd7f60e95d276fc483e4b1a1cf91d596c18b46300f39a6c4fcf",
+    "independent_gcr_records_equal": true,
+    "note": "RHS-equivalent counts are distinct from physical message calls; rank-max timing envelopes are nonadditive and unranked",
+    "parent_profile_coarse_state_coverage": {
+      "capped": 0,
+      "different_iteration_counts": true,
+      "different_refresh_counts": true,
+      "different_restart_counts": true,
+      "maximum_iterations": 23,
+      "packed_allreduce_calls": 19746,
+      "records": 142,
+      "refreshes": 427,
+      "restarts": 172
+    },
+    "report": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-profile/measurements/halo-on/result.json",
+    "report_sha256": "1a46adebbb8f763033c494f0ae22e7f7717cda2cfa800d6a603c33268e19ad90",
+    "verification": {
+      "checksum_audit": {
+        "benchmark_sha256": "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1",
+        "complete": true,
+        "helper_call_sha256": "510dd0b4eebd4a8835b61f7fcd7e4484c79842ff4823c13775d7b3c20e2b101d",
+        "helper_manifest_sha256": "69cd99841f0d9504132d3574742f6d49d1363a85a02fba6618c71030592b62a9",
+        "helper_protocol_sha256": "13b8dd7fd36ab8d1a7f2ab58bdaee3f111baacfb54dd9f15c7f06de5a7b951bf",
+        "helper_sha256": "bc441c56af7ffe65781816c8d18427578e8097f0b35168349a27629655fa2074",
+        "helper_status_sha256": "9dfe15610e01375e375fc91c24bb89a84774f4f453984d016757cb81d3581393",
+        "helper_wrapper_sha256": "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097",
+        "independent_modules": {
+          "known_vectors_passed": 3,
+          "openssl_module": "_hashlib",
+          "software_module": "_sha256"
+        },
+        "manifest_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-profile/checksum-audit/verify-halo-on/manifest.json",
+        "manifest_sha256": "e6b33c42a196942907d4fe6fe8d3b25611f26f6ee6b72942832b526cf53ca18c",
+        "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+        "passed": true,
+        "prior_failure_root_cause": "unresolved",
+        "prior_report_sha256": "6becca14b39ff161c17b56fdd37aeb9b88edda0a572522034b3ac4b81e2c2efa",
+        "protocol_sha256": "847fc8bbb2c32cb60283ab68ed069ef74c3c383a64b95d57c17080a3f75d20c6",
+        "protocol_version": 4,
+        "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+        "status": "passed",
+        "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec"
+      },
+      "columns": 12,
+      "complete": true,
+      "evidence_relative_path": "independent-publication-v2/verification.json",
+      "evidence_sha256": "f246f4ee180512bc39ce304e30321107fbd632a64b40f8f49bfe766723466af4",
+      "extractor_sha256": "efd900b99630c3cf2ea4ba285b38a5a123faa8e9d5d7cbbaf0f3169a8a58cc5b",
+      "max_true_residual": 4.818858112534332e-09,
+      "method": "byte-only column extraction + independent scalar C++",
+      "passed": true,
+      "propagator_sha256": "31d5cb29eeaa2714b4db003424da1215668d369288a6706bff03a1e0fb2e71cd",
+      "reference_propagator_sha256": "31d5cb29eeaa2714b4db003424da1215668d369288a6706bff03a1e0fb2e71cd",
+      "reference_sha256": "1534d9c0653a019dcac4df98965f47f14d052cb324c35e568faa760d50878e9c",
+      "solution_relative_error": 0.0,
+      "solution_relative_errors": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "verification_driver_sha256": "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1"
+    }
+  },
+  "native_halo_rows": [
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0509992470616,
+        "wait_s": 0.521781033924,
+        "interior_s": 0.132036471099,
+        "boundary_s": 0.10712046799,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.747592642074,
+        "total_s": 0.857661278962
+      },
+      "coarse": {
+        "calls": 878,
+        "send_bytes": 81690624,
+        "pack_post_s": 0.0287116829713,
+        "wait_s": 0.165718825752,
+        "interior_s": 0.0799983137695,
+        "boundary_s": 0.0251791678602,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.187218709296,
+        "total_s": 0.238090944214
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0351318920293,
+        "wait_s": 0.487926139031,
+        "interior_s": 0.108916890982,
+        "boundary_s": 0.107272166017,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.680115392926,
+        "total_s": 0.791168580021
+      },
+      "coarse": {
+        "calls": 936,
+        "send_bytes": 85426176,
+        "pack_post_s": 0.0298247728351,
+        "wait_s": 0.176380156554,
+        "interior_s": 0.0837366119813,
+        "boundary_s": 0.0253517482051,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.198122096815,
+        "total_s": 0.250870063843
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0352148919046,
+        "wait_s": 0.485574460079,
+        "interior_s": 0.109225170963,
+        "boundary_s": 0.107488897935,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.678005003007,
+        "total_s": 0.788633818069
+      },
+      "coarse": {
+        "calls": 930,
+        "send_bytes": 83263488,
+        "pack_post_s": 0.028780545108,
+        "wait_s": 0.171686483896,
+        "interior_s": 0.0818881779996,
+        "boundary_s": 0.0254993711424,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.193216957225,
+        "total_s": 0.244679238152
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0346675549954,
+        "wait_s": 0.495006896919,
+        "interior_s": 0.134870145062,
+        "boundary_s": 0.107803708874,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.692223142949,
+        "total_s": 0.803827132855
+      },
+      "coarse": {
+        "calls": 978,
+        "send_bytes": 85327872,
+        "pack_post_s": 0.0296503852296,
+        "wait_s": 0.177693667691,
+        "interior_s": 0.0839176341833,
+        "boundary_s": 0.0263437761023,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.200266338783,
+        "total_s": 0.252910718889
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 650280960,
+        "pack_post_s": 0.0356463938951,
+        "wait_s": 0.497741527986,
+        "interior_s": 0.112398531943,
+        "boundary_s": 0.108334809935,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.69395772391,
+        "total_s": 0.806395051928
+      },
+      "coarse": {
+        "calls": 970,
+        "send_bytes": 87293952,
+        "pack_post_s": 0.0307382280007,
+        "wait_s": 0.183378623056,
+        "interior_s": 0.085607164976,
+        "boundary_s": 0.0261245002039,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.206314827374,
+        "total_s": 0.260028700228
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0351531671186,
+        "wait_s": 0.484189471987,
+        "interior_s": 0.109107775992,
+        "boundary_s": 0.107675980966,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.677060810922,
+        "total_s": 0.787738710002
+      },
+      "coarse": {
+        "calls": 962,
+        "send_bytes": 85917696,
+        "pack_post_s": 0.0295387961669,
+        "wait_s": 0.179493012853,
+        "interior_s": 0.0846080238698,
+        "boundary_s": 0.0259533588542,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.202136057662,
+        "total_s": 0.254032441022
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0355682589725,
+        "wait_s": 0.484408921897,
+        "interior_s": 0.111308539897,
+        "boundary_s": 0.106049658105,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.675964909999,
+        "total_s": 0.78697201208
+      },
+      "coarse": {
+        "calls": 878,
+        "send_bytes": 81690624,
+        "pack_post_s": 0.0287428969314,
+        "wait_s": 0.169941764252,
+        "interior_s": 0.0800589186401,
+        "boundary_s": 0.0242133662832,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.191073709939,
+        "total_s": 0.240761241046
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0351307381061,
+        "wait_s": 0.485890858065,
+        "interior_s": 0.110887467992,
+        "boundary_s": 0.107794705851,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.678349375012,
+        "total_s": 0.789141819972
+      },
+      "coarse": {
+        "calls": 936,
+        "send_bytes": 85426176,
+        "pack_post_s": 0.0298359348526,
+        "wait_s": 0.175765775697,
+        "interior_s": 0.0837238343229,
+        "boundary_s": 0.0258360410226,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.197909278853,
+        "total_s": 0.250360049104
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0345495549846,
+        "wait_s": 0.478248737898,
+        "interior_s": 0.107914121982,
+        "boundary_s": 0.107312803986,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.670267121124,
+        "total_s": 0.780945898965
+      },
+      "coarse": {
+        "calls": 930,
+        "send_bytes": 83263488,
+        "pack_post_s": 0.0287854709895,
+        "wait_s": 0.172121011376,
+        "interior_s": 0.081311220958,
+        "boundary_s": 0.0254232928855,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.193917154218,
+        "total_s": 0.245465862012
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0345999429264,
+        "wait_s": 0.489687251989,
+        "interior_s": 0.11028551402,
+        "boundary_s": 0.108802020957,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.681082273979,
+        "total_s": 0.7915546
+      },
+      "coarse": {
+        "calls": 978,
+        "send_bytes": 85327872,
+        "pack_post_s": 0.029445756998,
+        "wait_s": 0.177039347138,
+        "interior_s": 0.0843310148921,
+        "boundary_s": 0.0258280893031,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.199284649032,
+        "total_s": 0.251679485125
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 650280960,
+        "pack_post_s": 0.0356929989503,
+        "wait_s": 0.502231128994,
+        "interior_s": 0.110989167952,
+        "boundary_s": 0.110096802076,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.697573204015,
+        "total_s": 0.810356017028
+      },
+      "coarse": {
+        "calls": 970,
+        "send_bytes": 87293952,
+        "pack_post_s": 0.030619546771,
+        "wait_s": 0.183592041809,
+        "interior_s": 0.085145532008,
+        "boundary_s": 0.0266873580549,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.20591454886,
+        "total_s": 0.259122617921
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0357574850495,
+        "wait_s": 0.480355463922,
+        "interior_s": 0.109743461988,
+        "boundary_s": 0.111414151907,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.673368020056,
+        "total_s": 0.784063553976
+      },
+      "coarse": {
+        "calls": 962,
+        "send_bytes": 85917696,
+        "pack_post_s": 0.0306710970908,
+        "wait_s": 0.177867503837,
+        "interior_s": 0.0844635022222,
+        "boundary_s": 0.0260957068531,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.199767234662,
+        "total_s": 0.252466672842
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0349205360399,
+        "wait_s": 0.495602508105,
+        "interior_s": 0.113683844073,
+        "boundary_s": 0.106057318,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.68545239704,
+        "total_s": 0.796016504901
+      },
+      "coarse": {
+        "calls": 878,
+        "send_bytes": 81690624,
+        "pack_post_s": 0.0288683368271,
+        "wait_s": 0.169204053949,
+        "interior_s": 0.0802836523944,
+        "boundary_s": 0.024582224316,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.18987898562,
+        "total_s": 0.239673501041
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0347873919818,
+        "wait_s": 0.479484169933,
+        "interior_s": 0.110788623962,
+        "boundary_s": 0.107781230035,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.672259158062,
+        "total_s": 0.781984293018
+      },
+      "coarse": {
+        "calls": 936,
+        "send_bytes": 85426176,
+        "pack_post_s": 0.0299546092865,
+        "wait_s": 0.175504369676,
+        "interior_s": 0.0838945812866,
+        "boundary_s": 0.0257190053089,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.196612060288,
+        "total_s": 0.248651399015
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0360562619462,
+        "wait_s": 0.479030742921,
+        "interior_s": 0.109547581989,
+        "boundary_s": 0.10691897395,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.671905183961,
+        "total_s": 0.782162396034
+      },
+      "coarse": {
+        "calls": 930,
+        "send_bytes": 83263488,
+        "pack_post_s": 0.0288798430847,
+        "wait_s": 0.170532464195,
+        "interior_s": 0.0818214820029,
+        "boundary_s": 0.0248104007187,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.191371788023,
+        "total_s": 0.242777923952
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0351895799104,
+        "wait_s": 0.495341417016,
+        "interior_s": 0.109743781024,
+        "boundary_s": 0.109113210943,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.687645924991,
+        "total_s": 0.797852088115
+      },
+      "coarse": {
+        "calls": 978,
+        "send_bytes": 85327872,
+        "pack_post_s": 0.0299567519396,
+        "wait_s": 0.17825537108,
+        "interior_s": 0.0838353073195,
+        "boundary_s": 0.025942420034,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.200719126951,
+        "total_s": 0.253028728723
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 650280960,
+        "pack_post_s": 0.0356655079813,
+        "wait_s": 0.488963551004,
+        "interior_s": 0.109854622991,
+        "boundary_s": 0.112245686076,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.685153964048,
+        "total_s": 0.799066425039
+      },
+      "coarse": {
+        "calls": 970,
+        "send_bytes": 87293952,
+        "pack_post_s": 0.030498587832,
+        "wait_s": 0.181987767253,
+        "interior_s": 0.0856064241379,
+        "boundary_s": 0.0262816053728,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.204976360925,
+        "total_s": 0.258637421997
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.034512156024,
+        "wait_s": 0.485527716955,
+        "interior_s": 0.111980372851,
+        "boundary_s": 0.108927917885,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.677679988003,
+        "total_s": 0.787357334921
+      },
+      "coarse": {
+        "calls": 962,
+        "send_bytes": 85917696,
+        "pack_post_s": 0.0300879660062,
+        "wait_s": 0.17868103915,
+        "interior_s": 0.0842436422972,
+        "boundary_s": 0.0260840589617,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.200886120991,
+        "total_s": 0.253762819935
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0350370230008,
+        "wait_s": 0.48510100093,
+        "interior_s": 0.10997732103,
+        "boundary_s": 0.10895505111,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.677425386879,
+        "total_s": 0.788004486079
+      },
+      "coarse": {
+        "calls": 878,
+        "send_bytes": 81690624,
+        "pack_post_s": 0.0289489670831,
+        "wait_s": 0.168943415221,
+        "interior_s": 0.0802833841881,
+        "boundary_s": 0.0245138380124,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.189768736076,
+        "total_s": 0.239465503779
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.035284226964,
+        "wait_s": 0.482890033934,
+        "interior_s": 0.110895069854,
+        "boundary_s": 0.10734150403,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.674489149969,
+        "total_s": 0.786211563987
+      },
+      "coarse": {
+        "calls": 936,
+        "send_bytes": 85426176,
+        "pack_post_s": 0.0303339790262,
+        "wait_s": 0.175771343886,
+        "interior_s": 0.0841260732705,
+        "boundary_s": 0.0261073940055,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.197849030854,
+        "total_s": 0.249804257721
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0351354190061,
+        "wait_s": 0.490225584086,
+        "interior_s": 0.112295201179,
+        "boundary_s": 0.107019939038,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.681258122058,
+        "total_s": 0.791801093103
+      },
+      "coarse": {
+        "calls": 930,
+        "send_bytes": 83263488,
+        "pack_post_s": 0.0288180652569,
+        "wait_s": 0.17328625395,
+        "interior_s": 0.0819131321477,
+        "boundary_s": 0.0255557157798,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.195320601066,
+        "total_s": 0.246968394116
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0357015719783,
+        "wait_s": 0.485009920027,
+        "interior_s": 0.111736378996,
+        "boundary_s": 0.107105466042,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.67782323694,
+        "total_s": 0.788700736972
+      },
+      "coarse": {
+        "calls": 978,
+        "send_bytes": 85327872,
+        "pack_post_s": 0.0297364610742,
+        "wait_s": 0.178657055891,
+        "interior_s": 0.0842273220187,
+        "boundary_s": 0.0259260108432,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.2008553942,
+        "total_s": 0.252791200968
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 650280960,
+        "pack_post_s": 0.0363413760788,
+        "wait_s": 0.494462666,
+        "interior_s": 0.111865327082,
+        "boundary_s": 0.10898494508,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.691267674003,
+        "total_s": 0.804192859898
+      },
+      "coarse": {
+        "calls": 970,
+        "send_bytes": 87293952,
+        "pack_post_s": 0.0310947979306,
+        "wait_s": 0.181988565106,
+        "interior_s": 0.0855079519097,
+        "boundary_s": 0.0262725708599,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.203870519836,
+        "total_s": 0.257936195834
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0362596779596,
+        "wait_s": 0.477778723041,
+        "interior_s": 0.109175571022,
+        "boundary_s": 0.109149914962,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.670263757071,
+        "total_s": 0.781817152019
+      },
+      "coarse": {
+        "calls": 962,
+        "send_bytes": 85917696,
+        "pack_post_s": 0.0298648900061,
+        "wait_s": 0.178487138939,
+        "interior_s": 0.084029992795,
+        "boundary_s": 0.0251012312365,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.200613294845,
+        "total_s": 0.252911487289
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0343623978115,
+        "wait_s": 0.488621816927,
+        "interior_s": 0.107755326913,
+        "boundary_s": 0.10600423791,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.682290906014,
+        "total_s": 0.786240550122
+      },
+      "coarse": {
+        "calls": 878,
+        "send_bytes": 81690624,
+        "pack_post_s": 0.0287130499055,
+        "wait_s": 0.16893287214,
+        "interior_s": 0.0800530320266,
+        "boundary_s": 0.0238702480419,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.189840407751,
+        "total_s": 0.239906686955
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0338240230049,
+        "wait_s": 0.483040549065,
+        "interior_s": 0.108009260031,
+        "boundary_s": 0.106992738059,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.675521805984,
+        "total_s": 0.778724768941
+      },
+      "coarse": {
+        "calls": 936,
+        "send_bytes": 85426176,
+        "pack_post_s": 0.0295171329635,
+        "wait_s": 0.175138018007,
+        "interior_s": 0.08364638286,
+        "boundary_s": 0.0253162620938,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.196449995041,
+        "total_s": 0.248996050941
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 120,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0336478031386,
+        "wait_s": 0.483837599997,
+        "interior_s": 0.110799131086,
+        "boundary_s": 0.104494933898,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.675197838995,
+        "total_s": 0.779009170932
+      },
+      "coarse": {
+        "calls": 930,
+        "send_bytes": 83263488,
+        "pack_post_s": 0.0288048629154,
+        "wait_s": 0.172642974154,
+        "interior_s": 0.0819042649528,
+        "boundary_s": 0.025807831873,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.193554634854,
+        "total_s": 0.245208509994
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0346303350234,
+        "wait_s": 0.494740667054,
+        "interior_s": 0.108496353074,
+        "boundary_s": 0.106913834068,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.688224593061,
+        "total_s": 0.792307423995
+      },
+      "coarse": {
+        "calls": 978,
+        "send_bytes": 85327872,
+        "pack_post_s": 0.0295994528424,
+        "wait_s": 0.178512197948,
+        "interior_s": 0.0835964097205,
+        "boundary_s": 0.025998236888,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.200359214723,
+        "total_s": 0.253007921536
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 650280960,
+        "pack_post_s": 0.0350820240856,
+        "wait_s": 0.490459394015,
+        "interior_s": 0.11161462903,
+        "boundary_s": 0.107443761968,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.687290746951,
+        "total_s": 0.792630659882
+      },
+      "coarse": {
+        "calls": 970,
+        "send_bytes": 87293952,
+        "pack_post_s": 0.0302821379155,
+        "wait_s": 0.18214425887,
+        "interior_s": 0.0858918462618,
+        "boundary_s": 0.0265671952802,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.204576297008,
+        "total_s": 0.257795115089
+      }
+    },
+    {
+      "aggregation": "independent_rank_max_of_local_sums",
+      "ranks": 16,
+      "overlap": true,
+      "fine": {
+        "calls": 125,
+        "send_bytes": 637009920,
+        "pack_post_s": 0.0342441650137,
+        "wait_s": 0.485659119004,
+        "interior_s": 0.110230907143,
+        "boundary_s": 0.10573571884,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.678720569034,
+        "total_s": 0.782859940955
+      },
+      "coarse": {
+        "calls": 962,
+        "send_bytes": 85917696,
+        "pack_post_s": 0.030100705495,
+        "wait_s": 0.179130005155,
+        "interior_s": 0.0842416190571,
+        "boundary_s": 0.025939192521,
+        "compute_all_s": 0,
+        "overlap_region_s": 0.201514897315,
+        "total_s": 0.254691101683
+      }
+    }
+  ],
+  "task_cleanup": {
+    "complete": true,
+    "platform": "linux",
+    "method": "same-uid exact tag and verified descendants",
+    "tag_key": "LQCD_OPT_TASK_ID",
+    "targeted_pids": [],
+    "term_signals": 0,
+    "kill_signals": 0,
+    "surviving_pids": []
+  },
+  "conclusion": "V2 correct; 1.70/1.89 percent gains below frozen3percent two-control gate. Batched-only counters must not be compared with all coarse halo calls."
+}

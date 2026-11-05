@@ -1,0 +1,82 @@
+{
+  "complete": true,
+  "run": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/155-best-solve-profile-worker11/measurements/full12",
+  "reference": "/home/share/nsls_lwb/.cache/mg-20261102/source/build/validation/multigrid",
+  "reference_sha256": "1534d9c0653a019dcac4df98965f47f14d052cb324c35e568faa760d50878e9c",
+  "run_report_sha256": "cafe4171bb7d7f9c24abce18f5cac32e9e9bccb1087af6c99d7571c388a41769",
+  "propagator_sha256": "d4c6d7305cbaf4a7a499ea00c6c72e5d48affce76f4eb2ebf30794665ff88f47",
+  "method": "byte-only column extraction + independent scalar C++",
+  "source_xyzt": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_scale": 1.0,
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "normalization": "mass",
+  "columns": [
+    {
+      "source_spin": 0,
+      "source_color": 0,
+      "residual": 4.81878449575349e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 1,
+      "residual": 3.1987232657469915e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 2,
+      "residual": 3.933319143063532e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 0,
+      "residual": 3.1414741334596253e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 1,
+      "residual": 4.089293916996384e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 2,
+      "residual": 4.075962156117472e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 0,
+      "residual": 3.6561970709099204e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 1,
+      "residual": 2.8349711649085816e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 2,
+      "residual": 2.640762942178473e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 0,
+      "residual": 3.7731122895508886e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 1,
+      "residual": 4.279940778266243e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 2,
+      "residual": 2.612865913430912e-09
+    }
+  ],
+  "assembled_gauge_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834"
+}

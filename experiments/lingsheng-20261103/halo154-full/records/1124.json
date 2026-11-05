@@ -1,0 +1,12 @@
+{
+  "complete": true,
+  "id": "154-halo-v2-ordinary-remainder-worker10",
+  "guard_sha256": "b882c2175f1a1679bfa753f73e43a884a31377b1bc79d021ed48765c5dcdc175",
+  "original_task": {
+    "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo154-worker10/original-task.json",
+    "sha256": "442241309c02f64b46cc2c6c7724b0a4b0291a59f87cc32fdac3f8732b27e8f0"
+  },
+  "original_entry_sha256": "a9afbc64994d5c48587d09e27f70dd74cd797516feb4c7adcf1ec45a6e61bb59",
+  "task_timeout_seconds": 4200,
+  "numerical_or_acceptance_gate_changes": false
+}

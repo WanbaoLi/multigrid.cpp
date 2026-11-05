@@ -1,0 +1,2174 @@
+{
+  "files": [
+    {
+      "path": "155-best-solve-profile-worker11-heartbeat-at-dispatch.json",
+      "bytes": 5347,
+      "original_sha256": "34bae9cc91046194854486b90a7b78e05619956bb2ad3f66614fde01bcb35d6e",
+      "export_sha256": "34bae9cc91046194854486b90a7b78e05619956bb2ad3f66614fde01bcb35d6e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "155-best-solve-profile-worker11-launch.json",
+      "bytes": 776,
+      "original_sha256": "f04ef94e7601f41f89297e9bb2f8b7cc90ff3473a553c8dd2bca5bb6f1f81d66",
+      "export_sha256": "f04ef94e7601f41f89297e9bb2f8b7cc90ff3473a553c8dd2bca5bb6f1f81d66",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "155-best-solve-profile-worker11-state.json",
+      "bytes": 69742,
+      "original_sha256": "6df04584e3e8383493e7794f01134c4eed8dbd9d513a0bef6ae8202039287eae",
+      "export_sha256": "892e6fc8973036f75fd644cdd60c5775e4ece07169ece17f8a154ffd5b1e8f0c",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/attempt.json",
+      "bytes": 9234,
+      "original_sha256": "f9fb2e93b20c7e6fb988ede92cfb3103da9901d6898ee4a51882ddc78637e144",
+      "export_sha256": "82593e74a524517ad540135c8bb2bed3866a90131ff49cb428ebe65054952e19",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/benchmark-000.log",
+      "bytes": 150073,
+      "original_sha256": "d3a5fcc81d003d7d68883415a8a9e12e57f06d5f378239d5d03633f7ab575a71",
+      "export_sha256": "d3a5fcc81d003d7d68883415a8a9e12e57f06d5f378239d5d03633f7ab575a71",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00000/hash-000.json",
+      "bytes": 1538,
+      "original_sha256": "aa1e47a8043e96aab3693156018fcb5ef883254d4ce65ba7bc39279333b1363e",
+      "export_sha256": "aa1e47a8043e96aab3693156018fcb5ef883254d4ce65ba7bc39279333b1363e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00000/hash-001.json",
+      "bytes": 1543,
+      "original_sha256": "ce1d1b7a2a7d03c938e5bd3dc488ea146f3ae51ea864a33714a65f5eec5edc50",
+      "export_sha256": "ce1d1b7a2a7d03c938e5bd3dc488ea146f3ae51ea864a33714a65f5eec5edc50",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00000/hash-002.json",
+      "bytes": 1510,
+      "original_sha256": "ed214edeba304ca9accf3fab1e6840e7e3701639c27aa086d5a2650233675951",
+      "export_sha256": "ed214edeba304ca9accf3fab1e6840e7e3701639c27aa086d5a2650233675951",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00000/hash-003.json",
+      "bytes": 1539,
+      "original_sha256": "5b8908969d6e6d86d31f47e1d7266beeab3253fdcd59df2020b2b64ec62fdf4a",
+      "export_sha256": "5b8908969d6e6d86d31f47e1d7266beeab3253fdcd59df2020b2b64ec62fdf4a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00000/hash-004.json",
+      "bytes": 7746,
+      "original_sha256": "f0cc113374e40c61b8f973369f12f5117dc0e7f0f0bf1cdc9826e81cc5ab1f5e",
+      "export_sha256": "f0cc113374e40c61b8f973369f12f5117dc0e7f0f0bf1cdc9826e81cc5ab1f5e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00000/hash-005.json",
+      "bytes": 1601,
+      "original_sha256": "2e2f063c7e30d217fdaebb792e847c0842d6b3b8010cd37725820e455514d4e7",
+      "export_sha256": "2e2f063c7e30d217fdaebb792e847c0842d6b3b8010cd37725820e455514d4e7",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00000/manifest.json",
+      "bytes": 948,
+      "original_sha256": "9c52f4e8d0805d16989c0abec2de1e75fbeba5943fe04165534f53ae25cfac4a",
+      "export_sha256": "9c52f4e8d0805d16989c0abec2de1e75fbeba5943fe04165534f53ae25cfac4a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00000/protocol.json",
+      "bytes": 1039,
+      "original_sha256": "ebae2276f779e68509ebf1e7c179cb6dca49c6bd2b71e7a257d441f9cfc0a224",
+      "export_sha256": "ebae2276f779e68509ebf1e7c179cb6dca49c6bd2b71e7a257d441f9cfc0a224",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00001/hash-000.json",
+      "bytes": 1538,
+      "original_sha256": "c1b0753ebc408a47d593dac50d051b2ed04b8c9d3ccb848bece82bda77fb9c50",
+      "export_sha256": "c1b0753ebc408a47d593dac50d051b2ed04b8c9d3ccb848bece82bda77fb9c50",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00001/hash-001.json",
+      "bytes": 1541,
+      "original_sha256": "063794b7bc373bacf5ad422dec47d084e8d2adf88d827d70493a80f7c2cad2b6",
+      "export_sha256": "063794b7bc373bacf5ad422dec47d084e8d2adf88d827d70493a80f7c2cad2b6",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00001/hash-002.json",
+      "bytes": 1511,
+      "original_sha256": "64b0d43fcaaad0d63a4cceb25790427f835ef20a690916078c917d2ac1f843a0",
+      "export_sha256": "64b0d43fcaaad0d63a4cceb25790427f835ef20a690916078c917d2ac1f843a0",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00001/hash-003.json",
+      "bytes": 1538,
+      "original_sha256": "65318f04abc6006bd57ef55a176e73e07bc054e032de9cc7dca29bed13bf0210",
+      "export_sha256": "65318f04abc6006bd57ef55a176e73e07bc054e032de9cc7dca29bed13bf0210",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00001/hash-004.json",
+      "bytes": 1599,
+      "original_sha256": "b7ab82730719cf5c4ff542c3bb3aa05ea7de6d0c8214511ce5ce594de30fd055",
+      "export_sha256": "b7ab82730719cf5c4ff542c3bb3aa05ea7de6d0c8214511ce5ce594de30fd055",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00001/manifest.json",
+      "bytes": 821,
+      "original_sha256": "3806b466b96ddb1a3e55450a1fbc8cdc95d579907416b505e65a54d8b521841a",
+      "export_sha256": "3806b466b96ddb1a3e55450a1fbc8cdc95d579907416b505e65a54d8b521841a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00001/protocol.json",
+      "bytes": 1039,
+      "original_sha256": "0e302459b84bb67963bd78a41fb43bf20d9f15c99524db14757dd5f1e6177bf1",
+      "export_sha256": "0e302459b84bb67963bd78a41fb43bf20d9f15c99524db14757dd5f1e6177bf1",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00002/hash-000.json",
+      "bytes": 1538,
+      "original_sha256": "74115e3723afc7aa79c2a757ab5a662b525d6406a85ed0ceb5b5b08a56c736d9",
+      "export_sha256": "74115e3723afc7aa79c2a757ab5a662b525d6406a85ed0ceb5b5b08a56c736d9",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00002/hash-001.json",
+      "bytes": 1543,
+      "original_sha256": "d4889c4c1ff15e1207c3cfb900a3ef1020bf5b6c5c1a53b3321feabf81665052",
+      "export_sha256": "d4889c4c1ff15e1207c3cfb900a3ef1020bf5b6c5c1a53b3321feabf81665052",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00002/hash-002.json",
+      "bytes": 1510,
+      "original_sha256": "0846d6b913fad76ef2e17a0ecea3bda72d1491fa2e632f957f2e97489c1ae6e0",
+      "export_sha256": "0846d6b913fad76ef2e17a0ecea3bda72d1491fa2e632f957f2e97489c1ae6e0",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00002/hash-003.json",
+      "bytes": 1537,
+      "original_sha256": "0ba8c297200ec1c65abb9224edbeb64e50b14afda703c72f567425e2e861e0f6",
+      "export_sha256": "0ba8c297200ec1c65abb9224edbeb64e50b14afda703c72f567425e2e861e0f6",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00002/hash-004.json",
+      "bytes": 1600,
+      "original_sha256": "e40cb34979066234af1b7817c53b8d63dba6cc27d8b69bfa13405ebb78e6d3b7",
+      "export_sha256": "e40cb34979066234af1b7817c53b8d63dba6cc27d8b69bfa13405ebb78e6d3b7",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00002/manifest.json",
+      "bytes": 821,
+      "original_sha256": "80b942609a01097bdebcc90b3985f5a66d199fb4162db56c50a8882f1919e06c",
+      "export_sha256": "80b942609a01097bdebcc90b3985f5a66d199fb4162db56c50a8882f1919e06c",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00002/protocol.json",
+      "bytes": 1039,
+      "original_sha256": "9a1cd9914a5c57ba4d9ef0f4770d3d510d81ec715c4466a6486ec6010e1d28d3",
+      "export_sha256": "9a1cd9914a5c57ba4d9ef0f4770d3d510d81ec715c4466a6486ec6010e1d28d3",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00003/hash-000.json",
+      "bytes": 1538,
+      "original_sha256": "c17dd14857f8ef46a74144f6d061991ce48aafb2fc7f1138f13c5333137f8efb",
+      "export_sha256": "c17dd14857f8ef46a74144f6d061991ce48aafb2fc7f1138f13c5333137f8efb",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00003/hash-001.json",
+      "bytes": 1542,
+      "original_sha256": "9833dd167aac334801435193663f9cb355cb2115261599b2b4ef5b2953368d36",
+      "export_sha256": "9833dd167aac334801435193663f9cb355cb2115261599b2b4ef5b2953368d36",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00003/hash-002.json",
+      "bytes": 1511,
+      "original_sha256": "322848236aae3e10b37ba27ccc30b18176ff5692039f51c506faa1360b1102a3",
+      "export_sha256": "322848236aae3e10b37ba27ccc30b18176ff5692039f51c506faa1360b1102a3",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00003/hash-003.json",
+      "bytes": 1539,
+      "original_sha256": "60b817889d2dbb90325d88510f6b8e7ae06b29166e5dca0dd2d124c1da7ef161",
+      "export_sha256": "60b817889d2dbb90325d88510f6b8e7ae06b29166e5dca0dd2d124c1da7ef161",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00003/hash-004.json",
+      "bytes": 1600,
+      "original_sha256": "38ec4a3e8f775e7dccfbcbe2882a44aa357954c317ab02e69a774ea959b4f33a",
+      "export_sha256": "38ec4a3e8f775e7dccfbcbe2882a44aa357954c317ab02e69a774ea959b4f33a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00003/manifest.json",
+      "bytes": 821,
+      "original_sha256": "8dc5c5459f348e6ffe69aab482e07495aa338fba3d0163c7651f3d8f2c021f93",
+      "export_sha256": "8dc5c5459f348e6ffe69aab482e07495aa338fba3d0163c7651f3d8f2c021f93",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00003/protocol.json",
+      "bytes": 1039,
+      "original_sha256": "b1b0de47ebcf1569c13248b8bcd9087504ea11e516d1728c00f826814f01729a",
+      "export_sha256": "b1b0de47ebcf1569c13248b8bcd9087504ea11e516d1728c00f826814f01729a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00004/hash-000.json",
+      "bytes": 1537,
+      "original_sha256": "d6931ce00f2f3604717d2f2b2042e67576e8c3baab52c6c6e2d9e44102ec2461",
+      "export_sha256": "d6931ce00f2f3604717d2f2b2042e67576e8c3baab52c6c6e2d9e44102ec2461",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00004/hash-001.json",
+      "bytes": 1541,
+      "original_sha256": "8f76367350387988df43aa5dbf7da8bb64b49134ddd64acc656244b6c2ba88f4",
+      "export_sha256": "8f76367350387988df43aa5dbf7da8bb64b49134ddd64acc656244b6c2ba88f4",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00004/hash-002.json",
+      "bytes": 1511,
+      "original_sha256": "d3e945e811ae74a80b4b3c51b427c25e61b473a16e792ddf21fb7b959d8b8118",
+      "export_sha256": "d3e945e811ae74a80b4b3c51b427c25e61b473a16e792ddf21fb7b959d8b8118",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00004/hash-003.json",
+      "bytes": 1538,
+      "original_sha256": "3d423da688626bc7a11b5d3920eeb5030b5a9f3fa66ec353fb7247ed01d99156",
+      "export_sha256": "3d423da688626bc7a11b5d3920eeb5030b5a9f3fa66ec353fb7247ed01d99156",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00004/hash-004.json",
+      "bytes": 1601,
+      "original_sha256": "01ec423ca841bb3b21b5d141748d88b7197566a351a212fda1c0661c00bd6f9a",
+      "export_sha256": "01ec423ca841bb3b21b5d141748d88b7197566a351a212fda1c0661c00bd6f9a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00004/manifest.json",
+      "bytes": 821,
+      "original_sha256": "7c2a1c7e7b5df95a8b038a7def455cd515e2f932a9ddb752d6da15f3592e8b89",
+      "export_sha256": "7c2a1c7e7b5df95a8b038a7def455cd515e2f932a9ddb752d6da15f3592e8b89",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00004/protocol.json",
+      "bytes": 1039,
+      "original_sha256": "e1ddcb61398afccf481e5df515e3aee505b3031bdf5129109cfa889c68151d5d",
+      "export_sha256": "e1ddcb61398afccf481e5df515e3aee505b3031bdf5129109cfa889c68151d5d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00005/hash-000.json",
+      "bytes": 1538,
+      "original_sha256": "4de29933c0d2e06d9593afa40e8ae48320e3b9d3e39dd5a486ff461789532028",
+      "export_sha256": "4de29933c0d2e06d9593afa40e8ae48320e3b9d3e39dd5a486ff461789532028",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00005/hash-001.json",
+      "bytes": 1543,
+      "original_sha256": "875b6dde3f0d7d2da33787daa05a0d7e58330953fa80578f6738966574be4cf0",
+      "export_sha256": "875b6dde3f0d7d2da33787daa05a0d7e58330953fa80578f6738966574be4cf0",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00005/hash-002.json",
+      "bytes": 1511,
+      "original_sha256": "c6a472699799d98170f7a64657d72ca4ad0e536d51f4d2d159b71bba44c3f0f0",
+      "export_sha256": "c6a472699799d98170f7a64657d72ca4ad0e536d51f4d2d159b71bba44c3f0f0",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00005/hash-003.json",
+      "bytes": 1537,
+      "original_sha256": "2ece331fc2ddcdbc968a6abfe25f6444e6067bdf3b8357fdccccb0a8c3f8cb2f",
+      "export_sha256": "2ece331fc2ddcdbc968a6abfe25f6444e6067bdf3b8357fdccccb0a8c3f8cb2f",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00005/hash-004.json",
+      "bytes": 1600,
+      "original_sha256": "b53dca0902cbfc35d995722e48857addfa2a3ceeab405d42503a2171cc06628f",
+      "export_sha256": "b53dca0902cbfc35d995722e48857addfa2a3ceeab405d42503a2171cc06628f",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00005/manifest.json",
+      "bytes": 821,
+      "original_sha256": "3d734a87bb1f35fac6203bb57f3f3ab30898f8c98bc0acb8e7a2875efd451c75",
+      "export_sha256": "3d734a87bb1f35fac6203bb57f3f3ab30898f8c98bc0acb8e7a2875efd451c75",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00005/protocol.json",
+      "bytes": 1039,
+      "original_sha256": "923151f034d2c68e8ca16d0ec1862d3813618d5a2d7f72ff951a06a8c470d791",
+      "export_sha256": "923151f034d2c68e8ca16d0ec1862d3813618d5a2d7f72ff951a06a8c470d791",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00006/hash-000.json",
+      "bytes": 1538,
+      "original_sha256": "fc90b45ccc60b54858f635b25b09a04be6a80b49a5bf5d884d34069f491b7fd0",
+      "export_sha256": "fc90b45ccc60b54858f635b25b09a04be6a80b49a5bf5d884d34069f491b7fd0",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00006/hash-001.json",
+      "bytes": 1541,
+      "original_sha256": "9821a5fc443e1342a8d3cf3c2cf8aaaf6ae645e6d7d0e3f2eaa66c5b6d3f1129",
+      "export_sha256": "9821a5fc443e1342a8d3cf3c2cf8aaaf6ae645e6d7d0e3f2eaa66c5b6d3f1129",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00006/hash-002.json",
+      "bytes": 1511,
+      "original_sha256": "83f7971f0512f4810022f2978d480a621b82809d11d9eb3ffff0fecf3eae6922",
+      "export_sha256": "83f7971f0512f4810022f2978d480a621b82809d11d9eb3ffff0fecf3eae6922",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00006/hash-003.json",
+      "bytes": 1538,
+      "original_sha256": "9cd7e5737f783fddabae265b66886e89dc193ee35c8f122e97b844bcb487bfe8",
+      "export_sha256": "9cd7e5737f783fddabae265b66886e89dc193ee35c8f122e97b844bcb487bfe8",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00006/hash-004.json",
+      "bytes": 1601,
+      "original_sha256": "92a487c028b3bebc2fb90cd2f44a013b1e42fd10bcf231e489a0044af8aa39e5",
+      "export_sha256": "92a487c028b3bebc2fb90cd2f44a013b1e42fd10bcf231e489a0044af8aa39e5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00006/manifest.json",
+      "bytes": 821,
+      "original_sha256": "7ec3b07e3d120eec5dcbc0ed6198f84619c7e98afe15be5526cb676a2fadaa7e",
+      "export_sha256": "7ec3b07e3d120eec5dcbc0ed6198f84619c7e98afe15be5526cb676a2fadaa7e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00006/protocol.json",
+      "bytes": 1039,
+      "original_sha256": "2619edf441a65f0b7c3dd7c3a19aefa8a34306bfa732da4fa4e708fef97cce8e",
+      "export_sha256": "2619edf441a65f0b7c3dd7c3a19aefa8a34306bfa732da4fa4e708fef97cce8e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00007/hash-000.json",
+      "bytes": 1538,
+      "original_sha256": "cc1277f530f8bac2ef7c4ac9148ae00fdfbe78f7a87e8bd445c68a5d0082de59",
+      "export_sha256": "cc1277f530f8bac2ef7c4ac9148ae00fdfbe78f7a87e8bd445c68a5d0082de59",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00007/hash-001.json",
+      "bytes": 1543,
+      "original_sha256": "b0d44824846c029630eb6dccf4d58ec797974f6dcad36aa5617ec5bb392727c0",
+      "export_sha256": "b0d44824846c029630eb6dccf4d58ec797974f6dcad36aa5617ec5bb392727c0",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00007/hash-002.json",
+      "bytes": 1511,
+      "original_sha256": "9914d9b55512cf7850d560fa13f995ba31d8d377e3c52cc17de12712cfa617ed",
+      "export_sha256": "9914d9b55512cf7850d560fa13f995ba31d8d377e3c52cc17de12712cfa617ed",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00007/hash-003.json",
+      "bytes": 1538,
+      "original_sha256": "e3cd793640dcdd32433f35d01caaa39661682f8a0be5ef230a7b75b91cf61084",
+      "export_sha256": "e3cd793640dcdd32433f35d01caaa39661682f8a0be5ef230a7b75b91cf61084",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00007/hash-004.json",
+      "bytes": 1601,
+      "original_sha256": "415be42d08774754b4c022c620900477be04d5b09d54db6c445a4213b9d3a2dc",
+      "export_sha256": "415be42d08774754b4c022c620900477be04d5b09d54db6c445a4213b9d3a2dc",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00007/manifest.json",
+      "bytes": 821,
+      "original_sha256": "0e6efd1364d930102d5ed7456f1e7deeecb3162e76915d7eb1e88850072e1a97",
+      "export_sha256": "0e6efd1364d930102d5ed7456f1e7deeecb3162e76915d7eb1e88850072e1a97",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00007/protocol.json",
+      "bytes": 1039,
+      "original_sha256": "d9eb6d309c3fbb106af8e9972ed6629d21c3b8a64d3f54b4af804338e766e737",
+      "export_sha256": "d9eb6d309c3fbb106af8e9972ed6629d21c3b8a64d3f54b4af804338e766e737",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00008/hash-000.json",
+      "bytes": 1538,
+      "original_sha256": "af75f22148f31d942c8ec4edc465706312b0b81299fb8132f60a1d4ee8f8dc0d",
+      "export_sha256": "af75f22148f31d942c8ec4edc465706312b0b81299fb8132f60a1d4ee8f8dc0d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00008/hash-001.json",
+      "bytes": 1541,
+      "original_sha256": "118e452c14ed336fb9b5449b39c64b7137a826dccd6d82744467f8c23c42cb98",
+      "export_sha256": "118e452c14ed336fb9b5449b39c64b7137a826dccd6d82744467f8c23c42cb98",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00008/hash-002.json",
+      "bytes": 1511,
+      "original_sha256": "929a02df8e04bd5875c1f03c637b1cd57aaf9d56b2b573b48f950ec3c5a889a6",
+      "export_sha256": "929a02df8e04bd5875c1f03c637b1cd57aaf9d56b2b573b48f950ec3c5a889a6",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00008/hash-003.json",
+      "bytes": 1538,
+      "original_sha256": "fa15cd4633730091463ed4acd4c3e125837f2b8a320190e2c31aa95df4792f48",
+      "export_sha256": "fa15cd4633730091463ed4acd4c3e125837f2b8a320190e2c31aa95df4792f48",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00008/hash-004.json",
+      "bytes": 1601,
+      "original_sha256": "313808f9e31d7092788c4557338f50b7ff1ee200b5831e804dec359a1e36adc8",
+      "export_sha256": "313808f9e31d7092788c4557338f50b7ff1ee200b5831e804dec359a1e36adc8",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00008/manifest.json",
+      "bytes": 821,
+      "original_sha256": "790f785fb6551a61b12c4309cf6ca94c07e8bad67941cbaabaff8155fbdb45da",
+      "export_sha256": "790f785fb6551a61b12c4309cf6ca94c07e8bad67941cbaabaff8155fbdb45da",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00008/protocol.json",
+      "bytes": 1039,
+      "original_sha256": "ba9b28eb417c461ba17d86448973c2a802b1db9b6e1df2443e9882c2ead1697b",
+      "export_sha256": "ba9b28eb417c461ba17d86448973c2a802b1db9b6e1df2443e9882c2ead1697b",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00009/hash-000.json",
+      "bytes": 1538,
+      "original_sha256": "c83eb9736bb10d4024449fcd8dd5ba2a93eb954d25ceb6acbcf3361f3fe78f93",
+      "export_sha256": "c83eb9736bb10d4024449fcd8dd5ba2a93eb954d25ceb6acbcf3361f3fe78f93",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00009/hash-001.json",
+      "bytes": 1541,
+      "original_sha256": "ed40581c2c7615b24a24ada07efcaa3b566b142ab48d62bbcea93c59991c8b6c",
+      "export_sha256": "ed40581c2c7615b24a24ada07efcaa3b566b142ab48d62bbcea93c59991c8b6c",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00009/hash-002.json",
+      "bytes": 1506,
+      "original_sha256": "e79a49cd8387349a2e4436b0f15f427daeb96d03be445b6ec2f97840e2c166ef",
+      "export_sha256": "e79a49cd8387349a2e4436b0f15f427daeb96d03be445b6ec2f97840e2c166ef",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00009/hash-003.json",
+      "bytes": 1538,
+      "original_sha256": "64c2ca317fcfc2e3b9221dd0d866796d69184c5cade6e8bf6d73c444c21abe69",
+      "export_sha256": "64c2ca317fcfc2e3b9221dd0d866796d69184c5cade6e8bf6d73c444c21abe69",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00009/hash-004.json",
+      "bytes": 1602,
+      "original_sha256": "ea5ed21dc0538f1857b274140890b24a1d1d89fe9d40b954f782d6b2743dae2c",
+      "export_sha256": "ea5ed21dc0538f1857b274140890b24a1d1d89fe9d40b954f782d6b2743dae2c",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00009/manifest.json",
+      "bytes": 821,
+      "original_sha256": "c33c940a5327fda6b97339b79ff5436cac8a6e6729e65b2df3128ef6cddeedec",
+      "export_sha256": "c33c940a5327fda6b97339b79ff5436cac8a6e6729e65b2df3128ef6cddeedec",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00009/protocol.json",
+      "bytes": 1039,
+      "original_sha256": "929d5635f6204fb552c502b7fe5a0a5af986b94c1144825ac9b7737194021dac",
+      "export_sha256": "929d5635f6204fb552c502b7fe5a0a5af986b94c1144825ac9b7737194021dac",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00010/hash-000.json",
+      "bytes": 1537,
+      "original_sha256": "2b7d62013644741566932c51da4e2d5cb69308709147e74128e5f8b6f182f040",
+      "export_sha256": "2b7d62013644741566932c51da4e2d5cb69308709147e74128e5f8b6f182f040",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00010/hash-001.json",
+      "bytes": 1534,
+      "original_sha256": "093b88892441627d2bf2a105ae185f7f5f4bfc92821ece5dcade5cd4922f968e",
+      "export_sha256": "093b88892441627d2bf2a105ae185f7f5f4bfc92821ece5dcade5cd4922f968e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00010/hash-002.json",
+      "bytes": 1510,
+      "original_sha256": "7eef862c6bc5f7b5d3a16a486e5da77338c5e6e7ed1c828dbb6d756fd472ee5c",
+      "export_sha256": "7eef862c6bc5f7b5d3a16a486e5da77338c5e6e7ed1c828dbb6d756fd472ee5c",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00010/hash-003.json",
+      "bytes": 1538,
+      "original_sha256": "01baccbddd9c1a58898b5a98710f03d525175e79ce3d73be4785ab6220b91b56",
+      "export_sha256": "01baccbddd9c1a58898b5a98710f03d525175e79ce3d73be4785ab6220b91b56",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00010/hash-004.json",
+      "bytes": 1601,
+      "original_sha256": "2bee7f8c905811a0f1f4348650351b1e1a03b191dedb1aa470611604fd1f3242",
+      "export_sha256": "2bee7f8c905811a0f1f4348650351b1e1a03b191dedb1aa470611604fd1f3242",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00010/manifest.json",
+      "bytes": 821,
+      "original_sha256": "c2e43940f83eefca6133fca81b6744c65a81292cbd484641c877db491853021a",
+      "export_sha256": "c2e43940f83eefca6133fca81b6744c65a81292cbd484641c877db491853021a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00010/protocol.json",
+      "bytes": 1040,
+      "original_sha256": "3e1c03cf045204b3a1778ad13a575957c7d7b94df5512c25dde79c8a8287a904",
+      "export_sha256": "3e1c03cf045204b3a1778ad13a575957c7d7b94df5512c25dde79c8a8287a904",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00011/hash-000.json",
+      "bytes": 1538,
+      "original_sha256": "0242536e8d1a043e5f0d2cd7bbdc9da04c017b5eca639abb70643950e2bdb660",
+      "export_sha256": "0242536e8d1a043e5f0d2cd7bbdc9da04c017b5eca639abb70643950e2bdb660",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00011/hash-001.json",
+      "bytes": 1535,
+      "original_sha256": "9bf2283ae8b60ca79cba9aaa61d9c03e99a1f708f4e84423e0091ba52600bff1",
+      "export_sha256": "9bf2283ae8b60ca79cba9aaa61d9c03e99a1f708f4e84423e0091ba52600bff1",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00011/hash-002.json",
+      "bytes": 1511,
+      "original_sha256": "03e62db3d62ba8d297447b7e5c5c429d3277d4c3f7481454fc274def0a594f73",
+      "export_sha256": "03e62db3d62ba8d297447b7e5c5c429d3277d4c3f7481454fc274def0a594f73",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00011/hash-003.json",
+      "bytes": 1538,
+      "original_sha256": "1553449d13c2a79a74716ee16bb3e1d718e7f48c36740ee83cd82d1a01df4110",
+      "export_sha256": "1553449d13c2a79a74716ee16bb3e1d718e7f48c36740ee83cd82d1a01df4110",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00011/hash-004.json",
+      "bytes": 1601,
+      "original_sha256": "9fbb097a128431a1f045e26ebc1cec1cd37651febbd56ad74c7e9e6b312f6ba3",
+      "export_sha256": "9fbb097a128431a1f045e26ebc1cec1cd37651febbd56ad74c7e9e6b312f6ba3",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00011/manifest.json",
+      "bytes": 821,
+      "original_sha256": "4eb08e0a9cdf0766fc7153a77b3ce7f0b350282b76958a9a6452f6958345f04e",
+      "export_sha256": "4eb08e0a9cdf0766fc7153a77b3ce7f0b350282b76958a9a6452f6958345f04e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00011/protocol.json",
+      "bytes": 1040,
+      "original_sha256": "c3b1518b8998a64127da100a4fa1f11a2eeff3e7dd44a702349096e22c1ed54f",
+      "export_sha256": "c3b1518b8998a64127da100a4fa1f11a2eeff3e7dd44a702349096e22c1ed54f",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00012/hash-000.json",
+      "bytes": 1537,
+      "original_sha256": "5e68df2a3296b3050f94d212c70bee9a930e8f0a2a1092cf3c89cad4db65153a",
+      "export_sha256": "5e68df2a3296b3050f94d212c70bee9a930e8f0a2a1092cf3c89cad4db65153a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00012/hash-001.json",
+      "bytes": 1535,
+      "original_sha256": "eab3a58fee4b47b90fa06cfd9ec0c9ce99ffd860c9ba51ee9069667bfdfe1366",
+      "export_sha256": "eab3a58fee4b47b90fa06cfd9ec0c9ce99ffd860c9ba51ee9069667bfdfe1366",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00012/hash-002.json",
+      "bytes": 1511,
+      "original_sha256": "09d7f1807fc36f9054b18f86af364f635f93e3f543254161ee87ee0c97b7e719",
+      "export_sha256": "09d7f1807fc36f9054b18f86af364f635f93e3f543254161ee87ee0c97b7e719",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00012/hash-003.json",
+      "bytes": 1539,
+      "original_sha256": "a31f7b0260cbbd94904356892f47c1bc2c82d37f4ab2c07f6d5a0724442b598f",
+      "export_sha256": "a31f7b0260cbbd94904356892f47c1bc2c82d37f4ab2c07f6d5a0724442b598f",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00012/hash-004.json",
+      "bytes": 1600,
+      "original_sha256": "e4adebb239b4bebb37a40f306646e3f4720878c455eb7fba6743098f18363e65",
+      "export_sha256": "e4adebb239b4bebb37a40f306646e3f4720878c455eb7fba6743098f18363e65",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00012/manifest.json",
+      "bytes": 821,
+      "original_sha256": "8ec600b55520135a9a96cb038a7a6b6934a3a9a9320d00c689a8bec46a7d2973",
+      "export_sha256": "8ec600b55520135a9a96cb038a7a6b6934a3a9a9320d00c689a8bec46a7d2973",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00012/protocol.json",
+      "bytes": 1040,
+      "original_sha256": "48504790d37a3e406c24c0ce38dda6811bf3938280e404ab3ee47919656116e5",
+      "export_sha256": "48504790d37a3e406c24c0ce38dda6811bf3938280e404ab3ee47919656116e5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00013/hash-000.json",
+      "bytes": 1537,
+      "original_sha256": "df23582a61862f65bba7ac744a84f141dc98d61dc075dc859037421100758fcf",
+      "export_sha256": "df23582a61862f65bba7ac744a84f141dc98d61dc075dc859037421100758fcf",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00013/hash-001.json",
+      "bytes": 1535,
+      "original_sha256": "da458d7ce734794318cb627c2c33d38569c4576e449207b6c4ccf56d09693d97",
+      "export_sha256": "da458d7ce734794318cb627c2c33d38569c4576e449207b6c4ccf56d09693d97",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00013/hash-002.json",
+      "bytes": 1511,
+      "original_sha256": "715f55ff8558e9ec59871beae3ed43ed75df56ab3e9fe712c7072965758f0b87",
+      "export_sha256": "715f55ff8558e9ec59871beae3ed43ed75df56ab3e9fe712c7072965758f0b87",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00013/hash-003.json",
+      "bytes": 1537,
+      "original_sha256": "17a257059228e33fa114de854ccf78d29a620b1f16ab0d12ce1582aa2f73f23d",
+      "export_sha256": "17a257059228e33fa114de854ccf78d29a620b1f16ab0d12ce1582aa2f73f23d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00013/hash-004.json",
+      "bytes": 1601,
+      "original_sha256": "60815e1cb4b7726de1921d5f250a6d9075c02f46b4a077f6aab3c56f601ef2d0",
+      "export_sha256": "60815e1cb4b7726de1921d5f250a6d9075c02f46b4a077f6aab3c56f601ef2d0",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00013/manifest.json",
+      "bytes": 821,
+      "original_sha256": "8c9747e6bf701a59caada61cf1570cdac0995f88c0911dbb2d3b42f084885ab9",
+      "export_sha256": "8c9747e6bf701a59caada61cf1570cdac0995f88c0911dbb2d3b42f084885ab9",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00013/protocol.json",
+      "bytes": 1040,
+      "original_sha256": "d7eb364b1c378f6df0f4fb0f3a5f3cb2ba6bd2554733b1b9f6d738ab677c17f7",
+      "export_sha256": "d7eb364b1c378f6df0f4fb0f3a5f3cb2ba6bd2554733b1b9f6d738ab677c17f7",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00014/hash-000.json",
+      "bytes": 1537,
+      "original_sha256": "bc57d9c5486272ae8709e14c8c2daa5d57673924ffad54a55c562e72b1bddd9e",
+      "export_sha256": "bc57d9c5486272ae8709e14c8c2daa5d57673924ffad54a55c562e72b1bddd9e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00014/hash-001.json",
+      "bytes": 1543,
+      "original_sha256": "81f00416074f21a71e311c63161f577483c21b24ed32647502f1dd9410b840bf",
+      "export_sha256": "81f00416074f21a71e311c63161f577483c21b24ed32647502f1dd9410b840bf",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00014/hash-002.json",
+      "bytes": 1510,
+      "original_sha256": "58c3cfb129c234dde1e270abe64caaeff44b128c6ff5c778f9cae62240184254",
+      "export_sha256": "58c3cfb129c234dde1e270abe64caaeff44b128c6ff5c778f9cae62240184254",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00014/hash-003.json",
+      "bytes": 1537,
+      "original_sha256": "5d6e9f13a593e48ef0b4e3fa4dd4ded67ccbf0f683295868d7ca09ddc07978df",
+      "export_sha256": "5d6e9f13a593e48ef0b4e3fa4dd4ded67ccbf0f683295868d7ca09ddc07978df",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00014/hash-004.json",
+      "bytes": 1601,
+      "original_sha256": "fe709015a53a0146caa4d2e9b73b1ae69f9393d6554e4a2fb4113cd426e9c454",
+      "export_sha256": "fe709015a53a0146caa4d2e9b73b1ae69f9393d6554e4a2fb4113cd426e9c454",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00014/manifest.json",
+      "bytes": 821,
+      "original_sha256": "09ff386938966e769f5ca75b4c20661cac2172c5887c68dadd1b125d2c49aa5c",
+      "export_sha256": "09ff386938966e769f5ca75b4c20661cac2172c5887c68dadd1b125d2c49aa5c",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00014/protocol.json",
+      "bytes": 1040,
+      "original_sha256": "2f6053d1e0ad9fb08b67f7002750772ab783b41b9905a665b923e9a604f1d7b6",
+      "export_sha256": "2f6053d1e0ad9fb08b67f7002750772ab783b41b9905a665b923e9a604f1d7b6",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00015/hash-000.json",
+      "bytes": 1537,
+      "original_sha256": "4c53db509a8dbb2ac794a2cfdbd45bf62dbc67c146882d5ef1c9d087dd439010",
+      "export_sha256": "4c53db509a8dbb2ac794a2cfdbd45bf62dbc67c146882d5ef1c9d087dd439010",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00015/hash-001.json",
+      "bytes": 1534,
+      "original_sha256": "40febde26f7e451b28560a170980e831ff86be3ee530c14e368f348a75db29cd",
+      "export_sha256": "40febde26f7e451b28560a170980e831ff86be3ee530c14e368f348a75db29cd",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00015/hash-002.json",
+      "bytes": 1510,
+      "original_sha256": "340c25ab04c8454ecfe7982102a7d227e83f1d74d48c9b2cf789edf81b568106",
+      "export_sha256": "340c25ab04c8454ecfe7982102a7d227e83f1d74d48c9b2cf789edf81b568106",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00015/hash-003.json",
+      "bytes": 1538,
+      "original_sha256": "03e97f0a8f8b19d91919fd15051a09ed6712639a29b06196e54ca25bba936eab",
+      "export_sha256": "03e97f0a8f8b19d91919fd15051a09ed6712639a29b06196e54ca25bba936eab",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00015/hash-004.json",
+      "bytes": 1601,
+      "original_sha256": "eabdefd3f3cc10e6f3de989ce23f65b742fc92fb35e60b52728e69932653bce9",
+      "export_sha256": "eabdefd3f3cc10e6f3de989ce23f65b742fc92fb35e60b52728e69932653bce9",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00015/manifest.json",
+      "bytes": 821,
+      "original_sha256": "b8b99117400ee2275e1ac9200c90b124fccda56a165df3ef03beacfa2598ef44",
+      "export_sha256": "b8b99117400ee2275e1ac9200c90b124fccda56a165df3ef03beacfa2598ef44",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark/rank00015/protocol.json",
+      "bytes": 1040,
+      "original_sha256": "82db416a6d003108bc9ae706ad9d057e989904daae9ca0cd3a9426e0489bea2e",
+      "export_sha256": "82db416a6d003108bc9ae706ad9d057e989904daae9ca0cd3a9426e0489bea2e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00000/manifest.json",
+      "bytes": 7454,
+      "original_sha256": "10fc672a3e0b0272c48d9400aee492e5ea25a56d4194e3336a712aaff04520e8",
+      "export_sha256": "10fc672a3e0b0272c48d9400aee492e5ea25a56d4194e3336a712aaff04520e8",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/eligibility.json",
+      "bytes": 751,
+      "original_sha256": "71b8c40a33eb2344ad369ed08d3961618216b2a707ff064b616a3ae278036004",
+      "export_sha256": "71b8c40a33eb2344ad369ed08d3961618216b2a707ff064b616a3ae278036004",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-000.json",
+      "bytes": 3592,
+      "original_sha256": "655801c1d39b44abfdd414907464caa5239ec3b21611039093858a54bce24f0c",
+      "export_sha256": "655801c1d39b44abfdd414907464caa5239ec3b21611039093858a54bce24f0c",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-001.json",
+      "bytes": 4297,
+      "original_sha256": "88a5b4cc3862402a09c9d0075f141741450ed542a8f0a982f0872cc8eafac033",
+      "export_sha256": "88a5b4cc3862402a09c9d0075f141741450ed542a8f0a982f0872cc8eafac033",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/read-0.json",
+      "bytes": 1614,
+      "original_sha256": "326242dad2c7b77eb4d4b3887894113b12abd580ab7a1cfaf1faa52e7c22991d",
+      "export_sha256": "326242dad2c7b77eb4d4b3887894113b12abd580ab7a1cfaf1faa52e7c22991d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/receipt.json",
+      "bytes": 4602,
+      "original_sha256": "72dc78df63a9dce4520d4473b51e5cbc1622e845e0b7e92f4827ed7949ac3c6d",
+      "export_sha256": "72dc78df63a9dce4520d4473b51e5cbc1622e845e0b7e92f4827ed7949ac3c6d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00000/startup.json",
+      "bytes": 1620,
+      "original_sha256": "7d233372578158581364f666ac3a3c55d4a70fa41cff2091b00455a5c76ac764",
+      "export_sha256": "7d233372578158581364f666ac3a3c55d4a70fa41cff2091b00455a5c76ac764",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00001/manifest.json",
+      "bytes": 1070,
+      "original_sha256": "c32fed73f774eb8c993cd543925ffffe88fc2955397ac41db8cf62a0fbd496e6",
+      "export_sha256": "c32fed73f774eb8c993cd543925ffffe88fc2955397ac41db8cf62a0fbd496e6",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00001/startup.json",
+      "bytes": 592,
+      "original_sha256": "046febf6a486e25ff1651df76b02af073972dbbf802c379195f5e5163cf4e429",
+      "export_sha256": "046febf6a486e25ff1651df76b02af073972dbbf802c379195f5e5163cf4e429",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00002/manifest.json",
+      "bytes": 1070,
+      "original_sha256": "334eada10935820fb69f8626a19fb1dd3859bd1e3d79cd579297f9c317a36c05",
+      "export_sha256": "334eada10935820fb69f8626a19fb1dd3859bd1e3d79cd579297f9c317a36c05",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00002/startup.json",
+      "bytes": 592,
+      "original_sha256": "59517f4b8aeba5dd486a6aa383c3911dc43b58f0fb119f127bdbd3c000be4fc2",
+      "export_sha256": "59517f4b8aeba5dd486a6aa383c3911dc43b58f0fb119f127bdbd3c000be4fc2",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00003/manifest.json",
+      "bytes": 1070,
+      "original_sha256": "dbcafce4cc11081e50a49704a062344f07a940536315fbe6690c5ef8165009a9",
+      "export_sha256": "dbcafce4cc11081e50a49704a062344f07a940536315fbe6690c5ef8165009a9",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00003/startup.json",
+      "bytes": 592,
+      "original_sha256": "aea4b9e71623f8d369e5f0545581eaa69ad312c86ce7499b82d6cf918b16440a",
+      "export_sha256": "aea4b9e71623f8d369e5f0545581eaa69ad312c86ce7499b82d6cf918b16440a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00004/manifest.json",
+      "bytes": 1070,
+      "original_sha256": "d49102643c08050d745a4d608ba6b65dcc80f18f77fa947c290f0903fb3ff75d",
+      "export_sha256": "d49102643c08050d745a4d608ba6b65dcc80f18f77fa947c290f0903fb3ff75d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00004/startup.json",
+      "bytes": 592,
+      "original_sha256": "b5da06469c89ea61e4d90ff1a218fb14c8604f32f1dca69b7d3f056e7400b31e",
+      "export_sha256": "b5da06469c89ea61e4d90ff1a218fb14c8604f32f1dca69b7d3f056e7400b31e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00005/manifest.json",
+      "bytes": 1070,
+      "original_sha256": "46e2b376d4c68adeae461a5010472d211f4f63a2960287308db6c846cbe63162",
+      "export_sha256": "46e2b376d4c68adeae461a5010472d211f4f63a2960287308db6c846cbe63162",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00005/startup.json",
+      "bytes": 592,
+      "original_sha256": "226435d28b4cc52dba9e5ce1aaace7528bd30add6d86c5ce8921fa4c593dcad3",
+      "export_sha256": "226435d28b4cc52dba9e5ce1aaace7528bd30add6d86c5ce8921fa4c593dcad3",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00006/manifest.json",
+      "bytes": 1070,
+      "original_sha256": "f2b40876842f699e2cc4d83c4b9b971de752eb415474697cf24e6a8bfbcd6b4d",
+      "export_sha256": "f2b40876842f699e2cc4d83c4b9b971de752eb415474697cf24e6a8bfbcd6b4d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00006/startup.json",
+      "bytes": 592,
+      "original_sha256": "8b2301dc3d0dcc62003fbf020ddf11629e59616aa4babd77539e6bf6e4eb7488",
+      "export_sha256": "8b2301dc3d0dcc62003fbf020ddf11629e59616aa4babd77539e6bf6e4eb7488",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00007/manifest.json",
+      "bytes": 1070,
+      "original_sha256": "e2e3fc1cf898cea60f88f0c95c933c692024be1d241127c94bd3b26754995f75",
+      "export_sha256": "e2e3fc1cf898cea60f88f0c95c933c692024be1d241127c94bd3b26754995f75",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00007/startup.json",
+      "bytes": 592,
+      "original_sha256": "a84ad2b33f68618c7b3fb86e28e05a6a6d4976f321c4611cfdb85bcad88ca474",
+      "export_sha256": "a84ad2b33f68618c7b3fb86e28e05a6a6d4976f321c4611cfdb85bcad88ca474",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00008/manifest.json",
+      "bytes": 1070,
+      "original_sha256": "baa2bf228ccf750444b94e483cf090ff81201e2847ae81883cb629e626dc8dc5",
+      "export_sha256": "baa2bf228ccf750444b94e483cf090ff81201e2847ae81883cb629e626dc8dc5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00008/startup.json",
+      "bytes": 592,
+      "original_sha256": "24175c1fddc7b77672c3fd5c51a3543af16b0fe3575359748f4f06bbb81f2998",
+      "export_sha256": "24175c1fddc7b77672c3fd5c51a3543af16b0fe3575359748f4f06bbb81f2998",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00009/manifest.json",
+      "bytes": 1070,
+      "original_sha256": "a98d8de47ee536d582ba0638e1f24cf5721000f62d77bf6cd49c787db5a0c238",
+      "export_sha256": "a98d8de47ee536d582ba0638e1f24cf5721000f62d77bf6cd49c787db5a0c238",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00009/startup.json",
+      "bytes": 592,
+      "original_sha256": "3a3120646cbb2f3eddf90000f05d450fe056a415623b31c3d1a0c921f8ccffcc",
+      "export_sha256": "3a3120646cbb2f3eddf90000f05d450fe056a415623b31c3d1a0c921f8ccffcc",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00010/manifest.json",
+      "bytes": 1071,
+      "original_sha256": "18f4041695d28005b4a623ee17b3388e7100b607a8b5743cefcc08521b40a47d",
+      "export_sha256": "18f4041695d28005b4a623ee17b3388e7100b607a8b5743cefcc08521b40a47d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00010/startup.json",
+      "bytes": 593,
+      "original_sha256": "e940f0b14a4682617e34181d7a1043297a55a3eb945a20f43cc78d8274dc4450",
+      "export_sha256": "e940f0b14a4682617e34181d7a1043297a55a3eb945a20f43cc78d8274dc4450",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00011/manifest.json",
+      "bytes": 1071,
+      "original_sha256": "078d5c52842035cf5df3bd1cdeea2a406ec56f9cf8421cfe4642987778a8fba5",
+      "export_sha256": "078d5c52842035cf5df3bd1cdeea2a406ec56f9cf8421cfe4642987778a8fba5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00011/startup.json",
+      "bytes": 593,
+      "original_sha256": "df815144953c71b26fbc6cdd8d37c7893201ef64023dc04e85f90e9f15a0a594",
+      "export_sha256": "df815144953c71b26fbc6cdd8d37c7893201ef64023dc04e85f90e9f15a0a594",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00012/manifest.json",
+      "bytes": 1071,
+      "original_sha256": "c289b773a93a57896710d9f7dabeae9f19f7c5a425090bcc44d2ba6feb823789",
+      "export_sha256": "c289b773a93a57896710d9f7dabeae9f19f7c5a425090bcc44d2ba6feb823789",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00012/startup.json",
+      "bytes": 593,
+      "original_sha256": "b7195c3ccf2a020c9fd325a361bcdd67a783005698775cb39ec7470a0974931a",
+      "export_sha256": "b7195c3ccf2a020c9fd325a361bcdd67a783005698775cb39ec7470a0974931a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00013/manifest.json",
+      "bytes": 1071,
+      "original_sha256": "d39ae6873330ac655e9248679ca1f7d315d8f94f1fdb29a92c75dc359ef3632d",
+      "export_sha256": "d39ae6873330ac655e9248679ca1f7d315d8f94f1fdb29a92c75dc359ef3632d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00013/startup.json",
+      "bytes": 593,
+      "original_sha256": "5d2768c53a4761eab2328858f227b8d9e1faf29a425df7a2c4c5addafc72dfdc",
+      "export_sha256": "5d2768c53a4761eab2328858f227b8d9e1faf29a425df7a2c4c5addafc72dfdc",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00014/manifest.json",
+      "bytes": 1071,
+      "original_sha256": "9a9f525fa51f6f758a9c3e1ef72c943e8f6afc82fbc1f4c63079300085bb58b6",
+      "export_sha256": "9a9f525fa51f6f758a9c3e1ef72c943e8f6afc82fbc1f4c63079300085bb58b6",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00014/startup.json",
+      "bytes": 593,
+      "original_sha256": "c922e50e2459efd2d0b61815f3ef806de7cab2c698b59a01935fbcb38d6946f9",
+      "export_sha256": "c922e50e2459efd2d0b61815f3ef806de7cab2c698b59a01935fbcb38d6946f9",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00015/manifest.json",
+      "bytes": 1071,
+      "original_sha256": "baeee3b232dfcb6f6949000edcfbe6acd8dae81f4d52513e9f6df72a76437f61",
+      "export_sha256": "baeee3b232dfcb6f6949000edcfbe6acd8dae81f4d52513e9f6df72a76437f61",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/benchmark-fresh-publication-v2/rank00015/startup.json",
+      "bytes": 593,
+      "original_sha256": "bfe98ce610ec7c4898a75a81eea64361dcab2507ac18b6282181f119e704165d",
+      "export_sha256": "bfe98ce610ec7c4898a75a81eea64361dcab2507ac18b6282181f119e704165d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-000.json",
+      "bytes": 1678,
+      "original_sha256": "d629e7b81d03fb8ba1fadeac88699f7e0cde921da132c5db2110a8571281b2cd",
+      "export_sha256": "d629e7b81d03fb8ba1fadeac88699f7e0cde921da132c5db2110a8571281b2cd",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-001.json",
+      "bytes": 1663,
+      "original_sha256": "a759d90168240b6bd44a0ea9e354f44c51b0261b92afddcfdd230c0bc29e2af7",
+      "export_sha256": "a759d90168240b6bd44a0ea9e354f44c51b0261b92afddcfdd230c0bc29e2af7",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-002.json",
+      "bytes": 1663,
+      "original_sha256": "04484a34563826e196a661c62b1d1486927bebaa1b94bd68f02863172cfb3354",
+      "export_sha256": "04484a34563826e196a661c62b1d1486927bebaa1b94bd68f02863172cfb3354",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-003.json",
+      "bytes": 1663,
+      "original_sha256": "cf01b51062735aee4a6a7fa010015f482f0526df29b76b3e1b440fe95484077f",
+      "export_sha256": "cf01b51062735aee4a6a7fa010015f482f0526df29b76b3e1b440fe95484077f",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-004.json",
+      "bytes": 1662,
+      "original_sha256": "a8ecbcffffbfae26010607b04b7544e3d8ec84cf31ce7cc1f18857414c968c3e",
+      "export_sha256": "a8ecbcffffbfae26010607b04b7544e3d8ec84cf31ce7cc1f18857414c968c3e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-005.json",
+      "bytes": 1662,
+      "original_sha256": "9bcc32ebd9d8a010331f70ba6205069a6458919e32c50b086b15b7ed6686ab54",
+      "export_sha256": "9bcc32ebd9d8a010331f70ba6205069a6458919e32c50b086b15b7ed6686ab54",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-006.json",
+      "bytes": 1664,
+      "original_sha256": "e66938a93a132eab60f992603f4ba2a7310782de3aa06d1c69cc85ebc99e65ba",
+      "export_sha256": "e66938a93a132eab60f992603f4ba2a7310782de3aa06d1c69cc85ebc99e65ba",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-007.json",
+      "bytes": 1663,
+      "original_sha256": "142876c6eb02ed72e28b120e62bc59c77bec32dacb162ade8c361cdddb64e481",
+      "export_sha256": "142876c6eb02ed72e28b120e62bc59c77bec32dacb162ade8c361cdddb64e481",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-008.json",
+      "bytes": 1662,
+      "original_sha256": "7781fff382ff775aaeff103b12f689e48368a732f9aea88fd4d3e2272b1f7bb8",
+      "export_sha256": "7781fff382ff775aaeff103b12f689e48368a732f9aea88fd4d3e2272b1f7bb8",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-009.json",
+      "bytes": 1663,
+      "original_sha256": "22a74f3ea9a77d1fa278174cb7da8d0d1788d0ad4426184c95d4503d45b6f58f",
+      "export_sha256": "22a74f3ea9a77d1fa278174cb7da8d0d1788d0ad4426184c95d4503d45b6f58f",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-010.json",
+      "bytes": 1663,
+      "original_sha256": "cc4ebbbfedebd31a77f9ef60f70df0a2fa7cb001dd24c22311bdc52273345a18",
+      "export_sha256": "cc4ebbbfedebd31a77f9ef60f70df0a2fa7cb001dd24c22311bdc52273345a18",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-011.json",
+      "bytes": 1663,
+      "original_sha256": "322b686385ed65e6251439e4c35dbd5a289a40b7bee2f6610e65e3f4b17c6a48",
+      "export_sha256": "322b686385ed65e6251439e4c35dbd5a289a40b7bee2f6610e65e3f4b17c6a48",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-012.json",
+      "bytes": 1663,
+      "original_sha256": "a4f58c312e02330e8e641641b5d5f7d3535cffd7f6b4c7f726466a9c7c4ef071",
+      "export_sha256": "a4f58c312e02330e8e641641b5d5f7d3535cffd7f6b4c7f726466a9c7c4ef071",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-013.json",
+      "bytes": 1663,
+      "original_sha256": "f13a14561e2e07eb8a52bde9615e011d32e9049a4df6ca13122fbc94d4ae4649",
+      "export_sha256": "f13a14561e2e07eb8a52bde9615e011d32e9049a4df6ca13122fbc94d4ae4649",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-014.json",
+      "bytes": 1663,
+      "original_sha256": "0dd477de1fe7b5d7585b4a010511ecc3dc6f9a05caf6f775ad02430d9a29a82e",
+      "export_sha256": "0dd477de1fe7b5d7585b4a010511ecc3dc6f9a05caf6f775ad02430d9a29a82e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-015.json",
+      "bytes": 1663,
+      "original_sha256": "1b8f8b86fec7fd7d5a7872de55d6a67f8e698526fb5ddc03f4538d59a68ad057",
+      "export_sha256": "1b8f8b86fec7fd7d5a7872de55d6a67f8e698526fb5ddc03f4538d59a68ad057",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-016.json",
+      "bytes": 1663,
+      "original_sha256": "c414d20efc99690e507b3944037ed2c0a9969d57b56f05baa05b0c1d32e7e08c",
+      "export_sha256": "c414d20efc99690e507b3944037ed2c0a9969d57b56f05baa05b0c1d32e7e08c",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-017.json",
+      "bytes": 1649,
+      "original_sha256": "b45c30db34f2cfa34c6e310a301803586b958ab4affa106c693b82d9607310d5",
+      "export_sha256": "b45c30db34f2cfa34c6e310a301803586b958ab4affa106c693b82d9607310d5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-018.json",
+      "bytes": 1536,
+      "original_sha256": "e9f60dd439da17f54b5e8ccf3cd5bf291252df94f5e82762eb9d6432294ce543",
+      "export_sha256": "e9f60dd439da17f54b5e8ccf3cd5bf291252df94f5e82762eb9d6432294ce543",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-019.json",
+      "bytes": 1532,
+      "original_sha256": "2596ebaf24cd8472b174cc98bde912a4a21b8a1ce12c20bb83fa1c769012e92a",
+      "export_sha256": "2596ebaf24cd8472b174cc98bde912a4a21b8a1ce12c20bb83fa1c769012e92a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-020.json",
+      "bytes": 1610,
+      "original_sha256": "25f2163816f7e92b1521a739a98a216c06fa49c8436715bd684c4c12b18bdbca",
+      "export_sha256": "25f2163816f7e92b1521a739a98a216c06fa49c8436715bd684c4c12b18bdbca",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-021.json",
+      "bytes": 1536,
+      "original_sha256": "ad526e2ab00c347cbce582a8cb476c1d456cdfc399eae85648cdcb47203f2431",
+      "export_sha256": "ad526e2ab00c347cbce582a8cb476c1d456cdfc399eae85648cdcb47203f2431",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-022.json",
+      "bytes": 1531,
+      "original_sha256": "f68acaefedfb0cbbc0f0f67cf8813e4dff6d7473d7ded871cff4d8259e5e5e11",
+      "export_sha256": "f68acaefedfb0cbbc0f0f67cf8813e4dff6d7473d7ded871cff4d8259e5e5e11",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-023.json",
+      "bytes": 1590,
+      "original_sha256": "f3b2a33bcd4c533ed5fc99523ce9da1fda31276460afc07d995f6afd567c0307",
+      "export_sha256": "f3b2a33bcd4c533ed5fc99523ce9da1fda31276460afc07d995f6afd567c0307",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-024.json",
+      "bytes": 1677,
+      "original_sha256": "8bcd80f48e7b4510321db04c3fde9cc934ef7233e5453bca4132b6d786b29542",
+      "export_sha256": "8bcd80f48e7b4510321db04c3fde9cc934ef7233e5453bca4132b6d786b29542",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-025.json",
+      "bytes": 1663,
+      "original_sha256": "36677606373efa3693d93eaabfe87579bbf9aa070691e4c527b5c3feef5b08b4",
+      "export_sha256": "36677606373efa3693d93eaabfe87579bbf9aa070691e4c527b5c3feef5b08b4",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-026.json",
+      "bytes": 1664,
+      "original_sha256": "549f37a18f20057b931aa6c5027080f813065a5fdf5fdcb0b8f7d93fe23a7066",
+      "export_sha256": "549f37a18f20057b931aa6c5027080f813065a5fdf5fdcb0b8f7d93fe23a7066",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-027.json",
+      "bytes": 1663,
+      "original_sha256": "40f8f5fb43640ac3c358002f1dd03b7755141abeac30c3c08a82ccdf89d79517",
+      "export_sha256": "40f8f5fb43640ac3c358002f1dd03b7755141abeac30c3c08a82ccdf89d79517",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-028.json",
+      "bytes": 1663,
+      "original_sha256": "33af401a26f1940cf681e837f81c62fa6b7fefa682ed6973e1318ce2c1b4195e",
+      "export_sha256": "33af401a26f1940cf681e837f81c62fa6b7fefa682ed6973e1318ce2c1b4195e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-029.json",
+      "bytes": 1662,
+      "original_sha256": "7279fc77a0b8d763250ad675b3d2a27acd1c12919755a2b8f284b65dec9bb5df",
+      "export_sha256": "7279fc77a0b8d763250ad675b3d2a27acd1c12919755a2b8f284b65dec9bb5df",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-030.json",
+      "bytes": 1662,
+      "original_sha256": "b34d1b8636c96545d7be02ddfd89f2da7f7e72f34f19e2444eedd64bfee46ddb",
+      "export_sha256": "b34d1b8636c96545d7be02ddfd89f2da7f7e72f34f19e2444eedd64bfee46ddb",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-031.json",
+      "bytes": 1661,
+      "original_sha256": "7e64075751427d8033bb549e41bf3ffcbb8688f4d261a5e6fdb3ef8b55e9c4d1",
+      "export_sha256": "7e64075751427d8033bb549e41bf3ffcbb8688f4d261a5e6fdb3ef8b55e9c4d1",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-032.json",
+      "bytes": 1663,
+      "original_sha256": "23c243539359f4bc44ba551e00d6a71c6090c783b424dfffc465984f73b9c27a",
+      "export_sha256": "23c243539359f4bc44ba551e00d6a71c6090c783b424dfffc465984f73b9c27a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-033.json",
+      "bytes": 1663,
+      "original_sha256": "5fa66fa221e5a6ddb2522b6ecaee1368586a4068e16605552f835fe524274f2d",
+      "export_sha256": "5fa66fa221e5a6ddb2522b6ecaee1368586a4068e16605552f835fe524274f2d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-034.json",
+      "bytes": 1662,
+      "original_sha256": "315dec87b1147aaaa18cebb476bc4e704d163f063f27c3a7aa926d7d96d13cee",
+      "export_sha256": "315dec87b1147aaaa18cebb476bc4e704d163f063f27c3a7aa926d7d96d13cee",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-035.json",
+      "bytes": 1663,
+      "original_sha256": "dc66ec35e531eb52095e2e7baba2dea2c7de55df090a5b63d97c5e2bb4df3337",
+      "export_sha256": "dc66ec35e531eb52095e2e7baba2dea2c7de55df090a5b63d97c5e2bb4df3337",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-036.json",
+      "bytes": 1664,
+      "original_sha256": "d6c8a1fafb1340e2e90df1820d597704e646ecac0c87f7af6ec52fa6ac472500",
+      "export_sha256": "d6c8a1fafb1340e2e90df1820d597704e646ecac0c87f7af6ec52fa6ac472500",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-037.json",
+      "bytes": 1663,
+      "original_sha256": "03230fe6cdf60160744b67ae646a75609f2c1d71beecb46920f0baa31e12b585",
+      "export_sha256": "03230fe6cdf60160744b67ae646a75609f2c1d71beecb46920f0baa31e12b585",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-038.json",
+      "bytes": 1663,
+      "original_sha256": "e22fc6b6cda4dd4c28f48b393f3fe0d19cbe59043859d367ded96c35331e05d5",
+      "export_sha256": "e22fc6b6cda4dd4c28f48b393f3fe0d19cbe59043859d367ded96c35331e05d5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-039.json",
+      "bytes": 1663,
+      "original_sha256": "de3edf42cf8c281143e44c99a01c33b53b08a0cba3d85e178c1ab90916113a3e",
+      "export_sha256": "de3edf42cf8c281143e44c99a01c33b53b08a0cba3d85e178c1ab90916113a3e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-040.json",
+      "bytes": 1663,
+      "original_sha256": "76c700998570cf8e028b44211f255771c3a40eba077ffb0320e06a9f56bfc7ae",
+      "export_sha256": "76c700998570cf8e028b44211f255771c3a40eba077ffb0320e06a9f56bfc7ae",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-041.json",
+      "bytes": 1536,
+      "original_sha256": "9bc0614d0b68bd8fbeca7193237a323ad6583ded3a1bf4c0115fca41edc0ba96",
+      "export_sha256": "9bc0614d0b68bd8fbeca7193237a323ad6583ded3a1bf4c0115fca41edc0ba96",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-042.json",
+      "bytes": 1532,
+      "original_sha256": "080899d83dd10528cc2b02a701e99fa811191d97c48139cacf05c9752ceb44f0",
+      "export_sha256": "080899d83dd10528cc2b02a701e99fa811191d97c48139cacf05c9752ceb44f0",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-043.json",
+      "bytes": 1608,
+      "original_sha256": "85d57c61e1efb692da84865349dcf843ee3982db1335e93eab173d1d13f649c8",
+      "export_sha256": "85d57c61e1efb692da84865349dcf843ee3982db1335e93eab173d1d13f649c8",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/hash-044.json",
+      "bytes": 1649,
+      "original_sha256": "87e0b5f314226bef629047f172ed1cd09b3db0497550b8e020d7f3f4b9cfe075",
+      "export_sha256": "87e0b5f314226bef629047f172ed1cd09b3db0497550b8e020d7f3f4b9cfe075",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/eligibility.json",
+      "bytes": 837,
+      "original_sha256": "f9139ced1dd2a2d52afddba1fca276f44b2c93d14c6280d5426e2f8c42ccd5c4",
+      "export_sha256": "f9139ced1dd2a2d52afddba1fca276f44b2c93d14c6280d5426e2f8c42ccd5c4",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/progress-000.json",
+      "bytes": 3474,
+      "original_sha256": "4dc8ad4f440569cc4d9013c9cdfb7eb2bf8e0e090340fb6b27e7870fafe2be0a",
+      "export_sha256": "4dc8ad4f440569cc4d9013c9cdfb7eb2bf8e0e090340fb6b27e7870fafe2be0a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/progress-001.json",
+      "bytes": 3929,
+      "original_sha256": "3a2034b182ca32c292e402719dfb7abb160a3a8cac295f2b0accd3228763abf8",
+      "export_sha256": "3a2034b182ca32c292e402719dfb7abb160a3a8cac295f2b0accd3228763abf8",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/read-0.json",
+      "bytes": 1681,
+      "original_sha256": "fbb4f9827a951bbe87889bec6b290773d4366c00158a451e1a5bdeba8592baa8",
+      "export_sha256": "fbb4f9827a951bbe87889bec6b290773d4366c00158a451e1a5bdeba8592baa8",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/receipt.json",
+      "bytes": 4226,
+      "original_sha256": "d16c304c97e3414acfa62c0b00af762b469ac7992634686ecebb658849ccafd0",
+      "export_sha256": "d16c304c97e3414acfa62c0b00af762b469ac7992634686ecebb658849ccafd0",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper/hash-000.json",
+      "bytes": 1598,
+      "original_sha256": "322cf530ef8d4f64347fe5eff6275d1c14327fe3d4c1d5dfd1b589d44f44fbbd",
+      "export_sha256": "322cf530ef8d4f64347fe5eff6275d1c14327fe3d4c1d5dfd1b589d44f44fbbd",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper/hash-001.json",
+      "bytes": 1640,
+      "original_sha256": "9ac69e73aa383c812b67f0e0fbbdd1806141e9340a70963c450da29bc81fab5a",
+      "export_sha256": "9ac69e73aa383c812b67f0e0fbbdd1806141e9340a70963c450da29bc81fab5a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper/hash-002.json",
+      "bytes": 1677,
+      "original_sha256": "65120c7f6e524cc49c954388ee3b935c72019aeb0f8e7e90cc71e4881ebcb3d8",
+      "export_sha256": "65120c7f6e524cc49c954388ee3b935c72019aeb0f8e7e90cc71e4881ebcb3d8",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper/hash-003.json",
+      "bytes": 7072,
+      "original_sha256": "409ef636d650ca8bf92d0938a9796028e3dfa8ee9b73e86199f62038bb6b9579",
+      "export_sha256": "409ef636d650ca8bf92d0938a9796028e3dfa8ee9b73e86199f62038bb6b9579",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper/manifest.json",
+      "bytes": 6674,
+      "original_sha256": "ed659a7c72b547844e61ca26dc9db4aa3cc39a953ebd6e3f88e90d12923722e4",
+      "export_sha256": "ed659a7c72b547844e61ca26dc9db4aa3cc39a953ebd6e3f88e90d12923722e4",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper/protocol.json",
+      "bytes": 2323,
+      "original_sha256": "a5fccab45a4e49f9cafd47d667f8d0fe8c1bfa92190e23a040065d917ab6a81c",
+      "export_sha256": "a5fccab45a4e49f9cafd47d667f8d0fe8c1bfa92190e23a040065d917ab6a81c",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper/status.json",
+      "bytes": 317,
+      "original_sha256": "bf8c86d9abb1602c560d358881795bc21f7a71610f1a56bf6d2dbd206139aa37",
+      "export_sha256": "bf8c86d9abb1602c560d358881795bc21f7a71610f1a56bf6d2dbd206139aa37",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/helper-call.json",
+      "bytes": 2780,
+      "original_sha256": "c4668baf6bbcb44ebdb8b58a75e28a41d89907f862f3a82872a0aec8a8187cc3",
+      "export_sha256": "c4668baf6bbcb44ebdb8b58a75e28a41d89907f862f3a82872a0aec8a8187cc3",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/manifest.json",
+      "bytes": 5901,
+      "original_sha256": "f2c445f6f9e871aa53a9629b9fad7305d3a0e456c1e46665dda2260d6cb4bba7",
+      "export_sha256": "f2c445f6f9e871aa53a9629b9fad7305d3a0e456c1e46665dda2260d6cb4bba7",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/prior-result.json",
+      "bytes": 40156,
+      "original_sha256": "e631ceafbd6b31bdd804f81ad6419efcf04da578a7ec90e2090a8f6c86fedefe",
+      "export_sha256": "35c0531598993772b689f2ed51b9f442cf021acfd50535063bbf1c77328c6bd4",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent/protocol.json",
+      "bytes": 1042,
+      "original_sha256": "847fc8bbb2c32cb60283ab68ed069ef74c3c383a64b95d57c17080a3f75d20c6",
+      "export_sha256": "847fc8bbb2c32cb60283ab68ed069ef74c3c383a64b95d57c17080a3f75d20c6",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent-fresh-publication-v2/rank00000/manifest.json",
+      "bytes": 1054,
+      "original_sha256": "c903786871528012e814b448d6a1abdce8bbf9b429da9a79fcf147c00d684fd3",
+      "export_sha256": "c903786871528012e814b448d6a1abdce8bbf9b429da9a79fcf147c00d684fd3",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/checksum-audit/independent-fresh-publication-v2/rank00000/startup.json",
+      "bytes": 595,
+      "original_sha256": "d991ddbcf692ea815b9d336f4c989d8336f310ed61f99790c0fb975900c06c75",
+      "export_sha256": "d991ddbcf692ea815b9d336f4c989d8336f310ed61f99790c0fb975900c06c75",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/independent-000.log",
+      "bytes": 1898,
+      "original_sha256": "7b8e2a62ad94fdd7abec176f48d548d687a5029fe074d8f4932f0638ea0ef7f9",
+      "export_sha256": "7b8e2a62ad94fdd7abec176f48d548d687a5029fe074d8f4932f0638ea0ef7f9",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/column0.log",
+      "bytes": 213,
+      "original_sha256": "f62e7ff843fb67bd1aa9685ee3cacb463f2fb92986a2e3ea9dd59022dfa4a73a",
+      "export_sha256": "f62e7ff843fb67bd1aa9685ee3cacb463f2fb92986a2e3ea9dd59022dfa4a73a",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/column1.log",
+      "bytes": 213,
+      "original_sha256": "002e48050ebd98ed0b67a9517c4f3e6ff3c926d3a36a483d204e551666b5c9b3",
+      "export_sha256": "002e48050ebd98ed0b67a9517c4f3e6ff3c926d3a36a483d204e551666b5c9b3",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/column10.log",
+      "bytes": 214,
+      "original_sha256": "eba39853c0ab681da3c70223daf14298ae31b0c932e402f1b2c816c9de6208a5",
+      "export_sha256": "eba39853c0ab681da3c70223daf14298ae31b0c932e402f1b2c816c9de6208a5",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/column11.log",
+      "bytes": 213,
+      "original_sha256": "513c63a360051b110dd7a8baf22fcf6cc02e5c83e08b528cdf6cdf593f3ef6f2",
+      "export_sha256": "513c63a360051b110dd7a8baf22fcf6cc02e5c83e08b528cdf6cdf593f3ef6f2",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/column2.log",
+      "bytes": 213,
+      "original_sha256": "910abf66f6967642bbc4fc0fb0811195d25adf63433fd83290d36a3e5eb9b10d",
+      "export_sha256": "910abf66f6967642bbc4fc0fb0811195d25adf63433fd83290d36a3e5eb9b10d",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/column3.log",
+      "bytes": 213,
+      "original_sha256": "3189a84230e6c6d6ace26c592ca90dc9172126528f48ad4a2c7511fba5c0c7d5",
+      "export_sha256": "3189a84230e6c6d6ace26c592ca90dc9172126528f48ad4a2c7511fba5c0c7d5",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/column4.log",
+      "bytes": 213,
+      "original_sha256": "c9fc2a2187a679e3f67f88ac196f6b4bf08595c99b1157b20f41ad7a080f6b4f",
+      "export_sha256": "c9fc2a2187a679e3f67f88ac196f6b4bf08595c99b1157b20f41ad7a080f6b4f",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/column5.log",
+      "bytes": 212,
+      "original_sha256": "18d1dddd89dce10f80cdb7fb3cbcfcd6e9d67cf730e8990d7b5e5be061d36c28",
+      "export_sha256": "18d1dddd89dce10f80cdb7fb3cbcfcd6e9d67cf730e8990d7b5e5be061d36c28",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/column6.log",
+      "bytes": 213,
+      "original_sha256": "bfe015ac288300a250fd51cec49ec33101b43beccfeeeb15f0ec25ac3f3608ce",
+      "export_sha256": "bfe015ac288300a250fd51cec49ec33101b43beccfeeeb15f0ec25ac3f3608ce",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/column7.log",
+      "bytes": 213,
+      "original_sha256": "65b00ea960366fb7b7ae42de2ddf879fa3a6dac3fb3b49b9b6b15c4bf3bfdce0",
+      "export_sha256": "65b00ea960366fb7b7ae42de2ddf879fa3a6dac3fb3b49b9b6b15c4bf3bfdce0",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/column8.log",
+      "bytes": 213,
+      "original_sha256": "5d8e4d251a99de842d3b7ea2d938da05ee6cc45daf75fc08a56a00a56f6b5902",
+      "export_sha256": "5d8e4d251a99de842d3b7ea2d938da05ee6cc45daf75fc08a56a00a56f6b5902",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/column9.log",
+      "bytes": 213,
+      "original_sha256": "fef310241996b16da263edfa0410d169569514549e1bd9df042bcdee7a3182d8",
+      "export_sha256": "fef310241996b16da263edfa0410d169569514549e1bd9df042bcdee7a3182d8",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verification.json",
+      "bytes": 2065,
+      "original_sha256": "e0d95c73c5f8ac6e76df2e685fbd9b4db4085e772fb9d939cbba5d6b4bd269d3",
+      "export_sha256": "e0d95c73c5f8ac6e76df2e685fbd9b4db4085e772fb9d939cbba5d6b4bd269d3",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verified0.params.json",
+      "bytes": 577,
+      "original_sha256": "30ea09db01d10143e5a36829294d59f4668ad6da3eff6f9e639428b016315379",
+      "export_sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verified1.params.json",
+      "bytes": 577,
+      "original_sha256": "30ea09db01d10143e5a36829294d59f4668ad6da3eff6f9e639428b016315379",
+      "export_sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verified10.params.json",
+      "bytes": 577,
+      "original_sha256": "30ea09db01d10143e5a36829294d59f4668ad6da3eff6f9e639428b016315379",
+      "export_sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verified11.params.json",
+      "bytes": 577,
+      "original_sha256": "30ea09db01d10143e5a36829294d59f4668ad6da3eff6f9e639428b016315379",
+      "export_sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verified2.params.json",
+      "bytes": 577,
+      "original_sha256": "30ea09db01d10143e5a36829294d59f4668ad6da3eff6f9e639428b016315379",
+      "export_sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verified3.params.json",
+      "bytes": 577,
+      "original_sha256": "30ea09db01d10143e5a36829294d59f4668ad6da3eff6f9e639428b016315379",
+      "export_sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verified4.params.json",
+      "bytes": 577,
+      "original_sha256": "30ea09db01d10143e5a36829294d59f4668ad6da3eff6f9e639428b016315379",
+      "export_sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verified5.params.json",
+      "bytes": 577,
+      "original_sha256": "30ea09db01d10143e5a36829294d59f4668ad6da3eff6f9e639428b016315379",
+      "export_sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verified6.params.json",
+      "bytes": 577,
+      "original_sha256": "30ea09db01d10143e5a36829294d59f4668ad6da3eff6f9e639428b016315379",
+      "export_sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verified7.params.json",
+      "bytes": 577,
+      "original_sha256": "30ea09db01d10143e5a36829294d59f4668ad6da3eff6f9e639428b016315379",
+      "export_sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verified8.params.json",
+      "bytes": 577,
+      "original_sha256": "30ea09db01d10143e5a36829294d59f4668ad6da3eff6f9e639428b016315379",
+      "export_sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/independent/verified9.params.json",
+      "bytes": 577,
+      "original_sha256": "30ea09db01d10143e5a36829294d59f4668ad6da3eff6f9e639428b016315379",
+      "export_sha256": "62d5716b4adf815d936a46f1b78e409f2030c617240fefed4f030d938e1128a5",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/full12/result.json",
+      "bytes": 43134,
+      "original_sha256": "b5afd0bf1b18c4c485c413d8b22372f58ac811ceb6d97cd896ac2ccce306ebc1",
+      "export_sha256": "f512a326a00f78e4e2133041b46cabb3d8081651e053113801ef54a6c924765a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/host.json",
+      "bytes": 13066,
+      "original_sha256": "e4051ee0060356e11866c3a11bce22a2b577088d036b47780df1a95b950df52b",
+      "export_sha256": "e4051ee0060356e11866c3a11bce22a2b577088d036b47780df1a95b950df52b",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/measurements.json",
+      "bytes": 54,
+      "original_sha256": "f93a0531557d3dc6459813dce4cc5aa387b49d14ac4fc86ea5ecf836040958e8",
+      "export_sha256": "f93a0531557d3dc6459813dce4cc5aa387b49d14ac4fc86ea5ecf836040958e8",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/measurements/plan.json",
+      "bytes": 511,
+      "original_sha256": "8978f8f8f9e1f5508fec8f052f1eefa7d8b859cb494fb73707ea782abccc71f6",
+      "export_sha256": "8978f8f8f9e1f5508fec8f052f1eefa7d8b859cb494fb73707ea782abccc71f6",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/plan.json",
+      "bytes": 511,
+      "original_sha256": "0d5a6efacef0696b50e24fde3fb8c3fe0bbe3bd76c9334be0ab30969511bb795",
+      "export_sha256": "8978f8f8f9e1f5508fec8f052f1eefa7d8b859cb494fb73707ea782abccc71f6",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "campaign/attempts/155-best-solve-profile-worker11/source-manifest.json",
+      "bytes": 36702,
+      "original_sha256": "78b429dc13a8b113792aa45bd27fc93134a8c4b39359da9ade05558c93d590ae",
+      "export_sha256": "8310343f3576999860e79959cbdfcc96b8df92ac0c67559e658b5c91c6f2c9ba",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "exports/profile155-complete/summary.json",
+      "bytes": 66223,
+      "original_sha256": "ba821b96dcf29ea19818dfbf716ce84c527234606a9ba8cec16e967581fad02d",
+      "export_sha256": "ba821b96dcf29ea19818dfbf716ce84c527234606a9ba8cec16e967581fad02d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "prepared-profile155-worker11/contract.json",
+      "bytes": 15551,
+      "original_sha256": "22b45c20b6584dc8067a4a355ca3e8b101c6153888421be7833b29dcdf0231de",
+      "export_sha256": "22b45c20b6584dc8067a4a355ca3e8b101c6153888421be7833b29dcdf0231de",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "prepared-profile155-worker11/task.json",
+      "bytes": 3824,
+      "original_sha256": "8d12169e012490f7fa87e546002aef9032b83379874b1ef8bdfa27dd1d4249c5",
+      "export_sha256": "111ccb16635c0b7f70dee60d5a964de5206135f1221ac6ad1f7a75af7a8c96a8",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "queue11/155-best-solve-profile-worker11.finished.json",
+      "bytes": 3824,
+      "original_sha256": "8d12169e012490f7fa87e546002aef9032b83379874b1ef8bdfa27dd1d4249c5",
+      "export_sha256": "111ccb16635c0b7f70dee60d5a964de5206135f1221ac6ad1f7a75af7a8c96a8",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "queue11/155-best-solve-profile-worker11.status.json",
+      "bytes": 2554,
+      "original_sha256": "851db24feb491566af42af3ae7ec361bf90d641691407b0df14980e13748bdbc",
+      "export_sha256": "851db24feb491566af42af3ae7ec361bf90d641691407b0df14980e13748bdbc",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/exact-period-analysis.json",
+      "bytes": 28073,
+      "original_sha256": "5d8f179b51890946849164cfe9d99204d98bc82da846d2bd56ecfc2bee3fa496",
+      "export_sha256": "5d8f179b51890946849164cfe9d99204d98bc82da846d2bd56ecfc2bee3fa496",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/profile-summary.json",
+      "bytes": 1245,
+      "original_sha256": "06b6fba7bc56b81731b5a284060afda2d8a25967f9bdb1f8d00c99c98c60600e",
+      "export_sha256": "06b6fba7bc56b81731b5a284060afda2d8a25967f9bdb1f8d00c99c98c60600e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.leaf-by-thread.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.leaf-by-thread.txt",
+      "bytes": 668998,
+      "original_sha256": "25e6e8634667d0ebd446b448ba5d783179ee6d7a9af2ea5752fff8fbdaa8e244",
+      "export_sha256": "25e6e8634667d0ebd446b448ba5d783179ee6d7a9af2ea5752fff8fbdaa8e244",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.leaf-periods.csv",
+      "bytes": 681016,
+      "original_sha256": "8c4f573ab4c151227f4963dcdc2a3f83bc9946949dc3bf8936b4700c821d7b7f",
+      "export_sha256": "8c4f573ab4c151227f4963dcdc2a3f83bc9946949dc3bf8936b4700c821d7b7f",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.leaf-periods.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.perf-flat.txt",
+      "bytes": 95189,
+      "original_sha256": "352be5a0c28427443a3e386d4968b413e0a99ea1d244981adcb4783ef660a93c",
+      "export_sha256": "352be5a0c28427443a3e386d4968b413e0a99ea1d244981adcb4783ef660a93c",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.perf-record.log",
+      "bytes": 235,
+      "original_sha256": "7e9f4eb70f5f362ca0724dde27fca1da53b6ae51f975e90bdc011769f47bdd53",
+      "export_sha256": "7e9f4eb70f5f362ca0724dde27fca1da53b6ae51f975e90bdc011769f47bdd53",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.perf-report.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.perf.data",
+      "bytes": 66306684,
+      "original_sha256": "e93217d41dc93325d920cf69facba725565dea6d294b6c64eda1685ad29b39f1",
+      "export_sha256": "e93217d41dc93325d920cf69facba725565dea6d294b6c64eda1685ad29b39f1",
+      "transformation": "none; raw recorded user perf data"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.profile.json",
+      "bytes": 1172,
+      "original_sha256": "e7c713079abac3e3a0c39d58e78003bec8a1a9d725e5b8ac942146dd5a804fb4",
+      "export_sha256": "e7c713079abac3e3a0c39d58e78003bec8a1a9d725e5b8ac942146dd5a804fb4",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.runtime.json",
+      "bytes": 187951,
+      "original_sha256": "e1f3737973b2cf1560ba7552775927c482da5abbcf9b87f5cd72066cd1c31597",
+      "export_sha256": "33b2e18259ec843e65718f25fe8431126de4c92e66c1340169135fb8ae7eb2d8",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00000.wrapper-v7.json",
+      "bytes": 4405,
+      "original_sha256": "8384c9dea62b31218bb4be4c5cfa37c5faa9e93f1f2a2d3311294961d9ceddf1",
+      "export_sha256": "8384c9dea62b31218bb4be4c5cfa37c5faa9e93f1f2a2d3311294961d9ceddf1",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00001.profile.json",
+      "bytes": 331,
+      "original_sha256": "d6918a2d92e94ba069237e1851aa54ed3d3f87d6844bc7329dae7cb07ad1b49e",
+      "export_sha256": "d6918a2d92e94ba069237e1851aa54ed3d3f87d6844bc7329dae7cb07ad1b49e",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00001.wrapper-v7.json",
+      "bytes": 3943,
+      "original_sha256": "8a4f2d98abd8bd40815e366ef1114ba8a9391ba2626509a7395989ec4b95cf3a",
+      "export_sha256": "8a4f2d98abd8bd40815e366ef1114ba8a9391ba2626509a7395989ec4b95cf3a",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00002.profile.json",
+      "bytes": 331,
+      "original_sha256": "2c630d72766e674d48f41a6736b107038f523fbbe6b788f3a324dcfabb6623db",
+      "export_sha256": "2c630d72766e674d48f41a6736b107038f523fbbe6b788f3a324dcfabb6623db",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00002.wrapper-v7.json",
+      "bytes": 3943,
+      "original_sha256": "d4c67a5a86763a6834e61cd87d501f8f00b7e942bcd7a26a49d8a8ebc8ccf0aa",
+      "export_sha256": "d4c67a5a86763a6834e61cd87d501f8f00b7e942bcd7a26a49d8a8ebc8ccf0aa",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00003.profile.json",
+      "bytes": 331,
+      "original_sha256": "6cd4b64d6fa5ae6596a480fc7a98a99597ceb380751918bc7e34f3e652057907",
+      "export_sha256": "6cd4b64d6fa5ae6596a480fc7a98a99597ceb380751918bc7e34f3e652057907",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00003.wrapper-v7.json",
+      "bytes": 3943,
+      "original_sha256": "d9e8b16271c98f0e60b4dd610747531fe8c3cf55591fac4278f81d6659a5ec5b",
+      "export_sha256": "d9e8b16271c98f0e60b4dd610747531fe8c3cf55591fac4278f81d6659a5ec5b",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00004.profile.json",
+      "bytes": 331,
+      "original_sha256": "065527e17bbe1a0200771cb80037efa87d9e7409155b5e5d6d2afbbaf0805326",
+      "export_sha256": "065527e17bbe1a0200771cb80037efa87d9e7409155b5e5d6d2afbbaf0805326",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00004.wrapper-v7.json",
+      "bytes": 3943,
+      "original_sha256": "6616fc10d07211cc8d5257385b484e74e0f6ad3bcbc913dd1d9c87c738f6a58f",
+      "export_sha256": "6616fc10d07211cc8d5257385b484e74e0f6ad3bcbc913dd1d9c87c738f6a58f",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00005.profile.json",
+      "bytes": 331,
+      "original_sha256": "8c4a49ef37f60224e556f47b5e22d7e2d0b18aa98f72d44885fdca12e782f5e0",
+      "export_sha256": "8c4a49ef37f60224e556f47b5e22d7e2d0b18aa98f72d44885fdca12e782f5e0",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00005.wrapper-v7.json",
+      "bytes": 3943,
+      "original_sha256": "85db91323278d829e861bb3f4ae8a2077792ad51b3e9d4f0cd4b6d7a0b16f208",
+      "export_sha256": "85db91323278d829e861bb3f4ae8a2077792ad51b3e9d4f0cd4b6d7a0b16f208",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00006.profile.json",
+      "bytes": 331,
+      "original_sha256": "3e01c858afc5a46cb8cb5ad5857a304a32e021f6a5ef31aa33932ee253fff913",
+      "export_sha256": "3e01c858afc5a46cb8cb5ad5857a304a32e021f6a5ef31aa33932ee253fff913",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00006.wrapper-v7.json",
+      "bytes": 3943,
+      "original_sha256": "9efde3ec42c94b9da2b2085f88bed421eed4f62a7e2f5cba0e37570b97737bab",
+      "export_sha256": "9efde3ec42c94b9da2b2085f88bed421eed4f62a7e2f5cba0e37570b97737bab",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00007.profile.json",
+      "bytes": 331,
+      "original_sha256": "55fca09f3b41dbc0e65dcf4521a5ccb3e64b6f4c4ec5010745289960a373d5be",
+      "export_sha256": "55fca09f3b41dbc0e65dcf4521a5ccb3e64b6f4c4ec5010745289960a373d5be",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00007.wrapper-v7.json",
+      "bytes": 3943,
+      "original_sha256": "0a7736107b4779bd33b8eb977fd9edcb17fd9dda9b77f10ef929296b4f2cc860",
+      "export_sha256": "0a7736107b4779bd33b8eb977fd9edcb17fd9dda9b77f10ef929296b4f2cc860",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00008.leaf-by-thread.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00008.leaf-by-thread.txt",
+      "bytes": 628034,
+      "original_sha256": "ad562c2e409be1a3d8f59e4c5e3100a563c0313e9e387ddac84624009afd23cd",
+      "export_sha256": "ad562c2e409be1a3d8f59e4c5e3100a563c0313e9e387ddac84624009afd23cd",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00008.leaf-periods.csv",
+      "bytes": 639287,
+      "original_sha256": "230313701d6d3ee2944383c05051ed8ee2d96b8e5fbf377230be9fda9cea63c2",
+      "export_sha256": "230313701d6d3ee2944383c05051ed8ee2d96b8e5fbf377230be9fda9cea63c2",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00008.leaf-periods.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00008.perf-flat.txt",
+      "bytes": 85608,
+      "original_sha256": "b8e68b23ad3eec91309c72cf61e7a5525787e42f8742f2f25fc900163c15a51a",
+      "export_sha256": "b8e68b23ad3eec91309c72cf61e7a5525787e42f8742f2f25fc900163c15a51a",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00008.perf-record.log",
+      "bytes": 234,
+      "original_sha256": "2862f9d3b5757d2d95f4c0ec2289391d35d44bd2de0f2fc20d22ef67b0fdf457",
+      "export_sha256": "2862f9d3b5757d2d95f4c0ec2289391d35d44bd2de0f2fc20d22ef67b0fdf457",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00008.perf-report.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00008.perf.data",
+      "bytes": 62530640,
+      "original_sha256": "7b2eee67bf18e1d2e30a52fced44d0e9cf9bc75a7cb7fd6dbce2177882806695",
+      "export_sha256": "7b2eee67bf18e1d2e30a52fced44d0e9cf9bc75a7cb7fd6dbce2177882806695",
+      "transformation": "none; raw recorded user perf data"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00008.profile.json",
+      "bytes": 1172,
+      "original_sha256": "5c787ad88757228688953862ad823ab7b03d477f775e8fcbacf9e7c2e357d11d",
+      "export_sha256": "5c787ad88757228688953862ad823ab7b03d477f775e8fcbacf9e7c2e357d11d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00008.runtime.json",
+      "bytes": 188360,
+      "original_sha256": "bfd054e6bdf926cabbe516b146caff503409074779c7601eaaa6b48d8d45f46f",
+      "export_sha256": "daffb20913049c6605dc0ca2969358fccc942de57acbe1a2685eeea9c4c4de4f",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00008.wrapper-v7.json",
+      "bytes": 4405,
+      "original_sha256": "03ffa0cfaa807819ad55e35612247a6dc834b7db403c5951dade2ed8df324ec6",
+      "export_sha256": "03ffa0cfaa807819ad55e35612247a6dc834b7db403c5951dade2ed8df324ec6",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00009.profile.json",
+      "bytes": 331,
+      "original_sha256": "b558b4d1f86a5296915e60f6cd65609d009561d062c9525a6158981da193f995",
+      "export_sha256": "b558b4d1f86a5296915e60f6cd65609d009561d062c9525a6158981da193f995",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00009.wrapper-v7.json",
+      "bytes": 3943,
+      "original_sha256": "eb6dcf5925787dec3a0985cac396a2e5050abe848bec18d7e0c98311019a2e6d",
+      "export_sha256": "eb6dcf5925787dec3a0985cac396a2e5050abe848bec18d7e0c98311019a2e6d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00010.profile.json",
+      "bytes": 332,
+      "original_sha256": "b13e2ea453a0cf5136571e025be3553021529cf96aa48d3e327c244dfc430eda",
+      "export_sha256": "b13e2ea453a0cf5136571e025be3553021529cf96aa48d3e327c244dfc430eda",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00010.wrapper-v7.json",
+      "bytes": 3944,
+      "original_sha256": "42a7989b2b9a4e8e09b9fedf364bc51f017bf824500c9230f8abb5ed98adf751",
+      "export_sha256": "42a7989b2b9a4e8e09b9fedf364bc51f017bf824500c9230f8abb5ed98adf751",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00011.profile.json",
+      "bytes": 332,
+      "original_sha256": "b40fbca4ac78a24c2564a7ab130b02c4ecb60d4563cc1c3733ffaea9f5fe94c4",
+      "export_sha256": "b40fbca4ac78a24c2564a7ab130b02c4ecb60d4563cc1c3733ffaea9f5fe94c4",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00011.wrapper-v7.json",
+      "bytes": 3944,
+      "original_sha256": "e55236057f9c1062066f013c77196afb74adb5cbee9ea5e0930503a006bf5b84",
+      "export_sha256": "e55236057f9c1062066f013c77196afb74adb5cbee9ea5e0930503a006bf5b84",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00012.profile.json",
+      "bytes": 332,
+      "original_sha256": "78b4c23ca5aaf38590102fd4bd6b01c720d1db48341cd47371aa433e724bbd03",
+      "export_sha256": "78b4c23ca5aaf38590102fd4bd6b01c720d1db48341cd47371aa433e724bbd03",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00012.wrapper-v7.json",
+      "bytes": 3944,
+      "original_sha256": "f9532f8e229762a59a1f4ccebb0bc1db7c7f5f9da3a9544eb774068e2db93695",
+      "export_sha256": "f9532f8e229762a59a1f4ccebb0bc1db7c7f5f9da3a9544eb774068e2db93695",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00013.profile.json",
+      "bytes": 332,
+      "original_sha256": "04556692df92825c8d782329ed8b19dbefab7efed6847707205afce06281ad96",
+      "export_sha256": "04556692df92825c8d782329ed8b19dbefab7efed6847707205afce06281ad96",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00013.wrapper-v7.json",
+      "bytes": 3944,
+      "original_sha256": "4edf4201a3c8234503a892ac0eff72174d47816d9dd3fc0af3909b8888eadb89",
+      "export_sha256": "4edf4201a3c8234503a892ac0eff72174d47816d9dd3fc0af3909b8888eadb89",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00014.profile.json",
+      "bytes": 332,
+      "original_sha256": "46832dcc1a59269fbdd1f4862f8c671ef84080a909e402d79fca39c44a0b302d",
+      "export_sha256": "46832dcc1a59269fbdd1f4862f8c671ef84080a909e402d79fca39c44a0b302d",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00014.wrapper-v7.json",
+      "bytes": 3944,
+      "original_sha256": "4d7487c2515860ade5c34aa206b69dbb2ddc2c416f5876a6f8d31f9c20b5a42f",
+      "export_sha256": "4d7487c2515860ade5c34aa206b69dbb2ddc2c416f5876a6f8d31f9c20b5a42f",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00015.profile.json",
+      "bytes": 332,
+      "original_sha256": "3ebe386e1902c37b8d0672b57fa2c85b63ed5cbc4942657b4a06325bdfc984ef",
+      "export_sha256": "3ebe386e1902c37b8d0672b57fa2c85b63ed5cbc4942657b4a06325bdfc984ef",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/rank00015.wrapper-v7.json",
+      "bytes": 3944,
+      "original_sha256": "69afd991e2198abd6f0019be438dbce3e6c64960cedbed9f01f61104e348f9d1",
+      "export_sha256": "69afd991e2198abd6f0019be438dbce3e6c64960cedbed9f01f61104e348f9d1",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "solve-profile-worker11-155/155-best-solve-profile-worker11/wrapper-v7-summary.json",
+      "bytes": 648,
+      "original_sha256": "b261658f3d6107ebf9c2e0e64a54ac5162bd078e32681f7dd90cf949528e36c3",
+      "export_sha256": "b261658f3d6107ebf9c2e0e64a54ac5162bd078e32681f7dd90cf949528e36c3",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "worker11-allocation.json",
+      "bytes": 1750,
+      "original_sha256": "3b30803f67bd3144832211b2a71443c8ba2540ce361864ae55a4844583eb56f4",
+      "export_sha256": "a9ff1c771307a97994f23773bd7e4c20d9cbfacc921d7f5df573af94b26cf703",
+      "transformation": "Existing redactor; JSON formatting"
+    },
+    {
+      "path": "worker11-startup.json",
+      "bytes": 29259,
+      "original_sha256": "d1682f573747fcdc12003b369a83b64c3a935e7683ae45038e536954a979c859",
+      "export_sha256": "d1682f573747fcdc12003b369a83b64c3a935e7683ae45038e536954a979c859",
+      "transformation": "Existing redactor; JSON formatting"
+    }
+  ]
+}

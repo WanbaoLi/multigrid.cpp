@@ -1,0 +1,52 @@
+{
+  "complete": true,
+  "passed": true,
+  "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/155-best-solve-profile-worker11/measurements/full12/gauge_rank00004.npy",
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "expected_sha256": "5ae5fccf7496a6582f76f734d2b3302e1040a9ceb21c21bd24668a83ac4fad19",
+  "required_bytes": null,
+  "initial": {
+    "dev": 60,
+    "inode": 63050616439816384,
+    "bytes": 31850624,
+    "mtime_ns": 1793798960037855450,
+    "ctime_ns": 1793798960037855450
+  },
+  "original_open_mode": "O_RDONLY",
+  "same_immutable_bytes": true,
+  "started": 1793799227.0357056,
+  "fd_before": {
+    "dev": 60,
+    "inode": 63050616439816384,
+    "bytes": 31850624,
+    "mtime_ns": 1793798960037855450,
+    "ctime_ns": 1793798960037855450
+  },
+  "last_request_offset": 31850624,
+  "last_request_bytes": 1,
+  "last_returned_bytes": 0,
+  "fd_after": {
+    "dev": 60,
+    "inode": 63050616439816384,
+    "bytes": 31850624,
+    "mtime_ns": 1793798960037855450,
+    "ctime_ns": 1793798960037855450
+  },
+  "path_after": {
+    "dev": 60,
+    "inode": 63050616439816384,
+    "bytes": 31850624,
+    "mtime_ns": 1793798960037855450,
+    "ctime_ns": 1793798960037855450
+  },
+  "read_bytes": 31850624,
+  "pread_calls": 9,
+  "positive_short_reads": 0,
+  "eof_probe_bytes": 0,
+  "openssl_sha256": "5ae5fccf7496a6582f76f734d2b3302e1040a9ceb21c21bd24668a83ac4fad19",
+  "software_sha256": "5ae5fccf7496a6582f76f734d2b3302e1040a9ceb21c21bd24668a83ac4fad19",
+  "seconds": 0.380709171295166,
+  "metadata_stable": true,
+  "byte_count_exact": true
+}

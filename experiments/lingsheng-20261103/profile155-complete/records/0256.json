@@ -1,0 +1,78 @@
+{
+  "complete": true,
+  "passed": true,
+  "benchmark": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/155-best-solve-profile-worker11/source/tools/optimization/bench_full12.py",
+  "benchmark_sha256": "711df30c341f31aa8770b371b5d8ec32fb90cbbe8dff0a173e5e1532d977f5a1",
+  "selected_ranks": [
+    0,
+    8
+  ],
+  "actual_ranks": 16,
+  "rank_failures": [
+    {
+      "rank": 0,
+      "errors": []
+    },
+    {
+      "rank": 1,
+      "errors": []
+    },
+    {
+      "rank": 2,
+      "errors": []
+    },
+    {
+      "rank": 3,
+      "errors": []
+    },
+    {
+      "rank": 4,
+      "errors": []
+    },
+    {
+      "rank": 5,
+      "errors": []
+    },
+    {
+      "rank": 6,
+      "errors": []
+    },
+    {
+      "rank": 7,
+      "errors": []
+    },
+    {
+      "rank": 8,
+      "errors": []
+    },
+    {
+      "rank": 9,
+      "errors": []
+    },
+    {
+      "rank": 10,
+      "errors": []
+    },
+    {
+      "rank": 11,
+      "errors": []
+    },
+    {
+      "rank": 12,
+      "errors": []
+    },
+    {
+      "rank": 13,
+      "errors": []
+    },
+    {
+      "rank": 14,
+      "errors": []
+    },
+    {
+      "rank": 15,
+      "errors": []
+    }
+  ],
+  "scope": "auxiliary diagnostic evidence; never a performance acceptance sample"
+}

@@ -1,0 +1,6 @@
+
+libgomp: Invalid value for environment variable OMP_WAIT_POLICY
+
+libgomp: Invalid value for environment variable GOMP_SPINCOUNT
+true relative residual 3.9332552047707748e-09
+wrote /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-profile/measurements/halo-on/independent-publication-v2/verified2 norm 0.39035969929751885

@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "passed": true,
+  "protocol": "fresh-output-publication-v2",
+  "startup_sha256": "59517f4b8aeba5dd486a6aa383c3911dc43b58f0fb119f127bdbd3c000be4fc2",
+  "entry_sha256": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+  "base_wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec",
+  "publication_module_sha256": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a",
+  "parent_raw_artifacts": {
+    "protocol.json": {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-profile/checksum-audit/diagnostic/rank00002/protocol.json",
+      "sha256": "9a1cd9914a5c57ba4d9ef0f4770d3d510d81ec715c4466a6486ec6010e1d28d3"
+    },
+    "manifest.json": {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-halo-profile/checksum-audit/diagnostic/rank00002/manifest.json",
+      "sha256": "ff4f9a5854200329b4581e8a518ce6bf1fc3bb7c94f6dbba6e82c1987d09c43c"
+    }
+  },
+  "published_outputs": [],
+  "rank": 2
+}

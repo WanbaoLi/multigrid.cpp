@@ -62,7 +62,6 @@ if(LQCD_BUILD_RUNTIME OR LQCD_BUILD_NATIVE_BENCH)
         src/solver/native/double_operator.cpp
         src/solver/native/sap.cpp
         src/solver/native/coarse.cpp
-        src/solver/native/batched_coarse_operator.cpp
         src/solver/native/cycle.cpp
         src/solver/native/setup.cpp
         src/solver/native/solver.cpp

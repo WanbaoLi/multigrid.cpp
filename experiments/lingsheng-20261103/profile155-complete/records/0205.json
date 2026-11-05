@@ -1,0 +1,52 @@
+{
+  "complete": true,
+  "passed": true,
+  "path": "/home/share/nsls_lwb/.cache/mg-20261102/source/build/validation/multigrid",
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "expected_sha256": "1534d9c0653a019dcac4df98965f47f14d052cb324c35e568faa760d50878e9c",
+  "required_bytes": null,
+  "initial": {
+    "dev": 60,
+    "inode": 108086609957921088,
+    "bytes": 218840,
+    "mtime_ns": 1793593742597145000,
+    "ctime_ns": 1793593742598708920
+  },
+  "original_open_mode": "O_RDONLY",
+  "same_immutable_bytes": true,
+  "started": 1793799092.9925346,
+  "fd_before": {
+    "dev": 60,
+    "inode": 108086609957921088,
+    "bytes": 218840,
+    "mtime_ns": 1793593742597145000,
+    "ctime_ns": 1793593742598708920
+  },
+  "last_request_offset": 218840,
+  "last_request_bytes": 1,
+  "last_returned_bytes": 0,
+  "fd_after": {
+    "dev": 60,
+    "inode": 108086609957921088,
+    "bytes": 218840,
+    "mtime_ns": 1793593742597145000,
+    "ctime_ns": 1793593742598708920
+  },
+  "path_after": {
+    "dev": 60,
+    "inode": 108086609957921088,
+    "bytes": 218840,
+    "mtime_ns": 1793593742597145000,
+    "ctime_ns": 1793593742598708920
+  },
+  "read_bytes": 218840,
+  "pread_calls": 2,
+  "positive_short_reads": 0,
+  "eof_probe_bytes": 0,
+  "openssl_sha256": "1534d9c0653a019dcac4df98965f47f14d052cb324c35e568faa760d50878e9c",
+  "software_sha256": "1534d9c0653a019dcac4df98965f47f14d052cb324c35e568faa760d50878e9c",
+  "seconds": 0.0033698081970214844,
+  "metadata_stable": true,
+  "byte_count_exact": true
+}

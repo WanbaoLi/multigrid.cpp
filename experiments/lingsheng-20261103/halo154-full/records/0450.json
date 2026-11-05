@@ -1,0 +1,93 @@
+{
+  "protocol": "fresh-output-publication-v2",
+  "complete": false,
+  "passed": false,
+  "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-control-b/measurements/full12/independent-publication-v2/gauge.bin",
+  "eligibility": {
+    "protocol": "fresh-output-publication-v2",
+    "complete": true,
+    "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-control-b/measurements/full12/independent-publication-v2",
+    "output_absent_at_cli_start": true,
+    "checked_epoch": 1793796263.9749432,
+    "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-control-b/measurements/full12",
+    "parent_identity": {
+      "dev": 60,
+      "inode": 527426660289
+    },
+    "declarations": [
+      {
+        "relative": "gauge.bin",
+        "kind": "canonical-gauge",
+        "expected_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+        "bytes": 509607936
+      }
+    ],
+    "maximum_strict_calls_per_output": 3,
+    "parent_protocol": null,
+    "immutable_inputs_use_original_strict_reader": true
+  },
+  "parent_protocol": {
+    "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-control-b/checksum-audit/verify-full12/helper/protocol.json",
+    "sha256": "bb94d1e2dff3edfcebbfbc604652a722e3fee8fa61911382b6b0cf04c91946b3"
+  },
+  "reads": [
+    {
+      "complete": true,
+      "passed": true,
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-control-b/measurements/full12/independent-publication-v2/gauge.bin",
+      "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+      "block_bytes": 4194304,
+      "expected_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+      "required_bytes": 509607936,
+      "initial": {
+        "dev": 60,
+        "inode": 27021818779104320,
+        "bytes": 509607936,
+        "mtime_ns": 1793796294413086060,
+        "ctime_ns": 1793796294413086060
+      },
+      "original_open_mode": "O_RDONLY",
+      "same_immutable_bytes": true,
+      "started": 1793796294.446405,
+      "fd_before": {
+        "dev": 60,
+        "inode": 27021818779104320,
+        "bytes": 509607936,
+        "mtime_ns": 1793796294413086060,
+        "ctime_ns": 1793796294413086060
+      },
+      "last_request_offset": 509607936,
+      "last_request_bytes": 1,
+      "last_returned_bytes": 0,
+      "fd_after": {
+        "dev": 60,
+        "inode": 27021818779104320,
+        "bytes": 509607936,
+        "mtime_ns": 1793796294413086060,
+        "ctime_ns": 1793796294413086060
+      },
+      "path_after": {
+        "dev": 60,
+        "inode": 27021818779104320,
+        "bytes": 509607936,
+        "mtime_ns": 1793796294413086060,
+        "ctime_ns": 1793796294413086060
+      },
+      "read_bytes": 509607936,
+      "pread_calls": 123,
+      "positive_short_reads": 0,
+      "eof_probe_bytes": 0,
+      "openssl_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+      "software_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+      "seconds": 6.92713737487793,
+      "metadata_stable": true,
+      "byte_count_exact": true
+    }
+  ],
+  "progress": [],
+  "strict_calls": 1,
+  "full_reads": 1,
+  "maximum_strict_calls": 3,
+  "first_rejection_accepted": false,
+  "expected_previously_published": true
+}

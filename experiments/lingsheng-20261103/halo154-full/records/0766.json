@@ -1,0 +1,197 @@
+{
+  "complete": true,
+  "passed": true,
+  "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off/measurements/new-off/propagator.npy",
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "expected_sha256": null,
+  "required_bytes": 2038431872,
+  "initial": {
+    "dev": 60,
+    "inode": 108086612292021248,
+    "bytes": 2038431872,
+    "mtime_ns": 1793794505880309390,
+    "ctime_ns": 1793794505882790000
+  },
+  "original_open_mode": "O_RDONLY",
+  "same_immutable_bytes": true,
+  "started": 1793794505.9375153,
+  "fd_before": {
+    "dev": 60,
+    "inode": 108086612292021248,
+    "bytes": 2038431872,
+    "mtime_ns": 1793794505880309390,
+    "ctime_ns": 1793794505882790000
+  },
+  "last_request_offset": 2038431872,
+  "last_request_bytes": 1,
+  "last_returned_bytes": 0,
+  "fd_after": {
+    "dev": 60,
+    "inode": 108086612292021248,
+    "bytes": 2038431872,
+    "mtime_ns": 1793794505880309390,
+    "ctime_ns": 1793794505882790000
+  },
+  "path_after": {
+    "dev": 60,
+    "inode": 108086612292021248,
+    "bytes": 2038431872,
+    "mtime_ns": 1793794505880309390,
+    "ctime_ns": 1793794505882790000
+  },
+  "read_bytes": 2038431872,
+  "pread_calls": 488,
+  "positive_short_reads": 0,
+  "eof_probe_bytes": 0,
+  "openssl_sha256": "28a653beaa70ae64077a2dbcb5c49a0e9bbb22854a7323abfbe063fcc9ec2d79",
+  "software_sha256": "28a653beaa70ae64077a2dbcb5c49a0e9bbb22854a7323abfbe063fcc9ec2d79",
+  "seconds": 34.2236602306366,
+  "metadata_stable": true,
+  "byte_count_exact": true,
+  "fresh_output_publication": {
+    "protocol": "fresh-output-publication-v2",
+    "complete": true,
+    "passed": true,
+    "receipt": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/receipt.json",
+    "receipt_sha256": "d93e8ed589820b61ee33315cfe2840053c881ee7837769426ba43b9d422b6ba7",
+    "strict_calls": 1,
+    "full_reads": 1,
+    "parent_protocol": {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off/checksum-audit/benchmark/rank00000/protocol.json",
+      "sha256": "ebae2276f779e68509ebf1e7c179cb6dca49c6bd2b71e7a257d441f9cfc0a224",
+      "startup_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off/checksum-audit/benchmark-fresh-publication-v2/rank00000/startup.json",
+      "startup_sha256": "a6c97048ac36640b7851065d8d8ecb523111ac44d751e10159c5bd937e2515b9"
+    },
+    "full_proof": {
+      "protocol": "fresh-output-publication-v2",
+      "complete": true,
+      "passed": true,
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off/measurements/new-off/propagator.npy",
+      "eligibility": {
+        "protocol": "fresh-output-publication-v2",
+        "complete": true,
+        "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off/measurements",
+        "output_absent_at_cli_start": true,
+        "checked_epoch": 1793794018.3959012,
+        "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off",
+        "parent_identity": {
+          "dev": 60,
+          "inode": 527500349569
+        },
+        "declarations": [
+          {
+            "relative": "new-off/propagator.npy",
+            "kind": "npy-propagator",
+            "expected_sha256": null,
+            "bytes": 2038431872
+          },
+          {
+            "relative": "halo-on/propagator.npy",
+            "kind": "npy-propagator",
+            "expected_sha256": null,
+            "bytes": 2038431872
+          }
+        ],
+        "maximum_strict_calls_per_output": 3,
+        "parent_protocol": null,
+        "immutable_inputs_use_original_strict_reader": true
+      },
+      "parent_protocol": {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off/checksum-audit/benchmark/rank00000/protocol.json",
+        "sha256": "ebae2276f779e68509ebf1e7c179cb6dca49c6bd2b71e7a257d441f9cfc0a224",
+        "startup_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off/checksum-audit/benchmark-fresh-publication-v2/rank00000/startup.json",
+        "startup_sha256": "a6c97048ac36640b7851065d8d8ecb523111ac44d751e10159c5bd937e2515b9"
+      },
+      "reads": [
+        {
+          "complete": true,
+          "passed": true,
+          "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off/measurements/new-off/propagator.npy",
+          "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+          "block_bytes": 4194304,
+          "expected_sha256": null,
+          "required_bytes": 2038431872,
+          "initial": {
+            "dev": 60,
+            "inode": 108086612292021248,
+            "bytes": 2038431872,
+            "mtime_ns": 1793794505880309390,
+            "ctime_ns": 1793794505882790000
+          },
+          "original_open_mode": "O_RDONLY",
+          "same_immutable_bytes": true,
+          "started": 1793794505.9375153,
+          "fd_before": {
+            "dev": 60,
+            "inode": 108086612292021248,
+            "bytes": 2038431872,
+            "mtime_ns": 1793794505880309390,
+            "ctime_ns": 1793794505882790000
+          },
+          "last_request_offset": 2038431872,
+          "last_request_bytes": 1,
+          "last_returned_bytes": 0,
+          "fd_after": {
+            "dev": 60,
+            "inode": 108086612292021248,
+            "bytes": 2038431872,
+            "mtime_ns": 1793794505880309390,
+            "ctime_ns": 1793794505882790000
+          },
+          "path_after": {
+            "dev": 60,
+            "inode": 108086612292021248,
+            "bytes": 2038431872,
+            "mtime_ns": 1793794505880309390,
+            "ctime_ns": 1793794505882790000
+          },
+          "read_bytes": 2038431872,
+          "pread_calls": 488,
+          "positive_short_reads": 0,
+          "eof_probe_bytes": 0,
+          "openssl_sha256": "28a653beaa70ae64077a2dbcb5c49a0e9bbb22854a7323abfbe063fcc9ec2d79",
+          "software_sha256": "28a653beaa70ae64077a2dbcb5c49a0e9bbb22854a7323abfbe063fcc9ec2d79",
+          "seconds": 34.2236602306366,
+          "metadata_stable": true,
+          "byte_count_exact": true
+        }
+      ],
+      "progress": [
+        {
+          "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-000.json",
+          "sha256": "13faf6bd1612eb7e839a22fa7ed5facb20a073dc06d3052e5fe055a98f7cdce2"
+        },
+        {
+          "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4/attempts/v2-w10v5-new-off/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-001.json",
+          "sha256": "cede48303dd742b531249e70650905a86ac99cd2ec222a90eb1655017d7fea40"
+        }
+      ],
+      "strict_calls": 1,
+      "full_reads": 1,
+      "maximum_strict_calls": 3,
+      "first_rejection_accepted": false,
+      "expected_previously_published": false,
+      "mode": "original-first-strict-pass",
+      "closed_npy_header": {
+        "complete": true,
+        "passed": true,
+        "header_bytes": 128,
+        "dtype": "<c16",
+        "shape": [
+          64,
+          24,
+          24,
+          24,
+          4,
+          4,
+          3,
+          3
+        ],
+        "fortran_order": false
+      },
+      "published_sha256": "28a653beaa70ae64077a2dbcb5c49a0e9bbb22854a7323abfbe063fcc9ec2d79",
+      "rejected_read_count": 0
+    }
+  }
+}

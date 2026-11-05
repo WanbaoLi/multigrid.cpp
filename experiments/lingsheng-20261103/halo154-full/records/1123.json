@@ -1,0 +1,53 @@
+{
+  "complete": true,
+  "prepared_not_queued": true,
+  "id": "154-halo-v2-ordinary-remainder-worker10",
+  "prefix": "v2-w10v5",
+  "campaign": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-halo-v2-ordinary-w10v4",
+  "state": "/home/share/nsls_lwb/.cache/mg-opt-20261103/v2-w10v5-state.json",
+  "startup_sha256": "f3a40ea0e1185e51c0e7e63750ea18c9b0dae9c489003f280ebef739f59a84c2",
+  "task_sha256": "401db3bddf94cd53d217de44cf1918c052f2d1db4fe57c1bae74042a64e11dd7",
+  "dependencies_and_pins": [
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/150-best-solve-profile-worker10.status.json",
+      "sha256": "59b74ccafce16e458d13c40c903047a50a09b234a6da144e1d18ebf0b7bb7b02"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/153-halo-v2-remainder-worker10.status.json",
+      "sha256": "41a52d8c484cd2de6424177710967800fb2cebe7df379f50cdd216d1cf3ced68"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/150-best-solve-profile-worker10-state.json",
+      "sha256": "d3b4424ff4e0395d0be02382c574500f926e432e6486d1bf5d71c969ab557a3d"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/153-halo-v2-remainder-worker10-state.json",
+      "sha256": "fabc42db9558abb216d727e1dbcb192e0f4fc1774d3bc0015db2c3e96baa203f"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/best.json",
+      "sha256": "a71b1a006f4cbf0a4227620ec6c8e14fcce849fa34fe9d9e55f1068657aa211b"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-halo-v2-publication-v5/halo-v2-trial-publication-v5-helpers.json",
+      "sha256": "684739d825a50e7e7dbb8ab16fa1b2645725abf27a9aa65a42e2ecf3a9117851"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker10_live_task_guard_v4.py",
+      "sha256": "b882c2175f1a1679bfa753f73e43a884a31377b1bc79d021ed48765c5dcdc175"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo154-worker10/original-task.json",
+      "sha256": "442241309c02f64b46cc2c6c7724b0a4b0291a59f87cc32fdac3f8732b27e8f0"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/prepared-halo154-worker10/guard-plan.json",
+      "sha256": "f8edbcf1c8b8f76f3b6033563c1418b6c3cf26361ac59c1fa356115f962eddaf"
+    }
+  ],
+  "remaining_floor_seconds": 4290,
+  "scientific_controller_sha256": "a9afbc64994d5c48587d09e27f70dd74cd797516feb4c7adcf1ec45a6e61bb59",
+  "main_best_modified": false,
+  "ordinary_repeats": 7,
+  "comparison": "Fresh old052 A / V2 same-hierarchy off,on / unranked halo diagnostic / fresh old052 B"
+}
