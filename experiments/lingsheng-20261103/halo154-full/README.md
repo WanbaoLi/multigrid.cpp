@@ -25,5 +25,11 @@ grouped path, not all coarse calls; never compare4700 with the old10354 total
 without accounting for unbatched calls. Raw final diagnostic logs are included.
 Rank-max timing envelopes overlap and must not be added into a wall-time budget.
 
+Decoded final verbose call:5654 total coarse calls,508919808 send bytes,
+1.499605386seconds coarse total envelope and1.056500326seconds wait envelope.
+The old150 diagnostic recorded10354 calls with the same send bytes; its coarse
+total/wait envelopes were1.665465217/1.224111121seconds. These are separate
+unranked diagnostic executions and support the mechanism, not a paired speedup.
+
 The prior148 timeout and completed153 qualification remain separately archived.
 No failed stage was rewritten and no old timing was relabelled as a fresh run.
