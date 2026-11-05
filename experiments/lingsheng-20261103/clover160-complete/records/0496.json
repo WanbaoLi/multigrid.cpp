@@ -1,0 +1,82 @@
+{
+  "complete": true,
+  "run": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-b/measurements/full12",
+  "reference": "/home/share/nsls_lwb/.cache/mg-20261102/source/build/validation/multigrid",
+  "reference_sha256": "1534d9c0653a019dcac4df98965f47f14d052cb324c35e568faa760d50878e9c",
+  "run_report_sha256": "d594b6823a0c723365b9a5a2f0da127c2db6783b7ed57b3334720552a7c8ad07",
+  "propagator_sha256": "28a653beaa70ae64077a2dbcb5c49a0e9bbb22854a7323abfbe063fcc9ec2d79",
+  "method": "byte-only column extraction + independent scalar C++",
+  "source_xyzt": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_scale": 1.0,
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "normalization": "mass",
+  "columns": [
+    {
+      "source_spin": 0,
+      "source_color": 0,
+      "residual": 4.818858112534332e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 1,
+      "residual": 3.1987304507300633e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 2,
+      "residual": 3.933255204770775e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 0,
+      "residual": 3.141437012798294e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 1,
+      "residual": 4.089341912539488e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 2,
+      "residual": 4.0760143335083455e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 0,
+      "residual": 3.656194395084031e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 1,
+      "residual": 2.835005476604015e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 2,
+      "residual": 2.6407427075312873e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 0,
+      "residual": 3.773108179113123e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 1,
+      "residual": 4.2799809762892076e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 2,
+      "residual": 2.612836488129494e-09
+    }
+  ],
+  "assembled_gauge_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834"
+}

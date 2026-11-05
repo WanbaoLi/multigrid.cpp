@@ -1,0 +1,110 @@
+{
+  "protocol": "fresh-output-publication-v2",
+  "complete": false,
+  "passed": false,
+  "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/measurements/full12/independent/gauge.bin",
+  "eligibility": {
+    "protocol": "fresh-output-publication-v2",
+    "complete": true,
+    "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/measurements/full12/independent",
+    "output_absent_at_cli_start": true,
+    "checked_epoch": 1793856745.1913247,
+    "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/measurements/full12",
+    "parent_identity": {
+      "dev": 60,
+      "inode": 54043725269319361
+    },
+    "declarations": [
+      {
+        "relative": "gauge.bin",
+        "kind": "canonical-gauge",
+        "expected_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+        "bytes": 509607936
+      }
+    ],
+    "maximum_strict_calls_per_output": 3,
+    "parent_protocol": null,
+    "immutable_inputs_use_original_strict_reader": true
+  },
+  "parent_protocol": {
+    "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/independent/helper/protocol.json",
+    "sha256": "b99355c400ce1598608b9c796dde2b0e44878dad54e4c8ec2f6107868d9d44ff"
+  },
+  "reads": [
+    {
+      "complete": true,
+      "passed": false,
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/measurements/full12/independent/gauge.bin",
+      "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+      "block_bytes": 4194304,
+      "expected_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+      "required_bytes": 509607936,
+      "initial": {
+        "dev": 60,
+        "inode": 222147404608,
+        "bytes": 509607936,
+        "mtime_ns": 1793856769275201090,
+        "ctime_ns": 1793856769276811000
+      },
+      "original_open_mode": "O_RDONLY",
+      "same_immutable_bytes": true,
+      "started": 1793856769.289367,
+      "fd_before": {
+        "dev": 60,
+        "inode": 222147404608,
+        "bytes": 509607936,
+        "mtime_ns": 1793856769283943000,
+        "ctime_ns": 1793856769283943000
+      },
+      "fd_after": {
+        "dev": 60,
+        "inode": 222147404608,
+        "bytes": 509607936,
+        "mtime_ns": 1793856769283943000,
+        "ctime_ns": 1793856769283943000
+      },
+      "path_after": {
+        "dev": 60,
+        "inode": 222147404608,
+        "bytes": 509607936,
+        "mtime_ns": 1793856769283943000,
+        "ctime_ns": 1793856769283943000
+      },
+      "read_bytes": 0,
+      "pread_calls": 0,
+      "positive_short_reads": 0,
+      "eof_probe_bytes": null,
+      "openssl_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "software_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "seconds": 0.0005753040313720703,
+      "metadata_stable": false,
+      "byte_count_exact": false,
+      "error": "Path/FD identity changed before read",
+      "bad_view_snapshot": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/read-0-bad-view.bin",
+      "bad_view_bytes": 0,
+      "snapshot_exact_held_bytes": true,
+      "snapshot_mode": "0600"
+    }
+  ],
+  "progress": [
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/progress-000.json",
+      "sha256": "e0f9504ce1c6ee63d19c09db76330946c13bce3d6bbc9578d05786bd677eaed5"
+    }
+  ],
+  "strict_calls": 1,
+  "full_reads": 0,
+  "maximum_strict_calls": 3,
+  "first_rejection_accepted": false,
+  "expected_previously_published": true,
+  "mode": "before-read-timestamp-only-zero-bytes",
+  "ending_metadata": {
+    "dev": 60,
+    "inode": 222147404608,
+    "bytes": 509607936,
+    "mtime_ns": 1793856769283943000,
+    "ctime_ns": 1793856769283943000
+  },
+  "unpublished_proposed_sha256": null,
+  "empty_digest_is_payload_candidate": false
+}

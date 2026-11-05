@@ -1,0 +1,57 @@
+{
+  "complete": true,
+  "passed": false,
+  "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a/measurements/full12/propagator.npy",
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "expected_sha256": null,
+  "required_bytes": 2038431872,
+  "initial": {
+    "dev": 60,
+    "inode": 72057816529153344,
+    "bytes": 2038431872,
+    "mtime_ns": 1793855629958470510,
+    "ctime_ns": 1793855629958470510
+  },
+  "original_open_mode": "O_RDONLY",
+  "same_immutable_bytes": true,
+  "started": 1793855629.97314,
+  "fd_before": {
+    "dev": 60,
+    "inode": 72057816529153344,
+    "bytes": 2038431872,
+    "mtime_ns": 1793855629958470510,
+    "ctime_ns": 1793855629958470510
+  },
+  "last_request_offset": 2038431872,
+  "last_request_bytes": 1,
+  "last_returned_bytes": 0,
+  "fd_after": {
+    "dev": 60,
+    "inode": 72057816529153344,
+    "bytes": 2038431872,
+    "mtime_ns": 1793855629967005000,
+    "ctime_ns": 1793855629967005000
+  },
+  "path_after": {
+    "dev": 60,
+    "inode": 72057816529153344,
+    "bytes": 2038431872,
+    "mtime_ns": 1793855629967005000,
+    "ctime_ns": 1793855629967005000
+  },
+  "read_bytes": 2038431872,
+  "pread_calls": 488,
+  "positive_short_reads": 0,
+  "eof_probe_bytes": 0,
+  "openssl_sha256": "d49b6db942df7668e8203ebb776d88b34b928f800f6be2e5fbc38fa97fe1b0ef",
+  "software_sha256": "d49b6db942df7668e8203ebb776d88b34b928f800f6be2e5fbc38fa97fe1b0ef",
+  "seconds": 28.947218418121338,
+  "metadata_stable": false,
+  "byte_count_exact": true,
+  "error": "Strict digest/identity/count/EOF gate failed",
+  "bad_view_snapshot": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/read-0-bad-view.bin",
+  "bad_view_bytes": 2038431872,
+  "snapshot_exact_held_bytes": true,
+  "snapshot_mode": "0600"
+}

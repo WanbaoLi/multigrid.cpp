@@ -1,0 +1,54 @@
+{
+  "complete": true,
+  "passed": false,
+  "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/measurements/full12/independent/gauge.bin",
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "expected_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+  "required_bytes": 509607936,
+  "initial": {
+    "dev": 60,
+    "inode": 222147404608,
+    "bytes": 509607936,
+    "mtime_ns": 1793856769275201090,
+    "ctime_ns": 1793856769276811000
+  },
+  "original_open_mode": "O_RDONLY",
+  "same_immutable_bytes": true,
+  "started": 1793856769.289367,
+  "fd_before": {
+    "dev": 60,
+    "inode": 222147404608,
+    "bytes": 509607936,
+    "mtime_ns": 1793856769283943000,
+    "ctime_ns": 1793856769283943000
+  },
+  "fd_after": {
+    "dev": 60,
+    "inode": 222147404608,
+    "bytes": 509607936,
+    "mtime_ns": 1793856769283943000,
+    "ctime_ns": 1793856769283943000
+  },
+  "path_after": {
+    "dev": 60,
+    "inode": 222147404608,
+    "bytes": 509607936,
+    "mtime_ns": 1793856769283943000,
+    "ctime_ns": 1793856769283943000
+  },
+  "read_bytes": 0,
+  "pread_calls": 0,
+  "positive_short_reads": 0,
+  "eof_probe_bytes": null,
+  "openssl_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "software_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "seconds": 0.0005753040313720703,
+  "metadata_stable": false,
+  "byte_count_exact": false,
+  "error": "Path/FD identity changed before read",
+  "bad_view_snapshot": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/read-0-bad-view.bin",
+  "bad_view_bytes": 0,
+  "snapshot_exact_held_bytes": true,
+  "snapshot_mode": "0600"
+}

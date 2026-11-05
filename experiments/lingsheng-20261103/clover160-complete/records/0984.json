@@ -1,0 +1,187 @@
+{
+  "complete": true,
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "rows": [
+    {
+      "path": "hash-000.json",
+      "sha256": "374aeb6ea85c280e08a54aed4f9c5e7ae09e6d8c1fbf36796e6c552f110f8c2f"
+    },
+    {
+      "path": "hash-001.json",
+      "sha256": "0265fc1b99176df0ae62333424c963402f22a8e79225275048fcc088b107daca"
+    },
+    {
+      "path": "hash-002.json",
+      "sha256": "56d5bbd2fb0b173df42799b11ec5b8e04717ad2d6008c5fe2901d5dabb7abccd"
+    },
+    {
+      "path": "hash-003.json",
+      "sha256": "0d7107582ffa302a32fa76274a9ebec07695e2b71c2197cab5734597102c49a8"
+    },
+    {
+      "path": "hash-004.json",
+      "sha256": "4943af27c4e656902aecc9466ec80d56f7a6d3bd5c558e1c7929e47cb0d08adf"
+    },
+    {
+      "path": "hash-005.json",
+      "sha256": "5383494ff7603c8fc4e28254ba18f15f307598b4ab821c5fa93e520680c7bae7"
+    },
+    {
+      "path": "hash-006.json",
+      "sha256": "e3bce7a934938fc3f10d99fe34acc51adaf016c85986fa9f21bf14e3ad92dce7"
+    },
+    {
+      "path": "hash-007.json",
+      "sha256": "646d84dcbdb5d63c70e0fd3528aa1b31c73b584a17e15b72e262c3078bbaaaa1"
+    },
+    {
+      "path": "hash-008.json",
+      "sha256": "69edc301406b5f4d341aa06c27fca0b494f5c6dc93224fa750649bd68a020417"
+    },
+    {
+      "path": "hash-009.json",
+      "sha256": "8ff1f6d68a1568737185d0ce8285b3e68ed6b5e3de0790e0fe0b8b2476f50c61"
+    },
+    {
+      "path": "hash-010.json",
+      "sha256": "981185b84505f9b12b55163f5e9b0ec5037bf6ee9d8a641bc49d4c9846900fcc"
+    },
+    {
+      "path": "hash-011.json",
+      "sha256": "a0d5bdf04e196d80ae1c11ba1a7dbb88b246bf4f943f8976e7bcfd675d7a1c2f"
+    },
+    {
+      "path": "hash-012.json",
+      "sha256": "f9ebcace939b0857ef0c12648e20141648bdcadba9a94a19d1c8a926213c7d13"
+    },
+    {
+      "path": "hash-013.json",
+      "sha256": "91686a31cbcbb7ae6b25ed1208b30417e58718927b807df5310ae7627062023f"
+    },
+    {
+      "path": "hash-014.json",
+      "sha256": "05508a44653e9741538f807529651694259262d441d4a171511307138c0c4f9e"
+    },
+    {
+      "path": "hash-015.json",
+      "sha256": "c8e6698f01b8bfe07806fe59791db91cc712919d1a1a00987cce725dc7f043bb"
+    },
+    {
+      "path": "hash-016.json",
+      "sha256": "f5b6f850c9e640ae46f54cc346772826f65e16e521759b50900bdfe21af2c9cf"
+    },
+    {
+      "path": "hash-017.json",
+      "sha256": "de88942dd5bc5922896bc37b84e16350227b741889227e08be72795fe88db033"
+    },
+    {
+      "path": "hash-018.json",
+      "sha256": "fc48e84815ab2b060518fcd4262558e3bad00a7fc7ac8dcea8fdcd5c16077a0c"
+    },
+    {
+      "path": "hash-019.json",
+      "sha256": "129391e9c7d2179b45290b1e1c111aa710e0114685c3121170f2629427a28e13"
+    },
+    {
+      "path": "hash-020.json",
+      "sha256": "7a9e788314c730924a30ab31fb0b2afb0e0e93f82fb15524f22af889c22bcac9"
+    },
+    {
+      "path": "hash-021.json",
+      "sha256": "cfae11f6eb1c5b69b835a89a388190e3ca5ebd65b5073c7421e9c5d6f3d47173"
+    },
+    {
+      "path": "hash-022.json",
+      "sha256": "3a7061646e869f34fa8ef33ddd8e89318a72dd2aa1fcb50ac3d98e699338522f"
+    },
+    {
+      "path": "hash-023.json",
+      "sha256": "81e61f5fcd23d13642d739acf697ee6433a37c6906b02f9c3d8ae2198bfd2556"
+    },
+    {
+      "path": "hash-024.json",
+      "sha256": "aa0917c74334a935c23598919c7721f37bc1d147909168075e8404cdf403f508"
+    },
+    {
+      "path": "hash-025.json",
+      "sha256": "a2fb736917e58df22a01e4a95eef491ab5cbcd5c6f258ff05c1f7d53fa3a95cb"
+    },
+    {
+      "path": "hash-026.json",
+      "sha256": "fa8793e083675ef032b892454970e6add129283356e499fccff33282ecff94cd"
+    },
+    {
+      "path": "hash-027.json",
+      "sha256": "33feee45c0d9c5107bac3461c7b56a68d67edee254cf3c2752a5b8ced233e44a"
+    },
+    {
+      "path": "hash-028.json",
+      "sha256": "0de87a4b5c754888dc7efbca0dfc8a330706ac093e1bc765aa966aa5511f5d74"
+    },
+    {
+      "path": "hash-029.json",
+      "sha256": "d39ab5962e35cee4e08f89e126e64e6598d03f1b99ff1f2231e2e937e8b195be"
+    },
+    {
+      "path": "hash-030.json",
+      "sha256": "29cdb95334430634a4ea74d1544931f21387fad88c6aafec6ce2d25ee70e66d1"
+    },
+    {
+      "path": "hash-031.json",
+      "sha256": "f7757a61ffc64d5a6d1a2070aad1d44821fb534ac89c0843c718d3b34c3b1038"
+    },
+    {
+      "path": "hash-032.json",
+      "sha256": "204954cbfeaad31d179718bc726292ce918d20dfa1298a138c01b2c07499ef82"
+    },
+    {
+      "path": "hash-033.json",
+      "sha256": "60f2f74e598ec9f04772b55f6b39daa170ebd93d48541b22260561c6b5ca4307"
+    },
+    {
+      "path": "hash-034.json",
+      "sha256": "70515ca194e858f7f806dbce2a7ab4fdc845a2eb3ad87cfb9087745a6766b5d6"
+    },
+    {
+      "path": "hash-035.json",
+      "sha256": "09679e0c4a52289136794914c669a3d79fe5ae49a51e76099435338cf7105d24"
+    },
+    {
+      "path": "hash-036.json",
+      "sha256": "3f86ec98512978b4996529afc14bcb6f912b3e170037114aee2d177b7a4dd95c"
+    },
+    {
+      "path": "hash-037.json",
+      "sha256": "3df6b3503d1d60e9c6dff1719af097822e395fdc8b028c4853b1440eaedd2f90"
+    },
+    {
+      "path": "hash-038.json",
+      "sha256": "8d8d1497df37007e328f4218414b05693e374c206978b54726a017e47c506367"
+    },
+    {
+      "path": "hash-039.json",
+      "sha256": "21930ecadf53bc83c8e510bbb15bf1472857c3d86e931271321c98d7c5e8f585"
+    },
+    {
+      "path": "hash-040.json",
+      "sha256": "5ec934ec2d8311dc0c901910e1b60e3c6d7a85d2cc8f59fbb5f903b6be8bda70"
+    },
+    {
+      "path": "hash-041.json",
+      "sha256": "3032f4c7b4a6666ea7aa2dfcc94c1fc75faeb12ef225a5d321450582c07dc756"
+    },
+    {
+      "path": "hash-042.json",
+      "sha256": "3e1f52ff98e0df947179f989c634430c0ac358cc84c99cea18b3da66722415cb"
+    },
+    {
+      "path": "hash-043.json",
+      "sha256": "b21f01702438b283de8e43cadad55ecd11fb57b9f7d015ae5e4670874ed037c5"
+    },
+    {
+      "path": "hash-044.json",
+      "sha256": "ecb2e7a9064dfcd293223677cd37f8604add3d7f33b19920c37d962f21628459"
+    }
+  ]
+}

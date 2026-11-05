@@ -1,0 +1,21 @@
+{
+  "complete": true,
+  "passed": true,
+  "protocol": "fresh-output-publication-v2",
+  "startup_sha256": "3a3120646cbb2f3eddf90000f05d450fe056a415623b31c3d1a0c921f8ccffcc",
+  "entry_sha256": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+  "base_wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec",
+  "publication_module_sha256": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a",
+  "parent_raw_artifacts": {
+    "protocol.json": {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark/rank00009/protocol.json",
+      "sha256": "929d5635f6204fb552c502b7fe5a0a5af986b94c1144825ac9b7737194021dac"
+    },
+    "manifest.json": {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark/rank00009/manifest.json",
+      "sha256": "a0912e7d057014adb01ac29ba6d97c6e92ac4739f6965b8a376d6377c0ca39c3"
+    }
+  },
+  "published_outputs": [],
+  "rank": 9
+}

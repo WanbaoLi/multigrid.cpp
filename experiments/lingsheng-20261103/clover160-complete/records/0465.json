@@ -1,0 +1,57 @@
+{
+  "complete": true,
+  "passed": false,
+  "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-b/measurements/full12/independent/gauge.bin",
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "expected_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+  "required_bytes": 509607936,
+  "initial": {
+    "dev": 60,
+    "inode": 36029019497783744,
+    "bytes": 509607936,
+    "mtime_ns": 1793857261541297650,
+    "ctime_ns": 1793857261559997000
+  },
+  "original_open_mode": "O_RDONLY",
+  "same_immutable_bytes": true,
+  "started": 1793857261.5647464,
+  "fd_before": {
+    "dev": 60,
+    "inode": 36029019497783744,
+    "bytes": 509607936,
+    "mtime_ns": 1793857261541297650,
+    "ctime_ns": 1793857261559997000
+  },
+  "last_request_offset": 509607936,
+  "last_request_bytes": 1,
+  "last_returned_bytes": 0,
+  "fd_after": {
+    "dev": 60,
+    "inode": 36029019497783744,
+    "bytes": 509607936,
+    "mtime_ns": 1793857261559999000,
+    "ctime_ns": 1793857261559999000
+  },
+  "path_after": {
+    "dev": 60,
+    "inode": 36029019497783744,
+    "bytes": 509607936,
+    "mtime_ns": 1793857261559999000,
+    "ctime_ns": 1793857261559999000
+  },
+  "read_bytes": 509607936,
+  "pread_calls": 123,
+  "positive_short_reads": 0,
+  "eof_probe_bytes": 0,
+  "openssl_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+  "software_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+  "seconds": 5.8563573360443115,
+  "metadata_stable": false,
+  "byte_count_exact": true,
+  "error": "Strict digest/identity/count/EOF gate failed",
+  "bad_view_snapshot": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-b/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/read-0-bad-view.bin",
+  "bad_view_bytes": 509607936,
+  "snapshot_exact_held_bytes": true,
+  "snapshot_mode": "0600"
+}

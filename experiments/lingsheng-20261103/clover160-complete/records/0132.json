@@ -1,0 +1,42 @@
+{
+  "complete": true,
+  "protocol": "fresh-output-publication-v2",
+  "entry_sha256": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+  "base_wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec",
+  "publication_module_sha256": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a",
+  "reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+  "rank": 0,
+  "mode": "benchmark",
+  "plan": {
+    "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a/plan.json",
+    "sha256": "0d5a6efacef0696b50e24fde3fb8c3fe0bbe3bd76c9334be0ab30969511bb795",
+    "cases": [
+      "full12"
+    ]
+  },
+  "eligibility": {
+    "protocol": "fresh-output-publication-v2",
+    "complete": true,
+    "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a/measurements",
+    "output_absent_at_cli_start": true,
+    "checked_epoch": 1793855386.967076,
+    "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a",
+    "parent_identity": {
+      "dev": 60,
+      "inode": 54043724250367553
+    },
+    "declarations": [
+      {
+        "relative": "full12/propagator.npy",
+        "kind": "npy-propagator",
+        "expected_sha256": null,
+        "bytes": 2038431872
+      }
+    ],
+    "maximum_strict_calls_per_output": 3,
+    "parent_protocol": null,
+    "immutable_inputs_use_original_strict_reader": true
+  },
+  "numeric_and_clock_bodies_unchanged": true,
+  "immutable_reader_unchanged": true
+}

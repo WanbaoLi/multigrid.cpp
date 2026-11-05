@@ -1,0 +1,24 @@
+{
+  "complete": true,
+  "pinned_files": {
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00000/manifest.json": "ae8332fcb2f73dc3a1c09206ccb5dd10ee443c86e9db5f7e79ddccac75568136",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/receipt.json": "f4cc76b79a72e9d7f158331ae019c11a87bbe4a45728e88eb8c2d4e5c465fab6",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00001/manifest.json": "73531e1365726620bb6c870b9c137607c33733fbf821e01f488fb6fa05fd462b",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00002/manifest.json": "39fb13eb5685907ecb706e7a601cd03a1e0102e4ca402264b6047d33a50aa854",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00003/manifest.json": "f13f90c95a78c68d914a1fc4dd9101abf72941aab215e837f67b0e694aa7713b",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00004/manifest.json": "c6603412516042792cea8eee13fa05ec4e9af864d6b49d997983c960546143a1",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00005/manifest.json": "21a0c17dd0063dc099445d1a0d10167b6a037b2bc07b049986ca30a7c99db6f4",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00006/manifest.json": "e5bc8c67c0b4daf8ffc0dab4c6835756f01b16602ab5e999d45075a2b1cc22dd",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00007/manifest.json": "403c2becaf05b1979f2fe7ce1a817ad39d239f0d279554c3ad3db2bfc619ace3",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00008/manifest.json": "c42ff92f44373ed7a6d9ed093b971196af30d7643098c24924e673d891518a3f",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00009/manifest.json": "be267b7b604b11793972822ea0405801b7fec643cce11381e3f56ab2cffd4f5b",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00010/manifest.json": "55581386c63aab9eef4782e818005cea5f326e03073ec31167556bf9d4b7ba3a",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00011/manifest.json": "0fd34be8fe9c6ac6a964f6620b5489e0b2f168af393e701fae21cd22889188a3",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00012/manifest.json": "0d89151fe37dc474a75e6505d6c2bb489473e97014b16d90cf56cff339330b34",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00013/manifest.json": "b91f038d831d963faba4c8b6a3edd6bbe7e9c0742082f4d6bd17248bcc307bf6",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00014/manifest.json": "b2b45fba63cb1448875f98246e5c040cfd4eceddbf9775308bcdf321e8d1a83f",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/benchmark-fresh-publication-v2/rank00015/manifest.json": "219805e31f7aeeea7329feaee284ff7ce0994c0d2c23e44752c5fcd917a30cb3",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/independent/helper/fresh-gauge-publication-v2/output-000/receipt.json": "fa922090042bfd24ad400fba8e5e29bfe7f5cfffe937a4acbfe6203c02948f54",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/checksum-audit/independent/helper/manifest.json": "59877644a496febbcfd234bc4433799d52452d213c190b9775fbd0d371b9cdeb"
+  }
+}

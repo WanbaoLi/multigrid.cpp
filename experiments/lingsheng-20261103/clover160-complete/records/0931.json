@@ -1,0 +1,52 @@
+{
+  "complete": true,
+  "passed": true,
+  "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-on/measurements/full12/gauge_rank00009.npy",
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "expected_sha256": "e81f26943ebe7491465eb5b7005531f4f03600fd4c7e7d47446da414793959dc",
+  "required_bytes": null,
+  "initial": {
+    "dev": 60,
+    "inode": 90072214745664768,
+    "bytes": 31850624,
+    "mtime_ns": 1793856633149214410,
+    "ctime_ns": 1793856633149214410
+  },
+  "original_open_mode": "O_RDONLY",
+  "same_immutable_bytes": true,
+  "started": 1793856720.0294757,
+  "fd_before": {
+    "dev": 60,
+    "inode": 90072214745664768,
+    "bytes": 31850624,
+    "mtime_ns": 1793856633149214410,
+    "ctime_ns": 1793856633149214410
+  },
+  "last_request_offset": 31850624,
+  "last_request_bytes": 1,
+  "last_returned_bytes": 0,
+  "fd_after": {
+    "dev": 60,
+    "inode": 90072214745664768,
+    "bytes": 31850624,
+    "mtime_ns": 1793856633149214410,
+    "ctime_ns": 1793856633149214410
+  },
+  "path_after": {
+    "dev": 60,
+    "inode": 90072214745664768,
+    "bytes": 31850624,
+    "mtime_ns": 1793856633149214410,
+    "ctime_ns": 1793856633149214410
+  },
+  "read_bytes": 31850624,
+  "pread_calls": 9,
+  "positive_short_reads": 0,
+  "eof_probe_bytes": 0,
+  "openssl_sha256": "e81f26943ebe7491465eb5b7005531f4f03600fd4c7e7d47446da414793959dc",
+  "software_sha256": "e81f26943ebe7491465eb5b7005531f4f03600fd4c7e7d47446da414793959dc",
+  "seconds": 0.33145952224731445,
+  "metadata_stable": true,
+  "byte_count_exact": true
+}

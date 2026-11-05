@@ -1,0 +1,6 @@
+{
+  "attempt": "000-arm-clover-tests",
+  "library_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/000-arm-clover-tests/build/liblqcd_cpu.so",
+  "library_sha256": "045fd4d62c27179b68e8d557bcd9fdfe9aeb707c4ec93b93b37ce02ebf6ceb10",
+  "source_manifest_sha256": "121e4ecbcfc0ccef51d9c6584af3d956fed4167202519edb30b3ab3b01a13e68"
+}

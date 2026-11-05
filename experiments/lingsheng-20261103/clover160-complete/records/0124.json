@@ -1,0 +1,115 @@
+{
+  "protocol": "fresh-output-publication-v2",
+  "complete": false,
+  "passed": false,
+  "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a/measurements/full12/propagator.npy",
+  "eligibility": {
+    "protocol": "fresh-output-publication-v2",
+    "complete": true,
+    "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a/measurements",
+    "output_absent_at_cli_start": true,
+    "checked_epoch": 1793855386.967076,
+    "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a",
+    "parent_identity": {
+      "dev": 60,
+      "inode": 54043724250367553
+    },
+    "declarations": [
+      {
+        "relative": "full12/propagator.npy",
+        "kind": "npy-propagator",
+        "expected_sha256": null,
+        "bytes": 2038431872
+      }
+    ],
+    "maximum_strict_calls_per_output": 3,
+    "parent_protocol": null,
+    "immutable_inputs_use_original_strict_reader": true
+  },
+  "parent_protocol": {
+    "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a/checksum-audit/benchmark/rank00000/protocol.json",
+    "sha256": "ebae2276f779e68509ebf1e7c179cb6dca49c6bd2b71e7a257d441f9cfc0a224",
+    "startup_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/startup.json",
+    "startup_sha256": "cbd58234c7fcf8c34f818af28cbc042f42e10761138f880fe99360d7677416a3"
+  },
+  "reads": [
+    {
+      "complete": true,
+      "passed": false,
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a/measurements/full12/propagator.npy",
+      "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+      "block_bytes": 4194304,
+      "expected_sha256": null,
+      "required_bytes": 2038431872,
+      "initial": {
+        "dev": 60,
+        "inode": 72057816529153344,
+        "bytes": 2038431872,
+        "mtime_ns": 1793855629958470510,
+        "ctime_ns": 1793855629958470510
+      },
+      "original_open_mode": "O_RDONLY",
+      "same_immutable_bytes": true,
+      "started": 1793855629.97314,
+      "fd_before": {
+        "dev": 60,
+        "inode": 72057816529153344,
+        "bytes": 2038431872,
+        "mtime_ns": 1793855629958470510,
+        "ctime_ns": 1793855629958470510
+      },
+      "last_request_offset": 2038431872,
+      "last_request_bytes": 1,
+      "last_returned_bytes": 0,
+      "fd_after": {
+        "dev": 60,
+        "inode": 72057816529153344,
+        "bytes": 2038431872,
+        "mtime_ns": 1793855629967005000,
+        "ctime_ns": 1793855629967005000
+      },
+      "path_after": {
+        "dev": 60,
+        "inode": 72057816529153344,
+        "bytes": 2038431872,
+        "mtime_ns": 1793855629967005000,
+        "ctime_ns": 1793855629967005000
+      },
+      "read_bytes": 2038431872,
+      "pread_calls": 488,
+      "positive_short_reads": 0,
+      "eof_probe_bytes": 0,
+      "openssl_sha256": "d49b6db942df7668e8203ebb776d88b34b928f800f6be2e5fbc38fa97fe1b0ef",
+      "software_sha256": "d49b6db942df7668e8203ebb776d88b34b928f800f6be2e5fbc38fa97fe1b0ef",
+      "seconds": 28.947218418121338,
+      "metadata_stable": false,
+      "byte_count_exact": true,
+      "error": "Strict digest/identity/count/EOF gate failed",
+      "bad_view_snapshot": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/read-0-bad-view.bin",
+      "bad_view_bytes": 2038431872,
+      "snapshot_exact_held_bytes": true,
+      "snapshot_mode": "0600"
+    }
+  ],
+  "progress": [
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-000.json",
+      "sha256": "cb92bb89a3391f3627464c4fc51ea6846c5f49ad0e7a82c1c90ded10f0854e41"
+    }
+  ],
+  "strict_calls": 1,
+  "full_reads": 1,
+  "maximum_strict_calls": 3,
+  "first_rejection_accepted": false,
+  "expected_previously_published": false,
+  "mode": "full-read-timestamp-only",
+  "ending_metadata": {
+    "dev": 60,
+    "inode": 72057816529153344,
+    "bytes": 2038431872,
+    "mtime_ns": 1793855629967005000,
+    "ctime_ns": 1793855629967005000
+  },
+  "unpublished_proposed_sha256": "d49b6db942df7668e8203ebb776d88b34b928f800f6be2e5fbc38fa97fe1b0ef",
+  "empty_digest_is_payload_candidate": false
+}

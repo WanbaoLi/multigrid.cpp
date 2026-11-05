@@ -1,0 +1,23 @@
+{
+  "protocol": "fresh-output-publication-v2",
+  "complete": true,
+  "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a/measurements",
+  "output_absent_at_cli_start": true,
+  "checked_epoch": 1793855386.967076,
+  "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-control-a",
+  "parent_identity": {
+    "dev": 60,
+    "inode": 54043724250367553
+  },
+  "declarations": [
+    {
+      "relative": "full12/propagator.npy",
+      "kind": "npy-propagator",
+      "expected_sha256": null,
+      "bytes": 2038431872
+    }
+  ],
+  "maximum_strict_calls_per_output": 3,
+  "parent_protocol": null,
+  "immutable_inputs_use_original_strict_reader": true
+}

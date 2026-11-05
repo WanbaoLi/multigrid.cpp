@@ -1,0 +1,124 @@
+{
+  "protocol": "fresh-output-publication-v2",
+  "complete": true,
+  "passed": true,
+  "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-off/measurements/full12/propagator.npy",
+  "eligibility": {
+    "protocol": "fresh-output-publication-v2",
+    "complete": true,
+    "output": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-off/measurements",
+    "output_absent_at_cli_start": true,
+    "checked_epoch": 1793855924.0088024,
+    "existing_parent": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-off",
+    "parent_identity": {
+      "dev": 60,
+      "inode": 45036524995654849
+    },
+    "declarations": [
+      {
+        "relative": "full12/propagator.npy",
+        "kind": "npy-propagator",
+        "expected_sha256": null,
+        "bytes": 2038431872
+      }
+    ],
+    "maximum_strict_calls_per_output": 3,
+    "parent_protocol": null,
+    "immutable_inputs_use_original_strict_reader": true
+  },
+  "parent_protocol": {
+    "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-off/checksum-audit/benchmark/rank00000/protocol.json",
+    "sha256": "ebae2276f779e68509ebf1e7c179cb6dca49c6bd2b71e7a257d441f9cfc0a224",
+    "startup_path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-off/checksum-audit/benchmark-fresh-publication-v2/rank00000/startup.json",
+    "startup_sha256": "ec14dd96b7cb453f840c3b8045fd24a1df2286da428638dda5f64da983f7e98f"
+  },
+  "reads": [
+    {
+      "complete": true,
+      "passed": true,
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-off/measurements/full12/propagator.npy",
+      "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+      "block_bytes": 4194304,
+      "expected_sha256": null,
+      "required_bytes": 2038431872,
+      "initial": {
+        "dev": 60,
+        "inode": 99079413516283648,
+        "bytes": 2038431872,
+        "mtime_ns": 1793856172539933910,
+        "ctime_ns": 1793856172539933910
+      },
+      "original_open_mode": "O_RDONLY",
+      "same_immutable_bytes": true,
+      "started": 1793856172.5570242,
+      "fd_before": {
+        "dev": 60,
+        "inode": 99079413516283648,
+        "bytes": 2038431872,
+        "mtime_ns": 1793856172539933910,
+        "ctime_ns": 1793856172539933910
+      },
+      "last_request_offset": 2038431872,
+      "last_request_bytes": 1,
+      "last_returned_bytes": 0,
+      "fd_after": {
+        "dev": 60,
+        "inode": 99079413516283648,
+        "bytes": 2038431872,
+        "mtime_ns": 1793856172539933910,
+        "ctime_ns": 1793856172539933910
+      },
+      "path_after": {
+        "dev": 60,
+        "inode": 99079413516283648,
+        "bytes": 2038431872,
+        "mtime_ns": 1793856172539933910,
+        "ctime_ns": 1793856172539933910
+      },
+      "read_bytes": 2038431872,
+      "pread_calls": 488,
+      "positive_short_reads": 0,
+      "eof_probe_bytes": 0,
+      "openssl_sha256": "28a653beaa70ae64077a2dbcb5c49a0e9bbb22854a7323abfbe063fcc9ec2d79",
+      "software_sha256": "28a653beaa70ae64077a2dbcb5c49a0e9bbb22854a7323abfbe063fcc9ec2d79",
+      "seconds": 27.26719641685486,
+      "metadata_stable": true,
+      "byte_count_exact": true
+    }
+  ],
+  "progress": [
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-off/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-000.json",
+      "sha256": "2bd2dca73797c0841cf1701905580b2e361b3302af6867a7a3ed45597242049e"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-reuse-v1/attempts/160-clover-new-off/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-001.json",
+      "sha256": "96d06c6093393a711475eccd8ce70e4aed2ed155e7cb15cb0131a88ac7bc18e5"
+    }
+  ],
+  "strict_calls": 1,
+  "full_reads": 1,
+  "maximum_strict_calls": 3,
+  "first_rejection_accepted": false,
+  "expected_previously_published": false,
+  "mode": "original-first-strict-pass",
+  "closed_npy_header": {
+    "complete": true,
+    "passed": true,
+    "header_bytes": 128,
+    "dtype": "<c16",
+    "shape": [
+      64,
+      24,
+      24,
+      24,
+      4,
+      4,
+      3,
+      3
+    ],
+    "fortran_order": false
+  },
+  "published_sha256": "28a653beaa70ae64077a2dbcb5c49a0e9bbb22854a7323abfbe063fcc9ec2d79",
+  "rejected_read_count": 0
+}
