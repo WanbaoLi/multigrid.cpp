@@ -1,0 +1,7 @@
+{
+  "controller_sha256": "7e15a2e36d676f40040ced3645b4b7872a850b420d60657e19dcc3ea70c31072",
+  "head": "833f8732f6b06e370074efbb610fc7a85fe11a46",
+  "limitation": "Direct SSH correctness task; scheduler nodeDOWN*, no scheduler exclusivity; no physical fixture/performance claim",
+  "ordinary_performance": false,
+  "source_manifest_sha256": "22f5b53609e7f27c44339f1301ea9ba0883538e949a907a405e5fc0621204c5b"
+}

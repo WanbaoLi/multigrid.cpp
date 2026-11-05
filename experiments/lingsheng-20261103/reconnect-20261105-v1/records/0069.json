@@ -1,0 +1,72 @@
+{
+  "complete": true,
+  "submitted": false,
+  "argv": [
+    "dsub",
+    "-q",
+    "q_hpcapp",
+    "-A",
+    "common",
+    "-nn",
+    "1",
+    "-N",
+    "1",
+    "-x",
+    "job",
+    "-nl",
+    "cn19486",
+    "-R",
+    "cpu=592,mem=480000MB",
+    "-T",
+    "14400",
+    "-n",
+    "mg-opt-worker11",
+    "--cwd",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103",
+    "-o",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker11.log",
+    "/bin/bash",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker11.sh",
+    "--source",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94",
+    "--expected-source-head",
+    "f94f27d2a07ff3363bea43c1a3b2ca45277de674"
+  ],
+  "epoch": 1793796826.4016163,
+  "evidence": {
+    "plan_sha256": "9ac9b5e6e3c63976c68f536f8a02775d07d0092df4ac1fcaa9c7738b530552ce",
+    "wrapper_manifest_sha256": "705ca90acf1518ed7a3ef97a0caddd5fbcbc087f9cefaba7bc7bcc2c259e7282",
+    "stop_proof_sha256": "dc49dcd3d19ceeb752a9788e71b6db2478ef0866fe7f45bcaeeaf31dd70c2665",
+    "source_root": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94",
+    "source_head": "f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+    "previous_job": {
+      "jobId": "2025061",
+      "jobName": "mg-opt-worker10",
+      "state": "SUCCEEDED",
+      "user": "nsls_lwb",
+      "taskExecNodes": "cn19486",
+      "startTime": "2026-11-04T09:18:27Z",
+      "endTime": "2026-11-04T12:49:46Z"
+    },
+    "predecessor_query": {
+      "argv": [
+        "/opt/batch/cli/bin/djob",
+        "-J",
+        "-l",
+        "2025061"
+      ],
+      "request_id": "req-206cfa97-3941-4a73-b71f-ebb1c9eb8fb4",
+      "code": "success"
+    },
+    "task_status_sha256": {
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/146-old-runtime-capture-smoke-worker10.status.json": "acc35e083d6664bc72596d1f193ca66ee55abfeb29af148e055bf95b0bf6b98f",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/147-runtime-only-worker10-v6.status.json": "8ae44612aa92816c09ffcc7c7704a76c1f43b2b3f185f53fdbf4f1cfde90ed76",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/148-halo-v2-full-worker10.status.json": "fbcdc67d5afba83a47ad8a2d475d5f807bf08351d18b9d8dec1ecce9b5493a38",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/150-best-solve-profile-worker10.status.json": "59b74ccafce16e458d13c40c903047a50a09b234a6da144e1d18ebf0b7bb7b02",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/151-runtime-confirm-worker10-v7.status.json": "2ef8f6203074710cab24b9e37320309c75c43bdee7efa7f03fea6bb91df00901",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/153-halo-v2-remainder-worker10.status.json": "41a52d8c484cd2de6424177710967800fb2cebe7df379f50cdd216d1cf3ced68",
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue10/154-halo-v2-ordinary-remainder-worker10.status.json": "7d908161fd40c5444297bf5cddd7da66dba2a340c1e606f6e9934e81ff740546"
+    }
+  },
+  "result_record": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker11-submission-result.json"
+}

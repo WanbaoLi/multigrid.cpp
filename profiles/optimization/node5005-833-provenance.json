@@ -1,0 +1,43 @@
+{
+  "complete": true,
+  "source_report_sha256": "307fed75ca009a9f12ca41689453355fe261f1cea65e6cc51602c3917a1e453c",
+  "source_manifest_sha256": "d6ee1b1a828ac441e7ccaa6cb65a4d57b944d8c295a8de7ab1b3823814d88d18",
+  "library_sha256": "64f64536927f0766bc718e829b4c8c05594612f2744fd91afd92f6fffa97ac91",
+  "configuration": {
+    "batch": 2,
+    "block": [
+      6,
+      6,
+      6,
+      4
+    ],
+    "context_environment": {
+      "LQCD_ARM_COARSE_SVE": 0,
+      "LQCD_ARM_SVE": 1,
+      "LQCD_ARM_SVE_PLANNED": 0,
+      "LQCD_ARM_SVE_REUSE": 0,
+      "LQCD_ARM_SVE_TRANSFER": 0,
+      "LQCD_COARSE_FUSED": 0,
+      "LQCD_COARSE_SPATIAL_OVERLAP": 0,
+      "LQCD_HBM": "off",
+      "LQCD_HBW_ALLOC": "off"
+    },
+    "placement_threads": 16,
+    "ranks": 16,
+    "seed": 1024,
+    "setup_threads": 16,
+    "solve_environment": {
+      "LQCD_COARSE_CGS2": 0,
+      "LQCD_CORRECTION_BASE_TOL": 0.003,
+      "LQCD_MG_COARSE_IT": 40,
+      "LQCD_MG_COARSE_TOL": 0.05,
+      "LQCD_MG_SAP_CYCLES": 2,
+      "LQCD_MG_SAP_STEPS": 5,
+      "LQCD_RESTRICT_FLOAT": 0
+    },
+    "threads": 12
+  },
+  "historical_report_used_only_for_configuration": true,
+  "timing_not_inherited": true,
+  "note": "ARM052 best retained; node5005 machine-specific tuning. These are full12 API plans, not interchangeable CPU counts."
+}

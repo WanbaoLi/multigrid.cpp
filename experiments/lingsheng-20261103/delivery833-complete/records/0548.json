@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/public2/home/lwb_720/miniconda3/envs/pyquda/bin/python",
+    "-u",
+    "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/x86_delivery833_full12_v2.py"
+  ],
+  "cwd": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105",
+  "timeout": 3800,
+  "environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  }
+}

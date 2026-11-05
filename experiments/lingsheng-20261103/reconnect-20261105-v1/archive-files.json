@@ -1,0 +1,1427 @@
+{
+  "complete": true,
+  "files": [
+    {
+      "path": "clover_full12_v1.py",
+      "bytes": 11094,
+      "original_sha256": "9d4e803fd1322e6e8b69b5a3a7135242fa79018d589c1f30bfc7f1a261250563",
+      "export_sha256": "9d4e803fd1322e6e8b69b5a3a7135242fa79018d589c1f30bfc7f1a261250563",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0000.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "clover_full12_worker13_v1.py",
+      "bytes": 11189,
+      "original_sha256": "750b095c4c0dbec650324973bbb153aa2e425d680ff146fbaa8fe36dbab20932",
+      "export_sha256": "750b095c4c0dbec650324973bbb153aa2e425d680ff146fbaa8fe36dbab20932",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0001.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "decode_profile155_periods.py",
+      "bytes": 2727,
+      "original_sha256": "f462ce12195f419f2d802fbef880b37e4046c09a6c9675176bb2efe43547dd28",
+      "export_sha256": "f462ce12195f419f2d802fbef880b37e4046c09a6c9675176bb2efe43547dd28",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0002.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "deploy_worker12_v1.py",
+      "bytes": 3462,
+      "original_sha256": "7c32e416f25df6aea58951748ca92ee5c81cc61bab845ec93add3c0c8c5ff135",
+      "export_sha256": "7c32e416f25df6aea58951748ca92ee5c81cc61bab845ec93add3c0c8c5ff135",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0003.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "deploy_worker13_v2.py",
+      "bytes": 3636,
+      "original_sha256": "b26812ce80795a8e177bcb9b8750f8c2f75ad76400f5d8e4d37062bec668c115",
+      "export_sha256": "b26812ce80795a8e177bcb9b8750f8c2f75ad76400f5d8e4d37062bec668c115",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0004.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "export_halo154.py",
+      "bytes": 5629,
+      "original_sha256": "78030761ca3ee1dd0d31e4e0d25fa6c0e71102ca9b35849a2651b35badf2ded6",
+      "export_sha256": "78030761ca3ee1dd0d31e4e0d25fa6c0e71102ca9b35849a2651b35badf2ded6",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0005.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "export_profile155.py",
+      "bytes": 5402,
+      "original_sha256": "004c56b0bfafd774f5a6973f104ba9943f55789949fe100d53d5b03434037ccc",
+      "export_sha256": "004c56b0bfafd774f5a6973f104ba9943f55789949fe100d53d5b03434037ccc",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0006.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "exports/reconnect-20261105-v1/scheduler-snapshot.json",
+      "bytes": 16333,
+      "original_sha256": "eb788d6015e981263704b834748cdd9937d40569715b3a97396b9131ff5f8616",
+      "export_sha256": "eb788d6015e981263704b834748cdd9937d40569715b3a97396b9131ff5f8616",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0007.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "finish_worker10_for_worker11.py",
+      "bytes": 4478,
+      "original_sha256": "e8d20a67a2f6de32258465e0599da887dfd780f3b55fc31a7e448790bf3aaba0",
+      "export_sha256": "e8d20a67a2f6de32258465e0599da887dfd780f3b55fc31a7e448790bf3aaba0",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0008.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "prepare_clover156_worker12.py",
+      "bytes": 4694,
+      "original_sha256": "50c3739854195c9e4d834376c570b564d52952fca8a5d4ad18faca1736dfb2a9",
+      "export_sha256": "50c3739854195c9e4d834376c570b564d52952fca8a5d4ad18faca1736dfb2a9",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0009.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "prepare_clover158_worker13.py",
+      "bytes": 4786,
+      "original_sha256": "b5e2e08441d4b55d585d6d6f9bb85c224978ec18bb3168924d73a8cf672272b6",
+      "export_sha256": "b5e2e08441d4b55d585d6d6f9bb85c224978ec18bb3168924d73a8cf672272b6",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0010.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "prepare_clover159_worker13.py",
+      "bytes": 4362,
+      "original_sha256": "ae79a8361992b6d266f5feabe5f62d1e98c850c76d7543417303456b377676df",
+      "export_sha256": "ae79a8361992b6d266f5feabe5f62d1e98c850c76d7543417303456b377676df",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0011.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "prepare_profile155_request.py",
+      "bytes": 1464,
+      "original_sha256": "88851cb3c852d2f64a5eb48f6ac846030f8f7459279feef5fe32352bebbe3e40",
+      "export_sha256": "88851cb3c852d2f64a5eb48f6ac846030f8f7459279feef5fe32352bebbe3e40",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0012.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "prepare_solve_profile_v8.py",
+      "bytes": 8287,
+      "original_sha256": "445926dd087b1966126b6d2d1b6075d59dcd1ba813e3f807a67e4eb6d4038208",
+      "export_sha256": "445926dd087b1966126b6d2d1b6075d59dcd1ba813e3f807a67e4eb6d4038208",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0013.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "prepare_worker11.py",
+      "bytes": 2535,
+      "original_sha256": "6d242161740bbb8a0c2a430733bba50f7a56b35c3c72c48ef2c4a4135f1d8451",
+      "export_sha256": "6d242161740bbb8a0c2a430733bba50f7a56b35c3c72c48ef2c4a4135f1d8451",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0014.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "prepare_worker12.py",
+      "bytes": 2535,
+      "original_sha256": "281319e27e3ae259cbdaead58280a4e9b418d98b75721de19b7f01d08d4766cc",
+      "export_sha256": "281319e27e3ae259cbdaead58280a4e9b418d98b75721de19b7f01d08d4766cc",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0015.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "prepare_worker13.py",
+      "bytes": 2535,
+      "original_sha256": "907b56c6b6c9c55212dce0832a34f9f2d92b3387b7b6c0248bdfbb2c183fe8ec",
+      "export_sha256": "907b56c6b6c9c55212dce0832a34f9f2d92b3387b7b6c0248bdfbb2c183fe8ec",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0016.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "prepared-clover158-worker13/plan.json",
+      "bytes": 2188,
+      "original_sha256": "65ab7acf5dc67302a07c204709c1d502bdafeaed9af7494256c29e67cbaa7321",
+      "export_sha256": "65ab7acf5dc67302a07c204709c1d502bdafeaed9af7494256c29e67cbaa7321",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0017.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "prepared-clover158-worker13/task.json",
+      "bytes": 2073,
+      "original_sha256": "5a268c289b80c8b006479f905cceb2dd5ad231b5f37b2c29623e25433d9a0193",
+      "export_sha256": "7b663c9e85d69e10ff2745c28593f4b5373c6861c65983d09c514a08ebaa8dd5",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0018.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "prepared-profile155-worker11/contract.json",
+      "bytes": 15551,
+      "original_sha256": "22b45c20b6584dc8067a4a355ca3e8b101c6153888421be7833b29dcdf0231de",
+      "export_sha256": "22b45c20b6584dc8067a4a355ca3e8b101c6153888421be7833b29dcdf0231de",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0019.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "prepared-profile155-worker11/task.json",
+      "bytes": 3824,
+      "original_sha256": "8d12169e012490f7fa87e546002aef9032b83379874b1ef8bdfa27dd1d4249c5",
+      "export_sha256": "111ccb16635c0b7f70dee60d5a964de5206135f1221ac6ad1f7a75af7a8c96a8",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0020.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "publish_profile155.py",
+      "bytes": 4450,
+      "original_sha256": "581c6771b9c2cdf99f15c899aafb59c4c631a500bfeaa930c42a212d5c0b538b",
+      "export_sha256": "581c6771b9c2cdf99f15c899aafb59c4c631a500bfeaa930c42a212d5c0b538b",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0021.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "submit_worker11_terminal_v2.py",
+      "bytes": 9674,
+      "original_sha256": "298e6fca39936f6b102978f230d667ad41d33b5bdaa3d77418245c6685bdb826",
+      "export_sha256": "298e6fca39936f6b102978f230d667ad41d33b5bdaa3d77418245c6685bdb826",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0022.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "submit_worker12_terminal_v2.py",
+      "bytes": 9674,
+      "original_sha256": "b3b409a4e436495dbba9937566f6e44f1b0263bd398bba0f25fb7e85e896338a",
+      "export_sha256": "b3b409a4e436495dbba9937566f6e44f1b0263bd398bba0f25fb7e85e896338a",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0023.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "submit_worker13_terminal_v2.py",
+      "bytes": 9674,
+      "original_sha256": "ce9a7ddec91a69a671559932c413137ccc277828a47ca934d48d41c73174c491",
+      "export_sha256": "ce9a7ddec91a69a671559932c413137ccc277828a47ca934d48d41c73174c491",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0024.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "test_clover_full12_worker13_v1.py",
+      "bytes": 1710,
+      "original_sha256": "09364696b21a07bb571b0aeee3949b2753d560fe213ec5d510eb7e80a5a608bb",
+      "export_sha256": "09364696b21a07bb571b0aeee3949b2753d560fe213ec5d510eb7e80a5a608bb",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0025.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-allocation.json",
+      "bytes": 1750,
+      "original_sha256": "3b30803f67bd3144832211b2a71443c8ba2540ce361864ae55a4844583eb56f4",
+      "export_sha256": "a9ff1c771307a97994f23773bd7e4c20d9cbfacc921d7f5df573af94b26cf703",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0026.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-exit-proof-for-worker12.json",
+      "bytes": 744,
+      "original_sha256": "2b6c6a9b06104d51cddf46ab9f09c20873ca7c770f9639daa1d81e936e054404",
+      "export_sha256": "2b6c6a9b06104d51cddf46ab9f09c20873ca7c770f9639daa1d81e936e054404",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0027.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-exit-proof-for-worker13.json",
+      "bytes": 744,
+      "original_sha256": "588369bae7c1ef88df7312ab653046aac2602c376af384b420b8500b0a1c098e",
+      "export_sha256": "588369bae7c1ef88df7312ab653046aac2602c376af384b420b8500b0a1c098e",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0028.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-launch-manifest-v2.json",
+      "bytes": 2572,
+      "original_sha256": "705ca90acf1518ed7a3ef97a0caddd5fbcbc087f9cefaba7bc7bcc2c259e7282",
+      "export_sha256": "705ca90acf1518ed7a3ef97a0caddd5fbcbc087f9cefaba7bc7bcc2c259e7282",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0029.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-launch-manifest.json",
+      "bytes": 2242,
+      "original_sha256": "7f759df101ac423aa027bdb85b300a3c3492731e4da9f12b6a51ba7caef05076",
+      "export_sha256": "7f759df101ac423aa027bdb85b300a3c3492731e4da9f12b6a51ba7caef05076",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0030.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-plan-v2.json",
+      "bytes": 2262,
+      "original_sha256": "9ac9b5e6e3c63976c68f536f8a02775d07d0092df4ac1fcaa9c7738b530552ce",
+      "export_sha256": "e818a3645f49c2bc505228261bd70de5e4f59cfed54ef73c33c2c3c73728ca08",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0031.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-plan.json",
+      "bytes": 2262,
+      "original_sha256": "2a91fa2521a1dfa5e04bb4373f0d3b83bbfe7d3bee701c3be311c1e85ad5e462",
+      "export_sha256": "60ac813fafa572cbbc2fe94065278aa3cf028c8440acd320cc7c16374f831033",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0032.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/attempt.json",
+      "bytes": 5471,
+      "original_sha256": "e33be95e3a78c2787b74abad9aff370a270fb87db444405f942a1e73ae4c3b2b",
+      "export_sha256": "e33be95e3a78c2787b74abad9aff370a270fb87db444405f942a1e73ae4c3b2b",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0033.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/hbw-stage.json",
+      "bytes": 13480,
+      "original_sha256": "3d89b51f5a52b2c977c2514b673e58792b7264809fd89044895470cfca1ae03b",
+      "export_sha256": "3d89b51f5a52b2c977c2514b673e58792b7264809fd89044895470cfca1ae03b",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0034.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/hbw.log",
+      "bytes": 15675,
+      "original_sha256": "76be16b873284355c6b56ce47d9e1944d753746be66847f9818ea89d5680ad05",
+      "export_sha256": "76be16b873284355c6b56ce47d9e1944d753746be66847f9818ea89d5680ad05",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0035.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/hbw.stderr.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0036.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/hbw.stdout.log",
+      "bytes": 15675,
+      "original_sha256": "76be16b873284355c6b56ce47d9e1944d753746be66847f9818ea89d5680ad05",
+      "export_sha256": "76be16b873284355c6b56ce47d9e1944d753746be66847f9818ea89d5680ad05",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0037.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/host-stage.json",
+      "bytes": 13378,
+      "original_sha256": "c56cec9d616ef0be2c33caee84b2bebc252986d4f291c345cc0b75a4baebb5fc",
+      "export_sha256": "c56cec9d616ef0be2c33caee84b2bebc252986d4f291c345cc0b75a4baebb5fc",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0038.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/host.json",
+      "bytes": 18117,
+      "original_sha256": "d23275f0288bc9eb9dfd0634210e82662b287c3287c0c27c7e588fcf6b0da9c2",
+      "export_sha256": "d23275f0288bc9eb9dfd0634210e82662b287c3287c0c27c7e588fcf6b0da9c2",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0039.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/host.stderr.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0040.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/host.stdout.log",
+      "bytes": 18117,
+      "original_sha256": "d23275f0288bc9eb9dfd0634210e82662b287c3287c0c27c7e588fcf6b0da9c2",
+      "export_sha256": "d23275f0288bc9eb9dfd0634210e82662b287c3287c0c27c7e588fcf6b0da9c2",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0041.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/result.json",
+      "bytes": 23325,
+      "original_sha256": "2389e4be46f3914a0fe3f3f7fad9e030173f5a63e9db0a234f4dc573acb7e0d4",
+      "export_sha256": "2389e4be46f3914a0fe3f3f7fad9e030173f5a63e9db0a234f4dc573acb7e0d4",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0042.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/runtime-stage.json",
+      "bytes": 13361,
+      "original_sha256": "12fc6c5a91f0c0c55e9908e1090f2b893b95e90d294242976a33dbd8255bdab8",
+      "export_sha256": "12fc6c5a91f0c0c55e9908e1090f2b893b95e90d294242976a33dbd8255bdab8",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0043.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/runtime.json",
+      "bytes": 6486,
+      "original_sha256": "b9496ab86a987b740ed0064920a8b64b78df876942b66895eb90882c9911a368",
+      "export_sha256": "b9496ab86a987b740ed0064920a8b64b78df876942b66895eb90882c9911a368",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0044.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/runtime.stderr.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0045.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-preflight/runtime.stdout.log",
+      "bytes": 3974,
+      "original_sha256": "020403e87ef316933b4a9ee591c4c64e0f9fee8aab1730efd394884f7e02f7ea",
+      "export_sha256": "020403e87ef316933b4a9ee591c4c64e0f9fee8aab1730efd394884f7e02f7ea",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0046.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/file_integrity.py",
+      "bytes": 7628,
+      "original_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+      "export_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0047.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/multigrid.cpp/tools/optimization/process_tree.py",
+      "bytes": 7101,
+      "original_sha256": "45238789c0919be0ad9b836372f99779e5c39e5defa9fd9bcc8c74f40f1c0864",
+      "export_sha256": "45238789c0919be0ad9b836372f99779e5c39e5defa9fd9bcc8c74f40f1c0864",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0048.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/multigrid.cpp/tools/optimization/worker.py",
+      "bytes": 7225,
+      "original_sha256": "bc7edf47cc464a670ce0e48158e1d95231eba649c233774fcbc003e0350334bb",
+      "export_sha256": "bc7edf47cc464a670ce0e48158e1d95231eba649c233774fcbc003e0350334bb",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0049.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/multigrid.cpp/tools/pin_build.py",
+      "bytes": 530,
+      "original_sha256": "bc3c377fbcc95fdc4aa5a18613aa53ddc8a4ff77492e92ec47e608e2d64a710a",
+      "export_sha256": "bc3c377fbcc95fdc4aa5a18613aa53ddc8a4ff77492e92ec47e608e2d64a710a",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0050.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/multigrid.cpp/tools/probe_host.py",
+      "bytes": 1707,
+      "original_sha256": "cc4ab89bc87ccdc6d9b1faf524f1d52d6e19f4b9c481774b74b032d309d288a9",
+      "export_sha256": "cc4ab89bc87ccdc6d9b1faf524f1d52d6e19f4b9c481774b74b032d309d288a9",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0051.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/multigrid.cpp/tools/run_numa.py",
+      "bytes": 12361,
+      "original_sha256": "4babd5c47a69431e63d98d2e7268184f9d70292a219bb9da2eae9fd7ae151b64",
+      "export_sha256": "4babd5c47a69431e63d98d2e7268184f9d70292a219bb9da2eae9fd7ae151b64",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0052.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/prepare_worker11.py",
+      "bytes": 2535,
+      "original_sha256": "6d242161740bbb8a0c2a430733bba50f7a56b35c3c72c48ef2c4a4135f1d8451",
+      "export_sha256": "6d242161740bbb8a0c2a430733bba50f7a56b35c3c72c48ef2c4a4135f1d8451",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0053.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/raw_scalar_helper.py",
+      "bytes": 6995,
+      "original_sha256": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3",
+      "export_sha256": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0054.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/submit_worker11_terminal_v2.py",
+      "bytes": 9674,
+      "original_sha256": "298e6fca39936f6b102978f230d667ad41d33b5bdaa3d77418245c6685bdb826",
+      "export_sha256": "298e6fca39936f6b102978f230d667ad41d33b5bdaa3d77418245c6685bdb826",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0055.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/test_prepare_worker11.py",
+      "bytes": 1013,
+      "original_sha256": "31be4670c8031c20caef946943f448c6f30e0754b28dad5f90de75dfe015aa2a",
+      "export_sha256": "31be4670c8031c20caef946943f448c6f30e0754b28dad5f90de75dfe015aa2a",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0056.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/test_submit_worker11_once.py",
+      "bytes": 5056,
+      "original_sha256": "fdfdf1db069c3ef91205de5ac6421d5ef491a2c4434488aed7146a4854d85307",
+      "export_sha256": "fdfdf1db069c3ef91205de5ac6421d5ef491a2c4434488aed7146a4854d85307",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0057.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/test_submit_worker11_terminal_v2.py",
+      "bytes": 2409,
+      "original_sha256": "a998ff3aa2d1438551d810ecfcd5efcb9a47c15380c1991a7867710a04d002dc",
+      "export_sha256": "a998ff3aa2d1438551d810ecfcd5efcb9a47c15380c1991a7867710a04d002dc",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0058.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/test_worker11_queue.py",
+      "bytes": 1418,
+      "original_sha256": "7376f20bedf2cedd683eace73f17cb3e6a77afabe19513e63bafe3998d5aa0f4",
+      "export_sha256": "7376f20bedf2cedd683eace73f17cb3e6a77afabe19513e63bafe3998d5aa0f4",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0059.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/worker11-launch-manifest-v2.json",
+      "bytes": 2572,
+      "original_sha256": "705ca90acf1518ed7a3ef97a0caddd5fbcbc087f9cefaba7bc7bcc2c259e7282",
+      "export_sha256": "705ca90acf1518ed7a3ef97a0caddd5fbcbc087f9cefaba7bc7bcc2c259e7282",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0060.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/worker11.sh",
+      "bytes": 2336,
+      "original_sha256": "910ea5f7fb7b9996d908cff218547298ca6543c5d62ae070d2a7c5c666e33851",
+      "export_sha256": "910ea5f7fb7b9996d908cff218547298ca6543c5d62ae070d2a7c5c666e33851",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0061.sh",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/worker11_entry.py",
+      "bytes": 12470,
+      "original_sha256": "60dc35cca34d2c16fccc04d812fe9f80b3d89fe004609ab342aa00a8401019f3",
+      "export_sha256": "60dc35cca34d2c16fccc04d812fe9f80b3d89fe004609ab342aa00a8401019f3",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0062.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/worker11_logic_tests.py",
+      "bytes": 15557,
+      "original_sha256": "56717b4ae0b98c08a53567695e6ffc96774f9685e881cdea9c785332655347ca",
+      "export_sha256": "56717b4ae0b98c08a53567695e6ffc96774f9685e881cdea9c785332655347ca",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0063.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/worker11_login_record.py",
+      "bytes": 5732,
+      "original_sha256": "66eaeeb19481613d20a17d9fbcd9af385b8a527496e51c1f78bbbb362f1ce3fa",
+      "export_sha256": "66eaeeb19481613d20a17d9fbcd9af385b8a527496e51c1f78bbbb362f1ce3fa",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0064.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/worker11_preflight.py",
+      "bytes": 6321,
+      "original_sha256": "908d377150cc5591127c0bfff4fc1842a2712b45bb075781eb05796c04849718",
+      "export_sha256": "908d377150cc5591127c0bfff4fc1842a2712b45bb075781eb05796c04849718",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0065.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-prepared-v2/worker11_runtime_probe.py",
+      "bytes": 2363,
+      "original_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "export_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0066.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-startup-attempt.json",
+      "bytes": 9408,
+      "original_sha256": "3f16a3f342616f8a80167cfb67d747ac792553ccc93c2a81cdcffac15bb3bf27",
+      "export_sha256": "3f16a3f342616f8a80167cfb67d747ac792553ccc93c2a81cdcffac15bb3bf27",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0067.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-startup.json",
+      "bytes": 29259,
+      "original_sha256": "d1682f573747fcdc12003b369a83b64c3a935e7683ae45038e536954a979c859",
+      "export_sha256": "d1682f573747fcdc12003b369a83b64c3a935e7683ae45038e536954a979c859",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0068.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-submission-intent.json",
+      "bytes": 3009,
+      "original_sha256": "fa45315358d439a40fa65ab279b9cdbab850e3c4ec6516370d4ba8662e086e6c",
+      "export_sha256": "fa45315358d439a40fa65ab279b9cdbab850e3c4ec6516370d4ba8662e086e6c",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0069.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-submission-result.json",
+      "bytes": 248,
+      "original_sha256": "a8d368a9c4aa26b3a39cdb0eb9e0e5ab52ec7d6cc1102371b7671dd9cf5a06f5",
+      "export_sha256": "a8d368a9c4aa26b3a39cdb0eb9e0e5ab52ec7d6cc1102371b7671dd9cf5a06f5",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0070.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-v1-retained/prepare_worker11.py",
+      "bytes": 2535,
+      "original_sha256": "b5c62371c7ea1b2d5715e91134f2e93a882bb2614fe434ea0112d0be7b52eff7",
+      "export_sha256": "b5c62371c7ea1b2d5715e91134f2e93a882bb2614fe434ea0112d0be7b52eff7",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0071.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-v1-retained/submit_worker11_terminal_v2.py",
+      "bytes": 9674,
+      "original_sha256": "d60f5f1213d1411f65c775f102583619c078eccaeb93f14723ecafca105bfca5",
+      "export_sha256": "d60f5f1213d1411f65c775f102583619c078eccaeb93f14723ecafca105bfca5",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0072.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-v1-retained/worker11-launch-manifest.json",
+      "bytes": 2242,
+      "original_sha256": "7f759df101ac423aa027bdb85b300a3c3492731e4da9f12b6a51ba7caef05076",
+      "export_sha256": "7f759df101ac423aa027bdb85b300a3c3492731e4da9f12b6a51ba7caef05076",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0073.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-v1-retained/worker11-plan.json",
+      "bytes": 2262,
+      "original_sha256": "2a91fa2521a1dfa5e04bb4373f0d3b83bbfe7d3bee701c3be311c1e85ad5e462",
+      "export_sha256": "60ac813fafa572cbbc2fe94065278aa3cf028c8440acd320cc7c16374f831033",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0074.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-v1-retained/worker11.sh",
+      "bytes": 2336,
+      "original_sha256": "910ea5f7fb7b9996d908cff218547298ca6543c5d62ae070d2a7c5c666e33851",
+      "export_sha256": "910ea5f7fb7b9996d908cff218547298ca6543c5d62ae070d2a7c5c666e33851",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0075.sh",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-v1-retained/worker11_entry.py",
+      "bytes": 12346,
+      "original_sha256": "04980840478f29950bc1d174be4889d09553ef2eec8cab8e1be41d2fba1dd8d0",
+      "export_sha256": "04980840478f29950bc1d174be4889d09553ef2eec8cab8e1be41d2fba1dd8d0",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0076.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-v1-retained/worker11_login_record.py",
+      "bytes": 5732,
+      "original_sha256": "66eaeeb19481613d20a17d9fbcd9af385b8a527496e51c1f78bbbb362f1ce3fa",
+      "export_sha256": "66eaeeb19481613d20a17d9fbcd9af385b8a527496e51c1f78bbbb362f1ce3fa",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0077.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-v1-retained/worker11_preflight.py",
+      "bytes": 6321,
+      "original_sha256": "908d377150cc5591127c0bfff4fc1842a2712b45bb075781eb05796c04849718",
+      "export_sha256": "908d377150cc5591127c0bfff4fc1842a2712b45bb075781eb05796c04849718",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0078.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11-v1-retained/worker11_runtime_probe.py",
+      "bytes": 2363,
+      "original_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "export_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0079.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11.sh",
+      "bytes": 2336,
+      "original_sha256": "910ea5f7fb7b9996d908cff218547298ca6543c5d62ae070d2a7c5c666e33851",
+      "export_sha256": "910ea5f7fb7b9996d908cff218547298ca6543c5d62ae070d2a7c5c666e33851",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0080.sh",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11_entry.py",
+      "bytes": 12470,
+      "original_sha256": "60dc35cca34d2c16fccc04d812fe9f80b3d89fe004609ab342aa00a8401019f3",
+      "export_sha256": "60dc35cca34d2c16fccc04d812fe9f80b3d89fe004609ab342aa00a8401019f3",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0081.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11_login_record.py",
+      "bytes": 5732,
+      "original_sha256": "66eaeeb19481613d20a17d9fbcd9af385b8a527496e51c1f78bbbb362f1ce3fa",
+      "export_sha256": "66eaeeb19481613d20a17d9fbcd9af385b8a527496e51c1f78bbbb362f1ce3fa",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0082.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11_preflight.py",
+      "bytes": 6321,
+      "original_sha256": "908d377150cc5591127c0bfff4fc1842a2712b45bb075781eb05796c04849718",
+      "export_sha256": "908d377150cc5591127c0bfff4fc1842a2712b45bb075781eb05796c04849718",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0083.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker11_runtime_probe.py",
+      "bytes": 2363,
+      "original_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "export_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0084.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-launch-manifest-v1.json",
+      "bytes": 2269,
+      "original_sha256": "ea028eed16df96444752113597189c0501add92e500841b2b1b65e6acb17baef",
+      "export_sha256": "ea028eed16df96444752113597189c0501add92e500841b2b1b65e6acb17baef",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0085.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-plan-v1.json",
+      "bytes": 2262,
+      "original_sha256": "dbde640864698da5cb891878c5b6a3f1427386b7fa2e8fccb7eb44393f912c60",
+      "export_sha256": "482f79320ed1bb8c5800ff7e0d2c80ec3b196690423446555214b22dc2fb85da",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0086.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/file_integrity.py",
+      "bytes": 7628,
+      "original_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+      "export_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0087.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/prepare_worker12.py",
+      "bytes": 2535,
+      "original_sha256": "281319e27e3ae259cbdaead58280a4e9b418d98b75721de19b7f01d08d4766cc",
+      "export_sha256": "281319e27e3ae259cbdaead58280a4e9b418d98b75721de19b7f01d08d4766cc",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0088.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/raw_scalar_helper.py",
+      "bytes": 6995,
+      "original_sha256": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3",
+      "export_sha256": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0089.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/submit_worker12_terminal_v2.py",
+      "bytes": 9674,
+      "original_sha256": "b3b409a4e436495dbba9937566f6e44f1b0263bd398bba0f25fb7e85e896338a",
+      "export_sha256": "b3b409a4e436495dbba9937566f6e44f1b0263bd398bba0f25fb7e85e896338a",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0090.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/test_prepare_worker12.py",
+      "bytes": 1013,
+      "original_sha256": "aaa5eec8de334fbe777f59a070b6fc58d74e9a62759fc16771daeec020fe3fb6",
+      "export_sha256": "aaa5eec8de334fbe777f59a070b6fc58d74e9a62759fc16771daeec020fe3fb6",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0091.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/test_prepare_worker12.py.log",
+      "bytes": 100,
+      "original_sha256": "a6707d4eff38012da33ddc34bc6dc076a3b17151cfc9aef223c8790cbe64c3da",
+      "export_sha256": "a6707d4eff38012da33ddc34bc6dc076a3b17151cfc9aef223c8790cbe64c3da",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0092.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/test_submit_worker12_once.py",
+      "bytes": 5056,
+      "original_sha256": "b3a83535a43de5d95ccd693d887613e2a3050487b321d831862ae3935473d73c",
+      "export_sha256": "b3a83535a43de5d95ccd693d887613e2a3050487b321d831862ae3935473d73c",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0093.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/test_submit_worker12_terminal_v2.py",
+      "bytes": 2409,
+      "original_sha256": "429ef8f25f19cd66a6e261cd1408c52e47ddcf9d749d58863a496bb7e8119729",
+      "export_sha256": "429ef8f25f19cd66a6e261cd1408c52e47ddcf9d749d58863a496bb7e8119729",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0094.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/test_submit_worker12_terminal_v2.py.log",
+      "bytes": 1306,
+      "original_sha256": "02a8b6b7b30f40883f445868850774681698d20d6b68e6d7419ce4ee296c28e6",
+      "export_sha256": "02a8b6b7b30f40883f445868850774681698d20d6b68e6d7419ce4ee296c28e6",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0095.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/test_worker12_queue.py",
+      "bytes": 1418,
+      "original_sha256": "776ee50281d71257ddf29bf09f9d069597035c3414e62ccac22d2f7a8bd92c4a",
+      "export_sha256": "776ee50281d71257ddf29bf09f9d069597035c3414e62ccac22d2f7a8bd92c4a",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0096.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/test_worker12_queue.py.log",
+      "bytes": 380,
+      "original_sha256": "535924ec616e0d3ad46440a6332536850389cb17f98bd87b7b77c48fde78280c",
+      "export_sha256": "535924ec616e0d3ad46440a6332536850389cb17f98bd87b7b77c48fde78280c",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0097.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/worker12-launch-manifest-v1.json",
+      "bytes": 2269,
+      "original_sha256": "ea028eed16df96444752113597189c0501add92e500841b2b1b65e6acb17baef",
+      "export_sha256": "ea028eed16df96444752113597189c0501add92e500841b2b1b65e6acb17baef",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0098.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/worker12.sh",
+      "bytes": 2336,
+      "original_sha256": "84be6bfff1152ff52a7b10e3178d41941c0c57c4ef40c8b321013b4a8da18297",
+      "export_sha256": "84be6bfff1152ff52a7b10e3178d41941c0c57c4ef40c8b321013b4a8da18297",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0099.sh",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/worker12_entry.py",
+      "bytes": 12481,
+      "original_sha256": "22f63b3cacdfb500c7b582bd5ed5f281f970c95be8832ced068398c21bdad81c",
+      "export_sha256": "22f63b3cacdfb500c7b582bd5ed5f281f970c95be8832ced068398c21bdad81c",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0100.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/worker12_logic_tests.py",
+      "bytes": 15557,
+      "original_sha256": "075eb70275b3d225da24824869156aac33229f825508f5d6644c0823e3e321da",
+      "export_sha256": "075eb70275b3d225da24824869156aac33229f825508f5d6644c0823e3e321da",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0101.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/worker12_logic_tests.py.log",
+      "bytes": 222,
+      "original_sha256": "07da84e7386cff4a0e92f0a6c06d2eeeba095c73235b7fc59e441b322a90d584",
+      "export_sha256": "07da84e7386cff4a0e92f0a6c06d2eeeba095c73235b7fc59e441b322a90d584",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0102.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/worker12_login_record.py",
+      "bytes": 5732,
+      "original_sha256": "726e13e7803283c1bc140e9cc786977a49829c694426a9d1ad4e04835eb0c375",
+      "export_sha256": "726e13e7803283c1bc140e9cc786977a49829c694426a9d1ad4e04835eb0c375",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0103.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/worker12_preflight.py",
+      "bytes": 6321,
+      "original_sha256": "37e78d43ff2c7f6a6258d825df1a0c1fefdb40e93431b5a3ce646743167e78d6",
+      "export_sha256": "37e78d43ff2c7f6a6258d825df1a0c1fefdb40e93431b5a3ce646743167e78d6",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0104.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-prepared-v1/worker12_runtime_probe.py",
+      "bytes": 2363,
+      "original_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "export_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0105.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-submission-intent.json",
+      "bytes": 1965,
+      "original_sha256": "6c8635da7084de901f59168aa136397d91e365c2514ba4dc6c73a57dab04290a",
+      "export_sha256": "6c8635da7084de901f59168aa136397d91e365c2514ba4dc6c73a57dab04290a",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0106.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12-submission-result.json",
+      "bytes": 249,
+      "original_sha256": "e30e46fd021ad0039eb7be9b0806640ba392f50d43a2dda150fdc7404752212a",
+      "export_sha256": "e30e46fd021ad0039eb7be9b0806640ba392f50d43a2dda150fdc7404752212a",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0107.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12.sh",
+      "bytes": 2336,
+      "original_sha256": "84be6bfff1152ff52a7b10e3178d41941c0c57c4ef40c8b321013b4a8da18297",
+      "export_sha256": "84be6bfff1152ff52a7b10e3178d41941c0c57c4ef40c8b321013b4a8da18297",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0108.sh",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12_entry.py",
+      "bytes": 12481,
+      "original_sha256": "22f63b3cacdfb500c7b582bd5ed5f281f970c95be8832ced068398c21bdad81c",
+      "export_sha256": "22f63b3cacdfb500c7b582bd5ed5f281f970c95be8832ced068398c21bdad81c",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0109.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12_login_record.py",
+      "bytes": 5732,
+      "original_sha256": "726e13e7803283c1bc140e9cc786977a49829c694426a9d1ad4e04835eb0c375",
+      "export_sha256": "726e13e7803283c1bc140e9cc786977a49829c694426a9d1ad4e04835eb0c375",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0110.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12_preflight.py",
+      "bytes": 6321,
+      "original_sha256": "37e78d43ff2c7f6a6258d825df1a0c1fefdb40e93431b5a3ce646743167e78d6",
+      "export_sha256": "37e78d43ff2c7f6a6258d825df1a0c1fefdb40e93431b5a3ce646743167e78d6",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0111.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker12_runtime_probe.py",
+      "bytes": 2363,
+      "original_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "export_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0112.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-allocation.json",
+      "bytes": 1751,
+      "original_sha256": "61acda22b726babe61490571e87fe369bcb89db3be18f5478fce540817d93c40",
+      "export_sha256": "20456751f624b0224211f9698d5c5b999d26708335aef1a636e679cfa57f55b1",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0113.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-launch-manifest-v2.json",
+      "bytes": 2269,
+      "original_sha256": "6bc6745711a0ac0c9da635359f06b290f8eda9f2ab58e36208f8ed8c457018fe",
+      "export_sha256": "6bc6745711a0ac0c9da635359f06b290f8eda9f2ab58e36208f8ed8c457018fe",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0114.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-plan-v2.json",
+      "bytes": 2262,
+      "original_sha256": "dc765dcf6b80c3817a76ddf2bd5c39a258d7c7949694fb0e402f1735646709c5",
+      "export_sha256": "3af698578d7173b2c6a03990bf4bd1f5f14ec5d58c06ff9d764a307da04771e7",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0115.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/attempt.json",
+      "bytes": 5471,
+      "original_sha256": "c34ec74e68dce2ce31d30b7290d569ebe1e00fb1f9f4210e0d84c1c03184feb1",
+      "export_sha256": "c34ec74e68dce2ce31d30b7290d569ebe1e00fb1f9f4210e0d84c1c03184feb1",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0116.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/hbw-stage.json",
+      "bytes": 13480,
+      "original_sha256": "3d89b51f5a52b2c977c2514b673e58792b7264809fd89044895470cfca1ae03b",
+      "export_sha256": "3d89b51f5a52b2c977c2514b673e58792b7264809fd89044895470cfca1ae03b",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0117.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/hbw.log",
+      "bytes": 15675,
+      "original_sha256": "b16e5235be7be6915cd96b0071999acd0bcb9f902634985b76640182221f2c4f",
+      "export_sha256": "b16e5235be7be6915cd96b0071999acd0bcb9f902634985b76640182221f2c4f",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0118.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/hbw.stderr.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0119.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/hbw.stdout.log",
+      "bytes": 15675,
+      "original_sha256": "b16e5235be7be6915cd96b0071999acd0bcb9f902634985b76640182221f2c4f",
+      "export_sha256": "b16e5235be7be6915cd96b0071999acd0bcb9f902634985b76640182221f2c4f",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0120.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/host-stage.json",
+      "bytes": 13378,
+      "original_sha256": "c56cec9d616ef0be2c33caee84b2bebc252986d4f291c345cc0b75a4baebb5fc",
+      "export_sha256": "c56cec9d616ef0be2c33caee84b2bebc252986d4f291c345cc0b75a4baebb5fc",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0121.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/host.json",
+      "bytes": 18119,
+      "original_sha256": "1bdca6302b9432946aaad236683e8b9bbe48ed6214802124d307eb1fef028eb5",
+      "export_sha256": "1bdca6302b9432946aaad236683e8b9bbe48ed6214802124d307eb1fef028eb5",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0122.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/host.stderr.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0123.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/host.stdout.log",
+      "bytes": 18119,
+      "original_sha256": "1bdca6302b9432946aaad236683e8b9bbe48ed6214802124d307eb1fef028eb5",
+      "export_sha256": "1bdca6302b9432946aaad236683e8b9bbe48ed6214802124d307eb1fef028eb5",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0124.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/result.json",
+      "bytes": 23325,
+      "original_sha256": "b2ef17b8aa48a03adf66d8fb1a5b86d8032fccc850b983f92dd35d2c47550d42",
+      "export_sha256": "b2ef17b8aa48a03adf66d8fb1a5b86d8032fccc850b983f92dd35d2c47550d42",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0125.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/runtime-stage.json",
+      "bytes": 13361,
+      "original_sha256": "dd92aff48d12c1ddb525d2d39eeb76eaa1acdc1911e80445f28eb462c9e4a9b4",
+      "export_sha256": "dd92aff48d12c1ddb525d2d39eeb76eaa1acdc1911e80445f28eb462c9e4a9b4",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0126.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/runtime.json",
+      "bytes": 6486,
+      "original_sha256": "1afcb2275e61f57c0df632d336506d0749be2fd06541719e3f667b783fa26f5e",
+      "export_sha256": "1afcb2275e61f57c0df632d336506d0749be2fd06541719e3f667b783fa26f5e",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0127.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/runtime.stderr.log",
+      "bytes": 0,
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0128.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-preflight/runtime.stdout.log",
+      "bytes": 3974,
+      "original_sha256": "aa5cf2d3ce88c01224d2d90f30786c9544175ee00326a2b34124205b7424d376",
+      "export_sha256": "aa5cf2d3ce88c01224d2d90f30786c9544175ee00326a2b34124205b7424d376",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0129.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/file_integrity.py",
+      "bytes": 7628,
+      "original_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+      "export_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0130.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/prepare_worker13.py",
+      "bytes": 2535,
+      "original_sha256": "907b56c6b6c9c55212dce0832a34f9f2d92b3387b7b6c0248bdfbb2c183fe8ec",
+      "export_sha256": "907b56c6b6c9c55212dce0832a34f9f2d92b3387b7b6c0248bdfbb2c183fe8ec",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0131.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/raw_scalar_helper.py",
+      "bytes": 6995,
+      "original_sha256": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3",
+      "export_sha256": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0132.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/submit_worker13_terminal_v2.py",
+      "bytes": 9674,
+      "original_sha256": "ce9a7ddec91a69a671559932c413137ccc277828a47ca934d48d41c73174c491",
+      "export_sha256": "ce9a7ddec91a69a671559932c413137ccc277828a47ca934d48d41c73174c491",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0133.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/test_prepare_worker13.py",
+      "bytes": 1013,
+      "original_sha256": "c8483168984e499e573b7126fc5e4ff6a62b7dc7d079540837fbc8138572fc78",
+      "export_sha256": "c8483168984e499e573b7126fc5e4ff6a62b7dc7d079540837fbc8138572fc78",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0134.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/test_prepare_worker13.py.log",
+      "bytes": 100,
+      "original_sha256": "a6707d4eff38012da33ddc34bc6dc076a3b17151cfc9aef223c8790cbe64c3da",
+      "export_sha256": "a6707d4eff38012da33ddc34bc6dc076a3b17151cfc9aef223c8790cbe64c3da",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0135.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/test_submit_worker13_once.py",
+      "bytes": 5056,
+      "original_sha256": "b1eb454363772b030f1cef1dfc593ccf5fd7703aaaa45211156314b7dfae46be",
+      "export_sha256": "b1eb454363772b030f1cef1dfc593ccf5fd7703aaaa45211156314b7dfae46be",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0136.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/test_submit_worker13_terminal_v2.py",
+      "bytes": 2409,
+      "original_sha256": "c42ec17ab5d42df6eaac319aede624075552b457e8dd1ed7c09186f659467035",
+      "export_sha256": "c42ec17ab5d42df6eaac319aede624075552b457e8dd1ed7c09186f659467035",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0137.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/test_submit_worker13_terminal_v2.py.log",
+      "bytes": 1306,
+      "original_sha256": "02a8b6b7b30f40883f445868850774681698d20d6b68e6d7419ce4ee296c28e6",
+      "export_sha256": "02a8b6b7b30f40883f445868850774681698d20d6b68e6d7419ce4ee296c28e6",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0138.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/test_worker13_queue.py",
+      "bytes": 1418,
+      "original_sha256": "75ea054cdf4bda767899e04dab624b75517e88cbee8fe847f05f98a65717c3e8",
+      "export_sha256": "75ea054cdf4bda767899e04dab624b75517e88cbee8fe847f05f98a65717c3e8",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0139.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/test_worker13_queue.py.log",
+      "bytes": 380,
+      "original_sha256": "4dbeaaf74ec1fcb164584ccd2350422d535bf2fdd8a4c97672f9d993d2caffef",
+      "export_sha256": "4dbeaaf74ec1fcb164584ccd2350422d535bf2fdd8a4c97672f9d993d2caffef",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0140.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/worker13-launch-manifest-v2.json",
+      "bytes": 2269,
+      "original_sha256": "6bc6745711a0ac0c9da635359f06b290f8eda9f2ab58e36208f8ed8c457018fe",
+      "export_sha256": "6bc6745711a0ac0c9da635359f06b290f8eda9f2ab58e36208f8ed8c457018fe",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0141.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/worker13.sh",
+      "bytes": 2336,
+      "original_sha256": "c120a944d46014f1ddb0623e6814e314bc34ed91a17522926c4833089d6451e0",
+      "export_sha256": "c120a944d46014f1ddb0623e6814e314bc34ed91a17522926c4833089d6451e0",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0142.sh",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/worker13_entry.py",
+      "bytes": 12481,
+      "original_sha256": "b6ad8389cb2bb17494945164d9179d1d0f54d220adace3ad7ff9e184f1d88661",
+      "export_sha256": "b6ad8389cb2bb17494945164d9179d1d0f54d220adace3ad7ff9e184f1d88661",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0143.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/worker13_logic_tests.py",
+      "bytes": 15557,
+      "original_sha256": "29b73068ade53cf79e04d2b0c3097b0373983a5da94d27a24f4ca49bd42cc9ef",
+      "export_sha256": "29b73068ade53cf79e04d2b0c3097b0373983a5da94d27a24f4ca49bd42cc9ef",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0144.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/worker13_logic_tests.py.log",
+      "bytes": 222,
+      "original_sha256": "313116a9f2170a1200cd215f1b5b31416c2b05591b73de4e1905854348b3c556",
+      "export_sha256": "313116a9f2170a1200cd215f1b5b31416c2b05591b73de4e1905854348b3c556",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0145.log",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/worker13_login_record.py",
+      "bytes": 5732,
+      "original_sha256": "a9e7482bcfab1b4da6d0d695d10eae5f925d8dbed0747e4c6f1951ba12053e83",
+      "export_sha256": "a9e7482bcfab1b4da6d0d695d10eae5f925d8dbed0747e4c6f1951ba12053e83",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0146.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/worker13_preflight.py",
+      "bytes": 6321,
+      "original_sha256": "a8e903a57293b3b5baca7ecc6919dba3eb95f996e731b20d267f092ac7d0de0a",
+      "export_sha256": "a8e903a57293b3b5baca7ecc6919dba3eb95f996e731b20d267f092ac7d0de0a",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0147.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-prepared-v2/worker13_runtime_probe.py",
+      "bytes": 2363,
+      "original_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "export_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0148.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-startup-attempt.json",
+      "bytes": 9408,
+      "original_sha256": "9e7f31ceb471f4a894291645b0f0bed77fcfeb8d81a200a9ca35de2dc53ca2d1",
+      "export_sha256": "9e7f31ceb471f4a894291645b0f0bed77fcfeb8d81a200a9ca35de2dc53ca2d1",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0149.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-startup.json",
+      "bytes": 29259,
+      "original_sha256": "08f7e2ae01b1db9ebd567a5496375a0bc42ca79755e889b59034362e8bd4d212",
+      "export_sha256": "08f7e2ae01b1db9ebd567a5496375a0bc42ca79755e889b59034362e8bd4d212",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0150.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-submission-intent.json",
+      "bytes": 1965,
+      "original_sha256": "0f134d0b21be0dce23bfe5ab6e96ef37f491f23d7f53854d888dc539b79e76a9",
+      "export_sha256": "0f134d0b21be0dce23bfe5ab6e96ef37f491f23d7f53854d888dc539b79e76a9",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0151.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13-submission-result.json",
+      "bytes": 249,
+      "original_sha256": "05ed35f80c7d3c585f0d1426000bf20a511f095b67673b160eb67e9b7c433ca2",
+      "export_sha256": "05ed35f80c7d3c585f0d1426000bf20a511f095b67673b160eb67e9b7c433ca2",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0152.json",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13.sh",
+      "bytes": 2336,
+      "original_sha256": "c120a944d46014f1ddb0623e6814e314bc34ed91a17522926c4833089d6451e0",
+      "export_sha256": "c120a944d46014f1ddb0623e6814e314bc34ed91a17522926c4833089d6451e0",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0153.sh",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13_entry.py",
+      "bytes": 12481,
+      "original_sha256": "b6ad8389cb2bb17494945164d9179d1d0f54d220adace3ad7ff9e184f1d88661",
+      "export_sha256": "b6ad8389cb2bb17494945164d9179d1d0f54d220adace3ad7ff9e184f1d88661",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0154.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13_login_record.py",
+      "bytes": 5732,
+      "original_sha256": "a9e7482bcfab1b4da6d0d695d10eae5f925d8dbed0747e4c6f1951ba12053e83",
+      "export_sha256": "a9e7482bcfab1b4da6d0d695d10eae5f925d8dbed0747e4c6f1951ba12053e83",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0155.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13_preflight.py",
+      "bytes": 6321,
+      "original_sha256": "a8e903a57293b3b5baca7ecc6919dba3eb95f996e731b20d267f092ac7d0de0a",
+      "export_sha256": "a8e903a57293b3b5baca7ecc6919dba3eb95f996e731b20d267f092ac7d0de0a",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0156.py",
+      "raw_perf_retained_outside_git": false
+    },
+    {
+      "path": "worker13_runtime_probe.py",
+      "bytes": 2363,
+      "original_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "export_sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "transformation": "Existing redactor; originals unchanged",
+      "git_path": "experiments/lingsheng-20261103/reconnect-20261105-v1/records/0157.py",
+      "raw_perf_retained_outside_git": false
+    }
+  ]
+}

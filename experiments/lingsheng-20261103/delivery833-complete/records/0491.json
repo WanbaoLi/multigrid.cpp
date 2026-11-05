@@ -1,0 +1,23 @@
+{
+  "protocol": "fresh-output-publication-v2",
+  "complete": true,
+  "output": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/111-delivery-full12-b/measurements/full12/independent",
+  "output_absent_at_cli_start": true,
+  "checked_epoch": 1793854528.9900475,
+  "existing_parent": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/111-delivery-full12-b/measurements/full12",
+  "parent_identity": {
+    "dev": 46,
+    "inode": 19463902215
+  },
+  "declarations": [
+    {
+      "relative": "gauge.bin",
+      "kind": "canonical-gauge",
+      "expected_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+      "bytes": 509607936
+    }
+  ],
+  "maximum_strict_calls_per_output": 3,
+  "parent_protocol": null,
+  "immutable_inputs_use_original_strict_reader": true
+}

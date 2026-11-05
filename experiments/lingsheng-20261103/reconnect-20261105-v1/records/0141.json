@@ -1,0 +1,63 @@
+{
+  "complete": true,
+  "prepared_only": true,
+  "submitted": false,
+  "previous_job": "2026153",
+  "queue": "queue13",
+  "expected_host": "cn19486",
+  "source_root": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94",
+  "expected_source_head": "f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+  "files": {
+    "prepare_worker13.py": {
+      "sha256": "907b56c6b6c9c55212dce0832a34f9f2d92b3387b7b6c0248bdfbb2c183fe8ec",
+      "bytes": 2535
+    },
+    "submit_worker13_terminal_v2.py": {
+      "sha256": "ce9a7ddec91a69a671559932c413137ccc277828a47ca934d48d41c73174c491",
+      "bytes": 9674
+    },
+    "worker13.sh": {
+      "sha256": "c120a944d46014f1ddb0623e6814e314bc34ed91a17522926c4833089d6451e0",
+      "bytes": 2336
+    },
+    "worker13_entry.py": {
+      "sha256": "b6ad8389cb2bb17494945164d9179d1d0f54d220adace3ad7ff9e184f1d88661",
+      "bytes": 12481
+    },
+    "worker13_login_record.py": {
+      "sha256": "a9e7482bcfab1b4da6d0d695d10eae5f925d8dbed0747e4c6f1951ba12053e83",
+      "bytes": 5732
+    },
+    "worker13_preflight.py": {
+      "sha256": "a8e903a57293b3b5baca7ecc6919dba3eb95f996e731b20d267f092ac7d0de0a",
+      "bytes": 6321
+    },
+    "worker13_runtime_probe.py": {
+      "sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "bytes": 2363
+    }
+  },
+  "existing_reader_sha256": {
+    "file_integrity.py": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+    "raw_scalar_helper.py": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3"
+  },
+  "tests": {
+    "worker13_logic_tests.py": {
+      "returncode": 0,
+      "log_sha256": "313116a9f2170a1200cd215f1b5b31416c2b05591b73de4e1905854348b3c556"
+    },
+    "test_prepare_worker13.py": {
+      "returncode": 0,
+      "log_sha256": "a6707d4eff38012da33ddc34bc6dc076a3b17151cfc9aef223c8790cbe64c3da"
+    },
+    "test_submit_worker13_terminal_v2.py": {
+      "returncode": 0,
+      "log_sha256": "02a8b6b7b30f40883f445868850774681698d20d6b68e6d7419ce4ee296c28e6"
+    },
+    "test_worker13_queue.py": {
+      "returncode": 0,
+      "log_sha256": "4dbeaaf74ec1fcb164584ccd2350422d535bf2fdd8a4c97672f9d993d2caffef"
+    }
+  },
+  "scope": "Fresh allocation after actual natural-idle worker11 exit; science source unchanged"
+}

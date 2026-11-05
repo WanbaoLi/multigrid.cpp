@@ -1,0 +1,52 @@
+{
+  "complete": true,
+  "passed": true,
+  "path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/111-delivery-full12-b/measurements/full12/gauge_rank00000.npy",
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "block_bytes": 4194304,
+  "expected_sha256": "5f300f0ee461af4463307921291f7c74ea089a5e62645cf8b6e52b9c51164738",
+  "required_bytes": null,
+  "initial": {
+    "dev": 46,
+    "inode": 7195815437,
+    "bytes": 31850624,
+    "mtime_ns": 1793854505000000000,
+    "ctime_ns": 1793854505000000000
+  },
+  "original_open_mode": "O_RDONLY",
+  "same_immutable_bytes": true,
+  "started": 1793854521.6865115,
+  "fd_before": {
+    "dev": 46,
+    "inode": 7195815437,
+    "bytes": 31850624,
+    "mtime_ns": 1793854505000000000,
+    "ctime_ns": 1793854505000000000
+  },
+  "last_request_offset": 31850624,
+  "last_request_bytes": 1,
+  "last_returned_bytes": 0,
+  "fd_after": {
+    "dev": 46,
+    "inode": 7195815437,
+    "bytes": 31850624,
+    "mtime_ns": 1793854505000000000,
+    "ctime_ns": 1793854505000000000
+  },
+  "path_after": {
+    "dev": 46,
+    "inode": 7195815437,
+    "bytes": 31850624,
+    "mtime_ns": 1793854505000000000,
+    "ctime_ns": 1793854505000000000
+  },
+  "read_bytes": 31850624,
+  "pread_calls": 9,
+  "positive_short_reads": 0,
+  "eof_probe_bytes": 0,
+  "openssl_sha256": "5f300f0ee461af4463307921291f7c74ea089a5e62645cf8b6e52b9c51164738",
+  "software_sha256": "5f300f0ee461af4463307921291f7c74ea089a5e62645cf8b6e52b9c51164738",
+  "seconds": 0.08902263641357422,
+  "metadata_stable": true,
+  "byte_count_exact": true
+}

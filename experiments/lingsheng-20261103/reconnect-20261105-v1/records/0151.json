@@ -1,0 +1,66 @@
+{
+  "complete": true,
+  "submitted": false,
+  "argv": [
+    "dsub",
+    "-q",
+    "q_hpcapp",
+    "-A",
+    "common",
+    "-nn",
+    "1",
+    "-N",
+    "1",
+    "-x",
+    "job",
+    "-nl",
+    "cn19480",
+    "-R",
+    "cpu=592,mem=480000MB",
+    "-T",
+    "14400",
+    "-n",
+    "mg-opt-worker13",
+    "--cwd",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103",
+    "-o",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker13.log",
+    "/bin/bash",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker13.sh",
+    "--source",
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94",
+    "--expected-source-head",
+    "f94f27d2a07ff3363bea43c1a3b2ca45277de674"
+  ],
+  "epoch": 1793854246.426253,
+  "evidence": {
+    "plan_sha256": "dc765dcf6b80c3817a76ddf2bd5c39a258d7c7949694fb0e402f1735646709c5",
+    "wrapper_manifest_sha256": "6bc6745711a0ac0c9da635359f06b290f8eda9f2ab58e36208f8ed8c457018fe",
+    "stop_proof_sha256": "588369bae7c1ef88df7312ab653046aac2602c376af384b420b8500b0a1c098e",
+    "source_root": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94",
+    "source_head": "f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+    "previous_job": {
+      "jobId": "2026153",
+      "jobName": "mg-opt-worker11",
+      "state": "SUCCEEDED",
+      "user": "nsls_lwb",
+      "taskExecNodes": "cn19486",
+      "startTime": "2026-11-04T13:12:47Z",
+      "endTime": "2026-11-04T14:34:30Z"
+    },
+    "predecessor_query": {
+      "argv": [
+        "/opt/batch/cli/bin/djob",
+        "-J",
+        "-l",
+        "2026153"
+      ],
+      "request_id": "req-85558eef-af58-4dac-808c-67b1c1d9bf34",
+      "code": "success"
+    },
+    "task_status_sha256": {
+      "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue11/155-best-solve-profile-worker11.status.json": "851db24feb491566af42af3ae7ec361bf90d641691407b0df14980e13748bdbc"
+    }
+  },
+  "result_record": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker13-submission-result.json"
+}

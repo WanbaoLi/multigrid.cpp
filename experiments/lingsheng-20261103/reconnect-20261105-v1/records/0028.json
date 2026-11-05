@@ -1,0 +1,24 @@
+{
+  "complete": true,
+  "previous_job": "2026153",
+  "worker_stopped": true,
+  "all_owned_tasks_cleaned": true,
+  "exit_kind": "natural-idle",
+  "scheduler_end_time": "2026-11-04T14:34:30Z",
+  "scheduler_query": {
+    "argv": [
+      "/opt/batch/cli/bin/djob",
+      "-J",
+      "-l",
+      "2026153"
+    ],
+    "request_id": "req-bb525f3d-0ef9-4f09-b024-2d0a0e371349",
+    "code": "success"
+  },
+  "task_status_sha256": {
+    "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue11/155-best-solve-profile-worker11.status.json": "851db24feb491566af42af3ae7ec361bf90d641691407b0df14980e13748bdbc"
+  },
+  "worker_log_sha256": "9cc095c842055c667e9752f98f0af47721d916c21d6efda0a1a7c1dd688c5c44",
+  "lock_unheld": true,
+  "epoch": 1793854230.8502595
+}

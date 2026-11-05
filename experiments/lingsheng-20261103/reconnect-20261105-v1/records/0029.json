@@ -1,0 +1,65 @@
+{
+  "complete": true,
+  "prepared_only": true,
+  "submitted": false,
+  "expected_host": "cn19486",
+  "previous_job": "2025061",
+  "queue": "queue11",
+  "source_root": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94",
+  "expected_source_head": "f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+  "files": {
+    "worker11.sh": {
+      "sha256": "910ea5f7fb7b9996d908cff218547298ca6543c5d62ae070d2a7c5c666e33851",
+      "bytes": 2336
+    },
+    "worker11_entry.py": {
+      "sha256": "60dc35cca34d2c16fccc04d812fe9f80b3d89fe004609ab342aa00a8401019f3",
+      "bytes": 12470
+    },
+    "worker11_preflight.py": {
+      "sha256": "908d377150cc5591127c0bfff4fc1842a2712b45bb075781eb05796c04849718",
+      "bytes": 6321
+    },
+    "worker11_login_record.py": {
+      "sha256": "66eaeeb19481613d20a17d9fbcd9af385b8a527496e51c1f78bbbb362f1ce3fa",
+      "bytes": 5732
+    },
+    "worker11_runtime_probe.py": {
+      "sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "bytes": 2363
+    },
+    "prepare_worker11.py": {
+      "sha256": "6d242161740bbb8a0c2a430733bba50f7a56b35c3c72c48ef2c4a4135f1d8451",
+      "bytes": 2535
+    },
+    "submit_worker11_terminal_v2.py": {
+      "sha256": "298e6fca39936f6b102978f230d667ad41d33b5bdaa3d77418245c6685bdb826",
+      "bytes": 9674
+    }
+  },
+  "existing_reader_sha256": {
+    "file_integrity.py": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+    "raw_scalar_helper.py": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3"
+  },
+  "tests": {
+    "worker11_logic_tests.py": {
+      "returncode": 0,
+      "log_sha256": "e2c60518a0cbb70ca1518278415a647901ea96adf6b1c3fe7fe91eccd126ba24"
+    },
+    "test_prepare_worker11.py": {
+      "returncode": 0,
+      "log_sha256": "a6707d4eff38012da33ddc34bc6dc076a3b17151cfc9aef223c8790cbe64c3da"
+    },
+    "test_submit_worker11_terminal_v2.py": {
+      "returncode": 0,
+      "log_sha256": "c68b984aa0e42fbdfe49f1de71f36f56c2114d0c9629b3b28c224330acbe7193"
+    },
+    "test_worker11_queue.py": {
+      "returncode": 0,
+      "log_sha256": "d45a2d46c278185c7b68b550d0dc6b73e5d6e5e961170ad35f4b1e2d4d009e34"
+    }
+  },
+  "pure_contract_tests": 35,
+  "actual_hardware_preflight": false,
+  "prior_preparation_fault": "V1 namespace clone retained queue10, including mocked test expectations; caught in prepared plan before any submission. V2 binds planner/authentication/actual exec to queue11, updates intended fixture expectations and adds two cross-module queue checks. Original failed preparation and logs retained."
+}

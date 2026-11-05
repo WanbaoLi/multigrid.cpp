@@ -1,0 +1,43 @@
+{
+  "complete": true,
+  "prepared_not_queued": true,
+  "id": "158-clover-arm-qualify-worker13",
+  "scope": "arm-clover-full-qualification-v1",
+  "source_head": "861613c703117c6b5b671e245a7142e217b09501",
+  "source": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source-clover-reuse-861",
+  "startup": {
+    "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker13-startup.json",
+    "sha256": "08f7e2ae01b1db9ebd567a5496375a0bc42ca79755e889b59034362e8bd4d212"
+  },
+  "dependency_status": "/home/share/nsls_lwb/.cache/mg-opt-20261103/queue11/155-best-solve-profile-worker11.status.json",
+  "dependency_status_sha256": "851db24feb491566af42af3ae7ec361bf90d641691407b0df14980e13748bdbc",
+  "pinned_files": [
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-arm-clover-v1/arm-clover-reuse-v1.bundle",
+      "sha256": "7c9dda001cab0fee4a5862e40d4485e2ec464c73397031de1ff462a1f2472fd0"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-arm-clover-v1/arm_clover_qualify_v1.py",
+      "sha256": "ed4654b748f1024a3c362ac58416e2315fc0363b9dfcd7a8757d7d3bd6a6d27e"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-arm-clover-v1/clover_codegen_audit.py",
+      "sha256": "dff1e7ca70b8f8752ab34053cd5c819d4cc5aba33b9b94f6e11f11f3d3e0dc35"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-arm-clover-v1/file_integrity.py",
+      "sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-arm-clover-v1/phase6_sve_probe.py",
+      "sha256": "afcd58ab6d271fea42434861764ed19eed3911dbe6436a0bba54fc7772b69788"
+    },
+    {
+      "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/aux-arm-clover-v1/raw_scalar_helper.py",
+      "sha256": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3"
+    }
+  ],
+  "performance_ranked": false,
+  "physical_full12": false,
+  "history": "149 was never executed.155 closed passed on prior cn19486 and is historical motivation only. New cn19480 allocation startup/preflight and fresh target qualification are required; no prior profile timing is reused."
+}

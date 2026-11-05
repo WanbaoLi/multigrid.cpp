@@ -1,0 +1,82 @@
+{
+  "complete": true,
+  "run": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/measurements/full12",
+  "reference": "/public2/home/lwb_720/.cache/mg-20261102/source/build/validation/multigrid",
+  "reference_sha256": "c5803d59b8c35d5b0bb07e45b98353194e927a3fd8ea1c57ee40070ae9433929",
+  "run_report_sha256": "1a8d41c17894defe209214c9bfc2487f1e79fe06f819114c27c3664a9c07246a",
+  "propagator_sha256": "bda9946fbf0f19d31c1613bed48cc79ba1e722c7f79cedb49de0ddb61a24d7a3",
+  "method": "byte-only column extraction + independent scalar C++",
+  "source_xyzt": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_scale": 1.0,
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "normalization": "mass",
+  "columns": [
+    {
+      "source_spin": 0,
+      "source_color": 0,
+      "residual": 5.732975012560372e-10
+    },
+    {
+      "source_spin": 0,
+      "source_color": 1,
+      "residual": 6.865958725549879e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 2,
+      "residual": 8.381917631230502e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 0,
+      "residual": 6.830417362660927e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 1,
+      "residual": 8.221039583489507e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 2,
+      "residual": 9.169762991574491e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 0,
+      "residual": 7.945161694871119e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 1,
+      "residual": 5.573108995013183e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 2,
+      "residual": 5.478440852114944e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 0,
+      "residual": 7.740955541037013e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 1,
+      "residual": 7.945732066699508e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 2,
+      "residual": 5.2205780272702964e-09
+    }
+  ],
+  "assembled_gauge_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834"
+}

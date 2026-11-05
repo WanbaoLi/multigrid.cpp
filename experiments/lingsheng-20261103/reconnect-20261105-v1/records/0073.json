@@ -1,0 +1,60 @@
+{
+  "complete": true,
+  "prepared_only": true,
+  "submitted": false,
+  "expected_host": "cn19486",
+  "previous_job": "2025061",
+  "source_root": "/home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94",
+  "expected_source_head": "f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+  "files": {
+    "worker11.sh": {
+      "sha256": "910ea5f7fb7b9996d908cff218547298ca6543c5d62ae070d2a7c5c666e33851",
+      "bytes": 2336
+    },
+    "worker11_entry.py": {
+      "sha256": "04980840478f29950bc1d174be4889d09553ef2eec8cab8e1be41d2fba1dd8d0",
+      "bytes": 12346
+    },
+    "worker11_preflight.py": {
+      "sha256": "908d377150cc5591127c0bfff4fc1842a2712b45bb075781eb05796c04849718",
+      "bytes": 6321
+    },
+    "worker11_login_record.py": {
+      "sha256": "66eaeeb19481613d20a17d9fbcd9af385b8a527496e51c1f78bbbb362f1ce3fa",
+      "bytes": 5732
+    },
+    "worker11_runtime_probe.py": {
+      "sha256": "6c7b69e9943fa7deaa9e085f21235b1c7c2fe856e93098b60323bb66261ec201",
+      "bytes": 2363
+    },
+    "prepare_worker11.py": {
+      "sha256": "b5c62371c7ea1b2d5715e91134f2e93a882bb2614fe434ea0112d0be7b52eff7",
+      "bytes": 2535
+    },
+    "submit_worker11_terminal_v2.py": {
+      "sha256": "d60f5f1213d1411f65c775f102583619c078eccaeb93f14723ecafca105bfca5",
+      "bytes": 9674
+    }
+  },
+  "existing_reader_sha256": {
+    "file_integrity.py": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+    "raw_scalar_helper.py": "5691366c7f0dabc0c8714b0732612abb2f0019532fe070168ad2cc88f83867f3"
+  },
+  "tests": {
+    "worker11_logic_tests.py": {
+      "returncode": 0,
+      "log_sha256": "19df001dc0ba604c54f95434a4877500b8de02d9e12905c3e5f117951f7fb2bf"
+    },
+    "test_prepare_worker11.py": {
+      "returncode": 0,
+      "log_sha256": "a6707d4eff38012da33ddc34bc6dc076a3b17151cfc9aef223c8790cbe64c3da"
+    },
+    "test_submit_worker11_terminal_v2.py": {
+      "returncode": 0,
+      "log_sha256": "c68b984aa0e42fbdfe49f1de71f36f56c2114d0c9629b3b28c224330acbe7193"
+    }
+  },
+  "pure_contract_tests": 33,
+  "actual_hardware_preflight": false,
+  "boundary": "Deploy only seven NEW worker11 files. Actual submission requires terminal/clean worker10 and a fresh actual stop proof. No active worker10 file is modified."
+}

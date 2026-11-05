@@ -1,0 +1,21 @@
+-- The C compiler identification is GNU 14.4.0
+-- The CXX compiler identification is GNU 14.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /public2/home/lwb_720/miniconda3/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /public2/home/lwb_720/miniconda3/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found MPI_C: /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmpi.so (found version "3.1")
+-- Found MPI_CXX: /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmpi.so (found version "3.1")
+-- Found MPI: TRUE (found version "3.1") found components: C CXX
+-- Found OpenMP_C: -fopenmp (found version "4.5")
+-- Found OpenMP_CXX: -fopenmp (found version "4.5")
+-- Found OpenMP: TRUE (found version "4.5") found components: C CXX
+-- Configuring done (9.2s)
+-- Generating done (1.2s)
+-- Build files have been written to: /public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/000-delivery-tests/build

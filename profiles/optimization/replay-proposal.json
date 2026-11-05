@@ -1,0 +1,8 @@
+{
+  "bottleneck": "Reproduce complete twelve-column performance on the explicitly selected source and hardware allocation",
+  "hypothesis": "The retained configuration preserves independent accuracy and measured steady performance in a fresh process",
+  "change": "Fresh source snapshot and build; replay the selected explicit full12 plan without adopting an experimental kernel",
+  "mechanism": "One hierarchy, one complete warmup, three complete steady calls, zero initial guesses and independent scalar/reference validation",
+  "history_links": ["docs/optimization-framework.md", "docs/optimization-progress-20261104.md"],
+  "retry_conditions": "Use a fresh campaign/attempt and record changed hardware or runtime; retain previous failures and timings"
+}

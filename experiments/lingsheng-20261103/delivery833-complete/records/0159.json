@@ -1,0 +1,161 @@
+{
+  "complete": true,
+  "passed": true,
+  "protocol": "fresh-output-publication-v2",
+  "startup_sha256": "4b9db5af5c891299ab9558bbdb056959962e3e45baff1b0e2ca4bebbc27bd32d",
+  "entry_sha256": "f55aae8c4f460c93d5f913682e3f526e5f66d4109f84646a9c2a7198f8023f60",
+  "base_wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec",
+  "publication_module_sha256": "9ac768cc695f3a1fc7febe15d28798bd39ef8e925d973b8f07e04bb67e3ea01a",
+  "parent_raw_artifacts": {
+    "protocol.json": {
+      "path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/checksum-audit/benchmark/rank00000/protocol.json",
+      "sha256": "1b141828d2a09c6e23144495ff4a8d2bf10fcb3f23d6230030fa7bf811cbae88"
+    },
+    "manifest.json": {
+      "path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/checksum-audit/benchmark/rank00000/manifest.json",
+      "sha256": "3afacb15b56ba3c3a49c6cef7f2ee49cb54f0df9c5aa00c7bc66efaa3f2425f0"
+    }
+  },
+  "published_outputs": [
+    {
+      "protocol": "fresh-output-publication-v2",
+      "complete": true,
+      "passed": true,
+      "receipt": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/receipt.json",
+      "receipt_sha256": "e279f94beb8da3c1aeb3821036d3604caff9c9596b53e9d25db807f5371ab52d",
+      "strict_calls": 1,
+      "full_reads": 1,
+      "parent_protocol": {
+        "path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/checksum-audit/benchmark/rank00000/protocol.json",
+        "sha256": "1b141828d2a09c6e23144495ff4a8d2bf10fcb3f23d6230030fa7bf811cbae88",
+        "startup_path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/startup.json",
+        "startup_sha256": "4b9db5af5c891299ab9558bbdb056959962e3e45baff1b0e2ca4bebbc27bd32d"
+      },
+      "full_proof": {
+        "protocol": "fresh-output-publication-v2",
+        "complete": true,
+        "passed": true,
+        "path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/measurements/full12/propagator.npy",
+        "eligibility": {
+          "protocol": "fresh-output-publication-v2",
+          "complete": true,
+          "output": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/measurements",
+          "output_absent_at_cli_start": true,
+          "checked_epoch": 1793854134.1007886,
+          "existing_parent": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a",
+          "parent_identity": {
+            "dev": 46,
+            "inode": 13208026884
+          },
+          "declarations": [
+            {
+              "relative": "full12/propagator.npy",
+              "kind": "npy-propagator",
+              "expected_sha256": null,
+              "bytes": 2038431872
+            }
+          ],
+          "maximum_strict_calls_per_output": 3,
+          "parent_protocol": null,
+          "immutable_inputs_use_original_strict_reader": true
+        },
+        "parent_protocol": {
+          "path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/checksum-audit/benchmark/rank00000/protocol.json",
+          "sha256": "1b141828d2a09c6e23144495ff4a8d2bf10fcb3f23d6230030fa7bf811cbae88",
+          "startup_path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/startup.json",
+          "startup_sha256": "4b9db5af5c891299ab9558bbdb056959962e3e45baff1b0e2ca4bebbc27bd32d"
+        },
+        "reads": [
+          {
+            "complete": true,
+            "passed": true,
+            "path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/measurements/full12/propagator.npy",
+            "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+            "block_bytes": 4194304,
+            "expected_sha256": null,
+            "required_bytes": 2038431872,
+            "initial": {
+              "dev": 46,
+              "inode": 13268730885,
+              "bytes": 2038431872,
+              "mtime_ns": 1793854279000000000,
+              "ctime_ns": 1793854279000000000
+            },
+            "original_open_mode": "O_RDONLY",
+            "same_immutable_bytes": true,
+            "started": 1793854279.6414638,
+            "fd_before": {
+              "dev": 46,
+              "inode": 13268730885,
+              "bytes": 2038431872,
+              "mtime_ns": 1793854279000000000,
+              "ctime_ns": 1793854279000000000
+            },
+            "last_request_offset": 2038431872,
+            "last_request_bytes": 1,
+            "last_returned_bytes": 0,
+            "fd_after": {
+              "dev": 46,
+              "inode": 13268730885,
+              "bytes": 2038431872,
+              "mtime_ns": 1793854279000000000,
+              "ctime_ns": 1793854279000000000
+            },
+            "path_after": {
+              "dev": 46,
+              "inode": 13268730885,
+              "bytes": 2038431872,
+              "mtime_ns": 1793854279000000000,
+              "ctime_ns": 1793854279000000000
+            },
+            "read_bytes": 2038431872,
+            "pread_calls": 488,
+            "positive_short_reads": 0,
+            "eof_probe_bytes": 0,
+            "openssl_sha256": "bda9946fbf0f19d31c1613bed48cc79ba1e722c7f79cedb49de0ddb61a24d7a3",
+            "software_sha256": "bda9946fbf0f19d31c1613bed48cc79ba1e722c7f79cedb49de0ddb61a24d7a3",
+            "seconds": 5.654275178909302,
+            "metadata_stable": true,
+            "byte_count_exact": true
+          }
+        ],
+        "progress": [
+          {
+            "path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-000.json",
+            "sha256": "e0eb13c64542ee6c0c9c4f504745bcfc15a5ef26e597a2da235706eab205af37"
+          },
+          {
+            "path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/110-delivery-full12-a/checksum-audit/benchmark-fresh-publication-v2/rank00000/publications/output-000/progress-001.json",
+            "sha256": "bbd806821a22579895620a863dd9ada5bb64832a1f2f1a848e19b5eb43f0de45"
+          }
+        ],
+        "strict_calls": 1,
+        "full_reads": 1,
+        "maximum_strict_calls": 3,
+        "first_rejection_accepted": false,
+        "expected_previously_published": false,
+        "mode": "original-first-strict-pass",
+        "closed_npy_header": {
+          "complete": true,
+          "passed": true,
+          "header_bytes": 128,
+          "dtype": "<c16",
+          "shape": [
+            64,
+            24,
+            24,
+            24,
+            4,
+            4,
+            3,
+            3
+          ],
+          "fortran_order": false
+        },
+        "published_sha256": "bda9946fbf0f19d31c1613bed48cc79ba1e722c7f79cedb49de0ddb61a24d7a3",
+        "rejected_read_count": 0
+      }
+    }
+  ],
+  "rank": 0
+}

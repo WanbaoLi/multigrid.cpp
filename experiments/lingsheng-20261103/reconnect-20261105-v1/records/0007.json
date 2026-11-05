@@ -1,0 +1,485 @@
+{
+  "complete": true,
+  "actual_query_results": {
+    "2026153": [
+      {
+        "jobId": "2026153",
+        "jobName": "mg-opt-worker11",
+        "description": "",
+        "priority": 1,
+        "exclusive": true,
+        "interactionMode": "DEFAULT",
+        "state": "SUCCEEDED",
+        "currentOperation": "EMPTY",
+        "createTime": "2026-11-04T12:53:46Z",
+        "startTime": "2026-11-04T13:12:47Z",
+        "lastModifiedTime": "2026-11-04T16:35:16Z",
+        "endTime": "2026-11-04T14:34:30Z",
+        "queue": "q_hpcapp",
+        "account": "common",
+        "reserveRes": "-",
+        "backfillRes": "-",
+        "backfilledRes": "-",
+        "startTimeEstimated": "-",
+        "jobType": "COSCHED",
+        "mpiType": "DEFAULT",
+        "assistJob": "DEFAULT",
+        "pmiType": "OTHER",
+        "scheduledTime": "-",
+        "jobWallClockLimit": 14400,
+        "retryPolicy": {
+          "maxRetryCnt": 0,
+          "currentRetryTimes": 0
+        },
+        "user": "nsls_lwb",
+        "execPath": "/home/share/nsls_lwb/.cache/mg-opt-20261103",
+        "submitNode": "login09",
+        "traceMessages": [
+          "2026-11-04T12:53:46Z   :    [JOB_ADD] Job 2026153 is submitted by nsls_lwb, job state is PENDING.",
+          "2026-11-04T13:12:47Z   :    [JOB_START] Job 2026153 start message has been sent.",
+          "2026-11-04T13:12:47Z   :    [JOB_START_ACK] Job 2026153 start message has been received by agent cn19486.",
+          "2026-11-04T13:12:47Z   :    [JOB_EXECUTION] Job 2026153 state is from PENDING to RUNNING.",
+          "2026-11-04T13:12:48Z   :    [HOST_PRE-HOOK_START] Job 2026153 host-pre-hook started at 2026-11-04T13:12:48Z.",
+          "2026-11-04T13:12:58Z   :    [HOST_PRE-HOOK_END] Job 2026153 host-pre-hook is finished successfully at 2026-11-04T13:12:58Z, cost time: 10261 ms.",
+          "2026-11-04T14:34:30Z   :    [JOB_FINISH] Job 2026153 state is from RUNNING to SUCCEEDED."
+        ],
+        "resGroups": [
+          {
+            "taskGroupName": "rg0",
+            "replica": 1,
+            "nnodes": "1",
+            "preferNodes": "cn19486",
+            "nodeSelectPolicyReq": "-",
+            "nodeSelectPolicyEff": "SEQUENCE",
+            "taskLabels": "queue_q_hpcapp aarch64",
+            "resReq": {
+              "cpu": 592,
+              "mem": 480000,
+              "gpu": {
+                "amount": 0,
+                "type": "gpu"
+              },
+              "npu": {
+                "count": 0,
+                "name": "npu"
+              },
+              "license": {}
+            },
+            "resAlloc": {
+              "cpu": 592,
+              "mem": 480000,
+              "gpu": {
+                "amount": 0,
+                "type": "gpu"
+              },
+              "npu": {
+                "count": 0,
+                "name": "npu"
+              },
+              "license": {}
+            },
+            "nodeResUsages": [
+              {
+                "tPreCheckRunTime": 0,
+                "execNode": "cn19486",
+                "resIndex": "0/1",
+                "userCpuTime": 107241,
+                "systemCpuTime": 3459,
+                "memswMax": 347880,
+                "memMax": 347880,
+                "memAvg": 19103,
+                "memReal": 0,
+                "rss": 0,
+                "cache": 2698,
+                "preHookRunTime": 0,
+                "postHookRunTime": 0,
+                "hostPreHookRunTime": 10,
+                "hostPostHookRunTime": 0,
+                "swap": 0,
+                "swapMax": 0,
+                "wallclockDuration": 4891,
+                "sstoppedTime": 0,
+                "cpuUtilAvg": 2262,
+                "cpuUtilRecent": 0,
+                "gpuUtilAvg": [],
+                "gpuUtilRecent": [],
+                "npuUtilRecent": [],
+                "pids": "-",
+                "hwThreads": "-",
+                "gpuIds": "-",
+                "npuIds": "-"
+              }
+            ]
+          }
+        ],
+        "adminPriority": -1,
+        "taskExecNodes": "cn19486",
+        "taskExecNodesCount": 1,
+        "totalResUsage": {
+          "userCpuTimeTotal": 107241,
+          "systemCpuTimeTotal": 3459,
+          "memswMaxTotal": 297515,
+          "memMaxTotal": 297515,
+          "wallclockDurationTotal": 4891,
+          "sstoppedTimeTotal": 0,
+          "preHookRunTime": 0,
+          "postHookRunTime": 0,
+          "hostPreHookRunTime": 10,
+          "hostPostHookRunTime": 0,
+          "coreHours": 2973728
+        },
+        "jobResReq": {
+          "license": {}
+        },
+        "jobResAlloc": {
+          "license": {}
+        },
+        "transferInfo": {
+          "transferType": "LOCAL",
+          "forwardTime": "-",
+          "recallTime": "-"
+        },
+        "logRedirectPath": {
+          "stderrRedirectPath": "",
+          "stdoutRedirectPath": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker11.log",
+          "stderrRedirectType": "append",
+          "stdoutRedirectType": "append"
+        },
+        "cmd": "/bin/bash /home/share/nsls_lwb/.cache/mg-opt-20261103/worker11.sh --source /home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94 --expected-source-head f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+        "preHook": {},
+        "postHook": {},
+        "hostPreHook": {
+          "cmd": "/home/share/software/donau/hook/hosthook/no_exclusive/hostPreHook.sh",
+          "hookWallClockLimit": 300
+        },
+        "hostPostHook": {},
+        "exitCode": 0,
+        "exitMessage": "Job execution succeeded",
+        "jobExitCode": 0,
+        "isX11ForwardEnabled": false,
+        "logRedirectOutputPath": {
+          "stderrRedirectOutputPath": "",
+          "stdoutRedirectOutputPath": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker11.log"
+        },
+        "isAutoResizable": false,
+        "resizeNotifyCmd": "",
+        "execUsages": {
+          "cn19486": {
+            "tgName": "rg0"
+          }
+        },
+        "hasResourceAffinityReq": false
+      },
+      {
+        "argv": [
+          "/opt/batch/cli/bin/djob",
+          "-J",
+          "-l",
+          "2026153"
+        ],
+        "request_id": "req-43c229b8-85e7-4164-90b7-573305381b19",
+        "code": "success"
+      }
+    ],
+    "2035397": [
+      {
+        "jobId": "2035397",
+        "jobName": "mg-opt-worker12",
+        "description": "",
+        "priority": 1,
+        "exclusive": true,
+        "interactionMode": "DEFAULT",
+        "state": "FAILED",
+        "currentOperation": "EMPTY",
+        "createTime": "2026-11-05T04:30:51Z",
+        "startTime": "-",
+        "lastModifiedTime": "-",
+        "endTime": "2026-11-05T04:49:19Z",
+        "queue": "q_hpcapp",
+        "account": "common",
+        "reserveRes": "-",
+        "backfillRes": "-",
+        "backfilledRes": "-",
+        "startTimeEstimated": "-",
+        "jobType": "COSCHED",
+        "mpiType": "DEFAULT",
+        "assistJob": "DEFAULT",
+        "pmiType": "OTHER",
+        "scheduledTime": "-",
+        "jobWallClockLimit": 14400,
+        "retryPolicy": {
+          "maxRetryCnt": 0,
+          "currentRetryTimes": 0
+        },
+        "user": "nsls_lwb",
+        "execPath": "/home/share/nsls_lwb/.cache/mg-opt-20261103",
+        "submitNode": "login04",
+        "traceMessages": [
+          "2026-11-05T04:30:51Z   :    [JOB_ADD] Job 2035397 is submitted by nsls_lwb, job state is PENDING.",
+          "2026-11-05T04:49:19Z   :    [JOB_CTRL] nsls_lwb terminate job 2035397 for the 1st time.",
+          "2026-11-05T04:49:19Z   :    [JOB_FINISH] Job 2035397 state is from PENDING to FAILED, reason: job terminated by user."
+        ],
+        "resGroups": [
+          {
+            "taskGroupName": "rg0",
+            "replica": 1,
+            "nnodes": "1",
+            "preferNodes": "cn19486",
+            "nodeSelectPolicyReq": "-",
+            "nodeSelectPolicyEff": "-",
+            "taskLabels": "queue_q_hpcapp aarch64",
+            "resReq": {
+              "cpu": 592,
+              "mem": 480000,
+              "gpu": {
+                "amount": 0,
+                "type": "gpu"
+              },
+              "npu": {
+                "count": 0,
+                "name": "npu"
+              },
+              "license": {}
+            }
+          }
+        ],
+        "adminPriority": -1,
+        "taskExecNodes": "-",
+        "taskExecNodesCount": 0,
+        "totalResUsage": {
+          "userCpuTimeTotal": 0,
+          "systemCpuTimeTotal": 0,
+          "memswMaxTotal": 0,
+          "memMaxTotal": 0,
+          "wallclockDurationTotal": 0,
+          "sstoppedTimeTotal": 0,
+          "preHookRunTime": 0,
+          "postHookRunTime": 0,
+          "hostPreHookRunTime": 0,
+          "hostPostHookRunTime": 0,
+          "coreHours": 0
+        },
+        "jobResReq": {
+          "license": {}
+        },
+        "jobResAlloc": {
+          "license": {}
+        },
+        "transferInfo": {
+          "transferType": "LOCAL",
+          "forwardTime": "-",
+          "recallTime": "-"
+        },
+        "logRedirectPath": {
+          "stderrRedirectPath": "",
+          "stdoutRedirectPath": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker12.log",
+          "stderrRedirectType": "append",
+          "stdoutRedirectType": "append"
+        },
+        "cmd": "/bin/bash /home/share/nsls_lwb/.cache/mg-opt-20261103/worker12.sh --source /home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94 --expected-source-head f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+        "preHook": {},
+        "postHook": {},
+        "hostPreHook": {
+          "cmd": "/home/share/software/donau/hook/hosthook/no_exclusive/hostPreHook.sh",
+          "hookWallClockLimit": 300
+        },
+        "hostPostHook": {},
+        "exitCode": 10003,
+        "exitMessage": "Job was terminated by nsls_lwb",
+        "isX11ForwardEnabled": false,
+        "isAutoResizable": false,
+        "resizeNotifyCmd": "",
+        "hasResourceAffinityReq": false
+      },
+      {
+        "argv": [
+          "/opt/batch/cli/bin/djob",
+          "-J",
+          "-l",
+          "2035397"
+        ],
+        "request_id": "req-1699a841-ab3c-40e1-b2dc-e37e8abeead4",
+        "code": "success"
+      }
+    ],
+    "2035635": [
+      {
+        "jobId": "2035635",
+        "jobName": "mg-opt-worker13",
+        "description": "",
+        "priority": 1,
+        "exclusive": true,
+        "interactionMode": "DEFAULT",
+        "state": "RUNNING",
+        "currentOperation": "EMPTY",
+        "createTime": "2026-11-05T04:50:46Z",
+        "startTime": "2026-11-05T04:50:47Z",
+        "lastModifiedTime": "-",
+        "endTime": "-",
+        "queue": "q_hpcapp",
+        "account": "common",
+        "reserveRes": "-",
+        "backfillRes": "-",
+        "backfilledRes": "-",
+        "startTimeEstimated": "-",
+        "jobType": "COSCHED",
+        "mpiType": "DEFAULT",
+        "assistJob": "DEFAULT",
+        "pmiType": "OTHER",
+        "scheduledTime": "-",
+        "jobWallClockLimit": 14400,
+        "retryPolicy": {
+          "maxRetryCnt": 0,
+          "currentRetryTimes": 0
+        },
+        "user": "nsls_lwb",
+        "execPath": "/home/share/nsls_lwb/.cache/mg-opt-20261103",
+        "submitNode": "login04",
+        "depInfo": {
+          "depJobList": [],
+          "children": []
+        },
+        "traceMessages": [
+          "2026-11-05T04:50:46Z   :    [JOB_ADD] Job 2035635 is submitted by nsls_lwb, job state is PENDING.",
+          "2026-11-05T04:50:47Z   :    [JOB_START] Job 2035635 start message has been sent.",
+          "2026-11-05T04:50:47Z   :    [JOB_START_ACK] Job 2035635 start message has been received by agent cn19480.",
+          "2026-11-05T04:50:47Z   :    [JOB_EXECUTION] Job 2035635 state is from PENDING to RUNNING.",
+          "2026-11-05T04:50:48Z   :    [HOST_PRE-HOOK_START] Job 2035635 host-pre-hook started at 2026-11-05T04:50:48Z.",
+          "2026-11-05T04:50:58Z   :    [HOST_PRE-HOOK_END] Job 2035635 host-pre-hook is finished successfully at 2026-11-05T04:50:58Z, cost time: 10218 ms."
+        ],
+        "resGroups": [
+          {
+            "taskGroupName": "rg0",
+            "minReplica": 1,
+            "replica": 1,
+            "nnodes": "1",
+            "preferNodes": "cn19480",
+            "nodeSelectPolicyReq": "-",
+            "nodeSelectPolicyEff": "SEQUENCE",
+            "taskLabels": "queue_q_hpcapp aarch64",
+            "resReq": {
+              "cpu": 592,
+              "mem": 480000,
+              "gpu": {
+                "amount": 0,
+                "type": "gpu"
+              },
+              "npu": {
+                "count": 0,
+                "name": "npu"
+              },
+              "license": {}
+            },
+            "resAlloc": {
+              "cpu": 592,
+              "mem": 480000,
+              "gpu": {
+                "amount": 0,
+                "type": "gpu"
+              },
+              "npu": {
+                "count": 0,
+                "name": "npu"
+              },
+              "license": {}
+            },
+            "nodeResUsages": [
+              {
+                "tPreCheckRunTime": 0,
+                "execNode": "cn19480",
+                "resIndex": "0/1",
+                "userCpuTime": 729,
+                "systemCpuTime": 147,
+                "memswMax": 2002,
+                "memMax": 2002,
+                "memAvg": 559,
+                "memReal": 807,
+                "rss": 592,
+                "cache": 210,
+                "preHookRunTime": 0,
+                "postHookRunTime": 0,
+                "hostPreHookRunTime": 10,
+                "hostPostHookRunTime": 0,
+                "swap": 0,
+                "swapMax": 0,
+                "wallclockDuration": 410,
+                "sstoppedTime": 0,
+                "cpuUtilAvg": 213,
+                "cpuUtilRecent": 131,
+                "gpuUtilAvg": [],
+                "gpuUtilRecent": [],
+                "npuUtilRecent": [],
+                "pids": "1485278,1489857,1499471,1524640,1524833,1524834",
+                "hwThreads": "-",
+                "gpuIds": "-",
+                "npuIds": "-"
+              }
+            ]
+          }
+        ],
+        "adminPriority": -1,
+        "taskExecNodes": "cn19480",
+        "taskExecNodesCount": 1,
+        "totalResUsage": {
+          "userCpuTimeTotal": 729,
+          "systemCpuTimeTotal": 147,
+          "memswMaxTotal": 1950,
+          "memMaxTotal": 1950,
+          "wallclockDurationTotal": 410,
+          "sstoppedTimeTotal": 0,
+          "preHookRunTime": 0,
+          "postHookRunTime": 0,
+          "hostPreHookRunTime": 10,
+          "hostPostHookRunTime": 0,
+          "coreHours": 249280
+        },
+        "jobResReq": {
+          "license": {}
+        },
+        "jobResAlloc": {
+          "license": {}
+        },
+        "transferInfo": {
+          "transferType": "LOCAL",
+          "forwardTime": "-",
+          "recallTime": "-"
+        },
+        "logRedirectPath": {
+          "stderrRedirectPath": "",
+          "stdoutRedirectPath": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker13.log",
+          "stderrRedirectType": "append",
+          "stdoutRedirectType": "append"
+        },
+        "cmd": "/bin/bash /home/share/nsls_lwb/.cache/mg-opt-20261103/worker13.sh --source /home/share/nsls_lwb/.cache/mg-opt-20261103/source-setup-owned-f94 --expected-source-head f94f27d2a07ff3363bea43c1a3b2ca45277de674",
+        "preHook": {},
+        "postHook": {},
+        "hostPreHook": {
+          "cmd": "/home/share/software/donau/hook/hosthook/no_exclusive/hostPreHook.sh",
+          "maxRetryCnt": 0,
+          "hookWallClockLimit": 300
+        },
+        "hostPostHook": {},
+        "isX11ForwardEnabled": false,
+        "logRedirectOutputPath": {
+          "stderrRedirectOutputPath": "",
+          "stdoutRedirectOutputPath": "/home/share/nsls_lwb/.cache/mg-opt-20261103/worker13.log"
+        },
+        "isAutoResizable": false,
+        "resizeNotifyCmd": "",
+        "hasResourceAffinityReq": false
+      },
+      {
+        "argv": [
+          "/opt/batch/cli/bin/djob",
+          "-J",
+          "-l",
+          "2035635"
+        ],
+        "request_id": "req-55084aa4-5d3e-4588-ac60-057692f44125",
+        "code": "success"
+      }
+    ]
+  },
+  "cancelled_only_pending": true,
+  "reason": "cn19486 preference unavailable; cancelled2035397 before execution.2035635 is fresh exclusive cn19480 allocation with actual preflight."
+}

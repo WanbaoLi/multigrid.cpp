@@ -1,0 +1,15 @@
+{
+  "median": 6.1368631813675165,
+  "steady": [
+    6.120672388933599,
+    6.1368631813675165,
+    6.1445929650217295
+  ],
+  "scalar_max": 9.169762991574491e-09,
+  "gold_max": 9.915888557081041e-08,
+  "setup_seconds": 112.585853294,
+  "native_setup_seconds": null,
+  "source_manifest_sha256": "22f5b53609e7f27c44339f1301ea9ba0883538e949a907a405e5fc0621204c5b",
+  "library_sha256": "868a97c25e1dcae918534a7f644bc5869fc2080a4ef80c4714551263e9e0cbbd",
+  "report_sha256": "1b7e3cece854cab609e48d9748bd7a4a12afd90611d97f8064ba5113365894ea"
+}

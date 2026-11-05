@@ -1,0 +1,22 @@
+{
+  "complete": true,
+  "method": "raw os.pread exact offsets/count/EOF; independent OpenSSL+CPython software SHA256 on same immutable bytes",
+  "identity": {
+    "openssl_module": "_hashlib",
+    "software_module": "_sha2",
+    "known_vectors_passed": 3
+  },
+  "wrapper_sha256": "d006372cdd578e0d3b5694b5733483958b21c037f56df4efbedf996b4f3d3cec",
+  "raw_reader_sha256": "34200de5efea2b362880886354c7436fdfb6300bb1c3730b57823aa8acebf427",
+  "benchmark_sha256": "68650d788eacdfe747ceedc18b9eb3cac070f4a8da2175901d1be8e6485126cb",
+  "payload_bytes": 2038431872,
+  "source_unchanged": true,
+  "numerical_thresholds_unchanged": true,
+  "prior_failure_root_cause": "unresolved",
+  "mode": "benchmark",
+  "rank": 11,
+  "protocol_version": 4,
+  "helper_sha256": "bc441c56af7ffe65781816c8d18427578e8097f0b35168349a27629655fa2074",
+  "helper_wrapper_sha256": "c70badd92adeaa7da071f9166282c6db1b34c75ca21c6bb06b7b8803bbaae097",
+  "timing_contract": "Checksum callback only; full12 API clocks/samples unchanged; checksum/output outside timed API"
+}

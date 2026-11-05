@@ -1,0 +1,37 @@
+{
+  "complete": true,
+  "source_report_sha256": "254f36efaa6ef145a2af2542718fbd5da7ea94897fa964a2d51598a77d929651",
+  "source_manifest_sha256": "78b429dc13a8b113792aa45bd27fc93134a8c4b39359da9ade05558c93d590ae",
+  "library_sha256": "d8b2e05221920ca2c34e102f83d7fa468cbaa421dec835624f31cdaa07a01a82",
+  "configuration": {
+    "batch": 2,
+    "block": [
+      6,
+      6,
+      6,
+      4
+    ],
+    "context_environment": {
+      "LQCD_ARM_COARSE_SVE": 0,
+      "LQCD_ARM_SVE": 1,
+      "LQCD_ARM_SVE_PLANNED": 0,
+      "LQCD_ARM_SVE_REUSE": 1,
+      "LQCD_ARM_SVE_TRANSFER": 0,
+      "LQCD_COARSE_FUSED": 0,
+      "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+      "LQCD_HBM": "off",
+      "LQCD_HBW_ALLOC": "require"
+    },
+    "placement_threads": 37,
+    "ranks": 16,
+    "seed": 1024,
+    "setup_threads": 37,
+    "solve_environment": {
+      "LQCD_COARSE_BATCH_REDUCE": 1
+    },
+    "threads": 32
+  },
+  "historical_report_used_only_for_configuration": true,
+  "timing_not_inherited": true,
+  "note": "ARM052 best retained; node5005 machine-specific tuning. These are full12 API plans, not interchangeable CPU counts."
+}
