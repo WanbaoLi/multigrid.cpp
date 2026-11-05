@@ -11,4 +11,3 @@ task=dict(argv=['bash',str(root/runner),a.node,a.cores,a.mode],cwd=str(root),tim
 path=queue/(name+'.task.json')
 with path.open('x')as f:json.dump(task,f,indent=2)
 os.link(path,queue/(name+'.ready.json'));print('ENQUEUED',a.node,name)
-

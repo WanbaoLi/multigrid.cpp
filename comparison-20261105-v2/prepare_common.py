@@ -18,4 +18,3 @@ with h5py.File(out/'gauge-pyqcu-ap-c128.h5','x')as f:
     mass=-.277,csw=1.160920226,tol=1e-8,pyqcu_boundary='last temporal links multiplied by-1 exactly once',
     source_fixture=str(fixture),normalization_scale=3.723),indent=2)+'\n')
 print('COMMON_INPUT_READY',flush=True)
-

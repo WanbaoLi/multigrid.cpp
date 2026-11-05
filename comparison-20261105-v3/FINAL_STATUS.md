@@ -1,0 +1,21 @@
+# Complete, 2026-11-05
+
+User's final scope fulfilled: once per solver/node, allavailablecores,
+samepoststoutDPgauge, owniterativestoppingparameterrelative1e-8.
+Login04(all128): ours77.301513609s,PyQCU1721.939104206s.
+cn19481(all592,exclusive2039580): ours14.392086919s,PyQCU353.120143083s.
+Oursnativeinneronly76.649937545/13.927984259s areauxiliary,notmixedintoAPIcomparison.
+Both12columnresidualgatespassed. PyQCUiscomplex128BiCGStab,oursmixedprecisionMG.
+Allone-timesmear/preprocess/Clover/setup/IO/externalchecksoutsideprimarytimers.
+
+LoginPyQCU's completedfirstfull12 receipt was saved before intentionally
+stopping the initiallyscheduledsecondcall peruserrequest. Taskfailed(-15)
+isretained,separatefromacceptedfirstfull12;ownedcleanupcomplete,no survivors.
+Computebothsinglecalltasksreturned0/cleanupcomplete,queueSTOP,allocationended.
+Cancelledold128corecompute2039150and1e-10pilotsarenotranked.
+
+LocalREPORT.mdand summary.json arefinal. evidencecontains104exactrawfiles,
+sourcehelperstagedbygauge/timerconfig,metadataandcancellationrecords.
+ArchiveSHAfafafc9161bcc20346c21c23883fec0f949d22836cd50a3f7ee8a076838aecc6.
+Sourcearrays/binariesstayremote. Originaldeliveredbestnumericsunchanged.
+EarlierCONTINUE.md filesarehistoricalcheckpoints,supersededbythisclosedstate.

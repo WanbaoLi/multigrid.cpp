@@ -20,4 +20,3 @@ entry=Path('/home/share/nsls_lwb/.cache/pyqcu-kunpeng-recheck/bound_entry.py').r
 entry=entry.replace('/home/share/nsls_lwb/.cache/pyqcu-propagator24-v20261103/benchmark_propagator12.py',str(target))
 (root/'pyqcu_entry.py').write_text(entry)
 print('DERIVED_REPEATED_DRIVER_READY')
-

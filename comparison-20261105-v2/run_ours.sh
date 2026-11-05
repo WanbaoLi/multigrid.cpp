@@ -14,4 +14,3 @@ else placement=(--threads 37);threads=32;export LQCD_HBW_ALLOC=require;fi
 extra=();if [[ $mode == pilot ]]; then extra=(--pilot);fi
 "$FAIR_PYTHON" "$SOURCE/tools/run_numa.py" "${placement[@]}" -- \
  "$FAIR_PYTHON" -u "$TASK/ours.py" --out "$TASK/results/$label-$configuration-ours-$mode" --library "$LIB" --threads "$threads" --setup-threads "$([[ $configuration == 128 ]] && echo 32 || echo 37)" "${extra[@]}"
-

@@ -37,6 +37,3 @@ with Solver([24,24,24,64],[1,1,1,ranks],mass=-.277,csw=1.160920226,block=[6,6,6,
     if rank==0:
         (out/'result.json').write_text(json.dumps(dict(complete=True,host=socket.gethostname(),resources=resources,setup_seconds=setup,
             library_sha256=hashlib.sha256(Path(a.library).read_bytes()).hexdigest(),tol=1e-8,samples=rows),indent=2)+'\n')
-
-
-

@@ -17,4 +17,3 @@ error=float(np.linalg.norm((x-y).ravel())/np.linalg.norm(x.ravel()))
 result=dict(node=a.node,cores=a.cores,mode=a.mode,relative_solution_error=error,limit=1e-6,passed=np.isfinite(error)and error<=1e-6)
 path=root/f'{a.node}-{a.cores}-crosscheck-{a.mode}.json';assert not path.exists();path.write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)
 assert result['passed'],'The two solutions differ; do not rank before attributing convention differences'
-

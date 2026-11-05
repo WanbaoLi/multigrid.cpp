@@ -1,4 +1,6 @@
-# Active comparison: DO NOT final until actual results complete
+# Historical comparison checkpoint, now closed
+
+Superseded by [v3 final report](../comparison-20261105-v3/REPORT.md).
 
 Latest user scope: compare PyQCU and our solver on login and compute, smear ON
 once, both iterative stopping tolerance1e-8. Exclude one-time preprocess/smear/

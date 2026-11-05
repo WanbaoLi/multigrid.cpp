@@ -9,4 +9,3 @@ for p in sorted((root/'results').glob('*/result.json')):
     r=json.loads(p.read_text());samples=r.get('samples',[])
     rows.append(dict(result=p.parent.name,status=r.get('status',r.get('complete')),samples=[{k:v for k,v in x.items()if k not in('stats','columns')}for x in samples],columns_completed=len(r.get('columns',[]))))
 print(json.dumps(rows,indent=2),flush=True)
-

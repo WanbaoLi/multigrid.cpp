@@ -20,4 +20,3 @@ for status in(root/'login-queue').glob('*.status.json'):
             rows.append(dict(pid=int(p.name),threads=len(tids),last_cpu_distinct=len(set(cpus)),affinity_widths=sorted(set(widths)),cpu_list=sorted(set(cpus))))
         except (FileNotFoundError,ProcessLookupError,PermissionError):pass
 print(json.dumps(rows,indent=2))
-

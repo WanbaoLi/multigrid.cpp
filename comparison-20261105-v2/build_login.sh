@@ -15,4 +15,3 @@ cmake -S "$SOURCE" -B "$TASK/build-login" -DCMAKE_BUILD_TYPE=Release -DMULTIGRID
 cmake --build "$TASK/build-login" -j8
 OMP_NUM_THREADS=2 OMP_PLACES=cores ctest --test-dir "$TASK/build-login" --output-on-failure -R '^(core|wilson_.*|coarse_kernel)$'
 touch "$TASK/login-build-passed"
-

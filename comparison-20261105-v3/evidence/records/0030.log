@@ -1,0 +1,593 @@
+* HPCKit setting environment variables...
+
+* compiler setvars
+* hmpi setvars
+* kml setvars
+* kupl setvars
+* kutacc setvars
+* hio setvars
+
+* HPCKit environment variables inited
+{
+  "mpi_launcher": "openmpi",
+  "topology": {
+    "ranks": 4,
+    "ranks_per_numa": 1,
+    "threads_per_rank": [
+      32,
+      32,
+      32,
+      32
+    ],
+    "grid": [
+      1,
+      1,
+      1,
+      4
+    ],
+    "lattice": [
+      24,
+      24,
+      24,
+      64
+    ],
+    "block": [
+      6,
+      6,
+      6,
+      4
+    ],
+    "host": "login04",
+    "placement": [
+      {
+        "rank": 0,
+        "node": 0,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 1,
+        "node": 1,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 2,
+        "node": 2,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 3,
+        "node": 3,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127
+        ],
+        "available_physical_cores": 32
+      }
+    ]
+  },
+  "rank_environments": [
+    {
+      "OMP_NUM_THREADS": "32",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "0",
+      "LQCD_CPU_THREADS": "32"
+    },
+    {
+      "OMP_NUM_THREADS": "32",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{32},{33},{34},{35},{36},{37},{38},{39},{40},{41},{42},{43},{44},{45},{46},{47},{48},{49},{50},{51},{52},{53},{54},{55},{56},{57},{58},{59},{60},{61},{62},{63}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "1",
+      "LQCD_CPU_THREADS": "32"
+    },
+    {
+      "OMP_NUM_THREADS": "32",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{64},{65},{66},{67},{68},{69},{70},{71},{72},{73},{74},{75},{76},{77},{78},{79},{80},{81},{82},{83},{84},{85},{86},{87},{88},{89},{90},{91},{92},{93},{94},{95}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "2",
+      "LQCD_CPU_THREADS": "32"
+    },
+    {
+      "OMP_NUM_THREADS": "32",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{96},{97},{98},{99},{100},{101},{102},{103},{104},{105},{106},{107},{108},{109},{110},{111},{112},{113},{114},{115},{116},{117},{118},{119},{120},{121},{122},{123},{124},{125},{126},{127}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "3",
+      "LQCD_CPU_THREADS": "32"
+    }
+  ],
+  "launch_command": "mpirun --host localhost:4 -n 4 --bind-to none /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python /home/share/nsls_lwb/.cache/mg-opt-20261103/source-delivery-297/tools/run_numa.py --_rank '{\"ranks\":4,\"ranks_per_numa\":1,\"threads_per_rank\":[32,32,32,32],\"grid\":[1,1,1,4],\"lattice\":[24,24,24,64],\"block\":[6,6,6,4],\"host\":\"login04\",\"placement\":[{\"rank\":0,\"node\":0,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],\"available_physical_cores\":32},{\"rank\":1,\"node\":1,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63],\"available_physical_cores\":32},{\"rank\":2,\"node\":2,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95],\"available_physical_cores\":32},{\"rank\":3,\"node\":3,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127],\"available_physical_cores\":32}]}' /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python -u /home/share/nsls_lwb/.cache/fair-solve-20261105-v2/ours.py --out /home/share/nsls_lwb/.cache/fair-solve-20261105-v2/results/login-128-ours-pilot --library /home/share/nsls_lwb/.cache/fair-solve-20261105-v2/build-login/liblqcd_cpu.so --threads 32 --pilot"
+}
+SDMA ERROR (sdma_constructor|75): [login04] Open SDMA fail:No such file or directory
+SDMA ERROR (sdma_constructor|75): [login04] Open SDMA fail:No such file or directory
+[ROCE] roce3_user_log_init: [ERR]Failed to open libroce log file
+[ROCE] roce3_user_log_init: [ERR]Failed to open libroce log file
+[ROCE] roce3_user_log_init: [ERR]Failed to open libroce log file
+[ROCE] roce3_user_log_init: [ERR]Failed to open libroce log file
+[ROCE] roce3_user_log_init: [ERR]Failed to open libroce log file
+[ROCE] roce3_user_log_init: [ERR]Failed to open libroce log file
+[2026-11-05 15:41:11] [PID 1390076] roce3_qp_init_attr_check[383] | ERROR | [ROCE]: [ERR]Max recv wr size is invalidate, max_recv_wr(4096), max_qp_wr(4095)
+[2026-11-05 15:41:11] [PID 1390076] roce3_rqp_alloc_and_init[523] | ERROR | [ROCE]: [ERR]Failed to do init_attr check
+[2026-11-05 15:41:11] [PID 1390076] roce3_prepare_4_create_qp[740] | ERROR | [ROCE]: [ERR]Failed to alloc and init rqp
+[1793864471.864426] [login04:1390076:0]        ib_iface.c:1021 UCX  ERROR iface=0xaaaae84aa690: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Success failed: Success
+[2026-11-05 15:41:11] [PID 1390077] roce3_qp_init_attr_check[383] | ERROR | [ROCE]: [ERR]Max recv wr size is invalidate, max_recv_wr(4096), max_qp_wr(4095)
+[2026-11-05 15:41:11] [PID 1390077] roce3_rqp_alloc_and_init[523] | ERROR | [ROCE]: [ERR]Failed to do init_attr check
+[2026-11-05 15:41:11] [PID 1390077] roce3_prepare_4_create_qp[740] | ERROR | [ROCE]: [ERR]Failed to alloc and init rqp
+[1793864471.865404] [login04:1390077:0]        ib_iface.c:1021 UCX  ERROR iface=0xaaaac7a1cd00: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Success failed: Success
+SDMA ERROR (sdma_constructor|75): [login04] Open SDMA fail:No such file or directory
+SDMA ERROR (sdma_constructor|75): [login04] Open SDMA fail:No such file or directory
+[1793864471.866997] [login04:1390076:0] planc_ucx_context.c:428  UCG  ERROR Failed to create ucp worker, Input/output error
+[1793864471.867186] [login04:1390076:0]     ucg_context.c:219  UCG  ERROR Failed to init context of planc ucx
+[login04:1390076] [coll_ucg_module.c:255] ERROR UCG context init failed: Resource are not available
+[1793864471.868128] [login04:1390077:0] planc_ucx_context.c:428  UCG  ERROR Failed to create ucp worker, Input/output error
+[1793864471.868329] [login04:1390077:0]     ucg_context.c:219  UCG  ERROR Failed to init context of planc ucx
+[login04:1390077] [coll_ucg_module.c:255] ERROR UCG context init failed: Resource are not available
+[ROCE] roce3_user_log_init: [ERR]Failed to open libroce log file
+[ROCE] roce3_user_log_init: [ERR]Failed to open libroce log file
+[ROCE] roce3_user_log_init: [ERR]Failed to open libroce log file
+[ROCE] roce3_user_log_init: [ERR]Failed to open libroce log file
+[ROCE] roce3_user_log_init: [ERR]Failed to open libroce log file
+[ROCE] roce3_user_log_init: [ERR]Failed to open libroce log file
+[2026-11-05 15:41:11] [PID 1390074] roce3_qp_init_attr_check[383] | ERROR | [ROCE]: [ERR]Max recv wr size is invalidate, max_recv_wr(4096), max_qp_wr(4095)
+[2026-11-05 15:41:11] [PID 1390074] roce3_rqp_alloc_and_init[523] | ERROR | [ROCE]: [ERR]Failed to do init_attr check
+[2026-11-05 15:41:11] [PID 1390074] roce3_prepare_4_create_qp[740] | ERROR | [ROCE]: [ERR]Failed to alloc and init rqp
+[1793864471.883820] [login04:1390074:0]        ib_iface.c:1021 UCX  ERROR iface=0xaaaab3b40910: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Success failed: Success
+[2026-11-05 15:41:11] [PID 1390075] roce3_qp_init_attr_check[383] | ERROR | [ROCE]: [ERR]Max recv wr size is invalidate, max_recv_wr(4096), max_qp_wr(4095)
+[2026-11-05 15:41:11] [PID 1390075] roce3_rqp_alloc_and_init[523] | ERROR | [ROCE]: [ERR]Failed to do init_attr check
+[2026-11-05 15:41:11] [PID 1390075] roce3_prepare_4_create_qp[740] | ERROR | [ROCE]: [ERR]Failed to alloc and init rqp
+[1793864471.884517] [login04:1390075:0]        ib_iface.c:1021 UCX  ERROR iface=0xaaab05b37860: failed to create UD QP TX wr:256 sge:6 inl:64 resp:0 RX wr:4096 sge:1 resp:0: Success failed: Success
+[1793864471.886592] [login04:1390074:0] planc_ucx_context.c:428  UCG  ERROR Failed to create ucp worker, Input/output error
+[1793864471.886797] [login04:1390074:0]     ucg_context.c:219  UCG  ERROR Failed to init context of planc ucx
+[login04:1390074] [coll_ucg_module.c:255] ERROR UCG context init failed: Resource are not available
+[1793864471.887359] [login04:1390075:0] planc_ucx_context.c:428  UCG  ERROR Failed to create ucp worker, Input/output error
+[1793864471.887545] [login04:1390075:0]     ucg_context.c:219  UCG  ERROR Failed to init context of planc ucx
+[login04:1390075] [coll_ucg_module.c:255] ERROR UCG context init failed: Resource are not available
+native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317
+setup vector 1 norm 87.9317setup vector 1 norm 87.9317
+
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 5 norm 87.9307
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 2 norm 1setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+native EO gates clover_inverse=8.64798e-08 Schur_reconstruction=1.55759e-07
+native coarse EO gate Schur_reconstruction=1.69669e-07
+native gates double=1.73625e-16 fine=9.18654e-08 R*P=5.01668e-09 RAP=1.67765e-07
+native gates double=1.73625e-16 fine=9.18654e-08 R*P=5.01668e-09 RAP=1.67765e-07
+native gates double=1.73625e-16 fine=9.18654e-08 R*P=5.01668e-09 RAP=1.67765e-07
+native gates double=1.73625e-16 fine=9.18654e-08 R*P=5.01668e-09 RAP=1.67765e-07
+OURS_FULL12 0 76.979338947 78.72506452701055

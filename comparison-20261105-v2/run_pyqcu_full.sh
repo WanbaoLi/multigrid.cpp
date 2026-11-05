@@ -24,5 +24,3 @@ mpirun --bind-to none -np "$ranks" python /home/share/nsls_lwb/.cache/pyqcu-kunp
  --gauge "$TASK/input/gauge-pyqcu-ap-c128.h5" --lat 24 24 24 64 --grid "${grid[@]}" \
  --mass -.277 --csw 1.160920226 --dtype c128 --atol 1e-8 --max-iter 6000 \
  --boundary 1 1 1 -1 --levels 1 --restart 0 --max-residual-restarts 2 --report "$OUT/result.json" "${extra[@]}"
-
-

@@ -1,0 +1,552 @@
+* HPCKit setting environment variables...
+
+* compiler setvars
+* hmpi setvars
+* kml setvars
+* kupl setvars
+* kutacc setvars
+* hio setvars
+
+* HPCKit environment variables inited
+{
+  "mpi_launcher": "openmpi",
+  "topology": {
+    "ranks": 4,
+    "ranks_per_numa": 1,
+    "threads_per_rank": [
+      32,
+      32,
+      32,
+      32
+    ],
+    "grid": [
+      1,
+      1,
+      1,
+      4
+    ],
+    "lattice": [
+      24,
+      24,
+      24,
+      64
+    ],
+    "block": [
+      6,
+      6,
+      6,
+      4
+    ],
+    "host": "cn19486",
+    "placement": [
+      {
+        "rank": 0,
+        "node": 0,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 1,
+        "node": 1,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 2,
+        "node": 2,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 3,
+        "node": 3,
+        "numa_partition": 0,
+        "ranks_per_numa": 1,
+        "cpus": [
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145
+        ],
+        "available_physical_cores": 37
+      }
+    ]
+  },
+  "rank_environments": [
+    {
+      "OMP_NUM_THREADS": "32",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "0",
+      "LQCD_CPU_THREADS": "32"
+    },
+    {
+      "OMP_NUM_THREADS": "32",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{38},{39},{40},{41},{42},{43},{44},{45},{46},{47},{48},{49},{50},{51},{52},{53},{54},{55},{56},{57},{58},{59},{60},{61},{62},{63},{64},{65},{66},{67},{68},{69}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "1",
+      "LQCD_CPU_THREADS": "32"
+    },
+    {
+      "OMP_NUM_THREADS": "32",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{76},{77},{78},{79},{80},{81},{82},{83},{84},{85},{86},{87},{88},{89},{90},{91},{92},{93},{94},{95},{96},{97},{98},{99},{100},{101},{102},{103},{104},{105},{106},{107}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "2",
+      "LQCD_CPU_THREADS": "32"
+    },
+    {
+      "OMP_NUM_THREADS": "32",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{114},{115},{116},{117},{118},{119},{120},{121},{122},{123},{124},{125},{126},{127},{128},{129},{130},{131},{132},{133},{134},{135},{136},{137},{138},{139},{140},{141},{142},{143},{144},{145}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "3",
+      "LQCD_CPU_THREADS": "32"
+    }
+  ],
+  "launch_command": "mpirun --host localhost:4 -n 4 --bind-to none /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python /home/share/nsls_lwb/.cache/mg-opt-20261103/source-delivery-297/tools/run_numa.py --_rank '{\"ranks\":4,\"ranks_per_numa\":1,\"threads_per_rank\":[32,32,32,32],\"grid\":[1,1,1,4],\"lattice\":[24,24,24,64],\"block\":[6,6,6,4],\"host\":\"cn19486\",\"placement\":[{\"rank\":0,\"node\":0,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],\"available_physical_cores\":37},{\"rank\":1,\"node\":1,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69],\"available_physical_cores\":37},{\"rank\":2,\"node\":2,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107],\"available_physical_cores\":37},{\"rank\":3,\"node\":3,\"numa_partition\":0,\"ranks_per_numa\":1,\"cpus\":[114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145],\"available_physical_cores\":37}]}' /home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python -u /home/share/nsls_lwb/.cache/fair-solve-20261105-v2/ours_full.py --out /home/share/nsls_lwb/.cache/fair-solve-20261105-v2/results/compute-128-ours-full --library /home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/052-reduce-on/artifacts/liblqcd_cpu.so --threads 32 --setup-threads 32"
+}
+native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+setup vector 1 norm 87.9317
+setup vector 1 norm setup vector 1 norm 87.9317setup vector 1 norm 87.9317
+87.9317
+
+setup vector 2 norm setup vector 2 norm setup vector 2 norm 86.5116setup vector 2 norm 86.5116
+86.5116
+86.5116
+
+setup vector 3 norm setup vector 3 norm setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+89.3287
+89.3287
+setup vector 4 norm setup vector 4 norm setup vector 4 norm setup vector 4 norm 87.6957
+87.6957
+87.6957
+87.6957
+setup vector 5 norm setup vector 5 norm setup vector 5 norm setup vector 5 norm 87.9307
+87.9307
+87.9307
+87.9307
+setup vector 6 norm setup vector 6 norm setup vector 6 norm setup vector 6 norm 88.6822
+88.6822
+88.6822
+88.6822
+setup vector 7 norm setup vector 7 norm setup vector 7 norm setup vector 7 norm 89.557389.5573
+89.5573
+89.5573
+
+setup vector 8 norm setup vector 8 norm setup vector 8 norm setup vector 8 norm 89.5933
+89.5933
+89.5933
+89.5933
+setup vector 9 norm setup vector 9 norm setup vector 9 norm setup vector 9 norm 90.069
+90.069
+90.069
+90.069
+setup vector 10 norm setup vector 10 norm setup vector 10 norm setup vector 10 norm 87.0594
+87.0594
+87.0594
+87.0594
+setup vector 11 norm setup vector 11 norm setup vector 11 norm setup vector 11 norm 87.546987.5469
+87.5469
+87.5469
+
+setup vector 12setup vector 12 norm setup vector 12 norm setup vector 12 norm  norm 88.7709
+88.7709
+88.7709
+88.7709
+setup vector 13 norm setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+88.813
+setup vector 14 norm setup vector 14 norm setup vector 14 norm setup vector 14 norm 89.8863
+89.8863
+89.8863
+89.8863
+setup vector 15 norm setup vector 15 norm setup vector 15 norm setup vector 15 norm 86.9404
+86.9404
+86.9404
+86.9404
+setup vector 16 norm setup vector 16 norm setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+87.6246
+87.6246
+setup vector 17 norm setup vector 17 norm setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+89.2465
+89.2465
+setup vector 18 norm setup vector 18 norm setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+87.7514
+87.7514
+setup vector 19 norm setup vector 19 norm setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+87.8747
+87.8747
+setup vector 20 norm setup vector 20 norm setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+89.2337
+89.2337
+setup vector 21 norm setup vector 21 norm setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+85.957
+85.957
+setup vector 22 norm setup vector 22 norm setup vector 22 norm setup vector 22 norm 87.9753
+87.9753
+87.9753
+87.9753
+setup vector 23 norm setup vector 23 norm setup vector 23 norm setup vector 23 norm 88.2655
+88.2655
+88.2655
+88.2655
+setup vector 24 norm setup vector 24 norm setup vector 24 norm 87.6472setup vector 24 norm 87.6472
+87.6472
+87.6472
+
+native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+setup vector 1 norm setup vector 1 norm setup vector 1 norm 1
+setup vector 1 norm 1
+1
+1
+setup vector 2 norm setup vector 2 norm setup vector 2 norm setup vector 2 norm 1
+1
+1
+1
+setup vector 3 norm setup vector 3 norm setup vector 3 norm setup vector 3 norm 1
+1
+1
+1
+setup vector 4 norm setup vector 4 norm setup vector 4 norm setup vector 4 norm 1
+1
+1
+1
+setup vector 5 norm setup vector 5 norm setup vector 5 norm 1
+setup vector 5 norm 1
+1
+1
+setup vector 6setup vector 6 norm setup vector 6 norm setup vector 6 norm 1
+ norm 1
+1
+1
+setup vector 7setup vector 7 norm setup vector 7 norm setup vector 7 norm  norm 1
+1
+1
+1
+setup vector 8 norm setup vector 8 norm setup vector 8 norm 1
+setup vector 8 norm 1
+1
+1
+setup vector 9setup vector 9 norm setup vector 9 norm setup vector 9 norm  norm 1
+1
+1
+1
+setup vector 10 norm setup vector 10 norm setup vector 10 norm 1
+setup vector 10 norm 1
+1
+1
+setup vector 11 norm setup vector 11 norm setup vector 11 norm setup vector 11 norm 1
+1
+1
+1
+setup vector 12 norm setup vector 12 norm setup vector 12 norm setup vector 12 norm 11
+1
+1
+
+setup vector 13 norm setup vector 13 norm setup vector 13 norm setup vector 13 norm 11
+1
+1
+
+setup vector 14 norm setup vector 14 norm setup vector 14 norm setup vector 14 norm 1
+1
+1
+1
+setup vector 15setup vector 15 norm setup vector 15 norm setup vector 15 norm 1 norm 1
+1
+1
+
+setup vector 16setup vector 16 norm setup vector 16 norm setup vector 16 norm  norm 1
+1
+1
+1
+setup vector 17 norm setup vector 17 norm setup vector 17 norm setup vector 17 norm 1
+1
+1
+1
+setup vector 18 norm setup vector 18 norm setup vector 18 norm 1setup vector 18 norm 1
+1
+1
+
+setup vector setup vector 19 norm setup vector 19 norm setup vector 19 norm 19 norm 1
+1
+1
+1
+setup vector setup vector 20 norm setup vector 20 norm setup vector 20 norm 20 norm 1
+1
+1
+1
+setup vector 21 norm setup vector 21 norm setup vector 21 norm 1
+setup vector 21 norm 1
+1
+1
+setup vector 22 norm setup vector 22 norm setup vector 22 norm setup vector 22 norm 1
+1
+1
+1
+setup vector 23 norm setup vector 23 norm setup vector 23 norm setup vector 23 norm 11
+1
+1
+
+setup vector 24setup vector 24 norm setup vector 24 norm setup vector 24 norm 1
+ norm 1
+1
+1
+native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+setup vector 1setup vector 1 norm setup vector 1 norm setup vector 1 norm  norm 1
+1
+1
+1
+setup vector 2 norm setup vector 2 norm setup vector 2 norm 1
+setup vector 2 norm 1
+1
+1
+setup vector 3setup vector 3 norm setup vector 3 norm setup vector 3 norm 1
+ norm 1
+1
+1
+setup vector 4 norm setup vector 4 norm setup vector 4 norm setup vector 4 norm 1
+1
+1
+1
+setup vector 5 norm setup vector 5 norm 1setup vector 5 norm 1
+setup vector 5 norm 1
+1
+
+setup vector 6setup vector 6 norm setup vector 6 norm setup vector 6 norm  norm 1
+1
+1
+1
+setup vector 7 norm setup vector 7 norm setup vector 7 norm 1setup vector 7 norm 1
+1
+1
+
+setup vector setup vector 8 norm setup vector 8 norm setup vector 8 norm 8 norm 1
+1
+1
+1
+setup vector 9 norm setup vector 9 norm setup vector 9 norm 1
+setup vector 9 norm 1
+1
+1
+setup vector setup vector 10 norm setup vector 10 norm setup vector 10 norm 10 norm 1
+1
+1
+1
+setup vector 11 norm setup vector 11 norm setup vector 11 norm 1setup vector 11 norm 1
+1
+1
+
+setup vector 12setup vector 12 norm setup vector 12 norm setup vector 12 norm 1
+ norm 1
+1
+1
+setup vector 13 norm setup vector 13 norm setup vector 13 norm 1setup vector 13 norm 1
+1
+1
+
+setup vector 14 norm setup vector 14 norm setup vector 14 norm setup vector 14 norm 1
+1
+1
+1
+setup vector 15 norm setup vector 15 norm setup vector 15 norm setup vector 15 norm 1
+1
+1
+1
+setup vector 16setup vector 16 norm setup vector 16 norm setup vector 16 norm 1 norm 1
+1
+1
+
+setup vector 17 norm setup vector 17 norm 1setup vector 17 norm 1
+setup vector 17 norm 1
+1
+
+setup vector 18 norm setup vector 18 norm setup vector 18 norm 1
+setup vector 18 norm 1
+1
+1
+setup vector 19 norm setup vector 19 norm setup vector 19 norm 1
+setup vector 19 norm 1
+1
+1
+setup vector 20 norm setup vector 20 norm 1setup vector 20 norm 1
+setup vector 20 norm 1
+1
+
+setup vector 21 norm setup vector 21 norm setup vector 21 norm 1
+setup vector 21 norm 1
+1
+1
+setup vector 22 norm setup vector 22 norm 1setup vector 22 norm 1
+setup vector 22 norm 1
+1
+
+setup vector 23 norm setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+1
+setup vector 24 norm setup vector 24 norm setup vector 24 norm 1
+setup vector 24 norm 1
+1
+1
+native EO gates clover_inverse=8.65917e-08 Schur_reconstruction=1.56469e-07
+native coarse EO gate Schur_reconstruction=1.6962e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.93868e-09 RAP=1.66223e-07native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.93868e-09 RAP=1.66223e-07
+
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.93868e-09 RAP=1.66223e-07
+native gates double=1.73625e-16 fine=9.23932e-08 R*P=4.93868e-09 RAP=1.66223e-07
+OURS_FULL12 0 69.40331491399999 70.33938843201031
+OURS_FULL12 1 69.20672112700004 70.18083038699115
+OURS_FULL12 2 69.22480042099994 70.20316467402154
+OURS_FULL12 3 69.21414549400004 70.18792199899326

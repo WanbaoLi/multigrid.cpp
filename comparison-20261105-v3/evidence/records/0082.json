@@ -1,0 +1,27 @@
+{
+  "task": "/home/share/nsls_lwb/.cache/fair-solve-20261105-v3/compute-queue/pyqcu-592-full.running.json",
+  "host": "cn19481",
+  "started": 1793866752.505441,
+  "argv": [
+    "bash",
+    "/home/share/nsls_lwb/.cache/fair-solve-20261105-v3/run_pyqcu_full.sh",
+    "compute",
+    "592",
+    "full"
+  ],
+  "status": "passed",
+  "task_tag": "9b102d57fbd34a08a313f2d7ce83529b",
+  "pid": 2420579,
+  "returncode": 0,
+  "cleanup": {
+    "complete": true,
+    "platform": "linux",
+    "method": "same-uid exact tag and verified descendants",
+    "tag_key": "LQCD_OPT_TASK_ID",
+    "targeted_pids": [],
+    "term_signals": 0,
+    "kill_signals": 0,
+    "surviving_pids": []
+  },
+  "ended": 1793867135.325064
+}

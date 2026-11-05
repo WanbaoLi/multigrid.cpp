@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "/home/share/nsls_lwb/.cache/fair-solve-20261105-v3/run_ours_full.sh",
+    "compute",
+    "592",
+    "full"
+  ],
+  "cwd": "/home/share/nsls_lwb/.cache/fair-solve-20261105-v3",
+  "timeout": 2400
+}
