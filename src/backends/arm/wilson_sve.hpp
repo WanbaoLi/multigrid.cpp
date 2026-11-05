@@ -60,15 +60,20 @@ inline bool sve_clover_reuse_enabled() {
 }
 
 template<int Column>
-inline svfloat32x2_t clover_reuse_accumulate(svbool_t pg, int B, const float *row,
+inline svfloat32x4_t clover_reuse_accumulate(svbool_t pg, int B, const float *row,
                                             svfloat32_t xr, svfloat32_t xi,
-                                            svfloat32x2_t sum) {
+                                            svfloat32x4_t sum) {
     const float *entry = row + Column * 2 * B;
     const auto mr = svld1_f32(pg, entry), mi = svld1_f32(pg, entry + B);
-    auto yr = svget2_f32(sum, 0), yi = svget2_f32(sum, 1);
+    auto yr = svget4_f32(sum, 0), yi = svget4_f32(sum, 1);
     yr = svadd_f32_x(pg, yr, svsub_f32_x(pg, svmul_f32_x(pg, mr, xr), svmul_f32_x(pg, mi, xi)));
     yi = svadd_f32_x(pg, yi, svadd_f32_x(pg, svmul_f32_x(pg, mr, xi), svmul_f32_x(pg, mi, xr)));
-    return svcreate2_f32(yr, yi);
+    const float *next = entry + 12 * B;
+    const auto nr = svld1_f32(pg, next), ni = svld1_f32(pg, next + B);
+    auto zr = svget4_f32(sum, 2), zi = svget4_f32(sum, 3);
+    zr = svadd_f32_x(pg, zr, svsub_f32_x(pg, svmul_f32_x(pg, nr, xr), svmul_f32_x(pg, ni, xi)));
+    zi = svadd_f32_x(pg, zi, svadd_f32_x(pg, svmul_f32_x(pg, nr, xi), svmul_f32_x(pg, ni, xr)));
+    return svcreate4_f32(yr, yi, zr, zi);
 }
 
 // Separate opt-in body prevents its register needs from expanding the legacy
@@ -76,21 +81,24 @@ inline svfloat32x2_t clover_reuse_accumulate(svbool_t pg, int B, const float *ro
 __attribute__((noinline)) inline void clover_range_sve_reused(
     int B, const float *matrix, const float *src, float *out, int begin, int end) {
     for (int chirality = 0; chirality < 2; ++chirality)
+        // Two output rows share inputs and retain independent accumulation
+        // chains. A smaller row group reduces the coefficient stream fanout
+        // of the first six-row site-outer experiment.
+        for (int row = 0; row < 6; row += 2)
         for (int site = begin; site < end; site += svcntw()) {
             const svbool_t pg = svwhilelt_b32((uint64_t)site, (uint64_t)end);
             const float *input = src + chirality * 12 * B + site;
             // Three ACLE tuples hold six complex input components. Load once
-            // per site tile, then reuse them across all six output rows.
+            // per site tile, then reuse them across two output rows.
             const auto x01 = svcreate4_f32(svld1_f32(pg, input), svld1_f32(pg, input + B),
                 svld1_f32(pg, input + 2*B), svld1_f32(pg, input + 3*B));
             const auto x23 = svcreate4_f32(svld1_f32(pg, input + 4*B), svld1_f32(pg, input + 5*B),
                 svld1_f32(pg, input + 6*B), svld1_f32(pg, input + 7*B));
             const auto x45 = svcreate4_f32(svld1_f32(pg, input + 8*B), svld1_f32(pg, input + 9*B),
                 svld1_f32(pg, input + 10*B), svld1_f32(pg, input + 11*B));
-            for (int row = 0; row < 6; ++row) {
                 const int component = chirality * 6 + row;
                 const float *coefficients = matrix + component * 12 * B + site;
-                auto sum = svcreate2_f32(svdup_f32(0), svdup_f32(0));
+                auto sum = svcreate4_f32(svdup_f32(0), svdup_f32(0), svdup_f32(0), svdup_f32(0));
                 // Preserve the original column order and separate multiply,
                 // subtract/add operations; this only changes input reuse.
                 sum = clover_reuse_accumulate<0>(pg,B,coefficients,svget4_f32(x01,0),svget4_f32(x01,1),sum);
@@ -99,9 +107,10 @@ __attribute__((noinline)) inline void clover_range_sve_reused(
                 sum = clover_reuse_accumulate<3>(pg,B,coefficients,svget4_f32(x23,2),svget4_f32(x23,3),sum);
                 sum = clover_reuse_accumulate<4>(pg,B,coefficients,svget4_f32(x45,0),svget4_f32(x45,1),sum);
                 sum = clover_reuse_accumulate<5>(pg,B,coefficients,svget4_f32(x45,2),svget4_f32(x45,3),sum);
-                svst1_f32(pg, out + 2*component*B + site, svget2_f32(sum,0));
-                svst1_f32(pg, out + (2*component+1)*B + site, svget2_f32(sum,1));
-            }
+                svst1_f32(pg, out + 2*component*B + site, svget4_f32(sum,0));
+                svst1_f32(pg, out + (2*component+1)*B + site, svget4_f32(sum,1));
+                svst1_f32(pg, out + (2*component+2)*B + site, svget4_f32(sum,2));
+                svst1_f32(pg, out + (2*component+3)*B + site, svget4_f32(sum,3));
         }
 }
 
