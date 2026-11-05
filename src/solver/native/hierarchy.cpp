@@ -14,13 +14,13 @@ void NativeMG::Impl::configure_solve() {
                           "LQCD_MG_COARSE_TOL", "LQCD_CORRECTION_BASE_TOL",
                           "LQCD_FLOAT_CORRECTION_VERIFY", "LQCD_FINE_TEAM_FUSED", "LQCD_COARSE_CGS2",
                           "LQCD_COARSE_THREADS", "LQCD_COARSE_BATCH_REDUCE", "LQCD_GCR_FUSED",
-                          "LQCD_OUTER_FLOAT", "LQCD_RELIABLE_FUSED"};
+                          "LQCD_OUTER_FLOAT", "LQCD_RELIABLE_FUSED", "LQCD_SAP_SCHEDULE"};
     double values[] = {(double)setting("NATIVE_SAP_STEPS", 4),
                        (double)setting("NATIVE_SAP_CYCLES", 2),
                        (double)setting("NATIVE_COARSE_IT", 40), .1, 1e-3, 0., 1., 0., 0., 0., 1.,
-                       (double)(setting("NATIVE_OUTER_FLOAT", 1) != 0), 0.};
-    const double lower[] = {1., 1., 1., 1e-4, 1e-6, 0., 0., 0., 0., 0., 0., 0., 0.};
-    const double upper[] = {32., 8., 200., .9, .1, 1., 1., 1., 608., 1., 1., 1., 1.};
+                       (double)(setting("NATIVE_OUTER_FLOAT", 1) != 0), 0., 0.};
+    const double lower[] = {1., 1., 1., 1e-4, 1e-6, 0., 0., 0., 0., 0., 0., 0., 0., 0.};
+    const double upper[] = {32., 8., 200., .9, .1, 1., 1., 1., 608., 1., 1., 1., 1., 2.};
     constexpr int count = sizeof(values) / sizeof(values[0]);
     int invalid = 0;
     for (int i = 0; i < count; i++) {
@@ -66,6 +66,7 @@ void NativeMG::Impl::configure_solve() {
     coarse_batch_reduce = values[9] != 0;
     outer_float = values[11] != 0;
     reliable_fused = values[12] != 0;
+    sap_schedule = (int)values[13];
     // LQCD_GCR_FUSED is read dynamically by existing scalar/outer code. It also
     // selects the collective sequence of the optional coarse batch path, so
     // validate it after setup as well as during context construction.
@@ -210,6 +211,8 @@ NativeMG::Impl::Impl(const Gauge &gg, const Multigrid &mm, bool eo)
                         local_load_offsets[(size_t)(cb - first_aggregate) * 16 + half * 8 + dir] = delta;
                 }
     }
+    for (int cb = first_aggregate; cb < end_aggregate; ++cb)
+        sap_color_work[colors[cb]].push_back(cb);
     // Geometry and block colors do not change between operator applications.
     // Retain the exact ascending-block order of the former per-call lists;
     // using actual colors also handles odd spatial aggregate extents.

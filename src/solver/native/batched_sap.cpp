@@ -23,6 +23,11 @@ void NativeMG::Impl::sap_batch(const std::vector<const FloatField *> &sources,
     for (int cycle = 0; cycle < cycles; cycle++)
         for (int color = 0; color < 2; color++) {
             fine_apply_batch(src, image, color);
+            const auto &blocks = sap_color_work[color];
+            const int columns_per_task = sap_schedule == 2 ? 1 : nrhs;
+            const int tasks_per_block = sap_schedule == 2 ? nrhs : 1;
+            const int tasks = sap_schedule ? (int)blocks.size() * tasks_per_block
+                                           : end_aggregate - first_aggregate;
 #pragma omp parallel
             {
                 static thread_local FloatField rr, ar, dx;
@@ -30,10 +35,13 @@ void NativeMG::Impl::sap_batch(const std::vector<const FloatField *> &sources,
                 ar.resize(24 * block_sites);
                 dx.resize(24 * block_sites);
 #pragma omp for schedule(static)
-                for (int cb = first_aggregate; cb < end_aggregate; cb++)
+                for (int task = 0; task < tasks; task++) {
+                    const int cb = sap_schedule ? blocks[task / tasks_per_block]
+                                                : first_aggregate + task;
                     if (colors[cb] == color) {
                         const size_t offset = (size_t)cb * 24 * block_sites;
-                        for (int r = 0; r < nrhs; r++) {
+                        const int first_rhs = sap_schedule == 2 ? task % nrhs : 0;
+                        for (int r = first_rhs; r < first_rhs + columns_per_task; r++) {
                             const float *source = sources[r]->data() + offset;
                             const float *im = batch_sap_image[r].data() + offset;
                             for (int j = 0; j < 24 * block_sites; j++) {
@@ -46,6 +54,7 @@ void NativeMG::Impl::sap_batch(const std::vector<const FloatField *> &sources,
                                 dest[j] += dx[j];
                         }
                     }
+                }
             }
         }
 }

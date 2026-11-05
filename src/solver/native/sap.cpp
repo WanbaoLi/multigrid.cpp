@@ -73,6 +73,8 @@ void NativeMG::Impl::sap(const FloatField &b, FloatField &solution, int cycles) 
     for (int cycle = 0; cycle < cycles; cycle++)
         for (int color = 0; color < 2; color++) {
             fine_apply(solution, image, color);
+            const auto &blocks = sap_color_work[color];
+            const int tasks = sap_schedule ? (int)blocks.size() : end_aggregate - first_aggregate;
 #pragma omp parallel
             {
                 // A worker reuses its block buffers across colors, V-cycles and
@@ -82,7 +84,8 @@ void NativeMG::Impl::sap(const FloatField &b, FloatField &solution, int cycles) 
                 ar.resize(24 * block_sites);
                 dx.resize(24 * block_sites);
 #pragma omp for schedule(static)
-                for (int cb = first_aggregate; cb < end_aggregate; cb++)
+                for (int task = 0; task < tasks; task++) {
+                    const int cb = sap_schedule ? blocks[task] : first_aggregate + task;
                     if (colors[cb] == color) {
                         size_t offset = (size_t)cb * 24 * block_sites;
                         for (int j = 0; j < 24 * block_sites; j++) {
@@ -130,6 +133,7 @@ void NativeMG::Impl::sap(const FloatField &b, FloatField &solution, int cycles) 
                         for (int j = 0; j < 24 * block_sites; j++)
                             solution[offset + j] += dx[j];
                     }
+                }
             }
         }
 }

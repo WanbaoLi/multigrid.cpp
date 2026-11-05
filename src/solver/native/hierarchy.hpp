@@ -71,6 +71,7 @@ struct NativeMG::Impl {
     std::vector<int, lqcd_native::WorkspaceAllocator<int>> local_lex;
     // Immutable owned-block schedules: slot 0 = all, slots 1/2 = colors 0/1.
     std::vector<int> fine_interior_work[3], fine_boundary_work[3];
+    std::vector<int> sap_color_work[2];
     bool sap_eo;
     bool coarse_eo = false;
     int gp[4][4];
@@ -195,4 +196,5 @@ struct NativeMG::Impl {
     int solve_float_gcr(const FloatField &b, FloatField &solution, double tol, int budget,
                         int restart);
     bool reliable_fused = false;
+    int sap_schedule = 0;
 };
