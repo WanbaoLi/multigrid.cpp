@@ -1,0 +1,794 @@
+
+/public2/home/lwb_720/.cache/mg-x86-20261110/build/liblqcd_cpu.so:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+000000000002a390 <void lqcd_native::x86::clover_register_tile_avx512<true, false>(int, float const*, float const*, float*, int, unsigned short)>:
+   2a390:	41 89 fa             	mov    %edi,%r10d
+   2a393:	01 ff                	add    %edi,%edi
+   2a395:	55                   	push   %rbp
+   2a396:	49 89 f3             	mov    %rsi,%r11
+   2a399:	48 63 ff             	movslq %edi,%rdi
+   2a39c:	49 63 f0             	movslq %r8d,%rsi
+   2a39f:	48 89 e5             	mov    %rsp,%rbp
+   2a3a2:	48 89 d0             	mov    %rdx,%rax
+   2a3a5:	41 55                	push   %r13
+   2a3a7:	48 89 ca             	mov    %rcx,%rdx
+   2a3aa:	41 54                	push   %r12
+   2a3ac:	53                   	push   %rbx
+   2a3ad:	41 0f b7 d9          	movzwl %r9w,%ebx
+   2a3b1:	4c 8d 0c b5 00 00 00 	lea    0x0(,%rsi,4),%r9
+   2a3b8:	00 
+   2a3b9:	48 01 fe             	add    %rdi,%rsi
+   2a3bc:	c4 41 00 57 ff       	vxorps %xmm15,%xmm15,%xmm15
+   2a3c1:	4a 8d 0c 08          	lea    (%rax,%r9,1),%rcx
+   2a3c5:	4c 01 ca             	add    %r9,%rdx
+   2a3c8:	48 8d 04 b0          	lea    (%rax,%rsi,4),%rax
+   2a3cc:	45 85 c0             	test   %r8d,%r8d
+   2a3cf:	41 8d 70 0f          	lea    0xf(%r8),%esi
+   2a3d3:	c5 fb 92 cb          	kmovd  %ebx,%k1
+   2a3d7:	41 0f 49 f0          	cmovns %r8d,%esi
+   2a3db:	31 db                	xor    %ebx,%ebx
+   2a3dd:	c1 fe 04             	sar    $0x4,%esi
+   2a3e0:	48 63 f6             	movslq %esi,%rsi
+   2a3e3:	48 8d 34 f6          	lea    (%rsi,%rsi,8),%rsi
+   2a3e7:	48 c1 e6 0a          	shl    $0xa,%rsi
+   2a3eb:	4e 8d 84 1e 00 12 00 	lea    0x1200(%rsi,%r11,1),%r8
+   2a3f2:	00 
+   2a3f3:	4d 63 da             	movslq %r10d,%r11
+   2a3f6:	4f 8d 14 5b          	lea    (%r11,%r11,2),%r10
+   2a3fa:	4e 8d 0c 9d 00 00 00 	lea    0x0(,%r11,4),%r9
+   2a401:	00 
+   2a402:	4d 6b db 2c          	imul   $0x2c,%r11,%r11
+   2a406:	48 c1 e7 02          	shl    $0x2,%rdi
+   2a40a:	49 c1 e2 02          	shl    $0x2,%r10
+   2a40e:	62 71 7c c9 10 31    	vmovups (%rcx),%zmm14{%k1}{z}
+   2a414:	62 71 7c c9 10 20    	vmovups (%rax),%zmm12{%k1}{z}
+   2a41a:	4c 01 c9             	add    %r9,%rcx
+   2a41d:	4c 01 c8             	add    %r9,%rax
+   2a420:	62 71 7c c9 10 29    	vmovups (%rcx),%zmm13{%k1}{z}
+   2a426:	62 71 7c c9 10 18    	vmovups (%rax),%zmm11{%k1}{z}
+   2a42c:	4c 01 d1             	add    %r10,%rcx
+   2a42f:	4c 01 d0             	add    %r10,%rax
+   2a432:	62 71 7c c9 10 11    	vmovups (%rcx),%zmm10{%k1}{z}
+   2a438:	62 71 7c c9 10 00    	vmovups (%rax),%zmm8{%k1}{z}
+   2a43e:	4c 01 c9             	add    %r9,%rcx
+   2a441:	4c 01 c8             	add    %r9,%rax
+   2a444:	62 71 7c c9 10 09    	vmovups (%rcx),%zmm9{%k1}{z}
+   2a44a:	62 f1 7c c9 10 38    	vmovups (%rax),%zmm7{%k1}{z}
+   2a450:	4c 01 d1             	add    %r10,%rcx
+   2a453:	4c 01 d0             	add    %r10,%rax
+   2a456:	4e 8d 24 09          	lea    (%rcx,%r9,1),%r12
+   2a45a:	4a 8d 34 08          	lea    (%rax,%r9,1),%rsi
+   2a45e:	4d 8d 2c 11          	lea    (%r9,%rdx,1),%r13
+   2a462:	62 f1 7c c9 10 31    	vmovups (%rcx),%zmm6{%k1}{z}
+   2a468:	62 d1 7c c9 10 2c 24 	vmovups (%r12),%zmm5{%k1}{z}
+   2a46f:	62 f1 7c c9 10 1e    	vmovups (%rsi),%zmm3{%k1}{z}
+   2a475:	62 f1 7c c9 10 20    	vmovups (%rax),%zmm4{%k1}{z}
+   2a47b:	4c 89 e9             	mov    %r13,%rcx
+   2a47e:	49 8d 80 00 ee ff ff 	lea    -0x1200(%r8),%rax
+   2a485:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+   2a48c:	00 00 00 00 
+   2a490:	62 f1 7c c9 10 08    	vmovups (%rax),%zmm1{%k1}{z}
+   2a496:	62 f1 7c c9 10 40 01 	vmovups 0x40(%rax),%zmm0{%k1}{z}
+   2a49d:	62 e1 7c c9 10 48 02 	vmovups 0x80(%rax),%zmm17{%k1}{z}
+   2a4a4:	48 05 00 03 00 00    	add    $0x300,%rax
+   2a4aa:	62 e1 0c 48 59 c1    	vmulps %zmm1,%zmm14,%zmm16
+   2a4b0:	62 f1 14 48 59 c9    	vmulps %zmm1,%zmm13,%zmm1
+   2a4b6:	62 b1 1c 48 59 d1    	vmulps %zmm17,%zmm12,%zmm2
+   2a4bc:	62 a1 24 48 59 c9    	vmulps %zmm17,%zmm11,%zmm17
+   2a4c2:	62 e2 15 48 bc c0    	vfnmadd231ps %zmm0,%zmm13,%zmm16
+   2a4c8:	62 d2 75 48 98 c6    	vfmadd132ps %zmm14,%zmm1,%zmm0
+   2a4ce:	62 d1 7c 48 58 cf    	vaddps %zmm15,%zmm0,%zmm1
+   2a4d4:	62 f1 7c c9 10 40 f7 	vmovups -0x240(%rax),%zmm0{%k1}{z}
+   2a4db:	62 c1 7c 40 58 c7    	vaddps %zmm15,%zmm16,%zmm16
+   2a4e1:	62 f2 25 48 bc d0    	vfnmadd231ps %zmm0,%zmm11,%zmm2
+   2a4e7:	62 d2 75 40 98 c4    	vfmadd132ps %zmm12,%zmm17,%zmm0
+   2a4ed:	62 e1 7c c9 10 48 f8 	vmovups -0x200(%rax),%zmm17{%k1}{z}
+   2a4f4:	62 f1 7c 48 58 c9    	vaddps %zmm1,%zmm0,%zmm1
+   2a4fa:	62 f1 7c c9 10 40 f9 	vmovups -0x1c0(%rax),%zmm0{%k1}{z}
+   2a501:	62 b1 6c 48 58 d0    	vaddps %zmm16,%zmm2,%zmm2
+   2a507:	62 a1 2c 48 59 c1    	vmulps %zmm17,%zmm10,%zmm16
+   2a50d:	62 a1 34 48 59 c9    	vmulps %zmm17,%zmm9,%zmm17
+   2a513:	62 e2 35 48 bc c0    	vfnmadd231ps %zmm0,%zmm9,%zmm16
+   2a519:	62 d2 75 40 98 c2    	vfmadd132ps %zmm10,%zmm17,%zmm0
+   2a51f:	62 e1 7c c9 10 48 fa 	vmovups -0x180(%rax),%zmm17{%k1}{z}
+   2a526:	62 f1 7c 48 58 c9    	vaddps %zmm1,%zmm0,%zmm1
+   2a52c:	62 f1 7c c9 10 40 fb 	vmovups -0x140(%rax),%zmm0{%k1}{z}
+   2a533:	62 e1 7c 40 58 c2    	vaddps %zmm2,%zmm16,%zmm16
+   2a539:	62 b1 3c 48 59 d1    	vmulps %zmm17,%zmm8,%zmm2
+   2a53f:	62 a1 44 48 59 c9    	vmulps %zmm17,%zmm7,%zmm17
+   2a545:	62 f2 45 48 bc d0    	vfnmadd231ps %zmm0,%zmm7,%zmm2
+   2a54b:	62 d2 75 40 98 c0    	vfmadd132ps %zmm8,%zmm17,%zmm0
+   2a551:	62 e1 7c c9 10 48 fc 	vmovups -0x100(%rax),%zmm17{%k1}{z}
+   2a558:	62 f1 7c 48 58 c9    	vaddps %zmm1,%zmm0,%zmm1
+   2a55e:	62 f1 7c c9 10 40 fd 	vmovups -0xc0(%rax),%zmm0{%k1}{z}
+   2a565:	62 b1 6c 48 58 d0    	vaddps %zmm16,%zmm2,%zmm2
+   2a56b:	62 a1 4c 48 59 c1    	vmulps %zmm17,%zmm6,%zmm16
+   2a571:	62 a1 54 48 59 c9    	vmulps %zmm17,%zmm5,%zmm17
+   2a577:	62 e2 55 48 bc c0    	vfnmadd231ps %zmm0,%zmm5,%zmm16
+   2a57d:	62 f2 75 40 98 c6    	vfmadd132ps %zmm6,%zmm17,%zmm0
+   2a583:	62 e1 7c c9 10 48 fe 	vmovups -0x80(%rax),%zmm17{%k1}{z}
+   2a58a:	62 f1 7c 48 58 c9    	vaddps %zmm1,%zmm0,%zmm1
+   2a590:	62 f1 7c c9 10 40 ff 	vmovups -0x40(%rax),%zmm0{%k1}{z}
+   2a597:	62 e1 7c 40 58 c2    	vaddps %zmm2,%zmm16,%zmm16
+   2a59d:	62 f1 74 40 59 d4    	vmulps %zmm4,%zmm17,%zmm2
+   2a5a3:	62 e1 74 40 59 cb    	vmulps %zmm3,%zmm17,%zmm17
+   2a5a9:	62 f2 7d 48 bc d3    	vfnmadd231ps %zmm3,%zmm0,%zmm2
+   2a5af:	62 f2 75 40 98 c4    	vfmadd132ps %zmm4,%zmm17,%zmm0
+   2a5b5:	62 b1 6c 48 58 d0    	vaddps %zmm16,%zmm2,%zmm2
+   2a5bb:	62 f1 7c 48 58 c1    	vaddps %zmm1,%zmm0,%zmm0
+   2a5c1:	62 f1 7c 49 11 12    	vmovups %zmm2,(%rdx){%k1}
+   2a5c7:	48 01 fa             	add    %rdi,%rdx
+   2a5ca:	62 f1 7c 49 11 01    	vmovups %zmm0,(%rcx){%k1}
+   2a5d0:	48 01 f9             	add    %rdi,%rcx
+   2a5d3:	49 39 c0             	cmp    %rax,%r8
+   2a5d6:	0f 85 b4 fe ff ff    	jne    2a490 <void lqcd_native::x86::clover_register_tile_avx512<true, false>(int, float const*, float const*, float*, int, unsigned short)+0x100>
+   2a5dc:	4b 8d 0c 14          	lea    (%r12,%r10,1),%rcx
+   2a5e0:	4a 8d 04 16          	lea    (%rsi,%r10,1),%rax
+   2a5e4:	4b 8d 14 2b          	lea    (%r11,%r13,1),%rdx
+   2a5e8:	49 81 c0 00 12 00 00 	add    $0x1200,%r8
+   2a5ef:	83 fb 06             	cmp    $0x6,%ebx
+   2a5f2:	74 0a                	je     2a5fe <void lqcd_native::x86::clover_register_tile_avx512<true, false>(int, float const*, float const*, float*, int, unsigned short)+0x26e>
+   2a5f4:	bb 06 00 00 00       	mov    $0x6,%ebx
+   2a5f9:	e9 10 fe ff ff       	jmp    2a40e <void lqcd_native::x86::clover_register_tile_avx512<true, false>(int, float const*, float const*, float*, int, unsigned short)+0x7e>
+   2a5fe:	c5 f8 77             	vzeroupper
+   2a601:	5b                   	pop    %rbx
+   2a602:	41 5c                	pop    %r12
+   2a604:	41 5d                	pop    %r13
+   2a606:	5d                   	pop    %rbp
+   2a607:	c3                   	ret
+   2a608:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+   2a60f:	00 
+
+000000000002a610 <void lqcd_native::x86::clover_register_tile_avx512<true, true>(int, float const*, float const*, float*, int, unsigned short)>:
+   2a610:	48 63 c7             	movslq %edi,%rax
+   2a613:	55                   	push   %rbp
+   2a614:	48 89 f7             	mov    %rsi,%rdi
+   2a617:	8d 34 00             	lea    (%rax,%rax,1),%esi
+   2a61a:	48 89 e5             	mov    %rsp,%rbp
+   2a61d:	41 57                	push   %r15
+   2a61f:	41 56                	push   %r14
+   2a621:	48 63 f6             	movslq %esi,%rsi
+   2a624:	49 89 d6             	mov    %rdx,%r14
+   2a627:	48 89 ca             	mov    %rcx,%rdx
+   2a62a:	49 63 c8             	movslq %r8d,%rcx
+   2a62d:	41 55                	push   %r13
+   2a62f:	41 54                	push   %r12
+   2a631:	53                   	push   %rbx
+   2a632:	41 0f b7 d9          	movzwl %r9w,%ebx
+   2a636:	4c 8d 0c 8d 00 00 00 	lea    0x0(,%rcx,4),%r9
+   2a63d:	00 
+   2a63e:	48 01 f1             	add    %rsi,%rcx
+   2a641:	48 83 e4 c0          	and    $0xffffffffffffffc0,%rsp
+   2a645:	c5 fb 92 cb          	kmovd  %ebx,%k1
+   2a649:	4d 01 ce             	add    %r9,%r14
+   2a64c:	4c 8d 14 8a          	lea    (%rdx,%rcx,4),%r10
+   2a650:	49 01 d1             	add    %rdx,%r9
+   2a653:	45 85 c0             	test   %r8d,%r8d
+   2a656:	41 8d 50 0f          	lea    0xf(%r8),%edx
+   2a65a:	41 bc 24 00 00 00    	mov    $0x24,%r12d
+   2a660:	41 0f 49 d0          	cmovns %r8d,%edx
+   2a664:	c1 fa 04             	sar    $0x4,%edx
+   2a667:	48 63 d2             	movslq %edx,%rdx
+   2a66a:	48 8d 14 d2          	lea    (%rdx,%rdx,8),%rdx
+   2a66e:	48 c1 e2 0a          	shl    $0xa,%rdx
+   2a672:	48 8d 8c 3a 00 03 00 	lea    0x300(%rdx,%rdi,1),%rcx
+   2a679:	00 
+   2a67a:	8d 14 85 00 00 00 00 	lea    0x0(,%rax,4),%edx
+   2a681:	48 89 4c 24 f0       	mov    %rcx,-0x10(%rsp)
+   2a686:	48 63 ca             	movslq %edx,%rcx
+   2a689:	48 6b d0 2c          	imul   $0x2c,%rax,%rdx
+   2a68d:	48 c1 e6 02          	shl    $0x2,%rsi
+   2a691:	4c 8d 3c 8d 00 00 00 	lea    0x0(,%rcx,4),%r15
+   2a698:	00 
+   2a699:	c4 61 f9 6e d2       	vmovq  %rdx,%xmm10
+   2a69e:	4c 8b 44 24 f0       	mov    -0x10(%rsp),%r8
+   2a6a3:	49 8d 3c 09          	lea    (%r9,%rcx,1),%rdi
+   2a6a7:	49 8d 04 0a          	lea    (%r10,%rcx,1),%rax
+   2a6ab:	49 8d 14 0e          	lea    (%r14,%rcx,1),%rdx
+   2a6af:	4c 89 74 24 f8       	mov    %r14,-0x8(%rsp)
+   2a6b4:	49 89 fb             	mov    %rdi,%r11
+   2a6b7:	45 8d 6c 24 dc       	lea    -0x24(%r12),%r13d
+   2a6bc:	48 89 7c 24 e0       	mov    %rdi,-0x20(%rsp)
+   2a6c1:	4c 89 cb             	mov    %r9,%rbx
+   2a6c4:	48 89 d7             	mov    %rdx,%rdi
+   2a6c7:	48 89 44 24 e8       	mov    %rax,-0x18(%rsp)
+   2a6cc:	44 89 ea             	mov    %r13d,%edx
+   2a6cf:	4d 89 de             	mov    %r11,%r14
+   2a6d2:	49 89 c5             	mov    %rax,%r13
+   2a6d5:	4d 89 d3             	mov    %r10,%r11
+   2a6d8:	4d 89 c2             	mov    %r8,%r10
+   2a6db:	4c 8b 44 24 f8       	mov    -0x8(%rsp),%r8
+   2a6e0:	c4 41 38 57 c0       	vxorps %xmm8,%xmm8,%xmm8
+   2a6e5:	49 8d 82 00 fd ff ff 	lea    -0x300(%r10),%rax
+   2a6ec:	49 89 f9             	mov    %rdi,%r9
+   2a6ef:	62 d1 7c 48 28 f8    	vmovaps %zmm8,%zmm7
+   2a6f5:	62 d1 7c 48 28 f0    	vmovaps %zmm8,%zmm6
+   2a6fb:	62 d1 7c 48 28 e8    	vmovaps %zmm8,%zmm5
+   2a701:	0f 1f 40 00          	nopl   0x0(%rax)
+   2a705:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+   2a70c:	00 00 00 00 
+   2a710:	62 d1 7c c9 10 00    	vmovups (%r8),%zmm0{%k1}{z}
+   2a716:	62 f1 7c c9 10 18    	vmovups (%rax),%zmm3{%k1}{z}
+   2a71c:	62 d1 7c c9 10 09    	vmovups (%r9),%zmm1{%k1}{z}
+   2a722:	62 f1 7c c9 10 50 01 	vmovups 0x40(%rax),%zmm2{%k1}{z}
+   2a729:	48 83 e8 80          	sub    $0xffffffffffffff80,%rax
+   2a72d:	49 01 f0             	add    %rsi,%r8
+   2a730:	49 01 f1             	add    %rsi,%r9
+   2a733:	62 f1 7c 48 59 e3    	vmulps %zmm3,%zmm0,%zmm4
+   2a739:	62 f1 74 48 59 db    	vmulps %zmm3,%zmm1,%zmm3
+   2a73f:	62 f2 75 48 bc e2    	vfnmadd231ps %zmm2,%zmm1,%zmm4
+   2a745:	62 f2 65 48 98 d0    	vfmadd132ps %zmm0,%zmm3,%zmm2
+   2a74b:	62 f1 7c c9 10 58 0b 	vmovups 0x2c0(%rax),%zmm3{%k1}{z}
+   2a752:	62 f1 54 48 58 ec    	vaddps %zmm4,%zmm5,%zmm5
+   2a758:	62 f1 7c c9 10 60 0a 	vmovups 0x280(%rax),%zmm4{%k1}{z}
+   2a75f:	62 f1 44 48 58 fa    	vaddps %zmm2,%zmm7,%zmm7
+   2a765:	62 f1 7c 48 59 d4    	vmulps %zmm4,%zmm0,%zmm2
+   2a76b:	62 f2 75 48 bc d3    	vfnmadd231ps %zmm3,%zmm1,%zmm2
+   2a771:	62 f1 74 48 59 cc    	vmulps %zmm4,%zmm1,%zmm1
+   2a777:	62 f2 75 48 98 c3    	vfmadd132ps %zmm3,%zmm1,%zmm0
+   2a77d:	62 f1 4c 48 58 f2    	vaddps %zmm2,%zmm6,%zmm6
+   2a783:	62 71 3c 48 58 c0    	vaddps %zmm0,%zmm8,%zmm8
+   2a789:	49 39 c2             	cmp    %rax,%r10
+   2a78c:	75 82                	jne    2a710 <void lqcd_native::x86::clover_register_tile_avx512<true, true>(int, float const*, float const*, float*, int, unsigned short)+0x100>
+   2a78e:	62 f1 7c 49 11 2b    	vmovups %zmm5,(%rbx){%k1}
+   2a794:	83 c2 0c             	add    $0xc,%edx
+   2a797:	4c 01 fb             	add    %r15,%rbx
+   2a79a:	49 81 c2 00 06 00 00 	add    $0x600,%r10
+   2a7a1:	62 d1 7c 49 11 3e    	vmovups %zmm7,(%r14){%k1}
+   2a7a7:	4d 01 fe             	add    %r15,%r14
+   2a7aa:	62 d1 7c 49 11 33    	vmovups %zmm6,(%r11){%k1}
+   2a7b0:	4d 01 fb             	add    %r15,%r11
+   2a7b3:	62 51 7c 49 11 45 00 	vmovups %zmm8,0x0(%r13){%k1}
+   2a7ba:	4d 01 fd             	add    %r15,%r13
+   2a7bd:	41 39 d4             	cmp    %edx,%r12d
+   2a7c0:	0f 85 15 ff ff ff    	jne    2a6db <void lqcd_native::x86::clover_register_tile_avx512<true, true>(int, float const*, float const*, float*, int, unsigned short)+0xcb>
+   2a7c6:	48 89 fa             	mov    %rdi,%rdx
+   2a7c9:	48 8b 44 24 e8       	mov    -0x18(%rsp),%rax
+   2a7ce:	48 8b 7c 24 e0       	mov    -0x20(%rsp),%rdi
+   2a7d3:	c4 61 f9 7e d3       	vmovq  %xmm10,%rbx
+   2a7d8:	48 81 44 24 f0 00 12 	addq   $0x1200,-0x10(%rsp)
+   2a7df:	00 00 
+   2a7e1:	4c 8d 34 1a          	lea    (%rdx,%rbx,1),%r14
+   2a7e5:	4c 8d 0c 1f          	lea    (%rdi,%rbx,1),%r9
+   2a7e9:	4c 8d 14 18          	lea    (%rax,%rbx,1),%r10
+   2a7ed:	41 83 fc 48          	cmp    $0x48,%r12d
+   2a7f1:	74 0b                	je     2a7fe <void lqcd_native::x86::clover_register_tile_avx512<true, true>(int, float const*, float const*, float*, int, unsigned short)+0x1ee>
+   2a7f3:	41 bc 48 00 00 00    	mov    $0x48,%r12d
+   2a7f9:	e9 a0 fe ff ff       	jmp    2a69e <void lqcd_native::x86::clover_register_tile_avx512<true, true>(int, float const*, float const*, float*, int, unsigned short)+0x8e>
+   2a7fe:	c5 f8 77             	vzeroupper
+   2a801:	48 8d 65 d8          	lea    -0x28(%rbp),%rsp
+   2a805:	5b                   	pop    %rbx
+   2a806:	41 5c                	pop    %r12
+   2a808:	41 5d                	pop    %r13
+   2a80a:	41 5e                	pop    %r14
+   2a80c:	41 5f                	pop    %r15
+   2a80e:	5d                   	pop    %rbp
+   2a80f:	c3                   	ret
+
+000000000002a810 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)>:
+   2a810:	55                   	push   %rbp
+   2a811:	48 89 e5             	mov    %rsp,%rbp
+   2a814:	41 57                	push   %r15
+   2a816:	41 56                	push   %r14
+   2a818:	41 55                	push   %r13
+   2a81a:	41 54                	push   %r12
+   2a81c:	53                   	push   %rbx
+   2a81d:	48 83 e4 c0          	and    $0xffffffffffffffc0,%rsp
+   2a821:	48 81 ec c0 02 00 00 	sub    $0x2c0,%rsp
+   2a828:	8b 45 28             	mov    0x28(%rbp),%eax
+   2a82b:	44 8b 55 30          	mov    0x30(%rbp),%r10d
+   2a82f:	48 89 54 24 48       	mov    %rdx,0x48(%rsp)
+   2a834:	48 89 ca             	mov    %rcx,%rdx
+   2a837:	8b 4d 28             	mov    0x28(%rbp),%ecx
+   2a83a:	48 89 74 24 60       	mov    %rsi,0x60(%rsp)
+   2a83f:	4c 89 84 24 98 00 00 	mov    %r8,0x98(%rsp)
+   2a846:	00 
+   2a847:	4c 89 8c 24 90 00 00 	mov    %r9,0x90(%rsp)
+   2a84e:	00 
+   2a84f:	c1 f9 1f             	sar    $0x1f,%ecx
+   2a852:	c1 e9 1c             	shr    $0x1c,%ecx
+   2a855:	01 c8                	add    %ecx,%eax
+   2a857:	83 e0 0f             	and    $0xf,%eax
+   2a85a:	29 c8                	sub    %ecx,%eax
+   2a85c:	8b 4d 28             	mov    0x28(%rbp),%ecx
+   2a85f:	29 c1                	sub    %eax,%ecx
+   2a861:	44 39 d1             	cmp    %r10d,%ecx
+   2a864:	0f 8d 0e 0f 00 00    	jge    2b778 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0xf68>
+   2a86a:	48 8b 45 38          	mov    0x38(%rbp),%rax
+   2a86e:	48 8b 5d 18          	mov    0x18(%rbp),%rbx
+   2a872:	4c 8b 7d 20          	mov    0x20(%rbp),%r15
+   2a876:	4c 63 d9             	movslq %ecx,%r11
+   2a879:	41 89 fd             	mov    %edi,%r13d
+   2a87c:	48 63 f7             	movslq %edi,%rsi
+   2a87f:	4c 8b 4d 20          	mov    0x20(%rbp),%r9
+   2a883:	62 e1 7e 08 10 05 7b 	vmovss 0x6697b(%rip),%xmm16        # 91208 <typeinfo name for lqcd::Error+0x300>
+   2a88a:	69 06 00 
+   2a88d:	48 8d 3c b5 00 00 00 	lea    0x0(,%rsi,4),%rdi
+   2a894:	00 
+   2a895:	4a 8d 0c 1e          	lea    (%rsi,%r11,1),%rcx
+   2a899:	48 89 74 24 40       	mov    %rsi,0x40(%rsp)
+   2a89e:	48 89 7c 24 68       	mov    %rdi,0x68(%rsp)
+   2a8a3:	48 03 7d 18          	add    0x18(%rbp),%rdi
+   2a8a7:	48 8d 1c 83          	lea    (%rbx,%rax,4),%rbx
+   2a8ab:	4a 8d 04 9d 00 00 00 	lea    0x0(,%r11,4),%rax
+   2a8b2:	00 
+   2a8b3:	49 01 c7             	add    %rax,%r15
+   2a8b6:	48 01 d0             	add    %rdx,%rax
+   2a8b9:	49 8d 0c 89          	lea    (%r9,%rcx,4),%rcx
+   2a8bd:	48 89 5c 24 58       	mov    %rbx,0x58(%rsp)
+   2a8c2:	48 89 44 24 70       	mov    %rax,0x70(%rsp)
+   2a8c7:	43 8d 44 2d 00       	lea    0x0(%r13,%r13,1),%eax
+   2a8cc:	48 89 8c 24 a8 00 00 	mov    %rcx,0xa8(%rsp)
+   2a8d3:	00 
+   2a8d4:	4c 89 bc 24 b0 00 00 	mov    %r15,0xb0(%rsp)
+   2a8db:	00 
+   2a8dc:	4d 89 df             	mov    %r11,%r15
+   2a8df:	45 89 eb             	mov    %r13d,%r11d
+   2a8e2:	48 63 d0             	movslq %eax,%rdx
+   2a8e5:	44 01 e8             	add    %r13d,%eax
+   2a8e8:	48 89 bc 24 a0 00 00 	mov    %rdi,0xa0(%rsp)
+   2a8ef:	00 
+   2a8f0:	01 c0                	add    %eax,%eax
+   2a8f2:	48 8d 0c 95 00 00 00 	lea    0x0(,%rdx,4),%rcx
+   2a8f9:	00 
+   2a8fa:	48 98                	cltq
+   2a8fc:	48 89 4c 24 38       	mov    %rcx,0x38(%rsp)
+   2a901:	48 c1 e0 02          	shl    $0x2,%rax
+   2a905:	48 89 84 24 c8 00 00 	mov    %rax,0xc8(%rsp)
+   2a90c:	00 
+   2a90d:	48 8d 04 36          	lea    (%rsi,%rsi,1),%rax
+   2a911:	48 89 44 24 78       	mov    %rax,0x78(%rsp)
+   2a916:	48 01 f0             	add    %rsi,%rax
+   2a919:	48 c1 e0 03          	shl    $0x3,%rax
+   2a91d:	48 89 84 24 c0 00 00 	mov    %rax,0xc0(%rsp)
+   2a924:	00 
+   2a925:	48 8d 04 f5 00 00 00 	lea    0x0(,%rsi,8),%rax
+   2a92c:	00 
+   2a92d:	48 c1 e6 04          	shl    $0x4,%rsi
+   2a931:	48 89 44 24 50       	mov    %rax,0x50(%rsp)
+   2a936:	48 89 b4 24 80 00 00 	mov    %rsi,0x80(%rsp)
+   2a93d:	00 
+   2a93e:	8b 55 28             	mov    0x28(%rbp),%edx
+   2a941:	8b 4d 30             	mov    0x30(%rbp),%ecx
+   2a944:	b8 00 00 00 00       	mov    $0x0,%eax
+   2a949:	be 10 00 00 00       	mov    $0x10,%esi
+   2a94e:	45 89 fc             	mov    %r15d,%r12d
+   2a951:	45 89 fd             	mov    %r15d,%r13d
+   2a954:	44 29 fa             	sub    %r15d,%edx
+   2a957:	0f 48 d0             	cmovs  %eax,%edx
+   2a95a:	b8 01 00 00 00       	mov    $0x1,%eax
+   2a95f:	44 29 f9             	sub    %r15d,%ecx
+   2a962:	c4 e2 69 f7 d0       	shlx   %edx,%eax,%edx
+   2a967:	f7 da                	neg    %edx
+   2a969:	39 f1                	cmp    %esi,%ecx
+   2a96b:	0f 4f ce             	cmovg  %esi,%ecx
+   2a96e:	c4 e2 71 f7 c0       	shlx   %ecx,%eax,%eax
+   2a973:	ff c8                	dec    %eax
+   2a975:	89 d1                	mov    %edx,%ecx
+   2a977:	21 c1                	and    %eax,%ecx
+   2a979:	0f b6 05 38 fb 06 00 	movzbl 0x6fb38(%rip),%eax        # 9a4b8 <guard variable for lqcd_native::x86::clover_register_mode()::mode>
+   2a980:	c5 f8 92 d9          	kmovw  %ecx,%k3
+   2a984:	c5 f8 90 cb          	kmovw  %k3,%k1
+   2a988:	84 c0                	test   %al,%al
+   2a98a:	0f 84 f7 0d 00 00    	je     2b787 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0xf77>
+   2a990:	8b 15 2a fb 06 00    	mov    0x6fb2a(%rip),%edx        # 9a4c0 <lqcd_native::x86::clover_register_mode()::mode>
+   2a996:	45 85 ed             	test   %r13d,%r13d
+   2a999:	41 8d 45 0f          	lea    0xf(%r13),%eax
+   2a99d:	41 0f 49 c5          	cmovns %r13d,%eax
+   2a9a1:	c1 f8 04             	sar    $0x4,%eax
+   2a9a4:	4c 63 f0             	movslq %eax,%r14
+   2a9a7:	83 fa 01             	cmp    $0x1,%edx
+   2a9aa:	0f 84 db 0e 00 00    	je     2b88b <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0x107b>
+   2a9b0:	83 fa 02             	cmp    $0x2,%edx
+   2a9b3:	0f 84 3f 0f 00 00    	je     2b8f8 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0x10e8>
+   2a9b9:	4e 8d 0c f5 00 00 00 	lea    0x0(,%r14,8),%r9
+   2a9c0:	00 
+   2a9c1:	48 8b 44 24 60       	mov    0x60(%rsp),%rax
+   2a9c6:	4c 89 b4 24 30 01 00 	mov    %r14,0x130(%rsp)
+   2a9cd:	00 
+   2a9ce:	48 8b b4 24 b0 00 00 	mov    0xb0(%rsp),%rsi
+   2a9d5:	00 
+   2a9d6:	48 8b 7c 24 58       	mov    0x58(%rsp),%rdi
+   2a9db:	44 89 ac 24 38 01 00 	mov    %r13d,0x138(%rsp)
+   2a9e2:	00 
+   2a9e3:	4b 8d 0c 31          	lea    (%r9,%r14,1),%rcx
+   2a9e7:	4c 89 8c 24 28 01 00 	mov    %r9,0x128(%rsp)
+   2a9ee:	00 
+   2a9ef:	4c 8b 74 24 68       	mov    0x68(%rsp),%r14
+   2a9f4:	4c 8b 4c 24 38       	mov    0x38(%rsp),%r9
+   2a9f9:	45 31 c0             	xor    %r8d,%r8d
+   2a9fc:	41 ba ab aa aa aa    	mov    $0xaaaaaaab,%r10d
+   2aa02:	c5 d8 57 e4          	vxorps %xmm4,%xmm4,%xmm4
+   2aa06:	48 c1 e1 0a          	shl    $0xa,%rcx
+   2aa0a:	48 01 c1             	add    %rax,%rcx
+   2aa0d:	0f 1f 00             	nopl   (%rax)
+   2aa10:	44 89 c2             	mov    %r8d,%edx
+   2aa13:	44 89 d8             	mov    %r11d,%eax
+   2aa16:	62 f1 7c c9 10 31    	vmovups (%rcx),%zmm6{%k1}{z}
+   2aa1c:	62 f1 7c c9 10 59 01 	vmovups 0x40(%rcx),%zmm3{%k1}{z}
+   2aa23:	49 0f af d2          	imul   %r10,%rdx
+   2aa27:	62 71 7c c9 10 41 02 	vmovups 0x80(%rcx),%zmm8{%k1}{z}
+   2aa2e:	62 f1 7c c9 10 79 03 	vmovups 0xc0(%rcx),%zmm7{%k1}{z}
+   2aa35:	41 ff c0             	inc    %r8d
+   2aa38:	48 c1 ea 22          	shr    $0x22,%rdx
+   2aa3c:	f7 da                	neg    %edx
+   2aa3e:	41 89 d5             	mov    %edx,%r13d
+   2aa41:	41 83 e5 06          	and    $0x6,%r13d
+   2aa45:	83 e2 0c             	and    $0xc,%edx
+   2aa48:	41 0f af c5          	imul   %r13d,%eax
+   2aa4c:	ff c2                	inc    %edx
+   2aa4e:	41 0f af d3          	imul   %r11d,%edx
+   2aa52:	8d 1c 00             	lea    (%rax,%rax,1),%ebx
+   2aa55:	44 01 d8             	add    %r11d,%eax
+   2aa58:	48 63 db             	movslq %ebx,%rbx
+   2aa5b:	48 63 d2             	movslq %edx,%rdx
+   2aa5e:	4c 01 fb             	add    %r15,%rbx
+   2aa61:	4c 01 fa             	add    %r15,%rdx
+   2aa64:	62 f1 7c c9 10 04 9f 	vmovups (%rdi,%rbx,4),%zmm0{%k1}{z}
+   2aa6b:	62 f1 7c c9 10 14 97 	vmovups (%rdi,%rdx,4),%zmm2{%k1}{z}
+   2aa72:	8d 14 00             	lea    (%rax,%rax,1),%edx
+   2aa75:	44 01 d8             	add    %r11d,%eax
+   2aa78:	48 63 d2             	movslq %edx,%rdx
+   2aa7b:	4c 01 fa             	add    %r15,%rdx
+   2aa7e:	62 f1 7c 48 59 ce    	vmulps %zmm6,%zmm0,%zmm1
+   2aa84:	62 f2 6d 48 bc cb    	vfnmadd231ps %zmm3,%zmm2,%zmm1
+   2aa8a:	62 f1 6c 48 59 d6    	vmulps %zmm6,%zmm2,%zmm2
+   2aa90:	62 f2 6d 48 98 c3    	vfmadd132ps %zmm3,%zmm2,%zmm0
+   2aa96:	62 f1 7c c9 10 14 97 	vmovups (%rdi,%rdx,4),%zmm2{%k1}{z}
+   2aa9d:	43 8d 54 2d 02       	lea    0x2(%r13,%r13,1),%edx
+   2aaa2:	8d 5a 01             	lea    0x1(%rdx),%ebx
+   2aaa5:	62 f1 74 48 58 cc    	vaddps %zmm4,%zmm1,%zmm1
+   2aaab:	41 0f af db          	imul   %r11d,%ebx
+   2aaaf:	62 f1 7c 48 58 c4    	vaddps %zmm4,%zmm0,%zmm0
+   2aab5:	48 63 db             	movslq %ebx,%rbx
+   2aab8:	4c 01 fb             	add    %r15,%rbx
+   2aabb:	62 d1 6c 48 59 f0    	vmulps %zmm8,%zmm2,%zmm6
+   2aac1:	62 f1 7c c9 10 1c 9f 	vmovups (%rdi,%rbx,4),%zmm3{%k1}{z}
+   2aac8:	8d 1c 00             	lea    (%rax,%rax,1),%ebx
+   2aacb:	44 01 d8             	add    %r11d,%eax
+   2aace:	48 63 db             	movslq %ebx,%rbx
+   2aad1:	4c 01 fb             	add    %r15,%rbx
+   2aad4:	62 f2 65 48 bc f7    	vfnmadd231ps %zmm7,%zmm3,%zmm6
+   2aada:	62 d1 64 48 59 d8    	vmulps %zmm8,%zmm3,%zmm3
+   2aae0:	62 71 7c c9 10 41 04 	vmovups 0x100(%rcx),%zmm8{%k1}{z}
+   2aae7:	62 f2 65 48 98 d7    	vfmadd132ps %zmm7,%zmm3,%zmm2
+   2aaed:	62 f1 7c c9 10 79 05 	vmovups 0x140(%rcx),%zmm7{%k1}{z}
+   2aaf4:	62 f1 74 48 58 ce    	vaddps %zmm6,%zmm1,%zmm1
+   2aafa:	62 f1 7c 48 58 c2    	vaddps %zmm2,%zmm0,%zmm0
+   2ab00:	62 f1 7c c9 10 14 9f 	vmovups (%rdi,%rbx,4),%zmm2{%k1}{z}
+   2ab07:	8d 5a 03             	lea    0x3(%rdx),%ebx
+   2ab0a:	41 0f af db          	imul   %r11d,%ebx
+   2ab0e:	48 63 db             	movslq %ebx,%rbx
+   2ab11:	4c 01 fb             	add    %r15,%rbx
+   2ab14:	62 f1 7c c9 10 1c 9f 	vmovups (%rdi,%rbx,4),%zmm3{%k1}{z}
+   2ab1b:	62 d1 6c 48 59 f0    	vmulps %zmm8,%zmm2,%zmm6
+   2ab21:	8d 1c 00             	lea    (%rax,%rax,1),%ebx
+   2ab24:	44 01 d8             	add    %r11d,%eax
+   2ab27:	48 63 db             	movslq %ebx,%rbx
+   2ab2a:	4c 01 fb             	add    %r15,%rbx
+   2ab2d:	62 f2 65 48 bc f7    	vfnmadd231ps %zmm7,%zmm3,%zmm6
+   2ab33:	62 d1 64 48 59 d8    	vmulps %zmm8,%zmm3,%zmm3
+   2ab39:	62 71 7c c9 10 41 06 	vmovups 0x180(%rcx),%zmm8{%k1}{z}
+   2ab40:	62 f2 65 48 98 d7    	vfmadd132ps %zmm7,%zmm3,%zmm2
+   2ab46:	62 f1 7c c9 10 79 07 	vmovups 0x1c0(%rcx),%zmm7{%k1}{z}
+   2ab4d:	62 f1 74 48 58 ce    	vaddps %zmm6,%zmm1,%zmm1
+   2ab53:	62 f1 7c 48 58 c2    	vaddps %zmm2,%zmm0,%zmm0
+   2ab59:	62 f1 7c c9 10 14 9f 	vmovups (%rdi,%rbx,4),%zmm2{%k1}{z}
+   2ab60:	8d 5a 05             	lea    0x5(%rdx),%ebx
+   2ab63:	41 0f af db          	imul   %r11d,%ebx
+   2ab67:	48 63 db             	movslq %ebx,%rbx
+   2ab6a:	4c 01 fb             	add    %r15,%rbx
+   2ab6d:	62 f1 7c c9 10 1c 9f 	vmovups (%rdi,%rbx,4),%zmm3{%k1}{z}
+   2ab74:	62 d1 6c 48 59 f0    	vmulps %zmm8,%zmm2,%zmm6
+   2ab7a:	8d 1c 00             	lea    (%rax,%rax,1),%ebx
+   2ab7d:	44 01 d8             	add    %r11d,%eax
+   2ab80:	48 63 db             	movslq %ebx,%rbx
+   2ab83:	01 c0                	add    %eax,%eax
+   2ab85:	4c 01 fb             	add    %r15,%rbx
+   2ab88:	48 98                	cltq
+   2ab8a:	4c 01 f8             	add    %r15,%rax
+   2ab8d:	62 f2 65 48 bc f7    	vfnmadd231ps %zmm7,%zmm3,%zmm6
+   2ab93:	62 d1 64 48 59 d8    	vmulps %zmm8,%zmm3,%zmm3
+   2ab99:	62 71 7c c9 10 41 08 	vmovups 0x200(%rcx),%zmm8{%k1}{z}
+   2aba0:	62 f2 65 48 98 d7    	vfmadd132ps %zmm7,%zmm3,%zmm2
+   2aba6:	62 f1 7c c9 10 79 09 	vmovups 0x240(%rcx),%zmm7{%k1}{z}
+   2abad:	62 f1 74 48 58 ce    	vaddps %zmm6,%zmm1,%zmm1
+   2abb3:	62 f1 7c 48 58 c2    	vaddps %zmm2,%zmm0,%zmm0
+   2abb9:	62 f1 7c c9 10 14 9f 	vmovups (%rdi,%rbx,4),%zmm2{%k1}{z}
+   2abc0:	8d 5a 07             	lea    0x7(%rdx),%ebx
+   2abc3:	41 0f af db          	imul   %r11d,%ebx
+   2abc7:	48 63 db             	movslq %ebx,%rbx
+   2abca:	4c 01 fb             	add    %r15,%rbx
+   2abcd:	62 f1 7c c9 10 1c 9f 	vmovups (%rdi,%rbx,4),%zmm3{%k1}{z}
+   2abd4:	62 d1 6c 48 59 f0    	vmulps %zmm8,%zmm2,%zmm6
+   2abda:	62 f2 65 48 bc f7    	vfnmadd231ps %zmm7,%zmm3,%zmm6
+   2abe0:	62 d1 64 48 59 d8    	vmulps %zmm8,%zmm3,%zmm3
+   2abe6:	62 71 7c c9 10 41 0a 	vmovups 0x280(%rcx),%zmm8{%k1}{z}
+   2abed:	62 f2 65 48 98 d7    	vfmadd132ps %zmm7,%zmm3,%zmm2
+   2abf3:	62 f1 7c c9 10 79 0b 	vmovups 0x2c0(%rcx),%zmm7{%k1}{z}
+   2abfa:	62 f1 74 48 58 ce    	vaddps %zmm6,%zmm1,%zmm1
+   2ac00:	62 f1 7c 48 58 c2    	vaddps %zmm2,%zmm0,%zmm0
+   2ac06:	62 f1 7c c9 10 14 87 	vmovups (%rdi,%rax,4),%zmm2{%k1}{z}
+   2ac0d:	8d 42 09             	lea    0x9(%rdx),%eax
+   2ac10:	41 0f af c3          	imul   %r11d,%eax
+   2ac14:	48 98                	cltq
+   2ac16:	4c 01 f8             	add    %r15,%rax
+   2ac19:	48 81 c1 00 03 00 00 	add    $0x300,%rcx
+   2ac20:	62 f1 7c c9 10 1c 87 	vmovups (%rdi,%rax,4),%zmm3{%k1}{z}
+   2ac27:	62 d1 6c 48 59 f0    	vmulps %zmm8,%zmm2,%zmm6
+   2ac2d:	62 f2 65 48 bc f7    	vfnmadd231ps %zmm7,%zmm3,%zmm6
+   2ac33:	62 d1 64 48 59 d8    	vmulps %zmm8,%zmm3,%zmm3
+   2ac39:	62 f2 65 48 98 d7    	vfmadd132ps %zmm7,%zmm3,%zmm2
+   2ac3f:	62 f1 74 48 58 ce    	vaddps %zmm6,%zmm1,%zmm1
+   2ac45:	62 f1 7c 49 11 0e    	vmovups %zmm1,(%rsi){%k1}
+   2ac4b:	62 f1 7c 48 58 c2    	vaddps %zmm2,%zmm0,%zmm0
+   2ac51:	62 d1 7c 49 11 04 36 	vmovups %zmm0,(%r14,%rsi,1){%k1}
+   2ac58:	4c 01 ce             	add    %r9,%rsi
+   2ac5b:	41 83 f8 0c          	cmp    $0xc,%r8d
+   2ac5f:	0f 85 ab fd ff ff    	jne    2aa10 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0x200>
+   2ac65:	44 8b ac 24 38 01 00 	mov    0x138(%rsp),%r13d
+   2ac6c:	00 
+   2ac6d:	4c 8b b4 24 30 01 00 	mov    0x130(%rsp),%r14
+   2ac74:	00 
+   2ac75:	4c 8b 8c 24 28 01 00 	mov    0x128(%rsp),%r9
+   2ac7c:	00 
+   2ac7d:	44 89 e0             	mov    %r12d,%eax
+   2ac80:	83 c0 10             	add    $0x10,%eax
+   2ac83:	3b 45 30             	cmp    0x30(%rbp),%eax
+   2ac86:	45 89 e8             	mov    %r13d,%r8d
+   2ac89:	4c 89 bc 24 d8 00 00 	mov    %r15,0xd8(%rsp)
+   2ac90:	00 
+   2ac91:	0f 4f 45 30          	cmovg  0x30(%rbp),%eax
+   2ac95:	44 3b 6d 28          	cmp    0x28(%rbp),%r13d
+   2ac99:	4c 8b 6c 24 70       	mov    0x70(%rsp),%r13
+   2ac9e:	4c 8b 7c 24 50       	mov    0x50(%rsp),%r15
+   2aca3:	44 0f 4c 45 28       	cmovl  0x28(%rbp),%r8d
+   2aca8:	4d 01 f1             	add    %r14,%r9
+   2acab:	45 89 de             	mov    %r11d,%r14d
+   2acae:	41 d1 fe             	sar    $1,%r14d
+   2acb1:	62 a1 6d 00 ef d2    	vpxord %xmm18,%xmm18,%xmm18
+   2acb7:	89 84 24 88 00 00 00 	mov    %eax,0x88(%rsp)
+   2acbe:	48 8b 44 24 48       	mov    0x48(%rsp),%rax
+   2acc3:	44 89 b4 24 8c 00 00 	mov    %r14d,0x8c(%rsp)
+   2acca:	00 
+   2accb:	4c 8b 54 24 40       	mov    0x40(%rsp),%r10
+   2acd0:	4c 8b 74 24 68       	mov    0x68(%rsp),%r14
+   2acd5:	c5 c8 57 f6          	vxorps %xmm6,%xmm6,%xmm6
+   2acd9:	62 a1 74 00 57 c9    	vxorps %xmm17,%xmm17,%xmm17
+   2acdf:	45 89 c4             	mov    %r8d,%r12d
+   2ace2:	4c 89 ac 24 d0 00 00 	mov    %r13,0xd0(%rsp)
+   2ace9:	00 
+   2acea:	49 c1 e1 0a          	shl    $0xa,%r9
+   2acee:	4a 8d 3c 08          	lea    (%rax,%r9,1),%rdi
+   2acf2:	31 c0                	xor    %eax,%eax
+   2acf4:	89 c1                	mov    %eax,%ecx
+   2acf6:	eb 39                	jmp    2ad31 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0x521>
+   2acf8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+   2acff:	00 
+   2ad00:	8b 8c 24 bc 00 00 00 	mov    0xbc(%rsp),%ecx
+   2ad07:	48 8b bc 24 18 01 00 	mov    0x118(%rsp),%rdi
+   2ad0e:	00 
+   2ad0f:	44 8b a4 24 b8 00 00 	mov    0xb8(%rsp),%r12d
+   2ad16:	00 
+   2ad17:	4c 01 b4 24 d0 00 00 	add    %r14,0xd0(%rsp)
+   2ad1e:	00 
+   2ad1f:	ff c1                	inc    %ecx
+   2ad21:	48 81 c7 80 04 00 00 	add    $0x480,%rdi
+   2ad28:	83 f9 08             	cmp    $0x8,%ecx
+   2ad2b:	0f 84 16 0a 00 00    	je     2b747 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0xf37>
+   2ad31:	48 8b 84 24 d0 00 00 	mov    0xd0(%rsp),%rax
+   2ad38:	00 
+   2ad39:	62 71 7e c9 6f 38    	vmovdqu32 (%rax),%zmm15{%k1}{z}
+   2ad3f:	62 b3 05 4b 1f d2 05 	vpcmpnltd %zmm18,%zmm15,%k2{%k3}
+   2ad46:	41 83 fb 01          	cmp    $0x1,%r11d
+   2ad4a:	0f 8e 90 09 00 00    	jle    2b6e0 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0xed0>
+   2ad50:	8b 84 24 8c 00 00 00 	mov    0x8c(%rsp),%eax
+   2ad57:	8b 9c 24 88 00 00 00 	mov    0x88(%rsp),%ebx
+   2ad5e:	48 c7 84 24 10 01 00 	movq   $0x0,0x110(%rsp)
+   2ad65:	00 00 00 00 00 
+   2ad6a:	c6 84 24 28 01 00 00 	movb   $0x0,0x128(%rsp)
+   2ad71:	00 
+   2ad72:	44 39 e0             	cmp    %r12d,%eax
+   2ad75:	40 0f 9f c6          	setg   %sil
+   2ad79:	39 d8                	cmp    %ebx,%eax
+   2ad7b:	0f 9d c0             	setge  %al
+   2ad7e:	40 38 c6             	cmp    %al,%sil
+   2ad81:	0f 84 72 09 00 00    	je     2b6f9 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0xee9>
+   2ad87:	62 31 7c 08 28 f0    	vmovaps %xmm16,%xmm14
+   2ad8d:	f6 c1 01             	test   $0x1,%cl
+   2ad90:	74 08                	je     2ad9a <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0x58a>
+   2ad92:	c5 7a 10 35 6a 64 06 	vmovss 0x6646a(%rip),%xmm14        # 91204 <typeinfo name for lqcd::Error+0x2fc>
+   2ad99:	00 
+   2ad9a:	48 8b 9c 24 98 00 00 	mov    0x98(%rsp),%rbx
+   2ada1:	00 
+   2ada2:	89 c8                	mov    %ecx,%eax
+   2ada4:	d1 f8                	sar    $1,%eax
+   2ada6:	89 8c 24 bc 00 00 00 	mov    %ecx,0xbc(%rsp)
+   2adad:	48 89 bc 24 18 01 00 	mov    %rdi,0x118(%rsp)
+   2adb4:	00 
+   2adb5:	44 89 a4 24 b8 00 00 	mov    %r12d,0xb8(%rsp)
+   2adbc:	00 
+   2adbd:	48 98                	cltq
+   2adbf:	4c 8b 6d 18          	mov    0x18(%rbp),%r13
+   2adc3:	4c 8b 84 24 a8 00 00 	mov    0xa8(%rsp),%r8
+   2adca:	00 
+   2adcb:	48 8b b4 24 b0 00 00 	mov    0xb0(%rsp),%rsi
+   2add2:	00 
+   2add3:	45 31 c9             	xor    %r9d,%r9d
+   2add6:	48 c1 e0 04          	shl    $0x4,%rax
+   2adda:	48 01 c3             	add    %rax,%rbx
+   2addd:	62 61 fd 08 6e f3    	vmovq  %rbx,%xmm30
+   2ade3:	48 8b 9c 24 90 00 00 	mov    0x90(%rsp),%rbx
+   2adea:	00 
+   2adeb:	4c 89 ac 24 30 01 00 	mov    %r13,0x130(%rsp)
+   2adf2:	00 
+   2adf3:	48 01 c3             	add    %rax,%rbx
+   2adf6:	48 03 45 10          	add    0x10(%rbp),%rax
+   2adfa:	62 e1 fd 08 6e e3    	vmovq  %rbx,%xmm20
+   2ae00:	48 8b 9c 24 a0 00 00 	mov    0xa0(%rsp),%rbx
+   2ae07:	00 
+   2ae08:	48 89 84 24 20 01 00 	mov    %rax,0x120(%rsp)
+   2ae0f:	00 
+   2ae10:	48 8d 47 40          	lea    0x40(%rdi),%rax
+   2ae14:	62 61 fd 08 6e e8    	vmovq  %rax,%xmm29
+   2ae1a:	48 8d 87 80 00 00 00 	lea    0x80(%rdi),%rax
+   2ae21:	49 89 dd             	mov    %rbx,%r13
+   2ae24:	4c 89 cb             	mov    %r9,%rbx
+   2ae27:	62 61 fd 08 6e e0    	vmovq  %rax,%xmm28
+   2ae2d:	48 8d 87 c0 00 00 00 	lea    0xc0(%rdi),%rax
+   2ae34:	4d 89 c1             	mov    %r8,%r9
+   2ae37:	49 89 f0             	mov    %rsi,%r8
+   2ae3a:	62 61 fd 08 6e d8    	vmovq  %rax,%xmm27
+   2ae40:	48 8d 87 00 01 00 00 	lea    0x100(%rdi),%rax
+   2ae47:	62 61 fd 08 6e d0    	vmovq  %rax,%xmm26
+   2ae4d:	48 8d 87 40 01 00 00 	lea    0x140(%rdi),%rax
+   2ae54:	62 61 fd 08 6e c8    	vmovq  %rax,%xmm25
+   2ae5a:	48 8d 87 80 01 00 00 	lea    0x180(%rdi),%rax
+   2ae61:	62 61 fd 08 6e c0    	vmovq  %rax,%xmm24
+   2ae67:	48 8d 87 c0 01 00 00 	lea    0x1c0(%rdi),%rax
+   2ae6e:	62 e1 fd 08 6e f8    	vmovq  %rax,%xmm23
+   2ae74:	48 8d 87 00 02 00 00 	lea    0x200(%rdi),%rax
+   2ae7b:	62 e1 fd 08 6e f0    	vmovq  %rax,%xmm22
+   2ae81:	48 8d 87 40 02 00 00 	lea    0x240(%rdi),%rax
+   2ae88:	62 e1 fd 08 6e e8    	vmovq  %rax,%xmm21
+   2ae8e:	48 8d 87 80 02 00 00 	lea    0x280(%rdi),%rax
+   2ae95:	48 89 84 24 f8 00 00 	mov    %rax,0xf8(%rsp)
+   2ae9c:	00 
+   2ae9d:	48 8d 87 c0 02 00 00 	lea    0x2c0(%rdi),%rax
+   2aea4:	48 89 84 24 e8 00 00 	mov    %rax,0xe8(%rsp)
+   2aeab:	00 
+   2aeac:	48 8d 87 00 03 00 00 	lea    0x300(%rdi),%rax
+   2aeb3:	62 e1 fd 08 6e d8    	vmovq  %rax,%xmm19
+   2aeb9:	48 8d 87 40 03 00 00 	lea    0x340(%rdi),%rax
+   2aec0:	48 89 84 24 08 01 00 	mov    %rax,0x108(%rsp)
+   2aec7:	00 
+   2aec8:	48 8d 87 80 03 00 00 	lea    0x380(%rdi),%rax
+   2aecf:	48 89 84 24 00 01 00 	mov    %rax,0x100(%rsp)
+   2aed6:	00 
+   2aed7:	48 8d 87 c0 03 00 00 	lea    0x3c0(%rdi),%rax
+   2aede:	48 89 84 24 f0 00 00 	mov    %rax,0xf0(%rsp)
+   2aee5:	00 
+   2aee6:	48 8d 87 00 04 00 00 	lea    0x400(%rdi),%rax
+   2aeed:	48 89 84 24 e0 00 00 	mov    %rax,0xe0(%rsp)
+   2aef4:	00 
+   2aef5:	48 8d 87 40 04 00 00 	lea    0x440(%rdi),%rax
+   2aefc:	62 61 fd 08 6e f8    	vmovq  %rax,%xmm31
+   2af02:	62 61 fd 08 7e f0    	vmovq  %xmm30,%rax
+   2af08:	c5 f8 98 d2          	kortestw %k2,%k2
+   2af0c:	48 63 34 18          	movslq (%rax,%rbx,1),%rsi
+   2af10:	62 e1 fd 08 7e e0    	vmovq  %xmm20,%rax
+   2af16:	c5 8a 59 0c 18       	vmulss (%rax,%rbx,1),%xmm14,%xmm1
+   2af1b:	48 8b 84 24 20 01 00 	mov    0x120(%rsp),%rax
+   2af22:	00 
+   2af23:	8d 14 76             	lea    (%rsi,%rsi,2),%edx
+   2af26:	c5 8a 59 04 18       	vmulss (%rax,%rbx,1),%xmm14,%xmm0
+   2af2b:	0f 84 2f 06 00 00    	je     2b560 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0xd50>
+   2af31:	8d 04 12             	lea    (%rdx,%rdx,1),%eax
+   2af34:	48 63 f8             	movslq %eax,%rdi
+   2af37:	ff c0                	inc    %eax
+   2af39:	48 98                	cltq
+   2af3b:	49 0f af fa          	imul   %r10,%rdi
+   2af3f:	49 0f af c2          	imul   %r10,%rax
+   2af43:	80 bc 24 28 01 00 00 	cmpb   $0x0,0x128(%rsp)
+   2af4a:	00 
+   2af4b:	0f 84 df 06 00 00    	je     2b630 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0xe20>
+   2af51:	4c 8b a4 24 10 01 00 	mov    0x110(%rsp),%r12
+   2af58:	00 
+   2af59:	48 8b 8c 24 30 01 00 	mov    0x130(%rsp),%rcx
+   2af60:	00 
+   2af61:	62 b1 7c ca 10 14 a1 	vmovups (%rcx,%r12,4),%zmm2{%k2}{z}
+   2af68:	48 8b 4d 18          	mov    0x18(%rbp),%rcx
+   2af6c:	4c 01 e7             	add    %r12,%rdi
+   2af6f:	4c 01 e0             	add    %r12,%rax
+   2af72:	62 91 7c ca 10 6c a5 	vmovups 0x0(%r13,%r12,4),%zmm5{%k2}{z}
+   2af79:	00 
+   2af7a:	62 f1 7c ca 10 1c b9 	vmovups (%rcx,%rdi,4),%zmm3{%k2}{z}
+   2af81:	62 f1 7c ca 10 24 81 	vmovups (%rcx,%rax,4),%zmm4{%k2}{z}
+   2af88:	62 f2 7d 48 18 c9    	vbroadcastss %xmm1,%zmm1
+   2af8e:	8d 44 12 02          	lea    0x2(%rdx,%rdx,1),%eax
+   2af92:	62 f2 7d 48 18 c0    	vbroadcastss %xmm0,%zmm0
+   2af98:	62 f2 75 48 b8 d3    	vfmadd231ps %zmm3,%zmm1,%zmm2
+   2af9e:	48 63 f8             	movslq %eax,%rdi
+   2afa1:	49 0f af fa          	imul   %r10,%rdi
+   2afa5:	62 f2 7d 48 bc d4    	vfnmadd231ps %zmm4,%zmm0,%zmm2
+   2afab:	62 f2 55 48 98 e1    	vfmadd132ps %zmm1,%zmm5,%zmm4
+   2afb1:	48 89 bc 24 38 01 00 	mov    %rdi,0x138(%rsp)
+   2afb8:	00 
+   2afb9:	8d 78 01             	lea    0x1(%rax),%edi
+   2afbc:	48 63 ff             	movslq %edi,%rdi
+   2afbf:	49 0f af fa          	imul   %r10,%rdi
+   2afc3:	80 bc 24 28 01 00 00 	cmpb   $0x0,0x128(%rsp)
+   2afca:	00 
+   2afcb:	62 f2 5d 48 98 d8    	vfmadd132ps %zmm0,%zmm4,%zmm3
+   2afd1:	62 f1 7c 48 29 54 24 	vmovaps %zmm2,0x140(%rsp)
+   2afd8:	05 
+   2afd9:	62 f1 7c 48 29 5c 24 	vmovaps %zmm3,0x200(%rsp)
+   2afe0:	08 
+   2afe1:	0f 84 c9 05 00 00    	je     2b5b0 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0xda0>
+   2afe7:	4c 8b a4 24 10 01 00 	mov    0x110(%rsp),%r12
+   2afee:	00 
+   2afef:	48 8b 4c 24 78       	mov    0x78(%rsp),%rcx
+   2aff4:	4c 01 e1             	add    %r12,%rcx
+   2aff7:	4c 8b a4 24 30 01 00 	mov    0x130(%rsp),%r12
+   2affe:	00 
+   2afff:	62 d1 7c ca 10 6c 8d 	vmovups 0x0(%r13,%rcx,4),%zmm5{%k2}{z}
+   2b006:	00 
+   2b007:	62 d1 7c ca 10 14 8c 	vmovups (%r12,%rcx,4),%zmm2{%k2}{z}
+   2b00e:	48 8b 8c 24 10 01 00 	mov    0x110(%rsp),%rcx
+   2b015:	00 
+   2b016:	4c 8b a4 24 38 01 00 	mov    0x138(%rsp),%r12
+   2b01d:	00 
+   2b01e:	49 01 cc             	add    %rcx,%r12
+   2b021:	48 8b 4d 18          	mov    0x18(%rbp),%rcx
+   2b025:	62 b1 7c ca 10 1c a1 	vmovups (%rcx,%r12,4),%zmm3{%k2}{z}
+   2b02c:	48 8b 8c 24 10 01 00 	mov    0x110(%rsp),%rcx
+   2b033:	00 
+   2b034:	48 01 cf             	add    %rcx,%rdi
+   2b037:	48 8b 4d 18          	mov    0x18(%rbp),%rcx
+   2b03b:	62 f1 7c ca 10 24 b9 	vmovups (%rcx,%rdi,4),%zmm4{%k2}{z}
+   2b042:	62 f2 75 48 b8 d3    	vfmadd231ps %zmm3,%zmm1,%zmm2
+   2b048:	8d 78 02             	lea    0x2(%rax),%edi
+   2b04b:	83 c0 03             	add    $0x3,%eax
+   2b04e:	48 63 ff             	movslq %edi,%rdi
+   2b051:	48 98                	cltq
+   2b053:	49 0f af fa          	imul   %r10,%rdi
+   2b057:	49 0f af c2          	imul   %r10,%rax
+   2b05b:	80 bc 24 28 01 00 00 	cmpb   $0x0,0x128(%rsp)
+   2b062:	00 
+   2b063:	62 f2 7d 48 bc d4    	vfnmadd231ps %zmm4,%zmm0,%zmm2
+   2b069:	62 f2 55 48 98 e1    	vfmadd132ps %zmm1,%zmm5,%zmm4
+   2b06f:	62 f2 5d 48 98 d8    	vfmadd132ps %zmm0,%zmm4,%zmm3
+   2b075:	62 f1 7c 48 29 54 24 	vmovaps %zmm2,0x180(%rsp)
+   2b07c:	06 
+   2b07d:	62 f1 7c 48 29 5c 24 	vmovaps %zmm3,0x240(%rsp)
+   2b084:	09 
+   2b085:	0f 85 05 06 00 00    	jne    2b690 <void lqcd_native::x86::wilson_avx512_impl<true, int, true, true>(int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, unsigned long, int const*)+0xe80>
+   2b08b:	48 8b 8c 24 80 00 00 	mov    0x80(%rsp),%rcx
+   2b092:	00 
+   2b093:	4c 8b a4 24 30 01 00 	mov    0x130(%rsp),%r12
+   2b09a:	00 
+   2b09b:	c5 f8 90 ea          	kmovw  %k2,%k5
+   2b09f:	62 f1 7c 48 28 ee    	vmovaps %zmm6,%zmm5
+   2b0a5:	c5 f8 90 e2          	kmovw  %k2,%k4
+   2b0a9:	c5 f8 90 f2          	kmovw  %k2,%k6
+   2b0ad:	62 f1 7c 48 28 de    	vmovaps %zmm6,%zmm3
+   2b0b3:	62 f1 7c 48 28 d6    	vmovaps %zmm6,%zmm2
+   2b0b9:	c5 f8 90 fa          	kmovw  %k2,%k7
+   2b0bd:	62 f1 7c 48 28 e6    	vmovaps %zmm6,%zmm4
+   2b0c3:	49 01 cc             	add    %rcx,%r12
+   2b0c6:	4c 01 e9             	add    %r13,%rcx
+   2b0c9:	62 b2 7d 4d 92 2c b9 	vgatherdps (%rcx,%zmm15,4),%zmm5{%k5}
+   2b0d0:	48 8b 4d 18          	mov    0x18(%rbp),%rcx
+   2b0d4:	62 92 7d 4c 92 1c bc 	vgatherdps (%r12,%zmm15,4),%zmm3{%k4}
+   2b0db:	48 8d 3c b9          	lea    (%rcx,%rdi,4),%rdi
+   2b0df:	48 8d 04 81          	lea    (%rcx,%rax,4),%rax
+   2b0e3:	62 b2 7d 4e 92 14 bf 	vgatherdps (%rdi,%zmm15,4),%zmm2{%k6}
+   2b0ea:	62 b2 7d 4f 92 24 b8 	vgatherdps (%rax,%zmm15,4),%zmm4{%k7}
+   2b0f1:	62 f2 75 48 b8 da    	vfmadd231ps %zmm2,%zmm1,%zmm3
+   2b0f7:	62 f2 55 48 98 cc    	vfmadd132ps %zmm4,%zmm5,%zmm1
+   2b0fd:	62                   	.byte 0x62
+   2b0fe:	f2                   	repnz
+   2b0ff:	7d                   	.byte 0x7d

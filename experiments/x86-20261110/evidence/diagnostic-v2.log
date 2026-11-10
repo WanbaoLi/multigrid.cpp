@@ -1,0 +1,1861 @@
+{
+  "mpi_launcher": "openmpi",
+  "topology": {
+    "ranks": 16,
+    "ranks_per_numa": 2,
+    "threads_per_rank": [
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16,
+      16
+    ],
+    "grid": [
+      1,
+      1,
+      1,
+      16
+    ],
+    "lattice": [
+      24,
+      24,
+      24,
+      64
+    ],
+    "block": [
+      6,
+      6,
+      6,
+      4
+    ],
+    "host": "node5005",
+    "placement": [
+      {
+        "rank": 0,
+        "node": 0,
+        "numa_partition": 0,
+        "ranks_per_numa": 2,
+        "cpus": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 1,
+        "node": 0,
+        "numa_partition": 1,
+        "ranks_per_numa": 2,
+        "cpus": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 2,
+        "node": 1,
+        "numa_partition": 0,
+        "ranks_per_numa": 2,
+        "cpus": [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 3,
+        "node": 1,
+        "numa_partition": 1,
+        "ranks_per_numa": 2,
+        "cpus": [
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 4,
+        "node": 2,
+        "numa_partition": 0,
+        "ranks_per_numa": 2,
+        "cpus": [
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 5,
+        "node": 2,
+        "numa_partition": 1,
+        "ranks_per_numa": 2,
+        "cpus": [
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 6,
+        "node": 3,
+        "numa_partition": 0,
+        "ranks_per_numa": 2,
+        "cpus": [
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 7,
+        "node": 3,
+        "numa_partition": 1,
+        "ranks_per_numa": 2,
+        "cpus": [
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 8,
+        "node": 4,
+        "numa_partition": 0,
+        "ranks_per_numa": 2,
+        "cpus": [
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142,
+          143
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 9,
+        "node": 4,
+        "numa_partition": 1,
+        "ranks_per_numa": 2,
+        "cpus": [
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          152,
+          153,
+          154,
+          155,
+          156,
+          157,
+          158,
+          159
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 10,
+        "node": 5,
+        "numa_partition": 0,
+        "ranks_per_numa": 2,
+        "cpus": [
+          160,
+          161,
+          162,
+          163,
+          164,
+          165,
+          166,
+          167,
+          168,
+          169,
+          170,
+          171,
+          172,
+          173,
+          174,
+          175
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 11,
+        "node": 5,
+        "numa_partition": 1,
+        "ranks_per_numa": 2,
+        "cpus": [
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          185,
+          186,
+          187,
+          188,
+          189,
+          190,
+          191
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 12,
+        "node": 6,
+        "numa_partition": 0,
+        "ranks_per_numa": 2,
+        "cpus": [
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199,
+          200,
+          201,
+          202,
+          203,
+          204,
+          205,
+          206,
+          207
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 13,
+        "node": 6,
+        "numa_partition": 1,
+        "ranks_per_numa": 2,
+        "cpus": [
+          208,
+          209,
+          210,
+          211,
+          212,
+          213,
+          214,
+          215,
+          216,
+          217,
+          218,
+          219,
+          220,
+          221,
+          222,
+          223
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 14,
+        "node": 7,
+        "numa_partition": 0,
+        "ranks_per_numa": 2,
+        "cpus": [
+          224,
+          225,
+          226,
+          227,
+          228,
+          229,
+          230,
+          231,
+          232,
+          233,
+          234,
+          235,
+          236,
+          237,
+          238,
+          239
+        ],
+        "available_physical_cores": 32
+      },
+      {
+        "rank": 15,
+        "node": 7,
+        "numa_partition": 1,
+        "ranks_per_numa": 2,
+        "cpus": [
+          240,
+          241,
+          242,
+          243,
+          244,
+          245,
+          246,
+          247,
+          248,
+          249,
+          250,
+          251,
+          252,
+          253,
+          254,
+          255
+        ],
+        "available_physical_cores": 32
+      }
+    ]
+  },
+  "rank_environments": [
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "0",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "0",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{32},{33},{34},{35},{36},{37},{38},{39},{40},{41},{42},{43},{44},{45},{46},{47}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "1",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{48},{49},{50},{51},{52},{53},{54},{55},{56},{57},{58},{59},{60},{61},{62},{63}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "1",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{64},{65},{66},{67},{68},{69},{70},{71},{72},{73},{74},{75},{76},{77},{78},{79}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "2",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{80},{81},{82},{83},{84},{85},{86},{87},{88},{89},{90},{91},{92},{93},{94},{95}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "2",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{96},{97},{98},{99},{100},{101},{102},{103},{104},{105},{106},{107},{108},{109},{110},{111}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "3",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{112},{113},{114},{115},{116},{117},{118},{119},{120},{121},{122},{123},{124},{125},{126},{127}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "3",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{128},{129},{130},{131},{132},{133},{134},{135},{136},{137},{138},{139},{140},{141},{142},{143}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "4",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{144},{145},{146},{147},{148},{149},{150},{151},{152},{153},{154},{155},{156},{157},{158},{159}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "4",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{160},{161},{162},{163},{164},{165},{166},{167},{168},{169},{170},{171},{172},{173},{174},{175}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "5",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{176},{177},{178},{179},{180},{181},{182},{183},{184},{185},{186},{187},{188},{189},{190},{191}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "5",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{192},{193},{194},{195},{196},{197},{198},{199},{200},{201},{202},{203},{204},{205},{206},{207}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "6",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{208},{209},{210},{211},{212},{213},{214},{215},{216},{217},{218},{219},{220},{221},{222},{223}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "6",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{224},{225},{226},{227},{228},{229},{230},{231},{232},{233},{234},{235},{236},{237},{238},{239}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "7",
+      "LQCD_CPU_THREADS": "16"
+    },
+    {
+      "OMP_NUM_THREADS": "16",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{240},{241},{242},{243},{244},{245},{246},{247},{248},{249},{250},{251},{252},{253},{254},{255}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "7",
+      "LQCD_CPU_THREADS": "16"
+    }
+  ],
+  "launch_command": "mpirun --host localhost:16 -n 16 --bind-to none /public2/home/lwb_720/miniconda3/envs/pyquda/bin/python /public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/source/tools/run_numa.py --_rank '{\"ranks\":16,\"ranks_per_numa\":2,\"threads_per_rank\":[16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16],\"grid\":[1,1,1,16],\"lattice\":[24,24,24,64],\"block\":[6,6,6,4],\"host\":\"node5005\",\"placement\":[{\"rank\":0,\"node\":0,\"numa_partition\":0,\"ranks_per_numa\":2,\"cpus\":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],\"available_physical_cores\":32},{\"rank\":1,\"node\":0,\"numa_partition\":1,\"ranks_per_numa\":2,\"cpus\":[16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],\"available_physical_cores\":32},{\"rank\":2,\"node\":1,\"numa_partition\":0,\"ranks_per_numa\":2,\"cpus\":[32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47],\"available_physical_cores\":32},{\"rank\":3,\"node\":1,\"numa_partition\":1,\"ranks_per_numa\":2,\"cpus\":[48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63],\"available_physical_cores\":32},{\"rank\":4,\"node\":2,\"numa_partition\":0,\"ranks_per_numa\":2,\"cpus\":[64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79],\"available_physical_cores\":32},{\"rank\":5,\"node\":2,\"numa_partition\":1,\"ranks_per_numa\":2,\"cpus\":[80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95],\"available_physical_cores\":32},{\"rank\":6,\"node\":3,\"numa_partition\":0,\"ranks_per_numa\":2,\"cpus\":[96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111],\"available_physical_cores\":32},{\"rank\":7,\"node\":3,\"numa_partition\":1,\"ranks_per_numa\":2,\"cpus\":[112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127],\"available_physical_cores\":32},{\"rank\":8,\"node\":4,\"numa_partition\":0,\"ranks_per_numa\":2,\"cpus\":[128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143],\"available_physical_cores\":32},{\"rank\":9,\"node\":4,\"numa_partition\":1,\"ranks_per_numa\":2,\"cpus\":[144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159],\"available_physical_cores\":32},{\"rank\":10,\"node\":5,\"numa_partition\":0,\"ranks_per_numa\":2,\"cpus\":[160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175],\"available_physical_cores\":32},{\"rank\":11,\"node\":5,\"numa_partition\":1,\"ranks_per_numa\":2,\"cpus\":[176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191],\"available_physical_cores\":32},{\"rank\":12,\"node\":6,\"numa_partition\":0,\"ranks_per_numa\":2,\"cpus\":[192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207],\"available_physical_cores\":32},{\"rank\":13,\"node\":6,\"numa_partition\":1,\"ranks_per_numa\":2,\"cpus\":[208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223],\"available_physical_cores\":32},{\"rank\":14,\"node\":7,\"numa_partition\":0,\"ranks_per_numa\":2,\"cpus\":[224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239],\"available_physical_cores\":32},{\"rank\":15,\"node\":7,\"numa_partition\":1,\"ranks_per_numa\":2,\"cpus\":[240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255],\"available_physical_cores\":32}]}' /public2/home/lwb_720/miniconda3/envs/pyquda/bin/python -u /public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/source/tools/optimization/profile_full12.py --benchmark /public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/source/tools/optimization/bench_full12.py --profile-output /public2/home/lwb_720/.cache/mg-x86-20261110/perf-v2 --diagnostic --fixture /public2/home/lwb_720/.cache/mg-opt-20261103/fixture-ls-canonical --plan /public2/home/lwb_720/.cache/mg-x86-20261110/plan.json --library /public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/000-delivery-tests/build/liblqcd_cpu.so --backend x86 --output /public2/home/lwb_720/.cache/mg-x86-20261110/diagnostic-v2 --allocation node5005-20261110 --snapshot-sha 833f8732f6b06e370074efbb610fc7a85fe11a46 --repeats 3"
+}
+native setup update=inverse sap_cycles=12 adaptive_steps=0 sap_eo=1 coarse_eo=1
+setup vector 1 norm setup vector 87.9317
+setup vector 1 norm 87.9317
+1 norm setup vector 87.93171 norm 
+87.9317
+setup vector setup vector 1 norm setup vector setup vector setup vector 1 norm setup vector 1 norm setup vector 87.9317
+1 norm setup vector 87.9317
+87.9317
+setup vector 87.9317
+1 norm setup vector setup vector setup vector 1 norm 87.9317
+1 norm 87.931787.9317
+1 norm 87.9317
+1 norm 87.93171 norm 
+1 norm 1 norm 87.9317
+
+87.931787.9317
+
+setup vector setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+setup vector 2 norm 86.5116
+2 norm 86.5116
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 3 norm 89.3287
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 4 norm 87.6957
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 5 norm 87.9382
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 6 norm 88.6822
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 7 norm 89.5573
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 8 norm 89.5933
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 9 norm 90.069
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 10 norm 87.0594
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 11 norm 87.5469
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 12 norm 88.7709
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 13 norm 88.813
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 14 norm 89.8863
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 15 norm 86.9404
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 16 norm 87.6246
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 17 norm 89.2465
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 18 norm 87.7514
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 19 norm 87.8747
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 20 norm 89.2337
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 21 norm 85.957
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 22 norm 87.9753
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 23 norm 88.2655
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+setup vector 24 norm 87.6472
+native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+native setup update=inverse sap_cycles=0 adaptive_steps=3 sap_eo=1 coarse_eo=1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 1 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 2 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 3 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 4 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 5 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 6 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 7 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 8 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 9 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 10 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 11 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 12 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 13 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 14 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 15 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 16 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 17 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 18 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 19 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 20 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 21 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 22 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 23 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+setup vector 24 norm 1
+native EO gates clover_inverse=8.64784e-08 Schur_reconstruction=1.54483e-07
+native coarse EO gate Schur_reconstruction=2.68208e-07
+native gates double=native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+native gates double=1.7127e-16 fine=native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+native gates double=1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+1.7127e-16 fine=9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+9.18485e-08 R*P=4.96761e-09 RAP=2.93247e-07
+
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":125,"send_bytes":610467840,"pack_post_s":0.0241797147319,"wait_s":0.131430877373,"interior_s":0.142050816678,"boundary_s":0.113244172186,"compute_all_s":0,"overlap_region_s":0.305821020156,"total_s":0.433134083636},"coarse":{"calls":2008,"send_bytes":98697216,"pack_post_s":0.00580544490367,"wait_s":0.0339894983917,"interior_s":0,"boundary_s":0,"compute_all_s":0.0613855058327,"overlap_region_s":0,"total_s":0.099513983354}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0194323314354,"wait_s":0.111575654708,"interior_s":0.124005279504,"boundary_s":0.101138125174,"compute_all_s":0,"overlap_region_s":0.239785526879,"total_s":0.354620098136},"coarse":{"calls":1920,"send_bytes":94371840,"pack_post_s":0.00542550813407,"wait_s":0.0233895517886,"interior_s":0,"boundary_s":0,"compute_all_s":0.0587442433462,"overlap_region_s":0,"total_s":0.0840288586915}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0197423361242,"wait_s":0.111372907646,"interior_s":0.124345007353,"boundary_s":0.101805741899,"compute_all_s":0,"overlap_region_s":0.239163985476,"total_s":0.353809422813},"coarse":{"calls":1870,"send_bytes":91914240,"pack_post_s":0.00507024489343,"wait_s":0.0221600187942,"interior_s":0,"boundary_s":0,"compute_all_s":0.0557615552098,"overlap_region_s":0,"total_s":0.0814395733178}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0195299731568,"wait_s":0.110278047621,"interior_s":0.124206019565,"boundary_s":0.101809035055,"compute_all_s":0,"overlap_region_s":0.239898906089,"total_s":0.354550889693},"coarse":{"calls":1930,"send_bytes":94863360,"pack_post_s":0.00504304096103,"wait_s":0.0213961033151,"interior_s":0,"boundary_s":0,"compute_all_s":0.0572580061853,"overlap_region_s":0,"total_s":0.0825035311282}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":110,"send_bytes":570654720,"pack_post_s":0.0200330726802,"wait_s":0.113668311387,"interior_s":0.125766799785,"boundary_s":0.103169175796,"compute_all_s":0,"overlap_region_s":0.246838498861,"total_s":0.364282288589},"coarse":{"calls":1972,"send_bytes":96927744,"pack_post_s":0.00563991442323,"wait_s":0.0222535654902,"interior_s":0,"boundary_s":0,"compute_all_s":0.0615825420246,"overlap_region_s":0,"total_s":0.0850003315136}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0193491280079,"wait_s":0.128462464549,"interior_s":0.122517807409,"boundary_s":0.111460766755,"compute_all_s":0,"overlap_region_s":0.258164258674,"total_s":0.372777365148},"coarse":{"calls":1930,"send_bytes":94863360,"pack_post_s":0.00527477636933,"wait_s":0.020527667366,"interior_s":0,"boundary_s":0,"compute_all_s":0.0572854969651,"overlap_region_s":0,"total_s":0.0816895104945}}
+FULL12 {"case": "full12", "repeat": 0, "warmup": true, "wall_seconds": 6.341668977402151, "stats": [{"converged": 1, "iterations": 25, "refinement_steps": 0, "solver_seconds": 1.1791123900000002, "api_seconds": 1.1989280850000057, "true_residual": 5.732975009440352e-10, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 1.1791123900000002, "api_seconds": 1.1989280850000057, "true_residual": 6.865958725303117e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9997432269999962, "api_seconds": 1.0157644060000024, "true_residual": 8.381917631207028e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9997432269999962, "api_seconds": 1.0157644060000024, "true_residual": 6.830417362685671e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9843980629999862, "api_seconds": 1.0000362870000004, "true_residual": 8.221039583464793e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9843980629999862, "api_seconds": 1.0000362870000004, "true_residual": 9.16976299181665e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9973015710000084, "api_seconds": 1.0129083080000072, "true_residual": 7.945161695486063e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9973015710000084, "api_seconds": 1.0129083080000072, "true_residual": 5.573108995053646e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 22, "refinement_steps": 0, "solver_seconds": 1.0221605560000029, "api_seconds": 1.0376502670000036, "true_residual": 5.4784408513205535e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 1.0221605560000029, "api_seconds": 1.0376502670000036, "true_residual": 7.740955541290188e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 1.0135138770000083, "api_seconds": 1.0290238489999979, "true_residual": 7.94573206664401e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 1.0135138770000083, "api_seconds": 1.0290238489999979, "true_residual": 5.22057802712588e-09, "batch_size": 2, "timing_scope": "shared_batch"}], "order_in_round": 0}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":125,"send_bytes":610467840,"pack_post_s":0.0212147245184,"wait_s":0.121770690195,"interior_s":0.137869448401,"boundary_s":0.115013204515,"compute_all_s":0,"overlap_region_s":0.263994863257,"total_s":0.392489200458},"coarse":{"calls":2008,"send_bytes":98697216,"pack_post_s":0.00585191790015,"wait_s":0.0210395045578,"interior_s":0,"boundary_s":0,"compute_all_s":0.0618932358921,"overlap_region_s":0,"total_s":0.0854110065848}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0193585585803,"wait_s":0.114190181717,"interior_s":0.124357602559,"boundary_s":0.100682494231,"compute_all_s":0,"overlap_region_s":0.240284887142,"total_s":0.353849969804},"coarse":{"calls":1920,"send_bytes":94371840,"pack_post_s":0.00521983765066,"wait_s":0.0217409981415,"interior_s":0,"boundary_s":0,"compute_all_s":0.0578129207715,"overlap_region_s":0,"total_s":0.0821009557694}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0197745757177,"wait_s":0.110027342103,"interior_s":0.122663737275,"boundary_s":0.10000423342,"compute_all_s":0,"overlap_region_s":0.240125845186,"total_s":0.35385445971},"coarse":{"calls":1870,"send_bytes":91914240,"pack_post_s":0.00545734912157,"wait_s":0.0224007954821,"interior_s":0,"boundary_s":0,"compute_all_s":0.0558271892369,"overlap_region_s":0,"total_s":0.0814851429313}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0200810106471,"wait_s":0.112630520947,"interior_s":0.125084552914,"boundary_s":0.101029775105,"compute_all_s":0,"overlap_region_s":0.240669728257,"total_s":0.354843458161},"coarse":{"calls":1930,"send_bytes":94863360,"pack_post_s":0.00551902968436,"wait_s":0.0217336099595,"interior_s":0,"boundary_s":0,"compute_all_s":0.0569252334535,"overlap_region_s":0,"total_s":0.0827253321186}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":110,"send_bytes":570654720,"pack_post_s":0.020508620888,"wait_s":0.116001666524,"interior_s":0.13148901239,"boundary_s":0.102913515642,"compute_all_s":0,"overlap_region_s":0.246307393536,"total_s":0.363762624562},"coarse":{"calls":1972,"send_bytes":96927744,"pack_post_s":0.00569131504744,"wait_s":0.0223075868562,"interior_s":0,"boundary_s":0,"compute_all_s":0.058158736676,"overlap_region_s":0,"total_s":0.0842601349577}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0197855131701,"wait_s":0.114054453559,"interior_s":0.121815572493,"boundary_s":0.102811550722,"compute_all_s":0,"overlap_region_s":0.240740898997,"total_s":0.354341530241},"coarse":{"calls":1930,"send_bytes":94863360,"pack_post_s":0.00509550049901,"wait_s":0.0197369074449,"interior_s":0,"boundary_s":0,"compute_all_s":0.0566980065778,"overlap_region_s":0,"total_s":0.0804809993133}}
+FULL12 {"case": "full12", "repeat": 1, "warmup": false, "wall_seconds": 6.224667561240494, "stats": [{"converged": 1, "iterations": 25, "refinement_steps": 0, "solver_seconds": 1.0957948860000073, "api_seconds": 1.111980542000012, "true_residual": 5.732975009440352e-10, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 1.0957948860000073, "api_seconds": 1.111980542000012, "true_residual": 6.865958725303116e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9916583809999935, "api_seconds": 1.0072082719999997, "true_residual": 8.38191763120703e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9916583809999935, "api_seconds": 1.0072082719999997, "true_residual": 6.830417362685671e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9906102470000064, "api_seconds": 1.0061004490000016, "true_residual": 8.221039583464793e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9906102470000064, "api_seconds": 1.0061004490000016, "true_residual": 9.16976299181665e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9948000170000029, "api_seconds": 1.0103115699999847, "true_residual": 7.945161695486063e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9948000170000029, "api_seconds": 1.0103115699999847, "true_residual": 5.573108995053646e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 22, "refinement_steps": 0, "solver_seconds": 1.0183455600000002, "api_seconds": 1.0341975750000074, "true_residual": 5.478440851320553e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 1.0183455600000002, "api_seconds": 1.0341975750000074, "true_residual": 7.740955794334233e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9936612270000182, "api_seconds": 1.009119580999993, "true_residual": 7.945732066644009e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9936612270000182, "api_seconds": 1.009119580999993, "true_residual": 5.22057802712588e-09, "batch_size": 2, "timing_scope": "shared_batch"}], "order_in_round": 0}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":125,"send_bytes":610467840,"pack_post_s":0.0216288026422,"wait_s":0.124101983383,"interior_s":0.138510304503,"boundary_s":0.112815011293,"compute_all_s":0,"overlap_region_s":0.264999207109,"total_s":0.393137275241},"coarse":{"calls":2008,"send_bytes":98697216,"pack_post_s":0.00578022561967,"wait_s":0.0245785694569,"interior_s":0,"boundary_s":0,"compute_all_s":0.0629364605993,"overlap_region_s":0,"total_s":0.0885030757636}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0202345177531,"wait_s":0.114262929186,"interior_s":0.126677325927,"boundary_s":0.098855195567,"compute_all_s":0,"overlap_region_s":0.240676339716,"total_s":0.354498956352},"coarse":{"calls":1920,"send_bytes":94371840,"pack_post_s":0.00510956719518,"wait_s":0.0216781981289,"interior_s":0,"boundary_s":0,"compute_all_s":0.0563280349597,"overlap_region_s":0,"total_s":0.0819401266053}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0202220920473,"wait_s":0.11041576229,"interior_s":0.123211217113,"boundary_s":0.102402744815,"compute_all_s":0,"overlap_region_s":0.238215462305,"total_s":0.353344077244},"coarse":{"calls":1870,"send_bytes":91914240,"pack_post_s":0.00530006550252,"wait_s":0.0270495219156,"interior_s":0,"boundary_s":0,"compute_all_s":0.0555183198303,"overlap_region_s":0,"total_s":0.0857796631753}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0202716505155,"wait_s":0.113331791013,"interior_s":0.126087796874,"boundary_s":0.100699233823,"compute_all_s":0,"overlap_region_s":0.240010206588,"total_s":0.355025693774},"coarse":{"calls":1930,"send_bytes":94863360,"pack_post_s":0.0055577699095,"wait_s":0.0209591109306,"interior_s":0,"boundary_s":0,"compute_all_s":0.0568099608645,"overlap_region_s":0,"total_s":0.0815916620195}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":110,"send_bytes":570654720,"pack_post_s":0.0202008653432,"wait_s":0.116159471683,"interior_s":0.128943439573,"boundary_s":0.105285781436,"compute_all_s":0,"overlap_region_s":0.247245604172,"total_s":0.364137654193},"coarse":{"calls":1972,"send_bytes":96927744,"pack_post_s":0.00571211054921,"wait_s":0.0233163796365,"interior_s":0,"boundary_s":0,"compute_all_s":0.0582124656066,"overlap_region_s":0,"total_s":0.085442523472}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.020010586828,"wait_s":0.111249075271,"interior_s":0.12157709524,"boundary_s":0.0989631870762,"compute_all_s":0,"overlap_region_s":0.241780338809,"total_s":0.35459851101},"coarse":{"calls":1930,"send_bytes":94863360,"pack_post_s":0.00503947213292,"wait_s":0.0216075228527,"interior_s":0,"boundary_s":0,"compute_all_s":0.0568203916773,"overlap_region_s":0,"total_s":0.0824926933274}}
+FULL12 {"case": "full12", "repeat": 2, "warmup": false, "wall_seconds": 6.256964320316911, "stats": [{"converged": 1, "iterations": 25, "refinement_steps": 0, "solver_seconds": 1.0980072560000167, "api_seconds": 1.1134378689999949, "true_residual": 5.732975009440352e-10, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 1.0980072560000167, "api_seconds": 1.1134378689999949, "true_residual": 6.865958725303117e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9989443169999959, "api_seconds": 1.0145667870000068, "true_residual": 8.38191763120703e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9989443169999959, "api_seconds": 1.0145667870000068, "true_residual": 6.830417362685671e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 1.0044595059999892, "api_seconds": 1.020424921, "true_residual": 8.221039583464793e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 1.0044595059999892, "api_seconds": 1.020424921, "true_residual": 9.16976299181665e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.995859567000025, "api_seconds": 1.0114120619999767, "true_residual": 7.945161695486063e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.995859567000025, "api_seconds": 1.0114120619999767, "true_residual": 5.573108995053646e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 22, "refinement_steps": 0, "solver_seconds": 1.0227764509999986, "api_seconds": 1.0383455609999999, "true_residual": 5.478440851320553e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 1.0227764509999986, "api_seconds": 1.0383455609999999, "true_residual": 7.740955541290188e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9972048369999982, "api_seconds": 1.0127552079999873, "true_residual": 7.945732066644009e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9972048369999982, "api_seconds": 1.0127552079999873, "true_residual": 5.220579166420961e-09, "batch_size": 2, "timing_scope": "shared_batch"}], "order_in_round": 0}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":125,"send_bytes":610467840,"pack_post_s":0.0215580686927,"wait_s":0.122384871356,"interior_s":0.135791491717,"boundary_s":0.112124791369,"compute_all_s":0,"overlap_region_s":0.26720432099,"total_s":0.393611356616},"coarse":{"calls":2008,"send_bytes":98697216,"pack_post_s":0.005899136886,"wait_s":0.0231276499107,"interior_s":0,"boundary_s":0,"compute_all_s":0.0621965546161,"overlap_region_s":0,"total_s":0.0871740924194}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0195936206728,"wait_s":0.111408884637,"interior_s":0.12710493058,"boundary_s":0.102674764581,"compute_all_s":0,"overlap_region_s":0.239978962578,"total_s":0.354460840113},"coarse":{"calls":1920,"send_bytes":94371840,"pack_post_s":0.00521431583911,"wait_s":0.0212263949215,"interior_s":0,"boundary_s":0,"compute_all_s":0.0584795875475,"overlap_region_s":0,"total_s":0.0823671706021}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.019493910484,"wait_s":0.109879058786,"interior_s":0.124220462516,"boundary_s":0.101861325093,"compute_all_s":0,"overlap_region_s":0.241185624152,"total_s":0.35483228974},"coarse":{"calls":1870,"send_bytes":91914240,"pack_post_s":0.00542183499783,"wait_s":0.0203180788085,"interior_s":0,"boundary_s":0,"compute_all_s":0.0560294911265,"overlap_region_s":0,"total_s":0.0798917906359}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.020154165104,"wait_s":0.109905303456,"interior_s":0.124504751526,"boundary_s":0.099830435589,"compute_all_s":0,"overlap_region_s":0.240306719206,"total_s":0.354761402123},"coarse":{"calls":1930,"send_bytes":94863360,"pack_post_s":0.0053633954376,"wait_s":0.0227701338008,"interior_s":0,"boundary_s":0,"compute_all_s":0.0598417548463,"overlap_region_s":0,"total_s":0.08418531809}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":110,"send_bytes":570654720,"pack_post_s":0.020709878765,"wait_s":0.113744357601,"interior_s":0.128777159378,"boundary_s":0.103909519501,"compute_all_s":0,"overlap_region_s":0.245453477837,"total_s":0.363896639086},"coarse":{"calls":1972,"send_bytes":96927744,"pack_post_s":0.00573140010238,"wait_s":0.0217333240435,"interior_s":0,"boundary_s":0,"compute_all_s":0.0592042505741,"overlap_region_s":0,"total_s":0.0849401699379}}
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0202263491228,"wait_s":0.111494849436,"interior_s":0.123659961857,"boundary_s":0.101118295453,"compute_all_s":0,"overlap_region_s":0.240040020086,"total_s":0.354791687801},"coarse":{"calls":1930,"send_bytes":94863360,"pack_post_s":0.00521535333246,"wait_s":0.0202164370567,"interior_s":0,"boundary_s":0,"compute_all_s":0.0577650656924,"overlap_region_s":0,"total_s":0.0817658593878}}
+FULL12 {"case": "full12", "repeat": 3, "warmup": false, "wall_seconds": 6.237299303524196, "stats": [{"converged": 1, "iterations": 25, "refinement_steps": 0, "solver_seconds": 1.1033506680000187, "api_seconds": 1.1187620110000012, "true_residual": 5.732975009440352e-10, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 1.1033506680000187, "api_seconds": 1.1187620110000012, "true_residual": 6.865958725303117e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9948246539999843, "api_seconds": 1.0103601739999988, "true_residual": 8.38191763120703e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9948246539999843, "api_seconds": 1.0103601739999988, "true_residual": 6.830417362685671e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9916812950000065, "api_seconds": 1.0074729399999853, "true_residual": 8.221039583464793e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9916812950000065, "api_seconds": 1.0074729399999853, "true_residual": 9.16976299181665e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9980567559999827, "api_seconds": 1.0136465570000155, "true_residual": 7.945161695486063e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9980567559999827, "api_seconds": 1.0136465570000155, "true_residual": 5.573108995053646e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 22, "refinement_steps": 0, "solver_seconds": 1.0180009419999863, "api_seconds": 1.0338627620000125, "true_residual": 5.478440851320553e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 1.0180009419999863, "api_seconds": 1.0338627620000125, "true_residual": 7.740955541290188e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9910305979999805, "api_seconds": 1.0065954319999832, "true_residual": 7.94573206664401e-09, "batch_size": 2, "timing_scope": "shared_batch"}, {"converged": 1, "iterations": 21, "refinement_steps": 0, "solver_seconds": 0.9910305979999805, "api_seconds": 1.0065954319999832, "true_residual": 5.220579166420961e-09, "batch_size": 2, "timing_scope": "shared_batch"}], "order_in_round": 0}
+DIAGNOSTIC_BEGIN full12
+native batch rhs 0 correction 1 iterations 5 residual 0.00272696
+native batch rhs 1 correction 1 iterations 5 residual 0.00198834
+native batch rhs 0 correction 2 iterations 13 residual 4.87923e-06
+native batch rhs 1 correction 2 iterations 13 residual 3.28522e-06
+native batch rhs 0 correction 3 iterations 21 residual 1.09512e-08
+native batch rhs 1 correction 3 iterations 21 residual 6.86596e-09
+native batch rhs 0 correction 4 iterations 25 residual 5.73298e-10
+native profile R 0.0939327 coarse 0.184614 P 0.0774972 SAP 0.505347 nrhs 2 timing_scope shared_batch aggregation rank0_local_sums
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":125,"send_bytes":610467840,"pack_post_s":0.0220118202269,"wait_s":0.133745023049,"interior_s":0.136826022528,"boundary_s":0.111937415786,"compute_all_s":0,"overlap_region_s":0.27439713385,"total_s":0.399781049229},"coarse":{"calls":2008,"send_bytes":98697216,"pack_post_s":0.005824922584,"wait_s":0.0230580857024,"interior_s":0,"boundary_s":0,"compute_all_s":0.0602190811187,"overlap_region_s":0,"total_s":0.0873923869804}}
+native batch rhs 0 correction 1 iterations 5 residual 0.00223274
+native batch rhs 1 correction 1 iterations 5 residual 0.00197895
+native batch rhs 0 correction 2 iterations 13 residual 3.94181e-06
+native batch rhs 1 correction 2 iterations 13 residual 3.39888e-06
+native batch rhs 0 correction 3 iterations 21 residual 8.38192e-09
+native batch rhs 1 correction 3 iterations 21 residual 6.83042e-09
+native profile R 0.0828682 coarse 0.178467 P 0.0670541 SAP 0.455755 nrhs 2 timing_scope shared_batch aggregation rank0_local_sums
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0201816149056,"wait_s":0.120682626963,"interior_s":0.123460283503,"boundary_s":0.101450609043,"compute_all_s":0,"overlap_region_s":0.247194602154,"total_s":0.360588631593},"coarse":{"calls":1920,"send_bytes":94371840,"pack_post_s":0.00508233439177,"wait_s":0.022031435743,"interior_s":0,"boundary_s":0,"compute_all_s":0.0568725857884,"overlap_region_s":0,"total_s":0.0828680321574}}
+native batch rhs 0 correction 1 iterations 5 residual 0.00221381
+native batch rhs 1 correction 1 iterations 5 residual 0.00240923
+native batch rhs 0 correction 2 iterations 13 residual 3.91306e-06
+native batch rhs 1 correction 2 iterations 13 residual 4.28679e-06
+native batch rhs 0 correction 3 iterations 21 residual 8.22104e-09
+native batch rhs 1 correction 3 iterations 21 residual 9.16976e-09
+native profile R 0.0843394 coarse 0.1714 P 0.0680368 SAP 0.454138 nrhs 2 timing_scope shared_batch aggregation rank0_local_sums
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0198935931548,"wait_s":0.121465946548,"interior_s":0.122287452221,"boundary_s":0.101802349091,"compute_all_s":0,"overlap_region_s":0.249760004692,"total_s":0.365267892368},"coarse":{"calls":1870,"send_bytes":91914240,"pack_post_s":0.00524925999343,"wait_s":0.0222041774541,"interior_s":0,"boundary_s":0,"compute_all_s":0.0559628903866,"overlap_region_s":0,"total_s":0.0823219176382}}
+native batch rhs 0 correction 1 iterations 5 residual 0.00226515
+native batch rhs 1 correction 1 iterations 5 residual 0.00149854
+native batch rhs 0 correction 2 iterations 13 residual 4.00198e-06
+native batch rhs 1 correction 2 iterations 13 residual 2.54877e-06
+native batch rhs 0 correction 3 iterations 21 residual 7.94516e-09
+native batch rhs 1 correction 3 iterations 21 residual 5.57311e-09
+native profile R 0.0826812 coarse 0.177795 P 0.068804 SAP 0.457672 nrhs 2 timing_scope shared_batch aggregation rank0_local_sums
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0195843121037,"wait_s":0.125447985716,"interior_s":0.122669040225,"boundary_s":0.102562082,"compute_all_s":0,"overlap_region_s":0.252481917851,"total_s":0.365908362903},"coarse":{"calls":1930,"send_bytes":94863360,"pack_post_s":0.00538775976747,"wait_s":0.0215850304812,"interior_s":0,"boundary_s":0,"compute_all_s":0.0580575829372,"overlap_region_s":0,"total_s":0.0833096550778}}
+native batch rhs 0 correction 1 iterations 6 residual 0.00138483
+native batch rhs 1 correction 1 iterations 5 residual 0.00226992
+native batch rhs 0 correction 2 iterations 14 residual 2.68014e-06
+native batch rhs 1 correction 2 iterations 13 residual 3.60236e-06
+native batch rhs 0 correction 3 iterations 22 residual 5.47844e-09
+native batch rhs 1 correction 3 iterations 21 residual 7.74096e-09
+native profile R 0.0873795 coarse 0.182078 P 0.069469 SAP 0.4707 nrhs 2 timing_scope shared_batch aggregation rank0_local_sums
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":110,"send_bytes":570654720,"pack_post_s":0.0205009533092,"wait_s":0.127185771242,"interior_s":0.130002292804,"boundary_s":0.105088667944,"compute_all_s":0,"overlap_region_s":0.257457190193,"total_s":0.3735826388},"coarse":{"calls":1972,"send_bytes":96927744,"pack_post_s":0.00570427626371,"wait_s":0.021830460988,"interior_s":0,"boundary_s":0,"compute_all_s":0.0603483384475,"overlap_region_s":0,"total_s":0.085416498594}}
+native batch rhs 0 correction 1 iterations 5 residual 0.00243817
+native batch rhs 1 correction 1 iterations 5 residual 0.00155849
+native batch rhs 0 correction 2 iterations 13 residual 4.21094e-06
+native batch rhs 1 correction 2 iterations 13 residual 2.53448e-06
+native batch rhs 0 correction 3 iterations 21 residual 7.94573e-09
+native batch rhs 1 correction 3 iterations 21 residual 5.22058e-09
+native profile R 0.0822333 coarse 0.182858 P 0.0672077 SAP 0.45639 nrhs 2 timing_scope shared_batch aggregation rank0_local_sums
+native_halo_profile {"aggregation":"independent_rank_max_of_local_sums","ranks":16,"overlap":true,"fine":{"calls":105,"send_bytes":557383680,"pack_post_s":0.0196841405705,"wait_s":0.121986999176,"interior_s":0.1237815395,"boundary_s":0.102603883483,"compute_all_s":0,"overlap_region_s":0.248811987229,"total_s":0.362089550123},"coarse":{"calls":1930,"send_bytes":94863360,"pack_post_s":0.0051908697933,"wait_s":0.0224564922974,"interior_s":0,"boundary_s":0,"compute_all_s":0.0592250069603,"overlap_region_s":0,"total_s":0.0844114692882}}
+DIAGNOSTIC_END full12

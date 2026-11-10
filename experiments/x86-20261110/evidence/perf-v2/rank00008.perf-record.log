@@ -1,0 +1,2 @@
+[ perf record: Woken up 51 times to write data ]
+[ perf record: Captured and wrote 15.482 MB /public2/home/lwb_720/.cache/mg-x86-20261110/perf-v2/rank00008.perf.data (3710 samples) ]

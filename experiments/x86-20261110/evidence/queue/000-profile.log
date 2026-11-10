@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/public2/home/lwb_720/.cache/mg-x86-20261110/diagnose.py", line 20, in <module>
+    assert r.returncode==0,r.returncode
+           ^^^^^^^^^^^^^^^
+AssertionError: 2

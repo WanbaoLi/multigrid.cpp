@@ -1,0 +1,27 @@
+Test project /public2/home/lwb_720/.cache/mg-x86-20261110/build-projector
+      Start  1: core
+ 1/11 Test  #1: core .............................   Passed    0.39 sec
+      Start 14: wilson_local
+ 2/11 Test #14: wilson_local .....................   Passed    0.01 sec
+      Start 15: wilson_global
+ 3/11 Test #15: wilson_global ....................   Passed    0.01 sec
+      Start 16: wilson_packed
+ 4/11 Test #16: wilson_packed ....................   Passed    0.01 sec
+      Start 17: wilson_contiguous
+ 5/11 Test #17: wilson_contiguous ................   Passed    0.07 sec
+      Start 18: wilson_packed_fallback
+ 6/11 Test #18: wilson_packed_fallback ...........   Passed    0.01 sec
+      Start 19: wilson_global_fallback
+ 7/11 Test #19: wilson_global_fallback ...........   Passed    0.01 sec
+      Start 25: cpu_backend_mpi2
+ 8/11 Test #25: cpu_backend_mpi2 .................   Passed   13.60 sec
+      Start 29: batch12_mpi2
+ 9/11 Test #29: batch12_mpi2 .....................   Passed   16.47 sec
+      Start 33: runtime_batch
+10/11 Test #33: runtime_batch ....................   Passed   26.93 sec
+      Start 45: mg_tuning
+11/11 Test #45: mg_tuning ........................   Passed   12.86 sec
+
+100% tests passed, 0 tests failed out of 11
+
+Total Test time (real) =  70.39 sec
