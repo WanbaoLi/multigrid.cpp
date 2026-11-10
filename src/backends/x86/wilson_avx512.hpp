@@ -31,6 +31,41 @@ inline int clover_register_mode() {
     return mode;
 }
 
+inline bool wilson_signed_projectors() {
+    static const bool enabled = [] {
+        const char *raw = std::getenv("LQCD_X86_SIGNED_PROJECTORS");
+        return raw && std::atoi(raw) != 0;
+    }();
+    return enabled;
+}
+
+template <bool Signed, bool Reconstruct = false>
+inline void project_spin_avx512(__m512 vr, __m512 vi, __m512 wr, __m512 wi,
+                                float real, float imag, __m512 &zr, __m512 &zi) {
+    if constexpr (Signed) {
+        if (imag == 0.f && real == 1.f) {
+            zr = _mm512_add_ps(vr,wr); zi = _mm512_add_ps(vi,wi); return;
+        }
+        if (imag == 0.f && real == -1.f) {
+            zr = _mm512_sub_ps(vr,wr); zi = _mm512_sub_ps(vi,wi); return;
+        }
+        if (real == 0.f && imag == 1.f) {
+            zr = _mm512_sub_ps(vr,wi); zi = _mm512_add_ps(vi,wr); return;
+        }
+        if (real == 0.f && imag == -1.f) {
+            zr = _mm512_add_ps(vr,wi); zi = _mm512_sub_ps(vi,wr); return;
+        }
+    }
+    const __m512 pr = _mm512_set1_ps(real), pi = _mm512_set1_ps(imag);
+    if constexpr (Reconstruct) {
+        zr = _mm512_add_ps(vr,_mm512_sub_ps(_mm512_mul_ps(pr,wr),_mm512_mul_ps(pi,wi)));
+        zi = _mm512_add_ps(vi,_mm512_add_ps(_mm512_mul_ps(pr,wi),_mm512_mul_ps(pi,wr)));
+    } else {
+        zr = _mm512_sub_ps(_mm512_add_ps(vr,_mm512_mul_ps(pr,wr)),_mm512_mul_ps(pi,wi));
+        zi = _mm512_add_ps(_mm512_add_ps(vi,_mm512_mul_ps(pr,wi)),_mm512_mul_ps(pi,wr));
+    }
+}
+
 template <bool Packed, bool PairedRows>
 __attribute__((noinline)) inline void clover_register_tile_avx512(
     int B, const float *diag, const float *src, float *out, int site, __mmask16 mask) {
@@ -125,7 +160,7 @@ inline __m512i wilson_indices_avx512(const Offset *indices, __mmask16 mask, int 
 // Common local/global arithmetic. Clover reads the current block at
 // center_offset; hopping offsets already contain the appropriate site base.
 // Source/output must be distinct except for opposite-parity hopping-only calls.
-template <bool Clover, class Offset, bool Packed, bool Planned>
+template <bool Clover, class Offset, bool Packed, bool Planned, bool Signed = false>
 inline void wilson_avx512_impl(int B, const float *diag, const float *links,
                          const Offset *neighbor, const int gp[4][4],
                          const float gr[4][4], const float gi[4][4],
@@ -173,8 +208,6 @@ inline void wilson_avx512_impl(int B, const float *diag, const float *links,
             const float sign = dir % 2 ? 1.f : -1.f;
             for (int spin = 0; spin < 2; spin++) {
                 const int paired = gp[dir / 2][spin];
-                const __m512 pr = _mm512_set1_ps(sign * gr[dir / 2][spin]);
-                const __m512 pi = _mm512_set1_ps(sign * gi[dir / 2][spin]);
                 __m512 zr[3], zi[3];
                 // Each projected input colour serves all three output colours.
                 for (int j = 0; j < 3; j++) {
@@ -182,11 +215,8 @@ inline void wilson_avx512_impl(int B, const float *diag, const float *links,
                     const __m512 vi = load_component(((spin * 3 + j) * 2 + 1));
                     const __m512 wr = load_component((paired * 3 + j) * 2);
                     const __m512 wi = load_component(((paired * 3 + j) * 2 + 1));
-                    zr[j] = _mm512_sub_ps(_mm512_add_ps(vr, _mm512_mul_ps(pr, wr)), _mm512_mul_ps(pi, wi));
-                    zi[j] = _mm512_add_ps(_mm512_add_ps(vi, _mm512_mul_ps(pr, wi)), _mm512_mul_ps(pi, wr));
+                    project_spin_avx512<Signed>(vr,vi,wr,wi,sign*gr[dir/2][spin],sign*gi[dir/2][spin],zr[j],zi[j]);
                 }
-                const __m512 rr = _mm512_set1_ps(sign * gr[dir / 2][paired]);
-                const __m512 ri = _mm512_set1_ps(sign * gi[dir / 2][paired]);
                 for (int color = 0; color < 3; color++) {
                     __m512 hr = zero, hi = zero;
                     for (int j = 0; j < 3; j++) {
@@ -202,10 +232,11 @@ inline void wilson_avx512_impl(int B, const float *diag, const float *links,
                     float *lr = out + (paired * 3 + color) * 2 * B + site, *li = lr + B;
                     _mm512_mask_storeu_ps(yr, mask, _mm512_add_ps(_mm512_maskz_loadu_ps(mask, yr), hr));
                     _mm512_mask_storeu_ps(yi, mask, _mm512_add_ps(_mm512_maskz_loadu_ps(mask, yi), hi));
-                    _mm512_mask_storeu_ps(lr, mask, _mm512_add_ps(_mm512_maskz_loadu_ps(mask, lr),
-                        _mm512_sub_ps(_mm512_mul_ps(rr, hr), _mm512_mul_ps(ri, hi))));
-                    _mm512_mask_storeu_ps(li, mask, _mm512_add_ps(_mm512_maskz_loadu_ps(mask, li),
-                        _mm512_add_ps(_mm512_mul_ps(rr, hi), _mm512_mul_ps(ri, hr))));
+                    __m512 reconstructed_re, reconstructed_im;
+                    project_spin_avx512<Signed,true>(_mm512_maskz_loadu_ps(mask,lr),_mm512_maskz_loadu_ps(mask,li),hr,hi,
+                        sign*gr[dir/2][paired],sign*gi[dir/2][paired],reconstructed_re,reconstructed_im);
+                    _mm512_mask_storeu_ps(lr,mask,reconstructed_re);
+                    _mm512_mask_storeu_ps(li,mask,reconstructed_im);
                 }
             }
         }
@@ -219,6 +250,13 @@ inline void wilson_avx512(int B, const float *diag, const float *links,
                          const float gr[4][4], const float gi[4][4],
                          const float *src, float *out, int begin, int end,
                          size_t center_offset, const int *local_load_offsets = nullptr) {
+    if (wilson_signed_projectors()) {
+        if (local_load_offsets)
+            wilson_avx512_impl<Clover,Offset,Packed,true,true>(B,diag,links,neighbor,gp,gr,gi,src,out,begin,end,center_offset,local_load_offsets);
+        else
+            wilson_avx512_impl<Clover,Offset,Packed,false,true>(B,diag,links,neighbor,gp,gr,gi,src,out,begin,end,center_offset,nullptr);
+        return;
+    }
     if (local_load_offsets)
         wilson_avx512_impl<Clover, Offset, Packed, true>(
             B, diag, links, neighbor, gp, gr, gi, src, out, begin, end,
