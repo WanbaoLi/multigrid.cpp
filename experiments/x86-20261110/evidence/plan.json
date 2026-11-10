@@ -1,0 +1,31 @@
+{
+  "context_environment": {
+    "LQCD_ARM_COARSE_SVE": 0,
+    "LQCD_ARM_SVE": 1,
+    "LQCD_ARM_SVE_PLANNED": 0,
+    "LQCD_ARM_SVE_REUSE": 0,
+    "LQCD_ARM_SVE_TRANSFER": 0,
+    "LQCD_COARSE_FUSED": 0,
+    "LQCD_COARSE_SPATIAL_OVERLAP": 0,
+    "LQCD_HBM": "off",
+    "LQCD_HBW_ALLOC": "off"
+  },
+  "placement_threads": 16,
+  "setup_threads": 16,
+  "cases": [
+    {
+      "id": "full12",
+      "threads": 12,
+      "batch": 2,
+      "environment": {
+        "LQCD_COARSE_CGS2": 0,
+        "LQCD_CORRECTION_BASE_TOL": 0.003,
+        "LQCD_MG_COARSE_IT": 40,
+        "LQCD_MG_COARSE_TOL": 0.05,
+        "LQCD_MG_SAP_CYCLES": 2,
+        "LQCD_MG_SAP_STEPS": 5,
+        "LQCD_RESTRICT_FLOAT": 0
+      }
+    }
+  ]
+}

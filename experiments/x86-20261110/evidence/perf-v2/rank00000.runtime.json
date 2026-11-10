@@ -1,0 +1,679 @@
+{
+  "host": "node5005",
+  "pid": 491652,
+  "rank": 0,
+  "captured_at": 1794317981.80633,
+  "phase": "after setup, before final diagnostic call and perf attachment",
+  "benchmark": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/source/tools/optimization/bench_full12.py",
+  "benchmark_sha256": "68650d788eacdfe747ceedc18b9eb3cac070f4a8da2175901d1be8e6485126cb",
+  "allowed_cpus": [
+    0
+  ],
+  "affinity_scope": "calling thread only; OpenMP team placement is recorded in OMP_PLACES",
+  "maps": "151c6b161000-151c6b162000 rw-p 00000000 00:00 0 \n151c6b162000-151c72ae2000 rw-p 00000000 00:00 0 \n151c72ae2000-151dd0000000 rw-p 00000000 00:00 0 \n151dd0000000-151dd136d000 rw-p 00000000 00:00 0 \n151dd136d000-151dd4000000 ---p 00000000 00:00 0 \n151dd8000000-151dd936d000 rw-p 00000000 00:00 0 \n151dd936d000-151ddc000000 ---p 00000000 00:00 0 \n151de0000000-151de136d000 rw-p 00000000 00:00 0 \n151de136d000-151de4000000 ---p 00000000 00:00 0 \n151de8000000-151de936d000 rw-p 00000000 00:00 0 \n151de936d000-151dec000000 ---p 00000000 00:00 0 \n151df0000000-151df136d000 rw-p 00000000 00:00 0 \n151df136d000-151df4000000 ---p 00000000 00:00 0 \n151df8000000-151df936d000 rw-p 00000000 00:00 0 \n151df936d000-151dfc000000 ---p 00000000 00:00 0 \n151e00000000-151e0136d000 rw-p 00000000 00:00 0 \n151e0136d000-151e04000000 ---p 00000000 00:00 0 \n151e08000000-151e0936d000 rw-p 00000000 00:00 0 \n151e0936d000-151e0c000000 ---p 00000000 00:00 0 \n151e10000000-151e1136d000 rw-p 00000000 00:00 0 \n151e1136d000-151e14000000 ---p 00000000 00:00 0 \n151e18000000-151e1936d000 rw-p 00000000 00:00 0 \n151e1936d000-151e1c000000 ---p 00000000 00:00 0 \n151e20000000-151e2136d000 rw-p 00000000 00:00 0 \n151e2136d000-151e24000000 ---p 00000000 00:00 0 \n151e28000000-151e2936d000 rw-p 00000000 00:00 0 \n151e2936d000-151e2c000000 ---p 00000000 00:00 0 \n151e30000000-151e3136d000 rw-p 00000000 00:00 0 \n151e3136d000-151e34000000 ---p 00000000 00:00 0 \n151e38000000-151e3936d000 rw-p 00000000 00:00 0 \n151e3936d000-151e3c000000 ---p 00000000 00:00 0 \n151e40000000-151e4136d000 rw-p 00000000 00:00 0 \n151e4136d000-151e44000000 ---p 00000000 00:00 0 \n151e47a74000-151e56d77000 rw-p 00000000 00:00 0 \n151e5be6d000-151eace7d000 rw-p 00000000 00:00 0 \n151eace7e000-151f17393000 rw-p 00000000 00:00 0 \n151f26695000-1521b889a000 rw-p 00000000 00:00 0 \n1521b889a000-1521ba6fa000 rw-p 00000000 00:00 0 \n1521ba74c000-1521ba74d000 ---p 00000000 00:00 0 \n1521ba74d000-1521ba94d000 rw-p 00000000 00:00 0 \n1521ba94d000-1521ba94e000 ---p 00000000 00:00 0 \n1521ba94e000-1521bab4e000 rw-p 00000000 00:00 0 \n1521bab4e000-1521bab4f000 ---p 00000000 00:00 0 \n1521bab4f000-1521bad4f000 rw-p 00000000 00:00 0 \n1521bad4f000-1521bad50000 ---p 00000000 00:00 0 \n1521bad50000-1521baf50000 rw-p 00000000 00:00 0 \n1521baf50000-1521baf51000 ---p 00000000 00:00 0 \n1521baf51000-1521bb151000 rw-p 00000000 00:00 0 \n1521bb151000-1521bb152000 ---p 00000000 00:00 0 \n1521bb152000-1521bb352000 rw-p 00000000 00:00 0 \n1521bb352000-1521bb353000 ---p 00000000 00:00 0 \n1521bb353000-1521bb553000 rw-p 00000000 00:00 0 \n1521bb553000-1521bb554000 ---p 00000000 00:00 0 \n1521bb554000-1521bb754000 rw-p 00000000 00:00 0 \n1521bb754000-1521bb755000 ---p 00000000 00:00 0 \n1521bb755000-1521bb955000 rw-p 00000000 00:00 0 \n1521bb955000-1521bb956000 ---p 00000000 00:00 0 \n1521bb956000-1521bbb56000 rw-p 00000000 00:00 0 \n1521bbb56000-1521bbb57000 ---p 00000000 00:00 0 \n1521bbb57000-1521bbd57000 rw-p 00000000 00:00 0 \n1521bbd57000-1521bbd58000 ---p 00000000 00:00 0 \n1521bbd58000-1521bbf58000 rw-p 00000000 00:00 0 \n1521bbf58000-1521bbf59000 ---p 00000000 00:00 0 \n1521bbf59000-1521bc159000 rw-p 00000000 00:00 0 \n1521bc159000-1521bc15a000 ---p 00000000 00:00 0 \n1521bc15a000-1521bc35a000 rw-p 00000000 00:00 0 \n1521bc35a000-1521bc35b000 ---p 00000000 00:00 0 \n1521bc35b000-1521bc55b000 rw-p 00000000 00:00 0 \n1521bc55b000-1521be3bc000 r--s 00000000 00:2e 12907740421                /public2/home/lwb_720/.cache/mg-opt-20261103/fixture-ls-canonical/gauge_rank00000.npy\n1521be3bc000-1521be7d5000 rw-s 00000000 00:01 26705980                   /SYSV00000000 (deleted)\n1521be7d5000-1521bebee000 rw-s 00000000 00:01 26705973                   /SYSV00000000 (deleted)\n1521bebee000-1521bf007000 rw-s 00000000 00:01 26705979                   /SYSV00000000 (deleted)\n1521bf007000-1521bf420000 rw-s 00000000 00:01 26738696                   /SYSV00000000 (deleted)\n1521bf420000-1521bf839000 rw-s 00000000 00:01 26705974                   /SYSV00000000 (deleted)\n1521bf839000-1521c1839000 rw-p 00000000 00:00 0 \n1521c1839000-1521c3c3f000 rw-p 00000000 00:00 0 \n1521c3c3f000-1521cbc3f000 rw-s 00000000 08:03 19795216                   /tmp/lwb_720/tmp/ompi.491648/1/shared_mem_cuda_pool.node5005\n1521cbc3f000-1521cdffe000 rw-p 00000000 00:00 0 \n1521ce091000-1521ce09e000 r--p 00000000 00:2e 5233083913                 /public2/home/lwb_720/miniconda3/lib/libgomp.so.1.0.0\n1521ce09e000-1521ce0c2000 r-xp 0000d000 00:2e 5233083913                 /public2/home/lwb_720/miniconda3/lib/libgomp.so.1.0.0\n1521ce0c2000-1521ce0d0000 r--p 00031000 00:2e 5233083913                 /public2/home/lwb_720/miniconda3/lib/libgomp.so.1.0.0\n1521ce0d0000-1521ce0d1000 r--p 0003e000 00:2e 5233083913                 /public2/home/lwb_720/miniconda3/lib/libgomp.so.1.0.0\n1521ce0d1000-1521ce0d2000 rw-p 0003f000 00:2e 5233083913                 /public2/home/lwb_720/miniconda3/lib/libgomp.so.1.0.0\n1521ce0d2000-1521ce0d7000 r--p 00000000 00:2e 13982745602                /public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/000-delivery-tests/build/liblqcd_cpu.so.0.2.0\n1521ce0d7000-1521ce15e000 r-xp 00005000 00:2e 13982745602                /public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/000-delivery-tests/build/liblqcd_cpu.so.0.2.0\n1521ce15e000-1521ce168000 r--p 0008c000 00:2e 13982745602                /public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/000-delivery-tests/build/liblqcd_cpu.so.0.2.0\n1521ce168000-1521ce169000 r--p 00095000 00:2e 13982745602                /public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/000-delivery-tests/build/liblqcd_cpu.so.0.2.0\n1521ce169000-1521ce16a000 rw-p 00096000 00:2e 13982745602                /public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/000-delivery-tests/build/liblqcd_cpu.so.0.2.0\n1521ce16a000-1521ce583000 rw-s 00000000 00:01 26738694                   /SYSV00000000 (deleted)\n1521ce583000-1521ce99c000 rw-s 00000000 00:01 26738700                   /SYSV00000000 (deleted)\n1521ce99c000-1521cea1e000 r--p 00000000 00:2e 5241647113                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so\n1521cea1e000-1521cfd59000 r-xp 00082000 00:2e 5241647113                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so\n1521cfd59000-1521cff40000 r--p 013bd000 00:2e 5241647113                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so\n1521cff40000-1521cff48000 r--p 015a3000 00:2e 5241647113                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so\n1521cff48000-1521cff57000 rw-p 015ab000 00:2e 5241647113                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so\n1521cff57000-1521cff5c000 rw-p 00000000 00:00 0 \n1521cff5c000-1521cff64000 ---p 015c0000 00:2e 5241647113                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so\n1521cff64000-1521d0000000 rw-p 01697000 00:2e 5241647113                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so\n1521d0000000-1521d0021000 rw-p 00000000 00:00 0 \n1521d0021000-1521d4000000 ---p 00000000 00:00 0 \n1521d4014000-1521d442d000 rw-s 00000000 00:01 26738693                   /SYSV00000000 (deleted)\n1521d442d000-1521d4431000 r--p 00000000 00:2e 4620770062                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libexpat.so.1.12.4\n1521d4431000-1521d4455000 r-xp 00004000 00:2e 4620770062                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libexpat.so.1.12.4\n1521d4455000-1521d445e000 r--p 00028000 00:2e 4620770062                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libexpat.so.1.12.4\n1521d445e000-1521d4460000 r--p 00031000 00:2e 4620770062                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libexpat.so.1.12.4\n1521d4460000-1521d4461000 rw-p 00033000 00:2e 4620770062                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libexpat.so.1.12.4\n1521d4461000-1521d4468000 r--p 00000000 00:2e 10735115266                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_decimal.cpython-312-x86_64-linux-gnu.so\n1521d4468000-1521d449d000 r-xp 00007000 00:2e 10735115266                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_decimal.cpython-312-x86_64-linux-gnu.so\n1521d449d000-1521d44ad000 r--p 0003c000 00:2e 10735115266                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_decimal.cpython-312-x86_64-linux-gnu.so\n1521d44ad000-1521d44ae000 r--p 0004c000 00:2e 10735115266                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_decimal.cpython-312-x86_64-linux-gnu.so\n1521d44ae000-1521d44b1000 rw-p 0004d000 00:2e 10735115266                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_decimal.cpython-312-x86_64-linux-gnu.so\n1521d44b1000-1521d48b1000 rw-p 00000000 00:00 0 \n1521d48b1000-1521d48f1000 r-xp 00000000 00:2e 5241646857                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libquadmath-2284e583-a9307bba.so.0.0.0\n1521d48f1000-1521d4af0000 ---p 00040000 00:2e 5241646857                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libquadmath-2284e583-a9307bba.so.0.0.0\n1521d4af0000-1521d4af1000 r--p 0003f000 00:2e 5241646857                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libquadmath-2284e583-a9307bba.so.0.0.0\n1521d4af1000-1521d4af2000 rw-p 00040000 00:2e 5241646857                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libquadmath-2284e583-a9307bba.so.0.0.0\n1521d4af2000-1521d4af4000 rw-p 00042000 00:2e 5241646857                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libquadmath-2284e583-a9307bba.so.0.0.0\n1521d4af4000-1521d4d70000 r-xp 00000000 00:2e 6581660939                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libgfortran-83c28eba-468e71e5.so.5.0.0\n1521d4d70000-1521d4f70000 ---p 0027c000 00:2e 6581660939                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libgfortran-83c28eba-468e71e5.so.5.0.0\n1521d4f70000-1521d4f72000 r--p 0027c000 00:2e 6581660939                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libgfortran-83c28eba-468e71e5.so.5.0.0\n1521d4f72000-1521d4f73000 rw-p 0027e000 00:2e 6581660939                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libgfortran-83c28eba-468e71e5.so.5.0.0\n1521d4f73000-1521d4fac000 rw-p 00282000 00:2e 6581660939                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libgfortran-83c28eba-468e71e5.so.5.0.0\n1521d4fac000-1521d5031000 rw-p 00000000 00:00 0 \n1521d5031000-1521d544a000 rw-s 00000000 00:16 1333791032                 /dev/shm/ucx_shm_posix_54b11a5a (deleted)\n1521d544a000-1521d55fb000 r--p 00000000 00:2e 5122850317                 /public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09\n1521d55fb000-1521d57d9000 r-xp 001b1000 00:2e 5122850317                 /public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09\n1521d57d9000-1521d57dc000 r-xp 0038f000 00:2e 5122850317                 /public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09\n1521d57dc000-1521d5811000 r-xp 00392000 00:2e 5122850317                 /public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09\n1521d5811000-1521d5812000 r-xp 003c7000 00:2e 5122850317                 /public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09\n1521d5812000-1521d583d000 r-xp 003c8000 00:2e 5122850317                 /public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09\n1521d583d000-1521d583e000 r-xp 003f3000 00:2e 5122850317                 /public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09\n1521d583e000-1521d68b9000 r-xp 003f4000 00:2e 5122850317                 /public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09\n1521d68b9000-1521dbe06000 r--p 0146f000 00:2e 5122850317                 /public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09\n1521dbe06000-1521dbe07000 ---p 069bc000 00:2e 5122850317                 /public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09\n1521dbe07000-1521dbf89000 r--p 069bc000 00:2e 5122850317                 /public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09\n1521dbf89000-1521dbf8f000 rw-p 06b3e000 00:2e 5122850317                 /public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09\n1521dbf8f000-1521dc000000 rw-p 00000000 00:00 0 \n1521dc000000-1521dc11e000 rw-p 00000000 00:00 0 \n1521dc11e000-1521e0000000 ---p 00000000 00:00 0 \n1521e0020000-1521e0022000 r--p 00000000 00:2e 10735136770                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/mmap.cpython-312-x86_64-linux-gnu.so\n1521e0022000-1521e0025000 r-xp 00002000 00:2e 10735136770                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/mmap.cpython-312-x86_64-linux-gnu.so\n1521e0025000-1521e0027000 r--p 00005000 00:2e 10735136770                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/mmap.cpython-312-x86_64-linux-gnu.so\n1521e0027000-1521e0028000 r--p 00006000 00:2e 10735136770                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/mmap.cpython-312-x86_64-linux-gnu.so\n1521e0028000-1521e0029000 rw-p 00007000 00:2e 10735136770                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/mmap.cpython-312-x86_64-linux-gnu.so\n1521e0029000-1521e002e000 r--p 00000000 00:2e 8073980432                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/pyexpat.cpython-312-x86_64-linux-gnu.so\n1521e002e000-1521e0034000 r-xp 00005000 00:2e 8073980432                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/pyexpat.cpython-312-x86_64-linux-gnu.so\n1521e0034000-1521e0039000 r--p 0000b000 00:2e 8073980432                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/pyexpat.cpython-312-x86_64-linux-gnu.so\n1521e0039000-1521e003a000 r--p 0000f000 00:2e 8073980432                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/pyexpat.cpython-312-x86_64-linux-gnu.so\n1521e003a000-1521e003c000 rw-p 00010000 00:2e 8073980432                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/pyexpat.cpython-312-x86_64-linux-gnu.so\n1521e003c000-1521e010b000 rw-p 00000000 00:00 0 \n1521e010b000-1521e0524000 rw-s 00000000 00:01 26705982                   /SYSV00000000 (deleted)\n1521e0524000-1521e0a18000 rw-p 00000000 00:00 0 \n1521e0a1f000-1521e0a24000 r--p 00000000 00:2e 10735109890                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_elementtree.cpython-312-x86_64-linux-gnu.so\n1521e0a24000-1521e0a2e000 r-xp 00005000 00:2e 10735109890                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_elementtree.cpython-312-x86_64-linux-gnu.so\n1521e0a2e000-1521e0a32000 r--p 0000f000 00:2e 10735109890                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_elementtree.cpython-312-x86_64-linux-gnu.so\n1521e0a32000-1521e0a33000 r--p 00012000 00:2e 10735109890                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_elementtree.cpython-312-x86_64-linux-gnu.so\n1521e0a33000-1521e0a34000 rw-p 00013000 00:2e 10735109890                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_elementtree.cpython-312-x86_64-linux-gnu.so\n1521e0a34000-1521e0a3d000 rw-s 00000000 00:16 1333791030                 /dev/shm/ucx_shm_posix_16a6e641 (deleted)\n1521e0a3d000-1521e0a62000 rw-p 00000000 00:00 0 \n1521e0a62000-1521e1a62000 rw-s 00000000 00:16 1333790885                 /dev/shm/sm_segment.node5005.90091.86500001.0\n1521e1a62000-1521e1a63000 r--p 00000000 00:2e 10735099650                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_statistics.cpython-312-x86_64-linux-gnu.so\n1521e1a63000-1521e1a64000 r-xp 00001000 00:2e 10735099650                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_statistics.cpython-312-x86_64-linux-gnu.so\n1521e1a64000-1521e1a65000 r--p 00002000 00:2e 10735099650                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_statistics.cpython-312-x86_64-linux-gnu.so\n1521e1a65000-1521e1a66000 r--p 00002000 00:2e 10735099650                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_statistics.cpython-312-x86_64-linux-gnu.so\n1521e1a66000-1521e1a67000 rw-p 00003000 00:2e 10735099650                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_statistics.cpython-312-x86_64-linux-gnu.so\n1521e1a67000-1521e1a69000 r--p 00000000 00:2e 8074006032                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_sha2.cpython-312-x86_64-linux-gnu.so\n1521e1a69000-1521e1a76000 r-xp 00002000 00:2e 8074006032                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_sha2.cpython-312-x86_64-linux-gnu.so\n1521e1a76000-1521e1a78000 r--p 0000f000 00:2e 8074006032                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_sha2.cpython-312-x86_64-linux-gnu.so\n1521e1a78000-1521e1a79000 r--p 00010000 00:2e 8074006032                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_sha2.cpython-312-x86_64-linux-gnu.so\n1521e1a79000-1521e1a7a000 rw-p 00011000 00:2e 8074006032                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_sha2.cpython-312-x86_64-linux-gnu.so\n1521e1a7a000-1521e1a7c000 r--p 00000000 00:2e 8073997328                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_random.cpython-312-x86_64-linux-gnu.so\n1521e1a7c000-1521e1a7e000 r-xp 00002000 00:2e 8073997328                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_random.cpython-312-x86_64-linux-gnu.so\n1521e1a7e000-1521e1a7f000 r--p 00004000 00:2e 8073997328                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_random.cpython-312-x86_64-linux-gnu.so\n1521e1a7f000-1521e1a80000 r--p 00004000 00:2e 8073997328                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_random.cpython-312-x86_64-linux-gnu.so\n1521e1a80000-1521e1a81000 rw-p 00005000 00:2e 8073997328                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_random.cpython-312-x86_64-linux-gnu.so\n1521e1a81000-1521e1a83000 r--p 00000000 00:2e 10735100418                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bisect.cpython-312-x86_64-linux-gnu.so\n1521e1a83000-1521e1a85000 r-xp 00002000 00:2e 10735100418                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bisect.cpython-312-x86_64-linux-gnu.so\n1521e1a85000-1521e1a86000 r--p 00004000 00:2e 10735100418                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bisect.cpython-312-x86_64-linux-gnu.so\n1521e1a86000-1521e1a87000 r--p 00005000 00:2e 10735100418                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bisect.cpython-312-x86_64-linux-gnu.so\n1521e1a87000-1521e1a88000 rw-p 00006000 00:2e 10735100418                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bisect.cpython-312-x86_64-linux-gnu.so\n1521e1a88000-1521e1a8c000 r--p 00000000 00:2e 10217382408                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-x86_64-linux-gnu.so\n1521e1a8c000-1521e1ab0000 r-xp 00004000 00:2e 10217382408                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-x86_64-linux-gnu.so\n1521e1ab0000-1521e1ab5000 r--p 00028000 00:2e 10217382408                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-x86_64-linux-gnu.so\n1521e1ab5000-1521e1ab6000 r--p 0002d000 00:2e 10217382408                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-x86_64-linux-gnu.so\n1521e1ab6000-1521e1ab7000 rw-p 0002e000 00:2e 10217382408                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-x86_64-linux-gnu.so\n1521e1ab7000-1521e1aba000 rw-p 00036000 00:2e 10217382408                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-x86_64-linux-gnu.so\n1521e1aba000-1521e1abb000 r--p 00000000 00:2e 10735120898                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_opcode.cpython-312-x86_64-linux-gnu.so\n1521e1abb000-1521e1abc000 r-xp 00001000 00:2e 10735120898                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_opcode.cpython-312-x86_64-linux-gnu.so\n1521e1abc000-1521e1abd000 r--p 00002000 00:2e 10735120898                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_opcode.cpython-312-x86_64-linux-gnu.so\n1521e1abd000-1521e1abe000 r--p 00002000 00:2e 10735120898                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_opcode.cpython-312-x86_64-linux-gnu.so\n1521e1abe000-1521e1abf000 rw-p 00003000 00:2e 10735120898                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_opcode.cpython-312-x86_64-linux-gnu.so\n1521e1abf000-1521e1bbf000 rw-p 00000000 00:00 0 \n1521e1bbf000-1521e1bc0000 r--p 00000000 00:2e 8074005520                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_contextvars.cpython-312-x86_64-linux-gnu.so\n1521e1bc0000-1521e1bc1000 r-xp 00001000 00:2e 8074005520                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_contextvars.cpython-312-x86_64-linux-gnu.so\n1521e1bc1000-1521e1bc2000 r--p 00002000 00:2e 8074005520                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_contextvars.cpython-312-x86_64-linux-gnu.so\n1521e1bc2000-1521e1bc3000 r--p 00002000 00:2e 8074005520                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_contextvars.cpython-312-x86_64-linux-gnu.so\n1521e1bc3000-1521e1bc4000 rw-p 00003000 00:2e 8074005520                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_contextvars.cpython-312-x86_64-linux-gnu.so\n1521e1bc4000-1521e1bc9000 r--p 00000000 00:2e 10735129602                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_datetime.cpython-312-x86_64-linux-gnu.so\n1521e1bc9000-1521e1bdb000 r-xp 00005000 00:2e 10735129602                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_datetime.cpython-312-x86_64-linux-gnu.so\n1521e1bdb000-1521e1be1000 r--p 00017000 00:2e 10735129602                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_datetime.cpython-312-x86_64-linux-gnu.so\n1521e1be1000-1521e1be2000 r--p 0001c000 00:2e 10735129602                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_datetime.cpython-312-x86_64-linux-gnu.so\n1521e1be2000-1521e1be4000 rw-p 0001d000 00:2e 10735129602                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_datetime.cpython-312-x86_64-linux-gnu.so\n1521e1be4000-1521e1c0f000 r--p 00000000 00:2e 4627869198                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-x86_64-linux-gnu.so\n1521e1c0f000-1521e23c4000 r-xp 0002b000 00:2e 4627869198                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-x86_64-linux-gnu.so\n1521e23c4000-1521e2555000 r--p 007e0000 00:2e 4627869198                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-x86_64-linux-gnu.so\n1521e2555000-1521e2558000 r--p 00971000 00:2e 4627869198                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-x86_64-linux-gnu.so\n1521e2558000-1521e257b000 rw-p 00974000 00:2e 4627869198                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-x86_64-linux-gnu.so\n1521e257b000-1521e2592000 rw-p 00000000 00:00 0 \n1521e2592000-1521e259d000 rw-p 00a1a000 00:2e 4627869198                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-x86_64-linux-gnu.so\n1521e259d000-1521e25a2000 r--p 00000000 00:2e 10735108354                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_pickle.cpython-312-x86_64-linux-gnu.so\n1521e25a2000-1521e25b4000 r-xp 00005000 00:2e 10735108354                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_pickle.cpython-312-x86_64-linux-gnu.so\n1521e25b4000-1521e25ba000 r--p 00017000 00:2e 10735108354                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_pickle.cpython-312-x86_64-linux-gnu.so\n1521e25ba000-1521e25bb000 r--p 0001d000 00:2e 10735108354                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_pickle.cpython-312-x86_64-linux-gnu.so\n1521e25bb000-1521e25bc000 rw-p 0001e000 00:2e 10735108354                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_pickle.cpython-312-x86_64-linux-gnu.so\n1521e25bc000-1521e25c5000 rw-s 00000000 00:01 26738689                   /SYSV00000000 (deleted)\n1521e25c5000-1521e25ce000 rw-s 00000000 00:01 26738699                   /SYSV00000000 (deleted)\n1521e25ce000-1521e25d7000 rw-s 00000000 00:01 26738701                   /SYSV00000000 (deleted)\n1521e25d7000-1521e25e0000 rw-s 00000000 00:01 26738690                   /SYSV00000000 (deleted)\n1521e25e0000-1521e25e9000 rw-s 00000000 00:01 26738692                   /SYSV00000000 (deleted)\n1521e25e9000-1521e25f2000 rw-s 00000000 00:01 26705969                   /SYSV00000000 (deleted)\n1521e25f2000-1521e25fb000 rw-s 00000000 00:01 26705983                   /SYSV00000000 (deleted)\n1521e25fb000-1521e2604000 rw-s 00000000 00:01 26705972                   /SYSV00000000 (deleted)\n1521e2604000-1521e260d000 rw-s 00000000 00:01 26738697                   /SYSV00000000 (deleted)\n1521e260d000-1521e2616000 rw-s 00000000 00:01 26705975                   /SYSV00000000 (deleted)\n1521e2616000-1521e261f000 rw-s 00000000 00:01 26738703                   /SYSV00000000 (deleted)\n1521e261f000-1521e2628000 rw-s 00000000 00:01 26738691                   /SYSV00000000 (deleted)\n1521e2628000-1521e2631000 rw-s 00000000 00:01 26705978                   /SYSV00000000 (deleted)\n1521e2631000-1521e263a000 rw-s 00000000 00:01 26705971                   /SYSV00000000 (deleted)\n1521e263a000-1521e2643000 rw-s 00000000 00:01 26705977                   /SYSV00000000 (deleted)\n1521e2643000-1521e2663000 rw-p 00000000 00:00 0 \n1521e2663000-1521e266e000 r-xp 00000000 08:03 16781335                   /usr/lib64/libnss_files-2.28.so\n1521e266e000-1521e286e000 ---p 0000b000 08:03 16781335                   /usr/lib64/libnss_files-2.28.so\n1521e286e000-1521e286f000 r--p 0000b000 08:03 16781335                   /usr/lib64/libnss_files-2.28.so\n1521e286f000-1521e2870000 rw-p 0000c000 08:03 16781335                   /usr/lib64/libnss_files-2.28.so\n1521e2870000-1521e2876000 rw-p 00000000 00:00 0 \n1521e2876000-1521e2877000 rw-s 00800000 00:06 50208                      /dev/infiniband/uverbs2\n1521e2877000-1521e2880000 rw-s 00000000 00:01 26705981                   /SYSV00000000 (deleted)\n1521e2880000-1521e2881000 rw-s 00000000 08:03 19795218                   /tmp/lwb_720/tmp/ompi.491648/1/shared_mem_cuda_btl_module.node5005\n1521e2881000-1521e2882000 -w-s 00902000 00:06 50197                      /dev/infiniband/uverbs0\n1521e2882000-1521e2883000 -w-s 00901000 00:06 50197                      /dev/infiniband/uverbs0\n1521e2883000-1521e2884000 -w-s 00900000 00:06 50197                      /dev/infiniband/uverbs0\n1521e2884000-1521e2885000 r--s 00700000 00:06 50197                      /dev/infiniband/uverbs0\n1521e2885000-1521e2886000 r--s 00500000 00:06 50197                      /dev/infiniband/uverbs0\n1521e2886000-1521e2887000 -w-s 00901000 00:06 50208                      /dev/infiniband/uverbs2\n1521e2887000-1521e2888000 -w-s 00901000 00:06 50207                      /dev/infiniband/uverbs1\n1521e2888000-1521e2889000 -w-s 00901000 00:06 50197                      /dev/infiniband/uverbs0\n1521e2889000-1521e288a000 -w-s 00900000 00:06 50207                      /dev/infiniband/uverbs1\n1521e288a000-1521e288b000 r--s 00700000 00:06 50207                      /dev/infiniband/uverbs1\n1521e288b000-1521e288c000 r--s 00500000 00:06 50207                      /dev/infiniband/uverbs1\n1521e288c000-1521e288d000 -w-s 00900000 00:06 50208                      /dev/infiniband/uverbs2\n1521e288d000-1521e288e000 r--s 00700000 00:06 50208                      /dev/infiniband/uverbs2\n1521e288e000-1521e288f000 r--s 00500000 00:06 50208                      /dev/infiniband/uverbs2\n1521e288f000-1521e28b4000 rw-p 00000000 00:00 0 \n1521e28b4000-1521e28b5000 -w-s 00900000 00:06 50197                      /dev/infiniband/uverbs0\n1521e28b5000-1521e28b6000 r--s 00700000 00:06 50197                      /dev/infiniband/uverbs0\n1521e28b6000-1521e28b7000 r--s 00500000 00:06 50197                      /dev/infiniband/uverbs0\n1521e28b7000-1521e28bb000 rwxp 00000000 00:00 0 \n1521e28bb000-1521e28bf000 r--p 00000000 00:2e 6540928515                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libgcc_s.so.1\n1521e28bf000-1521e28d5000 r-xp 00004000 00:2e 6540928515                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libgcc_s.so.1\n1521e28d5000-1521e28d9000 r--p 0001a000 00:2e 6540928515                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libgcc_s.so.1\n1521e28d9000-1521e28da000 r--p 0001d000 00:2e 6540928515                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libgcc_s.so.1\n1521e28da000-1521e28db000 rw-p 0001e000 00:2e 6540928515                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libgcc_s.so.1\n1521e28db000-1521e2989000 r--p 00000000 00:2e 21082161930                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libstdc++.so.6.0.34\n1521e2989000-1521e2a31000 r-xp 000ae000 00:2e 21082161930                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libstdc++.so.6.0.34\n1521e2a31000-1521e2aba000 r--p 00156000 00:2e 21082161930                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libstdc++.so.6.0.34\n1521e2aba000-1521e2ac8000 r--p 001de000 00:2e 21082161930                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libstdc++.so.6.0.34\n1521e2ac8000-1521e2acc000 rw-p 001ec000 00:2e 21082161930                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libstdc++.so.6.0.34\n1521e2acc000-1521e2ad0000 rw-p 00000000 00:00 0 \n1521e2ad0000-1521e2b8d000 r-xp 00000000 00:2e 10804422914                /public2/home/lwb_720/cuda-13.4.2/targets/x86_64-linux/lib/libcudart.so.13.4.92\n1521e2b8d000-1521e2d8d000 ---p 000bd000 00:2e 10804422914                /public2/home/lwb_720/cuda-13.4.2/targets/x86_64-linux/lib/libcudart.so.13.4.92\n1521e2d8d000-1521e2d92000 r--p 000bd000 00:2e 10804422914                /public2/home/lwb_720/cuda-13.4.2/targets/x86_64-linux/lib/libcudart.so.13.4.92\n1521e2d92000-1521e2d93000 rw-p 000c2000 00:2e 10804422914                /public2/home/lwb_720/cuda-13.4.2/targets/x86_64-linux/lib/libcudart.so.13.4.92\n1521e2d93000-1521e2d95000 rw-p 00000000 00:00 0 \n1521e2d95000-1521e2d99000 r--p 00000000 00:2e 9967098885                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libucm_cuda.so.0.0.0\n1521e2d99000-1521e2d9c000 r-xp 00004000 00:2e 9967098885                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libucm_cuda.so.0.0.0\n1521e2d9c000-1521e2d9e000 r--p 00007000 00:2e 9967098885                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libucm_cuda.so.0.0.0\n1521e2d9e000-1521e2d9f000 r--p 00008000 00:2e 9967098885                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libucm_cuda.so.0.0.0\n1521e2d9f000-1521e2da0000 rw-p 00009000 00:2e 9967098885                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libucm_cuda.so.0.0.0\n1521e2da0000-1521e2da1000 -w-s 00902000 00:06 50208                      /dev/infiniband/uverbs2\n1521e2da1000-1521e2da2000 -w-s 00901000 00:06 50208                      /dev/infiniband/uverbs2\n1521e2da2000-1521e2da3000 -w-s 00900000 00:06 50208                      /dev/infiniband/uverbs2\n1521e2da3000-1521e2da4000 r--s 00700000 00:06 50208                      /dev/infiniband/uverbs2\n1521e2da4000-1521e2da5000 r--s 00500000 00:06 50208                      /dev/infiniband/uverbs2\n1521e2da5000-1521e2da6000 -w-s 00902000 00:06 50197                      /dev/infiniband/uverbs0\n1521e2da6000-1521e2da7000 ---p 00000000 00:00 0 \n1521e2da7000-1521e2fa7000 rw-p 00000000 00:00 0 \n1521e2fa7000-1521e2faa000 r--p 00000000 00:2e 5092870669                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_cma.so.0.0.0\n1521e2faa000-1521e2fab000 r-xp 00003000 00:2e 5092870669                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_cma.so.0.0.0\n1521e2fab000-1521e2fac000 r--p 00004000 00:2e 5092870669                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_cma.so.0.0.0\n1521e2fac000-1521e2fad000 r--p 00004000 00:2e 5092870669                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_cma.so.0.0.0\n1521e2fad000-1521e2fae000 rw-p 00005000 00:2e 5092870669                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_cma.so.0.0.0\n1521e2fae000-1521e2fc1000 r--p 00000000 00:2e 9967091205                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_mlx5.so.0.0.0\n1521e2fc1000-1521e3006000 r-xp 00013000 00:2e 9967091205                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_mlx5.so.0.0.0\n1521e3006000-1521e3016000 r--p 00058000 00:2e 9967091205                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_mlx5.so.0.0.0\n1521e3016000-1521e3018000 r--p 00067000 00:2e 9967091205                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_mlx5.so.0.0.0\n1521e3018000-1521e301b000 rw-p 00069000 00:2e 9967091205                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_mlx5.so.0.0.0\n1521e301b000-1521e301f000 r--p 00000000 00:2e 5092870413                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_efa.so.0.0.0\n1521e301f000-1521e3024000 r-xp 00004000 00:2e 5092870413                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_efa.so.0.0.0\n1521e3024000-1521e3026000 r--p 00009000 00:2e 5092870413                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_efa.so.0.0.0\n1521e3026000-1521e3027000 r--p 0000b000 00:2e 5092870413                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_efa.so.0.0.0\n1521e3027000-1521e3028000 rw-p 0000c000 00:2e 5092870413                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_efa.so.0.0.0\n1521e3028000-1521e3031000 r--p 00000000 00:2e 9967057157                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmlx5.so.1.27.65.0\n1521e3031000-1521e3092000 r-xp 00009000 00:2e 9967057157                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmlx5.so.1.27.65.0\n1521e3092000-1521e30a3000 r--p 0006a000 00:2e 9967057157                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmlx5.so.1.27.65.0\n1521e30a3000-1521e30a5000 r--p 0007a000 00:2e 9967057157                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmlx5.so.1.27.65.0\n1521e30a5000-1521e30a6000 rw-p 0007c000 00:2e 9967057157                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmlx5.so.1.27.65.0\n1521e30a6000-1521e30a8000 rw-p 00000000 00:00 0 \n1521e30a8000-1521e30bc000 r--p 00000000 00:2e 9967089925                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib.so.0.0.0\n1521e30bc000-1521e30db000 r-xp 00014000 00:2e 9967089925                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib.so.0.0.0\n1521e30db000-1521e30ea000 r--p 00033000 00:2e 9967089925                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib.so.0.0.0\n1521e30ea000-1521e30ec000 r--p 00041000 00:2e 9967089925                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib.so.0.0.0\n1521e30ec000-1521e30f0000 rw-p 00043000 00:2e 9967089925                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib.so.0.0.0\n1521e30f0000-1521e30f5000 r--p 00000000 00:2e 5092868365                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_rdmacm.so.0.0.0\n1521e30f5000-1521e30fa000 r-xp 00005000 00:2e 5092868365                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_rdmacm.so.0.0.0\n1521e30fa000-1521e30fd000 r--p 0000a000 00:2e 5092868365                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_rdmacm.so.0.0.0\n1521e30fd000-1521e30fe000 r--p 0000c000 00:2e 5092868365                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_rdmacm.so.0.0.0\n1521e30fe000-1521e30ff000 rw-p 0000d000 00:2e 5092868365                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_rdmacm.so.0.0.0\n1521e30ff000-1521e3102000 r--p 00000000 00:2e 21094625546                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_btl_smcuda.so\n1521e3102000-1521e3109000 r-xp 00003000 00:2e 21094625546                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_btl_smcuda.so\n1521e3109000-1521e310b000 r--p 0000a000 00:2e 21094625546                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_btl_smcuda.so\n1521e310b000-1521e310c000 r--p 0000c000 00:2e 21094625546                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_btl_smcuda.so\n1521e310c000-1521e310d000 rw-p 0000d000 00:2e 21094625546                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_btl_smcuda.so\n1521e310d000-1521e310e000 ---p 00000000 00:00 0 \n1521e310e000-1521e340e000 rw-p 00000000 00:00 0 \n1521e340e000-1521e3412000 r--p 00000000 00:2e 18331192079                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libiconv.so.2.7.0\n1521e3412000-1521e342e000 r-xp 00004000 00:2e 18331192079                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libiconv.so.2.7.0\n1521e342e000-1521e351d000 r--p 00020000 00:2e 18331192079                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libiconv.so.2.7.0\n1521e351d000-1521e3520000 r--p 0010e000 00:2e 18331192079                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libiconv.so.2.7.0\n1521e3520000-1521e3521000 rw-p 00111000 00:2e 18331192079                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libiconv.so.2.7.0\n1521e3521000-1521e3548000 r--p 00000000 00:2e 10217474824                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libxml2.so.16.1.2\n1521e3548000-1521e3611000 r-xp 00027000 00:2e 10217474824                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libxml2.so.16.1.2\n1521e3611000-1521e3658000 r--p 000f0000 00:2e 10217474824                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libxml2.so.16.1.2\n1521e3658000-1521e3661000 r--p 00137000 00:2e 10217474824                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libxml2.so.16.1.2\n1521e3661000-1521e3662000 rw-p 00140000 00:2e 10217474824                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libxml2.so.16.1.2\n1521e3662000-1521e3663000 rw-p 00000000 00:00 0 \n1521e3663000-1521e3666000 r--p 00000000 00:2e 6540929283                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libatomic.so.1.2.0\n1521e3666000-1521e3669000 r-xp 00003000 00:2e 6540929283                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libatomic.so.1.2.0\n1521e3669000-1521e366b000 r--p 00006000 00:2e 6540929283                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libatomic.so.1.2.0\n1521e366b000-1521e366c000 r--p 00007000 00:2e 6540929283                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libatomic.so.1.2.0\n1521e366c000-1521e366d000 rw-p 00008000 00:2e 6540929283                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libatomic.so.1.2.0\n1521e366d000-1521e366e000 rw-p 00000000 00:00 0 \n1521e366e000-1521e3677000 r--p 00000000 00:2e 16301524231                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libibverbs.so.1.18.65.0\n1521e3677000-1521e368b000 r-xp 00009000 00:2e 16301524231                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libibverbs.so.1.18.65.0\n1521e368b000-1521e3691000 r--p 0001d000 00:2e 16301524231                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libibverbs.so.1.18.65.0\n1521e3691000-1521e3692000 r--p 00023000 00:2e 16301524231                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libibverbs.so.1.18.65.0\n1521e3692000-1521e3693000 rw-p 00024000 00:2e 16301524231                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libibverbs.so.1.18.65.0\n1521e3693000-1521e3696000 r--p 00000000 00:2e 16301476103                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libefa.so.1.7.65.0\n1521e3696000-1521e36a0000 r-xp 00003000 00:2e 16301476103                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libefa.so.1.7.65.0\n1521e36a0000-1521e36a3000 r--p 0000d000 00:2e 16301476103                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libefa.so.1.7.65.0\n1521e36a3000-1521e36a4000 r--p 0000f000 00:2e 16301476103                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libefa.so.1.7.65.0\n1521e36a4000-1521e36a5000 rw-p 00010000 00:2e 16301476103                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libefa.so.1.7.65.0\n1521e36a5000-1521e36aa000 r--p 00000000 00:2e 10217476360                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/librdmacm.so.1.5.65.0\n1521e36aa000-1521e36c0000 r-xp 00005000 00:2e 10217476360                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/librdmacm.so.1.5.65.0\n1521e36c0000-1521e36c4000 r--p 0001b000 00:2e 10217476360                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/librdmacm.so.1.5.65.0\n1521e36c4000-1521e36c5000 r--p 0001e000 00:2e 10217476360                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/librdmacm.so.1.5.65.0\n1521e36c5000-1521e36c6000 rw-p 0001f000 00:2e 10217476360                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/librdmacm.so.1.5.65.0\n1521e36c6000-1521e36c7000 rw-p 00000000 00:00 0 \n1521e36c7000-1521e3703000 r--p 00000000 00:2e 10217487112                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libpmix.so.2.13.8\n1521e3703000-1521e387f000 r-xp 0003c000 00:2e 10217487112                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libpmix.so.2.13.8\n1521e387f000-1521e38ce000 r--p 001b8000 00:2e 10217487112                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libpmix.so.2.13.8\n1521e38ce000-1521e38d9000 r--p 00206000 00:2e 10217487112                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libpmix.so.2.13.8\n1521e38d9000-1521e38ea000 rw-p 00211000 00:2e 10217487112                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libpmix.so.2.13.8\n1521e38ea000-1521e38ef000 rw-p 00000000 00:00 0 \n1521e38ef000-1521e38f7000 r--p 00000000 00:2e 10217484808                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libhwloc.so.15.10.2\n1521e38f7000-1521e393b000 r-xp 00008000 00:2e 10217484808                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libhwloc.so.15.10.2\n1521e393b000-1521e394d000 r--p 0004c000 00:2e 10217484808                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libhwloc.so.15.10.2\n1521e394d000-1521e394e000 r--p 0005e000 00:2e 10217484808                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libhwloc.so.15.10.2\n1521e394e000-1521e394f000 rw-p 0005f000 00:2e 10217484808                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libhwloc.so.15.10.2\n1521e394f000-1521e3959000 r--p 00000000 00:2e 18331197199                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_core-2.1.so.7.0.1\n1521e3959000-1521e397c000 r-xp 0000a000 00:2e 18331197199                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_core-2.1.so.7.0.1\n1521e397c000-1521e3986000 r--p 0002d000 00:2e 18331197199                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_core-2.1.so.7.0.1\n1521e3986000-1521e3987000 r--p 00036000 00:2e 18331197199                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_core-2.1.so.7.0.1\n1521e3987000-1521e3988000 rw-p 00037000 00:2e 18331197199                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_core-2.1.so.7.0.1\n1521e3988000-1521e398f000 r-xp 00000000 08:03 16781341                   /usr/lib64/librt-2.28.so\n1521e398f000-1521e3b8e000 ---p 00007000 08:03 16781341                   /usr/lib64/librt-2.28.so\n1521e3b8e000-1521e3b8f000 r--p 00006000 08:03 16781341                   /usr/lib64/librt-2.28.so\n1521e3b8f000-1521e3b90000 rw-p 00007000 08:03 16781341                   /usr/lib64/librt-2.28.so\n1521e3b90000-1521e3b91000 -w-s 00901000 00:06 50197                      /dev/infiniband/uverbs0\n1521e3b91000-1521e3b92000 -w-s 00900000 00:06 50197                      /dev/infiniband/uverbs0\n1521e3b92000-1521e3b94000 r--p 00000000 00:2e 4627905294                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_rgpusm.so\n1521e3b94000-1521e3b97000 r-xp 00002000 00:2e 4627905294                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_rgpusm.so\n1521e3b97000-1521e3b98000 r--p 00005000 00:2e 4627905294                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_rgpusm.so\n1521e3b98000-1521e3b99000 r--p 00005000 00:2e 4627905294                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_rgpusm.so\n1521e3b99000-1521e3b9a000 rw-p 00006000 00:2e 4627905294                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_rgpusm.so\n1521e3b9a000-1521e3b9c000 r--p 00000000 00:2e 4627905038                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_gpusm.so\n1521e3b9c000-1521e3b9d000 r-xp 00002000 00:2e 4627905038                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_gpusm.so\n1521e3b9d000-1521e3b9e000 r--p 00003000 00:2e 4627905038                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_gpusm.so\n1521e3b9e000-1521e3b9f000 r--p 00003000 00:2e 4627905038                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_gpusm.so\n1521e3b9f000-1521e3ba0000 rw-p 00004000 00:2e 4627905038                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_gpusm.so\n1521e3ba0000-1521e3baa000 r--p 00000000 00:2e 10749287682                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-3.so.200.26.0\n1521e3baa000-1521e3bb9000 r-xp 0000a000 00:2e 10749287682                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-3.so.200.26.0\n1521e3bb9000-1521e3bc2000 r--p 00019000 00:2e 10749287682                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-3.so.200.26.0\n1521e3bc2000-1521e3bc4000 r--p 00022000 00:2e 10749287682                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-3.so.200.26.0\n1521e3bc4000-1521e3bc5000 rw-p 00024000 00:2e 10749287682                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-3.so.200.26.0\n1521e3bc5000-1521e3be7000 r--p 00000000 00:2e 16301520391                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-route-3.so.200.26.0\n1521e3be7000-1521e3c2e000 r-xp 00022000 00:2e 16301520391                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-route-3.so.200.26.0\n1521e3c2e000-1521e3c51000 r--p 00069000 00:2e 16301520391                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-route-3.so.200.26.0\n1521e3c51000-1521e3c55000 r--p 0008b000 00:2e 16301520391                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-route-3.so.200.26.0\n1521e3c55000-1521e3c5a000 rw-p 0008f000 00:2e 16301520391                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-route-3.so.200.26.0\n1521e3c5a000-1521e3c5d000 rw-p 00000000 00:00 0 \n1521e3c5d000-1521e3c72000 r--p 00000000 00:2e 13902282753                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libuct.so.0.0.0\n1521e3c72000-1521e3c8a000 r-xp 00015000 00:2e 13902282753                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libuct.so.0.0.0\n1521e3c8a000-1521e3c97000 r--p 0002d000 00:2e 13902282753                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libuct.so.0.0.0\n1521e3c97000-1521e3c99000 r--p 00039000 00:2e 13902282753                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libuct.so.0.0.0\n1521e3c99000-1521e3c9d000 rw-p 0003b000 00:2e 13902282753                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libuct.so.0.0.0\n1521e3c9d000-1521e3ca2000 r--p 00000000 00:2e 13902285057                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucm.so.0.0.0\n1521e3ca2000-1521e3cb1000 r-xp 00005000 00:2e 13902285057                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucm.so.0.0.0\n1521e3cb1000-1521e3cb5000 r--p 00014000 00:2e 13902285057                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucm.so.0.0.0\n1521e3cb5000-1521e3cb6000 r--p 00018000 00:2e 13902285057                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucm.so.0.0.0\n1521e3cb6000-1521e3cb7000 rw-p 00019000 00:2e 13902285057                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucm.so.0.0.0\n1521e3cb7000-1521e3cb8000 rw-p 00000000 00:00 0 \n1521e3cb8000-1521e3ccf000 r--p 00000000 00:2e 16301531399                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucs.so.0.0.0\n1521e3ccf000-1521e3d04000 r-xp 00017000 00:2e 16301531399                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucs.so.0.0.0\n1521e3d04000-1521e3d1d000 r--p 0004c000 00:2e 16301531399                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucs.so.0.0.0\n1521e3d1d000-1521e3d1f000 r--p 00064000 00:2e 16301531399                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucs.so.0.0.0\n1521e3d1f000-1521e3d22000 rw-p 00066000 00:2e 16301531399                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucs.so.0.0.0\n1521e3d22000-1521e3d28000 rw-p 00000000 00:00 0 \n1521e3d28000-1521e3d4b000 r--p 00000000 00:2e 13902274049                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucp.so.0.0.0\n1521e3d4b000-1521e3df7000 r-xp 00023000 00:2e 13902274049                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucp.so.0.0.0\n1521e3df7000-1521e3e21000 r--p 000cf000 00:2e 13902274049                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucp.so.0.0.0\n1521e3e21000-1521e3e24000 r--p 000f8000 00:2e 13902274049                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucp.so.0.0.0\n1521e3e24000-1521e3e2b000 rw-p 000fb000 00:2e 13902274049                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucp.so.0.0.0\n1521e3e2b000-1521e3e49000 r--p 00000000 00:2e 10217484552                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libfabric.so.1.32.0\n1521e3e49000-1521e3f73000 r-xp 0001e000 00:2e 10217484552                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libfabric.so.1.32.0\n1521e3f73000-1521e3fd6000 r--p 00148000 00:2e 10217484552                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libfabric.so.1.32.0\n1521e3fd6000-1521e3fd8000 r--p 001ab000 00:2e 10217484552                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libfabric.so.1.32.0\n1521e3fd8000-1521e3fe8000 rw-p 001ad000 00:2e 10217484552                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libfabric.so.1.32.0\n1521e3fe8000-1521e3fe9000 rw-p 00000000 00:00 0 \n1521e3fe9000-1521e4012000 r--p 00000000 00:2e 10217488904                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libopen-pal.so.80.0.5\n1521e4012000-1521e40d8000 r-xp 00029000 00:2e 10217488904                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libopen-pal.so.80.0.5\n1521e40d8000-1521e4108000 r--p 000ef000 00:2e 10217488904                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libopen-pal.so.80.0.5\n1521e4108000-1521e410d000 r--p 0011f000 00:2e 10217488904                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libopen-pal.so.80.0.5\n1521e410d000-1521e4119000 rw-p 00124000 00:2e 10217488904                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libopen-pal.so.80.0.5\n1521e4119000-1521e411f000 rw-p 00000000 00:00 0 \n1521e411f000-1521e412c000 r--p 00000000 00:2e 21094644746                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucc.so.1.0.0\n1521e412c000-1521e4158000 r-xp 0000d000 00:2e 21094644746                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucc.so.1.0.0\n1521e4158000-1521e4168000 r--p 00039000 00:2e 21094644746                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucc.so.1.0.0\n1521e4168000-1521e4169000 r--p 00049000 00:2e 21094644746                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucc.so.1.0.0\n1521e4169000-1521e416b000 rw-p 0004a000 00:2e 21094644746                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucc.so.1.0.0\n1521e416b000-1521e416c000 rw-p 00000000 00:00 0 \n1521e416c000-1521e41cb000 r--p 00000000 00:2e 16301533703                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmpi.so.40.40.7\n1521e41cb000-1521e43fb000 r-xp 0005f000 00:2e 16301533703                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmpi.so.40.40.7\n1521e43fb000-1521e447c000 r--p 0028f000 00:2e 16301533703                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmpi.so.40.40.7\n1521e447c000-1521e4483000 r--p 0030f000 00:2e 16301533703                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmpi.so.40.40.7\n1521e4483000-1521e44b3000 rw-p 00316000 00:2e 16301533703                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmpi.so.40.40.7\n1521e44b3000-1521e4503000 rw-p 00000000 00:00 0 \n1521e4503000-1521e452f000 r--p 00000000 00:2e 10749269250                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/mpi4py/MPI.cpython-312-x86_64-linux-gnu.so\n1521e452f000-1521e46da000 r-xp 0002c000 00:2e 10749269250                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/mpi4py/MPI.cpython-312-x86_64-linux-gnu.so\n1521e46da000-1521e4723000 r--p 001d7000 00:2e 10749269250                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/mpi4py/MPI.cpython-312-x86_64-linux-gnu.so\n1521e4723000-1521e4726000 r--p 00220000 00:2e 10749269250                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/mpi4py/MPI.cpython-312-x86_64-linux-gnu.so\n1521e4726000-1521e4737000 rw-p 00223000 00:2e 10749269250                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/mpi4py/MPI.cpython-312-x86_64-linux-gnu.so\n1521e4737000-1521e473e000 rw-p 00000000 00:00 0 \n1521e473e000-1521e4740000 r--p 00000000 00:2e 8073995536                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_posixsubprocess.cpython-312-x86_64-linux-gnu.so\n1521e4740000-1521e4743000 r-xp 00002000 00:2e 8073995536                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_posixsubprocess.cpython-312-x86_64-linux-gnu.so\n1521e4743000-1521e4744000 r--p 00005000 00:2e 8073995536                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_posixsubprocess.cpython-312-x86_64-linux-gnu.so\n1521e4744000-1521e4745000 r--p 00005000 00:2e 8073995536                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_posixsubprocess.cpython-312-x86_64-linux-gnu.so\n1521e4745000-1521e4746000 rw-p 00006000 00:2e 8073995536                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_posixsubprocess.cpython-312-x86_64-linux-gnu.so\n1521e4746000-1521e4748000 r--p 00000000 00:2e 10735116290                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/fcntl.cpython-312-x86_64-linux-gnu.so\n1521e4748000-1521e474a000 r-xp 00002000 00:2e 10735116290                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/fcntl.cpython-312-x86_64-linux-gnu.so\n1521e474a000-1521e474c000 r--p 00004000 00:2e 10735116290                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/fcntl.cpython-312-x86_64-linux-gnu.so\n1521e474c000-1521e474d000 r--p 00005000 00:2e 10735116290                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/fcntl.cpython-312-x86_64-linux-gnu.so\n1521e474d000-1521e474e000 rw-p 00006000 00:2e 10735116290                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/fcntl.cpython-312-x86_64-linux-gnu.so\n1521e474e000-1521e4752000 r--p 00000000 00:2e 10735106306                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/array.cpython-312-x86_64-linux-gnu.so\n1521e4752000-1521e4758000 r-xp 00004000 00:2e 10735106306                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/array.cpython-312-x86_64-linux-gnu.so\n1521e4758000-1521e475c000 r--p 0000a000 00:2e 10735106306                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/array.cpython-312-x86_64-linux-gnu.so\n1521e475c000-1521e475d000 r--p 0000e000 00:2e 10735106306                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/array.cpython-312-x86_64-linux-gnu.so\n1521e475d000-1521e475e000 rw-p 0000f000 00:2e 10735106306                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/array.cpython-312-x86_64-linux-gnu.so\n1521e475e000-1521e4761000 r--p 00000000 00:2e 10735129090                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/select.cpython-312-x86_64-linux-gnu.so\n1521e4761000-1521e4764000 r-xp 00003000 00:2e 10735129090                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/select.cpython-312-x86_64-linux-gnu.so\n1521e4764000-1521e4766000 r--p 00006000 00:2e 10735129090                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/select.cpython-312-x86_64-linux-gnu.so\n1521e4766000-1521e4767000 r--p 00008000 00:2e 10735129090                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/select.cpython-312-x86_64-linux-gnu.so\n1521e4767000-1521e4768000 rw-p 00009000 00:2e 10735129090                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/select.cpython-312-x86_64-linux-gnu.so\n1521e4768000-1521e476d000 r--p 00000000 00:2e 8074008080                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_socket.cpython-312-x86_64-linux-gnu.so\n1521e476d000-1521e4776000 r-xp 00005000 00:2e 8074008080                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_socket.cpython-312-x86_64-linux-gnu.so\n1521e4776000-1521e477f000 r--p 0000e000 00:2e 8074008080                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_socket.cpython-312-x86_64-linux-gnu.so\n1521e477f000-1521e4780000 r--p 00016000 00:2e 8074008080                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_socket.cpython-312-x86_64-linux-gnu.so\n1521e4780000-1521e4781000 rw-p 00017000 00:2e 8074008080                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_socket.cpython-312-x86_64-linux-gnu.so\n1521e4781000-1521e4881000 rw-p 00000000 00:00 0 \n1521e4881000-1521e4886000 r--p 00000000 00:2e 21082520586                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/liblzma.so.5\n1521e4886000-1521e48a4000 r-xp 00005000 00:2e 21082520586                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/liblzma.so.5\n1521e48a4000-1521e48b0000 r--p 00023000 00:2e 21082520586                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/liblzma.so.5\n1521e48b0000-1521e48b1000 r--p 0002f000 00:2e 21082520586                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/liblzma.so.5\n1521e48b1000-1521e48b2000 rw-p 00030000 00:2e 21082520586                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/liblzma.so.5\n1521e48b2000-1521e48b5000 r--p 00000000 00:2e 8073983248                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_lzma.cpython-312-x86_64-linux-gnu.so\n1521e48b5000-1521e48b9000 r-xp 00003000 00:2e 8073983248                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_lzma.cpython-312-x86_64-linux-gnu.so\n1521e48b9000-1521e48bc000 r--p 00007000 00:2e 8073983248                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_lzma.cpython-312-x86_64-linux-gnu.so\n1521e48bc000-1521e48bd000 r--p 00009000 00:2e 8073983248                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_lzma.cpython-312-x86_64-linux-gnu.so\n1521e48bd000-1521e48be000 rw-p 0000a000 00:2e 8073983248                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_lzma.cpython-312-x86_64-linux-gnu.so\n1521e48be000-1521e48c0000 r--p 00000000 00:2e 16284727815                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libbz2.so.1.0.8\n1521e48c0000-1521e48ce000 r-xp 00002000 00:2e 16284727815                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libbz2.so.1.0.8\n1521e48ce000-1521e48d0000 r--p 00010000 00:2e 16284727815                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libbz2.so.1.0.8\n1521e48d0000-1521e48d1000 r--p 00011000 00:2e 16284727815                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libbz2.so.1.0.8\n1521e48d1000-1521e48d2000 rw-p 00012000 00:2e 16284727815                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libbz2.so.1.0.8\n1521e48d2000-1521e48d4000 r--p 00000000 00:2e 10735124482                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bz2.cpython-312-x86_64-linux-gnu.so\n1521e48d4000-1521e48d6000 r-xp 00002000 00:2e 10735124482                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bz2.cpython-312-x86_64-linux-gnu.so\n1521e48d6000-1521e48d8000 r--p 00004000 00:2e 10735124482                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bz2.cpython-312-x86_64-linux-gnu.so\n1521e48d8000-1521e48d9000 r--p 00005000 00:2e 10735124482                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bz2.cpython-312-x86_64-linux-gnu.so\n1521e48d9000-1521e48da000 rw-p 00006000 00:2e 10735124482                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bz2.cpython-312-x86_64-linux-gnu.so\n1521e48da000-1521e48dd000 r--p 00000000 00:2e 9447331588                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libz.so.1.3.2\n1521e48dd000-1521e48ed000 r-xp 00003000 00:2e 9447331588                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libz.so.1.3.2\n1521e48ed000-1521e48f3000 r--p 00013000 00:2e 9447331588                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libz.so.1.3.2\n1521e48f3000-1521e48f4000 r--p 00019000 00:2e 9447331588                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libz.so.1.3.2\n1521e48f4000-1521e48f5000 rw-p 0001a000 00:2e 9447331588                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libz.so.1.3.2\n1521e48f5000-1521e48f9000 r--p 00000000 00:2e 8074001936                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/math.cpython-312-x86_64-linux-gnu.so\n1521e48f9000-1521e4902000 r-xp 00004000 00:2e 8074001936                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/math.cpython-312-x86_64-linux-gnu.so\n1521e4902000-1521e4907000 r--p 0000d000 00:2e 8074001936                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/math.cpython-312-x86_64-linux-gnu.so\n1521e4907000-1521e4908000 r--p 00011000 00:2e 8074001936                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/math.cpython-312-x86_64-linux-gnu.so\n1521e4908000-1521e4909000 rw-p 00012000 00:2e 8074001936                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/math.cpython-312-x86_64-linux-gnu.so\n1521e4909000-1521e49f8000 r--p 00000000 00:2e 16301521927                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libcrypto.so.3\n1521e49f8000-1521e4d64000 r-xp 000ef000 00:2e 16301521927                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libcrypto.so.3\n1521e4d64000-1521e4e9e000 r--p 0045b000 00:2e 16301521927                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libcrypto.so.3\n1521e4e9e000-1521e4f20000 r--p 00594000 00:2e 16301521927                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libcrypto.so.3\n1521e4f20000-1521e4f23000 rw-p 00616000 00:2e 16301521927                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libcrypto.so.3\n1521e4f23000-1521e5126000 rw-p 00000000 00:00 0 \n1521e5126000-1521f20dd000 r--p 00000000 08:03 16935344                   /usr/lib/locale/locale-archive\n1521f20dd000-1521f2116000 r-xp 00000000 08:03 16781323                   /usr/lib64/libc-2.28.so\n1521f2116000-1521f2118000 r-xp 00039000 08:03 16781323                   /usr/lib64/libc-2.28.so\n1521f2118000-1521f2203000 r-xp 0003b000 08:03 16781323                   /usr/lib64/libc-2.28.so\n1521f2203000-1521f2204000 r-xp 00126000 08:03 16781323                   /usr/lib64/libc-2.28.so\n1521f2204000-1521f2207000 r-xp 00127000 08:03 16781323                   /usr/lib64/libc-2.28.so\n1521f2207000-1521f2208000 r-xp 0012a000 08:03 16781323                   /usr/lib64/libc-2.28.so\n1521f2208000-1521f220d000 r-xp 0012b000 08:03 16781323                   /usr/lib64/libc-2.28.so\n1521f220d000-1521f220e000 r-xp 00130000 08:03 16781323                   /usr/lib64/libc-2.28.so\n1521f220e000-1521f2299000 r-xp 00131000 08:03 16781323                   /usr/lib64/libc-2.28.so\n1521f2299000-1521f2498000 ---p 001bc000 08:03 16781323                   /usr/lib64/libc-2.28.so\n1521f2498000-1521f249c000 r--p 001bb000 08:03 16781323                   /usr/lib64/libc-2.28.so\n1521f249c000-1521f249e000 rw-p 001bf000 08:03 16781323                   /usr/lib64/libc-2.28.so\n1521f249e000-1521f24a2000 rw-p 00000000 00:00 0 \n1521f24a2000-1521f2623000 r-xp 00000000 08:03 16781327                   /usr/lib64/libm-2.28.so\n1521f2623000-1521f2822000 ---p 00181000 08:03 16781327                   /usr/lib64/libm-2.28.so\n1521f2822000-1521f2823000 r--p 00180000 08:03 16781327                   /usr/lib64/libm-2.28.so\n1521f2823000-1521f2824000 rw-p 00181000 08:03 16781327                   /usr/lib64/libm-2.28.so\n1521f2824000-1521f2826000 r-xp 00000000 08:03 16781345                   /usr/lib64/libutil-2.28.so\n1521f2826000-1521f2a26000 ---p 00002000 08:03 16781345                   /usr/lib64/libutil-2.28.so\n1521f2a26000-1521f2a27000 r--p 00002000 08:03 16781345                   /usr/lib64/libutil-2.28.so\n1521f2a27000-1521f2a28000 rw-p 00003000 08:03 16781345                   /usr/lib64/libutil-2.28.so\n1521f2a28000-1521f2a2b000 r-xp 00000000 08:03 16781325                   /usr/lib64/libdl-2.28.so\n1521f2a2b000-1521f2c2a000 ---p 00003000 08:03 16781325                   /usr/lib64/libdl-2.28.so\n1521f2c2a000-1521f2c2b000 r--p 00002000 08:03 16781325                   /usr/lib64/libdl-2.28.so\n1521f2c2b000-1521f2c2c000 rw-p 00003000 08:03 16781325                   /usr/lib64/libdl-2.28.so\n1521f2c2c000-1521f2c47000 r-xp 00000000 08:03 16781337                   /usr/lib64/libpthread-2.28.so\n1521f2c47000-1521f2e46000 ---p 0001b000 08:03 16781337                   /usr/lib64/libpthread-2.28.so\n1521f2e46000-1521f2e47000 r--p 0001a000 08:03 16781337                   /usr/lib64/libpthread-2.28.so\n1521f2e47000-1521f2e48000 rw-p 0001b000 08:03 16781337                   /usr/lib64/libpthread-2.28.so\n1521f2e48000-1521f2e4c000 rw-p 00000000 00:00 0 \n1521f2e4c000-1521f2e79000 r-xp 00000000 08:03 16781316                   /usr/lib64/ld-2.28.so\n1521f2e79000-1521f2e7a000 r--s 00700000 00:06 50197                      /dev/infiniband/uverbs0\n1521f2e7a000-1521f2e7b000 r--s 00500000 00:06 50197                      /dev/infiniband/uverbs0\n1521f2e7b000-1521f2e7c000 r--p 00000000 00:2e 6549282051                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/pmix/pmix_mca_pcompress_zlib.so\n1521f2e7c000-1521f2e7d000 r-xp 00001000 00:2e 6549282051                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/pmix/pmix_mca_pcompress_zlib.so\n1521f2e7d000-1521f2e7e000 r--p 00002000 00:2e 6549282051                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/pmix/pmix_mca_pcompress_zlib.so\n1521f2e7e000-1521f2e7f000 r--p 00002000 00:2e 6549282051                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/pmix/pmix_mca_pcompress_zlib.so\n1521f2e7f000-1521f2e80000 rw-p 00003000 00:2e 6549282051                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/pmix/pmix_mca_pcompress_zlib.so\n1521f2e80000-1521f2e83000 r--p 00000000 00:2e 8074003728                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/zlib.cpython-312-x86_64-linux-gnu.so\n1521f2e83000-1521f2e87000 r-xp 00003000 00:2e 8074003728                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/zlib.cpython-312-x86_64-linux-gnu.so\n1521f2e87000-1521f2e8a000 r--p 00007000 00:2e 8074003728                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/zlib.cpython-312-x86_64-linux-gnu.so\n1521f2e8a000-1521f2e8b000 r--p 0000a000 00:2e 8074003728                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/zlib.cpython-312-x86_64-linux-gnu.so\n1521f2e8b000-1521f2e8c000 rw-p 0000b000 00:2e 8074003728                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/zlib.cpython-312-x86_64-linux-gnu.so\n1521f2e8c000-1521f2e8f000 r--p 00000000 00:2e 10735092738                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_json.cpython-312-x86_64-linux-gnu.so\n1521f2e8f000-1521f2e95000 r-xp 00003000 00:2e 10735092738                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_json.cpython-312-x86_64-linux-gnu.so\n1521f2e95000-1521f2e97000 r--p 00009000 00:2e 10735092738                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_json.cpython-312-x86_64-linux-gnu.so\n1521f2e97000-1521f2e98000 r--p 0000a000 00:2e 10735092738                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_json.cpython-312-x86_64-linux-gnu.so\n1521f2e98000-1521f2e99000 rw-p 0000b000 00:2e 10735092738                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_json.cpython-312-x86_64-linux-gnu.so\n1521f2e99000-1521f2e9b000 r--p 00000000 00:2e 8073999120                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_blake2.cpython-312-x86_64-linux-gnu.so\n1521f2e9b000-1521f2eaf000 r-xp 00002000 00:2e 8073999120                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_blake2.cpython-312-x86_64-linux-gnu.so\n1521f2eaf000-1521f2eb1000 r--p 00016000 00:2e 8073999120                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_blake2.cpython-312-x86_64-linux-gnu.so\n1521f2eb1000-1521f2eb2000 r--p 00017000 00:2e 8073999120                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_blake2.cpython-312-x86_64-linux-gnu.so\n1521f2eb2000-1521f2eb3000 rw-p 00018000 00:2e 8073999120                 /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_blake2.cpython-312-x86_64-linux-gnu.so\n1521f2eb3000-1521f2eb7000 r--p 00000000 00:2e 10735104258                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_hashlib.cpython-312-x86_64-linux-gnu.so\n1521f2eb7000-1521f2ebc000 r-xp 00004000 00:2e 10735104258                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_hashlib.cpython-312-x86_64-linux-gnu.so\n1521f2ebc000-1521f2ec0000 r--p 00009000 00:2e 10735104258                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_hashlib.cpython-312-x86_64-linux-gnu.so\n1521f2ec0000-1521f2ec1000 r--p 0000d000 00:2e 10735104258                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_hashlib.cpython-312-x86_64-linux-gnu.so\n1521f2ec1000-1521f2ec2000 rw-p 0000e000 00:2e 10735104258                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_hashlib.cpython-312-x86_64-linux-gnu.so\n1521f2ec2000-1521f2ec6000 r--p 00000000 00:2e 10735126018                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_struct.cpython-312-x86_64-linux-gnu.so\n1521f2ec6000-1521f2ecb000 r-xp 00004000 00:2e 10735126018                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_struct.cpython-312-x86_64-linux-gnu.so\n1521f2ecb000-1521f2ecf000 r--p 00009000 00:2e 10735126018                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_struct.cpython-312-x86_64-linux-gnu.so\n1521f2ecf000-1521f2ed0000 r--p 0000c000 00:2e 10735126018                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_struct.cpython-312-x86_64-linux-gnu.so\n1521f2ed0000-1521f2ed1000 rw-p 0000d000 00:2e 10735126018                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_struct.cpython-312-x86_64-linux-gnu.so\n1521f2ed1000-1521f2ed4000 r--p 00000000 00:2e 10202662920                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libffi.so.8.1.4\n1521f2ed4000-1521f2ede000 r-xp 00003000 00:2e 10202662920                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libffi.so.8.1.4\n1521f2ede000-1521f2ee0000 r--p 0000d000 00:2e 10202662920                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libffi.so.8.1.4\n1521f2ee0000-1521f2ee1000 r--p 0000e000 00:2e 10202662920                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libffi.so.8.1.4\n1521f2ee1000-1521f2ee2000 rw-p 0000f000 00:2e 10202662920                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libffi.so.8.1.4\n1521f2ee2000-1521f2ee9000 r--p 00000000 00:2e 10735131138                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_ctypes.cpython-312-x86_64-linux-gnu.so\n1521f2ee9000-1521f2ef9000 r-xp 00007000 00:2e 10735131138                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_ctypes.cpython-312-x86_64-linux-gnu.so\n1521f2ef9000-1521f2eff000 r--p 00017000 00:2e 10735131138                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_ctypes.cpython-312-x86_64-linux-gnu.so\n1521f2eff000-1521f2f00000 r--p 0001d000 00:2e 10735131138                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_ctypes.cpython-312-x86_64-linux-gnu.so\n1521f2f00000-1521f2f03000 rw-p 0001e000 00:2e 10735131138                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_ctypes.cpython-312-x86_64-linux-gnu.so\n1521f2f03000-1521f3067000 rw-p 00000000 00:00 0 \n1521f3067000-1521f3068000 r--p 00000000 00:2e 18331196175                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_pthreads-2.1.so.7.0.1\n1521f3068000-1521f3069000 r-xp 00001000 00:2e 18331196175                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_pthreads-2.1.so.7.0.1\n1521f3069000-1521f306a000 r--p 00002000 00:2e 18331196175                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_pthreads-2.1.so.7.0.1\n1521f306a000-1521f306b000 r--p 00002000 00:2e 18331196175                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_pthreads-2.1.so.7.0.1\n1521f306b000-1521f306c000 rw-p 00003000 00:2e 18331196175                /public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_pthreads-2.1.so.7.0.1\n1521f306c000-1521f3070000 rw-p 00000000 00:00 0 \n1521f3070000-1521f3077000 r--s 00000000 08:03 17303041                   /usr/lib64/gconv/gconv-modules.cache\n1521f3077000-1521f3079000 rw-p 00000000 00:00 0 \n1521f3079000-1521f307a000 r--p 0002d000 08:03 16781316                   /usr/lib64/ld-2.28.so\n1521f307a000-1521f307c000 rw-p 0002e000 08:03 16781316                   /usr/lib64/ld-2.28.so\n354950000000-35495032f000 rw-s 00000000 08:03 19795214                   /tmp/lwb_720/tmp/ompi.491648/1/pmix-gds-shmem2.node5005-prterun-node5005-491648@1.jobdata.491648\n5573cf0a1000-5573cf1a3000 r--p 00000000 00:2e 18328549647                /public2/home/lwb_720/miniconda3/envs/pyquda/bin/python3.12\n5573cf1a3000-5573cf3f4000 r-xp 00102000 00:2e 18328549647                /public2/home/lwb_720/miniconda3/envs/pyquda/bin/python3.12\n5573cf3f4000-5573cf550000 r--p 00353000 00:2e 18328549647                /public2/home/lwb_720/miniconda3/envs/pyquda/bin/python3.12\n5573cf550000-5573cf5c7000 r--p 004ae000 00:2e 18328549647                /public2/home/lwb_720/miniconda3/envs/pyquda/bin/python3.12\n5573cf5c7000-5573cf735000 rw-p 00525000 00:2e 18328549647                /public2/home/lwb_720/miniconda3/envs/pyquda/bin/python3.12\n5573cf735000-5573cf736000 rw-p 00000000 00:00 0 \n5573d0f4b000-5573d1495000 rw-p 00000000 00:00 0                          [heap]\n5573d1495000-5573d1496000 rw-p 00000000 00:00 0                          [heap]\n5573d1496000-5573d14a1000 rw-p 00000000 00:00 0                          [heap]\n5573d14a1000-5573d14a2000 rw-p 00000000 00:00 0                          [heap]\n5573d14a2000-5573d1544000 rw-p 00000000 00:00 0                          [heap]\n5573d1544000-5573d154c000 rw-p 00000000 00:00 0                          [heap]\n5573d154c000-5573d1566000 rw-p 00000000 00:00 0                          [heap]\n5573d1566000-5573d1567000 rw-p 00000000 00:00 0                          [heap]\n5573d1567000-5573d15aa000 rw-p 00000000 00:00 0                          [heap]\n5573d15aa000-5573d15ca000 rw-p 00000000 00:00 0                          [heap]\n5573d15ca000-5573d15cb000 rw-p 00000000 00:00 0                          [heap]\n5573d15cb000-5573d15cd000 rw-p 00000000 00:00 0                          [heap]\n5573d15cd000-5573d17f2000 rw-p 00000000 00:00 0                          [heap]\n5573d17f2000-5573d17f3000 rw-p 00000000 00:00 0                          [heap]\n5573d17f3000-5573d180d000 rw-p 00000000 00:00 0                          [heap]\n5573d180d000-5573d180e000 rw-p 00000000 00:00 0                          [heap]\n5573d180e000-5573d1a4f000 rw-p 00000000 00:00 0                          [heap]\n5573d1a4f000-5573d1a8f000 rw-p 00000000 00:00 0                          [heap]\n5573d1a8f000-5573d1ac8000 rw-p 00000000 00:00 0                          [heap]\n5573d1ac8000-5573d1aca000 rw-p 00000000 00:00 0                          [heap]\n5573d1aca000-5573d1ad0000 rw-p 00000000 00:00 0                          [heap]\n5573d1ad0000-5573d1af0000 rw-p 00000000 00:00 0                          [heap]\n5573d1af0000-5573d1af1000 rw-p 00000000 00:00 0                          [heap]\n5573d1af1000-5573d1b09000 rw-p 00000000 00:00 0                          [heap]\n5573d1b09000-5573d1b3a000 rw-p 00000000 00:00 0                          [heap]\n5573d1b3a000-5573d1b4a000 rw-p 00000000 00:00 0                          [heap]\n5573d1b4a000-5573d1b4b000 rw-p 00000000 00:00 0                          [heap]\n5573d1b4b000-5573d1b4d000 rw-p 00000000 00:00 0                          [heap]\n5573d1b4d000-5573d1b52000 rw-p 00000000 00:00 0                          [heap]\n5573d1b52000-5573d1bd2000 rw-p 00000000 00:00 0                          [heap]\n5573d1bd2000-5573d1bd3000 rw-p 00000000 00:00 0                          [heap]\n5573d1bd3000-5573d1c53000 rw-p 00000000 00:00 0                          [heap]\n5573d1c53000-5573d1c54000 rw-p 00000000 00:00 0                          [heap]\n5573d1c54000-5573d1cd4000 rw-p 00000000 00:00 0                          [heap]\n5573d1cd4000-5573d1cfd000 rw-p 00000000 00:00 0                          [heap]\n5573d1cfd000-5573d1d1d000 rw-p 00000000 00:00 0                          [heap]\n5573d1d1d000-5573d1d1e000 rw-p 00000000 00:00 0                          [heap]\n5573d1d1e000-5573d1d9e000 rw-p 00000000 00:00 0                          [heap]\n5573d1d9e000-5573d1d9f000 rw-p 00000000 00:00 0                          [heap]\n5573d1d9f000-5573d1da7000 rw-p 00000000 00:00 0                          [heap]\n5573d1da7000-5573d1db0000 rw-p 00000000 00:00 0                          [heap]\n5573d1db0000-5573d1db1000 rw-p 00000000 00:00 0                          [heap]\n5573d1db1000-5573d1db8000 rw-p 00000000 00:00 0                          [heap]\n5573d1db8000-5573d1df8000 rw-p 00000000 00:00 0                          [heap]\n5573d1df8000-5573d1df9000 rw-p 00000000 00:00 0                          [heap]\n5573d1df9000-5573d1e79000 rw-p 00000000 00:00 0                          [heap]\n5573d1e79000-5573d1e7a000 rw-p 00000000 00:00 0                          [heap]\n5573d1e7a000-5573d1efa000 rw-p 00000000 00:00 0                          [heap]\n5573d1efa000-5573d1efb000 rw-p 00000000 00:00 0                          [heap]\n5573d1efb000-5573d1f7b000 rw-p 00000000 00:00 0                          [heap]\n5573d1f7b000-5573d1f7c000 rw-p 00000000 00:00 0                          [heap]\n5573d1f7c000-5573d1f9c000 rw-p 00000000 00:00 0                          [heap]\n5573d1f9c000-5573d1f9d000 rw-p 00000000 00:00 0                          [heap]\n5573d1f9d000-5573d201d000 rw-p 00000000 00:00 0                          [heap]\n5573d201d000-5573d2026000 rw-p 00000000 00:00 0                          [heap]\n5573d2026000-5573d20a6000 rw-p 00000000 00:00 0                          [heap]\n5573d20a6000-5573d20a7000 rw-p 00000000 00:00 0                          [heap]\n5573d20a7000-5573d20e7000 rw-p 00000000 00:00 0                          [heap]\n5573d20e7000-5573d2110000 rw-p 00000000 00:00 0                          [heap]\n5573d2110000-5573d2150000 rw-p 00000000 00:00 0                          [heap]\n5573d2150000-5573d2161000 rw-p 00000000 00:00 0                          [heap]\n5573d2161000-5573d2169000 rw-p 00000000 00:00 0                          [heap]\n5573d2169000-5573d216a000 rw-p 00000000 00:00 0                          [heap]\n5573d216a000-5573d21ea000 rw-p 00000000 00:00 0                          [heap]\n5573d21ea000-5573d21f3000 rw-p 00000000 00:00 0                          [heap]\n5573d21f3000-5573d2213000 rw-p 00000000 00:00 0                          [heap]\n5573d2213000-5573d2224000 rw-p 00000000 00:00 0                          [heap]\n5573d2224000-5573d2424000 rw-p 00000000 00:00 0                          [heap]\n5573d2424000-5573d2425000 rw-p 00000000 00:00 0                          [heap]\n5573d2425000-5573d24a5000 rw-p 00000000 00:00 0                          [heap]\n5573d24a5000-5573d2546000 rw-p 00000000 00:00 0                          [heap]\n5573d2546000-5573d2566000 rw-p 00000000 00:00 0                          [heap]\n5573d2566000-5573d2570000 rw-p 00000000 00:00 0                          [heap]\n5573d2570000-5573d25f0000 rw-p 00000000 00:00 0                          [heap]\n5573d25f0000-5573d25f1000 rw-p 00000000 00:00 0                          [heap]\n5573d25f1000-5573d2671000 rw-p 00000000 00:00 0                          [heap]\n5573d2671000-5573d269a000 rw-p 00000000 00:00 0                          [heap]\n5573d269a000-5573d26ba000 rw-p 00000000 00:00 0                          [heap]\n5573d26ba000-5573d26c1000 rw-p 00000000 00:00 0                          [heap]\n5573d26c1000-5573d26d1000 rw-p 00000000 00:00 0                          [heap]\n5573d26d1000-5573d26d2000 rw-p 00000000 00:00 0                          [heap]\n5573d26d2000-5573d2752000 rw-p 00000000 00:00 0                          [heap]\n5573d2752000-5573d275b000 rw-p 00000000 00:00 0                          [heap]\n5573d275b000-5573d2773000 rw-p 00000000 00:00 0                          [heap]\n5573d2773000-5573f7904000 rw-p 00000000 00:00 0                          [heap]\n6ac45c000000-6ac45c32f000 rw-s 00000000 08:03 19795215                   /tmp/lwb_720/tmp/ompi.491648/1/pmix-gds-shmem2.node5005-prterun-node5005-491648@1.session.ffffffff.491648\n7ffc9a046000-7ffdcdace000 rw-p 00000000 00:00 0                          [stack]\n7ffdcdb58000-7ffdcdb5c000 r--p 00000000 00:00 0                          [vvar]\n7ffdcdb5c000-7ffdcdb5e000 r-xp 00000000 00:00 0                          [vdso]\nffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]\n",
+  "mapped_libraries": [
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/lib/libgomp.so.1.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/lib/libgomp.so.1.0.0",
+      "sha256": "69ee17f4b1b74e45d2efad89013fedab284ff079296b5e09dc8becc80e97ac74",
+      "bytes": 1169400
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/000-delivery-tests/build/liblqcd_cpu.so.0.2.0",
+      "resolved_path": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/000-delivery-tests/build/liblqcd_cpu.so.0.2.0",
+      "sha256": "868a97c25e1dcae918534a7f644bc5869fc2080a4ef80c4714551263e9e0cbbd",
+      "bytes": 669712
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so",
+      "sha256": "432e1c1739731468ba305771af96773939e43016643e2d630f58cb45b6670e96",
+      "bytes": 24325657
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libexpat.so.1.12.4",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libexpat.so.1.12.4",
+      "sha256": "03364ad8027e041000c269776bb053fcf0cad5b01c025c49291a4971534ce9b4",
+      "bytes": 227704
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_decimal.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_decimal.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "eb5053aa66f4cc17124907ab100eceef957f4a59f11ebfec1f3e4eb0520893d6",
+      "bytes": 1661008
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libquadmath-2284e583-a9307bba.so.0.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libquadmath-2284e583-a9307bba.so.0.0.0",
+      "sha256": "6bc3069003caec1f075be3c51ae8355332f081fa9465910c4b5724e7fe7d8ad4",
+      "bytes": 275553
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libgfortran-83c28eba-468e71e5.so.5.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy.libs/libgfortran-83c28eba-468e71e5.so.5.0.0",
+      "sha256": "a6a368328d02a5d8a149746f13f6268f8cc9192df5c18777b25c3c9b5ef52160",
+      "bytes": 2862249
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09",
+      "resolved_path": "/public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat/libcuda.so.615.71.09",
+      "sha256": "85a8cc8cf00419ceb295ec62c481d05b4cdbdab10f25c5375d6d24bdbe00b4d9",
+      "bytes": 112475080
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/mmap.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/mmap.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "68184132997274df88aa25e6b1b9ed8ed676103837167b8766e5f015cd08a2a4",
+      "bytes": 91776
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/pyexpat.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/pyexpat.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "68bda36340096bd5255a152a65a670c49bcba64e363ecf99759d2c07404e26dd",
+      "bytes": 341768
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_elementtree.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_elementtree.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "b2509bc73f340efde47c03068286405e5c82ecdb8ccbe345353f7ac76d6bbea9",
+      "bytes": 402376
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_statistics.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_statistics.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "ebfbe331c00c377cc376af5b760be0e4a2479674aa2a429706205a5ccf1cb2de",
+      "bytes": 34720
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_sha2.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_sha2.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "a674ebb3a9b40ed8334df74e7cf7f4f9a14dbc65ac6e3ca26f24baa20a3206b3",
+      "bytes": 1140112
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_random.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_random.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "3c7ffdf67ac4b9913713bafa6c4b0138ef1ae1514aeae0cc964f4712db408b41",
+      "bytes": 62936
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bisect.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bisect.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "cf393bb48622f3bea28952e1d4e45e309dd7bc0d8a8880fc9a160aa2d6b8db0a",
+      "bytes": 82696
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "19d024507f73b42889baeb00f9da0004e33a42ed7a78fd77662fd6236e930d78",
+      "bytes": 231801
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_opcode.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_opcode.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "73820768c85189c3a20b4afd380ce68020086994d97fa1e7647e57d48ba6c522",
+      "bytes": 31304
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_contextvars.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_contextvars.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "00c3ab3c0e9ab4d3e690907ff1e6969159f591c5c35d6480eb43da49d8ba17ff",
+      "bytes": 27320
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_datetime.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_datetime.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "a8994211579a9a5057cf022f7b7dff077935965da4a9dfd2a0002bc98984efc5",
+      "bytes": 730280
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "ceec5ba13ab88318632307fdd2df74f317fa293ce77be559c4298ddd1f4306b0",
+      "bytes": 10637297
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_pickle.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_pickle.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "4260dcb45c0286205f2ab5e64abfceeb0ac66d439bf6b32bb097c4b0a445de10",
+      "bytes": 683792
+    },
+    {
+      "mapped_path": "/usr/lib64/libnss_files-2.28.so",
+      "resolved_path": "/usr/lib64/libnss_files-2.28.so",
+      "sha256": "c671874a086ad7816bf3409eeae703e999b58a314c60827f9871ac4993b0f1ef",
+      "bytes": 54352
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libgcc_s.so.1",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libgcc_s.so.1",
+      "sha256": "bbc0c0723c4ae25324adced7fa6ae6804ddf028fb72c5895312fc3cdba901b2d",
+      "bytes": 658632
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libstdc++.so.6.0.34",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libstdc++.so.6.0.34",
+      "sha256": "9ac7e2ec283e4a4a9a1ffdf0a17d688ca90e7f9d020cb8f372af7fa5194618f0",
+      "bytes": 14196416
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/cuda-13.4.2/targets/x86_64-linux/lib/libcudart.so.13.4.92",
+      "resolved_path": "/public2/home/lwb_720/cuda-13.4.2/targets/x86_64-linux/lib/libcudart.so.13.4.92",
+      "sha256": "7fb00519a24512bf677b59e87921e5c05aac8246ceb6a57435c0d9dfeef364f6",
+      "bytes": 798496
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libucm_cuda.so.0.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libucm_cuda.so.0.0.0",
+      "sha256": "b808fac4edca6a18c44e2ac21c689d7b15a85eccb2ce1c0b21fee91223e919eb",
+      "bytes": 119672
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_cma.so.0.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_cma.so.0.0.0",
+      "sha256": "43ac0f92cb6f0dd12210995083f948f308f48f218da78a2f8502de1003e06004",
+      "bytes": 109456
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_mlx5.so.0.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_mlx5.so.0.0.0",
+      "sha256": "265f5f9431960dc6215f250730efde49c6affe4a35733c271e16c853f6a1c617",
+      "bytes": 3168944
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_efa.so.0.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib_efa.so.0.0.0",
+      "sha256": "0a4fe158239753f05bb76dca658f3e61cb26e88930be15b4e72706877668e47a",
+      "bytes": 317240
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmlx5.so.1.27.65.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmlx5.so.1.27.65.0",
+      "sha256": "fccf72b9aca50da4d28b4fd2dd51cf7cc17a02bf17f80873c1c785e42174e0c2",
+      "bytes": 569728
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib.so.0.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_ib.so.0.0.0",
+      "sha256": "fb3e60cf6cc8b588a62b1191b3da1aa91713da1e6b3353277d9a08a2c0c8be99",
+      "bytes": 1420368
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_rdmacm.so.0.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/ucx/libuct_rdmacm.so.0.0.0",
+      "sha256": "bf1d88b901a70c5af02364f2747ceca6e03033f86e951c7157aaf1439eee5e77",
+      "bytes": 299592
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_btl_smcuda.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_btl_smcuda.so",
+      "sha256": "ab2a8a652d5273dcc21355088dc1cf8028b52c0bd88e0f40a54582e7c54dd4cd",
+      "bytes": 66328
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libiconv.so.2.7.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libiconv.so.2.7.0",
+      "sha256": "59b942b8a9dfabcfec7d65ff2be1de2e59902765837768ca37468cef5dca9571",
+      "bytes": 1182640
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libxml2.so.16.1.2",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libxml2.so.16.1.2",
+      "sha256": "1d705b4c024da729d66b726d183679dc4c4e9c814eda759e62119eb3f653620f",
+      "bytes": 1440208
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libatomic.so.1.2.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libatomic.so.1.2.0",
+      "sha256": "0e61f88637858ee0cd58569a6e1052bdeee1bd22376526d105fb50ea98715640",
+      "bytes": 168944
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libibverbs.so.1.18.65.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libibverbs.so.1.18.65.0",
+      "sha256": "ebc558894ab683098f10874b1c2f65722ef15efced057d52b7092d10eeb97baf",
+      "bytes": 179192
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libefa.so.1.7.65.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libefa.so.1.7.65.0",
+      "sha256": "93618c91ab66516c96ca6e0f6f01fc67f6f681a2212c43d1601347f276436dcf",
+      "bytes": 77624
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/librdmacm.so.1.5.65.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/librdmacm.so.1.5.65.0",
+      "sha256": "b2a6d912be944787218c6b3f7b777b8484a5ec1122e28d6c8a3a669aefbf7fea",
+      "bytes": 145408
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libpmix.so.2.13.8",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libpmix.so.2.13.8",
+      "sha256": "fb80e872d6cbf0c9b29842e982a8279d9b3e3b8a87a8bdab42f437c6e661b83c",
+      "bytes": 2407200
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libhwloc.so.15.10.2",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libhwloc.so.15.10.2",
+      "sha256": "a1c9da741903b63ac8d3e8113cdf778743cbf5082cac1424fe512ac347c7029e",
+      "bytes": 430912
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_core-2.1.so.7.0.1",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_core-2.1.so.7.0.1",
+      "sha256": "2eca30de4f50684edac505d7e131b181052e7ed31ba5fdd361a3ff58d79d1309",
+      "bytes": 259512
+    },
+    {
+      "mapped_path": "/usr/lib64/librt-2.28.so",
+      "resolved_path": "/usr/lib64/librt-2.28.so",
+      "sha256": "1cee8d9a8e85fcd70cef27c5c91ef1838d9b597fc1c699c66dfa2ca68af12c5f",
+      "bytes": 42744
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_rgpusm.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_rgpusm.so",
+      "sha256": "ea758eef134a1e88c99ff38b79e2c2a50ed1ef06927af0b949af3b8a92fe57fd",
+      "bytes": 29912
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_gpusm.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/openmpi/mca_rcache_gpusm.so",
+      "sha256": "6479da91728d9613f428aa9e8aaf67b4657c944d78f9b3f114d7ee41f17d0a34",
+      "bytes": 21304
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-3.so.200.26.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-3.so.200.26.0",
+      "sha256": "ac1aeaceb428bd8df5ab9b27edb0857f5364332d8499fc5be49d6dd0c68b9f3b",
+      "bytes": 173048
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-route-3.so.200.26.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libnl-route-3.so.200.26.0",
+      "sha256": "0f10acd78fb0c0db08f60bc08945b14ff373cedfe1abb767a05b8463777802fa",
+      "bytes": 728736
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libuct.so.0.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libuct.so.0.0.0",
+      "sha256": "63eedfbc74a88ffbda737f075624e555a585e3d6f47ff45a30ced3cc4f1291af",
+      "bytes": 1276144
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucm.so.0.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucm.so.0.0.0",
+      "sha256": "65fc2968b62b79d0a2b744b5e5dd02c68ed920e5e7721b9442e625493b011744",
+      "bytes": 422440
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucs.so.0.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucs.so.0.0.0",
+      "sha256": "0a75f9922f940dc1ee8ee8cb252e0a38949d188f742cdca614760724c4a7a552",
+      "bytes": 1754408
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucp.so.0.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucp.so.0.0.0",
+      "sha256": "a3e8df8b3ab833edd2474b1e831b350906ec1ac13951c47d21054888a6959d74",
+      "bytes": 8062456
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libfabric.so.1.32.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libfabric.so.1.32.0",
+      "sha256": "4c81fe99a8f13e331759a1191a8f7cbaa97d75e4ce7bceffc223dea363f2302f",
+      "bytes": 2094392
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libopen-pal.so.80.0.5",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libopen-pal.so.80.0.5",
+      "sha256": "c87449ffb9a959b3f285a86ec65fbcc91312dcc5fd393066270a667604be2250",
+      "bytes": 1401408
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucc.so.1.0.0",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libucc.so.1.0.0",
+      "sha256": "84039f1780b74190c3b67db67000dafd50a1a99decca4860f5c450588687fcc5",
+      "bytes": 1343272
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmpi.so.40.40.7",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libmpi.so.40.40.7",
+      "sha256": "a4eb7c13790029634b00d119bbd62ed00e457e1fa3373451299eec0b0172fae2",
+      "bytes": 3907776
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/mpi4py/MPI.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/site-packages/mpi4py/MPI.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "63478a8102cc79d0fc2069052bb06967ee64413e1497a1af0d0631f7b70c2565",
+      "bytes": 2560528
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_posixsubprocess.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_posixsubprocess.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "0ba6fc70c3d4b300548c45c9a8786afee1fc488e0d43ae2cee4b64cb9ec64dc6",
+      "bytes": 173192
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/fcntl.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/fcntl.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "a2410ea2570823734b3c64d7d2307615eb1dbad4d45f7098b56449528b62c100",
+      "bytes": 60192
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/array.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/array.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "7b755ef22866873c6dd6be5180bc874d3524601639287e4e8141fd8c01930d6a",
+      "bytes": 254976
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/select.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/select.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "918f217b4cf737034f848c00813a4c76bfd8733f0a86b8007fd948d0ff7d7295",
+      "bytes": 118176
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_socket.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_socket.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "5a3aa18909196159c887c377a385d21bc7c4c8678f52de051b15c5d570202b3d",
+      "bytes": 314296
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/liblzma.so.5",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/liblzma.so.5",
+      "sha256": "01783e82ad99579760a8f6196c5843529b890abd8e2c294cb0d464260536911b",
+      "bytes": 222712
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_lzma.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_lzma.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "ce46f4d489a8ec1e75aa0b6c654421470062346f49d35b4cd601c7b83d3b7cff",
+      "bytes": 159528
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libbz2.so.1.0.8",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libbz2.so.1.0.8",
+      "sha256": "4979469ae49ac144f62202f75bbdd69b17197aedb879d633337c8cf7e4aba301",
+      "bytes": 229016
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bz2.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_bz2.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "c1827559a75333559fe18d7548fd62571f1215959a2fa924b0587bd9735d8fed",
+      "bytes": 98800
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libz.so.1.3.2",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libz.so.1.3.2",
+      "sha256": "0900010993ecb9e3bf674459147f3433b5b001aeea94d5ba43b61c867e596cd1",
+      "bytes": 117416
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/math.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/math.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "cbe810a275949e44e64eb63640aef53b94fc98d6f2ba281316c2531218f2fd6c",
+      "bytes": 377136
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libcrypto.so.3",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libcrypto.so.3",
+      "sha256": "1845304a0fe7cbf5ea0a7faac488789551eea1a1209e657bccc4e326620801cb",
+      "bytes": 7252520
+    },
+    {
+      "mapped_path": "/usr/lib64/libc-2.28.so",
+      "resolved_path": "/usr/lib64/libc-2.28.so",
+      "sha256": "99fc12569661113ad39b50539e3f9e9d87cbe4f75525335458622da42db716a5",
+      "bytes": 2088960
+    },
+    {
+      "mapped_path": "/usr/lib64/libm-2.28.so",
+      "resolved_path": "/usr/lib64/libm-2.28.so",
+      "sha256": "cec416998cb1737d7785bd0529c4e4c287c8feead4b7da2e3fa615283a4a41d0",
+      "bytes": 1598808
+    },
+    {
+      "mapped_path": "/usr/lib64/libutil-2.28.so",
+      "resolved_path": "/usr/lib64/libutil-2.28.so",
+      "sha256": "1bc30683b1d313aa98ec10b4498ccbd65d6d109cc8bbce7b113e59f324b4b141",
+      "bytes": 17008
+    },
+    {
+      "mapped_path": "/usr/lib64/libdl-2.28.so",
+      "resolved_path": "/usr/lib64/libdl-2.28.so",
+      "sha256": "a08d8ef8f5677075e9a6217a4e11057ca44042ef7291f4580e52ce34dabd65cb",
+      "bytes": 19584
+    },
+    {
+      "mapped_path": "/usr/lib64/libpthread-2.28.so",
+      "resolved_path": "/usr/lib64/libpthread-2.28.so",
+      "sha256": "3135a01d79807e060addde90df9be0713fdf138c7b247e1af7cb45cd4a4efbb8",
+      "bytes": 149976
+    },
+    {
+      "mapped_path": "/usr/lib64/ld-2.28.so",
+      "resolved_path": "/usr/lib64/ld-2.28.so",
+      "sha256": "2429b80402acf78ff366e09cf66b4e210c21b1b27b2b049a5f6ac82e72096898",
+      "bytes": 1105744
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/pmix/pmix_mca_pcompress_zlib.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/pmix/pmix_mca_pcompress_zlib.so",
+      "sha256": "9c6f5e946cbd46b7021ef23636e2f384f0ba8fb157841e8d9a2b40bb1b9dd29a",
+      "bytes": 16632
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/zlib.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/zlib.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "09551b557647a0b26b91b30fe20c010097eab67381cc6da3853701d6ba0d2423",
+      "bytes": 165960
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_json.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_json.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "ca4f62deafc497bd5ac58fa444486835b4b127d66d4fbf6b419f24f90d5f79d3",
+      "bytes": 284208
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_blake2.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_blake2.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "1fc212f5912e42a89f7600268fe8c22f22f948704633172a8108bdc15e86801c",
+      "bytes": 753936
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_hashlib.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_hashlib.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "d36ad04c4250f2ce3560a8cf7e9d882350c80a5dfdb57040af35a477807c4563",
+      "bytes": 211896
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_struct.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_struct.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "d64c0b0022e28c8da0f93880c463a323b76b32ad590da8e4e569b97c175acce4",
+      "bytes": 220128
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libffi.so.8.1.4",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libffi.so.8.1.4",
+      "sha256": "9e5f3097226755b5031429b7ef99b06911d5e4b1a78d3f440257fd32860a9943",
+      "bytes": 72416
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_ctypes.cpython-312-x86_64-linux-gnu.so",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/python3.12/lib-dynload/_ctypes.cpython-312-x86_64-linux-gnu.so",
+      "sha256": "8c0e6f70145340cf82e6527c89c181f253fff7717550435f17eed58a704a03ad",
+      "bytes": 879496
+    },
+    {
+      "mapped_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_pthreads-2.1.so.7.0.1",
+      "resolved_path": "/public2/home/lwb_720/miniconda3/envs/pyquda/lib/libevent_pthreads-2.1.so.7.0.1",
+      "sha256": "63872608f997f6a9f47becdcf34b41e5dba824d28059e58d5747b624fe0050a0",
+      "bytes": 16808
+    }
+  ],
+  "tasks": [
+    {
+      "tid": 491652,
+      "Name": "python",
+      "State": "R (running)",
+      "Cpus_allowed_list": "0",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491675,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "0-15",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491702,
+      "Name": "async",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "0-15",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491841,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "1",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491855,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "2",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491867,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "3",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491880,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "4",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491890,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "5",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491899,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "6",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491909,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "7",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491917,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "8",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491926,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "9",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491935,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "10",
+      "Mems_allowed_list": "0-7"
+    },
+    {
+      "tid": 491944,
+      "Name": "python",
+      "State": "S (sleeping)",
+      "Cpus_allowed_list": "11",
+      "Mems_allowed_list": "0-7"
+    }
+  ],
+  "task_count": 14,
+  "loader_environment": {
+    "LD_LIBRARY_PATH": "/public2/home/lwb_720/cuda-compat-13.4/usr/local/cuda-13.4/compat:/public2/home/lwb_720/cuda-13.4.2/lib64",
+    "LD_PRELOAD": null
+  },
+  "tuning_environment": {
+    "OMP_PROC_BIND": "close",
+    "LQCD_OPT_TASK_ID": "6479f0aabcc248b497c7cdfba96c1ae5",
+    "OMPI_MCA_PREFIXES": "mca,opal,ompi,atomic,memheap,scoll,spml,sshmem,bml,coll,fbtl,fcoll,fs,hook,io,mtl,op,osc,part,pml,sharedfp,topo,vprotocol,accelerator,allocator,backtrace,btl,dl,hwloc,if,installdirs,memchecker,memcpy,memory,mpool,patcher,rcache,reachable,shmem,smsc,threads,timer",
+    "OMPI_MCA_num_procs": "16",
+    "OMPI_MCA_initial_wdir": "/public2/home/lwb_720/.cache/mg-x86-20261110",
+    "OMPI_MCA_cpu_type": "x86_64",
+    "OMP_NUM_THREADS": "16",
+    "OMP_DYNAMIC": "FALSE",
+    "OMP_PLACES": "{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15}",
+    "LQCD_NUMA_NODE": "0",
+    "LQCD_CPU_THREADS": "16",
+    "LQCD_ARM_COARSE_SVE": "0",
+    "LQCD_ARM_SVE": "1",
+    "LQCD_ARM_SVE_PLANNED": "0",
+    "LQCD_ARM_SVE_REUSE": "0",
+    "LQCD_ARM_SVE_TRANSFER": "0",
+    "LQCD_COARSE_FUSED": "0",
+    "LQCD_COARSE_SPATIAL_OVERLAP": "0",
+    "LQCD_HBM": "off",
+    "LQCD_HBW_ALLOC": "off",
+    "LQCD_CPU_LIBRARY": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/000-delivery-tests/build/liblqcd_cpu.so.0.2.0",
+    "LQCD_VERBOSE": "1",
+    "LQCD_HALO_PROFILE": "1",
+    "LQCD_COARSE_CGS2": "0",
+    "LQCD_CORRECTION_BASE_TOL": "0.003",
+    "LQCD_MG_COARSE_IT": "40",
+    "LQCD_MG_COARSE_TOL": "0.05",
+    "LQCD_MG_SAP_CYCLES": "2",
+    "LQCD_MG_SAP_STEPS": "5",
+    "LQCD_RESTRICT_FLOAT": "0",
+    "LQCD_RHS_BATCH": "2"
+  },
+  "compiler": {
+    "argv": [
+      "/public2/home/lwb_720/miniconda3/bin/g++",
+      "--version"
+    ],
+    "returncode": 0,
+    "stdout": "g++ (conda-forge gcc 14.4.0-5) 14.4.0\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "stderr": ""
+  },
+  "mpi_library_version": "Open MPI v5.0.10, package: Open MPI rattler@b6a516ae5783 Distribution, ident: 5.0.10, repo rev: v5.0.10, Feb 23, 2026\u0000",
+  "mpi_thread_support": 3,
+  "lscpu": {
+    "argv": [
+      "lscpu"
+    ],
+    "returncode": 0,
+    "stdout": "Architecture:        x86_64\nCPU op-mode(s):      32-bit, 64-bit\nByte Order:          Little Endian\nCPU(s):              256\nOn-line CPU(s) list: 0-255\nThread(s) per core:  1\nCore(s) per socket:  128\nSocket(s):           2\nNUMA node(s):        8\nVendor ID:           AuthenticAMD\nCPU family:          26\nModel:               2\nModel name:          AMD EPYC 9755 128-Core Processor\nStepping:            1\nCPU MHz:             3817.056\nCPU max MHz:         4121.1909\nCPU min MHz:         1500.0000\nBogoMIPS:            5391.50\nVirtualization:      AMD-V\nL1d cache:           48K\nL1i cache:           32K\nL2 cache:            1024K\nL3 cache:            32768K\nNUMA node0 CPU(s):   0-31\nNUMA node1 CPU(s):   32-63\nNUMA node2 CPU(s):   64-95\nNUMA node3 CPU(s):   96-127\nNUMA node4 CPU(s):   128-159\nNUMA node5 CPU(s):   160-191\nNUMA node6 CPU(s):   192-223\nNUMA node7 CPU(s):   224-255\nFlags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq monitor ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 invpcid_single hw_pstate ssbd mba ibrs ibpb stibp vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local avx_vnni avx512_bf16 clzero irperf xsaveerptr wbnoinvd amd_ppin arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif v_spec_ctrl avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid bus_lock_detect movdiri movdir64b overflow_recov succor smca fsrm avx512_vp2intersect flush_l1d\n",
+    "stderr": ""
+  },
+  "sve": {},
+  "cpu_frequency_snapshot": {
+    "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor": "performance",
+    "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq": "4155171",
+    "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq": "1500000",
+    "/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq": "2700000"
+  },
+  "frequency_interpretation": "Instantaneous read of the first allowed CPU only; not a measured all-core operating frequency"
+}

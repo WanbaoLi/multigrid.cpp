@@ -1,0 +1,264 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 3K of event 'cycles:u'
+# Event count (approx.): 277060210071
+#
+# Overhead  Symbol                                                                                                                                                                                                                                       IPC   [IPC Coverage]
+# ........  ...........................................................................................................................................................................................................................................  ....................
+#
+    36.36%  [.] do_wait                                                                                                                                                                                                                                  -      -            
+            |          
+            |--24.83%--gomp_team_barrier_wait_end
+            |          |          
+            |          |--14.54%--NativeMG::Impl::fine_apply_batch
+            |          |          |          
+            |          |           --14.52%--gomp_thread_start
+            |          |                     start_thread
+            |          |                     __GI___clone (inlined)
+            |          |          
+            |           --9.45%--gomp_thread_start
+            |                     start_thread
+            |                     __GI___clone (inlined)
+            |          
+             --11.52%--gomp_barrier_wait_end
+                       gomp_thread_start
+                       start_thread
+                       __GI___clone (inlined)
+
+    17.60%  [.] lqcd_native::x86::wilson_avx512_impl<true, int, true, false>                                                                                                                                                                             -      -            
+            |
+            ---NativeMG::Impl::fine_apply_batch
+               |          
+               |--16.67%--gomp_thread_start
+               |          start_thread
+               |          __GI___clone (inlined)
+               |          
+                --0.93%--GOMP_parallel
+                          NativeMG::Impl::fine_apply_batch
+                          |          
+                           --0.64%--NativeMG::Impl::sap_batch
+                                     NativeMG::Impl::apply_vcycle_batch
+                                     NativeMG::solve_batch
+                                     lqcd::NativeBackend::solve_batch
+                                     lqcd_solve_batch::{lambda()#1}::operator()
+                                     lqcd_solve_batch
+                                     ffi_call_unix64
+                                     ffi_call_int
+                                     ffi_call
+                                     _ctypes_callproc.cold
+
+     7.00%  [.] NativeMG::Impl::apply_vcycle_batch                                                                                                                                                                                                       -      -            
+            |          
+            |--6.32%--gomp_thread_start
+            |          start_thread
+            |          __GI___clone (inlined)
+            |          
+             --0.69%--GOMP_parallel
+                       NativeMG::Impl::apply_vcycle_batch
+                       NativeMG::solve_batch
+                       lqcd::NativeBackend::solve_batch
+                       lqcd_solve_batch::{lambda()#1}::operator()
+                       lqcd_solve_batch
+                       ffi_call_unix64
+                       ffi_call_int
+                       ffi_call
+                       _ctypes_callproc.cold
+                       PyCFuncPtr_call
+                       _PyObject_MakeTpCall.localalias (inlined)
+                       _PyEval_EvalFrameDefault
+
+     7.00%  [.] lqcd_native::x86::wilson_avx512_impl<false, int, true, true>                                                                                                                                                                             -      -            
+            |
+            ---NativeMG::Impl::local_range
+               NativeMG::Impl::solve_sap_block_eo
+               |          
+                --6.86%--NativeMG::Impl::sap_batch
+                          |          
+                          |--6.07%--gomp_thread_start
+                          |          start_thread
+                          |          __GI___clone (inlined)
+                          |          
+                           --0.79%--GOMP_parallel
+                                     NativeMG::Impl::sap_batch
+                                     NativeMG::Impl::apply_vcycle_batch
+                                     NativeMG::solve_batch
+                                     lqcd::NativeBackend::solve_batch
+                                     lqcd_solve_batch::{lambda()#1}::operator()
+
+     4.76%  [.] NativeMG::Impl::apply_vcycle_batch                                                                                                                                                                                                       -      -            
+            |          
+             --4.33%--gomp_thread_start
+                       start_thread
+                       __GI___clone (inlined)
+
+     4.41%  [.] lqcd_native::x86::wilson_avx512_impl<true, int, true, true>                                                                                                                                                                              -      -            
+            |
+            ---NativeMG::Impl::local_range
+               NativeMG::Impl::solve_sap_block_eo
+               |          
+                --4.27%--NativeMG::Impl::sap_batch
+                          |          
+                           --3.99%--gomp_thread_start
+                                     start_thread
+                                     __GI___clone (inlined)
+
+     4.29%  [.] NativeMG::Impl::coarse_block_apply_range                                                                                                                                                                                                 -      -            
+            |
+            ---NativeMG::Impl::coarse_apply
+               |          
+                --3.86%--gomp_thread_start
+                          start_thread
+                          __GI___clone (inlined)
+
+     3.00%  [.] NativeMG::Impl::apply_double(std::vector<std::complex<double>, std::allocator<std::complex<double> > > const&, std::vector<std::complex<double>, std::allocator<std::complex<double> > >&) const::{lambda(unsigned long)#1}::operator()  -      -            
+            |
+            ---NativeMG::Impl::apply_double
+               |          
+                --2.80%--gomp_thread_start
+                          start_thread
+                          __GI___clone (inlined)
+
+     1.96%  [.] NativeMG::Impl::clover_range                                                                                                                                                                                                             -      -            
+            |          
+             --1.66%--NativeMG::Impl::solve_sap_block_eo
+                       |          
+                        --1.60%--NativeMG::Impl::sap_batch
+                                  |          
+                                   --1.40%--gomp_thread_start
+                                             start_thread
+                                             __GI___clone (inlined)
+
+     1.82%  [.] __memmove_avx512_unaligned_erms                                                                                                                                                                                                          -      -            
+            |          
+             --1.73%--NativeMG::Impl::fine_apply_batch
+                       |          
+                       |--0.98%--gomp_thread_start
+                       |          start_thread
+                       |          __GI___clone (inlined)
+                       |          
+                        --0.76%--GOMP_parallel
+                                  NativeMG::Impl::fine_apply_batch
+                                  |          
+                                   --0.61%--NativeMG::Impl::sap_batch
+                                             NativeMG::Impl::apply_vcycle_batch
+                                             NativeMG::solve_batch
+                                             lqcd::NativeBackend::solve_batch
+                                             lqcd_solve_batch::{lambda()#1}::operator()
+                                             lqcd_solve_batch
+                                             ffi_call_unix64
+                                             ffi_call_int
+                                             ffi_call
+                                             _ctypes_callproc.cold
+                                             PyCFuncPtr_call
+
+     1.76%  [.] NativeMG::Impl::fine_axpy                                                                                                                                                                                                                -      -            
+            |          
+             --1.45%--gomp_thread_start
+                       start_thread
+                       __GI___clone (inlined)
+
+     1.33%  [.] NativeMG::Impl::batch_gcr_update                                                                                                                                                                                                         -      -            
+            |          
+             --1.24%--gomp_thread_start
+                       start_thread
+                       __GI___clone (inlined)
+
+     1.13%  [.] NativeMG::Impl::fine_dot                                                                                                                                                                                                                 -      -            
+            |          
+             --0.96%--gomp_thread_start
+                       start_thread
+                       __GI___clone (inlined)
+
+     1.01%  [.] NativeMG::Impl::sap_batch                                                                                                                                                                                                                -      -            
+            |          
+             --0.96%--gomp_thread_start
+                       start_thread
+                       __GI___clone (inlined)
+
+     0.94%  [.] __memset_avx512_erms                                                                                                                                                                                                                     -      -            
+            |          
+             --0.67%--NativeMG::Impl::apply_vcycle_batch
+                       |          
+                        --0.60%--gomp_thread_start
+                                  start_thread
+                                  __GI___clone (inlined)
+
+     0.77%  [.] NativeMG::Impl::solve_sap_block_eo                                                                                                                                                                                                       -      -            
+            |
+            ---NativeMG::Impl::sap_batch
+               |          
+                --0.69%--gomp_thread_start
+                          start_thread
+                          __GI___clone (inlined)
+
+     0.52%  [.] NativeMG::Impl::encode_fine                                                                                                                                                                                                              -      -            
+            |
+            ---gomp_thread_start
+               start_thread
+               __GI___clone (inlined)
+
+     0.46%  [.] NativeMG::Impl::batch_gcr_update                                                                                                                                                                                                         -      -            
+     0.42%  [.] lqcd_native::x86::wilson_avx512_impl<true, int, true, false>                                                                                                                                                                             -      -            
+     0.32%  [.] NativeMG::Impl::fine_apply_batch                                                                                                                                                                                                         -      -            
+     0.31%  [.] NativeMG::Impl::decode_fine                                                                                                                                                                                                              -      -            
+     0.27%  [.] NativeMG::Impl::coarse_diagonal                                                                                                                                                                                                          -      -            
+     0.27%  [.] axpy                                                                                                                                                                                                                                     -      -            
+     0.20%  [.] NativeMG::Impl::fine_copy                                                                                                                                                                                                                -      -            
+     0.17%  [.] NativeMG::Impl::restrict_to_coarse                                                                                                                                                                                                       -      -            
+     0.16%  [.] NativeMG::Impl::prolongate_add                                                                                                                                                                                                           -      -            
+     0.11%  [.] lqcd_native::detail::coarse_dot                                                                                                                                                                                                          -      -            
+     0.11%  [.] (anonymous namespace)::coarse_gcr_fused_step                                                                                                                                                                                             -      -            
+     0.11%  [.] gomp_barrier_wait_start                                                                                                                                                                                                                  -      -            
+     0.11%  [k] 0xffffffffb9001c40                                                                                                                                                                                                                       -      -            
+     0.09%  [.] lqcd_native::detail::distributed_norm                                                                                                                                                                                                    -      -            
+     0.07%  [.] mca_part_persist_progress                                                                                                                                                                                                                -      -            
+     0.07%  [.] __pthread_mutex_unlock_usercnt                                                                                                                                                                                                           -      -            
+     0.06%  [.] ompi_sync_wait_mt                                                                                                                                                                                                                        -      -            
+     0.06%  [.] pthread_spin_lock                                                                                                                                                                                                                        -      -            
+     0.06%  [.] lqcd::NativeBackend::solve_batch                                                                                                                                                                                                         -      -            
+     0.06%  [.] lqcd_solve_batch::{lambda()#1}::operator()() const::{lambda()#1}::operator()                                                                                                                                                             -      -            
+     0.05%  [.] gomp_team_barrier_wait_final                                                                                                                                                                                                             -      -            
+     0.05%  [.] NativeMG::Impl::coarse_apply                                                                                                                                                                                                             -      -            
+     0.05%  [.] (anonymous namespace)::global_norm2                                                                                                                                                                                                      -      -            
+     0.05%  [.] std::chrono::_V2::steady_clock::now                                                                                                                                                                                                      -      -            
+     0.05%  [.] __pthread_mutex_lock                                                                                                                                                                                                                     -      -            
+     0.04%  [.] std::vector<float, lqcd_native::WorkspaceAllocator<float> >::_M_fill_assign                                                                                                                                                              -      -            
+     0.04%  [.] lqcd_native::detail::coarse_axpy                                                                                                                                                                                                         -      -            
+     0.04%  [.] _int_free                                                                                                                                                                                                                                -      -            
+     0.04%  [.] gomp_team_start                                                                                                                                                                                                                          -      -            
+     0.04%  [.] _strided_to_contig_size16                                                                                                                                                                                                                -      -            
+     0.03%  [.] lqcd::unpack_spinor                                                                                                                                                                                                                      -      -            
+     0.03%  [k] 0xffffffffb86628c2                                                                                                                                                                                                                       -      -            
+     0.03%  [k] 0xffffffffb86628cb                                                                                                                                                                                                                       -      -            
+     0.03%  [.] lqcd::NativeBackend::apply                                                                                                                                                                                                               -      -            
+     0.03%  [k] 0xffffffffb9000a01                                                                                                                                                                                                                       -      -            
+     0.03%  [.] ucp_tag_rndv_rts_progress                                                                                                                                                                                                                -      -            
+     0.03%  [.] std::vector<std::complex<double>, std::allocator<std::complex<double> > >::_M_fill_assign                                                                                                                                                -      -            
+     0.02%  [.] ucs_callbackq_remove_safe                                                                                                                                                                                                                -      -            
+     0.02%  [.] uct_mm_iface_progress                                                                                                                                                                                                                    -      -            
+     0.02%  [.] mca_pml_ucx_recv_nbx_completion                                                                                                                                                                                                          -      -            
+     0.02%  [.] unlink_chunk.isra.2                                                                                                                                                                                                                      -      -            
+     0.02%  [.] ompi_request_default_wait_all                                                                                                                                                                                                            -      -            
+     0.02%  [.] __tls_get_addr                                                                                                                                                                                                                           -      -            
+     0.02%  [.] omp_get_num_threads                                                                                                                                                                                                                      -      -            
+     0.02%  [k] 0xffffffffb9000010                                                                                                                                                                                                                       -      -            
+     0.02%  [.] PMPI_Allreduce                                                                                                                                                                                                                           -      -            
+     0.00%  [.] ucp_tag_recv_nbx                                                                                                                                                                                                                         -      -            
+     0.00%  [.] gomp_thread_start                                                                                                                                                                                                                        -      -            
+     0.00%  [k] 0xffffffffb9001100                                                                                                                                                                                                                       -      -            
+     0.00%  [.] ucs_async_thread_func                                                                                                                                                                                                                    -      -            
+     0.00%  [.] take_gil                                                                                                                                                                                                                                 -      -            
+     0.00%  [.] gomp_barrier_wait_end                                                                                                                                                                                                                    -      -            
+     0.00%  [.] __libc_disable_asynccancel                                                                                                                                                                                                               -      -            
+     0.00%  [.] clock_nanosleep@@GLIBC_2.17                                                                                                                                                                                                              -      -            
+     0.00%  [.] epoll_wait                                                                                                                                                                                                                               -      -            
+     0.00%  [.] time_sleep                                                                                                                                                                                                                               -      -            
+     0.00%  [.] ucs_event_set_wait                                                                                                                                                                                                                       -      -            
+
+
+#
+# (Tip: Show user configuration overrides: perf config --user --list)
+#

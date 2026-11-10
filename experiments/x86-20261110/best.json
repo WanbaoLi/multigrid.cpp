@@ -1,0 +1,9 @@
+{
+  "promoted": false,
+  "stable_source_commit": "833f8732f6b06e370074efbb610fc7a85fe11a46",
+  "stable_library": "/public2/home/lwb_720/.cache/mg-opt-delivery-833-20261105/campaign/attempts/000-delivery-tests/build/liblqcd_cpu.so",
+  "stable_library_sha256": "868a97c25e1dcae918534a7f644bc5869fc2080a4ef80c4714551263e9e0cbbd",
+  "candidate_fastest_observed_mode": "new2",
+  "candidate_fastest_observed_seconds": 6.111322293058038,
+  "reason": "Paired-row first-process gain did not repeat in the independent confirmation; signed projectors and RHS site tiles did not clearly beat original controls. Retain the reliable original833 implementation. This is a bounded tested set, not a global optimum."
+}

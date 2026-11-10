@@ -1,0 +1,43 @@
+{
+  "complete": true,
+  "passed": true,
+  "rank": 8,
+  "host": "node5005",
+  "pid": 491660,
+  "selected": true,
+  "event": "cycles:u",
+  "frequency": 49,
+  "call_graph": "dwarf,4096",
+  "errors": [],
+  "coverage": "one final diagnostic full12 call; sampled ranks only; not an accepted timing sample",
+  "record_argv": [
+    "/usr/bin/perf",
+    "record",
+    "-e",
+    "cycles:u",
+    "-F",
+    "49",
+    "--call-graph",
+    "dwarf,4096",
+    "-p",
+    "491660",
+    "-o",
+    "/public2/home/lwb_720/.cache/mg-x86-20261110/perf-v2/rank00008.perf.data"
+  ],
+  "solver_completed": true,
+  "record_returncode": -2,
+  "stop_requested_sigint": true,
+  "report_argv": [
+    "/usr/bin/perf",
+    "report",
+    "--stdio",
+    "--no-children",
+    "--sort",
+    "symbol",
+    "--input",
+    "/public2/home/lwb_720/.cache/mg-x86-20261110/perf-v2/rank00008.perf.data"
+  ],
+  "report_returncode": 0,
+  "perf_data_sha256": "165f3b2ae6365603eaea0f5d3e255687cbd3349fea33b9091917ba2388b9ebda",
+  "flat_report_sha256": "f49c4574c78db8aa17c4de30df1682007f8a8b22ced1dcd9bcedbd00dd2b916a"
+}
