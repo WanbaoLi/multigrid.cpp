@@ -14,7 +14,34 @@ void NativeMG::Impl::fine_apply_batch(const std::vector<const FloatField *> &sou
     }
     for (int r = 0; r < nrhs; r++)
         outputs[r]->resize(sources[r]->size());
+#if defined(LQCD_NATIVE_PACKED_WILSON)
+    // Each 16-site coefficient tile occupies 18 KiB (links + Clover),
+    // allowing both RHS columns to visit it before advancing to the next tile.
+    // 64 sites is the coarser L2/call-overhead comparison, not a new layout.
+    static const int rhs_site_tile = [] {
+        const int value = setting("LQCD_X86_RHS_SITE_TILE", 0);
+        return value == 16 || value == 64 ? value : 0;
+    }();
+    const bool tiled_rhs = rhs_site_tile && use_packed_coefficients &&
+                           fine_sites <= (size_t)INT_MAX / 24;
+    auto packed_batch_range = [&](int cb, int begin, int end) {
+        const size_t off = (size_t)(cb - first_aggregate) * packed_block_stride;
+        for (int first = begin; first < end; first += rhs_site_tile)
+            for (int r = 0; r < nrhs; ++r)
+                lqcd_native::kernels::wilson_avx512<true,int,true>(
+                    block_sites, packed_diag.data()+off, packed_links.data()+off,
+                    neighbor32.data()+(size_t)cb*8*block_sites,gp,gr,gi,
+                    sources[r]->data(),outputs[r]->data()+(size_t)cb*24*block_sites,
+                    first,std::min(end,first+rhs_site_tile),(size_t)cb*24*block_sites);
+    };
+#endif
     auto whole = [&](int cb) {
+#if defined(LQCD_NATIVE_PACKED_WILSON)
+        if (tiled_rhs) {
+            packed_batch_range(cb,0,block_sites);
+            return;
+        }
+#endif
         for (int r = 0; r < nrhs; r++)
             block_apply(cb, sources[r]->data(), outputs[r]->data() + (size_t)cb * 24 * block_sites,
                         false);
@@ -107,6 +134,13 @@ void NativeMG::Impl::fine_apply_batch(const std::vector<const FloatField *> &sou
             return;
         }
         const int parities = sap_eo ? 2 : 1, ps = block_sites / parities, pf = face / parities;
+#if defined(LQCD_NATIVE_PACKED_WILSON)
+        if (tiled_rhs) {
+            for (int p = 0; p < parities; ++p)
+                packed_batch_range(cb,p*ps+begin_t*pf,p*ps+end_t*pf);
+            return;
+        }
+#endif
         for (int r = 0; r < nrhs; r++)
             for (int p = 0; p < parities; p++) {
                 const float *src = sources[r]->data();
