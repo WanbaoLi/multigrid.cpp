@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cstddef>
 #include <climits>
+#include <cstdlib>
 namespace lqcd_native::x86 {
 // Packed coefficients: [ceil(B/16) tiles][144 scalar planes][16 lanes].
 // Packed callers align the site origin to a tile; masks select both ends.
@@ -20,11 +21,66 @@ inline __mmask16 wilson_range_mask(int site, int begin, int end) {
     return (__mmask16)(high & ~low);
 }
 
+// Process-static diagnostic switch: 0 retains the original implementation,
+// 1 retains a chirality's inputs, 2 interleaves two independent output rows.
+inline int clover_register_mode() {
+    static const int mode = [] {
+        const char *raw = std::getenv("LQCD_X86_CLOVER_REGISTERS");
+        return raw ? std::atoi(raw) : 0;
+    }();
+    return mode;
+}
+
+template <bool Packed, bool PairedRows>
+__attribute__((noinline)) inline void clover_register_tile_avx512(
+    int B, const float *diag, const float *src, float *out, int site, __mmask16 mask) {
+    constexpr int rows = PairedRows ? 2 : 1;
+    for (int chirality = 0; chirality < 2; ++chirality) {
+        __m512 input_re[6], input_im[6];
+        if constexpr (!PairedRows)
+            for (int j = 0; j < 6; ++j) {
+                const int component = chirality * 6 + j;
+                input_re[j] = _mm512_maskz_loadu_ps(mask, src + component * 2 * B + site);
+                input_im[j] = _mm512_maskz_loadu_ps(mask, src + (component * 2 + 1) * B + site);
+            }
+        for (int row = 0; row < 6; row += rows) {
+            __m512 yr[rows], yi[rows];
+            for (int r = 0; r < rows; ++r) yr[r] = yi[r] = _mm512_setzero_ps();
+            for (int j = 0; j < 6; ++j) {
+                const int component = chirality * 6 + j;
+                const __m512 xr = PairedRows ? _mm512_maskz_loadu_ps(mask, src + component * 2 * B + site) : input_re[j];
+                const __m512 xi = PairedRows ? _mm512_maskz_loadu_ps(mask, src + (component * 2 + 1) * B + site) : input_im[j];
+                for (int r = 0; r < rows; ++r) {
+                    const int a = chirality * 6 + row + r;
+                    const __m512 ar = _mm512_maskz_loadu_ps(mask, wilson_coefficient_tile<Packed>(diag,B,(a*6+j)*2,site));
+                    const __m512 ai = _mm512_maskz_loadu_ps(mask, wilson_coefficient_tile<Packed>(diag,B,(a*6+j)*2+1,site));
+                    yr[r] = _mm512_add_ps(yr[r], _mm512_sub_ps(_mm512_mul_ps(ar,xr), _mm512_mul_ps(ai,xi)));
+                    yi[r] = _mm512_add_ps(yi[r], _mm512_add_ps(_mm512_mul_ps(ar,xi), _mm512_mul_ps(ai,xr)));
+                }
+            }
+            for (int r = 0; r < rows; ++r) {
+                const int a = chirality * 6 + row + r;
+                _mm512_mask_storeu_ps(out+a*2*B+site,mask,yr[r]);
+                _mm512_mask_storeu_ps(out+(a*2+1)*B+site,mask,yi[r]);
+            }
+        }
+    }
+}
+
 // Source and output must be distinct: each output row consumes all six
 // input rows of its chirality. Inactive site lanes are left untouched.
 template <bool Packed = false>
 inline void clover_tile_avx512(int B, const float *diag, const float *src,
                               float *out, int site, __mmask16 mask) {
+    const int mode = clover_register_mode();
+    if (mode == 1) {
+        clover_register_tile_avx512<Packed,false>(B,diag,src,out,site,mask);
+        return;
+    }
+    if (mode == 2) {
+        clover_register_tile_avx512<Packed,true>(B,diag,src,out,site,mask);
+        return;
+    }
     const __m512 zero = _mm512_setzero_ps();
     for (int a = 0; a < 12; a++) {
         __m512 yr = zero, yi = zero;
