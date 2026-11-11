@@ -1,0 +1,18 @@
+{
+  "complete": true,
+  "host": "node5005",
+  "cpu": "AMD EPYC 9755, 256 physical cores, 8 NUMA domains",
+  "threads": 64,
+  "lattice": [24,24,24,64],
+  "N": 3,
+  "R": 12,
+  "mass": -0.277,
+  "time_boundary": -1,
+  "operator_relative_error": 2.09443845451e-16,
+  "iterations": 83,
+  "solve_seconds": [32.664981171,30.927274095],
+  "per_rhs_residual": [5.91597451854e-11,6.50257205726e-11,9.18152062013e-11,8.84383067021e-11,6.48332017059e-11,9.80042561482e-11,9.56041409441e-11,6.31344152369e-11,8.56015633825e-11,7.37358894105e-11,8.89509307288e-11,5.04038719784e-11],
+  "max_residual": 9.80042561482e-11,
+  "input_gauge_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+  "method": "independent per-RHS BiCGStab; merged naive shared-history BiCGStab rejected after rho breakdown"
+}

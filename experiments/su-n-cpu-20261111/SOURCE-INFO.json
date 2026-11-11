@@ -1,0 +1,11 @@
+{
+  "paper_pdf": "C:/Users/lwb/Downloads/watermarked_2022E8001282001.pdf",
+  "paper_reference": "[13] sunwayihep/sunw",
+  "public_repository": "https://github.com/sunwayihep/sunw.git",
+  "commit": "95c31d65a4de683849f83c168eddb236e5c6b4fc",
+  "role": "SU(N) Wilson gauge configuration generator; not the paper's multi-RHS Dslash solver",
+  "local_checkout": "C:/Users/lwb/Documents/ChatGPT/sunw-paper-source-20261111",
+  "remote_checkout": "/public2/home/lwb_720/.cache/sunw-paper-source-20261111",
+  "prototype_scope": "independent CPU SU(N) Wilson Dslash and per-RHS BiCGStab reference",
+  "remote_experiment_root": "/public2/home/lwb_720/.cache/sun-cpu-20261111-v2"
+}
