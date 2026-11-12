@@ -39,3 +39,26 @@ and `docs/backend-architecture.md` for field, normalization and MPI contracts.
   solves occurred. Report bounded scans as best in the tested set, not global optima.
 - Keep source/build/data artifacts and upstream license notices separate.
   Do not relabel the external backend as a newly authored MG algorithm.
+
+## GitHub alignment (user requirement, 2026-11-12)
+
+- GitHub repository `https://github.com/WanbaoLi/multigrid.cpp` is the canonical
+  record for this project's authored source, build/run scripts, configurations,
+  tests and experimental implementations, including code used outside the main
+  checkout on desktops or remote machines.
+- Commit and push each code revision before distributing or running that revision
+  elsewhere. Fixes require a new committed and pushed revision; do not leave an
+  undocumented remote-only or desktop-only implementation. Include auxiliary
+  experiment and validation scripts in the corresponding branch.
+- Record the GitHub branch and exact commit for local exports, desktop deliveries,
+  remote source checkouts and measured builds. Keep stable and experimental
+  revisions distinguishable; do not overwrite a frozen stable snapshot with
+  unrelated experiments.
+- At delivery, push all changes made for the task and verify that the remote
+  branch resolves to the intended commit. If upload fails, report the pending
+  revision and failure instead of claiming GitHub alignment. Preserve unrelated
+  work in a shared workspace; do not silently publish another task's unfinished
+  changes.
+- Keep large input configurations, propagator arrays and platform binaries out
+  of the source repository; preserve their source commit and integrity metadata.
+  Retain original provenance for any downloaded third-party source.
