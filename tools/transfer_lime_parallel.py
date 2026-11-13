@@ -16,6 +16,10 @@ import threading
 import time
 
 
+class TransferInterrupted(RuntimeError):
+    pass
+
+
 def ssh(host, command):
     return ["ssh", "-T", "-c", "aes128-gcm@openssh.com", "-o", "IPQoS=none",
             "-o", "BatchMode=yes", "-o", "ConnectTimeout=20",
@@ -92,7 +96,7 @@ def main():
             destination_proc.stdin.close()
             destination_rc = destination_proc.wait()
             if source_rc or destination_rc:
-                raise RuntimeError(f"part {index} failed: source={source_rc}, destination={destination_rc}")
+                raise TransferInterrupted(f"part {index} failed: source={source_rc}, destination={destination_rc}")
         finally:
             for child in (source, destination_proc):
                 if child.poll() is None:
@@ -127,4 +131,12 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    for attempt in range(1, 9):
+        try:
+            main()
+            break
+        except (subprocess.CalledProcessError, TransferInterrupted, BrokenPipeError) as error:
+            print(f"RETRY {attempt}/8: {error}", flush=True)
+            if attempt == 8:
+                raise
+            time.sleep(30)
