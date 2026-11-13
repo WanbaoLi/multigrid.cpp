@@ -8,8 +8,9 @@ if [[ $# -ne 3 ]]; then
 fi
 project_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
 run_root=$(realpath -m "$1")
-gauge24=$(realpath "$2")
-gauge32=$(realpath "$3")
+gauge24=$(realpath -m "$2")
+gauge32=$(realpath -m "$3")
+geometries=${LQCD_HEALTH_GEOMETRIES:-24,32}
 submission_root=$run_root.submission
 queue=${LQCD_HEALTH_QUEUE:-q_hpcapp}
 account=${LQCD_HEALTH_ACCOUNT:-common}
@@ -17,9 +18,10 @@ task_timeout=${LQCD_HEALTH_TIMEOUT:-7200}
 python_bin=${LQCD_HEALTH_PYTHON:-$HOME/.cache/multigrid-arm-20261025-env/bin/python}
 requested_node=${LQCD_HEALTH_LS_NODE:-}
 case "$run_root/" in "$project_dir/"*) echo "Run outputs must be outside source checkout" >&2; exit 2;; esac
-[[ -x "$python_bin" && -f "$gauge24" && -f "$gauge32" ]] || {
-    echo "The selected Python and both LIME gauges must exist" >&2; exit 2;
-}
+[[ -x "$python_bin" ]] || { echo "Selected Python is missing" >&2; exit 2; }
+case "$geometries" in 24|32|24,32|32,24) ;; *) echo "Invalid LQCD_HEALTH_GEOMETRIES" >&2; exit 2;; esac
+case ",$geometries," in *,24,*) [[ -f "$gauge24" ]] || { echo "Selected L24 gauge is missing" >&2; exit 2; };; esac
+case ",$geometries," in *,32,*) [[ -f "$gauge32" ]] || { echo "Selected L32 gauge is missing" >&2; exit 2; };; esac
 [[ ! -e "$run_root" && ! -e "$submission_root" ]] || {
     echo "Run root or submission directory already exists" >&2; exit 2;
 }
@@ -59,6 +61,8 @@ for row in payload['data']:
         continue
     candidates.append(row)
 if not candidates:
+    Path(output).write_text(json.dumps({'complete':False, 'blocked':True,
+        'reason':'no idle OK aarch64 node with 16 OS-reserved cores, 592 free/available cores and >480000MB free memory'},indent=2)+'\n')
     raise SystemExit('BLOCKED: no idle OK aarch64 node with 16 OS-reserved cores, '
                      '592 available/free cores and >480000 MB free memory')
 candidates.sort(key=lambda r: (
@@ -73,9 +77,14 @@ print(chosen['nodeName'])
 PY
 )
 job_script=$submission_root/job.sh
-printf '#!/usr/bin/env bash\nset -euo pipefail\nexport LQCD_HEALTH_EXPECT_COMMIT=%q\nexec bash %q arm %q %q %q\n' \
-    "$source_commit" "$project_dir/tools/health/run_single_node.sh" "$run_root" "$gauge24" "$gauge32" \
-    > "$job_script"
+{
+    printf '#!/usr/bin/env bash\nset -euo pipefail\n'
+    while IFS='=' read -r task_key task_value; do
+        case "$task_key" in LQCD_HEALTH_*) printf 'export %s=%q\n' "$task_key" "$task_value";; esac
+    done < <(env)
+    printf 'export LQCD_HEALTH_EXPECT_COMMIT=%q\nexec bash %q arm %q %q %q\n' \
+        "$source_commit" "$project_dir/tools/health/run_single_node.sh" "$run_root" "$gauge24" "$gauge32"
+} > "$job_script"
 "$python_bin" - "$submission_root/submission.json" "$source_commit" "$project_dir" "$run_root" "$queue" "$account" "$node" "$task_timeout" <<'PY'
 import json, sys
 from pathlib import Path
