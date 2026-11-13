@@ -1,0 +1,108 @@
+[
+  {
+    "lattice": [
+      24,
+      24,
+      24,
+      64
+    ],
+    "source_commit": "37a79c5c57062fe8876b3176450d2fd26f3ec307",
+    "profile_scope": "separate full12 diagnostic; rank0 local accumulated timers per shared batch2; not MPI wall breakdown",
+    "samples": [
+      {
+        "restriction": 0.0948108,
+        "coarse": 0.176757,
+        "prolongation": 0.0777453,
+        "sap": 0.507668
+      },
+      {
+        "restriction": 0.0837386,
+        "coarse": 0.178716,
+        "prolongation": 0.0673332,
+        "sap": 0.457949
+      },
+      {
+        "restriction": 0.0842508,
+        "coarse": 0.164128,
+        "prolongation": 0.0674912,
+        "sap": 0.456224
+      },
+      {
+        "restriction": 0.0836747,
+        "coarse": 0.169378,
+        "prolongation": 0.0674705,
+        "sap": 0.45602
+      },
+      {
+        "restriction": 0.0874437,
+        "coarse": 0.173808,
+        "prolongation": 0.0702759,
+        "sap": 0.468607
+      },
+      {
+        "restriction": 0.0841321,
+        "coarse": 0.173982,
+        "prolongation": 0.0674227,
+        "sap": 0.455924
+      }
+    ],
+    "mean_restriction": 0.08634178333333332,
+    "mean_coarse": 0.17279483333333334,
+    "mean_prolongation": 0.06962313333333334,
+    "mean_sap": 0.4670653333333333,
+    "mean_iterations_second": 21.416666666666668
+  },
+  {
+    "lattice": [
+      32,
+      32,
+      32,
+      64
+    ],
+    "source_commit": "37a79c5c57062fe8876b3176450d2fd26f3ec307",
+    "profile_scope": "separate full12 diagnostic; rank0 local accumulated timers per shared batch2; not MPI wall breakdown",
+    "samples": [
+      {
+        "restriction": 0.421758,
+        "coarse": 0.30854,
+        "prolongation": 0.347749,
+        "sap": 2.68586
+      },
+      {
+        "restriction": 0.431199,
+        "coarse": 0.316834,
+        "prolongation": 0.356569,
+        "sap": 2.74744
+      },
+      {
+        "restriction": 0.428857,
+        "coarse": 0.31818,
+        "prolongation": 0.354441,
+        "sap": 2.72453
+      },
+      {
+        "restriction": 0.415163,
+        "coarse": 0.298383,
+        "prolongation": 0.341185,
+        "sap": 2.64914
+      },
+      {
+        "restriction": 0.435561,
+        "coarse": 0.31603,
+        "prolongation": 0.359364,
+        "sap": 2.76232
+      },
+      {
+        "restriction": 0.426117,
+        "coarse": 0.310659,
+        "prolongation": 0.350839,
+        "sap": 2.69528
+      }
+    ],
+    "mean_restriction": 0.4264425,
+    "mean_coarse": 0.31143766666666667,
+    "mean_prolongation": 0.35169116666666667,
+    "mean_sap": 2.7107616666666665,
+    "mean_iterations_second": 41.833333333333336
+  }
+]
