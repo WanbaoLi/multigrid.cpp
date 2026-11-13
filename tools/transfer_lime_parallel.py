@@ -28,7 +28,7 @@ def ssh(host, command):
 
 
 def remote(host, command):
-    return subprocess.check_output(ssh(host, command), text=True).strip()
+    return subprocess.check_output(ssh(host, command), text=True, timeout=90).strip()
 
 
 def main():
@@ -63,27 +63,45 @@ def main():
     done = sum(min(sizes.get(f"part-{i:04d}.bin", 0), size) for i, _, size in chunks)
     started = time.monotonic()
 
-    def transfer(chunk):
+    def transfer_once(chunk):
         index, start, size = chunk
         name = f"part-{index:04d}.bin"
-        current = sizes.get(name, 0)
+        part = shlex.quote(f"{root}/{name}")
+        current = int(remote(a.destination_host,
+            f"if test -f {part}; then stat -c %s {part}; else printf '0\\n'; fi"))
         if current > size:
             raise RuntimeError(f"destination part {name} is larger than expected")
         if current == size:
             return index, size, 0.0
         source_cmd = (f"dd if={shlex.quote(a.source)} bs=8M iflag=skip_bytes,count_bytes "
                       f"skip={start + current} count={size - current} status=none")
-        part = shlex.quote(f"{root}/{name}")
         destination_cmd = f"dd of={part} bs=8M oflag=append conv=notrunc status=none"
         source = subprocess.Popen(ssh(a.source_host, source_cmd), stdout=subprocess.PIPE)
         destination_proc = subprocess.Popen(ssh(a.destination_host, destination_cmd),
                                              stdin=subprocess.PIPE)
+        # A connected SSH server may stop forwarding data while keepalives
+        # still succeed. Interrupt stalled reads/writes from a separate thread.
+        activity = [time.monotonic()]
+        finished = threading.Event()
+
+        def watchdog():
+            while not finished.wait(5):
+                if time.monotonic() - activity[0] > 180:
+                    print(f"STALLED part={index}; preserving remote prefix", flush=True)
+                    for child in (source, destination_proc):
+                        if child.poll() is None:
+                            child.terminate()
+                    return
+
+        monitor = threading.Thread(target=watchdog, daemon=True)
+        monitor.start()
         try:
             while True:
                 data = source.stdout.read(8 * 1024 * 1024)
                 if not data:
                     break
                 destination_proc.stdin.write(data)
+                activity[0] = time.monotonic()
                 with lock:
                     nonlocal_done[0] += len(data)
                     elapsed = time.monotonic() - started
@@ -98,11 +116,25 @@ def main():
             if source_rc or destination_rc:
                 raise TransferInterrupted(f"part {index} failed: source={source_rc}, destination={destination_rc}")
         finally:
+            finished.set()
             for child in (source, destination_proc):
                 if child.poll() is None:
                     child.terminate()
                     child.wait()
         return index, size, time.monotonic() - started
+
+    def transfer(chunk):
+        for attempt in range(1, 9):
+            try:
+                result = transfer_once(chunk)
+                print(f"PART_COMPLETE index={chunk[0]} bytes={chunk[2]}", flush=True)
+                return result
+            except (subprocess.CalledProcessError, subprocess.TimeoutExpired,
+                    TransferInterrupted, BrokenPipeError, ConnectionResetError) as error:
+                print(f"PART_RETRY index={chunk[0]} attempt={attempt}/8: {error}", flush=True)
+                if attempt == 8:
+                    raise
+                time.sleep(min(5 * attempt, 30))
 
     nonlocal_done = [done]
     with ThreadPoolExecutor(max_workers=a.parallel) as pool:
@@ -135,7 +167,8 @@ if __name__ == "__main__":
         try:
             main()
             break
-        except (subprocess.CalledProcessError, TransferInterrupted, BrokenPipeError) as error:
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired,
+                TransferInterrupted, BrokenPipeError, ConnectionResetError) as error:
             print(f"RETRY {attempt}/8: {error}", flush=True)
             if attempt == 8:
                 raise
