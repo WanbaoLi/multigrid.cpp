@@ -15,7 +15,8 @@ import time
 
 
 def ssh(host, command):
-    return ["ssh", "-T", "-o", "BatchMode=yes", "-o", "ConnectTimeout=20",
+    return ["ssh", "-T", "-c", "aes128-gcm@openssh.com", "-o", "IPQoS=none",
+            "-o", "BatchMode=yes", "-o", "ConnectTimeout=20",
             "-o", "ServerAliveInterval=15", "-o", "ServerAliveCountMax=8",
             host, command]
 
