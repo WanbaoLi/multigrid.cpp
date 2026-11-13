@@ -11,10 +11,10 @@ CMake 根据实际构建目标选择 `arm` 或 `x86`，Python 默认按本机架
 
 ## Skill 和 ISA 依据
 
-已建立并安装 `kunpeng-lingsheng-cpu` skill，仓库副本位于
-`LQCD_Skills/kunpeng-lingsheng-cpu/`，安装副本位于 `.codex/skills/kunpeng-lingsheng-cpu/`。
-它包含官方 Arm ACLE/NEON、GCC、Linux HWCAP 文档和灵晟 LX2 论文链接，以及只读
-`probe_cpu.py`。实际 `ssh ls` 的 `login04` 为双路 Kunpeng-920、128核、4 NUMA；
+本仓库的只读参考 skill 位于
+`skills/kunpeng-lqcd-reference/` 和 `skills/kunpeng-lqcd-toolchain-reference-v1/`。
+它们包含官方 Arm ACLE/NEON、GCC、Linux HWCAP 文档和灵晟架构参考，以及只读
+探测工具。实际 `ssh ls` 的 `login04` 为双路 Kunpeng-920、128核、4 NUMA；
 HWCAP 显示 ASIMD=true、SVE/SVE2/SME=false。论文中的计算节点能力不能套用于登录节点。
 
 本次 ARM 构建使用 GCC10.3.1、`-O3 -march=native -mtune=native -fopenmp`、

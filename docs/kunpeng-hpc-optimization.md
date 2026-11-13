@@ -3,8 +3,8 @@
 依据用户提供的《鲲鹏920专业版系统开发手册.docx》，SHA256
 `018a5811dd7529dc37c43a99897dfed50b67bf4de4bcd4455ff4b6412cf1670c`。
 手册封面V1.1、文档版本01、发布日期2026-06-01；本地提取567个非空段落、3个表格。
-其CPU/NUMA/片上内存与矩阵编程内容已整理为可复用skill：
-`LQCD_Skills/kunpeng-hpc/`，同时安装在`~/.codex/skills/kunpeng-hpc/`。
+其CPU/NUMA/片上内存与矩阵编程内容已整理到本仓库的只读参考 skill：
+`skills/kunpeng-lqcd-reference/` 和 `skills/kunpeng-lqcd-toolchain-reference-v1/`。
 
 ## CPU与CANN的范围
 
@@ -92,4 +92,4 @@ SVE进程长度16/32/64字节均独立启动通过 arm_sve、寻址计划和P插
 正确性，不宣称三种长度的完整传播子性能相同。HBM仍未分配，所有上述成绩均不能标为HBM收益。
 
 完整数值、阶段、源文件SHA256及原始计时索引见[机器记录](kunpeng-hpc-optimization.json)。
-新skill入口：[kunpeng-hpc](../../LQCD_Skills/kunpeng-hpc/SKILL.md)。
+参考入口：[kunpeng-lqcd-reference](../skills/kunpeng-lqcd-reference/SKILL.md)。
