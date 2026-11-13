@@ -6,11 +6,13 @@
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
+#include "../../support/shared_coefficient.hpp"
 namespace lqcd {
 class NativeBackend final : public Backend {
     lqcd_config config;
     Geometry geometry;
     MPI_Comm comm;
+    std::shared_ptr<lqcd_native::SharedCoefficientMemory> shared_coefficients;
     Gauge gauge;
     Multigrid hierarchy;
     std::unique_ptr<NativeMG> solver;
@@ -65,6 +67,20 @@ class NativeBackend final : public Backend {
     NativeBackend(const lqcd_config &c, const Geometry &g, MPI_Comm communicator)
         : config(c), geometry(g), comm(communicator) {
         configure_setup();
+        int shared_mode = 0;
+        if (const char *enabled = std::getenv("LQCD_SHARED_COEFFICIENTS")) {
+            if (std::string(enabled) != "0" && std::string(enabled) != "1")
+                shared_mode = -1;
+            else
+                shared_mode = std::string(enabled) == "1";
+        }
+        int shared_min = 0, shared_max = 0;
+        MPI_Allreduce(&shared_mode, &shared_min, 1, MPI_INT, MPI_MIN, comm);
+        MPI_Allreduce(&shared_mode, &shared_max, 1, MPI_INT, MPI_MAX, comm);
+        if (shared_min < 0 || shared_min != shared_max)
+            throw Error(LQCD_INVALID_ARGUMENT, "LQCD_SHARED_COEFFICIENTS must be 0 or 1 on all ranks");
+        if (shared_mode)
+            shared_coefficients = lqcd_native::make_shared_coefficient_memory(comm);
         for (auto key :
              {"NATIVE_SAP_STEPS", "NATIVE_SAP_CYCLES", "NATIVE_COARSE_IT", "NATIVE_OUTER_FLOAT"})
             if (std::getenv(key))
@@ -95,11 +111,36 @@ class NativeBackend final : public Backend {
         gamma_init();
     }
     void load_gauge(const Vector &in) override {
-        gauge.u.resize(volume * 36);
-        MPI_Allgather(in.data(), in.size() * 2, MPI_DOUBLE, gauge.u.data(), in.size() * 2,
-                      MPI_DOUBLE, comm);
+        int rank = 0, ranks = 1;
+        MPI_Comm_rank(comm, &rank);
+        MPI_Comm_size(comm, &ranks);
+        const size_t gauge_count = volume * 36;
+        if (shared_coefficients)
+            gauge.u.bind_shared(
+                static_cast<Complex *>(shared_coefficients->allocate(gauge_count * sizeof(Complex))),
+                gauge_count, shared_coefficients);
+        else
+            gauge.u.resize(gauge_count);
+        if (shared_coefficients) {
+            // Disjoint writes and first touch by the NUMA owner; never issue
+            // multiple collectives with overlapping shared receive buffers.
+#pragma omp parallel for schedule(static)
+            for (size_t i = 0; i < in.size(); ++i)
+                gauge.u[(size_t)rank * in.size() + i] = in[i];
+            shared_coefficients->synchronize();
+        } else
+            MPI_Allgather(in.data(), in.size() * 2, MPI_DOUBLE, gauge.u.data(), in.size() * 2,
+                          MPI_DOUBLE, comm);
         gauge.loaded = true;
-        build_clover(gauge, gauge.clover);
+        const size_t clover_count = volume * 144;
+        if (shared_coefficients)
+            gauge.clover.bind_shared(static_cast<Complex *>(
+                                         shared_coefficients->allocate(clover_count * sizeof(Complex))),
+                                     clover_count, shared_coefficients);
+        build_clover(gauge, gauge.clover, shared_coefficients ? gauge.o.nt * rank / ranks : 0,
+                     shared_coefficients ? gauge.o.nt * (rank + 1) / ranks : gauge.o.nt);
+        if (shared_coefficients)
+            shared_coefficients->synchronize();
     }
     void setup() override {
         auto &m = hierarchy;
@@ -113,15 +154,48 @@ class NativeBackend final : public Backend {
         m.n_fine = volume;
         m.n_coarse = volume / m.block_volume;
         m.coarse_dof = 48;
-        m.basis.assign(volume * 12 * 48, Complex{});
-        m.stencil.assign(m.n_coarse * 9 * 48 * 48, Complex{});
-        for (size_t b = 0; b < m.n_coarse; b++)
+        const size_t basis_count = volume * 12 * 48;
+        const size_t stencil_count = m.n_coarse * 9ull * 48 * 48;
+        if (shared_coefficients) {
+            m.basis.bind_shared(static_cast<Complex *>(
+                                    shared_coefficients->allocate(basis_count * sizeof(Complex))),
+                                basis_count, shared_coefficients);
+            m.stencil.bind_shared(static_cast<Complex *>(
+                                      shared_coefficients->allocate(stencil_count * sizeof(Complex))),
+                                  stencil_count, shared_coefficients);
+            m.synchronize_shared = [memory = shared_coefficients] { memory->synchronize(); };
+        } else {
+            m.basis.resize(basis_count);
+            m.stencil.resize(stencil_count);
+        }
+        int rank = 0, ranks = 1;
+        MPI_Comm_rank(comm, &rank);
+        MPI_Comm_size(comm, &ranks);
+        const size_t first_block = shared_coefficients ? m.n_coarse * rank / ranks : 0;
+        const size_t end_block = shared_coefficients ? m.n_coarse * (rank + 1) / ranks : m.n_coarse;
+        const size_t basis_stride = m.block_volume * 12ull * 48;
+        std::fill(m.basis.begin() + first_block * basis_stride,
+                  m.basis.begin() + end_block * basis_stride, Complex{});
+        std::fill(m.stencil.begin() + first_block * 9 * 48 * 48,
+                  m.stencil.begin() + end_block * 9 * 48 * 48, Complex{});
+        for (size_t b = first_block; b < end_block; b++)
             for (int a = 0; a < 48; a++)
                 m.stencil[b * 9 * 48 * 48 + a * 48 + a] = 1.;
+        if (shared_coefficients) {
+            shared_coefficients->synchronize();
+            if (rank == 0)
+                std::cout << "SHARED_COEFFICIENTS single_host=1 ranks=" << ranks
+                          << " bytes=" << (volume * 180ull + basis_count + stencil_count) * sizeof(Complex)
+                          << " disjoint_first_touch=1 private_krylov=1\n";
+        }
         solver = std::make_unique<NativeMG>(gauge, hierarchy, comm, config.seed);
         solver->generate_basis(hierarchy, setup_smooth, 0);
+        if (shared_coefficients)
+            shared_coefficients->synchronize();
         for (int pass = 0; pass < setup_passes; ++pass)
             solver->generate_basis(hierarchy, 0, setup_iterations);
+        if (shared_coefficients)
+            shared_coefficients->synchronize();
         solver->verify();
         solver->place_hot_data();
     }

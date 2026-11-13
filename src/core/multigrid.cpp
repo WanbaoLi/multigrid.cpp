@@ -22,7 +22,7 @@ int local_site(int x, int y, int z, int t, const Multigrid &m) {
 size_t basis_index(size_t cb, int ls, int a, int d, const Multigrid &m) {
     return (((cb * (size_t)m.block_volume + (size_t)ls) * FINE_DOF + a) * (size_t)m.coarse_dof + d);
 }
-static void assemble_local_block(const Gauge &g, const Multigrid &m, size_t cb, Field &stencil) {
+static void assemble_local_block(const Gauge &g, const Multigrid &m, size_t cb, CoefficientField &stencil) {
     const double k = 1.0 / (2.0 * (g.o.mass + 4.0));
     int bx = cb % m.cx, by = (cb / m.cx) % m.cy;
     int bz = (cb / (m.cx * m.cy)) % m.cz, bt = cb / (m.cx * m.cy * m.cz);

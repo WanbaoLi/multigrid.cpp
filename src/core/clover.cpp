@@ -127,12 +127,13 @@ static void build_clover_site(const Gauge &g, int x, int y, int z, int t, Comple
                         (so / 2 == si0 / 2) ? 2.0 * H[so / 2][(so % 2) * 3 + co][(si0 % 2) * 3 + ci]
                                             : Complex{};
 }
-void build_clover(const Gauge &g, Field &all) {
+template<class Storage>
+static void build_clover_range(const Gauge &g, Storage &all, int first_t, int end_t) {
     const Options &o = g.o;
     size_t n = (size_t)o.nx * o.ny * o.nz * o.nt;
     all.resize(n * 144);
 #pragma omp parallel for collapse(4) schedule(static)
-    for (int t = 0; t < o.nt; t++)
+    for (int t = first_t; t < end_t; t++)
         for (int z = 0; z < o.nz; z++)
             for (int y = 0; y < o.ny; y++)
                 for (int x = 0; x < o.nx; x++) {
@@ -143,6 +144,12 @@ void build_clover(const Gauge &g, Field &all) {
                         for (int j = 0; j < 12; j++)
                             all[s * 144 + i * 12 + j] = m[i][j];
                 }
+}
+void build_clover(const Gauge &g, Field &all) {
+    build_clover_range(g, all, 0, g.o.nt);
+}
+void build_clover(const Gauge &g, CoefficientField &all, int first_t, int end_t) {
+    build_clover_range(g, all, first_t, end_t < 0 ? g.o.nt : end_t);
 }
 // The local diagonal/clover contribution, exported separately for validation.
 void apply_clover_only(const Gauge &g, const Field &in, Field &out, int nr) {

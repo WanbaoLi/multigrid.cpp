@@ -52,14 +52,13 @@ arm)
     export LD_LIBRARY_PATH=$task_cxx_runtime:$task_kupl/lib:$task_sdk/hmpi/bisheng/release/hmpi/lib:${LD_LIBRARY_PATH:-}
     export OMPI_MCA_ras=^donau OMPI_MCA_plm=isolated OMPI_MCA_pml=ob1 OMPI_MCA_btl=self,vader,tcp
     mpi_flags='--host;localhost:4;--map-by;ppr:1:numa:PE=2;--bind-to;core'
-    plan=$project_dir/profiles/optimization/lingsheng-052-full12.json
+    plan=$project_dir/profiles/optimization/lingsheng-shared-uniform.json
     plan24=${LQCD_HEALTH_PLAN24:-${LQCD_HEALTH_PLAN:-$plan}}
     plan32=${LQCD_HEALTH_PLAN32:-${LQCD_HEALTH_PLAN:-$plan}}
     launcher_threads=37
     ranks_per_numa=1
     numa_count24=16
-    numa_count32=${LQCD_HEALTH_32_NUMA_COUNT:-16}
-    ranks32=${LQCD_HEALTH_32_RANKS:-16}
+    numa_count32=16
     cmake_extra=(-DLQCD_KUPL_HBW=ON "-DLQCD_KUPL_ROOT=$task_kupl"
         "-DCMAKE_EXE_LINKER_FLAGS=-L$task_cxx_runtime -Wl,-rpath,$task_cxx_runtime"
         "-DCMAKE_SHARED_LINKER_FLAGS=-L$task_cxx_runtime -Wl,-rpath,$task_cxx_runtime")
@@ -78,11 +77,16 @@ x86)
     launcher_threads=16
     ranks_per_numa=2
     numa_count24=8
-    numa_count32=${LQCD_HEALTH_32_NUMA_COUNT:-8}
-    ranks32=${LQCD_HEALTH_32_RANKS:-16}
+    numa_count32=8
     cmake_extra=(-DLQCD_KUPL_HBW=OFF)
     ;;
 esac
+[[ ${LQCD_HEALTH_32_RANKS:-16} == 16 ]] || {
+    echo "Both geometries require 16 MPI ranks; the former eight-rank override is unsupported" >&2; exit 2;
+}
+[[ ${LQCD_HEALTH_32_NUMA_COUNT:-$numa_count32} == "$numa_count32" ]] || {
+    echo "Use all $numa_count32 NUMA domains for the fixed 16-MPI comparison" >&2; exit 2;
+}
 numa_nodes24=${LQCD_HEALTH_24_NUMA_NODES:-0-$((numa_count24-1))}
 numa_nodes32=${LQCD_HEALTH_32_NUMA_NODES:-0-$((numa_count32-1))}
 set -u
@@ -163,7 +167,7 @@ cmake -S "$project_dir" -B "$build_dir" -DCMAKE_BUILD_TYPE=Release -DMULTIGRID_N
 cmake --build "$build_dir" -j "$build_jobs"
 "$CXX" -O2 -std=c++17 benchmarks/runtime/extract_propagator_columns.cpp -o "$build_dir/extract_columns"
 ctest --test-dir "$build_dir" --output-on-failure --parallel 1 \
-    -R '^(core|arm_.*|wilson_.*|hbw_buffer|hbm_placement|native_allocator|numa_launcher|thread_defaults|cpu_backend_mpi2|runtime_batch|batch12_mpi2|lime_io|stout_smearing|propagator_io)$'
+    -R '^(core|arm_.*|wilson_.*|hbw_buffer|hbm_placement|native_allocator|numa_launcher|thread_defaults|cpu_backend_mpi2|shared_cpu_backend_mpi2|shared_runtime_mpi2|runtime_batch|batch12_mpi2|shared_batch12_mpi2|lime_io|stout_smearing|propagator_io)$'
 sha256sum "$build_dir/liblqcd_cpu.so" "$build_dir/multigrid" "$build_dir/extract_columns" > "$run_root/build.sha256"
 
 run_geometry() {
@@ -177,6 +181,8 @@ sys.path.insert(0, 'tools')
 from run_numa import discover_nodes, make_plan, parse_cpu_list
 out, lattice, block, plan_path, selected_nodes, ranks = sys.argv[1:]
 out, lattice, block, ranks = Path(out), int(lattice), int(block), int(ranks)
+if ranks != 16:
+    raise SystemExit('Both real-input geometries require exactly 16 MPI ranks')
 nodes = discover_nodes()
 selected = parse_cpu_list(selected_nodes)
 if not selected or ranks < len(selected) or ranks % len(selected):
@@ -213,28 +219,37 @@ for line in Path('/proc/self/cgroup').read_text().splitlines():
         if current == mount:
             break
         current = current.parent
-# Static native assets at 32^3x64 and 16 private MPI ranks: about 383 GiB
-# double assets + 126 GiB private float assets. This is an estimated lower
-# bound, not measured RSS; omitted workspaces require an additional margin.
-lower_bound = math.ceil(509*1024**3*(lattice/32)**3*(ranks/16))
-required = lower_bound + 16*1024**3
+# Double gauge/Clover/basis/stencil are either shared once per host or
+# replicated per rank. Float/packed data and workspaces remain private.
+# This is a static asset estimate, not measured peak RSS.
+shared = str(settings.get('context_environment', {}).get('LQCD_SHARED_COEFFICIENTS', 0)) == '1'
+sites = lattice**3*64
+aggregates = (lattice//block)**3*16
+double_bytes = (sites*(36+144+12*48) + aggregates*9*48*48)*16
+private_float_bytes = math.ceil(126*1024**3*(lattice/32)**3*(ranks/16))
+lower_bound = double_bytes*(1 if shared else ranks) + private_float_bytes
+margin = 32*1024**3
+required = lower_bound + margin
 budget = min([mem_available, *[r['available_bytes'] for r in limits]])
 preflight = dict(
     lattice_xyzt=[lattice,lattice,lattice,64], ranks=ranks,
     placement_threads=threads, setup_threads=int(settings['setup_threads']),
     solve_threads=int(cases[0]['threads']), numa_nodes=selected, topology=topology,
     plan_path=str(Path(plan_path).resolve()), plan=settings,
+    shared_coefficients=shared,
+    double_coefficient_bytes_per_replica=double_bytes,
+    double_coefficient_replicas=1 if shared else ranks,
     estimated_live_bytes_lower_bound=lower_bound,
     estimate_kind='conservative_static_asset_lower_bound_not_measured_RSS',
-    estimate_reference='32^3x64/16 MPI: approximately 383 GiB double assets plus 126 GiB private float assets; scaled by sites and ranks',
-    safety_margin_bytes=16*1024**3, required_budget_bytes=required,
+    estimate_reference='exact double coefficient sizes plus approximately 126 GiB private float assets at 32^3x64/16 MPI; excludes transient workspace peaks',
+    safety_margin_bytes=margin, required_budget_bytes=required,
     mem_available_bytes=mem_available, cgroup_memory_budgets=limits,
     effective_memory_budget_bytes=budget, memory_sufficient=budget>=required,
 )
 (out/'resource-preflight.json').write_text(json.dumps(preflight,indent=2)+'\n')
 if not preflight['memory_sufficient']:
     raise SystemExit(f'BLOCKED: {lattice}^3x64/{ranks} MPI static lower bound {lower_bound/1024**3:.1f} GiB '
-                     f'+16 GiB margin exceeds available budget {budget/1024**3:.1f} GiB')
+                     f'+{margin/1024**3:.0f} GiB margin exceeds available budget {budget/1024**3:.1f} GiB')
 print(','.join(map(str, selected)))
 print(ranks//len(selected))
 print(threads)
@@ -286,7 +301,7 @@ case ",$geometries," in
     *,24,*) run_geometry L24 24 6 "$gauge24" -0.277 1.160920226 "$plan24" "$numa_nodes24" 16;;
 esac
 case ",$geometries," in
-    *,32,*) run_geometry L32 32 8 "$gauge32" -0.279 1.1606789224 "$plan32" "$numa_nodes32" "$ranks32";;
+    *,32,*) run_geometry L32 32 8 "$gauge32" -0.279 1.1606789224 "$plan32" "$numa_nodes32" 16;;
 esac
 echo "HEALTH_COMPLETE $run_root"
 

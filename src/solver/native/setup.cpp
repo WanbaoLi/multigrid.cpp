@@ -65,9 +65,13 @@ void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive) {
             throw std::runtime_error("nonfinite homogeneous setup vector");
         std::cerr << "setup vector " << v + 1 << " norm " << vn << std::endl;
     }
-    std::fill(m.basis.begin(), m.basis.end(), Complex{});
+    const int basis_first = m.synchronize_shared ? impl->first_aggregate : 0;
+    const int basis_end = m.synchronize_shared ? impl->end_aggregate : impl->aggregate_count;
+    const size_t basis_stride = (size_t)impl->block_sites * 12 * m.coarse_dof;
+    std::fill(m.basis.begin() + basis_first * basis_stride,
+              m.basis.begin() + basis_end * basis_stride, Complex{});
 #pragma omp parallel for schedule(static)
-    for (int cb = 0; cb < impl->aggregate_count; cb++)
+    for (int cb = basis_first; cb < basis_end; cb++)
         for (int cs = 0; cs < 2; cs++) {
             std::vector<Complex> block(24 * 6 * impl->block_sites);
             for (int v = 0; v < 24; v++) {
@@ -103,10 +107,18 @@ void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive) {
                             cs * 6 + a, cs * 24 + v, m)] = col[a * impl->block_sites + s];
             }
         }
+    if (m.synchronize_shared)
+        m.synchronize_shared();
     for (auto z : m.basis)
         if (!std::isfinite(std::norm(z)))
             throw std::runtime_error("nonfinite local basis");
-    rebuild_coarse_operator(impl->gauge, m);
+    // Existing assembly scatters additions to neighboring rows. One process
+    // owns the complete assembly, retaining its arithmetic order and avoiding
+    // interprocess writes to the same matrix. Setup is timed separately.
+    if (!m.synchronize_shared || native_rank == 0)
+        rebuild_coarse_operator(impl->gauge, m);
+    if (m.synchronize_shared)
+        m.synchronize_shared();
     for (auto z : m.stencil)
         if (!std::isfinite(std::norm(z)))
             throw std::runtime_error("nonfinite coarse stencil");

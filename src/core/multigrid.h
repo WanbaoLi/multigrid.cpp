@@ -1,13 +1,16 @@
 #pragma once
 #include "core/gauge.h"
+#include <functional>
 
 struct Multigrid {
     Options o;
     int cx, cy, cz, ct, block_volume;
     int coarse_dof = 12;
     size_t n_fine, n_coarse;
-    Field basis;   // [coarse block][fine site_index in block][fine component][coarse component]
-    Field stencil; // [coarse site_index][onsite,+x,-x,+y,-y,+z,-z,+t,-t][row][column]
+    CoefficientField basis;   // [block][site][fine component][coarse component]
+    CoefficientField stencil; // [coarse site][onsite,+x,-x,+y,-y,+z,-z,+t,-t][row][column]
+    // Empty for the independent scalar/reference path and ordinary storage.
+    std::function<void()> synchronize_shared;
 };
 
 size_t coarse_site_index(int x, int y, int z, int t, const Multigrid &m);

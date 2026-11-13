@@ -74,6 +74,7 @@ if(LQCD_BUILD_RUNTIME OR LQCD_BUILD_NATIVE_BENCH)
         src/solver/native/validation.cpp
         src/solver/native/memory_placement.cpp
         src/support/hbw_buffer.cpp
+        src/support/shared_coefficient.cpp
         src/solver/native/halo_profile.cpp)
 endif()
 
