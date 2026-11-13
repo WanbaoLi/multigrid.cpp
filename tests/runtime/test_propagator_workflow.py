@@ -9,7 +9,7 @@ import zlib
 
 import numpy as np
 from mpi4py import MPI
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'python'))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'bindings'))
 from lqcd_cpu import Solver, propagator_to_columns
 from lqcd_cpu.propagator import solve_lime_propagator
 from lqcd_cpu.propagator_io import read_propagator

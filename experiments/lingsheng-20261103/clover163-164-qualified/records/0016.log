@@ -1,2 +1,0 @@
-{"requested_bytes": 64, "actual_bytes": 64, "inherit_exec": true, "command": ["/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign-clover-pair-v2/attempts/000-arm-clover-tests/build/arm_sve_test"]}
-PASS ARM SVE predicated clover oracle/tails

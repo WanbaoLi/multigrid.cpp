@@ -12,7 +12,7 @@
 #include "uflds.h"
 #include "sflds.h"
 #include "linalg.h"
-#include "lqcd/core/dirac.h"
+#include "dirac.h"
 #include "dfl.h"
 #include "random.h"
 #include "sw_term.h"

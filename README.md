@@ -11,7 +11,9 @@
 ## 目录
 
 ```text
-include/lqcd/                 公共 C/C++ 头文件
+include/lqcd.h                公共 C ABI 头文件（安装后为 `<lqcd.h>`）
+src/core/*.h                  内部 Wilson-Clover、GCR 和 MG 头文件
+src/runtime/*.h               内部运行库头文件
 src/core/                     可移植 Wilson-Clover、GCR、参考 MG
 src/solver/native/            共享 MG、SAP、Krylov 和 MPI 算法
 src/backends/x86/             x86 AVX512 内核和硬件工厂
@@ -21,14 +23,26 @@ src/runtime/                  C ABI、布局转换、生命周期和后端注册
 src/reference/                独立数值参考程序和验算 CLI
 src/references/               可选外部求解器适配器
 src/support/                  内部内存和通用工具
-python/lqcd_cpu/              ctypes + mpi4py 的 PyQUDA host wrapper
+bindings/lqcd_cpu/             ctypes + mpi4py 的 PyQUDA host wrapper（`import lqcd_cpu`）
 benchmarks/                   性能程序；reference-libraries 是可选外部库比较
 tests/runtime/               MPI、halo、奇偶和线程契约测试
 tests/unit/                   不依赖 MPI 的 C++ 单元测试
 tests/oracle/                 独立算子、P/R、RAP 和解验证脚本
 tools/                       构建和 NUMA 启动工具
 docs/                        算法、接口、结果和移植说明
+docs/reference/              鲲鹏手册等输入资料及校验摘要
 ```
+
+`include/lqcd.h` 是唯一安装的公共 C ABI 头文件；其余 C++ 头文件放在
+`src/` 中，避免把实现细节误当成外部接口。`bindings/` 是 Python 源码根，
+其中的 `lqcd_cpu` 才是包名，调用方式保持不变：
+
+```python
+from lqcd_cpu import Solver
+```
+
+`experiments/` 只保留结构化参数、摘要、验证结果和源码记录。原始测试日志、
+构建目录、二进制文件和组态数据不提交。
 
 ## 构建
 
@@ -56,7 +70,7 @@ ctest --test-dir build/runtime --output-on-failure
 
 ## 运行
 
-Python wrapper 需要把 `python` 放入 `PYTHONPATH`，并由调用方先初始化 MPI：
+Python wrapper 需要把 `bindings` 放入 `PYTHONPATH`，并由调用方先初始化 MPI：
 
 ```python
 from lqcd_cpu import Solver

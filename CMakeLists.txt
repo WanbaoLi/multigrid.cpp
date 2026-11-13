@@ -34,7 +34,7 @@ set(LQCD_CORE_SOURCES
     src/core/dslash.cpp src/core/dirac.cpp src/core/gcr.cpp src/core/multigrid.cpp)
 add_library(multigrid_core ${LQCD_CORE_SOURCES})
 set_target_properties(multigrid_core PROPERTIES POSITION_INDEPENDENT_CODE ON)
-target_include_directories(multigrid_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(multigrid_core PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 if(MULTIGRID_OPENMP)
     find_package(OpenMP QUIET)
@@ -48,7 +48,9 @@ endif()
 
 # Independent scalar/reference executable used by the correctness oracle.
 add_executable(multigrid src/reference/main.cpp src/reference/validation.cpp)
-target_include_directories(multigrid PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/reference)
+target_include_directories(multigrid PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/reference)
 target_link_libraries(multigrid PRIVATE multigrid_core)
 
 if(LQCD_BUILD_RUNTIME OR LQCD_BUILD_NATIVE_BENCH)
@@ -77,7 +79,7 @@ endif()
 
 if(LQCD_BUILD_NATIVE_BENCH)
     add_executable(bench_native benchmarks/native/bench_native.cpp ${LQCD_NATIVE_SOURCES})
-    target_include_directories(bench_native PRIVATE src/solver/native)
+    target_include_directories(bench_native PRIVATE src src/solver/native)
     target_link_libraries(bench_native PRIVATE multigrid_core MPI::MPI_CXX OpenMP::OpenMP_CXX)
     lqcd_link_kupl(bench_native)
 endif()
@@ -98,7 +100,7 @@ if(LQCD_BUILD_RUNTIME)
         src/solver/native/backend.cpp
         src/backends/${LQCD_HARDWARE_BACKEND}/backend.cpp)
     target_include_directories(lqcd_cpu PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
-        PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/runtime)
+        PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/src/runtime)
     target_compile_definitions(lqcd_cpu PRIVATE ${LQCD_HARDWARE_DEFINE})
     target_link_libraries(lqcd_cpu PRIVATE multigrid_core MPI::MPI_CXX OpenMP::OpenMP_CXX m)
     lqcd_link_kupl(lqcd_cpu)
@@ -112,7 +114,7 @@ if(LQCD_BUILD_RUNTIME)
     set_target_properties(lqcd_cpu PROPERTIES CXX_VISIBILITY_PRESET hidden
         VISIBILITY_INLINES_HIDDEN YES VERSION 0.2.0 SOVERSION 0)
     install(TARGETS lqcd_cpu LIBRARY DESTINATION lib)
-    install(FILES include/lqcd/lqcd.h DESTINATION include/lqcd)
+    install(FILES include/lqcd.h DESTINATION include)
     set(LQCD_TEST_PYTHON "" CACHE FILEPATH "Python with mpi4py, numpy and PyQUDA fields")
 endif()
 

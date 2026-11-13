@@ -1,5 +1,5 @@
 #include "hierarchy.hpp"
-#include "lqcd/core/dirac.h"
+#include "core/dirac.h"
 #include <cmath>
 #include <iostream>
 #include <random>

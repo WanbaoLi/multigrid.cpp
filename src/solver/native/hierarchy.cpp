@@ -1,6 +1,6 @@
 #include "hierarchy.hpp"
 #include "kernels.hpp"
-#include "lqcd/core/dslash.h"
+#include "core/dslash.h"
 #include <climits>
 #include <cmath>
 #include <cctype>

@@ -15,7 +15,7 @@ Setup、编译、I/O单列；任何外部库包装的速度不算自研成绩。
 | ID | 任务 | 当前交付 |
 |---|---|---|
 | S1 | 论文与数值规格 | `native-algorithm.md`；DR基、归一化、gamma5手征聚合、R=P†、Ac=RDP |
-| S2 | 公共API与硬件后端分离 | `include/lqcd/lqcd.h`、runtime/registry；生产x86，ARM/SW未实现，DD适配器仅reference |
+| S2 | 公共API与硬件后端分离 | `include/lqcd.h`、runtime/registry；生产x86，ARM/SW未实现，DD适配器仅reference |
 | S3 | 场布局和内存策略 | PyQUDA EO-x / lex-tzyx，内部block-EO+split-complex，NUMA域绑定和64字节对齐 |
 | S4 | 自研x86细格核与SAP | half-spin投影、OpenMP SIMD、Clover逆、块内EO-Schur MR及odd重建 |
 | S5 | 自研setup及粗网格 | 随机齐次SAP、手征MGS、近似逆自适应更新、Galerkin粗化、coarse GCR |

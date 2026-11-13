@@ -1,6 +1,6 @@
-#include "lqcd/core/clover.h"
-#include "lqcd/core/dslash.h"
-#include "lqcd/runtime/runtime.h"
+#include "core/clover.h"
+#include "core/dslash.h"
+#include "runtime/runtime.h"
 #include "multigrid.hpp"
 #include "environment.hpp"
 #include <fstream>

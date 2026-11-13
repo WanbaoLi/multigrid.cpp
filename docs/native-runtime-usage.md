@@ -43,7 +43,7 @@ with Solver([24,24,24,64], [1,1,1,1],
     print(mg.last_result)
 ```
 
-Set `PYTHONPATH=multigrid.cpp/python` and
+Set `PYTHONPATH=multigrid.cpp/bindings` and
 `LQCD_CPU_LIBRARY=$PWD/multigrid.cpp/build/runtime/liblqcd_cpu.so`.
 Use the same MPI implementation as mpi4py. For the single-process 88-core
 profile, run under `numactl --interleave=all` with `OMP_PROC_BIND=spread`,

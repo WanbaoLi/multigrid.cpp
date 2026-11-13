@@ -154,7 +154,7 @@ def main(argv=None):
     if not benchmark.is_file() or benchmark.name != 'bench_full12.py':
         parser.error('--benchmark must identify an existing explicit bench_full12.py')
     project = benchmark.parents[2]
-    sys.path.insert(0, str(project / 'python'))
+    sys.path.insert(0, str(project / 'bindings'))
     from mpi4py import MPI
     from lqcd_cpu import Solver
     comm = MPI.COMM_WORLD

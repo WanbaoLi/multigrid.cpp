@@ -1,4 +1,4 @@
-#include "lqcd/core/gcr.h"
+#include "core/gcr.h"
 #include <algorithm>
 #include <fstream>
 #include <iomanip>

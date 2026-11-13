@@ -1,5 +1,0 @@
-CLOVER_MICRO {"sites":432,"vector_bytes":64,"reuse":false,"repeat":0,"calls":30000,"seconds":0.122291972,"max_abs_oracle_error":1.04573209647e-07,"checksum":98499.4095483,"full12_metric":false}
-CLOVER_MICRO {"sites":432,"vector_bytes":64,"reuse":false,"repeat":1,"calls":30000,"seconds":0.118500546,"max_abs_oracle_error":1.04573209647e-07,"checksum":98499.4095483,"full12_metric":false}
-CLOVER_MICRO {"sites":432,"vector_bytes":64,"reuse":false,"repeat":2,"calls":30000,"seconds":0.122336043,"max_abs_oracle_error":1.04573209647e-07,"checksum":98499.4095483,"full12_metric":false}
-CLOVER_MICRO {"sites":432,"vector_bytes":64,"reuse":false,"repeat":3,"calls":30000,"seconds":0.122301992,"max_abs_oracle_error":1.04573209647e-07,"checksum":98499.4095483,"full12_metric":false}
-CLOVER_MICRO {"sites":432,"vector_bytes":64,"reuse":false,"repeat":4,"calls":30000,"seconds":0.122311032,"max_abs_oracle_error":1.04573209647e-07,"checksum":98499.4095483,"full12_metric":false}

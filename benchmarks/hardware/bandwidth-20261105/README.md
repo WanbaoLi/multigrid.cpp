@@ -6,12 +6,12 @@ Build on the actual target with `-O3 -std=c++17 -pthread -march=native -ldl`, wi
 fast-math. Supported kernels explicitly use ordinary SVE or AVX512 loads/stores.
 Neither target uses non-temporal stores. Inspect the generated code.
 
-The completed comparison is in
-[`outputs/hardware-bandwidth-20261106/report.md`](../../../outputs/hardware-bandwidth-20261106/report.md).
-Its headline uses 48 GiB on each platform and HPCKit 26.1 for LingSheng HBW
+The completed comparison is kept as an external run artifact; raw reports and
+large evidence archives are intentionally outside the source tree. Its
+headline uses 48 GiB on each platform and HPCKit 26.1 for LingSheng HBW
 classification. The older 25.1 SDK misclassifies the final memory-only domain
 in this allocation; the all-domain 25.1 diagnostic is excluded. Exact final
-job scripts and plans are in the evidence archive, including
+job scripts and plans belong in the external evidence archive, including
 `memory261-large.sh`, `ddr261.plan` and `hbw261.plan`.
 
 The text plan has one worker per line: `group_id cpu_id memory_node` (comments

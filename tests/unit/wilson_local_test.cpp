@@ -1,6 +1,6 @@
 #include "wilson_kernel.hpp"
 #include "transfer_avx512.hpp"
-#include "lqcd/core/dslash.h"
+#include "core/dslash.h"
 #include <chrono>
 #include <cmath>
 #include <iostream>

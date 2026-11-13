@@ -10,10 +10,10 @@ under-5-second research goal is not this delivery's acceptance requirement.
 Previous DD wrapper timings do NOT satisfy this target. See `docs/roadmap.md` for scope
 and `docs/backend-architecture.md` for field, normalization and MPI contracts.
 
-- Public API: `include/lqcd/lqcd.h`; implementation: `src/runtime/`,
+- Public API: `include/lqcd.h`; implementation: `src/runtime/`,
   `src/solver/native/` contains the shared MG/SAP/Krylov/MPI implementation.
   Hardware factories/kernels live in `src/backends/x86/` and `src/backends/arm/`;
-  portable Wilson mathematics live in `src/backends/portable/`. Python: `python/lqcd_cpu/`.
+  portable Wilson mathematics live in `src/backends/portable/`. Python: `bindings/lqcd_cpu/`.
   External solver wrappers belong under `src/references/`, opt-in only.
 - Production defaults include even-odd Schur solves in SAP blocks and the coarse
   solver. Legacy non-EO modes are diagnostic comparisons, not the default path.
@@ -62,3 +62,16 @@ and `docs/backend-architecture.md` for field, normalization and MPI contracts.
 - Keep large input configurations, propagator arrays and platform binaries out
   of the source repository; preserve their source commit and integrity metadata.
   Retain original provenance for any downloaded third-party source.
+
+## Repository layout (user requirement, 2026-11-13)
+
+- Keep only build metadata, README, agent instructions and license notices at
+  the root. Reference manuals belong in `docs/reference/`.
+- `include/lqcd.h` is the installed public C header. Keep implementation
+  headers next to their sources in `src/`; do not restore `include/lqcd/`.
+- Python bindings live in `bindings/lqcd_cpu/`; use `bindings` as `PYTHONPATH`.
+- Do not commit raw test logs, CMake caches, binaries or one-value residual
+  copies. Store structured validation and timing summaries in `experiments/`
+  and keep full run outputs outside the source checkout.
+- Historical manifests retain original paths and hashes; see
+  `experiments/README.md` for the pre-cleanup source commit.

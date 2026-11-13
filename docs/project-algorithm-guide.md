@@ -46,7 +46,7 @@ $$
 输出仍是 $M^{-1}\eta$。源码里 `apply_dirac()` 使用的也是这个归一化算子；
 函数名与注释中的 `M`、`D` 要结合归一化理解。
 
-源码：[公共接口](../include/lqcd/lqcd.h)、
+源码：[公共接口](../include/lqcd.h)、
 [native/backend.cpp](../src/solver/native/backend.cpp) 的 `solve()`、`apply()`，
 [core/dirac.cpp](../src/core/dirac.cpp)。完整布局见附录 C。
 
@@ -54,9 +54,7 @@ $$
 
 ```text
 multigrid.cpp/
-├── include/lqcd/
-│   ├── lqcd.h                    公共 C ABI：配置、字段、结果和生命周期
-│   └── core/                     独立 double 算子、几何及 coarse 数据声明
+├── include/lqcd.h                公共 C ABI：配置、字段、结果和生命周期
 ├── src/
 │   ├── runtime/                  参数检查、布局转换、后端注册、最终残差门
 │   ├── solver/native/            共享 MG、SAP、Krylov、MPI、setup
@@ -68,7 +66,7 @@ multigrid.cpp/
 │   ├── core/                     double 基础实现；也用于 Galerkin 组装
 │   ├── reference/                独立 multigrid 可执行程序和验算入口
 │   └── references/ddalphaamg/     可选外部库对照适配器
-├── python/lqcd_cpu/              Solver、LIME、stout、传播子 I/O
+├── bindings/lqcd_cpu/              Solver、LIME、stout、传播子 I/O
 ├── tools/                       构建、NUMA 启动、完整传播子和调度脚本
 ├── profiles/                    测量过的硬件/求解参数配置
 ├── tests/                       内核、MPI、接口、物理 oracle 测试
@@ -124,7 +122,7 @@ create → load_gauge → setup → solve / solve_batch / apply（可重复）�
 
 源码：[context.cpp](../src/runtime/context.cpp) 的 `lqcd_create()`、`lqcd_setup()`、
 `lqcd_solve()`、`lqcd_solve_batch()`，
-[Python Solver](../python/lqcd_cpu/__init__.py)。
+[Python Solver](../bindings/lqcd_cpu/__init__.py)。
 
 ### 1.5 核数、NUMA、MPI 和 SIMD 是四件事
 
@@ -951,7 +949,7 @@ CPU affinity 也不代表页已经位于 HBM。日志中的目标、绑定字节
 
 | 顺序 | 文件与函数 | 阅读目标 |
 |---|---|---|
-| 1 | `include/lqcd/lqcd.h`、`runtime/context.cpp` | 公共方程、生命周期、最终验收 |
+| 1 | `include/lqcd.h`、`runtime/context.cpp` | 公共方程、生命周期、最终验收 |
 | 2 | `solver/native/backend.cpp::setup/solve` | 数据进入 native 的位置与归一化 |
 | 3 | `hierarchy.hpp`、`hierarchy.cpp::Impl` | 数据所有权、索引、颜色、系数布局 |
 | 4 | `setup.cpp::generate_basis`、`core/multigrid.cpp::rebuild_coarse_operator` | P 的生成与 RAP |
@@ -961,7 +959,7 @@ CPU affinity 也不代表页已经位于 HBM。日志中的目标、绑定字节
 | 8 | `solver.cpp::solve/solve_float_gcr` | float Krylov 与 double 可靠校正 |
 | 9 | `fine_operator.cpp`、`double_operator.cpp` | 分布式算子与 halo 重叠 |
 | 10 | `backends/x86/` 或 `backends/arm/` | SIMD 数据流与特殊情况回退 |
-| 11 | `batched_*.cpp`、`python/lqcd_cpu/propagator.py` | 多源复用与完整传播子 |
+| 11 | `batched_*.cpp`、`bindings/lqcd_cpu/propagator.py` | 多源复用与完整传播子 |
 | 12 | `validation.cpp`、`tests/`、独立 reference | 怎样证明修改后仍在求同一方程 |
 
 主要对象关系为：
@@ -1010,9 +1008,9 @@ stout 是改变输入 links 的预处理，不在每次 V-cycle 内执行。
 内核中重复乘负号。raw LIME 的精度与重投影策略也是物理比较的一部分。
 
 源码：[runtime/layout.cpp](../src/runtime/layout.cpp)、
-[Python Solver](../python/lqcd_cpu/__init__.py) 的 `solve_propagator()`，
-[io.py](../python/lqcd_cpu/io.py)、[smearing.py](../python/lqcd_cpu/smearing.py)、
-[propagator.py](../python/lqcd_cpu/propagator.py)、[propagator_io.py](../python/lqcd_cpu/propagator_io.py)。
+[Python Solver](../bindings/lqcd_cpu/__init__.py) 的 `solve_propagator()`，
+[io.py](../bindings/lqcd_cpu/io.py)、[smearing.py](../bindings/lqcd_cpu/smearing.py)、
+[propagator.py](../bindings/lqcd_cpu/propagator.py)、[propagator_io.py](../bindings/lqcd_cpu/propagator_io.py)。
 
 ## 附录 D：构建、运行与性能计时
 
@@ -1023,7 +1021,7 @@ cmake -S . -B build/runtime -DCMAKE_BUILD_TYPE=Release \
   -DLQCD_BUILD_RUNTIME=ON -DMULTIGRID_NATIVE=ON
 cmake --build build/runtime -j8
 export LQCD_CPU_LIBRARY="$PWD/build/runtime/liblqcd_cpu.so"
-export PYTHONPATH="$PWD/python${PYTHONPATH:+:$PYTHONPATH}"
+export PYTHONPATH="$PWD/bindings${PYTHONPATH:+:$PYTHONPATH}"
 
 python tools/run_numa.py -- python -u tools/solve_propagator.py \
   --gauge /path/configuration.lime --mass -0.277 --csw 1.160920226 \

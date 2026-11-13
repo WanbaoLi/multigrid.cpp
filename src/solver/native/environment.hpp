@@ -1,7 +1,7 @@
 #pragma once
 #include "../../support/aligned_workspace.hpp"
-#include "lqcd/core/field.h"
-#include "lqcd/runtime/runtime.h"
+#include "core/field.h"
+#include "runtime/runtime.h"
 #include <algorithm>
 #include <array>
 #include <mpi.h>

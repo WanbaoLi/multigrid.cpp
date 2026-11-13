@@ -1,6 +1,6 @@
-#include "lqcd/core/multigrid.h"
-#include "lqcd/core/dirac.h"
-#include "lqcd/core/dslash.h"
+#include "core/multigrid.h"
+#include "core/dirac.h"
+#include "core/dslash.h"
 #include <algorithm>
 #include <cmath>
 #include <fstream>

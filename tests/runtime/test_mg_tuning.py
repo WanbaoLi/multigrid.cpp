@@ -5,7 +5,7 @@ import os
 import sys
 import numpy as np
 from mpi4py import MPI
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]/'python'))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]/'bindings'))
 from lqcd_cpu import Solver
 comm=MPI.COMM_WORLD
 lat=(8,8,8,8);grid=(1,1,1,comm.size)

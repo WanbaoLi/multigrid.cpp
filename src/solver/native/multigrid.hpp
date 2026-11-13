@@ -1,5 +1,5 @@
 #pragma once
-#include "lqcd/core/multigrid.h"
+#include "core/multigrid.h"
 #include <memory>
 #include <mpi.h>
 // Project-owned mixed-precision aggregation MG. No external solver calls.

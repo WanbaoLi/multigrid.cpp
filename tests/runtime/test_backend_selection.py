@@ -3,7 +3,7 @@ from pathlib import Path
 import sys
 import unittest
 from unittest.mock import patch
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'python'))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'bindings'))
 from lqcd_cpu import _resolve_backend
 
 

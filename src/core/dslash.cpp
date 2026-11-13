@@ -1,4 +1,4 @@
-#include "lqcd/core/dslash.h"
+#include "core/dslash.h"
 
 // Euclidean gamma matrices.  gamma[mu][a][b] is used in (1 +/- gamma_mu).
 Complex gamma_matrix[4][4][4];

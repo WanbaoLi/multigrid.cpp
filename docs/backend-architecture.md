@@ -1,6 +1,6 @@
 # Hardware backend architecture
 
-Public C ABI: `include/lqcd/lqcd.h`. CPU PyQUDA adapter: `python/lqcd_cpu`.
+Public C ABI: `include/lqcd.h`. CPU PyQUDA adapter: `bindings/lqcd_cpu`.
 Runtime lifecycle/validation/layout: `src/runtime/`. Shared native algorithm: `src/solver/native/`; the private declaration is `src/solver/native/multigrid.hpp`. Hardware kernels/factories: `src/backends/x86/` and `src/backends/arm/`. Shared portable Wilson mathematics: `src/backends/portable/`.
 External reference integration: `src/references/ddalphaamg/`, opt-in only.
 

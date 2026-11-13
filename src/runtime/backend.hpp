@@ -1,5 +1,5 @@
 #pragma once
-#include "lqcd/lqcd.h"
+#include "lqcd.h"
 #include <array>
 #include <complex>
 #include <memory>

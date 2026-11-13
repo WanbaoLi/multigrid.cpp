@@ -1,10 +1,10 @@
-#include "lqcd/core/clover.h"
-#include "lqcd/core/dirac.h"
-#include "lqcd/core/dslash.h"
-#include "lqcd/core/field.h"
-#include "lqcd/core/gauge.h"
-#include "lqcd/core/gcr.h"
-#include "lqcd/core/multigrid.h"
+#include "core/clover.h"
+#include "core/dirac.h"
+#include "core/dslash.h"
+#include "core/field.h"
+#include "core/gauge.h"
+#include "core/gcr.h"
+#include "core/multigrid.h"
 #include <algorithm>
 #include <cmath>
 #include <filesystem>

@@ -5,7 +5,7 @@ import sys
 import tempfile
 import numpy as np
 from mpi4py import MPI
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'python'))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'bindings'))
 from lqcd_cpu import columns_to_propagator, propagator_to_columns
 from lqcd_cpu.propagator_io import write_propagator, read_propagator
 from pyquda_comm import initGrid

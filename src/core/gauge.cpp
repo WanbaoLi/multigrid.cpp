@@ -1,4 +1,4 @@
-#include "lqcd/core/gauge.h"
+#include "core/gauge.h"
 
 void unit_gauge(Gauge &g) {
     size_t n = (size_t)g.o.nx * g.o.ny * g.o.nz * g.o.nt;

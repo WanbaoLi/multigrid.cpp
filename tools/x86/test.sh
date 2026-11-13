@@ -43,7 +43,7 @@ fi
 }
 [[ ! -e "$output" ]] || { echo "Output already exists: $output" >&2; exit 2; }
 
-export PYTHONPATH="$project_dir/python${PYTHONPATH:+:$PYTHONPATH}"
+export PYTHONPATH="$project_dir/bindings${PYTHONPATH:+:$PYTHONPATH}"
 export LQCD_CPU_LIBRARY="$build_dir/liblqcd_cpu.so"
 export OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
 export LQCD_RHS_BATCH="$rhs_batch"

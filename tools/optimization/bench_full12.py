@@ -287,7 +287,7 @@ def verify(args):
 def benchmark(args):
     import numpy as np
     from mpi4py import MPI
-    sys.path.insert(0, str(PROJECT / 'python'))
+    sys.path.insert(0, str(PROJECT / 'bindings'))
     sys.path.insert(0, str(PROJECT / 'tools'))
     from lqcd_cpu import Solver
     from lqcd_cpu.propagator_io import write_propagator

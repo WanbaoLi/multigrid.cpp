@@ -1,4 +1,4 @@
-#include "lqcd/core/clover.h"
+#include "core/clover.h"
 
 struct Matrix3 {
     Complex v[3][3]{};

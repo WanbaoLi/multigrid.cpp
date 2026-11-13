@@ -1,6 +1,6 @@
 # 鲲鹏HPC手册驱动的ARM后端优化（2026-10-26）
 
-依据用户提供的《鲲鹏920专业版系统开发手册.docx》，SHA256
+依据归档在 [reference/kunpeng-920-system-development-manual.docx](reference/kunpeng-920-system-development-manual.docx) 的《鲲鹏920专业版系统开发手册》，SHA256
 `018a5811dd7529dc37c43a99897dfed50b67bf4de4bcd4455ff4b6412cf1670c`。
 手册封面V1.1、文档版本01、发布日期2026-06-01；本地提取567个非空段落、3个表格。
 其CPU/NUMA/片上内存与矩阵编程内容已整理到本仓库的只读参考 skill：

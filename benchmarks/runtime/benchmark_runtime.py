@@ -8,7 +8,7 @@ from mpi4py import MPI
 
 PROJECT = Path(__file__).resolve().parents[2]
 WORKSPACE = PROJECT.parent
-sys.path.insert(0, str(PROJECT / "python"))
+sys.path.insert(0, str(PROJECT / "bindings"))
 from lqcd_cpu import Solver
 from pyquda_comm import initGrid
 from pyquda.field import LatticeInfo, LatticeFermion, LatticeGauge

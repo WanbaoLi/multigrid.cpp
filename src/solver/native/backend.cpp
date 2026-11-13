@@ -1,6 +1,6 @@
 #include "backend.hpp"
-#include "lqcd/core/clover.h"
-#include "lqcd/core/dslash.h"
+#include "core/clover.h"
+#include "core/dslash.h"
 #include "multigrid.hpp"
 #include <cerrno>
 #include <cmath>

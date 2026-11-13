@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 from mpi4py import MPI
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "python"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "bindings"))
 from lqcd_cpu import Solver, columns_to_propagator, propagator_to_columns
 from pyquda_comm import initGrid
 from pyquda.field import LatticeInfo, LatticeFermion, LatticePropagator

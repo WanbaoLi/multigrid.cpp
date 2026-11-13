@@ -1,5 +1,0 @@
-CLOVER_FULL12_CASE {"name": "165-clover-control-a", "median": 13.328536326007452}
-CLOVER_FULL12_CASE {"name": "165-clover-new-off", "median": 14.358332408010028}
-CLOVER_FULL12_CASE {"name": "165-clover-new-on", "median": 13.746030872978736}
-CLOVER_FULL12_CASE {"name": "165-clover-control-b", "median": 13.521397905016784}
-CLOVER_FULL12_COMPLETE {"165-clover-new-off": {"passed": false, "reasons": ["below frozen minimum gain against a control", "ranges overlap a control"], "gains": [-0.07726250330977269, -0.06189703970494942], "control_drift": 0.014469824314693017}, "165-clover-new-on": {"passed": false, "reasons": ["below frozen minimum gain against a control", "ranges overlap a control"], "gains": [-0.03132336040204531, -0.01661314677224368], "control_drift": 0.014469824314693017}}
