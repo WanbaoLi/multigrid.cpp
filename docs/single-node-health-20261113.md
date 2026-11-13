@@ -34,6 +34,41 @@ with the site GCC/HPCKit toolchain. Results and verification JSON are retained
 in `experiments/single-node-health-20261113/`; raw logs and large arrays remain
 outside the repository.
 
+## Reproduction commands
+
+Use a clean GitHub checkout and a new output directory. The wrapper builds the
+runtime and independent reference natively, runs selected CTest cases, measures
+both geometries and checks the single output plus all twelve columns. One stout
+pass uses `rho=0.125` in all four directions. The aggregation block extents in
+the table are ordered as three spatial directions followed by time.
+
+On node5005, after `ssh itp` and `ssh node5005`, run from the source root:
+
+```bash
+bash tools/health/run_single_node.sh x86 \
+  "$HOME/.cache/mg-health-replay-NEW" \
+  /public2/home/lwb_720/lqcd/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime \
+  /public2/home/lwb_720/.cache/mg-health-20261113/inputs/beta6.20_mu-0.2790_ms-0.2400_L32x64_cfg_10000.lime
+```
+
+On LingSheng, after `ssh ls`, submit from the source root. The job selects an
+idle compatible compute node; compilation and measurements take place there:
+
+```bash
+LQCD_HEALTH_32_RANKS=8 LQCD_HEALTH_32_NUMA_COUNT=8 \
+  bash tools/health/submit_ls.sh \
+  "$HOME/lqcd-run/health-replay-NEW" \
+  "$HOME/.cache/pyqcu-propagator24-v20261103/inputs/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime" \
+  "$HOME/multigrid.cpp/data/C32P23/beta6.20_mu-0.2790_ms-0.2400_L32x64_cfg_10000.lime"
+```
+
+This reproduces the capacity-safe C32 configuration used here. Without the
+explicit eight-rank override, the wrapper checks whether the default sixteen
+ranks fit the memory budget and reports a block if they do not. Results are
+`L24/result.json` and `L32/result.json` under the output directory, with
+`verification.json` and resource preflight data alongside each one. Large
+temporary arrays are removed only after all thirteen independent checks pass.
+
 ## What the measurements say
 
 For node5005, the C32/C24 full12 ratio is `30.132/6.220 = 4.845`. The site-volume
