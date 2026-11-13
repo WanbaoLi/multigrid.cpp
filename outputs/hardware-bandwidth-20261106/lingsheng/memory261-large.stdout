@@ -1,4 +1,0 @@
-###env.sh in /home/share/nsls_lwb/PyQCU-lingsheng-v20261103 is sourcing...:2026-11-06-15-56-05###
-###env.sh in /home/share/nsls_lwb/PyQCU-lingsheng-v20261103 is done......:2026-11-06-15-56-05###
-ddr261-large [('read', 666.3592625137652), ('copy', 461.37738033388047), ('triad', 511.1944881493346)]
-hbw261-large [('read', 4777.247613328255), ('copy', 4813.418328995896), ('triad', 4486.212672484843)]

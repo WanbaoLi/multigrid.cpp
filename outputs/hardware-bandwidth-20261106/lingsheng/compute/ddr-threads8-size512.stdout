@@ -1,1 +1,0 @@
-{"schema":"numa-stream-v1","status":"ERROR","error":"mbind failed for node 0: Invalid argument"}
