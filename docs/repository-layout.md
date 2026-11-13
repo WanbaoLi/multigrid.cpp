@@ -31,3 +31,6 @@ The repository keeps structured experiment data needed to explain a result,
 but excludes raw test logs, build trees, binaries, large input configurations
 and generated propagator arrays. Temporary comparison directories are ignored
 and must remain outside the checkout.
+
+Migration details and validation are recorded in
+[the 2026-11-13 refactor](repository-refactor-20261113.md).
