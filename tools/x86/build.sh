@@ -30,7 +30,7 @@ cmake -S "$project_dir" -B "$build_dir" \
     -DMPI_C_COMPILER="$mpi_c" \
     -DMPI_CXX_COMPILER="$mpi_cxx" \
     -DLQCD_TEST_PYTHON="$python_bin" \
-    "-DLQCD_MPI_FLAGS=${LQCD_MPI_FLAGS:---bind-to;none}"
+    "-DLQCD_MPI_FLAGS=${LQCD_MPI_FLAGS:---map-by;slot:PE=2;--bind-to;core}"
 cmake --build "$build_dir" -j "$build_jobs"
 
 echo "Built x86 runtime: $build_dir/liblqcd_cpu.so"

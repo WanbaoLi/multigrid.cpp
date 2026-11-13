@@ -42,7 +42,7 @@ if [[ -n ${LQCD_MPI_LIBRARY_PATH:-} ]]; then
     export LD_LIBRARY_PATH="$LQCD_MPI_LIBRARY_PATH:${LD_LIBRARY_PATH:-}"
 fi
 "$python_bin" -c 'from mpi4py import MPI; import numpy; print(MPI.Get_library_version()); print("NumPy", numpy.__version__)'
-"$python_bin" "${LQCD_CPU_PROBE:-$HOME/.codex/skills/kunpeng-lingsheng-cpu/scripts/probe_cpu.py}" > "$task_root/cpu-probe.json"
+"$python_bin" "${LQCD_CPU_PROBE:-$project_dir/tools/probe_host.py}" > "$task_root/cpu-probe.json"
 
 # Build on this allocation. Native ISA must be recognized by its compiler;
 # failures remain visible instead of silently falling back to login-host code.

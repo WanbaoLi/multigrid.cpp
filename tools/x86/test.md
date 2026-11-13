@@ -50,6 +50,11 @@ bash tools/x86/build.sh
 
 脚本默认使用 `build/amd9755`，Release、`MULTIGRID_NATIVE=ON`、项目 x86 后端、MPI 和 OpenMP。`MULTIGRID_NATIVE=ON` 会启用编译器的本机优化（包括 `-march=native -mtune=native`）；没有启用 fast-math。
 
+小格子 CTest 使用每个 MPI rank 两个独立核：`--map-by slot:PE=2 --bind-to core`，
+避免多个未绑定 rank 在 OpenMP `close` 策略下同时固定到 CPU 0。
+这只配置测试启动器；真实24×64求解仍由 `tools/run_numa.py` 按 NUMA 绑定。
+特殊调度环境可通过 `LQCD_MPI_FLAGS` 覆盖 CTest 的 MPI 参数。
+
 如果节点上的 Python/MPI 不在默认 PATH 中，可以这样指定：
 
 ```bash

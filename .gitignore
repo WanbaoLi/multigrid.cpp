@@ -19,3 +19,7 @@ __pycache__/
 *.dll
 *.exe
 *.bundle
+*.residual
+CMakeCache.txt
+CMakeFiles/
+Testing/

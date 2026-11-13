@@ -10,6 +10,8 @@
 
 ## 目录
 
+完整的目录职责与文件归档规则见[仓库布局](docs/repository-layout.md)。
+
 ```text
 include/lqcd.h                公共 C ABI 头文件（安装后为 `<lqcd.h>`）
 src/core/*.h                  内部 Wilson-Clover、GCR 和 MG 头文件
