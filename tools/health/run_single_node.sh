@@ -266,7 +266,7 @@ PY
 import json, shutil, sys
 from pathlib import Path
 scratch, out = map(lambda p: Path(p).resolve(), sys.argv[1:])
-assert scratch.parent == Path('/tmp') and scratch.name.startswith('lqcd-health-')
+assert scratch.parent == Path('/tmp').resolve() and scratch.name.startswith('lqcd-health-')
 run = scratch/'run'
 report = json.loads((run/'result.json').read_text())
 verification = json.loads((run/'verification.json').read_text())
