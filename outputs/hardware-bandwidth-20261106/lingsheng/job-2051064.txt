@@ -1,0 +1,97 @@
+Basic Details:
+    jobId                               	2051064                                           	
+    name                                	hbwmemory-classify                                	
+    state                               	SUCCEEDED                                         	
+    user                                	nsls_lwb                                          	
+    queue                               	q_hpcapp                                          	
+    account                             	common                                            	
+    cmd                                 	/home/share/nsls_lwb/.cache/hardware-bandwidth-v20261105/classify-r2.sh	
+    submitNode                          	login05                                           	
+    createTime                          	2026/11/06 15:48:55                               	
+    startTime                           	2026/11/06 15:48:58                               	
+    lastModifiedTime                    	-                                                 	
+    endTime                             	2026/11/06 15:50:21                               	
+    currentOperation                    	EMPTY                                             	
+    jobRequeueMaxCnt                    	0                                                 	
+    jobRequeueCurrentCnt                	0                                                 	
+    mpiType                             	DEFAULT                                           	
+    interactionMode                     	DEFAULT                                           	
+    assistJob                           	DEFAULT                                           	
+    x11ForwardEnabled                   	false                                             	
+    description                         	-                                                 	
+    transferType                        	LOCAL                                             	
+    forwardTime                         	-                                                 	
+    recallTime                          	-                                                 	
+    autoResize                          	false                                             	
+Scheduling Details:
+    exclusive                           	false                                             	
+    priority                            	1                                                 	
+    adminPriority                       	-1                                                	
+    expectSchedTime                     	-                                                 	
+    startTimeEstimated                  	-                                                 	
+    reserveRes                          	-                                                 	
+    backfillRes                         	-                                                 	
+    backfilledRes                       	-                                                 	
+Resource Details:
+    reqJobLicense                       	-
+    allocJobLicense                     	-
+    resGroup[0]:
+        replica                         	1                                                 	
+        labels                          	queue_q_hpcapp aarch64                            	
+        preferNodes                     	-                                                 	
+        reqNodeSelectPolicy             	-                                                 	
+        effNodeSelectPolicy             	SEQUENCE                                          	
+        reqCPU                          	592                                               	
+        reqMem                          	196608                                            	
+        reqGPU                          	gpu:0
+        reqNPU                          	0
+        allocCPU                        	592                                               	
+        allocMem                        	196608                                            	
+        allocGPU                        	gpu:0
+        allocNPU                        	0
+        reqTaskLicense                  	-
+        allocTaskLicense                	-
+    allocAffinity                       	
+        execNode             resGroup resIndex hwThreads        gpuIds           npuIds          
+        cn19492              0        0/1      -                -                -               
+Runtime Details:
+    execNodes                           	cn19492                                           	
+    execNodeCnt                         	1                                                 	
+    execPath                            	/home/share/nsls_lwb                              	
+    resizeCmd                           	-                                                 	
+    timeout                             	1800                                              	
+    stderrRedirectPath                  	/home/share/nsls_lwb/.cache/hardware-bandwidth-v20261105/classify-r2.stderr	
+    stderrRedirectType                  	override                                          	
+    stdoutRedirectPath                  	/home/share/nsls_lwb/.cache/hardware-bandwidth-v20261105/classify-r2.stdout	
+    stdoutRedirectType                  	override                                          	
+    hostPreHookFilePath                 	/home/share/software/donau/hook/hosthook/no_exclusive/hostPreHook.sh	
+    hostPreHookTimeout                  	300                                               	
+    totalUtime                          	1                                                 	
+    totalStime                          	3                                                 	
+    totalMaxMemSwp                      	0                                                 	
+    totalMaxMem                         	0                                                 	
+    hostPreHookRunTime                  	10                                                	
+    preHookRunTime                      	0                                                 	
+    jobWallclockDuration                	6                                                 	
+    postHookRunTime                     	0                                                 	
+    hostPostHookRunTime                 	0                                                 	
+    jobSstoppedTime                     	0                                                 	
+    coreHours                           	3552                                              	
+    jobExitCode                         	0                                                 	
+    systemExitCode                      	0                                                 	
+    exitMessage                         	Job execution succeeded                           	
+    stderrRedirectOutputPath            	/home/share/nsls_lwb/.cache/hardware-bandwidth-v20261105/classify-r2.stderr	
+    stdoutRedirectOutputPath            	/home/share/nsls_lwb/.cache/hardware-bandwidth-v20261105/classify-r2.stdout	
+    nodeUsages                          	
+        execNode             resGroup resIndex utime    stime    wallclockDuration    sstoppedTime     cpuUtil          gpuUtil          npuUtil          memResource                     
+        cn19492              0        0/1      1        3        6                    0                71/71            -                -                0/4/0/0/26/26/1/0               
+    nodePids                            	
+        execNode             pids    
+        cn19492              -       
+    traceMessages                       	2026/11/06 15:48:55    :    [JOB_ADD] Job 2051064 is submitted by nsls_lwb, job state is PENDING.	
+                                        	2026/11/06 15:48:58    :    [JOB_START] Job 2051064 start message has been sent.	
+                                        	2026/11/06 15:48:58    :    [JOB_START_ACK] Job 2051064 start message has been received by agent cn19492.	
+                                        	2026/11/06 15:48:58    :    [JOB_EXECUTION] Job 2051064 state is from PENDING to RUNNING.	
+                                        	2026/11/06 15:50:05    :    [HOST_PRE-HOOK_START] Job 2051064 host-pre-hook started at 2026/11/06 15:50:04 .	
+                                        	2026/11/06 15:50:15    :    [HOST_PRE-HOOK_END] Job 2051064 host-pre-hook is finished successfully at 2026/11/06 15:50:14 , cost time: 10328 ms.	
+                                        	2026/11/06 15:50:21    :    [JOB_FINISH] Job 2051064 state is from RUNNING to SUCCEEDED.	

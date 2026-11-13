@@ -1,0 +1,5 @@
+###env.sh in /home/share/nsls_lwb/PyQCU-lingsheng-v20261103 is sourcing...:2026-11-06-15-50-20###
+###env.sh in /home/share/nsls_lwb/PyQCU-lingsheng-v20261103 is done......:2026-11-06-15-50-20###
+2026-11-06T15:50:20+08:00
+cn19492
+[{"target": 0, "old_verify": 0, "new_verify": 0, "move_pages": 0, "nodes": [0, 0]}, {"target": 16, "old_verify": 1, "new_verify": 1, "move_pages": 0, "nodes": [16, 16]}, {"target": 28, "old_verify": 1, "new_verify": 1, "move_pages": 0, "nodes": [28, 28]}, {"target": 30, "old_verify": 1, "new_verify": 1, "move_pages": 0, "nodes": [30, 30]}, {"target": 31, "old_verify": 0, "new_verify": 1, "move_pages": 0, "nodes": [31, 31]}]

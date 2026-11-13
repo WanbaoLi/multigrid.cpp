@@ -1,0 +1,87 @@
+{
+  "schema": "cpu-register-fma-v1",
+  "status": "PASS",
+  "hostname": "node5005",
+  "isa": "x86-avx512-fma",
+  "precision": "fp32",
+  "compiler": "14.4.0",
+  "threads": 1,
+  "target_seconds": 2,
+  "repeats": 3,
+  "accumulators": 16,
+  "fma_passes_per_iteration": 2,
+  "flops_per_fma_per_lane": 2,
+  "clock": "CLOCK_MONOTONIC_RAW",
+  "fma_pattern": "x+=0.5*2^-10; x+=(-0.5)*2^-10",
+  "workers": [
+    {
+      "requested_cpu": 16,
+      "actual_cpu": 16,
+      "affinity_width": 1,
+      "vector_bytes": 64,
+      "sve_vl_bytes": 0,
+      "error": ""
+    }
+  ],
+  "samples": [
+    {
+      "repeat": 1,
+      "seconds": 1.998175734654069,
+      "flops": 527361840128,
+      "gflops": 263.9216516255507,
+      "threads": [
+        {
+          "cpu": 16,
+          "iterations": 515001797,
+          "start": 7176387.317038863,
+          "end": 7176389.315214598,
+          "seconds": 1.998175734654069,
+          "cpu_start": 16,
+          "cpu_end": 16,
+          "checksum": 256,
+          "max_abs_error": 0
+        }
+      ]
+    },
+    {
+      "repeat": 2,
+      "seconds": 1.9985634675249457,
+      "flops": 527361840128,
+      "gflops": 263.87044929881245,
+      "threads": [
+        {
+          "cpu": 16,
+          "iterations": 515001797,
+          "start": 7176389.315216381,
+          "end": 7176391.313779849,
+          "seconds": 1.9985634675249457,
+          "cpu_start": 16,
+          "cpu_end": 16,
+          "checksum": 256,
+          "max_abs_error": 0
+        }
+      ]
+    },
+    {
+      "repeat": 3,
+      "seconds": 1.9980195509269834,
+      "flops": 527361840128,
+      "gflops": 263.9422821880446,
+      "threads": [
+        {
+          "cpu": 16,
+          "iterations": 515001797,
+          "start": 7176391.31378083,
+          "end": 7176393.311800381,
+          "seconds": 1.9980195509269834,
+          "cpu_start": 16,
+          "cpu_end": 16,
+          "checksum": 256,
+          "max_abs_error": 0
+        }
+      ]
+    }
+  ],
+  "median_gflops": 263.9216516255507,
+  "max_gflops": 263.9422821880446
+}

@@ -128,11 +128,11 @@ ctest --test-dir BUILD --output-on-failure -R \
 Local WSL x86 Debug and Release compilation with GCC 14.2/OpenMPI succeeded.
 The WSL runtime condition blocked numerical execution: a restart cleared the
 initial `/tmp` build/dependency directories, and subsequently even a two-rank
-`hostname` launch stalled before creating application processes. A persistent
-cache build and the available logs are kept outside the source tree under
-`outputs/optimization-20261103/coarse-batch-local`. No MPI numerical pass is
-claimed. Local x86 tests, when available, validate algorithm and communication
-logic; they cannot establish Arm/SVE behavior or enter performance rankings.
+`hostname` launch stalled before creating application processes. The temporary
+cache and logs from that attempt were removed from the production tree. No MPI
+numerical pass is claimed. Local x86 tests, when available, validate algorithm
+and communication logic; they cannot establish Arm/SVE behavior or enter
+performance rankings.
 LingSheng candidate-enabled runtime tests and real-gauge precision/performance
 remain pending. The first test draft used an invalid 4-site extent with
 2-site blocks; review corrected it to the existing legal 8-site geometry

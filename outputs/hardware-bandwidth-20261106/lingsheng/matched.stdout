@@ -1,0 +1,4 @@
+###env.sh in /home/share/nsls_lwb/PyQCU-lingsheng-v20261103 is sourcing...:2026-11-06-15-42-22###
+###env.sh in /home/share/nsls_lwb/PyQCU-lingsheng-v20261103 is done......:2026-11-06-15-42-22###
+matched-ddr [('read', 623.6983802728512), ('copy', 424.74729736372944), ('triad', 480.71647741108103)]
+matched-hbw [('read', 4442.626887211685), ('copy', 4210.4763698065435), ('triad', 4202.150202618773)]

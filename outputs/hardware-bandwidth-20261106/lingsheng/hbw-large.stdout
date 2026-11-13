@@ -1,0 +1,3 @@
+###env.sh in /home/share/nsls_lwb/PyQCU-lingsheng-v20261103 is sourcing...:2026-11-06-15-52-09###
+###env.sh in /home/share/nsls_lwb/PyQCU-lingsheng-v20261103 is done......:2026-11-06-15-52-09###
+HBW_LARGE_PASS [('read', 4495.0086664303935), ('copy', 4379.44161557427), ('triad', 4209.860292688261)]

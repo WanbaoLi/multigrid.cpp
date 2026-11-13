@@ -61,12 +61,13 @@ to a separate checkout, committed, and pushed to the WIP branch above.
 The live remote tree was preserved. Git text newline normalization applies;
 this is a Git source snapshot, not a byte-identical filesystem image.
 
-`archive/local-code-20261112` captures the previously pending source,
-scripts, and Markdown under `comparison-20261105-v4/`,
-`benchmarks/hardware/`, and code copies under `outputs/`, together with this
-inventory. These old experiments have not been rerun for this backup and do
-not establish new performance claims. Build artifacts, Git bundles, large
-input/output arrays, Python caches, and private paper extracts are excluded.
+The repository keeps production source, tests, tools, documentation, profiles,
+benchmarks and the categorized `experiments/` records. Old comparison
+controllers and raw hardware-output copies were removed from `develop` because
+they duplicated evidence and were not production entry points. Their commits
+remain recoverable from Git history and do not establish new performance
+claims. Build artifacts, Git bundles, large input/output arrays, Python caches,
+and private paper extracts are excluded.
 
 ## Scope and reproduction
 

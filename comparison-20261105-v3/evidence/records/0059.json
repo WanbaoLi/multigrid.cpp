@@ -1,8 +1,0 @@
-{
-  "node": "login",
-  "cores": "128",
-  "mode": "pilot",
-  "relative_solution_error": 6.581739979792706e-08,
-  "limit": 1e-06,
-  "passed": true
-}

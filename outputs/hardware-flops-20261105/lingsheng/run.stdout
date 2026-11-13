@@ -1,0 +1,10 @@
+###env.sh in /home/share/nsls_lwb/PyQCU-lingsheng-v20261103 is sourcing...:2026-11-05-17-24-37###
+###env.sh in /home/share/nsls_lwb/PyQCU-lingsheng-v20261103 is done......:2026-11-05-17-24-37###
+2026-11-05T17:24:37+08:00
+cn19473
+CASE_COMPLETE single_core fp32 cpus=1
+CASE_COMPLETE single_core fp64 cpus=1
+CASE_COMPLETE all_allowed_physical_cores fp32 cpus=592
+CASE_COMPLETE all_allowed_physical_cores fp64 cpus=592
+SUITE_PASS
+2026-11-05T17:25:24+08:00

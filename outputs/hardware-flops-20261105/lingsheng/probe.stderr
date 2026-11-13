@@ -1,0 +1,13 @@
+Conda Env: CONDA_SH=/work_ssd/software/soft/tool/anaconda3/2023.3/etc/profile.d/conda.sh
+Enable conda: source ${CONDA_SH}
+Conda Env: CONDARC=/work_ssd/software/soft/tool/anaconda3/2023.3/conda_config.yaml
+Conda Env: CONDA_CFG=/work_ssd/software/soft/tool/anaconda3/2023.3/conda_config.yaml
+HPCKIT_ENV: HPCKIT_BASEDIR=/work_ssd/software/soft/tool/hpckit/2026.1.RC1/HPCKit/26.1.RC1
+HPCKIT_ENV: HPCKIT_COM_BS=/work_ssd/software/soft/tool/hpckit/2026.1.RC1/HPCKit/26.1.RC1/compiler/bisheng
+HPCKIT_ENV: HPCKIT_COM_KGCC=/work_ssd/software/soft/tool/hpckit/2026.1.RC1/HPCKit/26.1.RC1/compiler/gcc
+HPCKIT_ENV: HPCKIT_HMPI=/work_ssd/software/soft/tool/hpckit/2026.1.RC1/HPCKit/26.1.RC1/hmpi
+HPCKIT_ENV: HPCKIT_KML=/work_ssd/software/soft/tool/hpckit/2026.1.RC1/HPCKit/26.1.RC1/kml
+
+Loading cmake/2026.1.RC1
+  Loading requirement: hpckit/2026.1.RC1 bisheng/compiler5.2.0/bishengmodule
+    bisheng/hmpi26.1.RC1/release

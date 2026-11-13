@@ -1,0 +1,21 @@
+Conda Env: CONDA_SH=/work_ssd/software/soft/tool/anaconda3/2023.3/etc/profile.d/conda.sh
+Enable conda: source ${CONDA_SH}
+Conda Env: CONDARC=/work_ssd/software/soft/tool/anaconda3/2023.3/conda_config.yaml
+Conda Env: CONDA_CFG=/work_ssd/software/soft/tool/anaconda3/2023.3/conda_config.yaml
+HPCKIT_ENV: HPCKIT_BASEDIR=/work_ssd/software/soft/tool/hpckit/2026.1.RC1/HPCKit/26.1.RC1
+HPCKIT_ENV: HPCKIT_COM_BS=/work_ssd/software/soft/tool/hpckit/2026.1.RC1/HPCKit/26.1.RC1/compiler/bisheng
+HPCKIT_ENV: HPCKIT_COM_KGCC=/work_ssd/software/soft/tool/hpckit/2026.1.RC1/HPCKit/26.1.RC1/compiler/gcc
+HPCKIT_ENV: HPCKIT_HMPI=/work_ssd/software/soft/tool/hpckit/2026.1.RC1/HPCKit/26.1.RC1/hmpi
+HPCKIT_ENV: HPCKIT_KML=/work_ssd/software/soft/tool/hpckit/2026.1.RC1/HPCKit/26.1.RC1/kml
+
+Loading cmake/2026.1.RC1
+  Loading requirement: hpckit/2026.1.RC1 bisheng/compiler5.2.0/bishengmodule
+    bisheng/hmpi26.1.RC1/release
+Traceback (most recent call last):
+  File "/home/share/nsls_lwb/.cache/hardware-bandwidth-v20261105/run_suite.py", line 115, in <module>
+    if __name__=='__main__':main()
+  File "/home/share/nsls_lwb/.cache/hardware-bandwidth-v20261105/run_suite.py", line 108, in main
+    candidates.append(case(kind,threads,mib,f'{kind}-threads{threads or "all"}-size{mib}'))
+  File "/home/share/nsls_lwb/.cache/hardware-bandwidth-v20261105/run_suite.py", line 96, in case
+    assert all(a['sdk_verify_before']==expected and a['sdk_verify_after']==expected
+AssertionError: hbw-threads8-size512: SDK class mismatch
