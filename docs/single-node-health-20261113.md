@@ -1,6 +1,12 @@
 # Single-node real-input health check, 2026-11-13
 
-The checks used source revision `dcae64a28beafdfc43e1c00e743a2b09fa1e8c81`.
+The node5005 checks used source revision
+`37a79c5c57062fe8876b3176450d2fd26f3ec307`; the LingSheng job used
+`dcae64a28beafdfc43e1c00e743a2b09fa1e8c81`. Both contain the same solver and
+health driver; the latter additionally contains the resource-aware submission
+and memory preflight wrapper.
+The node5005 shared library was built at `1ddd69b`, before those wrapper-only
+updates; `src/`, `include/` and `bindings/` are unchanged across these revisions.
 Each case read one LIME gauge, applied one stout pass, built one hierarchy, then
 timed three zero-start single-column solves and three zero-start complete
 12-column solves. Stout and setup are reported separately and excluded from the
@@ -31,8 +37,8 @@ outside the repository.
 ## What the measurements say
 
 For node5005, the C32/C24 full12 ratio is `30.132/6.220 = 4.845`. The site-volume
-ratio is `(32/24)^3 = 2.370`, while the second-round outer iteration count rises
-from about 21–22 to 41–43. Their product is about 4.63, leaving only about 1.05
+ratio is `(32/24)^3 = 2.370`, while the second-round mean iteration count rises
+from 21.4 to 41.8. Their product is about 4.63, leaving only about 1.05
 for the remaining per-iteration effects. The first cause is the C32 iteration
 count, followed by the larger operator volume.
 
@@ -64,8 +70,10 @@ The next bounded experiments should be:
    per rank and fewer MPI boundaries; cross-NUMA memory traffic could erase the
    benefit.
 
-Shared immutable setup coefficients remain a separate opt-in candidate from an
-older detached experiment. It may reduce C32 memory and setup replication, but
-its old implementation was never accepted for full12 correctness/performance
-and it is absent from this source revision. It must be reintroduced as a new
-branch/commit and revalidated before use.
+Shared immutable setup coefficients are absent from this source revision.
+The old LingSheng deployment at `a35c3a4` has archived independent C24/C32
+residual checks, but that code is not part of the present `develop` history.
+Restoring it could reduce C32 memory and setup replication and permit a larger
+rank/core configuration. That restoration requires a new source commit and
+current-version validation; the old deployment's timings must not be attributed
+to this health check.
