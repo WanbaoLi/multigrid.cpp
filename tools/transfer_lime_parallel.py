@@ -28,7 +28,8 @@ def ssh(host, command):
 
 
 def remote(host, command, timeout=90):
-    return subprocess.check_output(ssh(host, command), text=True, timeout=timeout).strip()
+    return subprocess.check_output(ssh(host, command), stdin=subprocess.DEVNULL,
+                                   text=True, timeout=timeout).strip()
 
 
 def main():
@@ -80,7 +81,8 @@ def main():
         source_cmd = (f"dd if={shlex.quote(a.source)} bs=8M iflag=skip_bytes,count_bytes "
                       f"skip={start + current} count={size - current} status=none")
         destination_cmd = f"dd of={part} bs=8M oflag=append conv=notrunc status=none"
-        source = subprocess.Popen(ssh(a.source_host, source_cmd), stdout=subprocess.PIPE)
+        source = subprocess.Popen(ssh(a.source_host, source_cmd), stdin=subprocess.DEVNULL,
+                                  stdout=subprocess.PIPE)
         destination_proc = subprocess.Popen(ssh(a.destination_host, destination_cmd),
                                              stdin=subprocess.PIPE)
         # A connected SSH server may stop forwarding data while keepalives

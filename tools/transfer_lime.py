@@ -22,7 +22,7 @@ def ssh(host, command):
 
 
 def query(host, command):
-    return subprocess.check_output(ssh(host, command), text=True).strip()
+    return subprocess.check_output(ssh(host, command), stdin=subprocess.DEVNULL, text=True).strip()
 
 
 def main():
@@ -54,7 +54,8 @@ def main():
         # bytes written through the pipe have reached the destination process.
         dest_cmd = f"dd of={partial} bs=8M oflag=append conv=notrunc status=none"
         dest = subprocess.Popen(ssh(a.destination_host, dest_cmd), stdin=subprocess.PIPE)
-        source = subprocess.Popen(ssh(a.source_host, source_cmd), stdout=subprocess.PIPE)
+        source = subprocess.Popen(ssh(a.source_host, source_cmd), stdin=subprocess.DEVNULL,
+                                  stdout=subprocess.PIPE)
         try:
             while True:
                 chunk = source.stdout.read(1024 * 1024)

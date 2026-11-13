@@ -27,3 +27,5 @@ python -u tools/transfer_lime_parallel.py `
 上传完成的依据是正式文件和 `complete=true` 的传输 manifest，以及目标文件的独立 `sha256sum`；本说明中的来源和目标路径本身不表示文件已传完。
 
 当前多节点限制：`src/support/shared_coefficient.cpp` 的共享系数模式明确要求所有 rank 在一个物理节点。普通模式虽然有跨 rank 的 halo/reduction，但 `src/solver/native/backend.cpp` 和 `hierarchy.cpp` 仍为每个 rank 保存全局规范场、Clover、basis 和若干 FP32 数组。关闭共享开关不会自动变成可扩展的内存模型。因此 64³×128 的多节点实测前，要先解决内存分布和节点内共享问题，再做实际内存预算与精度验证；不能直接用当前单节点 health 脚本宣称多节点可运行。
+
+仅全局 FP64 basis 在这个体积就是每份 288 GiB；如果每节点 16 MPI 各保存一份，仅它就达 4.5 TiB。即使将这部分改为节点内共享，当前每个 rank 的全局 FP32 basis 仍有 72 GiB，16 份为 1152 GiB。两类 basis 都需要按实际负责的格点/块分布保存，不能只改共享开关或增加节点。
