@@ -1134,4 +1134,4 @@ ARM已实现并有实机结果；SW尚未实现。更多层、粗层进程缩减
 
 继续阅读：[后端架构](backend-architecture.md)、[完整传播子流程](propagator.md)、
 [ARM/SVE/HBM记录](arm-sve-hbm.md)、[当前跨硬件对比](hardware-comparison-20261026.md)、
-[第三方声明](../THIRD_PARTY.md)。
+[第三方声明](third-party.md)。

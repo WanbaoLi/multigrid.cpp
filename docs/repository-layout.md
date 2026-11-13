@@ -18,6 +18,12 @@ solver. Each top-level directory has one responsibility:
 | `skills/` | Frozen optimization references used by the project |
 | `cmake/` | Build and CTest configuration |
 
+For concrete entry points, see the directory notes for
+[benchmarks](../benchmarks/README.md), [Python bindings](../bindings/README.md)
+and [CMake rules](../cmake/README.md).
+Third-party source and license information lives in
+[docs/third-party.md](third-party.md); the project's `LICENSE` stays at the root.
+
 `include/lqcd.h` is the only installed C ABI header. The previous
 `include/lqcd/core` and `include/lqcd/runtime` headers are implementation
 headers and now live beside their C++ sources under `src/`; this keeps the

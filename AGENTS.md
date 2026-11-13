@@ -67,6 +67,8 @@ and `docs/backend-architecture.md` for field, normalization and MPI contracts.
 
 - Keep only build metadata, README, agent instructions and license notices at
   the root. Reference manuals belong in `docs/reference/`.
+- Keep the project's `LICENSE` at the root; third-party provenance and license
+  explanations belong in `docs/third-party.md`.
 - `include/lqcd.h` is the installed public C header. Keep implementation
   headers next to their sources in `src/`; do not restore `include/lqcd/`.
 - Python bindings live in `bindings/lqcd_cpu/`; use `bindings` as `PYTHONPATH`.

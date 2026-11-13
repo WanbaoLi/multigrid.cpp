@@ -140,6 +140,6 @@ solver profile不修改物理参数或已构建的hierarchy。`LQCD_RHS_BATCH=1`
 - [原论文和 DDalphaAMG 代码审查](docs/ddalphaamg-review.md)
 - [当前接口限制](docs/native-backend-status.md)
 - [阶段路线图](docs/roadmap.md)
-- [第三方许可证](THIRD_PARTY.md)
+- [第三方来源与许可说明](docs/third-party.md)
 
 独立 oracle 流程位于 `tests/oracle/`，不会参与生产运行库。外部库比较位于 `benchmarks/reference-libraries/`，需要预先准备其源码和依赖。
