@@ -27,8 +27,8 @@ def ssh(host, command):
             host, command]
 
 
-def remote(host, command):
-    return subprocess.check_output(ssh(host, command), text=True, timeout=90).strip()
+def remote(host, command, timeout=90):
+    return subprocess.check_output(ssh(host, command), text=True, timeout=timeout).strip()
 
 
 def main():
@@ -62,6 +62,8 @@ def main():
     lock = threading.Lock()
     done = sum(min(sizes.get(f"part-{i:04d}.bin", 0), size) for i, _, size in chunks)
     started = time.monotonic()
+    progress = {i: sizes.get(f"part-{i:04d}.bin", 0) for i, _, _ in chunks}
+    last_report = [started]
 
     def transfer_once(chunk):
         index, start, size = chunk
@@ -69,6 +71,8 @@ def main():
         part = shlex.quote(f"{root}/{name}")
         current = int(remote(a.destination_host,
             f"if test -f {part}; then stat -c %s {part}; else printf '0\\n'; fi"))
+        with lock:
+            progress[index] = current
         if current > size:
             raise RuntimeError(f"destination part {name} is larger than expected")
         if current == size:
@@ -95,6 +99,7 @@ def main():
 
         monitor = threading.Thread(target=watchdog, daemon=True)
         monitor.start()
+        sent = 0
         try:
             while True:
                 data = source.stdout.read(8 * 1024 * 1024)
@@ -102,13 +107,16 @@ def main():
                     break
                 destination_proc.stdin.write(data)
                 activity[0] = time.monotonic()
+                sent += len(data)
                 with lock:
-                    nonlocal_done[0] += len(data)
+                    progress[index] = current + sent
+                    total = sum(progress.values())
                     elapsed = time.monotonic() - started
-                    speed = nonlocal_done[0] / 1024**2 / max(elapsed, 0.001)
-                    if nonlocal_done[0] == len(data) or int(nonlocal_done[0] / 2**30) != int((nonlocal_done[0] - len(data)) / 2**30):
-                        print(f"TRANSFER {nonlocal_done[0]}/{a.bytes} bytes "
-                              f"{nonlocal_done[0]/a.bytes:.1%} {speed:.2f} MiB/s", flush=True)
+                    speed = max(0, total-done) / 1024**2 / max(elapsed, 0.001)
+                    if time.monotonic() - last_report[0] >= 15:
+                        print(f"TRANSFER {total}/{a.bytes} bytes "
+                              f"{total/a.bytes:.1%} {speed:.2f} MiB/s", flush=True)
+                        last_report[0] = time.monotonic()
             source.stdout.close()
             source_rc = source.wait()
             destination_proc.stdin.close()
@@ -136,7 +144,6 @@ def main():
                     raise
                 time.sleep(min(5 * attempt, 30))
 
-    nonlocal_done = [done]
     with ThreadPoolExecutor(max_workers=a.parallel) as pool:
         futures = [pool.submit(transfer, chunk) for chunk in chunks]
         for future in as_completed(futures):
@@ -144,7 +151,8 @@ def main():
     names = " ".join(shlex.quote(f"{root}/part-{i:04d}.bin") for i, _, _ in chunks)
     partial = shlex.quote(a.destination + ".partial")
     verify = remote(a.destination_host,
-        f"cat {names} > {partial}; stat -c %s {partial}; sha256sum {partial}").splitlines()
+        f"cat {names} > {partial}; stat -c %s {partial}; sha256sum {partial}",
+        timeout=1800).splitlines()
     size, checksum = int(verify[0]), verify[1].split()[0]
     if size != a.bytes or checksum != a.sha256:
         raise RuntimeError(f"verification failed: bytes={size}, sha256={checksum}")
