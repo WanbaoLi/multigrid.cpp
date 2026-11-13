@@ -203,6 +203,10 @@ def run(args):
 
     apply_context_environment(context)
     os.environ["LQCD_RHS_BATCH"] = "1"
+    # Timer diagnostics are opt-in only after ordinary measurements. Halo
+    # profiling is cached during construction, so keep it disabled here.
+    os.environ["LQCD_VERBOSE"] = "0"
+    os.environ["LQCD_HALO_PROFILE"] = "0"
     gauge, io_seconds = _measure(comm, lambda: read_lime_gauge(
         args.gauge, grid, coords, comm=comm))
     gauge, smear_seconds = _measure(comm, lambda: stout_smear(
@@ -236,6 +240,9 @@ def run(args):
         os.environ.update({str(k): str(v) for k, v in solve_environment.items()})
         single_samples = []
         for index in range(args.repeats):
+            if index:
+                # Release the preceding output before the next timed call.
+                del solution, single_final
             solution, elapsed = _measure(comm, lambda: solver.solve(source, args.tol, layout="lex"))
             stats = [dict(solver.last_result)]
             if not finite_stats(stats, args.tol):
@@ -253,6 +260,10 @@ def run(args):
         os.environ["LQCD_RHS_BATCH"] = str(batch)
         twelve_samples = []
         for index in range(args.repeats):
+            if index:
+                # The previous full propagator must not survive into the next
+                # timed solve; output writing happens only after all samples.
+                del propagator, twelve_final
             (propagator, stats), elapsed = _measure(comm, lambda: solver.solve_propagator(
                 tuple(args.source), args.tol, source_scale=args.source_scale, layout="lex"))
             if len(stats) != 12 or not finite_stats(stats, args.tol):
@@ -269,12 +280,14 @@ def run(args):
 
         if args.profile_diagnostic:
             os.environ["LQCD_VERBOSE"] = "1"
+            os.environ["LQCD_HALO_PROFILE"] = "0"
             (_, stats), elapsed = _measure(comm, lambda: solver.solve_propagator(
                 tuple(args.source), args.tol, source_scale=args.source_scale, layout="lex"))
             if len(stats) != 12 or not finite_stats(stats, args.tol):
                 raise RuntimeError("diagnostic full12 true residual gate failed")
             report["diagnostic"] = dict(wall_seconds=elapsed, stats=stats,
-                timing_scope="diagnostic_full12_api", accepted_timing=False, **native_timing(stats))
+                timing_scope="diagnostic_full12_api", accepted_timing=False,
+                native_verbose=True, halo_profile=False, **native_timing(stats))
 
     # Compare the same source column solved through the scalar and 12-RHS API.
     first = twelve_final[..., :, 0, :, 0]
@@ -282,7 +295,7 @@ def run(args):
     numerator = comm.allreduce(float(np.vdot(delta, delta).real))
     denominator = comm.allreduce(float(np.vdot(first, first).real))
     consistency = math.sqrt(numerator / denominator) if denominator else float("inf")
-    if consistency > 1e-6:
+    if not math.isfinite(consistency) or consistency > 1e-6:
         raise RuntimeError(f"single/full12 first-column mismatch: {consistency}")
     write_propagator(output / "propagator.npy", twelve_final, lattice, grid, coords, comm)
     report.update(measurements_complete=True, phase="measurements_complete",
@@ -304,7 +317,6 @@ def run(args):
 
 
 def main(argv=None):
-    from mpi4py import MPI
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--gauge", required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -328,6 +340,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if args.repeats < 2 or not 0 < args.tol < 1:
         parser.error("--repeats must be >=2 and --tol must be in (0,1)")
+    from mpi4py import MPI
     try:
         run(args)
     except Exception as error:

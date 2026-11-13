@@ -172,7 +172,7 @@ def verify(args):
                            column=0 if column == 0 else column - 1,
                            residual=residual))
     consistency = relative_files(single, columns[0])
-    if consistency > 1e-6:
+    if not math.isfinite(consistency) or consistency > 1e-6:
         raise RuntimeError(f"single/full12 first-column mismatch: {consistency}")
     verification = dict(complete=True, passed=True, columns=checks,
                         max_true_residual=max(row["residual"] for row in checks),

@@ -21,6 +21,37 @@ VERIFY_SPEC.loader.exec_module(VERIFY)
 
 
 class LimeSolverContractTest(unittest.TestCase):
+    def test_streamed_column_and_single_layouts(self):
+        try:
+            import numpy as np
+        except ModuleNotFoundError:
+            self.skipTest("NumPy is supplied by the runtime Python environment")
+        with tempfile.TemporaryDirectory() as directory:
+            root, work = Path(directory), Path(directory) / "work"
+            work.mkdir()
+            lattice = (2, 2, 2, 4)
+            propagator = np.arange(np.prod((4, 2, 2, 2, 4, 4, 3, 3)),
+                                   dtype=np.float64).reshape((4, 2, 2, 2, 4, 4, 3, 3))
+            propagator = propagator + 1j * (propagator + 0.5)
+            np.save(root / "propagator.npy", propagator)
+            columns = VERIFY.write_columns(root, work, lattice)
+            for column, path in enumerate(columns):
+                spin, color = divmod(column, 3)
+                expected = propagator[..., :, spin, :, color].reshape(-1, 4, 3)
+                actual = np.fromfile(path, dtype="<c16").reshape(-1, 4, 3)
+                np.testing.assert_array_equal(actual, expected)
+            for rank in range(2):
+                local = np.arange(np.prod((2, 2, 2, 2, 4, 3)), dtype=np.float64)
+                local = (local + rank * local.size + 1j * (local + 1)).reshape((2, 2, 2, 2, 4, 3))
+                np.save(root / f"single_rank{rank:05d}.npy", local)
+            single = VERIFY.write_single(root, work, 2, lattice)
+            expected = np.concatenate([
+                np.load(root / f"single_rank{rank:05d}.npy").reshape(-1, 4, 3)
+                for rank in range(2)
+            ])
+            actual = np.fromfile(single, dtype="<c16").reshape(-1, 4, 3)
+            np.testing.assert_array_equal(actual, expected)
+
     def test_mass_normalized_rhs_uses_source_spin_color_column(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "rhs.bin"
