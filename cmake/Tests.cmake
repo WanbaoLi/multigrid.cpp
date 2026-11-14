@@ -1,5 +1,10 @@
 include(CTest)
 if(BUILD_TESTING)
+    add_executable(compact_basis_test tests/unit/compact_basis_test.cpp)
+    target_include_directories(compact_basis_test PRIVATE src)
+    # Keep assertions in this gate even when the runtime is built in Release.
+    target_compile_options(compact_basis_test PRIVATE -UNDEBUG)
+    add_test(NAME compact_basis COMMAND compact_basis_test)
     add_executable(multigrid_core_test tests/unit/core_test.cpp)
     target_link_libraries(multigrid_core_test PRIVATE multigrid_core)
     target_include_directories(multigrid_core_test PRIVATE src)
