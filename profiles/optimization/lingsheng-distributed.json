@@ -1,0 +1,17 @@
+{
+  "context_environment": {
+    "LQCD_DISTRIBUTED_STORAGE": 1,
+    "LQCD_ARM_COARSE_SVE": 0,
+    "LQCD_ARM_SVE": 1,
+    "LQCD_ARM_SVE_REUSE": 1,
+    "LQCD_ARM_SVE_TRANSFER": 0,
+    "LQCD_COARSE_FUSED": 0,
+    "LQCD_COARSE_SPATIAL_OVERLAP": 1,
+    "LQCD_HBW_ALLOC": "prefer",
+    "LQCD_HBM": "off"
+  },
+  "placement_threads": 37,
+  "setup_threads": 32,
+  "cases": [{"id": "full12", "threads": 32, "batch": 2,
+             "environment": {"LQCD_COARSE_BATCH_REDUCE": 1}}]
+}
