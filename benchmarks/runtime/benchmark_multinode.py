@@ -65,6 +65,20 @@ def main():
         for line in Path('/proc/self/smaps_rollup').read_text().splitlines():
             if ':' in line and line.split(':')[0] in ('Rss','Pss','Private_Dirty','Shared_Dirty'):
                 k,v=line.split(':',1); data[k+'_KiB']=int(v.split()[0])
+        groups={}
+        for line in Path('/proc/self/cgroup').read_text().splitlines():
+            _,controllers,relative=line.split(':',2)
+            if controllers=='':
+                base=Path('/sys/fs/cgroup')/relative.lstrip('/')
+                names=('memory.max','memory.current','memory.peak','memory.events','cpu.max')
+            elif 'memory' in controllers.split(','):
+                base=Path('/sys/fs/cgroup/memory')/relative.lstrip('/')
+                names=('memory.limit_in_bytes','memory.usage_in_bytes',
+                       'memory.max_usage_in_bytes','memory.failcnt')
+            else: continue
+            groups[str(base)]={name:(base/name).read_text().strip()
+                               for name in names if (base/name).is_file()}
+        data['cgroup']=groups
         data['rank']=rank; data['host']=socket.gethostname()
         return comm.allgather(data)
     def checkpoint(phase):
