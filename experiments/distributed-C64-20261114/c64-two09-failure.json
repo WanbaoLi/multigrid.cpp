@@ -1,0 +1,41 @@
+{
+  "job_id": 2125108,
+  "run_commit": "88e8bbece4ba8f8c14074ba0fa93b0d64971e382",
+  "state": "FAILED",
+  "start_utc": "2026-11-14T06:42:06Z",
+  "end_utc": "2026-11-14T06:56:56Z",
+  "nodes": [
+    "cn12057",
+    "cn12107"
+  ],
+  "completed_phases": [
+    "read",
+    "stout",
+    "gauge_clover_load",
+    "initial_24_setup_vectors"
+  ],
+  "c64_setup_completed": false,
+  "c64_measurements_completed": false,
+  "observed_error": "ORTE lost communication with the remote daemon on cn12107",
+  "kernel_oom_confirmed": false,
+  "memory_pressure_hypothesis": "Blocked component-major halo writes commit more pages than thin-face element counts; setup approached the allocated memory ceiling.",
+  "scheduler_final_usage": [
+    {
+      "node": "cn12057",
+      "scheduler_mem_max_MB": 472932,
+      "scheduler_swap_max_MB": 0,
+      "final_usage_reliable": true
+    },
+    {
+      "node": "cn12107",
+      "scheduler_mem_max_MB": 1,
+      "scheduler_swap_max_MB": 0,
+      "final_usage_reliable": false
+    }
+  ],
+  "last_live_scheduler_mem_max_MB": {
+    "cn12057": 412415,
+    "cn12107": 406706
+  },
+  "next_action": "Stopped at user request; recommend requesting four whole nodes. Unvalidated halo-page experiment preserved separately."
+}

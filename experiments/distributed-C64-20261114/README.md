@@ -137,3 +137,20 @@ plus small private partial pages and lifetime overlap. These are predictions;
 the new implementation still needs unit/MPI gates, real C24 independent residuals
 and an actual C64 run. Ordinary/shared modes and the prior C24-correct revision
 remain recoverable from Git.
+
+## Resource stop requested by the user
+
+After the first real C64 failure, the user asked to stop if more nodes are needed
+and offered to request resources. No new job was submitted after 2125108. The
+conservative next allocation is four whole nodes, 16 MPI/node, 32 threads/MPI,
+64 ranks total, time grid 1,1,1,64, local lattice 64^3x2, block 8,8,8,2. Three
+nodes are incompatible with the current equal t-slab contract because 48 ranks
+do not divide 128. Request 480000 scheduler MB/node and about 2432 exclusive-node
+charged CPUs. The 250--320 GiB/node memory budget is a prediction, not acceptance.
+
+The halo-page implementation was prepared locally but has not been compiled or
+run on target hardware. Preserve it on `codex/c64-halo-pages`, separate from the
+last C24-validated baseline. Its Python and shell syntax checks passed; these do
+not establish C++ correctness, memory use or C64 performance. No C64 warmed
+single/full12 time exists yet. The frozen reference and all experiment sources
+are published, and further jobs wait for the user's resource update.
