@@ -224,6 +224,13 @@ class NativeBackend final : public Backend {
         solver->release_setup_vectors();
         solver->verify();
         solver->place_hot_data();
+        if (distributed) {
+            // All runtime kernels now use the verified FP32 owned copies.
+            // Setup cannot run twice in the C ABI; retain FP64 gauge/Clover
+            // for reliable residuals, but discard the FP64 setup-only assets.
+            hierarchy.basis.release_storage();
+            hierarchy.stencil.release_storage();
+        }
     }
     void apply(const Vector &in, Vector &out) override {
         solver->apply(in, out);

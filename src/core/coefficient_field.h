@@ -56,6 +56,10 @@ class CoefficientField {
                     std::shared_ptr<void>(p, [bytes](void *q) { munmap(q, bytes); }));
     }
     bool is_shared() const { return shared != nullptr; }
+    void release_storage() {
+        Field().swap(owned);
+        shared = nullptr; shared_count = 0; owner.reset();
+    }
     size_t size() const { return shared ? shared_count : owned.size(); }
     bool empty() const { return size() == 0; }
     Complex *data() { return shared ? shared : owned.data(); }
