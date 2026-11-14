@@ -7,6 +7,17 @@
 using namespace lqcd_native::detail;
 
 void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive) {
+    if (m.distributed && native_size>1) {
+        // Previous coarse halos are setup-only. Fine/adaptive iterations read
+        // the independent packed FP32 owned basis, so drop stale halos before
+        // their large Krylov workspace is populated, then exchange fresh halos.
+        const size_t stride=(size_t)m.block_volume*12*m.coarse_dof;
+        const size_t plane=(size_t)m.cx*m.cy*m.cz;
+        const size_t lo=(m.first_block+m.n_coarse-plane)%m.n_coarse;
+        const size_t hi=m.end_block%m.n_coarse;
+        m.basis.discard_sparse_region(lo*stride,(lo+plane)*stride);
+        m.basis.discard_sparse_region(hi*stride,(hi+plane)*stride);
+    }
     if (native_rank == 0)
         std::cerr << "native setup update="
                   << (impl->setup_update == SetupUpdate::Paper ? "paper" : "inverse")
@@ -24,8 +35,10 @@ void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive) {
     const size_t owned_end = (size_t)impl->end_aggregate*24*impl->block_sites;
     if (cycles) std::fill(zero.begin()+owned_first, zero.begin()+owned_end, 0.f);
     for (int v = 0; v < 24; v++) {
-        if (reuse_vectors)
-            impl->fine_copy(impl->test_vectors[v], vectors[v]);
+        if (reuse_vectors) {
+            if(m.distributed) vectors[v] = std::move(impl->test_vectors[v]);
+            else impl->fine_copy(impl->test_vectors[v], vectors[v]);
+        }
         else {
             std::mt19937 gen(native_seed + v);
             std::normal_distribution<float> normal;
@@ -76,8 +89,9 @@ void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive) {
     const int basis_first = (m.synchronize_shared || m.distributed) ? impl->first_aggregate : 0;
     const int basis_end = (m.synchronize_shared || m.distributed) ? impl->end_aggregate : impl->aggregate_count;
     const size_t basis_stride = (size_t)impl->block_sites * 12 * m.coarse_dof;
-    std::fill(m.basis.begin() + basis_first * basis_stride,
-              m.basis.begin() + basis_end * basis_stride, Complex{});
+    if (!m.distributed)
+        std::fill(m.basis.begin() + basis_first * basis_stride,
+                  m.basis.begin() + basis_end * basis_stride, Complex{});
 #pragma omp parallel for schedule(static)
     for (int cb = basis_first; cb < basis_end; cb++)
         for (int cs = 0; cs < 2; cs++) {
@@ -115,25 +129,6 @@ void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive) {
                             cs * 6 + a, cs * 24 + v, m)] = col[a * impl->block_sites + s];
             }
         }
-    if (m.synchronize_shared)
-        m.synchronize_shared();
-    if (m.distributed)
-        exchange_faces(m.basis.data(), basis_first*basis_stride, basis_end*basis_stride,
-            (size_t)impl->aggregates_per_tslice*basis_stride, m.basis.size(), native_comm, 62);
-    for (size_t i = basis_first*basis_stride; i < basis_end*basis_stride; ++i)
-        if (!std::isfinite(std::norm(m.basis[i])))
-            throw std::runtime_error("nonfinite local basis");
-    // Existing assembly scatters additions to neighboring rows. One process
-    // owns the complete assembly, retaining its arithmetic order and avoiding
-    // interprocess writes to the same matrix. Setup is timed separately.
-    if (!m.synchronize_shared || native_rank == 0)
-        rebuild_coarse_operator(impl->gauge, m);
-    if (m.synchronize_shared)
-        m.synchronize_shared();
-    for (size_t i = (m.distributed ? m.first_block*9*48*48 : 0);
-         i < (m.distributed ? m.end_block*9*48*48 : m.stencil.size()); ++i)
-        if (!std::isfinite(std::norm(m.stencil[i])))
-            throw std::runtime_error("nonfinite coarse stencil");
     auto &g = impl->gauge;
     const bool profile = impl->halo_profile;
     const bool adaptive_target = impl->adaptive_correction;
@@ -141,6 +136,27 @@ void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive) {
     const bool sap_eo = impl->sap_eo;
     const bool coarse_eo = impl->coarse_eo;
     const auto hbw_policy = impl->hbw_policy;
+    const size_t plane_blocks = impl->aggregates_per_tslice;
+    if (m.distributed) impl.reset(); // old Krylov/coefficients before coarse halo peak
+    if (m.synchronize_shared)
+        m.synchronize_shared();
+    if (m.distributed)
+        exchange_faces(m.basis.data(), basis_first*basis_stride/2, basis_end*basis_stride/2,
+            plane_blocks*basis_stride/2, m.basis.size()/2, native_comm, 62);
+    for (size_t i = basis_first*basis_stride; i < basis_end*basis_stride; ++i)
+        if (!std::isfinite(std::norm(m.basis[i])))
+            throw std::runtime_error("nonfinite local basis");
+    // Existing assembly scatters additions to neighboring rows. One process
+    // owns the complete assembly, retaining its arithmetic order and avoiding
+    // interprocess writes to the same matrix. Setup is timed separately.
+    if (!m.synchronize_shared || native_rank == 0)
+        rebuild_coarse_operator(g, m);
+    if (m.synchronize_shared)
+        m.synchronize_shared();
+    for (size_t i = (m.distributed ? m.first_block*9*48*48 : 0);
+         i < (m.distributed ? m.end_block*9*48*48 : m.stencil.size()); ++i)
+        if (!std::isfinite(std::norm(m.stencil[i])))
+            throw std::runtime_error("nonfinite coarse stencil");
     impl = std::make_unique<Impl>(g, m, sap_eo);
     impl->configure_solve();
     impl->coarse_eo = coarse_eo;

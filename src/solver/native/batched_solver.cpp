@@ -1,4 +1,5 @@
 #include "hierarchy.hpp"
+#include "distributed_storage.hpp"
 #include <cmath>
 #include <iostream>
 
@@ -93,6 +94,16 @@ std::vector<int> NativeMG::solve_batch(const std::vector<Field> &b, std::vector<
             counts[i] = iterations;
         }
         return counts;
+    }
+    if (distributed_storage()) {
+        // A zero-start batch cannot reuse scalar Krylov directions. Release
+        // scalar warmup capacity before allocating two batched GCR workspaces.
+        std::vector<FloatField>().swap(impl->outer_images);
+        std::vector<FloatField>().swap(impl->outer_directions);
+        FloatField().swap(impl->outer_rhs); FloatField().swap(impl->outer_solution);
+        FloatField().swap(impl->outer_residual); FloatField().swap(impl->outer_image);
+        Field().swap(impl->reliable_residual); Field().swap(impl->reliable_image);
+        Field().swap(impl->reliable_delta);
     }
     impl->restrict_seconds = impl->coarse_seconds = impl->prolong_seconds = impl->sap_seconds = 0;
     impl->begin_halo_profile();

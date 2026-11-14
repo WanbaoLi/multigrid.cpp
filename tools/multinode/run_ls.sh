@@ -19,10 +19,10 @@ test -z "$(git status --porcelain --untracked-files=no)"
 git rev-parse HEAD > "$out/source-commit.txt"
 sha256sum "$build/liblqcd_cpu.so" "$build/verify_slab" > "$out/build.sha256"
 scratch=/tmp/lqcd-C64-$(basename "$out")
-mpirun -n 64 --map-by ppr:16:node --bind-to none \
+mpirun -n 32 --map-by ppr:16:node --bind-to none \
   python tools/multinode/rank_exec.py python -u benchmarks/runtime/benchmark_multinode.py \
   --gauge "$gauge" --library "$build/liblqcd_cpu.so" --output "$out/measurements" --scratch "$scratch"
-mpirun -n 64 --map-by ppr:16:node --bind-to none \
+mpirun -n 32 --map-by ppr:16:node --bind-to none \
   python tools/multinode/rank_exec.py "$build/verify_slab" "$scratch" 64 128 -.2334 1.140825606017 1e-8 0 13 \
   | tee "$out/scalar-verification.log"
 python - "$out" <<'PY'
@@ -38,5 +38,5 @@ d.update(complete=True,independent_verification=dict(passed=True,columns=rows,me
 print('COMPLETE',d['single_pure_summary'],d['twelve_pure_summary'])
 PY
 # The per-host path is deterministic and unique to this output directory.
-mpirun -n 4 --map-by ppr:1:node --bind-to none python -c \
+mpirun -n 2 --map-by ppr:1:node --bind-to none python -c \
   'import pathlib,sys; p=pathlib.Path(sys.argv[1]); assert p.parent==pathlib.Path("/tmp") and p.name.startswith("lqcd-C64-"); [f.unlink() for f in p.glob("*.bin")]; p.rmdir()' "$scratch"

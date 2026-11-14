@@ -178,7 +178,7 @@ class NativeBackend final : public Backend {
         const size_t stencil_count = m.n_coarse * 9ull * 48 * 48;
         m.distributed = distributed;
         if (distributed) {
-            m.basis.reserve_sparse(basis_count);
+            m.basis.reserve_sparse(basis_count, true);
             m.stencil.reserve_sparse(stencil_count);
         } else if (shared_coefficients) {
             m.basis.bind_shared(static_cast<Complex *>(
@@ -199,8 +199,9 @@ class NativeBackend final : public Backend {
         const size_t end_block = (shared_coefficients || distributed) ? m.n_coarse * (rank + 1) / ranks : m.n_coarse;
         m.first_block = first_block; m.end_block = end_block;
         const size_t basis_stride = m.block_volume * 12ull * 48;
-        std::fill(m.basis.begin() + first_block * basis_stride,
-                  m.basis.begin() + end_block * basis_stride, Complex{});
+        if (!distributed)
+            std::fill(m.basis.begin() + first_block * basis_stride,
+                      m.basis.begin() + end_block * basis_stride, Complex{});
         std::fill(m.stencil.begin() + first_block * 9 * 48 * 48,
                   m.stencil.begin() + end_block * 9 * 48 * 48, Complex{});
         for (size_t b = first_block; b < end_block; b++)

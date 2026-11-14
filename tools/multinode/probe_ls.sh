@@ -12,7 +12,7 @@ for k in sorted(os.environ):
         if 'FILE' in k:
             print(open(os.environ[k]).read())
 PY
-mpirun -n 4 --map-by ppr:1:node --bind-to none hostname
+mpirun -n 2 --map-by ppr:1:node --bind-to none hostname
 export PYTHONPATH=$root/bindings
 export LQCD_CPU_LIBRARY=$1/liblqcd_cpu.so
 export LQCD_DISTRIBUTED_STORAGE=1

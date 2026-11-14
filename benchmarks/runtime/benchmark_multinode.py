@@ -21,7 +21,7 @@ def main():
     p.add_argument('--scratch',required=True,type=Path)
     p.add_argument('--library',required=True)
     p.add_argument('--lattice',nargs=4,type=int,default=[64,64,64,128])
-    p.add_argument('--block',nargs=4,type=int,default=[8,8,8,2])
+    p.add_argument('--block',nargs=4,type=int,default=[8,8,8,4])
     p.add_argument('--mass',type=float,default=-.2334)
     p.add_argument('--csw',type=float,default=1.140825606017)
     p.add_argument('--tol',type=float,default=1e-8)
