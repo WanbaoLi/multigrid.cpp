@@ -41,15 +41,15 @@ if [[ -n ${LQCD_MPI_TCP_IF:-} ]]; then
   export OMPI_MCA_btl_tcp_if_include=$LQCD_MPI_TCP_IF
   export OMPI_MCA_oob_tcp_if_include=$LQCD_MPI_TCP_IF
 fi
-timeout 90s mpirun -n 32 \
+timeout 90s mpirun -n 32 --bind-to none \
   python tools/multinode/rank_exec.py python -u tests/runtime/test_multinode_communication.py
 scratch=/tmp/lqcd-C64-${CCS_JOB_ID:-manual}-$(printf %s "$out" | sha256sum | cut -c1-12)
-mpirun -n 32 \
+mpirun -n 32 --bind-to none \
   python tools/multinode/rank_exec.py python -u benchmarks/runtime/benchmark_multinode.py \
   --gauge "$gauge" --library "$build/liblqcd_cpu.so" --output "$out/measurements" --scratch "$scratch" \
   --lattice "$lattice" "$lattice" "$lattice" "$time_extent" --block "$block" "$block" "$block" "$block_t" \
   --mass "$mass" --csw "$csw"
-mpirun -n 32 \
+mpirun -n 32 --bind-to none \
   python tools/multinode/rank_exec.py "$build/verify_slab" "$scratch" "$lattice" "$time_extent" "$mass" "$csw" 1e-8 0 13 \
   | tee "$out/scalar-verification.log"
 python - "$out" <<'PY'
@@ -65,7 +65,7 @@ d.update(complete=True,independent_verification=dict(passed=True,columns=rows,me
 print('COMPLETE',d['single_pure_summary'],d['twelve_pure_summary'])
 PY
 # The per-host path is deterministic and unique to this output directory.
-mpirun -n 32 python -c '
+mpirun -n 32 --bind-to none python -c '
 import os,pathlib,sys
 if int(os.environ["OMPI_COMM_WORLD_LOCAL_RANK"])==0:
     p=pathlib.Path(sys.argv[1])

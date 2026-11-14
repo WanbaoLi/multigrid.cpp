@@ -18,6 +18,6 @@ for k in sorted(os.environ):
         if 'FILE' in k:
             print(open(os.environ[k]).read())
 PY
-timeout 90s mpirun -n 32 python "$root/tools/multinode/rank_exec.py" \
+timeout 90s mpirun -n 32 --bind-to none python "$root/tools/multinode/rank_exec.py" \
   python -u "$root/tests/runtime/test_multinode_communication.py"
 echo MULTIHOST_GATE_PASSED
