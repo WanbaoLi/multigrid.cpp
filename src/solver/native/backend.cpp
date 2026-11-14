@@ -2,6 +2,7 @@
 #include "core/clover.h"
 #include "core/dslash.h"
 #include "multigrid.hpp"
+#include "distributed_storage.hpp"
 #include <cerrno>
 #include <cmath>
 #include <cstdlib>
@@ -13,6 +14,7 @@ class NativeBackend final : public Backend {
     Geometry geometry;
     MPI_Comm comm;
     std::shared_ptr<lqcd_native::SharedCoefficientMemory> shared_coefficients;
+    bool distributed = false;
     Gauge gauge;
     Multigrid hierarchy;
     std::unique_ptr<NativeMG> solver;
@@ -79,6 +81,15 @@ class NativeBackend final : public Backend {
         MPI_Allreduce(&shared_mode, &shared_max, 1, MPI_INT, MPI_MAX, comm);
         if (shared_min < 0 || shared_min != shared_max)
             throw Error(LQCD_INVALID_ARGUMENT, "LQCD_SHARED_COEFFICIENTS must be 0 or 1 on all ranks");
+        int dist = 0;
+        if (const char *raw = std::getenv("LQCD_DISTRIBUTED_STORAGE"))
+            dist = std::string(raw) == "1" ? 1 : std::string(raw) == "0" ? 0 : -1;
+        int lo = dist, hi = dist;
+        MPI_Allreduce(MPI_IN_PLACE, &lo, 1, MPI_INT, MPI_MIN, comm);
+        MPI_Allreduce(MPI_IN_PLACE, &hi, 1, MPI_INT, MPI_MAX, comm);
+        if (lo < 0 || lo != hi || (dist && shared_mode))
+            throw Error(LQCD_INVALID_ARGUMENT, "distributed storage must agree and cannot combine with shared coefficients");
+        distributed = dist == 1;
         if (shared_mode)
             shared_coefficients = lqcd_native::make_shared_coefficient_memory(comm);
         for (auto key :
@@ -115,13 +126,20 @@ class NativeBackend final : public Backend {
         MPI_Comm_rank(comm, &rank);
         MPI_Comm_size(comm, &ranks);
         const size_t gauge_count = volume * 36;
-        if (shared_coefficients)
+        if (distributed)
+            gauge.u.reserve_sparse(gauge_count);
+        else if (shared_coefficients)
             gauge.u.bind_shared(
                 static_cast<Complex *>(shared_coefficients->allocate(gauge_count * sizeof(Complex))),
                 gauge_count, shared_coefficients);
         else
             gauge.u.resize(gauge_count);
-        if (shared_coefficients) {
+        if (distributed) {
+            std::copy(in.begin(), in.end(), gauge.u.begin() + (size_t)rank*in.size());
+            const size_t face = (size_t)gauge.o.nx*gauge.o.ny*gauge.o.nz*36;
+            lqcd_native::detail::exchange_faces(gauge.u.data(), rank*in.size(),
+                (rank+1)*in.size(), face, gauge_count, comm, 60);
+        } else if (shared_coefficients) {
             // Disjoint writes and first touch by the NUMA owner; never issue
             // multiple collectives with overlapping shared receive buffers.
 #pragma omp parallel for schedule(static)
@@ -133,12 +151,14 @@ class NativeBackend final : public Backend {
                           MPI_DOUBLE, comm);
         gauge.loaded = true;
         const size_t clover_count = volume * 144;
-        if (shared_coefficients)
+        if (distributed)
+            gauge.clover.reserve_sparse(clover_count);
+        else if (shared_coefficients)
             gauge.clover.bind_shared(static_cast<Complex *>(
                                          shared_coefficients->allocate(clover_count * sizeof(Complex))),
                                      clover_count, shared_coefficients);
-        build_clover(gauge, gauge.clover, shared_coefficients ? gauge.o.nt * rank / ranks : 0,
-                     shared_coefficients ? gauge.o.nt * (rank + 1) / ranks : gauge.o.nt);
+        build_clover(gauge, gauge.clover, (shared_coefficients || distributed) ? gauge.o.nt * rank / ranks : 0,
+                     (shared_coefficients || distributed) ? gauge.o.nt * (rank + 1) / ranks : gauge.o.nt);
         if (shared_coefficients)
             shared_coefficients->synchronize();
     }
@@ -156,7 +176,11 @@ class NativeBackend final : public Backend {
         m.coarse_dof = 48;
         const size_t basis_count = volume * 12 * 48;
         const size_t stencil_count = m.n_coarse * 9ull * 48 * 48;
-        if (shared_coefficients) {
+        m.distributed = distributed;
+        if (distributed) {
+            m.basis.reserve_sparse(basis_count);
+            m.stencil.reserve_sparse(stencil_count);
+        } else if (shared_coefficients) {
             m.basis.bind_shared(static_cast<Complex *>(
                                     shared_coefficients->allocate(basis_count * sizeof(Complex))),
                                 basis_count, shared_coefficients);
@@ -171,8 +195,9 @@ class NativeBackend final : public Backend {
         int rank = 0, ranks = 1;
         MPI_Comm_rank(comm, &rank);
         MPI_Comm_size(comm, &ranks);
-        const size_t first_block = shared_coefficients ? m.n_coarse * rank / ranks : 0;
-        const size_t end_block = shared_coefficients ? m.n_coarse * (rank + 1) / ranks : m.n_coarse;
+        const size_t first_block = (shared_coefficients || distributed) ? m.n_coarse * rank / ranks : 0;
+        const size_t end_block = (shared_coefficients || distributed) ? m.n_coarse * (rank + 1) / ranks : m.n_coarse;
+        m.first_block = first_block; m.end_block = end_block;
         const size_t basis_stride = m.block_volume * 12ull * 48;
         std::fill(m.basis.begin() + first_block * basis_stride,
                   m.basis.begin() + end_block * basis_stride, Complex{});
@@ -196,6 +221,7 @@ class NativeBackend final : public Backend {
             solver->generate_basis(hierarchy, 0, setup_iterations);
         if (shared_coefficients)
             shared_coefficients->synchronize();
+        solver->release_setup_vectors();
         solver->verify();
         solver->place_hot_data();
     }

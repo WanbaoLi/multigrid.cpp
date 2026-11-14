@@ -1,4 +1,5 @@
 #include "hierarchy.hpp"
+#include "distributed_storage.hpp"
 #include "kernels.hpp"
 #include "core/dslash.h"
 #include <climits>
@@ -113,7 +114,8 @@ NativeMG::Impl::Impl(const Gauge &gg, const Multigrid &mm, bool eo)
                      slot);
     };
 #pragma omp parallel for schedule(static)
-    for (int cb = 0; cb < aggregate_count; cb++) {
+    for (int cb = distributed_storage() ? first_aggregate : 0;
+         cb < (distributed_storage() ? end_aggregate : aggregate_count); cb++) {
         int bc[4] = {cb % hierarchy.cx, (cb / hierarchy.cx) % hierarchy.cy,
                      (cb / (hierarchy.cx * hierarchy.cy)) % hierarchy.cz,
                      cb / (hierarchy.cx * hierarchy.cy * hierarchy.cz)};
@@ -236,7 +238,8 @@ NativeMG::Impl::Impl(const Gauge &gg, const Multigrid &mm, bool eo)
         build_clover_inverse();
     if (!neighbor32.empty()) {
 #pragma omp parallel for schedule(static)
-        for (size_t k = 0; k < neighbor.size(); k++) {
+        for (size_t k = distributed_storage() ? (size_t)first_aggregate*8*block_sites : 0;
+             k < (distributed_storage() ? (size_t)end_aggregate*8*block_sites : neighbor.size()); k++) {
             const std::ptrdiff_t value = neighbor[k];
             if (value < 0 || value > INT_MAX)
                 throw std::runtime_error("global neighbor offset does not fit int32");
@@ -244,13 +247,15 @@ NativeMG::Impl::Impl(const Gauge &gg, const Multigrid &mm, bool eo)
         }
     }
 #pragma omp parallel for schedule(static)
-    for (size_t k = 0; k < hierarchy.stencil.size(); k++) {
+    for (size_t k = distributed_storage() ? (size_t)first_aggregate*9*48*48 : 0;
+         k < (distributed_storage() ? (size_t)end_aggregate*9*48*48 : hierarchy.stencil.size()); k++) {
         coarse[2 * k] = hierarchy.stencil[k].real();
         coarse[2 * k + 1] = hierarchy.stencil[k].imag();
     }
     coarse_inverse.resize(aggregate_count * coarse_dof * coarse_dof * 2);
 #pragma omp parallel for schedule(static)
-    for (int cb = 0; cb < aggregate_count; cb++) {
+    for (int cb = distributed_storage() ? first_aggregate : 0;
+         cb < (distributed_storage() ? end_aggregate : aggregate_count); cb++) {
         std::vector<Complex> a(coarse_dof * coarse_dof), inv(coarse_dof * coarse_dof);
         for (int i = 0; i < coarse_dof; i++) {
             inv[i * coarse_dof + i] = 1.;

@@ -6,6 +6,7 @@
 #include <new>
 #include <type_traits>
 #include <utility>
+#include <sys/mman.h>
 
 namespace lqcd_native {
 
@@ -30,12 +31,23 @@ template <class T> struct WorkspaceAllocator {
         if (count == 0)
             return nullptr;
         void *storage = nullptr;
+        // Large scalar fields use demand-zero virtual mappings. Default
+        // insertion below never writes them: only owned/halo pages are resident.
+        if (count * sizeof(T) >= 1024 * 1024) {
+            storage = mmap(nullptr, count * sizeof(T), PROT_READ | PROT_WRITE,
+                           MAP_PRIVATE | MAP_ANONYMOUS | MAP_NORESERVE, -1, 0);
+            if (storage == MAP_FAILED) throw std::bad_alloc();
+            return static_cast<T *>(storage);
+        }
         constexpr size_type alignment = alignof(T) > 64 ? alignof(T) : 64;
         if (::posix_memalign(&storage, alignment, count * sizeof(T)) != 0)
             throw std::bad_alloc();
         return static_cast<T *>(storage);
     }
-    void deallocate(T *storage, size_type) noexcept { std::free(storage); }
+    void deallocate(T *storage, size_type count) noexcept {
+        if (count * sizeof(T) >= 1024 * 1024) munmap(storage, count * sizeof(T));
+        else std::free(storage);
+    }
     constexpr size_type max_size() const noexcept {
         return std::numeric_limits<size_type>::max() / sizeof(T);
     }

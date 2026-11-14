@@ -18,6 +18,7 @@ class NativeMG {
                                  double tol, int maxiter, int restart);
     void generate_basis(Multigrid &, int homogeneous_cycles, int adaptive_steps);
     void verify() const;
+    void release_setup_vectors();
     // Optional NUMA policy for immutable rank-owned coefficient pages.
     // Called collectively after the final hierarchy has passed its gates.
     void place_hot_data();

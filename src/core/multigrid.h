@@ -11,6 +11,8 @@ struct Multigrid {
     CoefficientField stencil; // [coarse site][onsite,+x,-x,+y,-y,+z,-z,+t,-t][row][column]
     // Empty for the independent scalar/reference path and ordinary storage.
     std::function<void()> synchronize_shared;
+    bool distributed = false;
+    size_t first_block = 0, end_block = 0;
 };
 
 size_t coarse_site_index(int x, int y, int z, int t, const Multigrid &m);

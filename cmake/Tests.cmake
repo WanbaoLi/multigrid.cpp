@@ -87,6 +87,11 @@ if(BUILD_TESTING)
         set_tests_properties(cpu_backend_serial cpu_backend_mpi2 PROPERTIES TIMEOUT 240 ENVIRONMENT "${LQCD_RUNTIME_ENV}")
         add_test(NAME shared_cpu_backend_mpi2 COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_cpu_backend.py")
         set_tests_properties(shared_cpu_backend_mpi2 PROPERTIES TIMEOUT 300 ENVIRONMENT "${LQCD_RUNTIME_ENV};LQCD_SHARED_COEFFICIENTS=1")
+        foreach(gate cpu_backend batch12 native_halo sap_eo)
+            set(script test_${gate}.py)
+            add_test(NAME distributed_${gate}_mpi2 COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/${script}")
+            set_tests_properties(distributed_${gate}_mpi2 PROPERTIES TIMEOUT 900 ENVIRONMENT "${LQCD_RUNTIME_ENV};LQCD_DISTRIBUTED_STORAGE=1;PYTHONPATH=${CMAKE_CURRENT_SOURCE_DIR}/bindings")
+        endforeach()
         # A singleton test must not inherit a build job's spread policy over
         # hundreds of NUMA places. Keep its two OpenMP workers close without
         # hardcoding host CPU numbers or extending the numerical timeout.

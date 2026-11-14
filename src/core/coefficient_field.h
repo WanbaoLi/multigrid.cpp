@@ -4,6 +4,7 @@
 #include <memory>
 #include <stdexcept>
 #include <string>
+#include <sys/mman.h>
 
 // Coefficients can own ordinary storage or view a collectively managed window.
 // Spinors remain independent std::vectors. This class never makes MPI calls.
@@ -42,6 +43,17 @@ class CoefficientField {
         shared = pointer;
         shared_count = count;
         owner = std::move(lifetime);
+    }
+    // Preserve global indices without physically replicating untouched ranks.
+    // Only the caller's owned slab and explicit received halos are written.
+    void reserve_sparse(size_t count) {
+        const size_t bytes = count * sizeof(Complex);
+        void *p = mmap(nullptr, bytes, PROT_READ | PROT_WRITE,
+                       MAP_PRIVATE | MAP_ANONYMOUS | MAP_NORESERVE, -1, 0);
+        if (p == MAP_FAILED)
+            throw std::bad_alloc();
+        bind_shared(static_cast<Complex *>(p), count,
+                    std::shared_ptr<void>(p, [bytes](void *q) { munmap(q, bytes); }));
     }
     bool is_shared() const { return shared != nullptr; }
     size_t size() const { return shared ? shared_count : owned.size(); }

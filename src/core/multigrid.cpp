@@ -27,6 +27,12 @@ static void assemble_local_block(const Gauge &g, const Multigrid &m, size_t cb, 
     int bx = cb % m.cx, by = (cb / m.cx) % m.cy;
     int bz = (cb / (m.cx * m.cy)) % m.cz, bt = cb / (m.cx * m.cy * m.cz);
     int ox = bx * m.o.bx, oy = by * m.o.by, oz = bz * m.o.bz, ot = bt * m.o.bt;
+    auto owned_site = [&](size_t site) {
+        const size_t plane = (size_t)m.o.nx*m.o.ny*m.o.nz*m.o.bt;
+        const size_t cbplane = (size_t)m.cx*m.cy*m.cz;
+        const size_t cb = (site/plane)*cbplane;
+        return !m.distributed || (cb >= m.first_block && cb < m.end_block);
+    };
     std::map<size_t, std::vector<Complex>> out;
     for (int lt = 0; lt < m.o.bt; ++lt)
         for (int lz = 0; lz < m.o.bz; ++lz)
@@ -36,6 +42,7 @@ static void assemble_local_block(const Gauge &g, const Multigrid &m, size_t cb, 
                     size_t fs = site_index(x, y, z, t, m.o);
                     int ls = local_site(x, y, z, t, m);
                     for (int d = 0; d < m.coarse_dof; ++d) {
+                        if (owned_site(fs)) {
                         auto &local = out[fs];
                         if (local.empty())
                             local.assign((size_t)m.coarse_dof * FINE_DOF, Complex{});
@@ -44,6 +51,7 @@ static void assemble_local_block(const Gauge &g, const Multigrid &m, size_t cb, 
                             for (int a = 0; a < 12; ++a)
                                 local[d * 12 + row] += g.clover[fs * 144 + row * 12 + a] *
                                                        m.basis[basis_index(cb, ls, a, d, m)];
+                        }
                         for (int mu = 0; mu < 4; ++mu) {
                             int xp = x, yp = y, zp = z, tp = t, xm = x, ym = y, zm = z, tm = t;
                             if (mu == 0) {
@@ -70,6 +78,10 @@ static void assemble_local_block(const Gauge &g, const Multigrid &m, size_t cb, 
                             ym = wrap(ym, m.o.ny);
                             zm = wrap(zm, m.o.nz);
                             tm = wrap(tm, m.o.nt);
+                            const size_t ms = site_index(xm,ym,zm,tm,m.o);
+                            const size_t ps = site_index(xp,yp,zp,tp,m.o);
+                            const bool keep_m = owned_site(ms), keep_p = owned_site(ps);
+                            if (!keep_m && !keep_p) continue;
                             double pf = (mu == 3 && t == 0) ? -1.0 : 1.0;
                             double pb = (mu == 3 && t == m.o.nt - 1) ? -1.0 : 1.0;
                             for (int a = 0; a < 4; ++a)
@@ -77,23 +89,25 @@ static void assemble_local_block(const Gauge &g, const Multigrid &m, size_t cb, 
                                     Complex uf = 0, ub = 0;
                                     for (int ss = 0; ss < 4; ++ss)
                                         for (int q = 0; q < 3; ++q) {
-                                            uf +=
+                                            if (keep_m) uf +=
                                                 g.at(site_index(xm, ym, zm, tm, m.o), mu, c, q) *
                                                 ((a == ss ? 1.0 : 0.0) - gamma_matrix[mu][a][ss]) *
                                                 m.basis[basis_index(cb, ls, ss * 3 + q, d, m)];
-                                            ub +=
+                                            if (keep_p) ub +=
                                                 std::conj(g.at(fs, mu, q, c)) *
                                                 ((a == ss ? 1.0 : 0.0) + gamma_matrix[mu][a][ss]) *
                                                 m.basis[basis_index(cb, ls, ss * 3 + q, d, m)];
                                         }
-                                    auto &om = out[site_index(xm, ym, zm, tm, m.o)];
-                                    auto &op = out[site_index(xp, yp, zp, tp, m.o)];
-                                    if (om.empty())
-                                        om.assign((size_t)m.coarse_dof * FINE_DOF, Complex{});
-                                    if (op.empty())
-                                        op.assign((size_t)m.coarse_dof * FINE_DOF, Complex{});
-                                    om[d * 12 + a * 3 + c] += -k * pf * uf;
-                                    op[d * 12 + a * 3 + c] += -k * pb * ub;
+                                    if (keep_m) {
+                                        auto &om = out[ms];
+                                        if (om.empty()) om.assign((size_t)m.coarse_dof*12, Complex{});
+                                        om[d*12+a*3+c] += -k*pf*uf;
+                                    }
+                                    if (keep_p) {
+                                        auto &op = out[ps];
+                                        if (op.empty()) op.assign((size_t)m.coarse_dof*12, Complex{});
+                                        op[d*12+a*3+c] += -k*pb*ub;
+                                    }
                                 }
                         }
                     }
@@ -236,10 +250,25 @@ void build_coarse_operator(const Gauge &g, Multigrid &m) {
         assemble_local_block(g, m, cb, m.stencil);
 }
 void rebuild_coarse_operator(const Gauge &g, Multigrid &m) {
-    m.stencil.assign(m.n_coarse * 9 * m.coarse_dof * m.coarse_dof, Complex{});
+    const size_t stride = 9ull*m.coarse_dof*m.coarse_dof;
+    const size_t first = m.distributed ? m.first_block : 0;
+    const size_t end = m.distributed ? m.end_block : m.n_coarse;
+    m.stencil.resize(m.n_coarse*stride);
+    std::fill(m.stencil.begin()+first*stride, m.stencil.begin()+end*stride, Complex{});
+    std::vector<size_t> sources;
+    for (size_t cb = first; cb < end; ++cb) sources.push_back(cb);
+    if (m.distributed) {
+        const size_t plane = (size_t)m.cx*m.cy*m.cz;
+        for (size_t i = 0; i < plane; ++i) {
+            sources.push_back((first+m.n_coarse-plane+i)%m.n_coarse);
+            sources.push_back((end+i)%m.n_coarse);
+        }
+        std::sort(sources.begin(), sources.end());
+        sources.erase(std::unique(sources.begin(),sources.end()),sources.end());
+    }
 #pragma omp parallel for schedule(static)
-    for (size_t cb = 0; cb < m.n_coarse; cb++)
-        assemble_local_block(g, m, cb, m.stencil);
+    for (size_t i = 0; i < sources.size(); i++)
+        assemble_local_block(g, m, sources[i], m.stencil);
 }
 void prolong_field(const Multigrid &m, const Field &coarse, Field &fine, int nr) {
     fine.assign(m.n_fine * (size_t)nr * 12, Complex{});

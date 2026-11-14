@@ -1,4 +1,6 @@
 #include "hierarchy.hpp"
+#include "distributed_storage.hpp"
+#include "core/clover.h"
 #include "core/dirac.h"
 #include <cmath>
 #include <iostream>
@@ -81,15 +83,45 @@ void NativeMG::verify() const {
     std::normal_distribution<float> normal;
     // Setup-only scalar oracle remains independent of the production halo and
     // SIMD implementations. Every decomposition sees the same global probe.
-    Field global_probe(impl->fine_sites * 12), global_expected;
-    for (auto &z : global_probe)
-        z = {normal(gen), normal(gen)};
-    apply_dirac(impl->gauge, global_probe, global_expected, 1, impl->gauge.o.mass);
-    const size_t local_size = global_probe.size() / native_size;
-    const size_t begin_site = local_size * native_rank;
-    Field probe(global_probe.begin() + begin_site, global_probe.begin() + begin_site + local_size);
-    Field expected(global_expected.begin() + begin_site,
-                   global_expected.begin() + begin_site + local_size), actual;
+    Field probe, expected, actual;
+    if (distributed_storage()) {
+        const auto &o = impl->gauge.o;
+        const size_t spatial = (size_t)o.nx*o.ny*o.nz;
+        const int lt = o.nt/native_size;
+        const size_t count = spatial*lt*12;
+        probe.resize(count);
+        for (size_t i = 0; i < count; ++i)
+            probe[i] = {setup_probe(2*(i+count*native_rank),1234),
+                        setup_probe(2*(i+count*native_rank)+1,1234)};
+        // Scalar oracle on a padded local lattice. Twist only the physical
+        // global wrap link; the scalar local wrap is outside the tested rows.
+        Gauge padded;
+        padded.o = o; padded.o.nt = lt+2;
+        padded.u.resize(spatial*(lt+2)*36);
+        Field input(spatial*(lt+2)*12), output;
+        for (int t = 0; t < lt+2; ++t) {
+            int gt = (native_rank*lt+t-1+o.nt)%o.nt;
+            for (size_t j = 0; j < spatial*36; ++j) {
+                auto z = impl->gauge.u[(size_t)gt*spatial*36+j];
+                if (gt == o.nt-1 && (j%36)/9 == 3) z = -z;
+                padded.u[(size_t)t*spatial*36+j] = z;
+            }
+            for (size_t j = 0; j < spatial*12; ++j) {
+                size_t i = (size_t)gt*spatial*12+j;
+                input[(size_t)t*spatial*12+j] = {setup_probe(2*i,1234),setup_probe(2*i+1,1234)};
+            }
+        }
+        build_clover(padded,padded.clover);
+        apply_dirac(padded,input,output,1,o.mass);
+        expected.assign(output.begin()+spatial*12,output.begin()+(lt+1)*spatial*12);
+    } else {
+        Field global_probe(impl->fine_sites*12), global_expected;
+        for (auto &z : global_probe) z = {normal(gen),normal(gen)};
+        apply_dirac(impl->gauge,global_probe,global_expected,1,impl->gauge.o.mass);
+        const size_t size = global_probe.size()/native_size, first = size*native_rank;
+        probe.assign(global_probe.begin()+first,global_probe.begin()+first+size);
+        expected.assign(global_expected.begin()+first,global_expected.begin()+first+size);
+    }
     apply(probe, actual);
     axpy(actual, -1., expected);
     const double double_error = distributed_norm(actual) / distributed_norm(expected);
@@ -103,7 +135,9 @@ void NativeMG::verify() const {
     double fine_error = distributed_norm(actual) / distributed_norm(expected);
     impl->verify_eo(fp);
     FloatField cr((size_t)(impl->end_aggregate - impl->first_aggregate) * impl->coarse_dof * 2),
-        pr(impl->fine_sites * 24, 0), back, coarse_image;
+        pr(impl->fine_sites * 24), back, coarse_image;
+    std::fill(pr.begin()+(size_t)impl->first_aggregate*24*impl->block_sites,
+              pr.begin()+(size_t)impl->end_aggregate*24*impl->block_sites,0.f);
     // Same global random probe for every decomposition, stored locally.
     const size_t begin = (size_t)impl->first_aggregate * impl->coarse_dof * 2;
     const size_t end = (size_t)impl->end_aggregate * impl->coarse_dof * 2;
