@@ -14,6 +14,7 @@ exec > >(tee "$out/run.log") 2>&1
 source "$root/tools/multinode/ls_env.sh"
 export PYTHONPATH=$root/bindings
 export LQCD_DISTRIBUTED_STORAGE=1 LQCD_ARM_SVE=1 LQCD_ARM_SVE_REUSE=1
+export LQCD_REUSE_HALO_PAGES=1
 export LQCD_ARM_COARSE_SVE=0 LQCD_ARM_SVE_TRANSFER=0
 export LQCD_COARSE_FUSED=0 LQCD_COARSE_SPATIAL_OVERLAP=1 LQCD_COARSE_BATCH_REDUCE=1
 export LQCD_HBW_ALLOC=prefer LQCD_HBM=off
@@ -29,7 +30,7 @@ git rev-parse HEAD > "$out/source-commit.txt"
 if [[ ${LQCD_MULTINODE_SKIP_GATES:-0} != 1 ]]; then
   cmake --build "$build" -j 24
   OMP_NUM_THREADS=2 ctest --test-dir "$build" --output-on-failure \
-    -R '^(compact_basis|distributed_cpu_backend_mpi2|distributed_batch12_mpi2)$'
+    -R '^(halo_storage|compact_basis|distributed_cpu_backend_mpi2|distributed_batch12_mpi2|reused_halo_mpi2)$'
 fi
 sha256sum "$build/liblqcd_cpu.so" "$build/verify_slab" > "$out/build.sha256"
 unset OMPI_MCA_ras OMPI_MCA_plm OMPI_MCA_btl OMPI_MCA_pml

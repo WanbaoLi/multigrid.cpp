@@ -6,6 +6,7 @@
 #include <cmath>
 #include <cctype>
 #include <cstdlib>
+#include <iostream>
 #include <string>
 
 using namespace lqcd_native::detail;
@@ -82,6 +83,16 @@ NativeMG::Impl::Impl(const Gauge &gg, const Multigrid &mm, bool eo)
     first_aggregate = aggregate_count * native_rank / native_size;
     end_aggregate = aggregate_count * (native_rank + 1) / native_size;
     aggregates_per_tslice = hierarchy.cx * hierarchy.cy * hierarchy.cz;
+    if (native_size>1 && distributed_storage() && setting("LQCD_REUSE_HALO_PAGES",0)) {
+        const size_t stride=size_t(block_sites)*24;
+        fine_halo_storage=std::make_unique<FineHaloStorage>(
+            size_t(first_aggregate)*stride,size_t(end_aggregate)*stride,
+            size_t(aggregates_per_tslice)*stride,fine_sites*24);
+        if (native_rank==0)
+            std::cerr << "HALO_PAGE_REUSE page_bytes=" << fine_halo_storage->page_bytes()
+                      << " bytes_per_rank_slot=" << fine_halo_storage->bytes_per_slot()
+                      << " owned_private=1 rebind_per_operator=1\n";
+    }
     if (coarse_dof != 48)
         throw std::runtime_error("native first prototype requires chirally split 24-vector basis");
     links.resize(fine_sites * 144);

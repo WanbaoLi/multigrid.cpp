@@ -54,6 +54,8 @@ void NativeMG::Impl::fine_apply_batch(const std::vector<const FloatField *> &sou
         return;
     }
     const int bt = hierarchy.o.bt, face = block_sites / bt;
+    if (fine_halo_storage)
+        for (int r=0; r<nrhs; ++r) fine_halo_storage->bind(*sources[r],r);
     const size_t per_face = (size_t)aggregates_per_tslice * 24 * face;
     if (per_face > (size_t)INT_MAX / nrhs)
         throw std::runtime_error("fine batch halo exceeds MPI int count");

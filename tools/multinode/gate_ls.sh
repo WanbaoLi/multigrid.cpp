@@ -17,5 +17,5 @@ cmake -S . -B "$out/build" -DCMAKE_BUILD_TYPE=Release -DMULTIGRID_NATIVE=ON \
   "-DCMAKE_EXE_LINKER_FLAGS=-L$task_sdk/compiler/gcc/lib64 -Wl,-rpath,$task_sdk/compiler/gcc/lib64" \
   "-DCMAKE_SHARED_LINKER_FLAGS=-L$task_sdk/compiler/gcc/lib64 -Wl,-rpath,$task_sdk/compiler/gcc/lib64"
 cmake --build "$out/build" -j 24
-ctest --test-dir "$out/build" --output-on-failure -R '^(core|compact_basis|native_allocator|cpu_backend_mpi2|shared_cpu_backend_mpi2|shared_batch12_mpi2|distributed_.*)$' \
+ctest --test-dir "$out/build" --output-on-failure -R '^(core|halo_storage|compact_basis|native_allocator|cpu_backend_mpi2|shared_cpu_backend_mpi2|shared_batch12_mpi2|reused_halo_mpi2|distributed_.*)$' \
   | tee "$out/ctest.log"

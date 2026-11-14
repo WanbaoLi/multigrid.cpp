@@ -90,6 +90,14 @@ class NativeBackend final : public Backend {
         if (lo < 0 || lo != hi || (dist && shared_mode))
             throw Error(LQCD_INVALID_ARGUMENT, "distributed storage must agree and cannot combine with shared coefficients");
         distributed = dist == 1;
+        int reuse=0;
+        if (const char *raw=std::getenv("LQCD_REUSE_HALO_PAGES"))
+            reuse=std::string(raw)=="1" ? 1 : std::string(raw)=="0" ? 0 : -1;
+        lo=reuse; hi=reuse;
+        MPI_Allreduce(MPI_IN_PLACE,&lo,1,MPI_INT,MPI_MIN,comm);
+        MPI_Allreduce(MPI_IN_PLACE,&hi,1,MPI_INT,MPI_MAX,comm);
+        if (lo<0 || lo!=hi || (reuse && !distributed))
+            throw Error(LQCD_INVALID_ARGUMENT,"halo page reuse must agree and requires distributed storage");
         if (shared_mode)
             shared_coefficients = lqcd_native::make_shared_coefficient_memory(comm);
         for (auto key :

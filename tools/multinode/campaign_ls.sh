@@ -12,7 +12,7 @@ if [[ $# -ge 3 ]]; then
   source "$root/tools/multinode/ls_env.sh"
   cmake --build "$build" -j 24
   ctest --test-dir "$build" --output-on-failure \
-    -R '^(compact_basis|distributed_cpu_backend_mpi2|distributed_batch12_mpi2)$'
+    -R '^(halo_storage|compact_basis|distributed_cpu_backend_mpi2|distributed_batch12_mpi2|reused_halo_mpi2)$'
 else
   bash "$root/tools/multinode/gate_ls.sh" "$out/gates"
   build=$out/gates/build

@@ -1,6 +1,7 @@
 {
   "context_environment": {
     "LQCD_DISTRIBUTED_STORAGE": 1,
+    "LQCD_REUSE_HALO_PAGES": 1,
     "LQCD_ARM_COARSE_SVE": 0,
     "LQCD_ARM_SVE": 1,
     "LQCD_ARM_SVE_REUSE": 1,

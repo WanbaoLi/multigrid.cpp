@@ -1,5 +1,9 @@
 include(CTest)
 if(BUILD_TESTING)
+    add_executable(halo_storage_test tests/unit/halo_storage_test.cpp)
+    target_include_directories(halo_storage_test PRIVATE src)
+    target_compile_options(halo_storage_test PRIVATE -UNDEBUG)
+    add_test(NAME halo_storage COMMAND halo_storage_test)
     add_executable(compact_basis_test tests/unit/compact_basis_test.cpp)
     target_include_directories(compact_basis_test PRIVATE src)
     # Keep assertions in this gate even when the runtime is built in Release.
@@ -97,6 +101,8 @@ if(BUILD_TESTING)
             add_test(NAME distributed_${gate}_mpi2 COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/${script}")
             set_tests_properties(distributed_${gate}_mpi2 PROPERTIES TIMEOUT 900 ENVIRONMENT "${LQCD_RUNTIME_ENV};LQCD_DISTRIBUTED_STORAGE=1;PYTHONPATH=${CMAKE_CURRENT_SOURCE_DIR}/bindings")
         endforeach()
+        add_test(NAME reused_halo_mpi2 COMMAND "${LQCD_MPI_BIN}/mpiexec" ${LQCD_MPI_FLAGS} -n 2 "${LQCD_TEST_PYTHON}" "${CMAKE_CURRENT_SOURCE_DIR}/tests/runtime/test_reused_halo.py")
+        set_tests_properties(reused_halo_mpi2 PROPERTIES TIMEOUT 900 ENVIRONMENT "${LQCD_RUNTIME_ENV};LQCD_DISTRIBUTED_STORAGE=1;LQCD_REUSE_HALO_PAGES=1;PYTHONPATH=${CMAKE_CURRENT_SOURCE_DIR}/bindings")
         # A singleton test must not inherit a build job's spread policy over
         # hundreds of NUMA places. Keep its two OpenMP workers close without
         # hardcoding host CPU numbers or extending the numerical timeout.

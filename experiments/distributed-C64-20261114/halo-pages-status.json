@@ -1,0 +1,13 @@
+{
+  "status": "prepared_not_compiled_or_run_on_target",
+  "branch": "codex/c64-halo-pages",
+  "base_commit": "b182d74",
+  "last_real_c24_validated_run_commit": "88e8bbece4ba8f8c14074ba0fa93b0d64971e382",
+  "flag": "LQCD_REUSE_HALO_PAGES=1",
+  "requires": "LQCD_DISTRIBUTED_STORAGE=1 and large mmap-backed internal spinors",
+  "hypothesis": "Reuse unowned halo pages across sequential vectors, with separate slots for simultaneous RHS, to avoid per-vector page amplification.",
+  "local_checks": ["Python syntax compilation", "Bash syntax checks", "git diff --check"],
+  "not_run": ["C++ compilation", "halo storage unit test", "MPI regression", "real C24 oracle", "real C64 setup and solves"],
+  "stop_reason": "User requested stopping if additional nodes are needed and offered to request resources.",
+  "acceptance_status": "No C64 warmed single-column or full12 result exists. Do not promote this branch as validated."
+}
