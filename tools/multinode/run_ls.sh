@@ -21,6 +21,11 @@ export LQCD_HBW_ALLOC=prefer LQCD_HBM=off
 export OMP_NUM_THREADS=32
 cd "$root"
 test -z "$(git status --porcelain --untracked-files=no)"
+if [[ "$lattice" == 64 && ! -f "$(dirname "$out")/c24/result.json" ]]; then
+  bash "$root/tools/multinode/run_ls.sh" "$(dirname "$out")/c24" \
+    "$HOME/.cache/pyqcu-propagator24-v20261103/inputs/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime" "$build" 24
+  export LQCD_MULTINODE_SKIP_GATES=1
+fi
 git rev-parse HEAD > "$out/source-commit.txt"
 if [[ ${LQCD_MULTINODE_SKIP_GATES:-0} != 1 ]]; then
   cmake --build "$build" -j 24
