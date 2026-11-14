@@ -46,7 +46,7 @@ def main():
     report=dict(complete=False,measurements_complete=False,source_commit=subprocess.check_output(
         ['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),
         source_branch=subprocess.check_output(['git','-C',str(ROOT),'branch','--show-current'],text=True).strip(),
-        ranks=comm.size,ranks_per_node=local.size,threads=32,batch=2,
+        ranks=comm.size,ranks_per_node=local.size,threads=32,batch=2,outer_restart=16,
         lattice_xyzt=lat,grid_xyzt=grid,block_xyzt=a.block,mass=a.mass,csw=a.csw,tol=a.tol,
         zero_initial_guesses=True,stout=dict(steps=1,rho=.125,dir_ignore=4),
         source_xyzt=[0,0,0,0],seed=1024,placement=placement,

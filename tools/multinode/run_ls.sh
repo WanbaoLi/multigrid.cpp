@@ -17,6 +17,9 @@ export OMP_NUM_THREADS=32
 cd "$root"
 test -z "$(git status --porcelain --untracked-files=no)"
 git rev-parse HEAD > "$out/source-commit.txt"
+cmake --build "$build" -j 24
+OMP_NUM_THREADS=2 ctest --test-dir "$build" --output-on-failure \
+  -R '^(compact_basis|distributed_cpu_backend_mpi2|distributed_batch12_mpi2)$'
 sha256sum "$build/liblqcd_cpu.so" "$build/verify_slab" > "$out/build.sha256"
 scratch=/tmp/lqcd-C64-$(basename "$out")
 mpirun -n 32 --oversubscribe --map-by ppr:16:node --bind-to none \

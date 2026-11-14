@@ -247,7 +247,7 @@ class NativeBackend final : public Backend {
             rhs[i] = b[i] * factor;
         MPI_Barrier(comm);
         const double start = MPI_Wtime();
-        solver->solve(rhs, x, tol, 300, 24);
+        solver->solve(rhs, x, tol, 300, distributed ? 16 : 24);
         const double elapsed = MPI_Wtime() - start;
         double maximum;
         MPI_Allreduce(&elapsed, &maximum, 1, MPI_DOUBLE, MPI_MAX, comm);
@@ -266,7 +266,7 @@ class NativeBackend final : public Backend {
         }
         MPI_Barrier(comm);
         const double start = MPI_Wtime();
-        auto iterations = solver->solve_batch(batch_rhs, x, tol, 300, 24);
+        auto iterations = solver->solve_batch(batch_rhs, x, tol, 300, distributed ? 16 : 24);
         double elapsed = MPI_Wtime() - start, maximum;
         MPI_Allreduce(&elapsed, &maximum, 1, MPI_DOUBLE, MPI_MAX, comm);
         std::vector<SolveInfo> result;
