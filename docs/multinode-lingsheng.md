@@ -30,8 +30,10 @@ task_out="$HOME/lqcd-run/C64-$(date +%Y%m%d-%H%M%S)"
 task_gauge="$HOME/inputs/F64P14/beta6.41_mu-0.2334_ms-0.2030_L64x128_cfg_1000.lime"
 mkdir -p "$task_out"
 dsub -q q_hpcapp -A common --mpi hmpi \
-  -nn 2 -N 2 -rpn 1 -x job -R 'cpu=592,mem=480000MB' -T 14400 \
+  -nn 2 -N 32 -rpn 16 -x job -a 'numa[count=1,distribution=pack]' \
+  -R 'cpu=37,mem=30000MB' -T 14400 \
   --cwd "$task_out" -o "$task_out/job.log" \
+  /usr/bin/env LQCD_MPI_TCP_IF=10.36.0.0/16 \
   /bin/bash "$PWD/tools/multinode/campaign_ls.sh" "$task_out" "$task_gauge"
 ```
 
@@ -39,10 +41,11 @@ dsub -q q_hpcapp -A common --mpi hmpi \
 F64P14 测量和独立标量残差检查。失败会停止任务，保留日志和已写检查点。新的
 输出目录可重新运行；目前检查点用于诊断，尚不支持从内存中的建层状态继续。
 
-Donau 的上述申请每节点只有一个逻辑任务槽，但保留整个节点。`run_ls.sh` 中
-`--oversubscribe` 用于启动每主机 16 个 MPI；`rank_exec.py` 再显式选择各自 NUMA
-域的 32 个物理核，实际计算不会共享这些核。不能把这个选项用于超额使用未申请
-的 CPU。账号当前 CPU 配额只允许这样的两个整节点；四节点申请曾被配额阻塞。
+Donau 的上述申请每节点有 16 个任务槽，并提供自动生成的 rankfile；不再使用
+`--oversubscribe` 或覆盖调度器的 MPI 映射。`rank_exec.py` 在实际获得的亲和性
+范围内选择单 NUMA 域的 32 个物理核，通信门禁检查各进程的核互不重叠。TCP 对照
+使用 `ob1`、`self,vader,tcp` 和通用集合通信组件，限定 10.36 网段；实际使用的 MPI
+环境写入结果。账号当前 CPU 配额只允许两个整节点；四节点申请曾被配额阻塞。
 
 ## 内存与计时边界
 
