@@ -113,6 +113,8 @@ def main():
             stats=[dict(solver.last_result)]
             assert all(s['converged'] and s['true_residual']<=a.tol for s in stats)
             report['single_samples'].append(dict(run=i+1,wall_seconds=wall,stats=stats,**native_timing(stats)))
+            if rank==0: print('SAMPLE single',i+1,json.dumps(report['single_samples'][-1]),flush=True)
+            checkpoint(f'single_{i+1}')
         single.astype('<c16',copy=False).tofile(a.scratch/f'solution-{rank}-0.bin')
         checkpoint('single')
         for i in range(3):
@@ -120,6 +122,8 @@ def main():
             (prop,stats),wall=_measure(comm,lambda:solver.solve_propagator((0,0,0,0),a.tol,layout='lex'))
             assert len(stats)==12 and all(s['converged'] and s['true_residual']<=a.tol for s in stats)
             report['twelve_samples'].append(dict(run=i+1,wall_seconds=wall,stats=stats,**native_timing(stats)))
+            if rank==0: print('SAMPLE twelve',i+1,json.dumps(report['twelve_samples'][-1]),flush=True)
+            checkpoint(f'twelve_{i+1}')
             if i<2: del prop
         first=prop[..., :,0,:,0]
         num=comm.allreduce(float(np.linalg.norm(single-first)**2))
