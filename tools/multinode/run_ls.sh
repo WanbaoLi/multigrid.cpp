@@ -33,7 +33,7 @@ if [[ ${LQCD_MULTINODE_SKIP_GATES:-0} != 1 ]]; then
 fi
 sha256sum "$build/liblqcd_cpu.so" "$build/verify_slab" > "$out/build.sha256"
 unset OMPI_MCA_ras OMPI_MCA_plm OMPI_MCA_btl OMPI_MCA_pml
-scratch=/tmp/lqcd-C64-$(basename "$out")
+scratch=/tmp/lqcd-C64-${CCS_JOB_ID:-manual}-$(printf %s "$out" | sha256sum | cut -c1-12)
 mpirun -n 32 --oversubscribe --map-by ppr:16:node --bind-to none \
   python tools/multinode/rank_exec.py python -u benchmarks/runtime/benchmark_multinode.py \
   --gauge "$gauge" --library "$build/liblqcd_cpu.so" --output "$out/measurements" --scratch "$scratch" \
