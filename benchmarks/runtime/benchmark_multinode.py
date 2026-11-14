@@ -56,6 +56,8 @@ def main():
         lattice_xyzt=lat,grid_xyzt=grid,block_xyzt=a.block,mass=a.mass,csw=a.csw,tol=a.tol,
         zero_initial_guesses=True,stout=dict(steps=1,rho=.125,dir_ignore=4),
         source_xyzt=[0,0,0,0],seed=1024,placement=placement,
+        mpi_library=MPI.Get_library_version(),
+        mpi_environment={k:v for k,v in os.environ.items() if k.startswith('OMPI_MCA_')},
         context_environment={k:v for k,v in os.environ.items() if k.startswith('LQCD_')},
         library_sha256=digest(a.library),single_samples=[],twelve_samples=[])
     def memory():

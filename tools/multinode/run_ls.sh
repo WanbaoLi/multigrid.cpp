@@ -33,6 +33,11 @@ if [[ ${LQCD_MULTINODE_SKIP_GATES:-0} != 1 ]]; then
 fi
 sha256sum "$build/liblqcd_cpu.so" "$build/verify_slab" > "$out/build.sha256"
 unset OMPI_MCA_ras OMPI_MCA_plm OMPI_MCA_btl OMPI_MCA_pml
+# The installed default collective mix stalls in object Allgather with
+# 16 ranks/host on two hosts. Keep the native PML, but select portable collectives.
+export OMPI_MCA_coll=${LQCD_MPI_COLLECTIVES:-basic,tuned,self,libnbc}
+timeout 90s mpirun -n 32 --oversubscribe --map-by ppr:16:node --bind-to none \
+  python tools/multinode/rank_exec.py python -u tests/runtime/test_multinode_communication.py
 scratch=/tmp/lqcd-C64-${CCS_JOB_ID:-manual}-$(printf %s "$out" | sha256sum | cut -c1-12)
 mpirun -n 32 --oversubscribe --map-by ppr:16:node --bind-to none \
   python tools/multinode/rank_exec.py python -u benchmarks/runtime/benchmark_multinode.py \

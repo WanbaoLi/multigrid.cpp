@@ -3,6 +3,7 @@ set -eo pipefail
 root=$(cd "$(dirname "$0")/../.." && pwd)
 source "$root/tools/multinode/ls_env.sh"
 unset OMPI_MCA_ras OMPI_MCA_plm OMPI_MCA_btl OMPI_MCA_pml
+export OMPI_MCA_coll=${LQCD_MPI_COLLECTIVES:-basic,tuned,self,libnbc}
 echo PROBE_HOST $(hostname)
 python - <<'PY'
 import os
