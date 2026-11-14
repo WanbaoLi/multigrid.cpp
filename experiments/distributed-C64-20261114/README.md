@@ -81,3 +81,59 @@ real-input measurement. This is an orchestration failure, not a numerical result
 Do not edit a running campaign script again. A fresh frozen campaign invocation
 can reuse the completed build via its third argument, rebuilding and rerunning
 the compact/distributed solve gates before the cross-host and real-input stages.
+
+## Actual two-node communication and real-input attempt
+
+Jobs 2124930/2124986 exposed a 32-rank startup stall before gauge I/O. Python
+tracebacks placed all ranks in the placement metadata Allgather. Selecting
+portable collectives alone (2125012), then ob1/vader/TCP (2125036), did not solve
+startup. Requesting 32 task slots with explicit Donau NUMA affinity produced a
+rankfile conflict (2125063), then a launcher allocator abort without manual
+mapping (2125080). None of these are numerical performance results.
+
+Job 2125108, measured source 88e8bbe, requested two nodes, 32 tasks, 16/host,
+37 CPUs and 30000 MB/task, exclusive host, without Donau `-a`. The project NUMA
+launcher bound 32 disjoint cores per MPI. Explicit ob1/self,vader,tcp, portable
+collectives and the observed 10.36.0.0/16 network passed shared communicator,
+object collectives, typed reductions and an 8 MiB ring. This combination works;
+the individual root cause among allocation/network/default components is not
+yet isolated. Do not claim that disabling one specific component fixed it.
+
+Real C24 gate: setup 58.2773 s, warmed pure single 4.08987 s, full12 34.86493 s;
+all 13 outputs passed the independent scalar oracle. These are two-node C24
+gate timings with 6,6,6,2 blocks, not a replacement for the previous tuned
+single-node C24 result. See `c24-gate.json` for every sample and residual.
+
+C64 completed read (13.7126 s), stout (67.8867 s), gauge/Clover load (1.41994 s),
+and the initial 24 homogeneous setup vectors. PSS after gauge load was
+50.5608 / 50.6097 GiB. During the first basis/coarse construction, live scheduler
+memMax reached 406706 / 412415 in scheduler MB units; final surviving-host
+memMax was 472932. ORTE then reported losing its remote daemon; Donau marked
+the job FAILED at 14:56:56. There is no explicit OOM message and no C64 setup or
+solve result. High memory pressure is a hypothesis supported by the peak, not
+an independently confirmed kernel OOM diagnosis.
+
+## Attempt 3: reuse resident halo pages
+
+The original budget above counted physical face elements as resident vector
+bytes. That is too optimistic for blocked component-major EO storage: writing
+both parity faces touches pages throughout each unowned aggregate. At C64's
+block 8,8,8,4 and one owned time aggregate/rank, a fine vector can commit one
+owned plus two complete ghost aggregate planes. The 24 setup vectors can then
+occupy about 108 GiB/node, not 54. Batch2 restart16 directions plus owned-only
+images can occupy about 192 GiB/node, not the earlier 144 estimate.
+
+Hypothesis: owned spinors are persistent numerical state, but received halos
+are only scratch for the current operator application. Map fully unowned pages
+of every large workspace onto a reusable per-rank memfd, with distinct slots
+for simultaneous RHS columns. Keep original virtual indices, kernels and MPI
+face messages. Never map pages containing owned values. Rebind on every operator
+call to avoid stale pointer-lifetime caches. Small non-mmap allocations retain
+the old path. Frozen Linux API constraints: `docs/reference/lqcd-halo-memory-v1`.
+
+This should reduce 24-vector setup residency toward 36 GiB owned + 3 GiB scratch
+per node, and batch2 restart16 GCR residency toward 96 GiB owned + 6 GiB scratch,
+plus small private partial pages and lifetime overlap. These are predictions;
+the new implementation still needs unit/MPI gates, real C24 independent residuals
+and an actual C64 run. Ordinary/shared modes and the prior C24-correct revision
+remain recoverable from Git.

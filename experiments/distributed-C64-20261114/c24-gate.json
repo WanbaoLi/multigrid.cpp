@@ -1,0 +1,3473 @@
+{
+  "complete": true,
+  "measurements_complete": true,
+  "source_commit": "88e8bbece4ba8f8c14074ba0fa93b0d64971e382",
+  "source_branch": "develop",
+  "ranks": 32,
+  "ranks_per_node": 16,
+  "threads": 32,
+  "batch": 2,
+  "outer_restart": 16,
+  "lattice_xyzt": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "grid_xyzt": [
+    1,
+    1,
+    1,
+    32
+  ],
+  "block_xyzt": [
+    6,
+    6,
+    6,
+    2
+  ],
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "tol": 1e-08,
+  "zero_initial_guesses": true,
+  "stout": {
+    "steps": 1,
+    "rho": 0.125,
+    "dir_ignore": 4
+  },
+  "source_xyzt": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "seed": 1024,
+  "placement": [
+    {
+      "rank": 0,
+      "host": "cn12057",
+      "cpus": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "numa": "0"
+    },
+    {
+      "rank": 1,
+      "host": "cn12057",
+      "cpus": [
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69
+      ],
+      "numa": "1"
+    },
+    {
+      "rank": 2,
+      "host": "cn12057",
+      "cpus": [
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107
+      ],
+      "numa": "2"
+    },
+    {
+      "rank": 3,
+      "host": "cn12057",
+      "cpus": [
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145
+      ],
+      "numa": "3"
+    },
+    {
+      "rank": 4,
+      "host": "cn12057",
+      "cpus": [
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183
+      ],
+      "numa": "4"
+    },
+    {
+      "rank": 5,
+      "host": "cn12057",
+      "cpus": [
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221
+      ],
+      "numa": "5"
+    },
+    {
+      "rank": 6,
+      "host": "cn12057",
+      "cpus": [
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259
+      ],
+      "numa": "6"
+    },
+    {
+      "rank": 7,
+      "host": "cn12057",
+      "cpus": [
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        273,
+        274,
+        275,
+        276,
+        277,
+        278,
+        279,
+        280,
+        281,
+        282,
+        283,
+        284,
+        285,
+        286,
+        287,
+        288,
+        289,
+        290,
+        291,
+        292,
+        293,
+        294,
+        295,
+        296,
+        297
+      ],
+      "numa": "7"
+    },
+    {
+      "rank": 8,
+      "host": "cn12057",
+      "cpus": [
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322,
+        323,
+        324,
+        325,
+        326,
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334,
+        335
+      ],
+      "numa": "8"
+    },
+    {
+      "rank": 9,
+      "host": "cn12057",
+      "cpus": [
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351,
+        352,
+        353,
+        354,
+        355,
+        356,
+        357,
+        358,
+        359,
+        360,
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370,
+        371,
+        372,
+        373
+      ],
+      "numa": "9"
+    },
+    {
+      "rank": 10,
+      "host": "cn12057",
+      "cpus": [
+        380,
+        381,
+        382,
+        383,
+        384,
+        385,
+        386,
+        387,
+        388,
+        389,
+        390,
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411
+      ],
+      "numa": "10"
+    },
+    {
+      "rank": 11,
+      "host": "cn12057",
+      "cpus": [
+        418,
+        419,
+        420,
+        421,
+        422,
+        423,
+        424,
+        425,
+        426,
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442,
+        443,
+        444,
+        445,
+        446,
+        447,
+        448,
+        449
+      ],
+      "numa": "11"
+    },
+    {
+      "rank": 12,
+      "host": "cn12057",
+      "cpus": [
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        463,
+        464,
+        465,
+        466,
+        467,
+        468,
+        469,
+        470,
+        471,
+        472,
+        473,
+        474,
+        475,
+        476,
+        477,
+        478,
+        479,
+        480,
+        481,
+        482,
+        483,
+        484,
+        485,
+        486,
+        487
+      ],
+      "numa": "12"
+    },
+    {
+      "rank": 13,
+      "host": "cn12057",
+      "cpus": [
+        494,
+        495,
+        496,
+        497,
+        498,
+        499,
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        509,
+        510,
+        511,
+        512,
+        513,
+        514,
+        515,
+        516,
+        517,
+        518,
+        519,
+        520,
+        521,
+        522,
+        523,
+        524,
+        525
+      ],
+      "numa": "13"
+    },
+    {
+      "rank": 14,
+      "host": "cn12057",
+      "cpus": [
+        532,
+        533,
+        534,
+        535,
+        536,
+        537,
+        538,
+        539,
+        540,
+        541,
+        542,
+        543,
+        544,
+        545,
+        546,
+        547,
+        548,
+        549,
+        550,
+        551,
+        552,
+        553,
+        554,
+        555,
+        556,
+        557,
+        558,
+        559,
+        560,
+        561,
+        562,
+        563
+      ],
+      "numa": "14"
+    },
+    {
+      "rank": 15,
+      "host": "cn12057",
+      "cpus": [
+        570,
+        571,
+        572,
+        573,
+        574,
+        575,
+        576,
+        577,
+        578,
+        579,
+        580,
+        581,
+        582,
+        583,
+        584,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590,
+        591,
+        592,
+        593,
+        594,
+        595,
+        596,
+        597,
+        598,
+        599,
+        600,
+        601
+      ],
+      "numa": "15"
+    },
+    {
+      "rank": 16,
+      "host": "cn12107",
+      "cpus": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "numa": "0"
+    },
+    {
+      "rank": 17,
+      "host": "cn12107",
+      "cpus": [
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69
+      ],
+      "numa": "1"
+    },
+    {
+      "rank": 18,
+      "host": "cn12107",
+      "cpus": [
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107
+      ],
+      "numa": "2"
+    },
+    {
+      "rank": 19,
+      "host": "cn12107",
+      "cpus": [
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145
+      ],
+      "numa": "3"
+    },
+    {
+      "rank": 20,
+      "host": "cn12107",
+      "cpus": [
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183
+      ],
+      "numa": "4"
+    },
+    {
+      "rank": 21,
+      "host": "cn12107",
+      "cpus": [
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221
+      ],
+      "numa": "5"
+    },
+    {
+      "rank": 22,
+      "host": "cn12107",
+      "cpus": [
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259
+      ],
+      "numa": "6"
+    },
+    {
+      "rank": 23,
+      "host": "cn12107",
+      "cpus": [
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        273,
+        274,
+        275,
+        276,
+        277,
+        278,
+        279,
+        280,
+        281,
+        282,
+        283,
+        284,
+        285,
+        286,
+        287,
+        288,
+        289,
+        290,
+        291,
+        292,
+        293,
+        294,
+        295,
+        296,
+        297
+      ],
+      "numa": "7"
+    },
+    {
+      "rank": 24,
+      "host": "cn12107",
+      "cpus": [
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322,
+        323,
+        324,
+        325,
+        326,
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334,
+        335
+      ],
+      "numa": "8"
+    },
+    {
+      "rank": 25,
+      "host": "cn12107",
+      "cpus": [
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351,
+        352,
+        353,
+        354,
+        355,
+        356,
+        357,
+        358,
+        359,
+        360,
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370,
+        371,
+        372,
+        373
+      ],
+      "numa": "9"
+    },
+    {
+      "rank": 26,
+      "host": "cn12107",
+      "cpus": [
+        380,
+        381,
+        382,
+        383,
+        384,
+        385,
+        386,
+        387,
+        388,
+        389,
+        390,
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411
+      ],
+      "numa": "10"
+    },
+    {
+      "rank": 27,
+      "host": "cn12107",
+      "cpus": [
+        418,
+        419,
+        420,
+        421,
+        422,
+        423,
+        424,
+        425,
+        426,
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442,
+        443,
+        444,
+        445,
+        446,
+        447,
+        448,
+        449
+      ],
+      "numa": "11"
+    },
+    {
+      "rank": 28,
+      "host": "cn12107",
+      "cpus": [
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        463,
+        464,
+        465,
+        466,
+        467,
+        468,
+        469,
+        470,
+        471,
+        472,
+        473,
+        474,
+        475,
+        476,
+        477,
+        478,
+        479,
+        480,
+        481,
+        482,
+        483,
+        484,
+        485,
+        486,
+        487
+      ],
+      "numa": "12"
+    },
+    {
+      "rank": 29,
+      "host": "cn12107",
+      "cpus": [
+        494,
+        495,
+        496,
+        497,
+        498,
+        499,
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        509,
+        510,
+        511,
+        512,
+        513,
+        514,
+        515,
+        516,
+        517,
+        518,
+        519,
+        520,
+        521,
+        522,
+        523,
+        524,
+        525
+      ],
+      "numa": "13"
+    },
+    {
+      "rank": 30,
+      "host": "cn12107",
+      "cpus": [
+        532,
+        533,
+        534,
+        535,
+        536,
+        537,
+        538,
+        539,
+        540,
+        541,
+        542,
+        543,
+        544,
+        545,
+        546,
+        547,
+        548,
+        549,
+        550,
+        551,
+        552,
+        553,
+        554,
+        555,
+        556,
+        557,
+        558,
+        559,
+        560,
+        561,
+        562,
+        563
+      ],
+      "numa": "14"
+    },
+    {
+      "rank": 31,
+      "host": "cn12107",
+      "cpus": [
+        570,
+        571,
+        572,
+        573,
+        574,
+        575,
+        576,
+        577,
+        578,
+        579,
+        580,
+        581,
+        582,
+        583,
+        584,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590,
+        591,
+        592,
+        593,
+        594,
+        595,
+        596,
+        597,
+        598,
+        599,
+        600,
+        601
+      ],
+      "numa": "15"
+    }
+  ],
+  "mpi_library": "Open MPI v4.1.6rc4, package: Open MPI root@localhost Distribution, ident: 4.1.6rc4, repo rev: 35f4724, Unreleased developer copy\u0000",
+  "mpi_environment": {
+    "OMPI_MCA_coll_tuned_dynamic_rules_filename": "/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001/hmpi/bisheng/release/hmpi/etc/coll_tuned_default_decision.conf",
+    "OMPI_MCA_btl": "self,vader,tcp",
+    "OMPI_MCA_oob_tcp_if_include": "10.36.0.0/16",
+    "OMPI_MCA_pml": "ob1",
+    "OMPI_MCA_coll_tuned_use_dynamic_rules": "true",
+    "OMPI_MCA_coll": "basic,tuned,self,libnbc",
+    "OMPI_MCA_btl_tcp_if_include": "10.36.0.0/16",
+    "OMPI_MCA_plm_rsh_agent": "/opt/batch/agent/tools/dstart",
+    "OMPI_MCA_hwloc_base_binding_policy": "none",
+    "OMPI_MCA_pmix": "^s1,s2,cray,isolated",
+    "OMPI_MCA_orte_precondition_transports": "37866378bc3b8f52-f949783befaf9e49",
+    "OMPI_MCA_orte_local_daemon_uri": "335675392.0;tcp://10.36.95.25:62375",
+    "OMPI_MCA_orte_hnp_uri": "335675392.0;tcp://10.36.95.25:62375",
+    "OMPI_MCA_mpi_oversubscribe": "0",
+    "OMPI_MCA_orte_app_num": "0",
+    "OMPI_MCA_orte_num_nodes": "2",
+    "OMPI_MCA_shmem_RUNTIME_QUERY_hint": "mmap",
+    "OMPI_MCA_ess": "^singleton",
+    "OMPI_MCA_orte_ess_num_procs": "32",
+    "OMPI_MCA_orte_tmpdir_base": "/tmp",
+    "OMPI_MCA_orte_top_session_dir": "/tmp/ompi.cn12057.29301",
+    "OMPI_MCA_orte_jobfam_session_dir": "/tmp/ompi.cn12057.29301/pid.1359550",
+    "OMPI_MCA_initial_wdir": "/home/share/nsls_lwb/lqcd-run/C64-20261114/source",
+    "OMPI_MCA_orte_launch": "1",
+    "OMPI_MCA_ess_base_jobid": "335675393",
+    "OMPI_MCA_ess_base_vpid": "0",
+    "OMPI_MCA_orte_ess_node_rank": "0"
+  },
+  "context_environment": {
+    "LQCD_DISTRIBUTED_STORAGE": "1",
+    "LQCD_MULTINODE_SKIP_GATES": "1",
+    "LQCD_ARM_SVE_REUSE": "1",
+    "LQCD_COARSE_FUSED": "0",
+    "LQCD_COARSE_SPATIAL_OVERLAP": "1",
+    "LQCD_MPI_TCP_IF": "10.36.0.0/16",
+    "LQCD_COARSE_BATCH_REDUCE": "1",
+    "LQCD_HBM": "off",
+    "LQCD_HBW_ALLOC": "prefer",
+    "LQCD_ARM_COARSE_SVE": "0",
+    "LQCD_ARM_SVE": "1",
+    "LQCD_ARM_SVE_TRANSFER": "0",
+    "LQCD_NUMA_NODE": "0",
+    "LQCD_CPU_THREADS": "32"
+  },
+  "library_sha256": "2a2103545895c3c9b67ac2121d387b99c3902a0445b08d3902b58ac43087ee51",
+  "single_samples": [
+    {
+      "run": 1,
+      "wall_seconds": 4.427737758960575,
+      "stats": [
+        {
+          "converged": 1,
+          "iterations": 24,
+          "refinement_steps": 0,
+          "solver_seconds": 4.397476998999998,
+          "api_seconds": 4.422611145999994,
+          "true_residual": 2.2830233158394872e-09
+        }
+      ],
+      "native_solver_seconds": 4.397476998999998,
+      "native_api_seconds": 4.422611145999994,
+      "correction_solves_occurred": false,
+      "refinement_steps": [
+        0
+      ]
+    },
+    {
+      "run": 2,
+      "wall_seconds": 4.123585083987564,
+      "stats": [
+        {
+          "converged": 1,
+          "iterations": 24,
+          "refinement_steps": 0,
+          "solver_seconds": 4.094031141999999,
+          "api_seconds": 4.118510938,
+          "true_residual": 2.2830233158394872e-09
+        }
+      ],
+      "native_solver_seconds": 4.094031141999999,
+      "native_api_seconds": 4.118510938,
+      "correction_solves_occurred": false,
+      "refinement_steps": [
+        0
+      ]
+    },
+    {
+      "run": 3,
+      "wall_seconds": 4.1136026959866285,
+      "stats": [
+        {
+          "converged": 1,
+          "iterations": 24,
+          "refinement_steps": 0,
+          "solver_seconds": 4.085700613,
+          "api_seconds": 4.108839700000004,
+          "true_residual": 2.2830233158394872e-09
+        }
+      ],
+      "native_solver_seconds": 4.085700613,
+      "native_api_seconds": 4.108839700000004,
+      "correction_solves_occurred": false,
+      "refinement_steps": [
+        0
+      ]
+    }
+  ],
+  "twelve_samples": [
+    {
+      "run": 1,
+      "wall_seconds": 36.16360116493888,
+      "stats": [
+        {
+          "converged": 1,
+          "iterations": 24,
+          "refinement_steps": 0,
+          "solver_seconds": 6.327120711000006,
+          "api_seconds": 6.411327735,
+          "true_residual": 2.2830233158394872e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 6.327120711000006,
+          "api_seconds": 6.411327735,
+          "true_residual": 3.853375537784186e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.705948432,
+          "api_seconds": 5.800265537000001,
+          "true_residual": 4.497187253599466e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.705948432,
+          "api_seconds": 5.800265537000001,
+          "true_residual": 3.7489321462545254e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.732992221999993,
+          "api_seconds": 5.828252753000001,
+          "true_residual": 4.490719515331698e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.732992221999993,
+          "api_seconds": 5.828252753000001,
+          "true_residual": 4.684944007441294e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.888348915999998,
+          "api_seconds": 5.96227282000001,
+          "true_residual": 4.263249487939656e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.888348915999998,
+          "api_seconds": 5.96227282000001,
+          "true_residual": 2.9812942856982936e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 24,
+          "refinement_steps": 0,
+          "solver_seconds": 6.034228313999989,
+          "api_seconds": 6.128189738000003,
+          "true_residual": 2.6946248075237774e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 6.034228313999989,
+          "api_seconds": 6.128189738000003,
+          "true_residual": 4.460403973354052e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 24,
+          "refinement_steps": 0,
+          "solver_seconds": 5.844970582999991,
+          "api_seconds": 5.937433394999999,
+          "true_residual": 2.2705393442379787e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.844970582999991,
+          "api_seconds": 5.937433394999999,
+          "true_residual": 3.0798747702680747e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        }
+      ],
+      "native_solver_seconds": 35.53360917799998,
+      "native_api_seconds": 36.067741978000015,
+      "correction_solves_occurred": false,
+      "refinement_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "run": 2,
+      "wall_seconds": 35.6272838000441,
+      "stats": [
+        {
+          "converged": 1,
+          "iterations": 24,
+          "refinement_steps": 0,
+          "solver_seconds": 5.896288900000002,
+          "api_seconds": 6.008297428999995,
+          "true_residual": 2.2830233158394872e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.896288900000002,
+          "api_seconds": 6.008297428999995,
+          "true_residual": 3.853375537784186e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.704216770000002,
+          "api_seconds": 5.798826454999997,
+          "true_residual": 4.497187253599466e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.704216770000002,
+          "api_seconds": 5.798826454999997,
+          "true_residual": 3.7489321462545254e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.645683113000004,
+          "api_seconds": 5.72022879299999,
+          "true_residual": 4.490719515331699e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.645683113000004,
+          "api_seconds": 5.72022879299999,
+          "true_residual": 4.684944007441294e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.810955790000008,
+          "api_seconds": 5.906981317999993,
+          "true_residual": 4.263249487939656e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.810955790000008,
+          "api_seconds": 5.906981317999993,
+          "true_residual": 2.9812942856982936e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 24,
+          "refinement_steps": 0,
+          "solver_seconds": 6.010064699000026,
+          "api_seconds": 6.110660566000007,
+          "true_residual": 2.6946248075237774e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 6.010064699000026,
+          "api_seconds": 6.110660566000007,
+          "true_residual": 4.460403973354051e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 24,
+          "refinement_steps": 0,
+          "solver_seconds": 5.874150179999987,
+          "api_seconds": 5.989353728999987,
+          "true_residual": 2.2705393442379787e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.874150179999987,
+          "api_seconds": 5.989353728999987,
+          "true_residual": 3.0798747702680747e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        }
+      ],
+      "native_solver_seconds": 34.94135945200003,
+      "native_api_seconds": 35.53434828999997,
+      "correction_solves_occurred": false,
+      "refinement_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "run": 3,
+      "wall_seconds": 35.37552955991123,
+      "stats": [
+        {
+          "converged": 1,
+          "iterations": 24,
+          "refinement_steps": 0,
+          "solver_seconds": 5.762999706000016,
+          "api_seconds": 5.83945782699999,
+          "true_residual": 2.2830233158394872e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.762999706000016,
+          "api_seconds": 5.83945782699999,
+          "true_residual": 3.853375537784186e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.661671916000017,
+          "api_seconds": 5.756347172000005,
+          "true_residual": 4.497187253599466e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.661671916000017,
+          "api_seconds": 5.756347172000005,
+          "true_residual": 3.7489321462545254e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.698359617999984,
+          "api_seconds": 5.773665890999979,
+          "true_residual": 4.490719515331698e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.698359617999984,
+          "api_seconds": 5.773665890999979,
+          "true_residual": 4.684944007441294e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.789716620000007,
+          "api_seconds": 5.883323974000007,
+          "true_residual": 4.263249487939656e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.789716620000007,
+          "api_seconds": 5.883323974000007,
+          "true_residual": 2.9812942856982936e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 24,
+          "refinement_steps": 0,
+          "solver_seconds": 6.0025918929999875,
+          "api_seconds": 6.08156639500001,
+          "true_residual": 2.6946248075237774e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 6.0025918929999875,
+          "api_seconds": 6.08156639500001,
+          "true_residual": 4.460403973354052e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 24,
+          "refinement_steps": 0,
+          "solver_seconds": 5.873155722999996,
+          "api_seconds": 5.949730635999998,
+          "true_residual": 2.2705393442379787e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        },
+        {
+          "converged": 1,
+          "iterations": 23,
+          "refinement_steps": 0,
+          "solver_seconds": 5.873155722999996,
+          "api_seconds": 5.949730635999998,
+          "true_residual": 3.0798747702680747e-09,
+          "batch_size": 2,
+          "timing_scope": "shared_batch"
+        }
+      ],
+      "native_solver_seconds": 34.78849547600001,
+      "native_api_seconds": 35.28409189499999,
+      "correction_solves_occurred": false,
+      "refinement_steps": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "phase": "measured",
+  "memory_created": [
+    {
+      "Rss_KiB": 48720,
+      "Pss_KiB": 26203,
+      "Shared_Dirty_KiB": 10712,
+      "Private_Dirty_KiB": 24800,
+      "rank": 0,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48112,
+      "Pss_KiB": 26115,
+      "Shared_Dirty_KiB": 10196,
+      "Private_Dirty_KiB": 24796,
+      "rank": 1,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48420,
+      "Pss_KiB": 26137,
+      "Shared_Dirty_KiB": 10316,
+      "Private_Dirty_KiB": 24796,
+      "rank": 2,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48428,
+      "Pss_KiB": 26130,
+      "Shared_Dirty_KiB": 10372,
+      "Private_Dirty_KiB": 24788,
+      "rank": 3,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48428,
+      "Pss_KiB": 26138,
+      "Shared_Dirty_KiB": 10292,
+      "Private_Dirty_KiB": 24796,
+      "rank": 4,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48492,
+      "Pss_KiB": 26145,
+      "Shared_Dirty_KiB": 10372,
+      "Private_Dirty_KiB": 24796,
+      "rank": 5,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48376,
+      "Pss_KiB": 26130,
+      "Shared_Dirty_KiB": 10292,
+      "Private_Dirty_KiB": 24792,
+      "rank": 6,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48544,
+      "Pss_KiB": 26144,
+      "Shared_Dirty_KiB": 10428,
+      "Private_Dirty_KiB": 24792,
+      "rank": 7,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48136,
+      "Pss_KiB": 26106,
+      "Shared_Dirty_KiB": 10300,
+      "Private_Dirty_KiB": 24784,
+      "rank": 8,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48164,
+      "Pss_KiB": 26109,
+      "Shared_Dirty_KiB": 10316,
+      "Private_Dirty_KiB": 24788,
+      "rank": 9,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48160,
+      "Pss_KiB": 26123,
+      "Shared_Dirty_KiB": 10324,
+      "Private_Dirty_KiB": 24800,
+      "rank": 10,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48088,
+      "Pss_KiB": 26116,
+      "Shared_Dirty_KiB": 10204,
+      "Private_Dirty_KiB": 24796,
+      "rank": 11,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48208,
+      "Pss_KiB": 26128,
+      "Shared_Dirty_KiB": 10248,
+      "Private_Dirty_KiB": 24800,
+      "rank": 12,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48264,
+      "Pss_KiB": 26136,
+      "Shared_Dirty_KiB": 10240,
+      "Private_Dirty_KiB": 24800,
+      "rank": 13,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48144,
+      "Pss_KiB": 26122,
+      "Shared_Dirty_KiB": 10208,
+      "Private_Dirty_KiB": 24800,
+      "rank": 14,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 48108,
+      "Pss_KiB": 26117,
+      "Shared_Dirty_KiB": 10328,
+      "Private_Dirty_KiB": 24796,
+      "rank": 15,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 50504,
+      "Pss_KiB": 28181,
+      "Shared_Dirty_KiB": 10416,
+      "Private_Dirty_KiB": 26832,
+      "rank": 16,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 48328,
+      "Pss_KiB": 26135,
+      "Shared_Dirty_KiB": 10280,
+      "Private_Dirty_KiB": 24796,
+      "rank": 17,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 50452,
+      "Pss_KiB": 28172,
+      "Shared_Dirty_KiB": 10340,
+      "Private_Dirty_KiB": 26828,
+      "rank": 18,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 48396,
+      "Pss_KiB": 26125,
+      "Shared_Dirty_KiB": 10336,
+      "Private_Dirty_KiB": 24788,
+      "rank": 19,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 50560,
+      "Pss_KiB": 28185,
+      "Shared_Dirty_KiB": 10388,
+      "Private_Dirty_KiB": 26832,
+      "rank": 20,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 48436,
+      "Pss_KiB": 26136,
+      "Shared_Dirty_KiB": 10304,
+      "Private_Dirty_KiB": 24796,
+      "rank": 21,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 48372,
+      "Pss_KiB": 26124,
+      "Shared_Dirty_KiB": 10284,
+      "Private_Dirty_KiB": 24792,
+      "rank": 22,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 48512,
+      "Pss_KiB": 26146,
+      "Shared_Dirty_KiB": 10376,
+      "Private_Dirty_KiB": 24796,
+      "rank": 23,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 48120,
+      "Pss_KiB": 26111,
+      "Shared_Dirty_KiB": 10272,
+      "Private_Dirty_KiB": 24796,
+      "rank": 24,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 50148,
+      "Pss_KiB": 28167,
+      "Shared_Dirty_KiB": 10288,
+      "Private_Dirty_KiB": 26832,
+      "rank": 25,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 47932,
+      "Pss_KiB": 26115,
+      "Shared_Dirty_KiB": 10216,
+      "Private_Dirty_KiB": 24808,
+      "rank": 26,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 47888,
+      "Pss_KiB": 26109,
+      "Shared_Dirty_KiB": 10228,
+      "Private_Dirty_KiB": 24800,
+      "rank": 27,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 48236,
+      "Pss_KiB": 26133,
+      "Shared_Dirty_KiB": 10264,
+      "Private_Dirty_KiB": 24804,
+      "rank": 28,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 48216,
+      "Pss_KiB": 26114,
+      "Shared_Dirty_KiB": 10240,
+      "Private_Dirty_KiB": 24792,
+      "rank": 29,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 48120,
+      "Pss_KiB": 26107,
+      "Shared_Dirty_KiB": 10316,
+      "Private_Dirty_KiB": 24784,
+      "rank": 30,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 48224,
+      "Pss_KiB": 26127,
+      "Shared_Dirty_KiB": 10324,
+      "Private_Dirty_KiB": 24788,
+      "rank": 31,
+      "host": "cn12107"
+    }
+  ],
+  "input_sha256": "47969c7fe9b4a4716d5eab40e5a1dbdaef09abdb055934000e034a99d20d2d30",
+  "read_seconds": 0.5498182580340654,
+  "stout_seconds": 1.9799397259484977,
+  "memory_preprocessed": [
+    {
+      "Rss_KiB": 84056,
+      "Pss_KiB": 59839,
+      "Shared_Dirty_KiB": 11072,
+      "Private_Dirty_KiB": 58312,
+      "rank": 0,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 83548,
+      "Pss_KiB": 59786,
+      "Shared_Dirty_KiB": 10632,
+      "Private_Dirty_KiB": 58316,
+      "rank": 1,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 83384,
+      "Pss_KiB": 59768,
+      "Shared_Dirty_KiB": 10716,
+      "Private_Dirty_KiB": 58316,
+      "rank": 2,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 83244,
+      "Pss_KiB": 59740,
+      "Shared_Dirty_KiB": 10700,
+      "Private_Dirty_KiB": 58304,
+      "rank": 3,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 83476,
+      "Pss_KiB": 59764,
+      "Shared_Dirty_KiB": 10696,
+      "Private_Dirty_KiB": 58312,
+      "rank": 4,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 83532,
+      "Pss_KiB": 59776,
+      "Shared_Dirty_KiB": 10772,
+      "Private_Dirty_KiB": 58316,
+      "rank": 5,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 83364,
+      "Pss_KiB": 59753,
+      "Shared_Dirty_KiB": 10656,
+      "Private_Dirty_KiB": 58312,
+      "rank": 6,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 83696,
+      "Pss_KiB": 59779,
+      "Shared_Dirty_KiB": 10808,
+      "Private_Dirty_KiB": 58312,
+      "rank": 7,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 84028,
+      "Pss_KiB": 60394,
+      "Shared_Dirty_KiB": 10712,
+      "Private_Dirty_KiB": 58944,
+      "rank": 8,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 83472,
+      "Pss_KiB": 59769,
+      "Shared_Dirty_KiB": 10680,
+      "Private_Dirty_KiB": 58308,
+      "rank": 9,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 83428,
+      "Pss_KiB": 59766,
+      "Shared_Dirty_KiB": 10664,
+      "Private_Dirty_KiB": 58316,
+      "rank": 10,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 83460,
+      "Pss_KiB": 59767,
+      "Shared_Dirty_KiB": 10580,
+      "Private_Dirty_KiB": 58312,
+      "rank": 11,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 83552,
+      "Pss_KiB": 59777,
+      "Shared_Dirty_KiB": 10648,
+      "Private_Dirty_KiB": 58316,
+      "rank": 12,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 84192,
+      "Pss_KiB": 60436,
+      "Shared_Dirty_KiB": 10600,
+      "Private_Dirty_KiB": 58976,
+      "rank": 13,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 84132,
+      "Pss_KiB": 60419,
+      "Shared_Dirty_KiB": 10568,
+      "Private_Dirty_KiB": 58968,
+      "rank": 14,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 83468,
+      "Pss_KiB": 59762,
+      "Shared_Dirty_KiB": 10648,
+      "Private_Dirty_KiB": 58316,
+      "rank": 15,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 85768,
+      "Pss_KiB": 61824,
+      "Shared_Dirty_KiB": 10740,
+      "Private_Dirty_KiB": 60348,
+      "rank": 16,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 83648,
+      "Pss_KiB": 59793,
+      "Shared_Dirty_KiB": 10660,
+      "Private_Dirty_KiB": 58312,
+      "rank": 17,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 85640,
+      "Pss_KiB": 61807,
+      "Shared_Dirty_KiB": 10700,
+      "Private_Dirty_KiB": 60344,
+      "rank": 18,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 84228,
+      "Pss_KiB": 60412,
+      "Shared_Dirty_KiB": 10720,
+      "Private_Dirty_KiB": 58952,
+      "rank": 19,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 86244,
+      "Pss_KiB": 62455,
+      "Shared_Dirty_KiB": 10748,
+      "Private_Dirty_KiB": 60996,
+      "rank": 20,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 84400,
+      "Pss_KiB": 60442,
+      "Shared_Dirty_KiB": 10688,
+      "Private_Dirty_KiB": 58964,
+      "rank": 21,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 83596,
+      "Pss_KiB": 59771,
+      "Shared_Dirty_KiB": 10640,
+      "Private_Dirty_KiB": 58316,
+      "rank": 22,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 84412,
+      "Pss_KiB": 60438,
+      "Shared_Dirty_KiB": 10740,
+      "Private_Dirty_KiB": 58964,
+      "rank": 23,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 83728,
+      "Pss_KiB": 60366,
+      "Shared_Dirty_KiB": 10592,
+      "Private_Dirty_KiB": 58960,
+      "rank": 24,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 85796,
+      "Pss_KiB": 62435,
+      "Shared_Dirty_KiB": 10656,
+      "Private_Dirty_KiB": 61000,
+      "rank": 25,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 82872,
+      "Pss_KiB": 59728,
+      "Shared_Dirty_KiB": 10576,
+      "Private_Dirty_KiB": 58328,
+      "rank": 26,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 82912,
+      "Pss_KiB": 59729,
+      "Shared_Dirty_KiB": 10636,
+      "Private_Dirty_KiB": 58320,
+      "rank": 27,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 83156,
+      "Pss_KiB": 59737,
+      "Shared_Dirty_KiB": 10568,
+      "Private_Dirty_KiB": 58320,
+      "rank": 28,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 83216,
+      "Pss_KiB": 59740,
+      "Shared_Dirty_KiB": 10612,
+      "Private_Dirty_KiB": 58312,
+      "rank": 29,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 84152,
+      "Pss_KiB": 60417,
+      "Shared_Dirty_KiB": 10664,
+      "Private_Dirty_KiB": 58960,
+      "rank": 30,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 84156,
+      "Pss_KiB": 60418,
+      "Shared_Dirty_KiB": 10640,
+      "Private_Dirty_KiB": 58960,
+      "rank": 31,
+      "host": "cn12107"
+    }
+  ],
+  "gauge_clover_seconds": 0.08272174000740051,
+  "memory_loaded": [
+    {
+      "Rss_KiB": 194744,
+      "Pss_KiB": 169327,
+      "Shared_Dirty_KiB": 11112,
+      "Private_Dirty_KiB": 167712,
+      "rank": 0,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 249788,
+      "Pss_KiB": 224799,
+      "Shared_Dirty_KiB": 10640,
+      "Private_Dirty_KiB": 223248,
+      "rank": 1,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 242836,
+      "Pss_KiB": 218106,
+      "Shared_Dirty_KiB": 10728,
+      "Private_Dirty_KiB": 216580,
+      "rank": 2,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 198592,
+      "Pss_KiB": 173885,
+      "Shared_Dirty_KiB": 10724,
+      "Private_Dirty_KiB": 172364,
+      "rank": 3,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 196840,
+      "Pss_KiB": 171933,
+      "Shared_Dirty_KiB": 10708,
+      "Private_Dirty_KiB": 170400,
+      "rank": 4,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 198920,
+      "Pss_KiB": 173988,
+      "Shared_Dirty_KiB": 10788,
+      "Private_Dirty_KiB": 172448,
+      "rank": 5,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 196716,
+      "Pss_KiB": 171918,
+      "Shared_Dirty_KiB": 10688,
+      "Private_Dirty_KiB": 170392,
+      "rank": 6,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 196944,
+      "Pss_KiB": 171822,
+      "Shared_Dirty_KiB": 10848,
+      "Private_Dirty_KiB": 170264,
+      "rank": 7,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 197392,
+      "Pss_KiB": 172566,
+      "Shared_Dirty_KiB": 10728,
+      "Private_Dirty_KiB": 171036,
+      "rank": 8,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 194592,
+      "Pss_KiB": 169745,
+      "Shared_Dirty_KiB": 10700,
+      "Private_Dirty_KiB": 168208,
+      "rank": 9,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 194644,
+      "Pss_KiB": 169886,
+      "Shared_Dirty_KiB": 10692,
+      "Private_Dirty_KiB": 168360,
+      "rank": 10,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 196800,
+      "Pss_KiB": 171942,
+      "Shared_Dirty_KiB": 10620,
+      "Private_Dirty_KiB": 170400,
+      "rank": 11,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 245044,
+      "Pss_KiB": 220095,
+      "Shared_Dirty_KiB": 10692,
+      "Private_Dirty_KiB": 218548,
+      "rank": 12,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 195456,
+      "Pss_KiB": 170485,
+      "Shared_Dirty_KiB": 10636,
+      "Private_Dirty_KiB": 168936,
+      "rank": 13,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 195316,
+      "Pss_KiB": 170537,
+      "Shared_Dirty_KiB": 10612,
+      "Private_Dirty_KiB": 169008,
+      "rank": 14,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 196872,
+      "Pss_KiB": 171949,
+      "Shared_Dirty_KiB": 10712,
+      "Private_Dirty_KiB": 170404,
+      "rank": 15,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 203284,
+      "Pss_KiB": 178130,
+      "Shared_Dirty_KiB": 10760,
+      "Private_Dirty_KiB": 176580,
+      "rank": 16,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 244972,
+      "Pss_KiB": 219970,
+      "Shared_Dirty_KiB": 10680,
+      "Private_Dirty_KiB": 218420,
+      "rank": 17,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 201032,
+      "Pss_KiB": 175976,
+      "Shared_Dirty_KiB": 10740,
+      "Private_Dirty_KiB": 174432,
+      "rank": 18,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 197524,
+      "Pss_KiB": 172496,
+      "Shared_Dirty_KiB": 10764,
+      "Private_Dirty_KiB": 170952,
+      "rank": 19,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 201620,
+      "Pss_KiB": 176658,
+      "Shared_Dirty_KiB": 10788,
+      "Private_Dirty_KiB": 175116,
+      "rank": 20,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 199740,
+      "Pss_KiB": 174571,
+      "Shared_Dirty_KiB": 10720,
+      "Private_Dirty_KiB": 173012,
+      "rank": 21,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 198908,
+      "Pss_KiB": 173855,
+      "Shared_Dirty_KiB": 10692,
+      "Private_Dirty_KiB": 172308,
+      "rank": 22,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 254952,
+      "Pss_KiB": 229760,
+      "Shared_Dirty_KiB": 10792,
+      "Private_Dirty_KiB": 228196,
+      "rank": 23,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 198992,
+      "Pss_KiB": 174493,
+      "Shared_Dirty_KiB": 10628,
+      "Private_Dirty_KiB": 173008,
+      "rank": 24,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 201080,
+      "Pss_KiB": 176560,
+      "Shared_Dirty_KiB": 10696,
+      "Private_Dirty_KiB": 175044,
+      "rank": 25,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 245152,
+      "Pss_KiB": 220748,
+      "Shared_Dirty_KiB": 10624,
+      "Private_Dirty_KiB": 219256,
+      "rank": 26,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 196164,
+      "Pss_KiB": 171762,
+      "Shared_Dirty_KiB": 10696,
+      "Private_Dirty_KiB": 170260,
+      "rank": 27,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 196460,
+      "Pss_KiB": 171830,
+      "Shared_Dirty_KiB": 10612,
+      "Private_Dirty_KiB": 170324,
+      "rank": 28,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 198528,
+      "Pss_KiB": 173875,
+      "Shared_Dirty_KiB": 10660,
+      "Private_Dirty_KiB": 172360,
+      "rank": 29,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 201604,
+      "Pss_KiB": 176669,
+      "Shared_Dirty_KiB": 10728,
+      "Private_Dirty_KiB": 175116,
+      "rank": 30,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 196380,
+      "Pss_KiB": 171431,
+      "Shared_Dirty_KiB": 10704,
+      "Private_Dirty_KiB": 169876,
+      "rank": 31,
+      "host": "cn12107"
+    }
+  ],
+  "setup_seconds": 58.27727913192939,
+  "memory_setup": [
+    {
+      "Rss_KiB": 629088,
+      "Pss_KiB": 603323,
+      "Shared_Dirty_KiB": 11236,
+      "Private_Dirty_KiB": 601668,
+      "rank": 0,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 694588,
+      "Pss_KiB": 669334,
+      "Shared_Dirty_KiB": 10664,
+      "Private_Dirty_KiB": 667768,
+      "rank": 1,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 686612,
+      "Pss_KiB": 661585,
+      "Shared_Dirty_KiB": 10752,
+      "Private_Dirty_KiB": 660044,
+      "rank": 2,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 648488,
+      "Pss_KiB": 623514,
+      "Shared_Dirty_KiB": 10744,
+      "Private_Dirty_KiB": 621980,
+      "rank": 3,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 644448,
+      "Pss_KiB": 619275,
+      "Shared_Dirty_KiB": 10728,
+      "Private_Dirty_KiB": 617728,
+      "rank": 4,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 648112,
+      "Pss_KiB": 622911,
+      "Shared_Dirty_KiB": 10812,
+      "Private_Dirty_KiB": 621360,
+      "rank": 5,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 642100,
+      "Pss_KiB": 617014,
+      "Shared_Dirty_KiB": 10724,
+      "Private_Dirty_KiB": 615472,
+      "rank": 6,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 643756,
+      "Pss_KiB": 618362,
+      "Shared_Dirty_KiB": 10880,
+      "Private_Dirty_KiB": 616788,
+      "rank": 7,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 645064,
+      "Pss_KiB": 619970,
+      "Shared_Dirty_KiB": 10756,
+      "Private_Dirty_KiB": 618424,
+      "rank": 8,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 636452,
+      "Pss_KiB": 611313,
+      "Shared_Dirty_KiB": 10732,
+      "Private_Dirty_KiB": 609760,
+      "rank": 9,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 639932,
+      "Pss_KiB": 614876,
+      "Shared_Dirty_KiB": 10724,
+      "Private_Dirty_KiB": 613332,
+      "rank": 10,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 642356,
+      "Pss_KiB": 617222,
+      "Shared_Dirty_KiB": 10656,
+      "Private_Dirty_KiB": 615664,
+      "rank": 11,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 690580,
+      "Pss_KiB": 665364,
+      "Shared_Dirty_KiB": 10720,
+      "Private_Dirty_KiB": 663800,
+      "rank": 12,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 639296,
+      "Pss_KiB": 614052,
+      "Shared_Dirty_KiB": 10668,
+      "Private_Dirty_KiB": 612488,
+      "rank": 13,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 640664,
+      "Pss_KiB": 615532,
+      "Shared_Dirty_KiB": 10644,
+      "Private_Dirty_KiB": 613980,
+      "rank": 14,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 643736,
+      "Pss_KiB": 618555,
+      "Shared_Dirty_KiB": 10724,
+      "Private_Dirty_KiB": 617000,
+      "rank": 15,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 645680,
+      "Pss_KiB": 620292,
+      "Shared_Dirty_KiB": 10760,
+      "Private_Dirty_KiB": 618720,
+      "rank": 16,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 690476,
+      "Pss_KiB": 665236,
+      "Shared_Dirty_KiB": 10708,
+      "Private_Dirty_KiB": 663660,
+      "rank": 17,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 647456,
+      "Pss_KiB": 622149,
+      "Shared_Dirty_KiB": 10768,
+      "Private_Dirty_KiB": 620576,
+      "rank": 18,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 635768,
+      "Pss_KiB": 610520,
+      "Shared_Dirty_KiB": 10792,
+      "Private_Dirty_KiB": 608952,
+      "rank": 19,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 645316,
+      "Pss_KiB": 620100,
+      "Shared_Dirty_KiB": 10816,
+      "Private_Dirty_KiB": 618528,
+      "rank": 20,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 644092,
+      "Pss_KiB": 618671,
+      "Shared_Dirty_KiB": 10744,
+      "Private_Dirty_KiB": 617084,
+      "rank": 21,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 647516,
+      "Pss_KiB": 622206,
+      "Shared_Dirty_KiB": 10720,
+      "Private_Dirty_KiB": 620632,
+      "rank": 22,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 706496,
+      "Pss_KiB": 681041,
+      "Shared_Dirty_KiB": 10816,
+      "Private_Dirty_KiB": 679448,
+      "rank": 23,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 647552,
+      "Pss_KiB": 622800,
+      "Shared_Dirty_KiB": 10652,
+      "Private_Dirty_KiB": 621288,
+      "rank": 24,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 647680,
+      "Pss_KiB": 622863,
+      "Shared_Dirty_KiB": 10720,
+      "Private_Dirty_KiB": 621316,
+      "rank": 25,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 687980,
+      "Pss_KiB": 663325,
+      "Shared_Dirty_KiB": 10652,
+      "Private_Dirty_KiB": 661808,
+      "rank": 26,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 641324,
+      "Pss_KiB": 616691,
+      "Shared_Dirty_KiB": 10724,
+      "Private_Dirty_KiB": 615164,
+      "rank": 27,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 642700,
+      "Pss_KiB": 617839,
+      "Shared_Dirty_KiB": 10640,
+      "Private_Dirty_KiB": 616308,
+      "rank": 28,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 639172,
+      "Pss_KiB": 614298,
+      "Shared_Dirty_KiB": 10688,
+      "Private_Dirty_KiB": 612760,
+      "rank": 29,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 645176,
+      "Pss_KiB": 620025,
+      "Shared_Dirty_KiB": 10748,
+      "Private_Dirty_KiB": 618452,
+      "rank": 30,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 631056,
+      "Pss_KiB": 605902,
+      "Shared_Dirty_KiB": 10708,
+      "Private_Dirty_KiB": 604332,
+      "rank": 31,
+      "host": "cn12107"
+    }
+  ],
+  "memory_single": [
+    {
+      "Rss_KiB": 810516,
+      "Pss_KiB": 784627,
+      "Shared_Dirty_KiB": 11364,
+      "Private_Dirty_KiB": 782968,
+      "rank": 0,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 858536,
+      "Pss_KiB": 833179,
+      "Shared_Dirty_KiB": 10772,
+      "Private_Dirty_KiB": 831608,
+      "rank": 1,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 850576,
+      "Pss_KiB": 825430,
+      "Shared_Dirty_KiB": 10876,
+      "Private_Dirty_KiB": 823884,
+      "rank": 2,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 808352,
+      "Pss_KiB": 783263,
+      "Shared_Dirty_KiB": 10864,
+      "Private_Dirty_KiB": 781724,
+      "rank": 3,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 826824,
+      "Pss_KiB": 801551,
+      "Shared_Dirty_KiB": 10832,
+      "Private_Dirty_KiB": 800000,
+      "rank": 4,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 807972,
+      "Pss_KiB": 782661,
+      "Shared_Dirty_KiB": 10928,
+      "Private_Dirty_KiB": 781104,
+      "rank": 5,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 801932,
+      "Pss_KiB": 776762,
+      "Shared_Dirty_KiB": 10812,
+      "Private_Dirty_KiB": 775216,
+      "rank": 6,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 803620,
+      "Pss_KiB": 778111,
+      "Shared_Dirty_KiB": 11000,
+      "Private_Dirty_KiB": 776532,
+      "rank": 7,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 809012,
+      "Pss_KiB": 783814,
+      "Shared_Dirty_KiB": 10864,
+      "Private_Dirty_KiB": 782264,
+      "rank": 8,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 818832,
+      "Pss_KiB": 793590,
+      "Shared_Dirty_KiB": 10840,
+      "Private_Dirty_KiB": 792032,
+      "rank": 9,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 799776,
+      "Pss_KiB": 774624,
+      "Shared_Dirty_KiB": 10824,
+      "Private_Dirty_KiB": 773076,
+      "rank": 10,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 802208,
+      "Pss_KiB": 776970,
+      "Shared_Dirty_KiB": 10764,
+      "Private_Dirty_KiB": 775408,
+      "rank": 11,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 854544,
+      "Pss_KiB": 829208,
+      "Shared_Dirty_KiB": 10844,
+      "Private_Dirty_KiB": 827640,
+      "rank": 12,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 803232,
+      "Pss_KiB": 777898,
+      "Shared_Dirty_KiB": 10764,
+      "Private_Dirty_KiB": 776328,
+      "rank": 13,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 806672,
+      "Pss_KiB": 781425,
+      "Shared_Dirty_KiB": 10764,
+      "Private_Dirty_KiB": 779868,
+      "rank": 14,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 807688,
+      "Pss_KiB": 782401,
+      "Shared_Dirty_KiB": 10836,
+      "Private_Dirty_KiB": 780840,
+      "rank": 15,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 805536,
+      "Pss_KiB": 780035,
+      "Shared_Dirty_KiB": 10872,
+      "Private_Dirty_KiB": 778464,
+      "rank": 16,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 850348,
+      "Pss_KiB": 824979,
+      "Shared_Dirty_KiB": 10836,
+      "Private_Dirty_KiB": 823404,
+      "rank": 17,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 807308,
+      "Pss_KiB": 781892,
+      "Shared_Dirty_KiB": 10876,
+      "Private_Dirty_KiB": 780320,
+      "rank": 18,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 795624,
+      "Pss_KiB": 770263,
+      "Shared_Dirty_KiB": 10904,
+      "Private_Dirty_KiB": 768696,
+      "rank": 19,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 805172,
+      "Pss_KiB": 779842,
+      "Shared_Dirty_KiB": 10928,
+      "Private_Dirty_KiB": 778272,
+      "rank": 20,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 808048,
+      "Pss_KiB": 782510,
+      "Shared_Dirty_KiB": 10860,
+      "Private_Dirty_KiB": 780924,
+      "rank": 21,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 811472,
+      "Pss_KiB": 786045,
+      "Shared_Dirty_KiB": 10836,
+      "Private_Dirty_KiB": 784472,
+      "rank": 22,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 866352,
+      "Pss_KiB": 840784,
+      "Shared_Dirty_KiB": 10928,
+      "Private_Dirty_KiB": 839192,
+      "rank": 23,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 811508,
+      "Pss_KiB": 786639,
+      "Shared_Dirty_KiB": 10768,
+      "Private_Dirty_KiB": 785128,
+      "rank": 24,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 813684,
+      "Pss_KiB": 788750,
+      "Shared_Dirty_KiB": 10836,
+      "Private_Dirty_KiB": 787204,
+      "rank": 25,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 851896,
+      "Pss_KiB": 827163,
+      "Shared_Dirty_KiB": 10728,
+      "Private_Dirty_KiB": 825648,
+      "rank": 26,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 801156,
+      "Pss_KiB": 776433,
+      "Shared_Dirty_KiB": 10812,
+      "Private_Dirty_KiB": 774908,
+      "rank": 27,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 808692,
+      "Pss_KiB": 783725,
+      "Shared_Dirty_KiB": 10744,
+      "Private_Dirty_KiB": 782196,
+      "rank": 28,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 821544,
+      "Pss_KiB": 796568,
+      "Shared_Dirty_KiB": 10788,
+      "Private_Dirty_KiB": 795032,
+      "rank": 29,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 809104,
+      "Pss_KiB": 783863,
+      "Shared_Dirty_KiB": 10836,
+      "Private_Dirty_KiB": 782292,
+      "rank": 30,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 806120,
+      "Pss_KiB": 780869,
+      "Shared_Dirty_KiB": 10804,
+      "Private_Dirty_KiB": 779300,
+      "rank": 31,
+      "host": "cn12107"
+    }
+  ],
+  "single_full12_relative_error": 0.0,
+  "single_api_summary": {
+    "first_seconds": 4.427737758960575,
+    "second_seconds": 4.123585083987564,
+    "steady_median_seconds": 4.118593889987096,
+    "samples": 3
+  },
+  "single_pure_summary": {
+    "first_seconds": 4.397476998999998,
+    "second_seconds": 4.094031141999999,
+    "steady_median_seconds": 4.089865877499999,
+    "best_seconds": 4.085700613
+  },
+  "twelve_api_summary": {
+    "first_seconds": 36.16360116493888,
+    "second_seconds": 35.6272838000441,
+    "steady_median_seconds": 35.50140667997766,
+    "samples": 3
+  },
+  "twelve_pure_summary": {
+    "first_seconds": 35.53360917799998,
+    "second_seconds": 34.94135945200003,
+    "steady_median_seconds": 34.86492746400002,
+    "best_seconds": 34.78849547600001
+  },
+  "memory_measured": [
+    {
+      "Rss_KiB": 1084996,
+      "Pss_KiB": 1059110,
+      "Shared_Dirty_KiB": 11364,
+      "Private_Dirty_KiB": 1057448,
+      "rank": 0,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1156716,
+      "Pss_KiB": 1131363,
+      "Shared_Dirty_KiB": 10772,
+      "Private_Dirty_KiB": 1129788,
+      "rank": 1,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1145024,
+      "Pss_KiB": 1119839,
+      "Shared_Dirty_KiB": 10876,
+      "Private_Dirty_KiB": 1118284,
+      "rank": 2,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1099456,
+      "Pss_KiB": 1074372,
+      "Shared_Dirty_KiB": 10864,
+      "Private_Dirty_KiB": 1072828,
+      "rank": 3,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1102300,
+      "Pss_KiB": 1077032,
+      "Shared_Dirty_KiB": 10832,
+      "Private_Dirty_KiB": 1075476,
+      "rank": 4,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1093132,
+      "Pss_KiB": 1067782,
+      "Shared_Dirty_KiB": 10928,
+      "Private_Dirty_KiB": 1066216,
+      "rank": 5,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1094220,
+      "Pss_KiB": 1069011,
+      "Shared_Dirty_KiB": 10812,
+      "Private_Dirty_KiB": 1067456,
+      "rank": 6,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1096640,
+      "Pss_KiB": 1071095,
+      "Shared_Dirty_KiB": 11000,
+      "Private_Dirty_KiB": 1069508,
+      "rank": 7,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1102004,
+      "Pss_KiB": 1076764,
+      "Shared_Dirty_KiB": 10868,
+      "Private_Dirty_KiB": 1075204,
+      "rank": 8,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1107804,
+      "Pss_KiB": 1082566,
+      "Shared_Dirty_KiB": 10840,
+      "Private_Dirty_KiB": 1081004,
+      "rank": 9,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1102512,
+      "Pss_KiB": 1077365,
+      "Shared_Dirty_KiB": 10824,
+      "Private_Dirty_KiB": 1075812,
+      "rank": 10,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1092840,
+      "Pss_KiB": 1067606,
+      "Shared_Dirty_KiB": 10764,
+      "Private_Dirty_KiB": 1066040,
+      "rank": 11,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1147208,
+      "Pss_KiB": 1121876,
+      "Shared_Dirty_KiB": 10844,
+      "Private_Dirty_KiB": 1120304,
+      "rank": 12,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1097392,
+      "Pss_KiB": 1072064,
+      "Shared_Dirty_KiB": 10764,
+      "Private_Dirty_KiB": 1070488,
+      "rank": 13,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1100568,
+      "Pss_KiB": 1075325,
+      "Shared_Dirty_KiB": 10764,
+      "Private_Dirty_KiB": 1073764,
+      "rank": 14,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1095684,
+      "Pss_KiB": 1070401,
+      "Shared_Dirty_KiB": 10836,
+      "Private_Dirty_KiB": 1068836,
+      "rank": 15,
+      "host": "cn12057"
+    },
+    {
+      "Rss_KiB": 1095892,
+      "Pss_KiB": 1070396,
+      "Shared_Dirty_KiB": 10872,
+      "Private_Dirty_KiB": 1068820,
+      "rank": 16,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1142412,
+      "Pss_KiB": 1117048,
+      "Shared_Dirty_KiB": 10836,
+      "Private_Dirty_KiB": 1115468,
+      "rank": 17,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1095932,
+      "Pss_KiB": 1070521,
+      "Shared_Dirty_KiB": 10876,
+      "Private_Dirty_KiB": 1068944,
+      "rank": 18,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1085956,
+      "Pss_KiB": 1060600,
+      "Shared_Dirty_KiB": 10904,
+      "Private_Dirty_KiB": 1059028,
+      "rank": 19,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1095524,
+      "Pss_KiB": 1070159,
+      "Shared_Dirty_KiB": 10928,
+      "Private_Dirty_KiB": 1068580,
+      "rank": 20,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1100404,
+      "Pss_KiB": 1074871,
+      "Shared_Dirty_KiB": 10860,
+      "Private_Dirty_KiB": 1073280,
+      "rank": 21,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1103828,
+      "Pss_KiB": 1078406,
+      "Shared_Dirty_KiB": 10836,
+      "Private_Dirty_KiB": 1076828,
+      "rank": 22,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1156660,
+      "Pss_KiB": 1131097,
+      "Shared_Dirty_KiB": 10928,
+      "Private_Dirty_KiB": 1129500,
+      "rank": 23,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1103864,
+      "Pss_KiB": 1079000,
+      "Shared_Dirty_KiB": 10768,
+      "Private_Dirty_KiB": 1077484,
+      "rank": 24,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1113008,
+      "Pss_KiB": 1088079,
+      "Shared_Dirty_KiB": 10836,
+      "Private_Dirty_KiB": 1086528,
+      "rank": 25,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1144404,
+      "Pss_KiB": 1119676,
+      "Shared_Dirty_KiB": 10728,
+      "Private_Dirty_KiB": 1118156,
+      "rank": 26,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1089488,
+      "Pss_KiB": 1064770,
+      "Shared_Dirty_KiB": 10812,
+      "Private_Dirty_KiB": 1063240,
+      "rank": 27,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1122948,
+      "Pss_KiB": 1097987,
+      "Shared_Dirty_KiB": 10744,
+      "Private_Dirty_KiB": 1096452,
+      "rank": 28,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1098476,
+      "Pss_KiB": 1073506,
+      "Shared_Dirty_KiB": 10788,
+      "Private_Dirty_KiB": 1071964,
+      "rank": 29,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1101344,
+      "Pss_KiB": 1076108,
+      "Shared_Dirty_KiB": 10836,
+      "Private_Dirty_KiB": 1074532,
+      "rank": 30,
+      "host": "cn12107"
+    },
+    {
+      "Rss_KiB": 1076180,
+      "Pss_KiB": 1050934,
+      "Shared_Dirty_KiB": 10804,
+      "Private_Dirty_KiB": 1049360,
+      "rank": 31,
+      "host": "cn12107"
+    }
+  ],
+  "timing_excludes": "read, stout, gauge/clover, setup, output and independent scalar verification",
+  "independent_verification": {
+    "passed": true,
+    "columns": [
+      {
+        "column": 0,
+        "residual": 2.2830233163303407e-09
+      },
+      {
+        "column": 1,
+        "residual": 2.2830233163303407e-09
+      },
+      {
+        "column": 2,
+        "residual": 3.853375537896322e-09
+      },
+      {
+        "column": 3,
+        "residual": 4.497187254250374e-09
+      },
+      {
+        "column": 4,
+        "residual": 3.748932147711634e-09
+      },
+      {
+        "column": 5,
+        "residual": 4.490719515747209e-09
+      },
+      {
+        "column": 6,
+        "residual": 4.684944007564602e-09
+      },
+      {
+        "column": 7,
+        "residual": 4.263249488077863e-09
+      },
+      {
+        "column": 8,
+        "residual": 2.981294286617869e-09
+      },
+      {
+        "column": 9,
+        "residual": 2.694624808178625e-09
+      },
+      {
+        "column": 10,
+        "residual": 4.46040397237958e-09
+      },
+      {
+        "column": 11,
+        "residual": 2.2705393452870807e-09
+      },
+      {
+        "column": 12,
+        "residual": 3.0798747714628515e-09
+      }
+    ],
+    "method": "independent scalar full-spin padded slabs"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "frozen_utc": "2026-11-14",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "sha256": "8dbb25e8b1d24cdf4e1ecdf7fc1f0f7e540a2e1f95796e03d874c95a6b19462d"
+    }
+  ],
+  "references": [
+    "https://man7.org/linux/man-pages/man2/mmap.2.html",
+    "https://man7.org/linux/man-pages/man2/memfd_create.2.html"
+  ]
+}
