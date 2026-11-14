@@ -7,6 +7,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <iomanip>
 #include <stdexcept>
 #include <string>
 
@@ -16,7 +17,9 @@ static void read(const std::string &path, Field &v) {
         throw std::runtime_error("short scalar oracle input: "+path);
 }
 int main(int argc,char **argv) {
-    MPI_Init(&argc,&argv);
+    int provided;
+    MPI_Init_thread(&argc,&argv,MPI_THREAD_FUNNELED,&provided);
+    if(provided<MPI_THREAD_FUNNELED) MPI_Abort(MPI_COMM_WORLD,2);
     int rank,ranks; MPI_Comm_rank(MPI_COMM_WORLD,&rank); MPI_Comm_size(MPI_COMM_WORLD,&ranks);
     try {
         if(argc!=9) throw std::runtime_error("usage: verify_slab ROOT L T MASS CSW TOL SOURCE_T COLUMNS");
@@ -61,7 +64,7 @@ int main(int argc,char **argv) {
             }
             MPI_Allreduce(MPI_IN_PLACE,&sum,1,MPI_DOUBLE,MPI_SUM,MPI_COMM_WORLD);
             double rel=std::sqrt(sum)*std::abs(4+mass);
-            if(rank==0) std::cout<<"SCALAR_COLUMN "<<col<<" "<<std::scientific<<rel<<std::endl;
+            if(rank==0) std::cout<<"SCALAR_COLUMN "<<col<<" "<<std::scientific<<std::setprecision(17)<<rel<<std::endl;
             if(!std::isfinite(rel)||rel>tol) throw std::runtime_error("independent scalar residual failed");
         }
         if(rank==0) std::cout<<"SCALAR_ALL_PASSED"<<std::endl;
