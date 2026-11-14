@@ -56,7 +56,7 @@ Estimated principal resident data on each of two nodes:
 | FP64 gauge, owned plus physical faces, and owned Clover | 54 GiB |
 | Owned FP32 links/diag/inverse/basis, one Impl | 63 GiB |
 | 24 setup test vectors, owned plus physical faces | 54 GiB |
-| Batch2 GCR directions/images at restart24, including halos | up to 216 GiB |
+| Batch2 GCR directions/images at restart16, including halos | up to 144 GiB |
 
 These rows have different lifetimes and must not simply be summed. Setup-only
 FP64 basis and test vectors are gone before batch2 GCR capacity is allocated.
@@ -71,3 +71,13 @@ Two-node campaign job 2124786 uses commit 891b232, after the one-node gate exits
 The launcher reserves two whole nodes, then explicitly maps 16 ranks per host;
 `--oversubscribe` overrides Donau's one task-slot per whole-node reservation,
 not the granted physical CPU masks (rank_exec assigns disjoint 32-core masks).
+
+Two-node regression job 2124786 passed all 10 selected CTests in 725.06 s,
+including compact basis, ordinary/shared CPU, shared full12, distributed CPU,
+full12, halo and SAP EO. Its campaign script was updated while bash was waiting
+inside the gate child; the running shell reached EOF after the gate instead of
+dispatching the newly added continuation. The job ended SUCCEEDED without any
+real-input measurement. This is an orchestration failure, not a numerical result.
+Do not edit a running campaign script again. A fresh frozen campaign invocation
+can reuse the completed build via its third argument, rebuilding and rerunning
+the compact/distributed solve gates before the cross-host and real-input stages.

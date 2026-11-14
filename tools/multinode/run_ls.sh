@@ -12,7 +12,6 @@ esac
 mkdir -p "$out"
 exec > >(tee "$out/run.log") 2>&1
 source "$root/tools/multinode/ls_env.sh"
-unset OMPI_MCA_ras OMPI_MCA_plm OMPI_MCA_btl OMPI_MCA_pml
 export PYTHONPATH=$root/bindings
 export LQCD_DISTRIBUTED_STORAGE=1 LQCD_ARM_SVE=1 LQCD_ARM_SVE_REUSE=1
 export LQCD_ARM_COARSE_SVE=0 LQCD_ARM_SVE_TRANSFER=0
@@ -33,6 +32,7 @@ if [[ ${LQCD_MULTINODE_SKIP_GATES:-0} != 1 ]]; then
     -R '^(compact_basis|distributed_cpu_backend_mpi2|distributed_batch12_mpi2)$'
 fi
 sha256sum "$build/liblqcd_cpu.so" "$build/verify_slab" > "$out/build.sha256"
+unset OMPI_MCA_ras OMPI_MCA_plm OMPI_MCA_btl OMPI_MCA_pml
 scratch=/tmp/lqcd-C64-$(basename "$out")
 mpirun -n 32 --oversubscribe --map-by ppr:16:node --bind-to none \
   python tools/multinode/rank_exec.py python -u benchmarks/runtime/benchmark_multinode.py \
