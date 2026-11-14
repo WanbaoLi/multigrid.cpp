@@ -37,6 +37,10 @@ unset OMPI_MCA_ras OMPI_MCA_plm OMPI_MCA_btl OMPI_MCA_pml
 # collective baseline. Record the selected components with every result.
 export OMPI_MCA_coll=${LQCD_MPI_COLLECTIVES:-basic,tuned,self,libnbc}
 export OMPI_MCA_pml=${LQCD_MPI_PML:-ob1} OMPI_MCA_btl=${LQCD_MPI_BTL:-self,vader,tcp}
+if [[ -n ${LQCD_MPI_TCP_IF:-} ]]; then
+  export OMPI_MCA_btl_tcp_if_include=$LQCD_MPI_TCP_IF
+  export OMPI_MCA_oob_tcp_if_include=$LQCD_MPI_TCP_IF
+fi
 timeout 90s mpirun -n 32 --oversubscribe --map-by ppr:16:node --bind-to none \
   python tools/multinode/rank_exec.py python -u tests/runtime/test_multinode_communication.py
 scratch=/tmp/lqcd-C64-${CCS_JOB_ID:-manual}-$(printf %s "$out" | sha256sum | cut -c1-12)
