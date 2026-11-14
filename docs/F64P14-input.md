@@ -1,5 +1,7 @@
 # F64P14：64³×128 测试组态
 
+上传已于 2026-11-14 完成。灵晟正式文件大小为 `19327493608` 字节，合并后的 SHA256 及再次独立读取正式文件的 SHA256 均与下列源校验值一致。`.parts/` 和 `.partial` 已移除。传输及用户授权的旧传播子清理记录见 `experiments/input-transfers/F64P14-cfg1000.json`。本记录只确认输入准备完成，不表示多节点求解已通过。
+
 选用文件 `beta6.41_mu-0.2334_ms-0.2030_L64x128_cfg_1000.lime`。
 
 - 来源：`kunshan:/public/home/huzhch_p/Configure_clover/beta6.41_mu-0.2334_ms-0.2030_L64x128/`

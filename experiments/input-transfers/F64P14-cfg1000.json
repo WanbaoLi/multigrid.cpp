@@ -1,0 +1,116 @@
+{
+  "complete": true,
+  "source_host": "kunshan",
+  "source_path": "/public/home/huzhch_p/Configure_clover/beta6.41_mu-0.2334_ms-0.2030_L64x128/beta6.41_mu-0.2334_ms-0.2030_L64x128_cfg_1000.lime",
+  "destination_host": "ls",
+  "destination_path": "/home/share/nsls_lwb/inputs/F64P14/beta6.41_mu-0.2334_ms-0.2030_L64x128_cfg_1000.lime",
+  "bytes": 19327493608,
+  "sha256": "30790de7907dc66a6555bd62fb276d365aceedb07cb9eb3bc7e567847a250183",
+  "parallel": 4,
+  "chunk_bytes": 1073741824,
+  "elapsed_seconds": 2391.0929999999935,
+  "transfer_tool_commit": "cde4f113b2df2c907365ffd10baa7e2f6ba8698f",
+  "verified_utc": "2026-11-14T05:26:43Z",
+  "independent_final_file_sha256_verified": true,
+  "partial_and_parts_removed": true,
+  "elapsed_scope": "final resumed invocation only; excludes earlier attempts",
+  "quota_cleanup": {
+    "user_authorized": true,
+    "files": [
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/010-baseline/measurements/full12/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/010a-profile/measurements/full12/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/011-fused/measurements/full12/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/012-sve/measurements/full12/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/013-fused-sve/measurements/full12/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/014-baseline-bracket/measurements/full12/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/016-hbw-baseline/measurements/full12/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/019-frozen-control/measurements/full12/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/020-sve-reuse/measurements/full12/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/021-coarse-overlap/measurements/full12/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/022-schedule-control/measurements/022-schedule-control/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/022-schedule-control/measurements/023-coarse16/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/022-schedule-control/measurements/024-whole32/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/022-schedule-control/measurements/025-whole16/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/030-work-control/measurements/030-work-control/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/030-work-control/measurements/031-sap5/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/030-work-control/measurements/032-coarse005/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/030-work-control/measurements/033-coarse02/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/030-work-control/measurements/034-correction003/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/035-refine-control/measurements/035-refine-control/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/035-refine-control/measurements/036-correction-confirm/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/035-refine-control/measurements/037-sap3/propagator.npy",
+        "bytes": 2038431872
+      },
+      {
+        "path": "/home/share/nsls_lwb/.cache/mg-opt-20261103/campaign/attempts/035-refine-control/measurements/038-known-profile/propagator.npy",
+        "bytes": 2038431872
+      }
+    ],
+    "freed_bytes": 46883933056,
+    "scope": "only selected historical propagator.npy outputs; source, gauge, JSON and logs preserved"
+  }
+}
