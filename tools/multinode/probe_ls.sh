@@ -4,6 +4,7 @@ root=$(cd "$(dirname "$0")/../.." && pwd)
 source "$root/tools/multinode/ls_env.sh"
 unset OMPI_MCA_ras OMPI_MCA_plm OMPI_MCA_btl OMPI_MCA_pml
 export OMPI_MCA_coll=${LQCD_MPI_COLLECTIVES:-basic,tuned,self,libnbc}
+export OMPI_MCA_pml=${LQCD_MPI_PML:-ob1} OMPI_MCA_btl=${LQCD_MPI_BTL:-self,vader,tcp}
 echo PROBE_HOST $(hostname)
 python - <<'PY'
 import os

@@ -18,6 +18,11 @@ def phase(name):
 
 try:
     assert comm.size >= 32 and comm.size % 16 == 0
+    if rank == 0:
+        print('COMM_CONFIGURATION', json.dumps(dict(
+            library=MPI.Get_library_version(),
+            environment={k:v for k,v in os.environ.items() if k.startswith('OMPI_MCA_')}
+        )), flush=True)
     phase('shared_split')
     local = comm.Split_type(MPI.COMM_TYPE_SHARED)
     assert local.size == 16
