@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
 root=$(cd "$(dirname "$0")/../.." && pwd)
 out=$1
 gauge=$2
