@@ -68,3 +68,17 @@ cover the activated packed backend and mixed batch12 under shared coefficients.
 Rollback: leave `LQCD_ARM_WILSON_PACKED=0` (the default), or use the unchanged
 `lingsheng-shared-uniform.json` production profile. Best correct implementation
 is not replaced unless matched complete-solve evidence supports promotion.
+
+## Reusing an already qualified build
+
+`tools/optimization/run_arm_packed_reuse.sh FROZEN_SOURCE CHECKED_BASELINE NEW_ROOT GAUGE`
+continues from a completed original baseline without rebuilding or repeating the
+same CTests. It requires the same physical node, clean frozen source at the
+recorded commit, a completed independent baseline gate, candidate-on MPI/kernel
+CTest evidence, and successful checks of the recorded executable/library hashes.
+It then runs packed and original contexts with the same compiled binary. Set
+`LQCD_CONTROLLER_COMMIT` to the published controller revision. Metadata keeps
+controller and compiled-source provenance separate and labels reused CTests.
+The checked baseline is linked into the fresh comparison directory; interrupted
+outputs remain in their original directory. New solves retain independent
+13-column scalar residual checks and all warm/steady timing samples.
