@@ -35,22 +35,46 @@ void NativeMG::Impl::fine_apply_batch(const std::vector<const FloatField *> &sou
                     first,std::min(end,first+rhs_site_tile),(size_t)cb*24*block_sites);
     };
 #endif
-    auto whole = [&](int cb) {
+    const int slot = color < 0 ? 0 : color + 1;
+    auto apply_sites = [&](int cb, int begin, int end) {
 #if defined(LQCD_NATIVE_PACKED_WILSON)
         if (tiled_rhs) {
-            packed_batch_range(cb,0,block_sites);
+            packed_batch_range(cb, begin, end);
             return;
         }
 #endif
-        for (int r = 0; r < nrhs; r++)
-            block_apply(cb, sources[r]->data(), outputs[r]->data() + (size_t)cb * 24 * block_sites,
-                        false);
+        for (int r = 0; r < nrhs; ++r) {
+            const float *src = sources[r]->data();
+            float *dst = outputs[r]->data() + (size_t)cb * 24 * block_sites;
+#if defined(LQCD_NATIVE_PACKED_WILSON)
+            if (use_packed_coefficients && fine_sites <= (size_t)INT_MAX / 24) {
+                const size_t off = (size_t)(cb - first_aggregate) * packed_block_stride;
+                lqcd_native::kernels::wilson_avx512<true, int, true>(
+                    block_sites, packed_diag.data() + off, packed_links.data() + off,
+                    neighbor32.data() + (size_t)cb * 8 * block_sites, gp, gr, gi, src, dst, begin,
+                    end, (size_t)cb * 24 * block_sites);
+                continue;
+            }
+#endif
+            lqcd_native::kernels::wilson_clover_global_range(
+                cb, block_sites, diag_block(cb), links_block(cb),
+                neighbor.data() + (size_t)cb * 8 * block_sites, gp, gr, gi, src, dst, begin, end,
+                fine_sites * 24
+#if defined(LQCD_NATIVE_ARM_WILSON)
+                ,
+                neighbor32.empty() ? nullptr : neighbor32.data() + (size_t)cb * 8 * block_sites
+#endif
+            );
+        }
+    };
+    auto apply_all = [&] {
+        fine_sites_all[slot].run(omp_get_thread_num(), omp_get_num_threads(), apply_sites);
     };
     if (native_size == 1) {
-#pragma omp parallel for schedule(static)
-        for (int cb = first_aggregate; cb < end_aggregate; cb++)
-            if (color < 0 || colors[cb] == color)
-                whole(cb);
+#pragma omp parallel
+        {
+            apply_all();
+        }
         return;
     }
     const int bt = hierarchy.o.bt, face = block_sites / bt;
@@ -126,49 +150,6 @@ void NativeMG::Impl::fine_apply_batch(const std::vector<const FloatField *> &sou
             }
         }
     };
-    auto range = [&](int cb, int begin_t, int end_t) {
-        if (begin_t >= end_t)
-            return;
-        if (begin_t == 0 && end_t == bt) {
-            whole(cb);
-            return;
-        }
-        const int parities = sap_eo ? 2 : 1, ps = block_sites / parities, pf = face / parities;
-#if defined(LQCD_NATIVE_PACKED_WILSON)
-        if (tiled_rhs) {
-            for (int p = 0; p < parities; ++p)
-                packed_batch_range(cb,p*ps+begin_t*pf,p*ps+end_t*pf);
-            return;
-        }
-#endif
-        for (int r = 0; r < nrhs; r++)
-            for (int p = 0; p < parities; p++) {
-                const float *src = sources[r]->data();
-                float *dst = outputs[r]->data() + (size_t)cb * 24 * block_sites;
-                const int begin = p * ps + begin_t * pf, end = p * ps + end_t * pf;
-#if defined(LQCD_NATIVE_PACKED_WILSON)
-                if (use_packed_coefficients && fine_sites <= (size_t)INT_MAX / 24) {
-                    const size_t off = (size_t)(cb - first_aggregate) * packed_block_stride;
-                    lqcd_native::kernels::wilson_avx512<true, int, true>(
-                        block_sites, packed_diag.data() + off, packed_links.data() + off,
-                        neighbor32.data() + (size_t)cb * 8 * block_sites, gp, gr, gi, src, dst,
-                        begin, end, (size_t)cb * 24 * block_sites);
-                    continue;
-                }
-#endif
-                lqcd_native::kernels::wilson_clover_global_range(
-                    cb, block_sites, diag_block(cb),
-                    links_block(cb),
-                    neighbor.data() + (size_t)cb * 8 * block_sites, gp, gr, gi, src, dst, begin,
-                    end, fine_sites * 24
-#if defined(LQCD_NATIVE_ARM_WILSON)
-                    , neighbor32.empty() ? nullptr : neighbor32.data() + (size_t)cb * 8 * block_sites
-#endif
-                );
-            }
-    };
-    const auto &interior = fine_interior_work[color < 0 ? 0 : color + 1];
-    const auto &boundary = fine_boundary_work[color < 0 ? 0 : color + 1];
 #pragma omp parallel
     {
         const int tid = omp_get_thread_num();
@@ -179,38 +160,17 @@ void NativeMG::Impl::fine_apply_batch(const std::vector<const FloatField *> &sou
             exchange();
         if (halo_overlap) {
             const double start = trace.now();
-#pragma omp for schedule(static) nowait
-            for (int i = 0; i < (int)interior.size(); i++) {
-                const int cb = interior[i];
-                range(cb, cb < first_aggregate + aggregates_per_tslice ? 1 : 0,
-                      bt - (cb >= end_aggregate - aggregates_per_tslice ? 1 : 0));
-            }
+            fine_sites_interior[slot].run(tid, omp_get_num_threads(), apply_sites);
             trace.interior(tid, start);
 #pragma omp barrier
             if (tid == 0)
                 trace.region();
             const double boundary_start = trace.now();
-#pragma omp for schedule(static)
-            for (int i = 0; i < (int)boundary.size(); i++) {
-                const int cb = boundary[i];
-                const bool lo = cb < first_aggregate + aggregates_per_tslice,
-                           hi = cb >= end_aggregate - aggregates_per_tslice;
-                if (lo && hi && bt <= 2)
-                    whole(cb);
-                else {
-                    if (lo)
-                        range(cb, 0, 1);
-                    if (hi)
-                        range(cb, bt - 1, bt);
-                }
-            }
+            fine_sites_boundary[slot].run(tid, omp_get_num_threads(), apply_sites);
             trace.boundary(tid, boundary_start);
         } else {
 #pragma omp barrier
-#pragma omp for schedule(static)
-            for (int cb = first_aggregate; cb < end_aggregate; cb++)
-                if (color < 0 || colors[cb] == color)
-                    whole(cb);
+            apply_all();
         }
     }
 }

@@ -215,22 +215,26 @@ NativeMG::Impl::Impl(const Gauge &gg, const Multigrid &mm, bool eo)
     }
     for (int cb = first_aggregate; cb < end_aggregate; ++cb)
         sap_color_work[colors[cb]].push_back(cb);
-    // Geometry and block colors do not change between operator applications.
-    // Retain the exact ascending-block order of the former per-call lists;
-    // using actual colors also handles odd spatial aggregate extents.
-    if (native_size > 1) {
-        for (int cb = first_aggregate; cb < end_aggregate; cb++) {
-            const bool lower = cb < first_aggregate + aggregates_per_tslice;
-            const bool upper = cb >= end_aggregate - aggregates_per_tslice;
-            const int begin_t = lower ? 1 : 0;
-            const int end_t = hierarchy.o.bt - (upper ? 1 : 0);
-            if (begin_t < end_t) {
-                fine_interior_work[0].push_back(cb);
-                fine_interior_work[colors[cb] + 1].push_back(cb);
-            }
-            if (lower || upper) {
-                fine_boundary_work[0].push_back(cb);
-                fine_boundary_work[colors[cb] + 1].push_back(cb);
+    // Flatten output sites separately for full/color and halo phases. EO
+    // storage has two contiguous parity ranges per physical time interval.
+    for (int cb = first_aggregate; cb < end_aggregate; ++cb) {
+        const int bt = hierarchy.o.bt, parities = sap_eo ? 2 : 1;
+        const int ps = block_sites / parities, pf = ps / bt;
+        const bool lo = native_size > 1 && cb < first_aggregate + aggregates_per_tslice;
+        const bool hi = native_size > 1 && cb >= end_aggregate - aggregates_per_tslice;
+        for (int slot : {0, colors[cb] + 1}) {
+            fine_sites_all[slot].add(cb, 0, block_sites);
+            for (int p = 0; p < parities; ++p) {
+                fine_sites_interior[slot].add(cb, p * ps + (lo ? pf : 0),
+                                              p * ps + ps - (hi ? pf : 0));
+                if (lo && hi && bt <= 2)
+                    fine_sites_boundary[slot].add(cb, p * ps, (p + 1) * ps);
+                else {
+                    if (lo)
+                        fine_sites_boundary[slot].add(cb, p * ps, p * ps + pf);
+                    if (hi)
+                        fine_sites_boundary[slot].add(cb, (p + 1) * ps - pf, (p + 1) * ps);
+                }
             }
         }
     }

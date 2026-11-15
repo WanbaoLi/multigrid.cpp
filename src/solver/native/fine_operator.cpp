@@ -1,7 +1,5 @@
 #include "hierarchy.hpp"
 #include "kernels.hpp"
-#include <cstdlib>
-#include <cstring>
 
 using namespace lqcd_native::detail;
 
@@ -109,11 +107,37 @@ void NativeMG::Impl::block_apply(int cb, const float *src, float *out, bool loca
 
 void NativeMG::Impl::fine_apply(const FloatField &src, FloatField &out, int color) const {
     out.resize(src.size());
+    const int work_slot = color < 0 ? 0 : color + 1;
+    auto apply_sites = [&](int cb, int begin, int end) {
+        float *dst = out.data() + (size_t)cb * 24 * block_sites;
+#if defined(LQCD_NATIVE_PACKED_WILSON)
+        if (use_packed_coefficients && fine_sites <= (size_t)INT_MAX / 24) {
+            const size_t off = (size_t)(cb - first_aggregate) * packed_block_stride;
+            lqcd_native::kernels::wilson_avx512<true, int, true>(
+                block_sites, packed_diag.data() + off, packed_links.data() + off,
+                neighbor32.data() + (size_t)cb * 8 * block_sites, gp, gr, gi, src.data(), dst,
+                begin, end, (size_t)cb * 24 * block_sites);
+            return;
+        }
+#endif
+        lqcd_native::kernels::wilson_clover_global_range(
+            cb, block_sites, diag_block(cb), links_block(cb),
+            neighbor.data() + (size_t)cb * 8 * block_sites, gp, gr, gi, src.data(), dst, begin, end,
+            fine_sites * 24
+#if defined(LQCD_NATIVE_ARM_WILSON)
+            ,
+            neighbor32.empty() ? nullptr : neighbor32.data() + (size_t)cb * 8 * block_sites
+#endif
+        );
+    };
+    auto apply_all = [&] {
+        fine_sites_all[work_slot].run(omp_get_thread_num(), omp_get_num_threads(), apply_sites);
+    };
     if (native_size == 1) {
-#pragma omp parallel for schedule(static)
-        for (int cb = first_aggregate; cb < end_aggregate; cb++)
-            if (color < 0 || colors[cb] == color)
-                block_apply(cb, src.data(), out.data() + (size_t)cb * 24 * block_sites, false);
+#pragma omp parallel
+        {
+            apply_all();
+        }
         return;
     }
     HaloTrace trace(fine_halo_stats, profile_active);
@@ -161,70 +185,6 @@ void NativeMG::Impl::fine_apply(const FloatField &src, FloatField &out, int colo
             pack_face(j);
         post_halo();
     }
-    // An aggregate on a rank boundary still contains independent physical
-    // t slices. Compute those before the halo arrives, not just aggregates
-    // wholly inside the rank. With two bt=4 aggregates this exposes 6/8 of
-    // the physical time slices, whereas aggregate-only partitioning exposes 0.
-    const int block_t = hierarchy.o.bt;
-    auto apply_t_range = [&](int cb, int begin_t, int end_t) {
-        if (begin_t >= end_t)
-            return;
-        float *dst = out.data() + (size_t)cb * 24 * block_sites;
-        if (begin_t == 0 && end_t == block_t) {
-            block_apply(cb, src.data(), dst, false);
-            return;
-        }
-        const int parities = sap_eo ? 2 : 1;
-        const int parity_sites = block_sites / parities;
-        const int parity_face = face / parities;
-        for (int p = 0; p < parities; p++) {
-#if defined(LQCD_NATIVE_PACKED_WILSON)
-            if (use_packed_coefficients && fine_sites <= (size_t)INT_MAX / 24) {
-                const size_t off = (size_t)(cb - first_aggregate) * packed_block_stride;
-                lqcd_native::kernels::wilson_avx512<true, int, true>(
-                    block_sites, packed_diag.data() + off, packed_links.data() + off,
-                    neighbor32.data() + (size_t)cb * 8 * block_sites, gp, gr, gi, src.data(), dst,
-                    p * parity_sites + begin_t * parity_face,
-                    p * parity_sites + end_t * parity_face, (size_t)cb * 24 * block_sites);
-                continue;
-            }
-#endif
-            lqcd_native::kernels::wilson_clover_global_range(
-                cb, block_sites, diag_block(cb),
-                links_block(cb),
-                neighbor.data() + (size_t)cb * 8 * block_sites, gp, gr, gi, src.data(), dst,
-                p * parity_sites + begin_t * parity_face,
-                p * parity_sites + end_t * parity_face, fine_sites * 24
-#if defined(LQCD_NATIVE_ARM_WILSON)
-                , neighbor32.empty() ? nullptr : neighbor32.data() + (size_t)cb * 8 * block_sites
-#endif
-            );
-        }
-    };
-    auto apply_interior = [&](int cb) {
-        const int begin_t = cb < first_aggregate + aggregates_per_tslice ? 1 : 0;
-        const int end_t = block_t - (cb >= end_aggregate - aggregates_per_tslice ? 1 : 0);
-        apply_t_range(cb, begin_t, end_t);
-    };
-    auto apply_boundary = [&](int cb) {
-        const bool lower = cb < first_aggregate + aggregates_per_tslice;
-        const bool upper = cb >= end_aggregate - aggregates_per_tslice;
-        if (lower && upper && block_t <= 2) {
-            // A one-aggregate domain may have coincident faces (bt=1),
-            // or two faces covering the whole block (bt=2). Compute once.
-            block_apply(cb, src.data(), out.data() + (size_t)cb * 24 * block_sites, false);
-            return;
-        }
-        if (lower)
-            apply_t_range(cb, 0, 1);
-        if (upper)
-            apply_t_range(cb, block_t - 1, block_t);
-    };
-    // Reuse immutable geometry/color schedules built with the hierarchy.
-    // SAP uses color 0/1; a negative color requests the full owned image.
-    const int work_slot = color < 0 ? 0 : color + 1;
-    const auto &interior_work = fine_interior_work[work_slot];
-    const auto &boundary_work = fine_boundary_work[work_slot];
     auto unpack = [&] {
         // Ghost slots are outside the owned slice.  Unpack sequentially
         // here: for two ranks with one t aggregate each and bt=1 both
@@ -264,17 +224,13 @@ void NativeMG::Impl::fine_apply(const FloatField &src, FloatField &out, int colo
         trace.wait(wait_start);
         unpack();
         const double compute_start = trace.now();
-#pragma omp parallel for schedule(static)
-        for (int cb = first_aggregate; cb < end_aggregate; cb++)
-            if (color < 0 || colors[cb] == color)
-                block_apply(cb, src.data(), out.data() + (size_t)cb * 24 * block_sites, false);
+#pragma omp parallel
+        {
+            apply_all();
+        }
         trace.compute_all(compute_start);
         return;
     }
-    // Diagnostic-only comparison; avoid changing the process-wide OpenMP
-    // schedule used by other numerical work in the caller.
-    const char *schedule = std::getenv("LQCD_FINE_SCHEDULE");
-    const bool dynamic_schedule = schedule && std::strcmp(schedule, "dynamic") == 0;
 #pragma omp parallel
     {
         const int tid = omp_get_thread_num();
@@ -295,20 +251,10 @@ void NativeMG::Impl::fine_apply(const FloatField &src, FloatField &out, int colo
             trace.wait(wait_start);
             unpack();
         }
-        // Worksharing has no entry barrier: workers compute while tid0
-        // progresses MPI, then tid0 joins after unpack. Static assigns a
-        // share to every thread; dynamic lets a late main thread claim the
-        // remaining tasks. Neither changes per-site arithmetic/order.
+        // Each thread owns a balanced contiguous interval of valid sites.
+        // Thread zero joins after MPI progress, retaining FUNNELED semantics.
         const double work_start = trace.now();
-        if (dynamic_schedule) {
-#pragma omp for schedule(dynamic, 1) nowait
-            for (int i = 0; i < (int)interior_work.size(); i++)
-                apply_interior(interior_work[i]);
-        } else {
-#pragma omp for schedule(static) nowait
-            for (int i = 0; i < (int)interior_work.size(); i++)
-                apply_interior(interior_work[i]);
-        }
+        fine_sites_interior[work_slot].run(tid, omp_get_num_threads(), apply_sites);
         trace.interior(tid, work_start);
         // Interior workers do not read ghost slots; unpack may safely run
         // concurrently.  Boundaries require completion of both phases.
@@ -316,12 +262,7 @@ void NativeMG::Impl::fine_apply(const FloatField &src, FloatField &out, int colo
         if (tid == 0)
             trace.region();
         const double boundary_start = trace.now();
-        // Compact faces balance static scheduling across all workers;
-        // scanning the whole slab would leave most threads without work.
-#pragma omp for schedule(static)
-        for (int i = 0; i < (int)boundary_work.size(); i++) {
-            apply_boundary(boundary_work[i]);
-        }
+        fine_sites_boundary[work_slot].run(tid, omp_get_num_threads(), apply_sites);
         trace.boundary(tid, boundary_start);
     }
 }

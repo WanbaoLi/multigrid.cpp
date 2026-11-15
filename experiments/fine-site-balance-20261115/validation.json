@@ -1,0 +1,75 @@
+{
+  "date": "2026-11-15",
+  "branch": "codex/fine-site-balance-20261115",
+  "base_commit": "141db3982afdbf3f64dd025831bc9edd6adbaa1e",
+  "change": "Balance float fine Wilson-Clover output sites in one-dimensional intervals, including single/batch, full/color and interior/boundary paths.",
+  "partition": {
+    "chunk": "ceil(valid_sites / actual_team_size)",
+    "tail": "clip final interval to valid sites; no padded reads or writes",
+    "example_full_local_sites": 55296,
+    "example_threads": 37,
+    "example_chunk": 1495,
+    "example_last_thread_sites": 1476
+  },
+  "storage": "Retain existing aggregate-major/EO layout and SIMD range kernels; logical flattening does not transpose the fields.",
+  "mpi": "Main thread retains MPI progress; workers compute interior outputs and all threads compute boundary outputs after the existing barrier.",
+  "configuration": "Experimental 37-thread solve profile added; frozen 052 profile unchanged.",
+  "diagnostics": "The former LQCD_FINE_SCHEDULE block-level dynamic diagnostic is superseded by static site interval partitioning.",
+  "environment": {
+    "host": "local Windows WSL Ubuntu x86_64",
+    "compiler": "GCC 15.2.0",
+    "mpi": "MPICH 4.3.2",
+    "python": "3.14",
+    "build_and_dependencies": "outside source checkout under /tmp/lqcd-site-*"
+  },
+  "ctest": [
+    {
+      "build": "Release, MULTIGRID_NATIVE=OFF",
+      "selected": 31,
+      "passed": 31,
+      "coverage": "Core/kernel gates and CPU-only serial/MPI2 gates; fine_site_balance MPI1/2/4 with threads 3->37, single/batch, blocking/overlap."
+    },
+    {
+      "build": "Release, MULTIGRID_NATIVE=ON, AVX-512",
+      "selected": 13,
+      "passed": 13,
+      "coverage": "fine_site_work, Wilson kernels, fine_site_balance MPI1/2/4, cpu_backend serial/MPI2 and distributed MPI2."
+    },
+    {
+      "build": "Release, portable",
+      "selected": 1,
+      "passed": 1,
+      "environment": {
+        "LQCD_TEST_BLOCK_T": "1"
+      },
+      "test": "fine_site_balance_mpi2"
+    },
+    {
+      "build": "Release, AVX-512",
+      "selected": 1,
+      "passed": 1,
+      "environment": {
+        "LQCD_X86_RHS_SITE_TILE": "16"
+      },
+      "test": "fine_site_balance_mpi2"
+    }
+  ],
+  "residual_gate": 1e-08,
+  "independent_check": "Existing cpu_backend serial/MPI2 gates compare against a NumPy Wilson stencil. New 37-thread gates recompute full double residuals and compare single/batch solutions after collective thread changes.",
+  "not_measured": [
+    "LingSheng ARM/SVE execution",
+    "Real 24^3x64 fixture full12 timing",
+    "Performance improvement relative to frozen 052"
+  ],
+  "source_sha256": {
+    "src/solver/native/fine_site_work.hpp": "e6c0fdaf9a453a26134c90ed527f04187ca63e73818b0113567ca58969364432",
+    "src/solver/native/fine_operator.cpp": "d75c7b473db993b8c74731e5883cc8b273949103ce27b94e68f45702023935d9",
+    "src/solver/native/batched_fine_operator.cpp": "78c7b4073710a5e26b4c5e4130888128d984797a6de784f126a89d06b6c74bfb",
+    "src/solver/native/hierarchy.cpp": "7ffcfc2616d4b8ea981130164bac736c50e2594d7258f22243a2874e3a03fd64",
+    "src/solver/native/hierarchy.hpp": "281335740e5a5e05fb1350644145cee1ccbdf371996f212df57483dd3499ca11",
+    "tests/unit/fine_site_work_test.cpp": "aec73fbe1efc413bebeb4af6de2afb1bdd5aea4fde226feee945b05faa1f9f40",
+    "tests/runtime/test_fine_site_balance.py": "9813db33c96f82f78d9f634faaaa55353e66bafbd4892c5ca399cf88a655cc14",
+    "cmake/Tests.cmake": "4a6fbba69d1f062262664a3a4feb6bc5ff0b2c890a903ffe80e221fa3ffbbaf0",
+    "profiles/optimization/lingsheng-fine-site-37-full12.json": "e80f299b26ee93b70367d1e9fd9054be20624206af1878b8224229247377406b"
+  }
+}

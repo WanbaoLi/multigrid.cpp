@@ -1,9 +1,10 @@
 #pragma once
-#include "environment.hpp"
+#include "../../support/hbw_buffer.hpp"
 #include "batched_state.hpp"
+#include "environment.hpp"
+#include "fine_site_work.hpp"
 #include "multigrid.hpp"
 #include <cstddef>
-#include "../../support/hbw_buffer.hpp"
 
 using lqcd_native::detail::FloatField;
 using lqcd_native::detail::HaloStats;
@@ -69,8 +70,9 @@ struct NativeMG::Impl {
     std::vector<int, lqcd_native::WorkspaceAllocator<int>> inner, colors, cneighbor;
     std::vector<size_t, lqcd_native::WorkspaceAllocator<size_t>> lex;
     std::vector<int, lqcd_native::WorkspaceAllocator<int>> local_lex;
-    // Immutable owned-block schedules: slot 0 = all, slots 1/2 = colors 0/1.
-    std::vector<int> fine_interior_work[3], fine_boundary_work[3];
+    // Immutable flattened site schedules: all outputs and each SAP color.
+    lqcd_native::detail::FineSiteWork fine_sites_all[3], fine_sites_interior[3],
+        fine_sites_boundary[3];
     std::vector<int> sap_color_work[2];
     bool sap_eo;
     bool coarse_eo = false;
