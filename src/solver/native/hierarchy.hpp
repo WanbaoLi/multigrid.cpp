@@ -54,8 +54,17 @@ struct NativeMG::Impl {
     // Rank-owned coefficient tiles: [owned aggregate][tile][144 planes][16 lanes].
     // Raw arrays remain available for portable / pointer-width fallback paths.
     FloatField packed_links, packed_diag, packed_inverse;
+    hbm::HbwBuffer hbw_packed_links, hbw_packed_diag, hbw_packed_inverse;
     bool use_packed_coefficients = false;
     size_t packed_block_stride = 0;
+    const float *packed_block(const FloatField &raw, const hbm::HbwBuffer &hot, int cb) const {
+        const float *base = hot ? static_cast<const float *>(hot.data()) : raw.data();
+        return base + (size_t)(cb - first_aggregate) * packed_block_stride;
+    }
+#if defined(__ARM_FEATURE_SVE)
+    bool try_arm_packed_range(int cb, const float *src, float *out, int begin, int end,
+                              bool local, bool clover) const;
+#endif
     // Owned block / half / direction; INT_MIN requests ordinary gather.
     std::vector<int> local_load_offsets;
     bool local_contiguous = setting("LQCD_LOCAL_CONTIGUOUS", 1) != 0;

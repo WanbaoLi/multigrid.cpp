@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <climits>
 #include <cstddef>
 #include <cstdint>
@@ -32,6 +33,21 @@ inline bool sve_reuse_enabled() {
     }();
     return enabled;
 }
+// Owned coefficient AoSoA experiment: [site/16][144 planes][site%16].
+// Spinors retain their component-major layout and external field ABI.
+template<bool Packed>
+inline const float *sve_coefficient(const float *matrix, int B, int plane, int site) {
+    if constexpr (Packed)
+        return matrix + ((size_t)(site / 16) * 144 + plane) * 16 + site % 16;
+    return matrix + (size_t)plane * B + site;
+}
+template<bool Packed>
+inline int sve_site_step(int site) {
+    const int lanes = static_cast<int>(svcntw());
+    if constexpr (Packed)
+        return std::min(lanes, 16 - site % 16);
+    return lanes;
+}
 // Only the addressing changes; projection and link arithmetic remain shared.
 inline svfloat32_t sve_source_load(svbool_t valid, const float *source,
                                    svint32_t index, bool contiguous,
@@ -51,34 +67,45 @@ inline svint32_t sve_indices(svbool_t pg, const std::ptrdiff_t *p, int count) {
     for (int lane = 0; lane < count; ++lane) narrow[lane] = static_cast<int32_t>(p[lane]);
     return svld1_s32(pg, narrow);
 }
+template<bool Packed = false>
 inline void clover_range_sve(int B, const float *matrix, const float *src,
                              float *out, int begin, int end) {
-    for (int a = 0; a < 12; ++a)
-        for (int site = begin; site < end; site += svcntw()) {
-            const svbool_t pg = svwhilelt_b32((uint64_t)site, (uint64_t)end);
+    const int stride = Packed ? 16 : B;
+    auto apply = [&](int a, int site) {
+            const int limit = std::min(end, site + sve_site_step<Packed>(site));
+            const svbool_t pg = svwhilelt_b32((uint64_t)site, (uint64_t)limit);
             svfloat32_t yr = svdup_f32(0), yi = svdup_f32(0);
             for (int j = 0; j < 6; ++j) {
-                const float *m = matrix + (a * 6 + j) * 2 * B + site;
+                const float *m = sve_coefficient<Packed>(matrix, B, (a * 6 + j) * 2, site);
                 const float *x = src + 2 * ((a / 6) * 6 + j) * B + site;
-                const auto mr = svld1_f32(pg,m), mi = svld1_f32(pg,m+B);
+                const auto mr = svld1_f32(pg,m), mi = svld1_f32(pg,m+stride);
                 const auto xr = svld1_f32(pg,x), xi = svld1_f32(pg,x+B);
                 yr=svadd_f32_x(pg,yr,svsub_f32_x(pg,svmul_f32_x(pg,mr,xr),svmul_f32_x(pg,mi,xi)));
                 yi=svadd_f32_x(pg,yi,svadd_f32_x(pg,svmul_f32_x(pg,mr,xi),svmul_f32_x(pg,mi,xr)));
             }
             svst1_f32(pg,out+2*a*B+site,yr);
             svst1_f32(pg,out+(2*a+1)*B+site,yi);
-        }
+    };
+    if constexpr (Packed) {
+        // Revisit the 9 KiB Clover tile before moving to another site tile.
+        for (int site = begin; site < end; site += sve_site_step<true>(site))
+            for (int a = 0; a < 12; ++a) apply(a, site);
+    } else {
+        // Preserve the accepted path's loop order for matched comparisons.
+        for (int a = 0; a < 12; ++a)
+            for (int site = begin; site < end; site += svcntw()) apply(a, site);
+    }
 }
 
 // Keep one real/imaginary accumulator pair per output colour. SVE types are
 // sizeless and cannot form ordinary C++ arrays; ACLE tuples carry the pair.
-template<int Color>
+template<int Color, bool Packed = false>
 inline svfloat32x2_t sve_reuse_link(svbool_t pg, svbool_t valid,
                                     const float *links, int B, int dir, int site, int j,
                                     svfloat32_t zr, svfloat32_t zi,
                                     svfloat32_t hr, svfloat32_t hi) {
-    const float *u = links + (dir * 9 + Color * 3 + j) * 2 * B + site;
-    const auto ar = svld1_f32(valid, u), ai = svld1_f32(valid, u + B);
+    const float *u = sve_coefficient<Packed>(links, B, (dir * 9 + Color * 3 + j) * 2, site);
+    const auto ar = svld1_f32(valid, u), ai = svld1_f32(valid, u + (Packed ? 16 : B));
     hr = svadd_f32_x(pg, hr, svsub_f32_x(pg, svmul_f32_x(pg, ar, zr), svmul_f32_x(pg, ai, zi)));
     hi = svadd_f32_x(pg, hi, svadd_f32_x(pg, svmul_f32_x(pg, ar, zi), svmul_f32_x(pg, ai, zr)));
     return svcreate2_f32(hr, hi);
@@ -103,20 +130,20 @@ inline void sve_reuse_reconstruct(svbool_t pg, int B, int site, int sp, int gs,
 // neighbour entries in that half, or INT_MIN when nonuniform/empty. The
 // hierarchy validates this invariant at construction. Inactive output sites
 // are untouched. Hopping-only src/out may alias on disjoint parity ranges.
-template<bool Local, class Offset, bool Clover, bool Reuse>
+template<bool Local, class Offset, bool Clover, bool Reuse, bool Packed = false>
 inline void wilson_sve_impl(int cb, int B, const float *diag, const float *links,
                        const Offset *neighbor, const int gp[4][4], const float gr[4][4],
                        const float gi[4][4], const float *src, float *out, int begin, int end,
                        const int *local_plan = nullptr) {
     if constexpr(Clover) {
-        clover_range_sve(B,diag,src+(Local?0:(size_t)cb*24*B),out,begin,end);
+        clover_range_sve<Packed>(B,diag,src+(Local?0:(size_t)cb*24*B),out,begin,end);
     } else {
         for(int a=0;a<24;++a) for(int s=begin;s<end;s+=svcntw())
             svst1_f32(svwhilelt_b32((uint64_t)s,(uint64_t)end),out+a*B+s,svdup_f32(0));
     }
-    for(int site=begin;site<end;site+=svcntw()) {
-        const svbool_t pg=svwhilelt_b32((uint64_t)site,(uint64_t)end);
-        const int count=(end-site<(int)svcntw()?end-site:(int)svcntw());
+    for(int site=begin;site<end;site+=sve_site_step<Packed>(site)) {
+        const int count=std::min(end-site,sve_site_step<Packed>(site));
+        const svbool_t pg=svwhilelt_b32((uint64_t)site,(uint64_t)(site+count));
         for(int dir=0;dir<8;++dir) {
             const auto index=sve_indices(pg,neighbor+(size_t)dir*B+site,count);
             const auto valid=svcmpge_n_s32(pg,index,0);
@@ -156,11 +183,11 @@ inline void wilson_sve_impl(int cb, int B, const float *diag, const float *links
                         const auto wi = sve_source_load(valid, w + B, index, contiguous, base);
                         const auto zr = svsub_f32_x(pg, svadd_f32_x(pg, vr, svmul_n_f32_x(pg, wr, pr)), svmul_n_f32_x(pg, wi, pi));
                         const auto zi = svadd_f32_x(pg, svadd_f32_x(pg, vi, svmul_n_f32_x(pg, wi, pr)), svmul_n_f32_x(pg, wr, pi));
-                        const auto h0 = sve_reuse_link<0>(pg, valid, links, B, dir, site, j, zr, zi, hr0, hi0);
+                        const auto h0 = sve_reuse_link<0, Packed>(pg, valid, links, B, dir, site, j, zr, zi, hr0, hi0);
                         hr0 = svget2_f32(h0, 0); hi0 = svget2_f32(h0, 1);
-                        const auto h1 = sve_reuse_link<1>(pg, valid, links, B, dir, site, j, zr, zi, hr1, hi1);
+                        const auto h1 = sve_reuse_link<1, Packed>(pg, valid, links, B, dir, site, j, zr, zi, hr1, hi1);
                         hr1 = svget2_f32(h1, 0); hi1 = svget2_f32(h1, 1);
-                        const auto h2 = sve_reuse_link<2>(pg, valid, links, B, dir, site, j, zr, zi, hr2, hi2);
+                        const auto h2 = sve_reuse_link<2, Packed>(pg, valid, links, B, dir, site, j, zr, zi, hr2, hi2);
                         hr2 = svget2_f32(h2, 0); hi2 = svget2_f32(h2, 1);
                     }
                     const float rr = sign * gr[dir / 2][gs], ri = sign * gi[dir / 2][gs];
@@ -182,8 +209,8 @@ inline void wilson_sve_impl(int cb, int B, const float *diag, const float *links
                     const auto wi=sve_source_load(valid,w+B,index,contiguous,base);
                     const auto zr=svsub_f32_x(pg,svadd_f32_x(pg,vr,svmul_n_f32_x(pg,wr,pr)),svmul_n_f32_x(pg,wi,pi));
                     const auto zi=svadd_f32_x(pg,svadd_f32_x(pg,vi,svmul_n_f32_x(pg,wi,pr)),svmul_n_f32_x(pg,wr,pi));
-                    const float *u=links+(dir*9+color*3+j)*2*B+site;
-                    const auto ar=svld1_f32(valid,u),ai=svld1_f32(valid,u+B);
+                    const float *u=sve_coefficient<Packed>(links,B,(dir*9+color*3+j)*2,site);
+                    const auto ar=svld1_f32(valid,u),ai=svld1_f32(valid,u+(Packed?16:B));
                     hr=svadd_f32_x(pg,hr,svsub_f32_x(pg,svmul_f32_x(pg,ar,zr),svmul_f32_x(pg,ai,zi)));
                     hi=svadd_f32_x(pg,hi,svadd_f32_x(pg,svmul_f32_x(pg,ar,zi),svmul_f32_x(pg,ai,zr)));
                 }
@@ -200,16 +227,16 @@ inline void wilson_sve_impl(int cb, int B, const float *diag, const float *links
     }
 }
 
-template<bool Local, class Offset, bool Clover>
+template<bool Local, class Offset, bool Clover, bool Packed = false>
 inline void wilson_sve(int cb, int B, const float *diag, const float *links,
                        const Offset *neighbor, const int gp[4][4], const float gr[4][4],
                        const float gi[4][4], const float *src, float *out, int begin, int end,
                        const int *local_plan = nullptr) {
     if (sve_reuse_enabled())
-        wilson_sve_impl<Local, Offset, Clover, true>(
+        wilson_sve_impl<Local, Offset, Clover, true, Packed>(
             cb, B, diag, links, neighbor, gp, gr, gi, src, out, begin, end, local_plan);
     else
-        wilson_sve_impl<Local, Offset, Clover, false>(
+        wilson_sve_impl<Local, Offset, Clover, false, Packed>(
             cb, B, diag, links, neighbor, gp, gr, gi, src, out, begin, end, local_plan);
 }
 } // namespace lqcd_native::arm

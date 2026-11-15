@@ -12,6 +12,8 @@ void NativeMG::Impl::prepare_hbw_assets() {
     constexpr size_t cap = size_t(1) << 30;
     size_t used = hbw_links.allocation_bytes() + hbw_diag.allocation_bytes() +
                   hbw_inverse.allocation_bytes() + hbw_basis.allocation_bytes() +
+                  hbw_packed_links.allocation_bytes() + hbw_packed_diag.allocation_bytes() +
+                  hbw_packed_inverse.allocation_bytes() +
                   hbw_coarse_columns.allocation_bytes() + hbw_coarse_inverse_columns.allocation_bytes();
     int failed = 0;
     try {
@@ -66,9 +68,20 @@ void NativeMG::Impl::prepare_hbw_assets() {
                                      owned * stride, buffer);
         };
         const size_t B = block_sites, C = coarse_dof;
-        raw("links", links, 144 * B, hbw_links);
-        raw("diag", diag, 144 * B, hbw_diag);
-        raw("clover_inverse", clover_inverse, 144 * B, hbw_inverse);
+#if defined(__ARM_FEATURE_SVE)
+        if (use_packed_coefficients) {
+            // The hot allocation must have the layout actually read by SVE.
+            // Do not allocate unused raw hot replicas or exceed the rank cap.
+            copy("packed_links", packed_links.data(), packed_links.size(), hbw_packed_links);
+            copy("packed_diag", packed_diag.data(), packed_diag.size(), hbw_packed_diag);
+            copy("packed_inverse", packed_inverse.data(), packed_inverse.size(), hbw_packed_inverse);
+        } else
+#endif
+        {
+            raw("links", links, 144 * B, hbw_links);
+            raw("diag", diag, 144 * B, hbw_diag);
+            raw("clover_inverse", clover_inverse, 144 * B, hbw_inverse);
+        }
         raw("basis", basis, 24 * 12 * 2 * B, hbw_basis);
         copy("coarse_columns", coarse_columns.data(), coarse_columns.size(), hbw_coarse_columns);
         copy("coarse_inverse_columns", coarse_inverse_columns.data(), coarse_inverse_columns.size(),

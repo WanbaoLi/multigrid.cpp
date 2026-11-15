@@ -24,6 +24,7 @@ active_scratch=
 python_bin=${LQCD_HEALTH_PYTHON:-}
 build_jobs=${LQCD_HEALTH_BUILD_JOBS:-16}
 reference_threads=${LQCD_HEALTH_REFERENCE_THREADS:-8}
+diagnostic=${LQCD_HEALTH_DIAGNOSTIC:-0}
 source_commit=$(git -C "$project_dir" rev-parse HEAD)
 source_branch=$(git -C "$project_dir" rev-parse --abbrev-ref HEAD)
 [[ -z $(git -C "$project_dir" status --porcelain --untracked-files=no) ]] || {
@@ -266,6 +267,8 @@ assert shutil.disk_usage('/tmp').free >= 24*1024**3, 'Need 24 GiB of node-local 
 PY
     active_scratch=$(mktemp -d "/tmp/lqcd-health-$backend-$label-XXXXXXXX")
     printf '%s\n' "$active_scratch" > "$run_root/scratch-$label.txt"
+    local -a diagnostic_args=()
+    [[ "$diagnostic" != 1 ]] || diagnostic_args+=(--profile-diagnostic)
     "$python_bin" tools/run_numa.py --lattice "$lattice" "$lattice" "$lattice" 64 \
         --block "$block" "$block" "$block" 4 --numa-nodes "$selected_nodes" \
         --ranks-per-numa "$case_ranks_per_numa" --threads "$case_threads" -- \
@@ -273,7 +276,7 @@ PY
         --gauge "$gauge" --output "$active_scratch/run" --backend "$backend" \
         --mass "$mass" --csw "$csw" --block "$block" "$block" "$block" 4 \
         --plan "$plan_path" --library "$build_dir/liblqcd_cpu.so" --repeats 3 --tol 1e-8 \
-        --stout-steps 1 --stout-rho 0.125 --stout-dir-ignore 4
+        --stout-steps 1 --stout-rho 0.125 --stout-dir-ignore 4 "${diagnostic_args[@]}"
     "$python_bin" benchmarks/runtime/verify_lime_solver.py "$active_scratch/run" \
         --reference "$build_dir/multigrid" --extractor "$build_dir/extract_columns" \
         --reference-threads "$reference_threads" --tol 1e-8

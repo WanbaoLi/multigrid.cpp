@@ -8,6 +8,7 @@
 #include "../../backends/arm/transfer_sve.hpp"
 #include "../../backends/arm/coarse_sve.hpp"
 #if defined(__ARM_FEATURE_SVE)
+#define LQCD_NATIVE_ARM_PACKED_WILSON 1
 #define LQCD_NATIVE_SVE_TRANSFER 1
 #define LQCD_NATIVE_SVE_COARSE 1
 #endif

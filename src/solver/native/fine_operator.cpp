@@ -5,8 +5,45 @@
 
 using namespace lqcd_native::detail;
 
+#if defined(LQCD_NATIVE_ARM_PACKED_WILSON)
+bool NativeMG::Impl::try_arm_packed_range(int cb, const float *src, float *out,
+                                          int begin, int end, bool local, bool clover) const {
+    if (!use_packed_coefficients || (!local && fine_sites > (size_t)INT_MAX / 24))
+        return false;
+    const float *d = packed_block(packed_diag, hbw_packed_diag, cb);
+    const float *u = packed_block(packed_links, hbw_packed_links, cb);
+    const int *plan = lqcd_native::kernels::sve_planned_enabled() && local_contiguous
+        ? local_load_offsets.data() + (size_t)(cb - first_aggregate) * 16 : nullptr;
+    if (local) {
+        const int *n = inner.data() + (size_t)cb * 8 * block_sites;
+        if (clover)
+            lqcd_native::kernels::wilson_sve<true,int,true,true>(
+                cb,block_sites,d,u,n,gp,gr,gi,src,out,begin,end,plan);
+        else
+            lqcd_native::kernels::wilson_sve<true,int,false,true>(
+                cb,block_sites,d,u,n,gp,gr,gi,src,out,begin,end,plan);
+    } else {
+        const auto *n = neighbor.data() + (size_t)cb * 8 * block_sites;
+        // Match the accepted path's addressing choice; this trial changes
+        // coefficient layout, not compact-neighbour policy or arithmetic.
+        if (lqcd_native::kernels::sve_planned_enabled() && !neighbor32.empty())
+            lqcd_native::kernels::wilson_sve<false,int,true,true>(
+                cb,block_sites,d,u,neighbor32.data()+(size_t)cb*8*block_sites,
+                gp,gr,gi,src,out,begin,end);
+        else
+            lqcd_native::kernels::wilson_sve<false,std::ptrdiff_t,true,true>(
+                cb,block_sites,d,u,n,gp,gr,gi,src,out,begin,end);
+    }
+    return true;
+}
+#endif
+
 void NativeMG::Impl::local_range(int cb, const float *src, float *out, int parity,
                                  bool clover) const {
+#if defined(LQCD_NATIVE_ARM_PACKED_WILSON)
+    if (try_arm_packed_range(cb,src,out,parity*(block_sites/2),
+                             (parity+1)*(block_sites/2),true,clover)) return;
+#endif
 #if defined(LQCD_NATIVE_PACKED_WILSON)
     if (use_packed_coefficients) {
         const size_t off = (size_t)(cb - first_aggregate) * packed_block_stride;
@@ -42,6 +79,14 @@ void NativeMG::Impl::clover_range(int cb, const float *src, float *out, int pari
     const float *matrix =
         (inverse ? inverse_block(cb) : diag_block(cb));
     const int begin = parity * (block_sites / 2), end = begin + block_sites / 2;
+#if defined(LQCD_NATIVE_ARM_PACKED_WILSON)
+    if (use_packed_coefficients) {
+        matrix = inverse ? packed_block(packed_inverse, hbw_packed_inverse, cb)
+                         : packed_block(packed_diag, hbw_packed_diag, cb);
+        lqcd_native::kernels::clover_range_sve<true>(block_sites,matrix,src,out,begin,end);
+        return;
+    }
+#endif
 #if defined(LQCD_NATIVE_PACKED_WILSON)
     if (lqcd_native::kernels::wilson_simd_enabled()) {
         if (use_packed_coefficients) {
@@ -77,6 +122,9 @@ void NativeMG::Impl::clover_range(int cb, const float *src, float *out, int pari
 }
 
 void NativeMG::Impl::block_apply(int cb, const float *src, float *out, bool local) const {
+#if defined(LQCD_NATIVE_ARM_PACKED_WILSON)
+    if (try_arm_packed_range(cb,src,out,0,block_sites,local,true)) return;
+#endif
 #if defined(LQCD_NATIVE_PACKED_WILSON)
     if (use_packed_coefficients && (local || fine_sites <= (size_t)INT_MAX / 24)) {
         const size_t off = (size_t)(cb - first_aggregate) * packed_block_stride;
@@ -178,6 +226,10 @@ void NativeMG::Impl::fine_apply(const FloatField &src, FloatField &out, int colo
         const int parity_sites = block_sites / parities;
         const int parity_face = face / parities;
         for (int p = 0; p < parities; p++) {
+#if defined(LQCD_NATIVE_ARM_PACKED_WILSON)
+            if (try_arm_packed_range(cb,src.data(),dst,p*parity_sites+begin_t*parity_face,
+                                     p*parity_sites+end_t*parity_face,false,true)) continue;
+#endif
 #if defined(LQCD_NATIVE_PACKED_WILSON)
             if (use_packed_coefficients && fine_sites <= (size_t)INT_MAX / 24) {
                 const size_t off = (size_t)(cb - first_aggregate) * packed_block_stride;

@@ -146,6 +146,9 @@ void NativeMG::Impl::fine_apply_batch(const std::vector<const FloatField *> &sou
                 const float *src = sources[r]->data();
                 float *dst = outputs[r]->data() + (size_t)cb * 24 * block_sites;
                 const int begin = p * ps + begin_t * pf, end = p * ps + end_t * pf;
+#if defined(LQCD_NATIVE_ARM_PACKED_WILSON)
+                if (try_arm_packed_range(cb,src,dst,begin,end,false,true)) continue;
+#endif
 #if defined(LQCD_NATIVE_PACKED_WILSON)
                 if (use_packed_coefficients && fine_sites <= (size_t)INT_MAX / 24) {
                     const size_t off = (size_t)(cb - first_aggregate) * packed_block_stride;

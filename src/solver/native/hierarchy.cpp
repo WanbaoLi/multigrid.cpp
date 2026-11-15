@@ -294,9 +294,14 @@ NativeMG::Impl::Impl(const Gauge &gg, const Multigrid &mm, bool eo)
     }
     fine_rhs.resize(fine_sites * 24);
     fine_correction.resize(fine_sites * 24);
-#if defined(LQCD_NATIVE_PACKED_WILSON)
+#if defined(LQCD_NATIVE_PACKED_WILSON) || defined(LQCD_NATIVE_ARM_PACKED_WILSON)
+#if defined(LQCD_NATIVE_ARM_PACKED_WILSON)
+    use_packed_coefficients = lqcd_native::kernels::wilson_simd_enabled() &&
+        lqcd_native::kernels::sve_enabled() && setting("LQCD_ARM_WILSON_PACKED", 0) != 0;
+#else
     use_packed_coefficients =
         lqcd_native::kernels::wilson_simd_enabled() && setting("LQCD_WILSON_PACKED", 1) != 0;
+#endif
     if (use_packed_coefficients) {
         const size_t tiles = ((size_t)block_sites + 15) / 16;
         packed_block_stride = tiles * 144 * 16;
