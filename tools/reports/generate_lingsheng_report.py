@@ -9,6 +9,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
 from matplotlib.patches import FancyBboxPatch
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from lingsheng_report_sections import sections,resources
 
 ROOT=Path(__file__).resolve().parents[2]
 OUT=ROOT/'docs/assets/lingsheng-report'
@@ -53,20 +55,18 @@ fig.suptitle('单节点对比：均16 MPI；灵晟32线程/MPI，AMD 12线程/MP
 fig.tight_layout(rect=(0,0,1,.94)); save(fig,'performance.png')
 
 fig,ax=plt.subplots(figsize=(11,4.5))
-ax.bar(0,72,color=blue,label='最终12列FP64输出（不含求解工作区）')
 bottom=0
 for amount,label,color in ((432,'建层FP64 basis及粗halo：约432 GiB','#2266aa'),
                           (216,'24个建层向量及驻留halo：约216 GiB','#df8e36'),
                           (99,'规范场、Clover及halo：约99 GiB','#5c9f83'),
                           (126,'FP32系数/链接/逆矩阵/basis：约126 GiB','#9267aa')):
-    ax.bar(1,amount,bottom=bottom,color=color,label=label)
-    ax.text(1,bottom+amount/2,str(amount),ha='center',va='center',color='white')
+    ax.bar(0,amount,bottom=bottom,color=color,label=label)
+    ax.text(0,bottom+amount/2,str(amount),ha='center',va='center',color='white')
     bottom+=amount
-ax.text(0,90,'72 GiB\n仅结果存储',ha='center')
-ax.text(1,bottom+20,'约873 GiB\n尚未计入全部临时缓存',ha='center')
-ax.set_xticks([0,1],['最终输出阶段','建层阶段主要数据预算'])
+ax.text(0,bottom+20,'约873 GiB\n尚未计入全部临时缓存',ha='center')
+ax.set_xticks([0],['64³×128建层阶段主要数据预算'])
 ax.set_ylabel('两节点全局合计内存（GiB）'); ax.set_ylim(0,1100)
-ax.set_title('64³×128：72 GiB输出 ≠ 多重网格求解总内存')
+ax.set_title('当前两节点布局：多重网格主要建层数据的全局内存预算')
 ax.legend(loc='upper left',bbox_to_anchor=(1.01,1),fontsize=9)
 save(fig,'volume.png')
 
@@ -74,17 +74,33 @@ fig,ax=plt.subplots(figsize=(11,4.1))
 # Planning proxy only: the remote host's final peak was lost, so this is NOT
 # a measured sum of simultaneous node peaks, nor a completed-solve peak.
 baseline=472932*2
-for i,(ratio,nodes) in enumerate(((1,4),(2,8),(4,16))):
-    demand=baseline*ratio/1e6
-    reserve=480000*nodes/1e6
+for i,(ratio,nodes) in enumerate(((1,4),(5.0625,16),(16,64),(16,128))):
+    demand=baseline*ratio/1024**2
+    reserve=480000*nodes/1024**2
     a=ax.bar(i-.18,demand,width=.34,color=orange,hatch='//',label='失败前峰值等比推算' if i==0 else None)
     b=ax.bar(i+.18,reserve,width=.34,color=blue,label='申请节点的总内存预留' if i==0 else None)
     ax.bar_label(a,fmt='%.2f',padding=4); ax.bar_label(b,fmt='%.2f',padding=4)
-ax.set_xticks(range(3),['64³×128\n4节点规划','64³×256\n8节点规划','64³×512\n16节点规划'])
-ax.set_ylabel('整项作业总内存（TB，按调度器MB÷1000000）')
-ax.set_ylim(0,9.5); ax.set_title('申请至少16节点：覆盖更大格点，并为完整建层与求解留出余量')
+ax.set_xticks(range(4),['64³×128\n4节点规划','96³×192\n16节点规划','128³×256\n64节点规划','128³×256\n128节点扩展测试'])
+ax.set_ylabel('整项作业总内存（TiB）')
+ax.set_ylim(0,73); ax.set_title('16—128节点规划：大格点容量与强扩展测试（斜线柱均为预测）')
 ax.legend(loc='upper left',fontsize=9)
 save(fig,'memory.png')
+
+fig,axes=plt.subplots(1,2,figsize=(12,4.7))
+for ax in axes: ax.axis('off')
+for rank in range(16):
+    x=.015+(rank%4)*.24; y=.8-(rank//4)*.19
+    axes[0].add_patch(FancyBboxPatch((x,y),.22,.15,boxstyle='round,pad=.008',facecolor='#eaf2fb',edgecolor=blue,transform=axes[0].transAxes))
+    axes[0].text(x+.11,y+.075,f'NUMA {rank}\nMPI {rank} · 32线程',ha='center',va='center',fontsize=8,transform=axes[0].transAxes)
+axes[0].set_title('灵晟单节点：16个CPU NUMA域 → 16 MPI')
+axes[0].text(.48,.03,'显式CPU亲和性；进程之间的CPU集合不重叠',ha='center',transform=axes[0].transAxes,fontsize=9)
+for j,(y,label,color) in enumerate(((.76,'MPI本地：64个SAP块',blue),(.52,'红/黑分两轮：每轮32块 → 32个OpenMP线程',orange),(.28,'每线程一个块任务 → SVE跨块内格点运算','#5c9f83'))):
+    axes[1].add_patch(FancyBboxPatch((.03,y),.94,.13,boxstyle='round,pad=.012',facecolor=color,edgecolor=color,transform=axes[1].transAxes))
+    axes[1].text(.5,y+.065,label,ha='center',va='center',color='white',fontsize=9,transform=axes[1].transAxes)
+    if j<2: axes[1].annotate('',xy=(.5,y-.09),xytext=(.5,y-.01),xycoords='axes fraction',arrowprops={'arrowstyle':'->','color':blue})
+axes[1].set_title('每MPI内：OpenMP块并行 + SVE格点并行')
+axes[1].text(.5,.03,'块数对应已测C24/C32配置；不代表任意格子都相同',ha='center',transform=axes[1].transAxes,fontsize=9)
+fig.tight_layout(); save(fig,'parallel.png')
 
 rows=[]
 for machine,name in (('lingsheng','灵晟单节点'),('node5005','AMD EPYC 9755 128-Core × 2')):
@@ -114,7 +130,7 @@ GitHub：[**WanbaoLi/multigrid.cpp**](https://github.com/WanbaoLi/multigrid.cpp)
 | 完成64³×128多节点建层及预热后1列、12列求解验证 | 未完成 |
 | 通过跨向量复用halo页进一步降低内存峰值（已有实验实现，尚未验证） | 未完成 |
 | 生成规范场：开发并验证生产用LQCD规范场生成流程 | 未完成 |
-| 完成4—16节点大格点适配、精度验证及扩展性测试 | 未完成 |
+| 完成4—128节点大格点适配、精度验证及扩展性测试 | 未完成 |
 
 ## 2. 当前性能与精度
 
@@ -139,31 +155,24 @@ GitHub：[**WanbaoLi/multigrid.cpp**](https://github.com/WanbaoLi/multigrid.cpp)
 
 ## 4. 大格点内存与资源申请
 
-**72 GiB只是64³×128的最终12列传播子输出，不是程序运行所需总内存。** 多重网格在产生输出之前，就需要保存规范场、Clover、粗化basis、24个建层向量、粗算子及大量halo；求解阶段还需要Krylov方向/图像缓存和输出转换缓冲区。
-
-![输出与建层总内存对比](assets/lingsheng-report/volume.png)
-
-图中建层预算按当前两节点布局计算：含halo的压缩FP64 basis约432 GiB，24个建层向量约216 GiB，规范场/Clover约99 GiB，FP32系数等约126 GiB，**主要数据已约873 GiB全局合计**。这些是代码布局预算，不是逐项实测；尚未覆盖全部临时缓存。最终输出72 GiB属于另一阶段，不能与建层预算简单相加。分块halo虽然只传输薄面，却可能触及整个邻接聚合块的内存页；每个MPI还保留私有工作区，因此占用远大于一个传播子数组。
-
-**此前并非每节点只申请64 GB总内存：作业记录是每节点480000 MB。** 单节点可靠峰值达到472932 MB，随后远端MPI daemon失联，失败发生在建层阶段，还没有完整传播子输出。日志没有直接确认内核OOM，不能写成已确证OOM，但已证明72 GiB不能作为运行内存预算。若“每节点64 GB”指HBM，那是高速内存层口径，不能等同全部可调度内存；该HBM容量尚需官方确认。**C64目前没有有效的单列/12列求解时间。**
-
-总内存规划以“2×单节点可靠峰值”约945864 MB作为两节点对称布局的基线，再按格点总量放大：**预计作业总内存＝基线总内存×新旧格点总量之比**。两节点同时总峰值未可靠记录，因此945864 MB是估算，不是实测总峰值；且原任务尚未完成，该基线不能作为完整求解的上限。分块、halo和缓存变化还会改变比例，必须保留余量。
-
-![整项作业总内存规划](assets/lingsheng-report/memory.png)
-
-| 规划格点 | 相对64³×128体积 | 失败前峰值等比推算的作业总内存 | 节点规划及总内存预留 |
-|---|---:|---:|---:|
-| 64³×128 | 1倍 | 约0.95 TB | 4节点，1.92 TB |
-| 64³×256 | 2倍 | 约1.89 TB | 8节点，3.84 TB |
-| 64³×512 | 4倍 | 约3.78 TB | 16节点，7.68 TB |
-
-表中TB统一按调度器MB÷10⁶表示，仅作规划；后两种格点需准备对应真实组态。**本次申请至少16个整节点**，分阶段完成4、8、16节点的大格点与弱扩展测试，并在内存允许的同一格点上开展强扩展测试。每节点保持16 MPI、每MPI 32线程；16节点共256 MPI、8192计算线程，每节点预留480000 MB内存，首轮每项作业墙钟4小时。整节点计费CPU配额需至少约9728，当前限制1216。
-
-16节点申请服务于更大格点容量、通信/HBW调优及扩展性验证，不表示已证明64³×128必须使用16节点。当前均匀时间切分与本地时间长度为偶数的约束下，上表4/8/16节点分别可取本地64³×2；64³×128直接使用16节点不满足现有切分条件，需另行开发空间方向MPI分解或调整布局。所有新增规模均须先通过独立真残差≤10⁻⁸验证，再报告预热后1列和12列纯求解性能。
-
 数据依据：[单节点验收](https://github.com/WanbaoLi/multigrid.cpp/blob/b182d74/docs/single-node-health-20261113.md)、[多节点实验记录](https://github.com/WanbaoLi/multigrid.cpp/blob/b182d74/experiments/distributed-C64-20261114/README.md)。单节点测量版本`efe57de`，C64尝试版本`88e8bbe`；未验证halo页实验位于`codex/c64-halo-pages`。
 '''
 # Absolute image URLs keep the delivered Markdown usable without a local assets folder.
+background,design,tests=sections(ROOT)
+probe=json.loads((ROOT/'experiments/lingsheng-report-20261115/sve-probe.json').read_text(encoding='utf-8-sig'))
+assert probe['state']=='SUCCEEDED' and all(t['passed'] for t in probe['tests'])
+cases=[]
+for n in (24,32):
+    r=records['lingsheng',n]
+    cases.append(f'| {n}³×64 | {r["mass"]} | {r["csw"]} | '+ '×'.join(map(str,r['block_xyzt']))+' |')
+tests+='质量参数`mass`与Clover系数`csw`如下；两种输入均执行一次四方向stout，强度`rho=0.125`。时间采用反周期边界，外部场使用DeGrand–Rossi自旋基，setup随机种子1024。完整输入哈希见文末验收记录。\n\n| 已验收格子 | mass（质量参数） | csw（Clover系数） | 聚合块 |\n|---|---:|---:|---|\n'+'\n'.join(cases)+'\n\n'
+tests+='新增探针同时记录：页大小4096字节，可访问内存节点0—31，Linux可见总内存592446008 KiB、无swap；lscpu报告32个NUMA节点，包含16个CPU域与仅内存域，CPU配置范围1200—2000 MHz。未测满载持续频率和真实内存带宽。该物理内存读数与调度器578560 MB基本一致，因此本文GiB/TiB换算按其MiB计数口径处理。\n\n'
+report=report.replace('## 1. 项目与已完成工作',background+'## 2. 项目与已完成工作')
+report=report.replace('## 2. 当前性能与精度',design+'## 4. 当前性能与精度')
+report=report.replace('## 3. 当前限制与优化重点',tests+'## 6. 当前限制与优化重点')
+first=report.index('## 4. 大格点内存与资源申请')
+last=report.index('数据依据：',first)
+report=report[:first]+resources()+report[last:]
 report=report.replace('(assets/lingsheng-report/', '(https://raw.githubusercontent.com/WanbaoLi/multigrid.cpp/develop/docs/assets/lingsheng-report/')
 (ROOT/'docs/灵晟测试报告.md').write_text(report,encoding='utf-8')
 print('\n'.join(rows))

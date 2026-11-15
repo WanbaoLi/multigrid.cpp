@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-15",
+  "job_id": 2132585,
+  "state": "SUCCEEDED",
+  "node": "cn12038",
+  "driver_commit": "a3ffff1992da6b7cf3ab426392907a9782f25c19",
+  "cpu_allowed": "0-3,5-32",
+  "mems_allowed": "0-31",
+  "page_bytes": 4096,
+  "mem_total_KiB": 592446008,
+  "mem_available_snapshot_KiB": 497049844,
+  "swap_total_KiB": 0,
+  "cpu_config_min_MHz": 1200,
+  "cpu_config_max_MHz": 2000,
+  "sustained_load_frequency_measured": false,
+  "memory_bandwidth_measured": false,
+  "tests": [
+    {
+      "name": "arm_sve_test",
+      "passed": true,
+      "sha256": "09dcd83abeb418fcca2b80ded4b0704a8a8511f510432abf4d1fd5f8c5271b80"
+    },
+    {
+      "name": "arm_sve_plan_test",
+      "passed": true,
+      "sha256": "7151b4ca7a2e989920fe042fc56a5fb88d6a866e74677868024360e549de1255"
+    }
+  ],
+  "binary_provenance": "Reused archived two01/gates/build test binaries, not a new performance build."
+}
