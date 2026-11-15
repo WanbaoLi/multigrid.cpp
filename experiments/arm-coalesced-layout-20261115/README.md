@@ -82,3 +82,22 @@ controller and compiled-source provenance separate and labels reused CTests.
 The checked baseline is linked into the fresh comparison directory; interrupted
 outputs remain in their original directory. New solves retain independent
 13-column scalar residual checks and all warm/steady timing samples.
+
+## Trial B hypothesis: specialize dispatch
+
+Trial A passed the independent 13-column residual gate but its warmed API
+median was 14.8743 s, versus the first baseline's 14.5919 s. The final rank-0
+diagnostic SAP sum increased from 5.84525 s to 6.15731 s; coarse timings did
+not explain that increase. Await the second original baseline before ranking.
+This is one negative result, not grounds to discard every coefficient layout.
+
+Inspection of Trial A's generated ARM binary found the mixed local/global,
+Clover/hopping packed dispatcher body was 0x3cd8 bytes with a 400-byte entry
+stack frame. One accepted raw local SVE body was 0x8ac bytes with a 272-byte
+entry frame. Different functions need different frames, so these numbers do
+not by themselves prove the slowdown's cause. They justify a bounded codegen
+experiment: specialize local/global and Clover/hopping at compile time, keeping
+coefficient layout, arithmetic, allocation, vector length and physics fixed.
+Compare resulting function sizes/frames, required CTest/MPI gates, independent
+residuals and warmed complete12 timings. Do not promote from a smaller frame
+or isolated kernel timing alone. Original Trial A binaries/results remain frozen.

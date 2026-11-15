@@ -61,6 +61,8 @@ def summarize(root):
                 c["residual"] > data["tol"] for c in verified["columns"]):
             raise ValueError(f"independent full residual gate failed: {name}")
         match = {k: data[k] for k in keys}
+        match["smeared_gauge_sha256"] = verified["gauge_sha256"]
+        match["independent_reference_sha256"] = verified["reference_sha256"]
         match["placement_cpus"] = [r["cpus"] for r in data["placement"]]
         if common is not None and match != common:
             raise ValueError(f"unmatched input/resources/source: {name}")
@@ -91,6 +93,7 @@ def summarize(root):
         tests["reused_from_checked_build"] = reuse
         rows.append(dict(attempt=name, result_sha256=digest(path),
             source_commit=data["source_commit"], library_sha256=data["library_sha256"],
+            propagator_sha256=data["propagator_sha256"],
             context_environment_without_packing=context,
             setup_seconds=data["setup_seconds"], stout_seconds=data["stout_seconds"],
             independent_max_residual=verified["max_true_residual"],
@@ -106,6 +109,7 @@ def summarize(root):
         metric="complete twelve-column native solver time; first sample excluded",
         baseline_bracket_mean_seconds=base, packed_steady_seconds=trial,
         relative_solver_reduction=1-trial/base, baseline_relative_drift=drift,
+        bitwise_identical_propagators=len({r["propagator_sha256"] for r in rows}) == 1,
         promotion_automatic=False,
         interpretation="bounded same-node comparison; inspect scatter, API, iterations and corrections before promotion")
 

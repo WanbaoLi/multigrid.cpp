@@ -62,8 +62,8 @@ struct NativeMG::Impl {
         return base + (size_t)(cb - first_aggregate) * packed_block_stride;
     }
 #if defined(__ARM_FEATURE_SVE)
-    bool try_arm_packed_range(int cb, const float *src, float *out, int begin, int end,
-                              bool local, bool clover) const;
+    template<bool Local, bool Clover>
+    bool try_arm_packed_range(int cb, const float *src, float *out, int begin, int end) const;
 #endif
     // Owned block / half / direction; INT_MIN requests ordinary gather.
     std::vector<int> local_load_offsets;
