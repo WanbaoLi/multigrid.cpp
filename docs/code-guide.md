@@ -36,6 +36,14 @@ aggregates；未拥有的 coarse site 不参与 dot/norm，邻居通过 t-face h
 
 常用几何变量如下：
 
+细格 Wilson–Clover 算子的 OpenMP 工作按有效输出格点展平，使用当前 rank 的实际
+`omp_get_num_threads()` 划分连续区间，余数分散给线程，各线程格点数最多差1。
+内部格点和需要 halo 的边界格点分别划分，保持通信重叠；存储仍使用 aggregate-major/EO
+布局与 SIMD 区间内核。线程数不固定为37：经 `tools/run_numa.py` 启动时，省略
+`--threads` 会根据 cpuset 中各 NUMA 的允许物理核数分配线程，同域多 rank 时分摊这些核。
+Python `Solver(..., threads=None)` 继承各 rank 的 `OMP_NUM_THREADS`；各 rank 可以有不同
+线程数。`set_threads(None)` 可集体恢复该自动配置，不需要重建层级。
+
 - `block_sites`：一个 fine aggregate 内的 site 数，等于
   `bx*by*bz*bt`；细块局部数组按它分段。
 - `coarse_dof`：每个 coarse site 的自由度。24 个 test vectors 按

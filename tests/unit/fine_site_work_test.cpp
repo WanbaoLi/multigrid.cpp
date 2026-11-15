@@ -27,7 +27,7 @@ int main() {
                             expected[cb * B + s] = 1;
                     }
                 }
-                for (int threads : {1, 2, 7, 32, 37}) {
+                for (int threads : {1, 2, 7, 19, 32, 37, 48, 128, 304}) {
                     std::vector<int> seen(expected.size(), 0);
                     std::vector<std::size_t> loads(threads, 0);
                     // Deterministic partition audit, independent of host core count.
@@ -38,14 +38,15 @@ int main() {
                                 ++seen[cb * B + s];
                         });
                     assert(seen == expected);
-                    const auto chunk =
-                        work.offsets.back() / threads + (work.offsets.back() % threads != 0);
+                    const auto total = work.offsets.back();
+                    const auto base = total / threads, extra = total % threads;
                     for (int t = 0; t < threads; ++t) {
-                        const auto first = std::min(work.offsets.back(), chunk * t);
-                        assert(loads[t] == std::min(chunk, work.offsets.back() - first));
+                        assert(loads[t] == base + (std::size_t(t) < extra));
+                        if (total >= std::size_t(threads))
+                            assert(loads[t] > 0);
                     }
                     std::fill(seen.begin(), seen.end(), 0);
-#pragma omp parallel num_threads(threads)
+#pragma omp parallel num_threads(std::min(threads, 37))
                     {
                         work.run(omp_get_thread_num(), omp_get_num_threads(),
                                  [&](int cb, int begin, int end) {
@@ -58,10 +59,18 @@ int main() {
                     assert(seen == expected);
                 }
             }
-    FineSiteWork tiny;
-    tiny.add(0, 5, 8);
-    int visits = 0;
-    for (int t = 0; t < 37; ++t)
-        tiny.run(t, 37, [&](int, int begin, int end) { visits += end - begin; });
-    assert(visits == 3);
+    // Enough sites must keep every team member active, even when ceil(N/T)
+    // would have left the final threads empty (e.g. N=38, T=37).
+    for (int count : {0, 3, 38, 100, 305}) {
+        FineSiteWork small;
+        small.add(0, 5, 5 + count);
+        int visits = 0, active = 0;
+        for (int t = 0; t < 37; ++t)
+            small.run(t, 37, [&](int, int begin, int end) {
+                visits += end - begin;
+                ++active;
+            });
+        assert(visits == count);
+        assert(active == std::min(count, 37));
+    }
 }

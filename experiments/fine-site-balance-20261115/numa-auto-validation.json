@@ -1,0 +1,94 @@
+{
+  "date": "2026-11-15",
+  "branch": "codex/fine-site-balance-20261115",
+  "local_source_parent": "6ee1d62980cb2aabd6416a359fa8421d95a34da6",
+  "published_source_parent": "32a7a24ca659210f195f6cddea64741875150201",
+  "publication": "GitHub connector used because local git HTTPS credential helper has no cached account. Published source trees are compared with locally tested Git trees; canonical commits are fetched into the local checkout.",
+  "change": {
+    "resources": "Use existing run_numa discovery of allowed physical cores per NUMA, split among ranks_per_numa. No fixed 37-thread runtime or profile.",
+    "thread_resolution": "Solver threads=None inherits launcher rank-local OMP_NUM_THREADS; fine kernels read omp_get_num_threads at each call.",
+    "partition": "base=N/T, extra=N%T; thread t starts at base*t+min(t,extra), length base+(t<extra). All T threads receive work when N>=T; lengths differ by at most one.",
+    "tail": "SIMD range tails remain masked/clipped; no padding memory is accessed.",
+    "removed_profile": "profiles/optimization/lingsheng-fine-site-37-full12.json",
+    "stable_profiles": "Frozen 052 and node5005 profiles unchanged."
+  },
+  "environment": {
+    "host": "local WSL Ubuntu x86_64",
+    "allowed_physical_cores": 16,
+    "compiler": "GCC 15.2.0",
+    "mpi": "MPICH 4.3.2",
+    "build": "Release, MULTIGRID_NATIVE=ON, AVX-512",
+    "artifacts": "outside source checkout under ~/.cache/multigrid-validation"
+  },
+  "ctest": {
+    "selected": 8,
+    "passed": 8,
+    "names": [
+      "fine_site_work",
+      "fine_site_balance_mpi1",
+      "fine_site_balance_mpi2",
+      "fine_site_balance_mpi4",
+      "cpu_backend_serial",
+      "cpu_backend_mpi2",
+      "distributed_cpu_backend_mpi2",
+      "numa_launcher"
+    ]
+  },
+  "runtime_results": [
+    "PASS fine-site single/batch, NUMA-derived teams [16], unequal teams and automatic restore, blocking/overlap; max_residual=2.922e-10",
+    "PASS fine-site single/batch, NUMA-derived teams [8, 8], unequal teams and automatic restore, blocking/overlap; max_residual=3.091e-10",
+    "PASS fine-site single/batch, NUMA-derived teams [4, 4, 4, 4], unequal teams and automatic restore, blocking/overlap; max_residual=2.696e-09"
+  ],
+  "coverage": {
+    "automatic_teams": [
+      [
+        16
+      ],
+      [
+        8,
+        8
+      ],
+      [
+        4,
+        4,
+        4,
+        4
+      ]
+    ],
+    "heterogeneous_team_update": "1+rank, then collective set_threads(None), hierarchy reused",
+    "synthetic_numa_core_counts": [
+      37,
+      29,
+      41,
+      18
+    ],
+    "partition_counts": [
+      1,
+      2,
+      7,
+      19,
+      32,
+      37,
+      48,
+      128,
+      304
+    ],
+    "partition_audit": "Larger teams audited deterministically; actual OpenMP unit teams capped at 37. All sites visited once, empty/small ranges and EO/color subsets checked.",
+    "residual_gate": 1e-08
+  },
+  "not_measured": [
+    "LingSheng ARM/SVE execution",
+    "Real fixture full12 performance improvement"
+  ],
+  "usage": {
+    "launcher": "PYTHONPATH=bindings python tools/run_numa.py -- <application argv>",
+    "requirements": "Omit --threads from launcher; construct Solver with threads=None. For multiple ranks per NUMA use --ranks-per-numa; allowed physical cores are partitioned among those ranks. Retain MPI t-slab aggregate divisibility requirements."
+  },
+  "source_sha256": {
+    "src/solver/native/fine_site_work.hpp": "8f2ce77721a222d2f19b861663c7218791aabcbbbb801744121eee189b8a6cf4",
+    "tests/unit/fine_site_work_test.cpp": "a31340e20b7fb7b0bcf440aae728554e8e66883b1ce2015bcbec9af4e2a43de5",
+    "tests/runtime/test_fine_site_balance.py": "0d2536179d7dab37bbb0590ac46d2756825793b81ffa00028b7f405e14b2d932",
+    "tests/runtime/test_numa_launcher.py": "620e8e19e72ee4df641286f6b72b217e336eea2011aa32703c429855ea9e40cb",
+    "docs/code-guide.md": "5b01a10dc2b0b0c98f8968aef1d64c82804d23adacf76bee8eab2d5cb77055f2"
+  }
+}

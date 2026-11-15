@@ -15,6 +15,21 @@ spec.loader.exec_module(numa)
 
 
 class PlacementTests(unittest.TestCase):
+    def test_full_heterogeneous_numa_teams_without_fixed_thread_count(self):
+        widths = [37, 29, 41, 18]
+        nodes = {}
+        offset = 0
+        for node, count in enumerate(widths):
+            nodes[node] = list(range(offset, offset + count))
+            offset += count
+        plan = numa.make_plan(nodes, [24, 24, 24, 64], [6, 6, 6, 4])
+        self.assertEqual(plan['threads_per_rank'], widths)
+        for placement, count in zip(plan['placement'], widths):
+            env = numa.rank_environment(placement)
+            self.assertEqual(int(env['OMP_NUM_THREADS']), count)
+            self.assertEqual(int(env['LQCD_CPU_THREADS']), count)
+            self.assertEqual(len(placement['cpus']), count)
+
     def test_mpi_launcher_detection_and_arguments(self):
         for banner, family in (("mpirun (Open MPI) 4.1.6", "openmpi"),
                                ("prterun (PRRTE) 3.0.8", "openmpi"),
