@@ -82,6 +82,8 @@ controller and compiled-source provenance separate and labels reused CTests.
 The checked baseline is linked into the fresh comparison directory; interrupted
 outputs remain in their original directory. New solves retain independent
 13-column scalar residual checks and all warm/steady timing samples.
+Set `LQCD_LAYOUT_CASES=baseline-b` for a single original-layout follow-up after
+a qualified packed context; its seed is explicitly named `checked-packed`.
 
 ## Trial B hypothesis: specialize dispatch
 

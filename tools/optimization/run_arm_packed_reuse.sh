@@ -17,6 +17,8 @@ reuse_build=$reuse_checked/build
 reuse_commit=$(git -C "$reuse_source" rev-parse HEAD)
 reuse_controller=$(realpath "${BASH_SOURCE[0]}")
 reuse_controller_commit=${LQCD_CONTROLLER_COMMIT:-unrecorded}
+reuse_cases=${LQCD_LAYOUT_CASES:-packed baseline-b}
+case "$reuse_cases" in 'packed baseline-b'|'baseline-b') ;; *) echo 'Unsupported continuation cases' >&2; exit 2;; esac
 "$reuse_python" - "$reuse_checked" "$reuse_source" "$reuse_commit" <<'PY'
 import json, socket, sys
 from pathlib import Path
@@ -35,7 +37,13 @@ for test in ['arm_sve_packed', 'arm_packed_backend_mpi2', 'arm_packed_batch12_mp
 PY
 sha256sum -c "$reuse_checked/build.sha256"
 mkdir -p "$reuse_root"
-ln -s "$reuse_checked" "$reuse_root/baseline-a"
+reuse_seed_label=$("$reuse_python" - "$reuse_checked/L24/result.json" <<'PY'
+import json,sys
+d=json.load(open(sys.argv[1]))
+print('checked-packed' if int(d['context_environment'].get('LQCD_ARM_WILSON_PACKED',0)) else 'baseline-a')
+PY
+)
+ln -s "$reuse_checked" "$reuse_root/$reuse_seed_label"
 reuse_sdk=/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001
 reuse_sysroot=/work_ssd/system/os_jasmine_v01/vroot
 source "$reuse_sdk/setvars.sh" --use-bisheng --force
@@ -60,7 +68,7 @@ assert shutil.disk_usage('/tmp').free >= 24*1024**3
 PY
 reuse_scratch=
 trap 'echo "Interrupted/exit: preserve scratch $reuse_scratch"' EXIT
-for reuse_case in packed baseline-b; do
+for reuse_case in $reuse_cases; do
     reuse_out=$reuse_root/$reuse_case
     mkdir -p "$reuse_out/L24"
     if [[ "$reuse_case" == packed ]]; then
