@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-15",
+  "method": "Donau dnode -l -J cn12118 (read-only scheduler query)",
+  "node": "cn12118",
+  "numaInfo": {
+    "architecture": "aarch64",
+    "cpuClockSpeed": "2000MHz;2000MHz;",
+    "modelName": "72F5;72F5;",
+    "nCoresPerNode": 304,
+    "nNumaNodes": 16,
+    "nSockets": 2,
+    "nThreadsPerCore": 1
+  },
+  "memory_MB": {
+    "total": 578560,
+    "os_reserved": 61440,
+    "application_schedulable": 517120
+  },
+  "cpu": {
+    "total": 608,
+    "os_reserved": 16,
+    "application": 592
+  },
+  "interpretation": "Configuration metadata, not sustained-load frequency, memory bandwidth or HBM capacity measurements."
+}

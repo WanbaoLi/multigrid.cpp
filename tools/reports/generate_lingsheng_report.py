@@ -41,15 +41,16 @@ ax.text(.5,.25,'求解核心：SAP块内 Wilson–Clover ｜ 限制/插值 ｜ �
 ax.set_title('项目自研 CPU 多重网格：一次预处理，多次复用求解',pad=14)
 save(fig,'workflow.png')
 
-fig,axes=plt.subplots(1,2,figsize=(11,3.6))
+fig,axes=plt.subplots(1,2,figsize=(13,3.8))
 for ax,key,title in zip(axes,('single','twelve'),('预热后单列纯求解','预热后完整12列纯求解')):
-    for j,(machine,label,color) in enumerate((('lingsheng','灵晟',blue),('node5005','AMD node5005',orange))):
+    for j,(machine,label,color) in enumerate((('lingsheng','灵晟单节点',blue),('node5005','AMD EPYC 9755 128-Core × 2',orange))):
         vals=[pure(records[machine,n],key) for n in (24,32)]
         bars=ax.bar([i+(j-.5)*.34 for i in range(2)],vals,width=.32,label=label,color=color)
         ax.bar_label(bars,fmt='%.2f',padding=3)
     ax.set_xticks([0,1],['24³×64','32³×64']); ax.set_ylabel('秒'); ax.set_title(title)
     ax.margins(y=.25); ax.legend(fontsize=9); ax.grid(axis='y',alpha=.15)
-fig.tight_layout(); save(fig,'performance.png')
+fig.suptitle('单节点对比：均16 MPI；灵晟32线程/MPI，AMD 12线程/MPI',fontsize=11)
+fig.tight_layout(rect=(0,0,1,.94)); save(fig,'performance.png')
 
 sizes=[(24,64),(32,64),(64,128),(64,256)]
 volumes=[n**3*t for n,t in sizes]
@@ -71,13 +72,13 @@ ax.set_title('以C64两节点记录为基准的容量预测（不代表已完成
 ax.legend(loc='upper right',fontsize=9); save(fig,'memory.png')
 
 rows=[]
-for machine,name in (('lingsheng','灵晟'),('node5005','AMD node5005')):
+for machine,name in (('lingsheng','灵晟单节点'),('node5005','AMD EPYC 9755 128-Core × 2')):
     for n in (24,32):
         r=records[machine,n]
         rows.append(f'| {name} | {n}³×64 | {pure(r,"single"):.3f} | {pure(r,"twelve"):.3f} | {r["twelve_summary"]["steady_median_seconds"]:.3f} |')
 report='''# 灵晟测试报告
 
-**用途：申请多节点资源开展大格点 LQCD 传播子求解测试。** 数据截至2026年11月14日，整理日期2026年11月15日。
+**用途：申请多节点资源开展大格点 LQCD 传播子求解测试。** 求解数据截至2026年11月14日；硬件调度信息于2026年11月15日复核。
 
 ## 1. 项目与已完成工作
 
@@ -88,13 +89,16 @@ GitHub：[**WanbaoLi/multigrid.cpp**](https://github.com/WanbaoLi/multigrid.cpp)
 
 | 灵晟开发与优化 | 当前状态 |
 |---|---|
-| Wilson–Clover半自旋投影/恢复、SVE向量核及寻址复用 | 已集成，实机验证 |
-| SAP块内偶奇Schur预条件、粗网格偶奇求解 | 生产路径使用 |
-| 每NUMA域一个MPI、OpenMP绑核、两列批量处理 | 单节点16 MPI，求解32线程/MPI |
-| MPI halo通信与内部计算重叠、批量归约 | 已实现；收益受格子切分和通信开销影响 |
-| KUPL高带宽热数据分配、页面驻留验证 | 已有成功分配与SDK验证记录 |
-| 单节点共享只读系数；多节点仅驻留本地数据和halo | 单节点C24/C32、多节点C24通过；C64建层尚未完成 |
-| basis手征零块压缩、释放建层临时数据、控制Krylov缓存 | 已进入多节点实验；halo页复用另存未验证实验分支 |
+| 实现Wilson–Clover半自旋投影/恢复、SVE向量核与寻址复用，并完成实机验证 | 已完成 |
+| 实现SAP块内偶奇Schur预条件、粗网格偶奇求解 | 已完成 |
+| 实现每NUMA域一个MPI的绑核方案：单节点16 MPI、求解32线程/MPI，按两列批量处理 | 已完成 |
+| 实现MPI halo通信与内部计算重叠、批量归约 | 已完成 |
+| 接入KUPL，对部分热数据进行HBW分配，并验证SDK分类及页面驻留 | 已完成 |
+| 共享单节点只读系数，完成24³×64、32³×64单列和12列精度及性能验证 | 已完成 |
+| 实现多节点本地数据/halo驻留、basis手征零块压缩、建层临时数据释放和Krylov缓存控制，完成两节点C24验证 | 已完成 |
+| 完成64³×128多节点建层及预热后1列、12列求解验证 | 未完成 |
+| 通过跨向量复用halo页进一步降低内存峰值（已有实验实现，尚未验证） | 未完成 |
+| 生成规范场：开发并验证生产用LQCD规范场生成流程 | 未完成 |
 
 ## 2. 当前性能与精度
 
@@ -109,6 +113,8 @@ GitHub：[**WanbaoLi/multigrid.cpp**](https://github.com/WanbaoLi/multigrid.cpp)
 灵晟使用32求解线程/MPI，AMD使用12线程/MPI；这是各自现有配置的端到端对照，不能据此单独归因于CPU架构。单节点数据均通过单列及12列独立算子检查，灵晟最大独立残差低于4.9×10⁻⁹。灵晟C24/C32建层分别约224.6/487.8秒，建层可跨source复用。分块分别为6×6×6×4、8×8×8×4。
 
 ## 3. 当前限制与优化重点
+
+2026年11月15日复核灵晟计算节点cn12118的调度器信息：双路72F5、16个CPU NUMA域，608个物理核中592个可供应用使用；报告频率为2000 MHz。内存总量578560 MB，系统预留61440 MB，可供应用调度517120 MB，均保留调度器原单位。上述为节点配置读数，不是负载下持续频率、内存带宽或HBM容量实测。
 
 - **主频与控制开销：** 计算节点探针报告最高频率约2 GHz，尚无全核持续频率测量。小矩阵、间接寻址、归约和线程同步依赖单核效率，不能直接用整机峰值浮点算力推算求解时间。
 - **HBM使用范围：** KUPL已验证部分热数据进入HBW；当前自设预算为1 GiB/MPI，并非硬件容量上限，原始副本仍保留。C64两节点时每MPI的FP32 basis约2.25 GiB，超过该预算，无法整块放入当前热数据分配策略。尚无“全求解数据驻留HBM”或“带宽已打满”的证据。
@@ -133,6 +139,8 @@ GitHub：[**WanbaoLi/multigrid.cpp**](https://github.com/WanbaoLi/multigrid.cpp)
 
 数据依据：[单节点验收](https://github.com/WanbaoLi/multigrid.cpp/blob/b182d74/docs/single-node-health-20261113.md)、[多节点实验记录](https://github.com/WanbaoLi/multigrid.cpp/blob/b182d74/experiments/distributed-C64-20261114/README.md)。单节点测量版本`efe57de`，C64尝试版本`88e8bbe`；未验证halo页实验位于`codex/c64-halo-pages`。
 '''
+# Absolute image URLs keep the delivered Markdown usable without a local assets folder.
+report=report.replace('(assets/lingsheng-report/', '(https://raw.githubusercontent.com/WanbaoLi/multigrid.cpp/develop/docs/assets/lingsheng-report/')
 (ROOT/'docs/灵晟测试报告.md').write_text(report,encoding='utf-8')
 print('\n'.join(rows))
 print('Generated',ROOT/'docs/灵晟测试报告.md')
