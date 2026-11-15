@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "scope": "Best complete full12 steady median in this bounded campaign, not a global optimum",
+  "github_repository": "https://github.com/WanbaoLi/multigrid.cpp",
+  "github_branch": "codex/arm-coalesced-layout",
+  "source_commit": "820918fa6e029246515e77b885c99d10696f74c6",
+  "layout": "Original component-major; LQCD_ARM_WILSON_PACKED=0",
+  "host": "cn19672",
+  "lattice_xyzt": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "grid_xyzt": [
+    1,
+    1,
+    1,
+    16
+  ],
+  "block_xyzt": [
+    6,
+    6,
+    6,
+    4
+  ],
+  "setup_threads": 37,
+  "solve_threads": 32,
+  "batch": 2,
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "stout": {
+    "steps": 1,
+    "rho": 0.125,
+    "dir_ignore": 4
+  },
+  "zero_initial_guess": true,
+  "tol": 1E-08,
+  "precision": "float32 preconditioner/iteration workspace with float64 reliable updates and full true residual; external complex128",
+  "full12_first_solver_seconds": 14.707697432000003,
+  "full12_second_solver_seconds": 14.122919701999933,
+  "full12_steady_solver_median_seconds": 14.122205248999947,
+  "full12_fastest_steady_solver_seconds": 14.121490796,
+  "full12_steady_api_median_seconds": 14.591878484468907,
+  "single_steady_solver_median_seconds": 1.303801369999988,
+  "independent_max_residual": 4.8188149431124225E-09,
+  "independently_checked_columns": 13,
+  "api_correction_solves_occurred": false,
+  "library_sha256": "64925c87f993c0251a554262c0adfe3da2e78731edad693829ad04639f8eb71b",
+  "reference_sha256": "b1889bdc0185fa48410c826a10ca3921c9cd04e86a5e9b64c8f1731f89dd6cb8",
+  "input_lime_sha256": "47969c7fe9b4a4716d5eab40e5a1dbdaef09abdb055934000e034a99d20d2d30",
+  "remote_frozen_source": "/home/share/nsls_lwb/lqcd-run/arm-pack-20261115/source",
+  "remote_measured_build": "/home/share/nsls_lwb/lqcd-run/arm-pack-20261115/run01/baseline-a/build",
+  "local_frozen_source_archive": "C:/Users/lwb/.cache/mg-coalescing-best-820918f.tar",
+  "local_archive_sha256": "5eddb9bb8ab34c8ca726b3c168da33d91f06c0687d248ed538713cc8ecac7736"
+}

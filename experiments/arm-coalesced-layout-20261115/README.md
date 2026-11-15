@@ -1,6 +1,8 @@
 # ARM coefficient tiling campaign
 
-Status: implementation candidate, not promoted; compute-node validation pending.
+Status: Trials A and B completed and independently correct; no promotion.
+Supplementary same-binary original-layout follow-up after B is resource-blocked
+and queued, **not completed**. See `followup-pending.json` for the timestamped state.
 Base: `develop` at `141db3982afdbf3f64dd025831bc9edd6adbaa1e`.
 Frozen `skills/kunpeng-lqcd-reference/manifest.json` verified before edits.
 
@@ -131,3 +133,46 @@ contexts and succeeded. Frozen source/build files were not edited while running.
 The vector-length probe job 2135942 succeeded on cn12038: all six 16/32/64-byte,
 reuse-on/off cases passed. Its published controller is `86cc9af`; the binary is
 from `820918f`. Trial B's frozen source is `c552866`, job 2136624.
+
+## Completed Trial B and checkpoint
+
+Job 2136624 succeeded on cn19672. All 34 selected CTests passed, including
+the activated packed MPI2 and batch12 paths. `result-B.json` retains the real
+health result, all first/second/steady samples, correction/iteration metadata,
+the 13 independent scalar checks, parsed CTest evidence and diagnostic stages.
+Its `original_health_result_sha256` identifies the unaugmented remote JSON.
+
+Warm complete12 native median: **14.777750863 s**; API median: **15.264690465 s**.
+Warm single native median: 1.3300427095 s; setup: 207.309983014 s.
+Independent maximum residual: 4.818844220e-9, no outer API correction solves.
+The final diagnostic SAP sum was 6.23564 s; coarse 4.812175 s. The diagnostic
+is unranked and remains rank-0 local stage wall sums.
+
+`codegen-A.json` and `codegen-B.json` were generated with the published inspection
+tool at `ac2db0e`, after verifying AArch64 ELF machine type. Binary source revisions
+are recorded separately. A's mixed body had 15576 bytes / 400-byte entry frame.
+B split it into local hopping (3484 / 384), local Clover (4836 / 400) and global
+Clover (7848 / 256). Different bodies include different dispatch alternatives;
+these sizes are **not** dynamic instruction counts or proof of spill cost.
+The selected symbols have zero static SVE fused-multiply-add sites. This is an
+arithmetic candidate, not a measured compute/bandwidth-bound diagnosis.
+
+Two rounds did not beat this campaign's best original-layout complete12 median
+of 14.122205249 s. The native/API clocks, numerical gate and original source are
+preserved in `best-known.json`. Its source archive is kept outside the repository;
+no binary, configuration array or raw test log is committed.
+
+Do not infer that every data-reordering direction is exhausted. The implemented
+16-site scheme adds masked segments on unaligned time faces: an interior parity
+range [108,324) has 15 vector segments versus the original's 14 at 16 float lanes;
+the complete split block has 58 versus 56. SAP half-blocks are aligned. ARM
+cross-RHS tile fusion was not implemented; it would be a distinct retry with a
+new reuse mechanism. Full solve evidence, not static byte counts, must rank it.
+
+The final same-binary original-layout follow-up uses controller `4f3392e`, frozen
+source/library `c552866`, job **2137061**, requested cn19672/592 CPUs. At the
+recorded checkpoint the node had another running job and only 342 CPUs free;
+Donau could not grant an exclusive allocation. The queued script automatically
+performs all solves and independent checks when granted the node. Expected output:
+`/home/share/nsls_lwb/lqcd-run/arm-pack-20261115/run04/baseline-b/L24/result.json`.
+This pending comparison is neither a passed test nor a completed optimization.

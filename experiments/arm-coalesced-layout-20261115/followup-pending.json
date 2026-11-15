@@ -1,0 +1,19 @@
+{
+  "observed_utc": "2026-11-15T16:21:37.3653286Z",
+  "complete": false,
+  "blocked": true,
+  "scope": "Supplementary matched original-layout follow-up after Trial B; no solve or residual result exists for this job yet",
+  "job_id": "2137061",
+  "state": "PENDING",
+  "reason": "Requested node has another running job and cannot satisfy exclusive 592-core allocation",
+  "requested_node": "cn19672",
+  "node_running_jobs": 1,
+  "node_free_cpus": 342,
+  "requested_cpus": 592,
+  "compiled_source_commit": "c5528663bfb4d94345baef43e1d88ce0ba84ad18",
+  "controller_commit": "4f3392e56d9239708f8b24b6bb96578cb63df83a",
+  "output_root": "/home/share/nsls_lwb/lqcd-run/arm-pack-20261115/run04",
+  "controller": "tools/optimization/run_arm_packed_reuse.sh",
+  "case_environment": "LQCD_LAYOUT_CASES=baseline-b",
+  "action": "Left queued; source and checked binaries frozen; pending result must not be counted as completed"
+}

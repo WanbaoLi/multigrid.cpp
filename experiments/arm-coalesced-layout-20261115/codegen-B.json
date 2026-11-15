@@ -1,0 +1,244 @@
+{
+  "complete": true,
+  "library": "/home/share/nsls_lwb/lqcd-run/arm-pack-20261115/run03/build/liblqcd_cpu.so.0.2.0",
+  "library_sha256": "68c0001ce4f2f0b63b7400719480a9062b981ce76b4af12506dd3e93cb2eaf52",
+  "scope": "static instruction sites in selected symbols; no dynamic frequency, executed-path or bandwidth claim",
+  "functions": [
+    {
+      "symbol": "NativeMG::Impl::block_apply(int, float const*, float*, bool) const",
+      "address": 127408,
+      "code_bytes": 136,
+      "entry_fixed_stack_bytes": 64,
+      "sve_instruction_sites": {},
+      "sve_fused_multiply_add_sites": 0,
+      "sve_stack_access_sites": 0,
+      "entry_instructions": [
+        "stp x29, x30, [sp, #-64]!",
+        "mov x29, sp",
+        "ldr w5, [x0, #120]",
+        "stp x19, x20, [sp, #16]",
+        "stp x21, x22, [sp, #32]",
+        "mov x19, x0",
+        "mov w20, w1",
+        "str x23, [sp, #48]"
+      ]
+    },
+    {
+      "symbol": "NativeMG::Impl::block_apply(int, float const*, float*, bool) const [clone .constprop.0]",
+      "address": 129664,
+      "code_bytes": 696,
+      "entry_fixed_stack_bytes": null,
+      "sve_instruction_sites": {},
+      "sve_fused_multiply_add_sites": 0,
+      "sve_stack_access_sites": 0,
+      "entry_instructions": [
+        "sub sp, sp, #0xb0",
+        "mov w4, #0x0                   \t// #0",
+        "stp x29, x30, [sp, #48]",
+        "add x29, sp, #0x30",
+        "ldr w5, [x0, #120]",
+        "stp x19, x20, [sp, #64]",
+        "mov x19, x0",
+        "mov w20, w1"
+      ]
+    },
+    {
+      "symbol": "void lqcd_native::arm::wilson_sve_impl<true, int, true, true, false>(int, int, float const*, float const*, int const*, int const (*) [4], float const (*) [4], float const (*) [4], float const*, float*, int, int, int const*) [clone .isra.0]",
+      "address": 97984,
+      "code_bytes": 2220,
+      "entry_fixed_stack_bytes": 272,
+      "sve_instruction_sites": {
+        "cmpge": 1,
+        "fadd": 45,
+        "fmul": 52,
+        "fsub": 9,
+        "fsubr": 4,
+        "ld1w": 51,
+        "mov": 14,
+        "st1w": 14
+      },
+      "sve_fused_multiply_add_sites": 0,
+      "sve_stack_access_sites": 0,
+      "entry_instructions": [
+        "stp x29, x30, [sp, #-272]!",
+        "sxtw x0, w0",
+        "mov x29, sp",
+        "stp x25, x26, [sp, #64]",
+        "ldr w25, [sp, #288]",
+        "stp x2, x3, [sp, #248]",
+        "ldr w2, [sp, #280]",
+        "stp x23, x24, [sp, #48]"
+      ]
+    },
+    {
+      "symbol": "NativeMG::Impl::block_apply(int, float const*, float*, bool) const [clone .part.0]",
+      "address": 124000,
+      "code_bytes": 3408,
+      "entry_fixed_stack_bytes": null,
+      "sve_instruction_sites": {
+        "cmpge": 1,
+        "fadd": 41,
+        "fmul": 52,
+        "fsub": 7,
+        "fsubr": 6,
+        "ld1w": 59,
+        "mov": 6,
+        "st1w": 6
+      },
+      "sve_fused_multiply_add_sites": 0,
+      "sve_stack_access_sites": 0,
+      "entry_instructions": [
+        "sub sp, sp, #0x1f0",
+        "stp x29, x30, [sp, #48]",
+        "add x29, sp, #0x30",
+        "ldr x5, [x0, #456]",
+        "stp x27, x28, [sp, #128]",
+        "ldr w28, [x0, #120]",
+        "stp x23, x24, [sp, #96]",
+        "mov x23, x3"
+      ]
+    },
+    {
+      "symbol": "bool NativeMG::Impl::try_arm_packed_range<true, false>(int, float const*, float*, int, int) const",
+      "address": 152784,
+      "code_bytes": 3484,
+      "entry_fixed_stack_bytes": 384,
+      "sve_instruction_sites": {
+        "cmpge": 2,
+        "fadd": 50,
+        "fmul": 56,
+        "fsub": 12,
+        "fsubr": 2,
+        "ld1w": 62,
+        "mov": 20,
+        "st1w": 18
+      },
+      "sve_fused_multiply_add_sites": 0,
+      "sve_stack_access_sites": 0,
+      "entry_instructions": [
+        "stp x29, x30, [sp, #-384]!",
+        "mov x29, sp",
+        "stp x19, x20, [sp, #16]",
+        "mov x19, x0",
+        "ldrb w0, [x0, #1680]",
+        "str x2, [sp, #112]",
+        "str w4, [sp, #280]",
+        "str w0, [sp, #380]"
+      ]
+    },
+    {
+      "symbol": "NativeMG::Impl::clover_range(int, float const*, float*, int, bool) const",
+      "address": 108272,
+      "code_bytes": 3500,
+      "entry_fixed_stack_bytes": 272,
+      "sve_instruction_sites": {
+        "fadd": 36,
+        "fmul": 48,
+        "fsub": 4,
+        "fsubr": 8,
+        "ld1w": 48,
+        "mov": 2,
+        "st1w": 4
+      },
+      "sve_fused_multiply_add_sites": 0,
+      "sve_stack_access_sites": 0,
+      "entry_instructions": [
+        "stp x29, x30, [sp, #-272]!",
+        "mov w6, #0x90                  \t// #144",
+        "mov x29, sp",
+        "stp x19, x20, [sp, #16]",
+        "ldr w20, [x0, #120]",
+        "mov x19, x2",
+        "stp x21, x22, [sp, #32]",
+        "stp x23, x24, [sp, #48]"
+      ]
+    },
+    {
+      "symbol": "bool NativeMG::Impl::try_arm_packed_range<true, true>(int, float const*, float*, int, int) const",
+      "address": 147936,
+      "code_bytes": 4836,
+      "entry_fixed_stack_bytes": 400,
+      "sve_instruction_sites": {
+        "cmpge": 2,
+        "fadd": 86,
+        "fmul": 104,
+        "fsub": 16,
+        "fsubr": 10,
+        "ld1w": 110,
+        "mov": 20,
+        "st1w": 20
+      },
+      "sve_fused_multiply_add_sites": 0,
+      "sve_stack_access_sites": 0,
+      "entry_instructions": [
+        "stp x29, x30, [sp, #-400]!",
+        "mov x29, sp",
+        "stp x19, x20, [sp, #16]",
+        "mov x19, x0",
+        "ldrb w0, [x0, #1680]",
+        "str x3, [sp, #120]",
+        "str w4, [sp, #256]",
+        "str w5, [sp, #260]"
+      ]
+    },
+    {
+      "symbol": "bool NativeMG::Impl::try_arm_packed_range<false, true>(int, float const*, float*, int, int) const",
+      "address": 140080,
+      "code_bytes": 7848,
+      "entry_fixed_stack_bytes": 256,
+      "sve_instruction_sites": {
+        "cmpge": 4,
+        "fadd": 172,
+        "fmul": 208,
+        "fsub": 34,
+        "fsubr": 18,
+        "ld1w": 186,
+        "mov": 40,
+        "st1w": 40
+      },
+      "sve_fused_multiply_add_sites": 0,
+      "sve_stack_access_sites": 0,
+      "entry_instructions": [
+        "stp x29, x30, [sp, #-256]!",
+        "mov x29, sp",
+        "stp x21, x22, [sp, #32]",
+        "mov x22, x0",
+        "ldrb w0, [x0, #1680]",
+        "str x3, [sp, #96]",
+        "str x2, [sp, #112]",
+        "stp w5, w4, [sp, #168]"
+      ]
+    },
+    {
+      "symbol": "NativeMG::Impl::local_range(int, float const*, float*, int, bool) const",
+      "address": 115360,
+      "code_bytes": 8632,
+      "entry_fixed_stack_bytes": null,
+      "sve_instruction_sites": {
+        "cmpge": 3,
+        "fadd": 91,
+        "fmul": 108,
+        "fsub": 19,
+        "fsubr": 8,
+        "ld1w": 121,
+        "mov": 26,
+        "st1w": 24
+      },
+      "sve_fused_multiply_add_sites": 0,
+      "sve_stack_access_sites": 0,
+      "entry_instructions": [
+        "sub sp, sp, #0x220",
+        "stp x29, x30, [sp, #32]",
+        "add x29, sp, #0x20",
+        "stp x25, x26, [sp, #96]",
+        "mov w25, w4",
+        "ldr w4, [x0, #120]",
+        "stp x19, x20, [sp, #48]",
+        "stp x21, x22, [sp, #64]"
+      ]
+    }
+  ],
+  "binary_source_commit": "c5528663bfb4d94345baef43e1d88ce0ba84ad18",
+  "tool_commit": "ac2db0e99fd3ad17ba199eee7bcd3cba73811694",
+  "tool_sha256": "a8559af14d7c7ead5943776ceeafd43add56df32211332bf92fb1c66a4720449"
+}
