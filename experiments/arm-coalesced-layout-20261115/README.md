@@ -1,8 +1,8 @@
 # ARM coefficient tiling campaign
 
-Status: Trials A and B completed and independently correct; no promotion.
-Supplementary same-binary original-layout follow-up after B is resource-blocked
-and queued, **not completed**. See `followup-pending.json` for the timestamped state.
+Status: Trials A, B and the same-binary original-layout follow-up completed and
+independently correct; no promotion. `followup-pending.json` retains the earlier
+queue checkpoint; `followup-complete.json` records the final successful result.
 Base: `develop` at `141db3982afdbf3f64dd025831bc9edd6adbaa1e`.
 Frozen `skills/kunpeng-lqcd-reference/manifest.json` verified before edits.
 
@@ -175,4 +175,23 @@ recorded checkpoint the node had another running job and only 342 CPUs free;
 Donau could not grant an exclusive allocation. The queued script automatically
 performs all solves and independent checks when granted the node. Expected output:
 `/home/share/nsls_lwb/lqcd-run/arm-pack-20261115/run04/baseline-b/L24/result.json`.
-This pending comparison is neither a passed test nor a completed optimization.
+At that checkpoint the pending comparison was not counted as a passed test.
+
+## Completed supplementary follow-up
+
+Job 2137061 subsequently ran on cn19672 from **2026-11-16 01:03:10 to 01:10:27
+Asia/Shanghai** and succeeded. The saved single column and all twelve propagation
+columns passed the independent scalar residual check; maximum 4.818814943e-9.
+No API correction solve occurred. `result-B-original.json` contains the complete
+result, including first/second/steady samples and the reused-build provenance.
+
+Using the same `c552866` library as Trial B but the original layout, its warmed
+complete12 native median was **15.868849066 s**, API median **16.358182640 s**.
+Source, binary hash, node, CPU placement, physics and smeared-gauge hash match.
+Compared only with this late original run, packed B's 14.777750863 s is 6.876%
+lower. The original run started about an hour after B finished, following its
+queue delay. That pair is not time-bracketed and cannot establish a stable
+layout speedup or identify the source of variation. Earlier original-layout
+medians were 14.122205249 and 14.486747656 s, so retain all samples and contexts.
+This closes the previously blocked numerical/timing run; it does not change the
+best-known record or justify a production default change.
