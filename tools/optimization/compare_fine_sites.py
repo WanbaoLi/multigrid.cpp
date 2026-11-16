@@ -149,7 +149,10 @@ def main():
             "-DCMAKE_C_COMPILER=" + os.environ["CC"],
             "-DCMAKE_CXX_COMPILER=" + os.environ["CXX"],
             "-DLQCD_TEST_PYTHON=" + sys.executable,
-            "-DLQCD_MPI_FLAGS=--host;localhost:4;--bind-to;none"]
+            # Give test ranks disjoint NUMA places. Unbound MPI ranks with
+            # OMP_PROC_BIND=close can otherwise all choose the first cores.
+            # Four cores also leave nonempty auto-team partitions in MPI4 gates.
+            "-DLQCD_MPI_FLAGS=--host;localhost:4;--map-by;ppr:1:numa:PE=4;--bind-to;core"]
         if args.backend == "arm":
             sdk = Path(os.environ["LQCD_COMPARISON_SDK"])
             runtime = sdk / "compiler/gcc/lib64"
