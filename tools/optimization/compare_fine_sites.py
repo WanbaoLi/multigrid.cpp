@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """Same-node baseline/candidate/baseline full12 comparison, using NUMA-derived teams."""
 import argparse
+import atexit
 import hashlib
 import json
 import os
 from pathlib import Path
 import socket
+import shutil
 import statistics
 import subprocess
 import sys
+import tempfile
 
 PROJECT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT / "tools"))
@@ -96,8 +99,28 @@ def main():
     p.add_argument("--fixture", type=Path, required=True)
     p.add_argument("--gold", type=Path, required=True)
     args = p.parse_args()
-    root = args.output.resolve()
-    root.mkdir(exist_ok=False, parents=True)
+    archive = args.output.resolve()
+    archive.mkdir(exist_ok=False, parents=True)
+    # Build, arrays and byte-extracted scalar inputs stay on the allocated
+    # node, avoiding shared-home quotas and shared-filesystem timing noise.
+    assert shutil.disk_usage("/tmp").free >= 24 * 1024**3, "Need 24 GiB node-local scratch"
+    root = Path(tempfile.mkdtemp(prefix="lqcd-fine-sites-"))
+    state = dict(complete=False, node_local_outputs=str(root), host=socket.gethostname())
+
+    def archive_metadata():
+        for source in root.rglob("*.json"):
+            relative = source.relative_to(root)
+            if any(part.startswith("build-") for part in relative.parts):
+                continue
+            target = archive / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(source, target)
+        for source in root.glob("*.log"):
+            shutil.copyfile(source, archive / source.name)
+        save(archive / "status.json", state)
+        print("ARCHIVED_METADATA", str(archive), flush=True)
+
+    atexit.register(archive_metadata)
     sources = {v: getattr(args, v).resolve() for v in ("baseline", "candidate")}
     identities = {v: snapshot(s) for v, s in sources.items()}
     nodes = discover_nodes()
@@ -159,6 +182,7 @@ def main():
             root / (name + "-verify.log"))
     assert all(snapshot(s) == identities[v] for v, s in sources.items()), "Source export changed during run"
     summarize(root, runs)
+    state["complete"] = True
 
 
 if __name__ == "__main__":
