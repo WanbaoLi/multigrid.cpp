@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-16",
+  "complete": true,
+  "job_id": "2144511",
+  "scheduler_state": "SUCCEEDED",
+  "host": "cn19688",
+  "source_branch": "codex/fine-site-balance-20261115",
+  "baseline_commit": "141db3982afdbf3f64dd025831bc9edd6adbaa1e",
+  "candidate_commit": "c3c1821910536714b8290280532f6801102460bd",
+  "control_commit": "0e2c66fd7d78a476ef581e7ee4553e82c92246db",
+  "hypothesis": "Fine-output site intervals may reduce per-thread imbalance on the NUMA-derived teams; extra SIMD tails, range calls and locality effects may offset the benefit. End-to-end full12 decides.",
+  "conclusion": "No demonstrated stable end-to-end acceleration in this bounded A/B/A comparison.",
+  "api_candidate_reduction_vs_control_mean": 0.002000071323551067,
+  "control_relative_drift": 0.05842354208998694,
+  "candidate_slowdown_vs_closing_control": 0.028030520879650522,
+  "interpretation": "Candidate is between the two controls. Its approximately 0.20% reduction relative to their mean is much smaller than the approximately 5.84% control drift. Neither a stable speedup nor a general regression is established. Do not attribute the entire drift to a particular hardware or OS cause without measurements.",
+  "setup_reused_within_each_process": true,
+  "zero_initial_guesses": true,
+  "configuration": {
+    "lattice": [
+      24,
+      24,
+      24,
+      64
+    ],
+    "block": [
+      6,
+      6,
+      6,
+      4
+    ],
+    "coarse_grid": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "mpi_grid": [
+      1,
+      1,
+      1,
+      16
+    ],
+    "allowed_physical_cores": 592,
+    "threads_per_rank": [
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37,
+      37
+    ],
+    "resource_selection": "NUMA allowed physical cores discovered at runtime; identical teams for baseline and candidate",
+    "batch": 2,
+    "mass": -0.277,
+    "csw": 1.160920226,
+    "stout": {
+      "steps": 1,
+      "rho": 0.125,
+      "dir_ignore": 4
+    },
+    "normalization": "mass",
+    "fermion_t_boundary": -1,
+    "gauge_t_boundary": 1,
+    "seed": 1024,
+    "source": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "precision": "FP32 MG hot path with FP64 reliable updates and full true residuals; external complex128"
+  },
+  "metrics": {
+    "primary": "Full12 Python public API wall time, MPI maximum, excluding setup and I/O",
+    "secondary": "Sum of six shared batch solver_seconds entries; never multiply shared batch time by two",
+    "sample_order": "first warmup, then three steady solves; all retained",
+    "corrections": "refinement_steps are extra public-API correction solves. Native reliable residual updates remain enabled and their count was not separately instrumented."
+  },
+  "ctest": {
+    "baseline": {
+      "passed": 21,
+      "failed": 0
+    },
+    "candidate": {
+      "passed": 25,
+      "failed": 0
+    }
+  },
+  "independent_columns_checked": 36,
+  "max_independent_residual": 4.8188442196169315e-09,
+  "max_solution_relative_error": 9.699375777759337e-12,
+  "api_correction_solves_occurred": false,
+  "performance_scope": "One exclusive LingSheng node, equal automatically derived teams (37 threads here). No comparison against the historical 32-thread optimal configuration and no global-optimum claim.",
+  "remote_run_root": "/home/share/nsls_lwb/lqcd-run/fine-sites-20261116/run02",
+  "node_local_outputs": "/tmp/lqcd-fine-sites-5j18omgt",
+  "failure_history": [
+    {
+      "stage": "source export before job",
+      "reason": "Shared-home quota exceeded with full historical archives",
+      "resolution": "Remove only this task incomplete exports, publish/use build-source exports with explicit path lists, and build/write arrays on node-local scratch"
+    },
+    {
+      "job_id": "2144274",
+      "numerical_source": "141db3982afdbf3f64dd025831bc9edd6adbaa1e",
+      "stage": "baseline CTest, before performance samples",
+      "observed": "cpu_backend_mpi2 timeout at 240.72 seconds with unbound ranks plus close OpenMP placement",
+      "action": "Agent terminated the run; failed test log retained outside source",
+      "resolution": "Published control 0e2c66f binds regression ranks to separate NUMA core sets. Same baseline tests then passed; all 21 baseline and 25 candidate selected CTests passed.",
+      "log": "/home/share/nsls_lwb/lqcd-run/fine-sites-20261116/run01/ctest-baseline.log"
+    }
+  ]
+}

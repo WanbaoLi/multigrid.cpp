@@ -1,0 +1,16 @@
+{
+  "node": "cn19688",
+  "cpu": 592,
+  "memory_MB": 480000,
+  "timeout_seconds": 3600,
+  "exclusive": true,
+  "queue": "q_hpcapp",
+  "account": "common",
+  "control_commit": "0e2c66fd7d78a476ef581e7ee4553e82c92246db",
+  "baseline_commit": "141db3982afdbf3f64dd025831bc9edd6adbaa1e",
+  "candidate_commit": "c3c1821910536714b8290280532f6801102460bd",
+  "job_script_sha256": "c00052ee23517a3a745964ac852f8b09098c1f2a02da93cb4a44b4e74a02ac79",
+  "previous_job": "2144274",
+  "previous_run": "run01",
+  "retry_reason": "baseline cpu_backend_mpi2 timed out under unbound MPI plus close OpenMP placement; regression ranks now use disjoint four-core NUMA placements; no performance samples existed"
+}
