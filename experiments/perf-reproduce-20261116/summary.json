@@ -1,0 +1,185 @@
+{
+  "complete": true,
+  "date": "2026-11-16",
+  "source_commit": "efe57de52223a6f7f5177ac731c33e762070b327",
+  "ctest": {
+    "lingsheng": {
+      "passed": 30,
+      "failed": 0
+    },
+    "node5005": {
+      "passed": 30,
+      "failed": 0
+    }
+  },
+  "scheduler": {
+    "state": "SUCCEEDED",
+    "job": "2144729"
+  },
+  "steady_definition": "median of samples 2 and 3; zero initial guesses; hierarchy reused",
+  "native_timer_scope": "rank 0 native solver timer; count each shared batch once",
+  "api_timer_scope": "MPI maximum public API wall time",
+  "rows": [
+    {
+      "case": "node5005-L24",
+      "host": "node5005",
+      "lattice": [
+        24,
+        24,
+        24,
+        64
+      ],
+      "ranks": 16,
+      "setup_threads": 16,
+      "solve_threads": 12,
+      "batch": 2,
+      "stout_seconds": 0.6688949223607779,
+      "gauge_load_clover_seconds": 0.8395927809178829,
+      "setup_seconds": 136.263981081,
+      "single_api": {
+        "first_seconds": 0.72394791059196,
+        "second_seconds": 0.6849302221089602,
+        "steady_median_seconds": 0.6844571572728455,
+        "samples": 3
+      },
+      "full12_api": {
+        "first_seconds": 6.311105098575354,
+        "second_seconds": 6.173643821850419,
+        "steady_median_seconds": 6.186359949875623,
+        "samples": 3
+      },
+      "full12_solver_first_seconds": 6.168113871999992,
+      "full12_solver_second_seconds": 6.042603712000016,
+      "full12_solver_steady_seconds": 6.055276660500027,
+      "max_independent_residual": 9.169752833365244E-09,
+      "independent_checks": 13,
+      "correction_solves_occurred": false,
+      "runtime_library_sha256": "2c289476f216470c160fbb56cd3ec2a8436d02c989cdc7af2a8db78fa18cbb61",
+      "library_matches_historical": true,
+      "input_matches_historical": true,
+      "historical_full12_api_seconds": 6.215849220287055,
+      "api_change_percent": -0.4744206200366974
+    },
+    {
+      "case": "node5005-L32",
+      "host": "node5005",
+      "lattice": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "ranks": 16,
+      "setup_threads": 16,
+      "solve_threads": 12,
+      "batch": 2,
+      "stout_seconds": 1.6415219167247415,
+      "gauge_load_clover_seconds": 1.8869880558922887,
+      "setup_seconds": 306.897477584,
+      "single_api": {
+        "first_seconds": 2.9665330201387405,
+        "second_seconds": 2.8447476513683796,
+        "steady_median_seconds": 2.8530946262180805,
+        "samples": 3
+      },
+      "full12_api": {
+        "first_seconds": 30.314516878686845,
+        "second_seconds": 30.000912548974156,
+        "steady_median_seconds": 30.006800427101552,
+        "samples": 3
+      },
+      "full12_solver_first_seconds": 29.959149879999984,
+      "full12_solver_second_seconds": 29.67496999100007,
+      "full12_solver_steady_seconds": 29.68000874450007,
+      "max_independent_residual": 1.8438851654188708E-09,
+      "independent_checks": 13,
+      "correction_solves_occurred": false,
+      "runtime_library_sha256": "2c289476f216470c160fbb56cd3ec2a8436d02c989cdc7af2a8db78fa18cbb61",
+      "library_matches_historical": true,
+      "input_matches_historical": true,
+      "historical_full12_api_seconds": 29.988932996522635,
+      "api_change_percent": 0.05958008102853185
+    },
+    {
+      "case": "lingsheng-L24",
+      "host": "cn19688",
+      "lattice": [
+        24,
+        24,
+        24,
+        64
+      ],
+      "ranks": 16,
+      "setup_threads": 37,
+      "solve_threads": 32,
+      "batch": 2,
+      "stout_seconds": 3.036663212114945,
+      "gauge_load_clover_seconds": 2.0891369038727134,
+      "setup_seconds": 185.530489588,
+      "single_api": {
+        "first_seconds": 1.6100888210348785,
+        "second_seconds": 1.22821870399639,
+        "steady_median_seconds": 1.2288124765036628,
+        "samples": 3
+      },
+      "full12_api": {
+        "first_seconds": 13.838534320006147,
+        "second_seconds": 13.183932072017342,
+        "steady_median_seconds": 13.200781592982821,
+        "samples": 3
+      },
+      "full12_solver_first_seconds": 13.349295688999973,
+      "full12_solver_second_seconds": 12.754986384999967,
+      "full12_solver_steady_seconds": 12.748363278999989,
+      "max_independent_residual": 4.8188442196168645E-09,
+      "independent_checks": 13,
+      "correction_solves_occurred": false,
+      "runtime_library_sha256": "b8fa8394dca63be0d2f4b1cb3361030bae3768a1dec960ddb2136603a435c186",
+      "library_matches_historical": true,
+      "input_matches_historical": true,
+      "historical_full12_api_seconds": 14.852946292958222,
+      "api_change_percent": -11.123481276968539
+    },
+    {
+      "case": "lingsheng-L32",
+      "host": "cn19688",
+      "lattice": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "ranks": 16,
+      "setup_threads": 37,
+      "solve_threads": 32,
+      "batch": 2,
+      "stout_seconds": 8.03284329501912,
+      "gauge_load_clover_seconds": 5.461301211966202,
+      "setup_seconds": 431.964014854,
+      "single_api": {
+        "first_seconds": 5.93023315211758,
+        "second_seconds": 5.410839381860569,
+        "steady_median_seconds": 5.390097479335964,
+        "samples": 3
+      },
+      "full12_api": {
+        "first_seconds": 62.7863678408321,
+        "second_seconds": 62.11465849587694,
+        "steady_median_seconds": 62.05375566100702,
+        "samples": 3
+      },
+      "full12_solver_first_seconds": 61.94615893500003,
+      "full12_solver_second_seconds": 61.29599750899996,
+      "full12_solver_steady_seconds": 61.24587403799987,
+      "max_independent_residual": 4.87573824570489E-09,
+      "independent_checks": 13,
+      "correction_solves_occurred": false,
+      "runtime_library_sha256": "b8fa8394dca63be0d2f4b1cb3361030bae3768a1dec960ddb2136603a435c186",
+      "library_matches_historical": true,
+      "input_matches_historical": true,
+      "historical_full12_api_seconds": 63.84982606902486,
+      "api_change_percent": -2.812960533480857
+    }
+  ],
+  "conclusion": "All four real-input checks passed. Historical runtime binary hashes and inputs match. x86 timings closely reproduce history; ARM timings are lower on this run. Timing differences are not code optimization evidence."
+}

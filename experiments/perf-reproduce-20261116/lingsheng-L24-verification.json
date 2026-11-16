@@ -1,0 +1,78 @@
+{
+  "complete": true,
+  "passed": true,
+  "columns": [
+    {
+      "kind": "single",
+      "column": 0,
+      "residual": 4.8188442196168645e-09
+    },
+    {
+      "kind": "full12",
+      "column": 0,
+      "residual": 4.8188442196168645e-09
+    },
+    {
+      "kind": "full12",
+      "column": 1,
+      "residual": 3.198755008632706e-09
+    },
+    {
+      "kind": "full12",
+      "column": 2,
+      "residual": 3.933281019850562e-09
+    },
+    {
+      "kind": "full12",
+      "column": 3,
+      "residual": 3.1414285645287855e-09
+    },
+    {
+      "kind": "full12",
+      "column": 4,
+      "residual": 4.089354625158397e-09
+    },
+    {
+      "kind": "full12",
+      "column": 5,
+      "residual": 4.0760293114093425e-09
+    },
+    {
+      "kind": "full12",
+      "column": 6,
+      "residual": 3.656154795278409e-09
+    },
+    {
+      "kind": "full12",
+      "column": 7,
+      "residual": 2.835006984138944e-09
+    },
+    {
+      "kind": "full12",
+      "column": 8,
+      "residual": 2.640792588359315e-09
+    },
+    {
+      "kind": "full12",
+      "column": 9,
+      "residual": 3.7731251548572636e-09
+    },
+    {
+      "kind": "full12",
+      "column": 10,
+      "residual": 4.2799646402084245e-09
+    },
+    {
+      "kind": "full12",
+      "column": 11,
+      "residual": 2.6128519243779415e-09
+    }
+  ],
+  "max_true_residual": 4.8188442196168645e-09,
+  "single_full12_first_column_relative_error": 0.0,
+  "method": "independent scalar C++ with generic LIME geometry",
+  "reference_sha256": "f96db2616c3e1fdf0cc43931c4102b11d05164c40c82d239993e44796ac0c65f",
+  "gauge_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834",
+  "propagator_sha256": "c2c5774ff618af49b7cd42f349758ab11532640d2826f1c7be606a831325ce72",
+  "reference_threads": 8
+}

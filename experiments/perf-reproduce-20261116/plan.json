@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-16",
+  "purpose": "Reproduce the matched 16-MPI real-input performance records of 2026-11-13",
+  "source_commit": "efe57de52223a6f7f5177ac731c33e762070b327",
+  "source_branch": "develop (historical committed revision)",
+  "geometries": [
+    [
+      24,
+      24,
+      24,
+      64
+    ],
+    [
+      32,
+      32,
+      32,
+      64
+    ]
+  ],
+  "mpi_grid": [
+    1,
+    1,
+    1,
+    16
+  ],
+  "batch": 2,
+  "zero_initial_guess": true,
+  "repeats": 3,
+  "steady_samples": "second and third; median",
+  "tolerance": 1E-08,
+  "node5005": {
+    "host": "node5005",
+    "source": "/public2/home/lwb_720/.cache/mg-health-efe57de-source-20261113",
+    "output": "/public2/home/lwb_720/.cache/mg-reproduce-efe57de-20261116-1749",
+    "setup_threads": 16,
+    "solve_threads": 12
+  },
+  "lingsheng": {
+    "host": "cn19688",
+    "job": "2144729",
+    "source": "/home/share/nsls_lwb/lqcd-run/health-20261113/source",
+    "output": "/home/share/nsls_lwb/lqcd-run/reproduce-efe57de-20261116-1749",
+    "setup_threads": 37,
+    "solve_threads": 32
+  },
+  "validation": "Fresh compute-node build, selected CTest, independent scalar single + 12 column true residual checks",
+  "timing": "I/O, stout, setup, native solver and public API kept separate",
+  "scope_note": "Historical same-revision reproduction, not a benchmark of current experimental HEAD or the later ARM best-known build"
+}

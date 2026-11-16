@@ -1,0 +1,13 @@
+{
+  "source_commit": "efe57de52223a6f7f5177ac731c33e762070b327",
+  "source": "/home/share/nsls_lwb/lqcd-run/health-20261113/source",
+  "run_root": "/home/share/nsls_lwb/lqcd-run/reproduce-efe57de-20261116-1749",
+  "queue": "q_hpcapp",
+  "account": "common",
+  "node": "cn19688",
+  "replicas": 1,
+  "nodes": 1,
+  "cpu": 592,
+  "memory_MB": 480000,
+  "timeout_seconds": 7200
+}

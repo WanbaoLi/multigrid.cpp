@@ -1,0 +1,76 @@
+{
+  "source_commit": "efe57de52223a6f7f5177ac731c33e762070b327",
+  "source_branch": "develop",
+  "source": "/public2/home/lwb_720/.cache/mg-health-efe57de-source-20261113",
+  "backend": "x86",
+  "host": "node5005",
+  "gauges": {
+    "L24": "/public2/home/lwb_720/lqcd/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime",
+    "L32": "/public2/home/lwb_720/.cache/mg-health-20261113/inputs/beta6.20_mu-0.2790_ms-0.2400_L32x64_cfg_10000.lime"
+  },
+  "selected_geometries": "24,32",
+  "plans": {
+    "L24": {
+      "context_environment": {
+        "LQCD_ARM_COARSE_SVE": 0,
+        "LQCD_ARM_SVE": 1,
+        "LQCD_ARM_SVE_PLANNED": 0,
+        "LQCD_ARM_SVE_REUSE": 0,
+        "LQCD_ARM_SVE_TRANSFER": 0,
+        "LQCD_COARSE_FUSED": 0,
+        "LQCD_COARSE_SPATIAL_OVERLAP": 0,
+        "LQCD_HBM": "off",
+        "LQCD_HBW_ALLOC": "off"
+      },
+      "placement_threads": 16,
+      "setup_threads": 16,
+      "cases": [
+        {
+          "id": "full12",
+          "threads": 12,
+          "batch": 2,
+          "environment": {
+            "LQCD_COARSE_CGS2": 0,
+            "LQCD_CORRECTION_BASE_TOL": 0.003,
+            "LQCD_MG_COARSE_IT": 40,
+            "LQCD_MG_COARSE_TOL": 0.05,
+            "LQCD_MG_SAP_CYCLES": 2,
+            "LQCD_MG_SAP_STEPS": 5,
+            "LQCD_RESTRICT_FLOAT": 0
+          }
+        }
+      ]
+    },
+    "L32": {
+      "context_environment": {
+        "LQCD_ARM_COARSE_SVE": 0,
+        "LQCD_ARM_SVE": 1,
+        "LQCD_ARM_SVE_PLANNED": 0,
+        "LQCD_ARM_SVE_REUSE": 0,
+        "LQCD_ARM_SVE_TRANSFER": 0,
+        "LQCD_COARSE_FUSED": 0,
+        "LQCD_COARSE_SPATIAL_OVERLAP": 0,
+        "LQCD_HBM": "off",
+        "LQCD_HBW_ALLOC": "off"
+      },
+      "placement_threads": 16,
+      "setup_threads": 16,
+      "cases": [
+        {
+          "id": "full12",
+          "threads": 12,
+          "batch": 2,
+          "environment": {
+            "LQCD_COARSE_CGS2": 0,
+            "LQCD_CORRECTION_BASE_TOL": 0.003,
+            "LQCD_MG_COARSE_IT": 40,
+            "LQCD_MG_COARSE_TOL": 0.05,
+            "LQCD_MG_SAP_CYCLES": 2,
+            "LQCD_MG_SAP_STEPS": 5,
+            "LQCD_RESTRICT_FLOAT": 0
+          }
+        }
+      ]
+    }
+  }
+}
