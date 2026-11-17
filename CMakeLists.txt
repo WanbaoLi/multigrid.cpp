@@ -123,3 +123,18 @@ if(LQCD_BUILD_RUNTIME)
 endif()
 
 include(cmake/Tests.cmake)
+
+option(LQCD_TEST_HMC_REFERENCE "Test the optional dense 2+1 Clover HMC reference (requires CPU PyTorch)" OFF)
+if(LQCD_TEST_HMC_REFERENCE)
+    find_package(Python3 REQUIRED COMPONENTS Interpreter)
+    option(LQCD_HMC_REQUIRE_LIME_READER "Require mpi4py and independent LIME readback in HMC tests" OFF)
+    set(hmc_reader_args "")
+    if(LQCD_HMC_REQUIRE_LIME_READER)
+        list(APPEND hmc_reader_args --require-lime)
+    endif()
+    add_test(NAME hmc_reference COMMAND ${Python3_EXECUTABLE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/tests/hmc/test_reference.py
+        --reference $<TARGET_FILE:multigrid>
+        --report ${CMAKE_CURRENT_BINARY_DIR}/hmc-validation.json ${hmc_reader_args})
+    set_tests_properties(hmc_reference PROPERTIES TIMEOUT 180 ENVIRONMENT "OMP_NUM_THREADS=1;OPENBLAS_NUM_THREADS=1")
+endif()
