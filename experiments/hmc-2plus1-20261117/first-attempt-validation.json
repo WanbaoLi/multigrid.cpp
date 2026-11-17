@@ -1,0 +1,26 @@
+{
+  "passed": false,
+  "tests_run": 9,
+  "failures": 1,
+  "errors": 0,
+  "skipped": 0,
+  "metrics": {
+    "force_gauge_absolute_error": 2.760014439218139e-11,
+    "force_fermion_absolute_error": 2.1985316345229933e-11,
+    "force_total_absolute_error": 1.7202111957104194e-10,
+    "native_operator_relative_error_mass_0.5": 2.1946567843136228e-16,
+    "native_operator_relative_error_mass_0.8": 2.0575588364477835e-16,
+    "reversibility_links_max": 4.483058254437389e-12,
+    "reversibility_momenta_max": 7.663869538987456e-13,
+    "energy_errors_steps_4_8": [
+      0.5363663219874866,
+      0.13370557148476792
+    ],
+    "energy_error_ratio": 0.24928032578430095
+  },
+  "job_id": "2155394",
+  "host": "cn12046",
+  "source_commit": "2d8c56709d944be4809c7837e43055848873462a",
+  "result": "failed before chain generation at original reversibility threshold",
+  "fix": "Replace PyTorch 1.12 batch matrix_exp by spectral exponential of the Hermitian momentum, retaining tolerances"
+}

@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-17",
+  "branch": "codex/hmc-2plus1-20261117",
+  "measured_source_commit": "e6659702c5a994158c39ace81439572c32c4a9cb",
+  "job_id": "2155448",
+  "host": "cn12038",
+  "resources": {
+    "mpi_processes": 1,
+    "scheduler_cpu": 4,
+    "torch_threads": 2,
+    "memory_MB": 16000,
+    "exclusive": false
+  },
+  "source": "/home/share/nsls_lwb/lqcd-run/hmc-2plus1-20261117-source-e665970",
+  "output": "/home/share/nsls_lwb/lqcd-run/hmc-2plus1-20261117-run02",
+  "lattice_xyzt": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "nf": "2+1",
+  "beta": 5.6,
+  "mass_light": 0.5,
+  "mass_strange": 0.8,
+  "csw": 1.0,
+  "gauge_action": "Wilson plaquette",
+  "stout_steps": 0,
+  "fermion_t_boundary": -1,
+  "algorithm": "exact dense determinant HMC, automatic-differentiation gauge+sea Clover forces, group leapfrog, Metropolis",
+  "precision": "complex128/float64 CPU",
+  "trajectories": 80,
+  "warmup_requested": 40,
+  "save_every": 10,
+  "seed": 1729,
+  "trajectory_length": 0.5,
+  "steps": 10,
+  "uses_rhmc": false,
+  "uses_mg": false,
+  "production_24_lattice_supported": false,
+  "thermalization_established": false,
+  "independent_samples_established": false
+}

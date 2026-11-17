@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "tests_run": 9,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 1,
+  "metrics": {
+    "force_gauge_absolute_error": 5.605067521230467e-10,
+    "force_fermion_absolute_error": 1.5565029820585607e-10,
+    "force_total_absolute_error": 5.385214496556046e-10,
+    "native_operator_relative_error_mass_0.5": 2.1480501297624087e-16,
+    "native_operator_relative_error_mass_0.8": 2.0256010150134774e-16,
+    "reversibility_links_max": 4.077047481207124e-15,
+    "reversibility_momenta_max": 1.7763568394002505e-15,
+    "energy_errors_steps_4_8": [
+      0.5363663227240067,
+      0.13370560144437604
+    ],
+    "energy_error_ratio": 0.24928038129861435
+  }
+}

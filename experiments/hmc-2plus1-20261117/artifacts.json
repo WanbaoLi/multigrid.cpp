@@ -1,0 +1,50 @@
+{
+  "archive": "hmc-2plus1-L2-configurations.zip",
+  "archive_local": "/mnt/c/Users/lwb/.cache/hmc-2plus1-20261117-results/hmc-2plus1-L2-configurations.zip",
+  "archive_sha256": "1639eb83c5216e6d7f7dc40d30ea56f20eda37c0feba9c434e8eb11438b1182c",
+  "archive_bytes": 47930,
+  "configurations": [
+    {
+      "file": "hmc_000050.lime",
+      "trajectory": 50,
+      "sha256": "717e873ad909377daccad4e6f61297e5fd95d5e5aa00655e6758337eb652b063",
+      "bytes": 10936,
+      "plaquette": 0.6162689413882194,
+      "max_unitarity_error": 5.839773204434301e-14,
+      "max_det_su3_error": 7.395380502518879e-14,
+      "strange_det_phase": 1.0
+    },
+    {
+      "file": "hmc_000060.lime",
+      "trajectory": 60,
+      "sha256": "72f45891faa85225ae9cb6c54b1533384e4f23ac57ad517090e630dc1e55c31d",
+      "bytes": 10936,
+      "plaquette": 0.6401159319736764,
+      "max_unitarity_error": 6.794564911573229e-14,
+      "max_det_su3_error": 9.249026132512632e-14,
+      "strange_det_phase": 1.0
+    },
+    {
+      "file": "hmc_000070.lime",
+      "trajectory": 70,
+      "sha256": "5af90f54042f639e12bb1f30c33830092773494c667bc4301ba4ec856b85f4a1",
+      "bytes": 10936,
+      "plaquette": 0.6156127652101973,
+      "max_unitarity_error": 7.482903496348038e-14,
+      "max_det_su3_error": 1.0070717733577251e-13,
+      "strange_det_phase": 1.0
+    },
+    {
+      "file": "hmc_000080.lime",
+      "trajectory": 80,
+      "sha256": "cc6efd893611544ceb254dbb0139d866bfffede2c700bfa9c8a96b654d924a20",
+      "bytes": 10936,
+      "plaquette": 0.6248352783832563,
+      "max_unitarity_error": 7.82707233755344e-14,
+      "max_det_su3_error": 1.0436697072669868e-13,
+      "strange_det_phase": 1.0
+    }
+  ],
+  "source_commit": "e6659702c5a994158c39ace81439572c32c4a9cb",
+  "remote_output": "/home/share/nsls_lwb/lqcd-run/hmc-2plus1-20261117-run02"
+}
