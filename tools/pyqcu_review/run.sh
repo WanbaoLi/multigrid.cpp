@@ -9,6 +9,8 @@ mkdir -p "$out"
 exec > >(tee "$out/run.log") 2>&1
 task_sdk=/work_ssd/software/HPCKit/25.2.1
 source "$task_sdk/setvars.sh" --use-bisheng --force
+export OPAL_PREFIX=$task_sdk/hmpi/bisheng/release/hmpi
+export PATH=$OPAL_PREFIX/bin:/work_ssd/software/soft/tool/anaconda3/2023.3/bin:$PATH
 task_sysroot=/work_ssd/system/os_jasmine_v01/vroot
 export CC=$task_sysroot/usr/bin/gcc CXX=$task_sysroot/usr/bin/g++
 export OMPI_CC=$CC OMPI_CXX=$CXX
