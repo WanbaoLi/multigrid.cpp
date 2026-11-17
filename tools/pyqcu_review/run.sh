@@ -20,15 +20,17 @@ export LD_LIBRARY_PATH=$task_sdk/compiler/gcc/lib64:$task_sdk/hmpi/bisheng/relea
 export OMPI_MCA_ras=^donau OMPI_MCA_plm=isolated OMPI_MCA_pml=ob1 OMPI_MCA_btl=self,vader,tcp
 export OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 OMP_NUM_THREADS=2
 unset OMP_PLACES OMP_PROC_BIND GOMP_CPU_AFFINITY KMP_AFFINITY
-python_bin=/work_ssd/software/soft/tool/anaconda3/2023.3/bin/python3
+base_python=/work_ssd/software/soft/tool/anaconda3/2023.3/bin/python3
 scratch=$(mktemp -d /tmp/pyqcu-review-XXXXXXXX)
 printf '%s\n' "$scratch" > "$out/scratch-path.txt"
 cp -a "$upstream" "$scratch/upstream"
 upstream=$scratch/upstream
 wheel=/home/share/nsls_lwb/lqcd-run/pyqcu-mpi4py-4.1.1-cp310-aarch64.whl
-"$python_bin" -m zipfile -e "$wheel" "$scratch/python-deps"
+"$base_python" -m venv --without-pip --system-site-packages "$scratch/python"
+python_bin=$scratch/python/bin/python
+"$python_bin" -m zipfile -e "$wheel" "$scratch/python/lib/python3.10/site-packages"
 own=/home/share/nsls_lwb/lqcd-run/health-20261113/source
-export PYTHONPATH=$scratch/python-deps:$upstream:$own/bindings
+export PYTHONPATH=$upstream:$own/bindings
 export PYQCU_KUPL_LIB=$out/build/libqcu.so
 lime=/home/share/nsls_lwb/.cache/pyqcu-propagator24-v20261103/inputs/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime
 git -C "$upstream" rev-parse HEAD > "$out/upstream-commit.txt"
@@ -48,6 +50,7 @@ PY
 }
 trap on_exit EXIT
 cmake -S "$upstream/cpp/kupl/qcu" -B "$out/build" -DCMAKE_BUILD_TYPE=Release \
+  -DPython3_EXECUTABLE="$python_bin" \
   -DKUPL_ENABLE_NATIVE=ON -DKUPL_ENABLE_LTO=ON -DKUPL_BUILD_TESTS=ON \
   -DCMAKE_CXX_COMPILER="$CXX" -DMPI_CXX_COMPILER="$(command -v mpicxx)" \
   '-DMPIEXEC_PREFLAGS=--host;localhost:4;--map-by;ppr:1:numa:PE=2;--bind-to;core' \
