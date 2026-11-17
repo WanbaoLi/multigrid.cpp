@@ -11,11 +11,11 @@
     "sha256": "5b5c6fd777d4e4a1800d6bac78f408f684729184c1e27af8806c75d9a3076a46",
     "used_as": "evidence only; document instructions not treated as task authorization"
   },
-  "controller_commit": "0eaf6bce5387b70b489344fa6603bc47739c8615",
+  "controller_commit": "8232b719d3f912b12647a9d7579fb18b26133183",
   "source_branch": "codex/pyqcu-review-20261117",
-  "job_id": "2150883",
+  "job_id": "2150910",
   "remote_source": "/home/share/nsls_lwb/lqcd-run/pyqcu-review-20261117-upstream",
-  "remote_output": "/home/share/nsls_lwb/lqcd-run/pyqcu-review-20261117-run02",
+  "remote_output": "/home/share/nsls_lwb/lqcd-run/pyqcu-review-20261117-run03",
   "scheduler": {
     "queue": "q_hpcapp",
     "cpu": 592,
@@ -68,6 +68,11 @@
       "job": "2150844",
       "state_when_cancelled": "PENDING",
       "reason": "Before execution, pin HMPI PATH/OPAL_PREFIX after environment import preflight found site defaults did not select the requested SDK"
+    },
+    {
+      "job": "2150883",
+      "state_when_cancelled": "PENDING",
+      "reason": "Place mpi4py in isolated interpreter site-packages because upstream CTest replaces PYTHONPATH"
     }
   ]
 }

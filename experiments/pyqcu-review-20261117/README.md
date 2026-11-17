@@ -1,5 +1,11 @@
 # PyQCU 灵晟复现与算法对照（2026-11-17）
 
+**当前状态：源码克隆与审阅完成，实机复现尚未开始。** 有效作业 `2150910`
+处于 `PENDING`，调度器报告没有能满足请求的节点；尚无本次编译、CTest 或性能结果。
+不能把本目录中的计划当成成功复现，亦不能据此判断实测优胜者。
+当前控制提交为 `8232b71`，远程输出目录为
+`/home/share/nsls_lwb/lqcd-run/pyqcu-review-20261117-run03`；状态见 `status.json`。
+
 上游为 [ZhangXin8069/PyQCU](https://github.com/ZhangXin8069/PyQCU)，MIT 许可。
 完整 Git 历史通过本机取得后打包，在灵晟用 `git clone` 克隆 bundle；远程 `origin`
 仍指向原 GitHub 仓库。上游源码单独存放，未复制进本项目或改写其来源。

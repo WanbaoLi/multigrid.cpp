@@ -1,0 +1,26 @@
+{
+  "complete": false,
+  "phase": "queued_no_compute_node",
+  "observed_at": "2026-11-17T10:47:45.470772+08:00",
+  "job_id": "2150910",
+  "scheduler_state": "PENDING",
+  "scheduler_reason": {
+    "mainReason": {
+      "code": "20626",
+      "message": "No available node can fit in the requirement of execution nodes preference in queue"
+    },
+    "reasonUpdateTime": 1794883640364
+  },
+  "upstream_clone_complete": true,
+  "source_review_complete": true,
+  "compute_build_started": false,
+  "ctest_run": false,
+  "performance_reproduced": false,
+  "known_preflight": {
+    "python_syntax": "passed",
+    "bash_syntax": "passed",
+    "numpy_h5py_mpi_upstream_import": "passed; numpy 1.23.5, h5py 3.7.0, HMPI reports Open MPI 4.1.6rc4"
+  },
+  "resource_wait": "No available whole compute node meets the requested resources; normal queue has accepted this one-node job",
+  "conclusion": "Source audit establishes BiCGStab and Legacy MG algorithm differences; a measured performance winner is not established."
+}
