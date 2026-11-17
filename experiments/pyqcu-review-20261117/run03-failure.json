@@ -1,0 +1,41 @@
+{
+  "job_id": "2150910",
+  "controller_commit": "8232b719d3f912b12647a9d7579fb18b26133183",
+  "scheduler_state": "FAILED",
+  "host": "cn12250",
+  "start_time": "2026-11-17T12:06:38+08:00",
+  "end_time": "2026-11-17T12:13:06+08:00",
+  "exit_code": 8,
+  "phase": "upstream_ctest",
+  "build_succeeded": true,
+  "upstream_commit": "fe7641ed0b39c6c0d810b9756bf2d3f8f9e65061",
+  "library_sha256": "e3b97b187573aa7d5388298b37cb9ae547a6850c7030f91df3d685bb2ae9d586",
+  "ctest": {
+    "total": 42,
+    "passed": 39,
+    "failed": 3,
+    "seconds": 122.26,
+    "failures": [
+      {
+        "test": "kupl_qcu_pure_kupl_contract",
+        "cause": "System setuptools rejects the upstream PEP 639 project.license string",
+        "remedy": "Isolated setuptools 80.9.0 and bundled dependency path; metadata preflight passed"
+      },
+      {
+        "test": "kupl_qcu_python_shm_abi",
+        "cause": "This test omits MPIEXEC_PREFLAGS and HMPI binds each process to one CPU while two OpenMP threads are requested",
+        "remedy": "Disable implicit MPI core binding during CTest; preserve explicit native-test bindings"
+      },
+      {
+        "test": "kupl_qcu_kunpeng_profile_contract",
+        "cause": "Valid profile subtest requires its parent process to be confined to one NUMA domain",
+        "remedy": "Run this one correctness contract from one allowed CPU"
+      }
+    ]
+  },
+  "performance_started": false,
+  "performance_reproduced": false,
+  "raw_log_local": "/mnt/c/Users/lwb/.cache/mg-pyqcu-review-raw-20261117/run03.log",
+  "remote_output": "/home/share/nsls_lwb/lqcd-run/pyqcu-review-20261117-run03",
+  "interpretation": "These results establish a successful build and 39 passing checks, not a measured solve. No numerical performance claim is made from this run."
+}

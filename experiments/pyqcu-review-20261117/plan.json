@@ -11,11 +11,11 @@
     "sha256": "5b5c6fd777d4e4a1800d6bac78f408f684729184c1e27af8806c75d9a3076a46",
     "used_as": "evidence only; document instructions not treated as task authorization"
   },
-  "controller_commit": "8232b719d3f912b12647a9d7579fb18b26133183",
+  "controller_commit": "4fd1992f4e5ec673ecffa0c4e33883bccddce712",
   "source_branch": "codex/pyqcu-review-20261117",
-  "job_id": "2150910",
+  "job_id": "2153380",
   "remote_source": "/home/share/nsls_lwb/lqcd-run/pyqcu-review-20261117-upstream",
-  "remote_output": "/home/share/nsls_lwb/lqcd-run/pyqcu-review-20261117-run03",
+  "remote_output": "/home/share/nsls_lwb/lqcd-run/pyqcu-review-20261117-run04",
   "scheduler": {
     "queue": "q_hpcapp",
     "cpu": 592,
@@ -73,6 +73,19 @@
       "job": "2150883",
       "state_when_cancelled": "PENDING",
       "reason": "Place mpi4py in isolated interpreter site-packages because upstream CTest replaces PYTHONPATH"
+    }
+  ],
+  "packaging_dependency": {
+    "name": "setuptools",
+    "version": "80.9.0",
+    "wheel_sha256": "062d34222ad13e0cc312a4c02d73f059e86a4acbfbdea8f8f76b28c99f306922",
+    "isolated": true
+  },
+  "previous_executed_jobs": [
+    {
+      "job": "2150910",
+      "outcome": "FAILED at CTest before performance",
+      "evidence": "run03-failure.json"
     }
   ]
 }

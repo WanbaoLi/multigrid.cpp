@@ -1,26 +1,33 @@
 {
   "complete": false,
-  "phase": "queued_no_compute_node",
-  "observed_at": "2026-11-17T10:47:45.470772+08:00",
-  "job_id": "2150910",
+  "phase": "corrected_controller_queued",
+  "observed_at": "2026-11-17T17:05:02.239872+08:00",
+  "job_id": "2153380",
   "scheduler_state": "PENDING",
   "scheduler_reason": {
     "mainReason": {
       "code": "20626",
       "message": "No available node can fit in the requirement of execution nodes preference in queue"
     },
-    "reasonUpdateTime": 1794883640364
+    "reasonUpdateTime": 1794906272476
   },
   "upstream_clone_complete": true,
   "source_review_complete": true,
-  "compute_build_started": false,
-  "ctest_run": false,
+  "previous_job": "2150910",
+  "previous_build_succeeded": true,
+  "previous_ctest": {
+    "passed": 39,
+    "total": 42,
+    "failed": 3
+  },
+  "performance_started": false,
   "performance_reproduced": false,
-  "known_preflight": {
+  "controller_commit": "4fd1992f4e5ec673ecffa0c4e33883bccddce712",
+  "fix_validation": {
     "python_syntax": "passed",
     "bash_syntax": "passed",
-    "numpy_h5py_mpi_upstream_import": "passed; numpy 1.23.5, h5py 3.7.0, HMPI reports Open MPI 4.1.6rc4"
+    "upstream_packaging_metadata": "passed under isolated setuptools 80.9.0 with bundled dependencies first",
+    "corrected_compute_ctest": "pending"
   },
-  "resource_wait": "No available whole compute node meets the requested resources; normal queue has accepted this one-node job",
-  "conclusion": "Source audit establishes BiCGStab and Legacy MG algorithm differences; a measured performance winner is not established."
+  "conclusion": "No new real-input solve timings; corrected full test suite and performance workflow submitted to the normal queue."
 }
