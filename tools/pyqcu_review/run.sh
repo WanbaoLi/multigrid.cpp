@@ -8,7 +8,7 @@ control=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 mkdir -p "$out"
 exec > >(tee "$out/run.log") 2>&1
 task_sdk=/work_ssd/software/HPCKit/25.2.1
-source "$task_sdk/setvars.sh" --use-bisheng --force
+source "$task_sdk/setvars.sh"
 export OPAL_PREFIX=$task_sdk/hmpi/bisheng/release/hmpi
 export PATH=$OPAL_PREFIX/bin:/work_ssd/software/soft/tool/anaconda3/2023.3/bin:$PATH
 task_sysroot=/work_ssd/system/os_jasmine_v01/vroot
@@ -29,13 +29,21 @@ wheel=/home/share/nsls_lwb/lqcd-run/pyqcu-mpi4py-4.1.1-cp310-aarch64.whl
 "$base_python" -m venv --without-pip --system-site-packages "$scratch/python"
 python_bin=$scratch/python/bin/python
 "$python_bin" -m zipfile -e "$wheel" "$scratch/python/lib/python3.10/site-packages"
+packaging_wheel=/home/share/nsls_lwb/lqcd-run/setuptools-80.9.0-py3-none-any.whl
+"$python_bin" -m zipfile -e "$packaging_wheel" "$scratch/python/lib/python3.10/site-packages"
+# The site's regular backports package masks setuptools' bundled namespace.
+# Keep the new packaging stack ahead of the inherited conda packages in this
+# isolated interpreter, including when CTest replaces PYTHONPATH.
+printf "import sys; sys.path.insert(0, '%s')\n" \
+  "$scratch/python/lib/python3.10/site-packages/setuptools/_vendor" \
+  > "$scratch/python/lib/python3.10/site-packages/00-setuptools-vendor.pth"
 own=/home/share/nsls_lwb/lqcd-run/health-20261113/source
 export PYTHONPATH=$upstream:$own/bindings
 export PYQCU_KUPL_LIB=$out/build/libqcu.so
 lime=/home/share/nsls_lwb/.cache/pyqcu-propagator24-v20261103/inputs/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime
 git -C "$upstream" rev-parse HEAD > "$out/upstream-commit.txt"
 git -C "$upstream" status --short > "$out/upstream-status.txt"
-sha256sum "$lime" "$wheel" > "$out/input-and-wheel.sha256"
+sha256sum "$lime" "$wheel" "$packaging_wheel" > "$out/input-and-wheel.sha256"
 "$python_bin" -c 'import numpy,h5py; from mpi4py import MPI; print(numpy.__version__,h5py.__version__,MPI.Get_library_version())'
 "$python_bin" "$own/tools/probe_host.py" > "$out/host.json"
 on_exit() {
@@ -57,7 +65,15 @@ cmake -S "$upstream/cpp/kupl/qcu" -B "$out/build" -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_EXE_LINKER_FLAGS="-L$task_sdk/compiler/gcc/lib64 -Wl,-rpath,$task_sdk/compiler/gcc/lib64" \
   -DCMAKE_SHARED_LINKER_FLAGS="-L$task_sdk/compiler/gcc/lib64 -Wl,-rpath,$task_sdk/compiler/gcc/lib64"
 cmake --build "$out/build" -j16
-ctest --test-dir "$out/build" --output-on-failure --parallel 1
+# Some upstream Python MPI tests omit MPIEXEC_PREFLAGS; prevent HMPI's
+# default one-core binding from conflicting with their two OpenMP threads.
+OMPI_MCA_hwloc_base_binding_policy=none ctest --test-dir "$out/build" \
+  --output-on-failure --parallel 1 -E '^kupl_qcu_kunpeng_profile_contract$'
+# This contract deliberately requires its parent to own exactly one NUMA
+# domain. It is a correctness test, so one allowed core suffices.
+test_cpu=$("$python_bin" -c 'import os; print(min(os.sched_getaffinity(0)))')
+taskset -c "$test_cpu" ctest --test-dir "$out/build" --output-on-failure \
+  -R '^kupl_qcu_kunpeng_profile_contract$'
 sha256sum "$out/build/libqcu.so" > "$out/build.sha256"
 export KUPL_NUMA_BIND=1 KUPL_MEMORY_POLICY=preferred KUPL_MEMORY_NODE=local+16
 export KUPL_REQUIRE_MEMORY_BIND=1 KUPL_HUGEPAGE=1 KUPL_TOPOLOGY_REPORT=1
