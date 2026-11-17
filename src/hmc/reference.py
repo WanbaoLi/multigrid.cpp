@@ -70,7 +70,7 @@ class CloverHMC:
         self.t = generators()
         self.select = [torch.eye(self.volume, dtype=CD)[idx] for idx in self.plus]
         self.select_back = [torch.eye(self.volume, dtype=CD)[idx] for idx in self.minus]
-        times = torch.arange(self.volume) // math.prod(self.lattice[:3])
+        times = torch.div(torch.arange(self.volume), math.prod(self.lattice[:3]), rounding_mode='floor')
         self.forward_sign = torch.where(times == self.lattice[3] - 1, -1., 1.)
         self.backward_sign = torch.where(times == 0, -1., 1.)
 
@@ -79,7 +79,12 @@ class CloverHMC:
 
     def drift(self, u, p, step):
         algebra = torch.einsum("vma,aij->vmij", p.to(CD), self.t)
-        return (torch.matrix_exp(1j * step * algebra) @ u).detach()
+        # Momentum is Hermitian. A spectral exponential preserves unitarity
+        # accurately even on the site's old PyTorch 1.12 batch-exp backend.
+        # MD does not differentiate through the drift/eigenvectors.
+        eigenvalues, vectors = torch.linalg.eigh(algebra)
+        rotation = (vectors * torch.exp(1j * step * eigenvalues).unsqueeze(-2)) @ dagger(vectors)
+        return (rotation @ u).detach()
 
     def loop(self, u, directions):
         index = torch.arange(self.volume)
