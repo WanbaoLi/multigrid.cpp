@@ -94,4 +94,19 @@ run_case report-c128-mg single --dtype c128 --tol 1e-9 --source ones --solver mg
 export KUPL_OMP_THREADS=32 OMP_NUM_THREADS=32
 run_case physical-bicg-full12 full12 --dtype c128 --tol 1e-8 --source point
 run_case physical-mg-full12 full12 --dtype c128 --tol 1e-8 --source point --solver mg
+own_python=/home/share/nsls_lwb/.cache/multigrid-arm-20261025-env/bin/python
+own_build=/home/share/nsls_lwb/lqcd-run/reproduce-efe57de-20261116-1749/build
+mkdir -p "$out/own-mg"
+PYTHONPATH=$own/bindings "$own_python" "$own/tools/run_numa.py" \
+  --lattice 24 24 24 64 --block 6 6 6 4 --numa-nodes 0-15 --ranks-per-numa 1 --threads 37 -- \
+  "$own_python" -u "$own/benchmarks/runtime/check_lime_solver.py" --gauge "$lime" \
+  --output "$scratch/own-mg" --backend arm --mass -0.277 --csw 1.160920226 --block 6 6 6 4 \
+  --plan "$own/profiles/optimization/lingsheng-shared-uniform.json" \
+  --library "$own_build/liblqcd_cpu.so" --repeats 3 --tol 1e-8 \
+  --stout-steps 1 --stout-rho 0.125 --stout-dir-ignore 4 > "$out/own-mg/run.log" 2>&1
+PYTHONPATH=$own/bindings OMP_NUM_THREADS=8 OMP_PLACES=cores OMP_PROC_BIND=spread \
+  "$own_python" "$own/benchmarks/runtime/verify_lime_solver.py" "$scratch/own-mg" \
+  --reference "$own_build/multigrid" --extractor "$own_build/extract_columns" \
+  --reference-threads 8 --tol 1e-8 > "$out/own-mg/scalar.log" 2>&1
+find "$scratch/own-mg" -maxdepth 1 -name '*.json' -type f -exec cp '{}' "$out/own-mg/" ';'
 echo "PYQCU_REVIEW_COMPLETE $out"
