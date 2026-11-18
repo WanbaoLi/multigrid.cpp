@@ -4,7 +4,7 @@ set -eo pipefail
 upstream=$1
 out=$2
 case_set=${3:-all}
-[[ $case_set == all || $case_set == mg-retry ]] || { echo 'Unknown case set'; exit 2; }
+[[ $case_set == all || $case_set == mg-retry || $case_set == mg-physical ]] || { echo 'Unknown case set'; exit 2; }
 control=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 [[ ! -e $out ]] || { echo 'Output exists'; exit 2; }
 mkdir -p "$out"
@@ -124,6 +124,13 @@ run_case() {
   if [[ $code != 0 ]]; then failed=1; fi
 }
 failed=0
+if [[ $case_set == mg-physical ]]; then
+  export KUPL_OMP_THREADS=32 OMP_NUM_THREADS=32
+  run_case physical-mg-full12 full12 --dtype c128 --tol 1e-8 --source point --solver mg \
+    --coarse-tol-factor 1e5
+  [[ $failed == 0 ]]
+  exit
+fi
 if [[ $case_set == mg-retry ]]; then
   run_case report-c128-mg single --dtype c128 --tol 1e-9 --source ones --solver mg
   export KUPL_OMP_THREADS=32 OMP_NUM_THREADS=32

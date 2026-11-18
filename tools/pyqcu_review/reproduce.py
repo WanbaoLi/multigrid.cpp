@@ -146,6 +146,7 @@ def measure(args):
                     zero_initial_guesses=True, hierarchy_reused=True, samples=samples,
                     source="12 separate spin/color unit point columns, divided by mass+4 for reference normalization",
                     mass=-0.277, csw=1.160920226, atol=args.tol,
+                    coarse_tol_factor=args.coarse_tol_factor if use_mg else None,
                     stout=dict(steps=1, rho=0.125, dir_ignore=4), temporal_boundary=-1,
                     steady_api_seconds=statistics.median(s["wall_seconds"] for s in samples[1:]),
                     steady_native_seconds=statistics.median(s["native_call_sum_seconds"] for s in samples[1:]),
@@ -169,6 +170,7 @@ def measure(args):
                 "--gauge", str(gauge), "--source", str(args.inputs / (args.source + ".h5")),
                 "--report", str(args.out / ("upstream-%d.json" % sample))]
         if use_mg:
+            argv += ["--coarse-tol-factor", str(args.coarse_tol_factor)]
             argv += ["--verbose"]
             argv += ["--write-coarse-cache" if sample == 0 else "--coarse-cache", str(cache)]
         code = upstream.main(argv)
@@ -225,6 +227,7 @@ def main():
     p.add_argument("--reference", type=Path)
     p.add_argument("--dtype", default="c128")
     p.add_argument("--tol", type=float, default=1e-8)
+    p.add_argument("--coarse-tol-factor", type=float, default=1e4)
     p.add_argument("--solver", choices=("bicgstab", "mg"), default="bicgstab")
     p.add_argument("--source", default="point")
     args = p.parse_args()
