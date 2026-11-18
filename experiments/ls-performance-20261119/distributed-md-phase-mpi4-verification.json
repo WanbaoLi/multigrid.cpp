@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "configurations": [
+    {
+      "file": "hmc_000001.lime",
+      "scidac_crc_passed": true,
+      "sha256": "0c55f2e07379fea5ec5358b45a2768d3c22603fbaa0bb8a5472cb872ddb8ba94",
+      "unitarity_error": 5.1070262017720525e-15,
+      "determinant_error": 5.884206518836035e-15,
+      "numpy_plaquette": 0.9905965242766305,
+      "native_operator_errors_light_strange": [
+        1.15838732360279e-16,
+        1.1510353563226742e-16
+      ]
+    }
+  ],
+  "method": "existing SciDAC reader/CRC + NumPy plaquette + independent scalar native Dirac"
+}

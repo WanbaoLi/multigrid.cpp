@@ -224,6 +224,22 @@ different random streams; their timings are stage profiles. The earlier
 unpinned MPI4 pilot and the pinned run differ in software, affinity and
 wait policy, so those timings cannot isolate a single cause.
 
+Job `2170699` kept rank placement fixed for an interleaved comparison
+of force implementations on identical fields and pseudofermions.
+Backpropagating accumulated coefficient gradients once reduced the
+`4⁴` force median from 3.084 to 2.053 s. Its `8⁴` measurements had
+substantial variation and did not establish a gain (19.119 versus
+25.017 s). The maximum force difference was `1.78e-15` at either volume.
+The same job ran a three-trajectory `8⁴` pilot. All three proposals
+were accepted. Both saved configurations passed independent verification,
+with largest scalar operator discrepancy `1.15e-16`. Its timings of 46.4,
+49.1 and 123.3 s show substantial runtime variation.
+
+Job `2170744` split MD timing into coefficient construction, Krylov
+preparation and solves, and spinor and gauge differentiation. Preparation
+and solves used 21.73 s out of 27.92 s in MD on its profiled `4⁴`
+trajectory. These are per-phase rank maxima.
+
 ### ARM propagation and Legacy MG follow-up
 
 Job `2169866` interleaved disabled, 64-site and 128-site RHS tiling at
@@ -239,3 +255,14 @@ PyQCU job `2170012` relaxed the Legacy MG coarse tolerance. Coarse
 BiCGStab met its local convergence criterion, but the outer correction
 then requested the fine-grid fallback. The strict MG gate terminated
 the run before a full 12-column benchmark was available.
+
+The next L24 trial interleaved coarse GCR iteration caps of 40, 12 and
+8 on one hierarchy with 16 ranks. Job `2170607` completed timing and its
+control verifier before a publication path error. Job `2170759` verified
+the original arrays from the same compute node and recovered the reports.
+All cases passed independent full12 verification. The warm wall medians
+were 15.657, 15.304 and 16.726 s, with total outer iterations of 289,
+310 and 365 per propagator. Cap 12 was 2.25% faster in this allocation
+and had maximum true residual `4.89e-9`. The diagnostic coarse time
+fell as the cap was reduced, while more outer iterations increased SAP
+time. The default remains 40 pending a matched repeat.

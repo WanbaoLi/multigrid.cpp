@@ -1,0 +1,122 @@
+{
+  "complete": true,
+  "algorithm": "time-slab matrix-free 2+1 RHMC",
+  "lattice_xyzt": [
+    8,
+    8,
+    8,
+    8
+  ],
+  "beta": 5.6,
+  "mass_light": 0.5,
+  "mass_strange": 0.8,
+  "csw": 1.0,
+  "nf": "2+1",
+  "rhmc": true,
+  "mpi_ranks": 4,
+  "threads": 1,
+  "seed": 1729,
+  "timing_aggregation": "maximum rank elapsed time for each phase independently",
+  "rank_seed_rule": "seed + MPI rank",
+  "source_commit": "79ef59d12701900dec19c2a99bd5b6e48ccfc4c3",
+  "native_schur_sha256": "d32f5cddbbabc4e7c56049550e568c9dbb5667f8a9e702ce106193256d7ecae6",
+  "strange_md_interval": [
+    0.004,
+    4.0
+  ],
+  "strange_rational_grid_error": {
+    "endpoint": 3.7547742692822794e-13,
+    "refresh": 4.505285033928885e-13,
+    "md": 1.1102230246251565e-15
+  },
+  "trajectory_length": 0.025,
+  "integration_steps": 1,
+  "integrator": "omelyan",
+  "thermalization_established": false,
+  "independent_samples_established": false,
+  "trajectories": 3,
+  "warmup": 1,
+  "samples": [
+    {
+      "accepted": true,
+      "delta_h": 0.017500198940979317,
+      "h_initial": 115269.97591298638,
+      "h_final": 115269.99341318532,
+      "metropolis_probability": 0.9826520401752945,
+      "phase_seconds": {
+        "refresh": 3.085803253110498,
+        "md": 34.829289122950286,
+        "endpoint": 8.565077196108177
+      },
+      "plaquette": 0.9983325828604579,
+      "max_unitarity_error": 6.4392936697990526e-15,
+      "max_det_su3_error": 6.4393101096837315e-15,
+      "strange_det_phase": 1.0,
+      "strange_normal_lower": 0.023408923871995228,
+      "strange_normal_upper": 2.9488813287920226,
+      "trajectory": 1,
+      "warmup": true,
+      "seconds": 46.413078882033005
+    },
+    {
+      "accepted": true,
+      "delta_h": 0.017233859922271222,
+      "h_initial": 115193.67922044534,
+      "h_final": 115193.69645430526,
+      "metropolis_probability": 0.9829137936114356,
+      "phase_seconds": {
+        "refresh": 3.4070157781243324,
+        "md": 36.247248760890216,
+        "endpoint": 9.502037315862253
+      },
+      "plaquette": 0.9967053339452575,
+      "max_unitarity_error": 9.658940380750838e-15,
+      "max_det_su3_error": 9.992007283778975e-15,
+      "strange_det_phase": 1.0,
+      "strange_normal_lower": 0.02176374852942085,
+      "strange_normal_upper": 2.9804832293464076,
+      "trajectory": 2,
+      "warmup": false,
+      "seconds": 49.08808095310815
+    },
+    {
+      "accepted": true,
+      "delta_h": 0.017002347361994907,
+      "h_initial": 115469.70140450652,
+      "h_final": 115469.71840685388,
+      "metropolis_probability": 0.9831413768434974,
+      "phase_seconds": {
+        "refresh": 3.5042598790023476,
+        "md": 96.97388873295859,
+        "endpoint": 22.87048123194836
+      },
+      "plaquette": 0.9950688699454696,
+      "max_unitarity_error": 9.99200722309888e-15,
+      "max_det_su3_error": 1.1547441234228235e-14,
+      "strange_det_phase": 1.0,
+      "strange_normal_lower": 0.020651950768265703,
+      "strange_normal_upper": 3.006430266046221,
+      "trajectory": 3,
+      "warmup": false,
+      "seconds": 123.27942302799784
+    }
+  ],
+  "saved_configurations": [
+    {
+      "file": "hmc_000002.lime",
+      "trajectory": 2,
+      "sha256": "4b1d7b6e13cfd37b4bbfe5eb32564fb58a6411f6dca8883e914db1784a1ee0f9",
+      "plaquette": 0.9967053339452575,
+      "bytes": 2361064
+    },
+    {
+      "file": "hmc_000003.lime",
+      "trajectory": 3,
+      "sha256": "60fae1581ffb34284e8e6feba8bb1f4938fa2fb1946d889fbb75d33d3c342a9b",
+      "plaquette": 0.9950688699454696,
+      "bytes": 2361064
+    }
+  ],
+  "accepted": 3,
+  "acceptance_rate": 1.0
+}
