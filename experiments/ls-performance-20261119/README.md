@@ -576,14 +576,13 @@ targets 0.1, 0.20 and 0.35 alongside the cap-40 control. It runs on
 cn12065 after job `2171323` releases the allocation. Each case receives
 an independent twelve-column verification.
 The measured warmed medians were 21.914, 21.489, 22.506, and 24.871 s
-for cap 40 and the three cap-14 targets, respectively. The control and
-cap-14 targets 0.1 and 0.20 passed independent twelve-column checks at
-maximum residuals `4.82e-9`, `4.91e-9`, and `4.49e-9`, respectively.
-The 0.35 target is still being checked. The opt-in
+for cap 40 and the three cap-14 targets, respectively. All four cases
+passed independent twelve-column checks at maximum residuals
+`4.82e-9`, `4.91e-9`, `4.49e-9`, and `4.97e-9`, respectively. The opt-in
 [LingSheng L24 plan](../../profiles/optimization/lingsheng-l24-cap14-full12.json)
 replays the previously verified cap-14 target of 0.1.
 
-Job `2171659` waits for the current verification and then reuses the
-same library and cap-14 plan on the generated `hmc_000003.lime`. It
+Job `2171659` was released after the independent checks and is queued
+to reuse the same library and cap-14 plan on the generated `hmc_000003.lime`. It
 uses source `(3,1,2,5)`, sample valence mass `-0.277`, one stout step,
 and checks all 12 NPY columns with independent scalar C++ and PyQUDA.
