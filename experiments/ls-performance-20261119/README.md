@@ -526,7 +526,9 @@ action and certified strange spectrum for either accepted or rejected
 proposals, then evaluates unitarity and determinant errors on the
 selected field. It records observables time separately. The gate
 compares against a fresh calculation after each possible decision
-and checks the LIME and RNG restart before paired timings.
+and checks the LIME and RNG restart before paired timings. Both
+the two- and four-rank tests reproduced all observables exactly
+after acceptance and after rejection.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
