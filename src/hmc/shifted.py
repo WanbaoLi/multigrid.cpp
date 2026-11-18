@@ -3,18 +3,27 @@ from __future__ import annotations
 
 import math
 
+import numpy as np
 import torch
 
 
+def _sum(value, comm):
+    return value if comm is None else comm.allreduce(value)
+
+
+def _norm2(vector):
+    return (vector.real.square() + vector.imag.square()).sum().item()
+
+
 @torch.no_grad()
-def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000):
+def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000, *, comm=None):
     """Solve (A + shift I)x=b for one shift and check the true residual."""
     if not math.isfinite(shift) or shift < 0 or not 0 < tol < 1 or maxiter < 1:
         raise ValueError("Invalid shifted solve parameters")
     x = torch.zeros_like(rhs)
     r = rhs.clone()
     p = r.clone()
-    rho = (r.real.square() + r.imag.square()).sum().item()
+    rho = _sum(_norm2(r), comm)
     if not math.isfinite(rho):
         raise ArithmeticError("Nonfinite right-hand side norm")
     if rho == 0:
@@ -23,18 +32,18 @@ def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000):
     threshold = tol * b_norm
     for iteration in range(1, maxiter + 1):
         image = apply(p) + shift * p
-        curvature = (p.real * image.real + p.imag * image.imag).sum().item()
+        curvature = _sum((p.real * image.real + p.imag * image.imag).sum().item(), comm)
         if not math.isfinite(curvature) or curvature <= 0:
             raise ArithmeticError("Nonpositive shifted CG curvature")
         alpha = rho / curvature
         x.add_(p, alpha=alpha)
         r.add_(image, alpha=-alpha)
-        new_rho = (r.real.square() + r.imag.square()).sum().item()
+        new_rho = _sum(_norm2(r), comm)
         if not math.isfinite(new_rho):
             raise ArithmeticError("Nonfinite shifted CG residual")
         if math.sqrt(new_rho) <= threshold:
             r = rhs - apply(x) - shift * x
-            norm = math.sqrt((r.real.square() + r.imag.square()).sum().item())
+            norm = math.sqrt(_sum(_norm2(r), comm))
             if not math.isfinite(norm):
                 raise ArithmeticError("Nonfinite true shifted CG residual")
             if norm <= threshold:
@@ -48,7 +57,7 @@ def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000):
 
 
 @torch.no_grad()
-def solve_multi_shift(apply, rhs, shifts, tol=1e-12, maxiter=1000):
+def solve_multi_shift(apply, rhs, shifts, tol=1e-12, maxiter=1000, *, comm=None):
     """Solve all positive shifts with a shared CG recurrence and true-residual checks."""
     shifts = tuple(shifts)
     if (not shifts or not all(math.isfinite(s) and s >= 0 for s in shifts) or
@@ -63,7 +72,7 @@ def solve_multi_shift(apply, rhs, shifts, tol=1e-12, maxiter=1000):
     base_shift = min(shifts)
     r = rhs.clone()
     p = r.clone()
-    rho = (r.real.square() + r.imag.square()).sum().item()
+    rho = _sum(_norm2(r), comm)
     if not math.isfinite(rho):
         raise ArithmeticError("Nonfinite right-hand side norm")
     if rho == 0:
@@ -72,12 +81,12 @@ def solve_multi_shift(apply, rhs, shifts, tol=1e-12, maxiter=1000):
     threshold = tol * b_norm
     for _ in range(maxiter):
         image = apply(p) + base_shift * p
-        curvature = (p.real * image.real + p.imag * image.imag).sum().item()
+        curvature = _sum((p.real * image.real + p.imag * image.imag).sum().item(), comm)
         if not math.isfinite(curvature) or curvature <= 0:
             break
         alpha = rho / curvature
         r.add_(image, alpha=-alpha)
-        new_rho = (r.real.square() + r.imag.square()).sum().item()
+        new_rho = _sum(_norm2(r), comm)
         if not math.isfinite(new_rho):
             break
         beta = new_rho / rho
@@ -103,12 +112,19 @@ def solve_multi_shift(apply, rhs, shifts, tol=1e-12, maxiter=1000):
         rho = new_rho
         previous_alpha, previous_beta = alpha, beta
 
+    local_norms = [_norm2(rhs - apply(x) - shift * x) for x, shift in zip(solutions, shifts)]
+    if comm is not None:
+        # Verify every pole but reduce all squared norms in one collective.
+        packed = np.asarray(local_norms, dtype=np.float64)
+        norms = np.empty_like(packed)
+        comm.Allreduce(packed, norms)
+    else:
+        norms = local_norms
     residuals = []
-    for i, (x, shift) in enumerate(zip(solutions, shifts)):
-        residual = rhs - apply(x) - shift * x
-        norm = math.sqrt((residual.real.square() + residual.imag.square()).sum().item())
+    for i, (norm2, shift) in enumerate(zip(norms, shifts)):
+        norm = math.sqrt(norm2)
         if not math.isfinite(norm) or norm > threshold:
-            solutions[i], _, relative = solve_shifted(apply, rhs, shift, tol, maxiter)
+            solutions[i], _, relative = solve_shifted(apply, rhs, shift, tol, maxiter, comm=comm)
         else:
             relative = norm / b_norm
         residuals.append(relative)

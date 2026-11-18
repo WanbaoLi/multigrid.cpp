@@ -11,6 +11,7 @@ import torch
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 from hmc.distributed_schur import prepare_slab_schur
 from hmc.reference import CloverHMC, CD, RD
+from hmc.shifted import solve_multi_shift, solve_shifted
 
 
 def main():
@@ -45,8 +46,27 @@ def main():
                 max_schur, max_normal = (comm.allreduce(error, op=MPI.MAX) for error in errors)
                 if max(max_schur, max_normal) > 3e-14:
                     raise AssertionError((lattice, mass, max_schur, max_normal))
+                # Recompute all true residuals against the global Torch stencil.
+                def distributed_normal(x):
+                    return model.gamma5 @ distributed(model.gamma5 @ distributed(x))
+
+                shifts = (0., .01, 1., 1000.)
+                solutions, residuals = solve_multi_shift(
+                    distributed_normal, field[slab], shifts, comm=comm)
+                plain, _, plain_residual = solve_shifted(
+                    distributed_normal, field[slab], shifts[0], comm=comm)
+                torch.testing.assert_close(plain, solutions[0], rtol=2e-11, atol=2e-11)
+                independent = []
+                for shift, solution in zip(shifts, solutions):
+                    whole = torch.cat(comm.allgather(solution), dim=0)
+                    delta = model.apply_even_normal(gauge, mass, whole, clover) + shift * whole - field
+                    independent.append(float(torch.linalg.vector_norm(delta) /
+                                             torch.linalg.vector_norm(field)))
+                if max((*independent, *residuals, plain_residual)) > 1.01e-12:
+                    raise AssertionError((lattice, mass, independent, residuals, plain_residual))
                 results.append(dict(lattice=lattice, mass=mass, schur_error=max_schur,
-                                    normal_error=max_normal))
+                                    normal_error=max_normal, independent_shifted_residuals=independent,
+                                    distributed_shifted_residuals=residuals))
         if comm.rank == 0:
             args.output.write_text(json.dumps(dict(ranks=comm.size, cases=results, passed=True),
                                               indent=2) + "\n")
