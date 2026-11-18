@@ -48,12 +48,19 @@ def sync_completed_output(path):
         os.fsync(stream.fileno())
 
 
-def validate_fixture(previous):
+def validate_fixture(previous, *, use_fixture_source=False):
     expected = dict(complete=True, mass=-.277, csw=1.160920226,
         lattice_xyzt=[24,24,24,64], normalization='mass', source_xyzt=[0,0,0,0],
         source_scale=1., gamma_basis='DeGrand-Rossi', fermion_t_boundary=-1,
         gauge_t_boundary=1, gauge_reunitarized=False,
         stout=dict(steps=1, rho=.125, dir_ignore=4))
+    if use_fixture_source:
+        point = previous.get('source_xyzt')
+        if (not isinstance(point, list) or len(point) != 4
+                or any(type(value) is not int or not 0 <= value < extent
+                       for value, extent in zip(point, expected['lattice_xyzt']))):
+            raise RuntimeError('Invalid fixture source_xyzt')
+        expected['source_xyzt'] = point
     for key, value in expected.items():
         if previous.get(key) != value:
             raise RuntimeError(f'Frozen fixture contract differs: {key}')
@@ -197,6 +204,8 @@ def check_cached_verification(run, report, reference, extractor):
         raise RuntimeError('Cached independent residual failed')
     if validation.get('propagator_sha256') != report['propagator_sha256']:
         raise RuntimeError('Independent and measured propagator digests differ')
+    if validation.get('source_xyzt', [0, 0, 0, 0]) != report['source_xyzt']:
+        raise RuntimeError('Independent and measured source coordinates differ')
     evidence = verification_evidence_path(run, validation.get('evidence_relative_path', 'independent/verification.json'))
     if ('verification_driver_sha256' in validation and
             not re.fullmatch('[0-9a-f]{64}', str(validation['verification_driver_sha256']))):
@@ -243,9 +252,12 @@ def verify(args):
         raise RuntimeError('Independent full12 verification failed')
     if independent.get('propagator_sha256') != report['propagator_sha256']:
         raise RuntimeError('Independent and measured propagator digests differ')
+    if independent.get('source_xyzt') != report['source_xyzt']:
+        raise RuntimeError('Independent and measured source coordinates differ')
     if {(r['source_spin'],r['source_color']) for r in independent['columns']} != {(s,c) for s in range(4) for c in range(3)}:
         raise RuntimeError('Independent verification must cover twelve unique spin/color columns')
     validation = dict(complete=True, passed=True, columns=12,
+        source_xyzt=independent['source_xyzt'],
         max_true_residual=max(residuals), reference_sha256=independent['reference_sha256'],
         method=independent['method'], evidence_sha256=sha(evidence),
         evidence_relative_path=evidence.relative_to(run).as_posix(),
@@ -302,7 +314,9 @@ def benchmark(args):
         raise RuntimeError('Plan differs across MPI ranks')
     fixture = Path(args.fixture).resolve()
     previous = collective(comm, lambda: json.loads((fixture / 'result.json').read_text()))
-    collective(comm, lambda: validate_fixture(previous))
+    collective(comm, lambda: validate_fixture(previous, use_fixture_source=args.use_fixture_source))
+    point = tuple(previous['source_xyzt'])
+    source_id = '0000' if point == (0, 0, 0, 0) else ','.join(map(str, point))
     if ranks > 16 or 64 % ranks:
         raise RuntimeError('Invalid t-slab decomposition')
     out = Path(args.output).resolve()
@@ -348,14 +362,14 @@ def benchmark(args):
         library=str(library), library_path=str(library), library_sha256=library_sha,
         source_manifest_sha256=args.snapshot_sha, input_sha256=previous['gauge_sha256'],
         gauge_sha256=previous['gauge_sha256'], grid_xyzt=[1, 1, 1, ranks],
-        lattice_xyzt=[24, 24, 24, 64], source_xyzt=[0, 0, 0, 0], source_scale=1.,
+        use_fixture_source=args.use_fixture_source,
         normalization='mass', fermion_t_boundary=-1, gauge_t_boundary=1,
         timing_scope='profile_full12_api' if args.diagnostic else 'full12_api', zero_initial_guess=True, samples=[], resources=resources,
         shared_process_thread_teams=shared_process_thread_teams(plan),
         fixture_files=sorted(set(pair for values in all_hashes for pair in values)),
         fixture_report_sha256=collective(comm,lambda:sha(fixture/'result.json')),
         comparison_key=dict(host=socket.gethostname(), allocation=args.allocation,
-                            problem='24x24x24x64-m-.277-csw1.160920226-stout1-rho.125-point0000',
+                            problem='24x24x24x64-m-.277-csw1.160920226-stout1-rho.125-point' + source_id,
                             input_sha256=previous['gauge_sha256'], prepared_gauge_manifest_sha256=prepared_sha,
                             scope='profile_full12_api' if args.diagnostic else 'full12_api'),
         environment={k:v for k,v in os.environ.items() if k.startswith(('LQCD_', 'OMP_', 'OMPI_MCA_', 'GOMP_', 'LD_'))},
@@ -407,7 +421,7 @@ def benchmark(args):
                 solver.set_threads(case['threads'])
                 comm.Barrier()
                 start = time.perf_counter()
-                propagator, stats = solver.solve_propagator((0,0,0,0), 1e-8, layout='lex')
+                propagator, stats = solver.solve_propagator(point, 1e-8, layout='lex')
                 elapsed = comm.allreduce(time.perf_counter()-start, op=MPI.MAX)
                 if len(stats) != 12 or not all(s['converged'] and np.isfinite(s['true_residual']) and s['true_residual'] <= 1e-8 for s in stats):
                     raise RuntimeError('Full12 true residual failure')
@@ -428,7 +442,7 @@ def benchmark(args):
                 solver.set_threads(case['threads'])
                 if rank == 0:
                     print('DIAGNOSTIC_BEGIN '+case['id'], flush=True)
-                propagator, stats = solver.solve_propagator((0,0,0,0), 1e-8, layout='lex')
+                propagator, stats = solver.solve_propagator(point, 1e-8, layout='lex')
                 del propagator
                 if rank == 0:
                     print('DIAGNOSTIC_END '+case['id'], flush=True)
@@ -462,6 +476,8 @@ def main():
     p.add_argument('--verification-output', type=verification_output_name, default='independent',
                    help='new single-level evidence directory for --verify (default: independent)')
     p.add_argument('--fixture')
+    p.add_argument('--use-fixture-source', action='store_true',
+                   help='use the unit point source in the fixture metadata (default: require the origin)')
     p.add_argument('--plan')
     p.add_argument('--library')
     p.add_argument('--backend', choices=['arm', 'x86'])

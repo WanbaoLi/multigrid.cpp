@@ -470,10 +470,12 @@ The original controller stopped at a memory-only NUMA node with an
 empty CPU list. Job `2171673` reuses the SHA256-checked library and LIME
 file after correcting that preflight. The queued NUMA comparisons
 received the same correction.
-The first matched whole trajectory took 657.48 s with spectral drift
-and 643.79 s with tensor Padé. Drift alone took 27.82 and 19.75 s.
-Both proposals were accepted, with maximum link difference `7.22e-15`
-and delta-H difference `2.02e-9`. The second pair is in progress.
+Across the [two matched pairs](distributed-pade-l24t8-trajectory-paired.json),
+median drift time fell from 27.73 to 19.76 s, a 28.7% reduction.
+Median whole-trajectory time moved from 647.19 to 642.68 s, and the
+candidate was faster in one of the two pairs. All proposals were
+accepted. The largest link and delta-H differences were `8.11e-15`
+and `2.03e-9`, respectively.
 
 Job `2171679` compares the optional `--shared-clover-spin` path, which
 reuses the spin contractions before applying the two mass factors.

@@ -29,7 +29,7 @@ bench, worker = load('bench_full12'), load('worker')
 
 class BenchmarkContractTest(unittest.TestCase):
     def test_reject_helper_hash_or_duplicate_columns_before_publishing_pass(self):
-        for fault in ('digest','columns'):
+        for fault in ('digest','columns','source'):
             with self.subTest(fault=fault), tempfile.TemporaryDirectory() as directory:
                 root=Path(directory)
                 args,report=self.verification_run(root)
@@ -38,10 +38,11 @@ class BenchmarkContractTest(unittest.TestCase):
                     evidence=Path(argv[-1])/'verification.json'
                     row=json.loads(evidence.read_text())
                     if fault=='digest':row['propagator_sha256']='0'*64
-                    else:row['columns'][1]=row['columns'][0].copy()
+                    elif fault=='columns':row['columns'][1]=row['columns'][0].copy()
+                    else:row['source_xyzt']=[3,1,2,5]
                     bench.atomic(evidence,row)
                 with mock.patch.object(bench.subprocess,'run',side_effect=helper):
-                    with self.assertRaisesRegex(RuntimeError,'digests differ|unique spin/color'):
+                    with self.assertRaisesRegex(RuntimeError,'digests differ|unique spin/color|source coordinates differ'):
                         bench.verify(args)
                 self.assertFalse(json.loads((root/'result.json').read_text())['verification']['complete'])
                 self.assertTrue((root/'independent/verification.json').is_file())
@@ -51,7 +52,7 @@ class BenchmarkContractTest(unittest.TestCase):
         prop, gauge = root/'propagator.npy', root/'gauge_rank00000.npy'
         for index, path in enumerate([reference, extractor, prop, gauge]):
             path.write_bytes(f'frozen artifact {index}'.encode())
-        report = dict(measurements_complete=True, complete=True,
+        report = dict(measurements_complete=True, complete=True, source_xyzt=[0,0,0,0],
             propagator_sha256=bench.sha(prop), output_gauge_files=[[0,bench.sha(gauge)]],
             verification=dict(complete=False, passed=False))
         bench.atomic(root/'result.json', report)
@@ -69,6 +70,7 @@ class BenchmarkContractTest(unittest.TestCase):
         output.mkdir(exist_ok=False)
         independent = dict(complete=True, columns=[dict(source_spin=i//3, source_color=i%3,
             residual=4e-9) for i in range(12)], reference_sha256=bench.sha(args.reference),
+            source_xyzt=report['source_xyzt'],
             propagator_sha256=report['propagator_sha256'], method='byte-only column extraction + independent scalar C++')
         bench.atomic(output/'verification.json', independent)
 
@@ -80,6 +82,13 @@ class BenchmarkContractTest(unittest.TestCase):
             gauge_reunitarized=False, stout=dict(steps=1,rho=.125,dir_ignore=4),
             gauge_sha256='a'*64)
         bench.validate_fixture(good)
+        offset = {**good, 'source_xyzt':[3,1,2,5]}
+        with self.assertRaisesRegex(RuntimeError, 'source_xyzt'):
+            bench.validate_fixture(offset)
+        bench.validate_fixture(offset, use_fixture_source=True)
+        for point in ([3,1,2,64], [3,-1,2,5], [3,True,2,5], [3,1,2]):
+            with self.subTest(point=point), self.assertRaisesRegex(RuntimeError, 'source_xyzt'):
+                bench.validate_fixture({**good, 'source_xyzt':point}, use_fixture_source=True)
         provenance=bench.fixture_metadata({**good, 'first_seconds':103.,
             'steady_median_seconds':103.,'complete':True,'verification':{'passed':True}})
         self.assertEqual(provenance['mass'],good['mass'])
@@ -152,7 +161,8 @@ class BenchmarkContractTest(unittest.TestCase):
             for i,path in enumerate(paths):
                 path.write_bytes(f'frozen {i}'.encode())
             reference, extractor, prop, gauge, evidence, baseline = paths
-            report = dict(propagator_sha256=bench.sha(prop), output_gauge_files=[[0,bench.sha(gauge)]],
+            report = dict(source_xyzt=[0,0,0,0], propagator_sha256=bench.sha(prop),
+                output_gauge_files=[[0,bench.sha(gauge)]],
                 reference_propagator=str(baseline), verification=dict(complete=True, passed=True,columns=12,
                     max_true_residual=4e-9, reference_sha256=bench.sha(reference),
                     extractor_sha256=bench.sha(extractor), evidence_sha256=bench.sha(evidence),
