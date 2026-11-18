@@ -619,16 +619,28 @@ Jobs `2172093` and `2172094` screen a `1e-10` MD relative true
 residual tolerance against the `1e-12` control. The dense check
 passed at four ranks with force error `1.83e-10`, delta-H error
 `1.86e-12` and maximum nested link reversal error `1.67e-15`.
-The real-volume paired driver holds the heatbath and endpoint settings
-fixed and stores the differences and gate outcome for each proposal.
-See [the dense MD-tolerance check](distributed-md-tolerance-rhmc-mpi4.json).
+On the full lattice, the control took 75.44 s and the `1e-10` candidate
+took 69.96 s for the first matched pair. Both accepted, but the
+momentum and delta-H differences of `2.58e-11` and `2.60e-8` exceeded
+the fixed `2e-11` and `2e-8` gates. The candidate was rejected. Job
+`2172164` runs `1e-11` against the same control with the same gates,
+heatbath, and endpoint settings. See the [dense MD-tolerance check](distributed-md-tolerance-rhmc-mpi4.json)
+and [full-volume rejected pair](distributed-md-tolerance-1e-10-l24t64-rejected.json).
 
 Job `2172132` builds the optional `LQCD_HMC_CLOVER_SIMD` path with
 separate FP64 real and imaginary accumulators, then checks the
-distributed Schur operator, force and reversibility. Job `2172133`
+distributed Schur operator, force and reversibility. Its four-rank
+Schur test passed, with maximum independent normal difference
+`7.03e-16`. See [the Schur gate](distributed-clover-simd-schur-mpi4.json).
+Job `2172133`
 uses the same benchmark driver to compare the two native libraries
 at the full volume with fixed input, algorithm settings and rank
 placement.
+
+Job `2172158` checks exact LIME and RNG resumption with native Padé,
+fused gamma5, Schur overlap and compressed refresh enabled together.
+Job `2172159` pairs the four changes against their common control on
+two independently verified L24 fields, using two seeds on each field.
 
 Job `2171814` checks reuse of the selected Hamiltonian endpoint when
 the RHMC generator records observables. The code reuses the local gauge
@@ -815,9 +827,13 @@ Job `2172060` pairs caps 14 and 80 in the full12 driver after the
 initial submission `2171893` encountered a shared-directory quota
 error before solving. The full12 driver shares one hierarchy,
 alternates case order, and independently validates all twelve columns
-of both outputs. After that passes, job `2172135` reads the cap-80 NPY
+of both outputs. The three warmed timing pairs give medians of 181.53
+and 121.38 s. After the independent check passes, job `2172135` reads the cap-80 NPY
 with PyQUDA on 16 ranks, compares all elements and spin-color columns,
-and publishes the SHA256-checked array. Job `2171889` exercised the non-origin verifier on
+and publishes the SHA256-checked array. Job `2172178` then compares
+RHS batch widths 2, 3 and 4 at cap 80 on the same prepared gauge,
+keeping one hierarchy and applying the independent full12 gate to
+all candidates. Job `2171889` exercised the non-origin verifier on
 the original NPY with maximum residual `4.975e-9`. See the
 [two-column probe](generated-lime-propagator/coarse-probe.json) and
 [non-origin scalar verification](generated-lime-propagator/nonorigin-scalar-verification.json).
