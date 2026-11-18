@@ -528,7 +528,16 @@ selected field. It records observables time separately. The gate
 compares against a fresh calculation after each possible decision
 and checks the LIME and RNG restart before paired timings. Both
 the two- and four-rank tests reproduced all observables exactly
-after acceptance and after rejection.
+after acceptance and after rejection. The two-rank LIME and RNG
+restart digests also matched exactly. The four-rank (24³×4) median
+observables time changed from 1.529 to 0.084 s across seven pairs.
+See the [observables timings](distributed-reused-observables-paired.json).
+
+Job `2171830` compares the optional `--gershgorin-strange` certificate
+with the existing Clover eigenvalue bounds. It uses the row-sum
+enclosure only when it certifies positivity and fits the fixed
+rational interval. The checks include a dense Schur reference and a
+deliberately tighter interval that exercises the eigenvalue fallback.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
