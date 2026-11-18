@@ -25,7 +25,7 @@ class DistributedRHMC:
                  zolotarev=False, force_pole_batch=8, projected_force_faces=False,
                  light_heatbath_action=False, real_krylov_dot=False, pade_drift=False,
                  shared_clover_spin=False, native_pade=False, reuse_odd_inverse=False,
-                 overlap_schur_faces=False):
+                 overlap_schur_faces=False, gershgorin_strange=False):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -74,6 +74,7 @@ class DistributedRHMC:
         self.native_pade = native_pade
         self.reuse_odd_inverse = reuse_odd_inverse
         self.overlap_schur_faces = overlap_schur_faces
+        self.gershgorin_strange = gershgorin_strange
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
             self.interval, md_order=md_order, zolotarev=zolotarev)
 
@@ -93,9 +94,17 @@ class DistributedRHMC:
         return tuple(clover_chiral_blocks(field, mass, self.csw) for mass in (self.ml, self.ms))
 
     def _certify(self, strange_clover, gauge):
-        lower, upper = positive_schur_bounds(strange_clover[~self.odd], strange_clover[self.odd],
-                                              self.ms, comm=self.comm,
-                                              cold_gap=self.strange_cold_gap, links=gauge)
+        even, odd = strange_clover[~self.odd], strange_clover[self.odd]
+        settings = dict(comm=self.comm, cold_gap=self.strange_cold_gap, links=gauge)
+        if self.gershgorin_strange:
+            try:
+                lower, upper = positive_schur_bounds(even, odd, self.ms, **settings, gershgorin=True)
+            except ArithmeticError:
+                pass
+            else:
+                if self.interval[0] <= lower <= upper <= self.interval[1]:
+                    return lower, upper
+        lower, upper = positive_schur_bounds(even, odd, self.ms, **settings)
         if not self.interval[0] <= lower <= upper <= self.interval[1]:
             raise ArithmeticError("Certified strange spectrum exceeds the fixed rational interval")
         return lower, upper

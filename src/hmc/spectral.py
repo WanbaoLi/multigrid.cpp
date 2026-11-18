@@ -17,7 +17,17 @@ def cold_wilson_gap(temporal_extent, mass):
                for spatial_sum in (-3, -1, 1, 3) for temporal_cosine in (-c, c)) / (mass + 4)
 
 
-def positive_schur_bounds(even_clover, odd_clover, mass, *, comm=None, cold_gap=None, links=None):
+def _clover_extrema(clover, gershgorin):
+    if gershgorin:
+        diagonal = clover.diagonal(dim1=-2, dim2=-1)
+        radius = clover.abs().sum(dim=-1) - diagonal.abs()
+        return float((diagonal.real - radius).amin()), float((diagonal.real + radius).amax())
+    eigenvalues = torch.linalg.eigvalsh(clover)
+    return float(eigenvalues.min()), float(eigenvalues.max())
+
+
+def positive_schur_bounds(even_clover, odd_clover, mass, *, comm=None, cold_gap=None, links=None,
+                          gershgorin=False):
     """Enclose the Schur normal spectrum, assuming unitary gauge links.
 
     Orthogonal spin projectors bound each directional hopping term by
@@ -33,10 +43,8 @@ def positive_schur_bounds(even_clover, odd_clover, mass, *, comm=None, cold_gap=
     """
     if not math.isfinite(mass) or mass <= -4:
         raise ValueError("Invalid Wilson mass")
-    even = torch.linalg.eigvalsh(even_clover)
-    odd = torch.linalg.eigvalsh(odd_clover)
-    even_min, even_max = float(even.min()), float(even.max())
-    odd_min, odd_max = float(odd.min()), float(odd.max())
+    even_min, even_max = _clover_extrema(even_clover, gershgorin)
+    odd_min, odd_max = _clover_extrema(odd_clover, gershgorin)
     deviations = ()
     if cold_gap is not None:
         identity = torch.eye(3, dtype=links.dtype, device=links.device)
@@ -53,7 +61,7 @@ def positive_schur_bounds(even_clover, odd_clover, mass, *, comm=None, cold_gap=
         odd_max = max(row[3] for row in extrema)
         deviations = tuple(max(row[i] for row in extrema) for i in range(4, len(extrema[0])))
     hopping = 4 / (mass + 4)
-    padding = 64 * torch.finfo(even.dtype).eps * max(1., abs(even_max), abs(odd_max), hopping)
+    padding = 64 * torch.finfo(even_clover.real.dtype).eps * max(1., abs(even_max), abs(odd_max), hopping)
     gap = min(even_min, odd_min) - hopping - padding
     if cold_gap is not None:
         clover_delta = max(abs(value - 1.) for value in (even_min, even_max, odd_min, odd_max))

@@ -293,9 +293,13 @@ class HMCPhysicsTests(unittest.TestCase):
         certified = positive_schur_bounds(c[self.m.even], c[self.m.odd], mass)
         self.assertLessEqual(certified[0], eigenvalues[0].item())
         self.assertGreaterEqual(certified[1], eigenvalues[-1].item())
+        row_sum = positive_schur_bounds(c[self.m.even], c[self.m.odd], mass, gershgorin=True)
+        self.assertLessEqual(row_sum[0], certified[0])
+        self.assertGreaterEqual(row_sum[1], certified[1])
         with self.assertRaises(ArithmeticError):
             positive_schur_bounds(c[self.m.even], c[self.m.odd], -0.277)
         METRICS["positive_strange_schur_bounds"] = certified
+        METRICS["gershgorin_strange_schur_bounds"] = row_sum
         lower, upper = eigenvalues[0].item() * 0.9, eigenvalues[-1].item() * 1.1
         projection = dagger(vectors) @ rhs
         for power in (0.25, 0.5, 0.75):

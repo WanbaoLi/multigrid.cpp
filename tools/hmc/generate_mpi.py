@@ -27,7 +27,7 @@ CHECKPOINT_COMPATIBILITY = (
     "direct_clover_adjoint", "packed_temporal_faces", "compact_spin_force",
     "half_power_rational_method", "rational_coefficients_sha256", "force_pole_batch",
     "projected_force_faces", "light_heatbath_action", "real_krylov_dot", "pade_drift", "shared_clover_spin",
-    "native_pade_drift", "reuse_odd_inverse", "overlap_schur_faces",
+    "native_pade_drift", "reuse_odd_inverse", "overlap_schur_faces", "gershgorin_strange",
 )
 
 
@@ -83,6 +83,7 @@ def resume_from(path, report, rng, comm):
         previous.setdefault("native_pade_drift", False)
         previous.setdefault("reuse_odd_inverse", False)
         previous.setdefault("overlap_schur_faces", False)
+        previous.setdefault("gershgorin_strange", False)
         mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
         if mismatches:
             raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
@@ -171,6 +172,8 @@ def main():
                         help="differentiate the odd Clover determinant using the Schur inverse blocks")
     parser.add_argument("--overlap-schur-faces", action="store_true",
                         help="evaluate spatial Schur hopping while packed temporal halos are in flight")
+    parser.add_argument("--gershgorin-strange", action="store_true",
+                        help="try a conservative local Clover row-sum bound before the eigenvalue certificate")
     parser.add_argument("--save-every", type=int, default=1)
     parser.add_argument("--threads", type=int, default=1)
     parser.add_argument("--seed", type=int, default=1729)
@@ -215,7 +218,8 @@ def run(args, comm):
                             light_heatbath_action=args.light_heatbath_action, real_krylov_dot=args.real_krylov_dot,
                             pade_drift=args.pade_drift, shared_clover_spin=args.shared_clover_spin,
                             native_pade=args.native_pade_drift, reuse_odd_inverse=args.reuse_odd_inverse,
-                            overlap_schur_faces=args.overlap_schur_faces)
+                            overlap_schur_faces=args.overlap_schur_faces,
+                            gershgorin_strange=args.gershgorin_strange)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
@@ -247,6 +251,7 @@ def run(args, comm):
                   native_pade_drift=model.native_pade,
                   reuse_odd_inverse=model.reuse_odd_inverse,
                   overlap_schur_faces=model.overlap_schur_faces,
+                  gershgorin_strange=model.gershgorin_strange,
                   half_power_rational_method="zolotarev" if model.zolotarev else "quadrature",
                   rational_coefficients_sha256=rational_digest,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",

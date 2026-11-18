@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 from hmc.distributed_rhmc import DistributedRHMC
 from hmc.pseudofermion import MatrixFreePseudofermionHMC, PseudofermionHMC
 from hmc.reference import CD, RD
+from hmc.spectral import positive_schur_bounds
 
 
 def main():
@@ -30,6 +31,7 @@ def main():
     parser.add_argument("--shared-clover-spin", action="store_true")
     parser.add_argument("--reuse-odd-inverse", action="store_true")
     parser.add_argument("--overlap-schur-faces", action="store_true")
+    parser.add_argument("--gershgorin-strange", action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(1)
     comm = MPI.COMM_WORLD.Dup()
@@ -43,7 +45,8 @@ def main():
                                 light_heatbath_action=args.light_heatbath_action, real_krylov_dot=args.real_krylov_dot,
                                 pade_drift=args.pade_drift, shared_clover_spin=args.shared_clover_spin,
                                 native_pade=args.native_pade_drift, reuse_odd_inverse=args.reuse_odd_inverse,
-                                overlap_schur_faces=args.overlap_schur_faces)
+                                overlap_schur_faces=args.overlap_schur_faces,
+                                gershgorin_strange=args.gershgorin_strange)
         baseline, final, precise_difference = model._hamiltonian_pair([2.**56, 2.], [2.**56, 3.])
         assert final == baseline and precise_difference == comm.size
         serial = MatrixFreePseudofermionHMC(*params)
@@ -55,6 +58,17 @@ def main():
         slab = slice(sites * comm.rank, sites * (comm.rank + 1))
         half = slice(slab.start // 2, slab.stop // 2)
         local_u, local_p = u[slab].contiguous(), p[slab].contiguous()
+        certificate_fallback = False
+        if args.gershgorin_strange:
+            clover = model._coefficients(model._gauge_faces(local_u))[1]
+            even, odd = clover[~model.odd], clover[model.odd]
+            row_sum = positive_schur_bounds(even, odd, model.ms, comm=comm, gershgorin=True)
+            exact = positive_schur_bounds(even, odd, model.ms, comm=comm)
+            assert model._certify(clover, local_u) == row_sum
+            assert row_sum[0] < exact[0] and row_sum[1] > exact[1]
+            with patch.object(model, "interval", exact):
+                assert model._certify(clover, local_u) == exact
+            certificate_fallback = True
         seed = 2354
         expected = serial.refresh(u, torch.Generator().manual_seed(seed))
         noise_rng = torch.Generator().manual_seed(seed)
@@ -116,6 +130,7 @@ def main():
                                                    identical_heatbath_fields=True,
                                                    identical_initial_terms=not args.light_heatbath_action,
                                                    reused_observables_both_decisions=True,
+                                                   tested_gershgorin_fallback=certificate_fallback,
                                                    max_error=errors), indent=2) + "\n")
     finally:
         comm.Free()
