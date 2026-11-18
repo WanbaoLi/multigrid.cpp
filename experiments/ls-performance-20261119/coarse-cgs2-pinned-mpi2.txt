@@ -1,0 +1,6 @@
+COARSE_BATCH_DIAGNOSTIC {"allreduce_calls": 48, "calls": 12, "cap": 1, "capped": 48, "cgs2_rounds": 0, "differing_iterations": false, "differing_refreshes": false, "restarts": 0}
+COARSE_BATCH_DIAGNOSTIC {"allreduce_calls": 734, "calls": 8, "cap": 40, "capped": 0, "cgs2_rounds": 0, "differing_iterations": true, "differing_refreshes": false, "restarts": 0}
+COARSE_BATCH_DIAGNOSTIC {"allreduce_calls": 734, "calls": 8, "cap": 200, "capped": 0, "cgs2_rounds": 0, "differing_iterations": true, "differing_refreshes": false, "restarts": 0}
+COARSE_BATCH_COVERAGE {"different_refreshes_observed": false, "different_stops_observed": true, "restart_observed": false}
+COARSE_BATCH_DIAGNOSTIC {"allreduce_calls": 383, "calls": 8, "cap": 40, "capped": 0, "cgs2_rounds": 142, "differing_iterations": true, "differing_refreshes": false, "restarts": 0}
+PASS coarse independent-RHS reduction batching ranks=2 widths=1,2,4,12 max_independent_residual=3.966999418e-11

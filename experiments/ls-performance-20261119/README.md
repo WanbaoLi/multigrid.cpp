@@ -288,6 +288,10 @@ plaquette and SU(3), and the independent scalar Dirac comparison.
 Their largest scalar discrepancy was `1.15e-16`. This released the
 `24³×64` job's verification dependency. The full-volume geometry
 job subsequently entered the queue behind the scheduler limit.
+On cn12048 the 64-rank `24³×64` job `2171098` accepted its first
+warmup proposal in 380.51 s with delta-H 0.13247. Job `2171358`
+publishes the generated LIME files from node-local storage to shared
+storage after independent verification and checks their SHA256.
 
 Job `2171240` compared a continuous three-trajectory chain with one
 trajectory followed by a two-trajectory restart. The configurations
@@ -401,3 +405,7 @@ the CTest timeout. The first retry, `2171303`, used a fixed-length
 abbreviated commit comparison and exited in the preflight. Job
 `2171323` checks the full SHA and reuses the same library on the same
 node with distinct NUMA placements before the full-volume comparison.
+The pinned two-rank fixture passed all widths with an independent
+maximum residual of `3.97e-11`. Its eight cap-40 diagnostic calls
+used 734 MPI reductions with packed MGS and 383 with packed CGS2.
+The real L24 timing continues in the same allocation.
