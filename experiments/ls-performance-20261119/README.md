@@ -288,10 +288,19 @@ plaquette and SU(3), and the independent scalar Dirac comparison.
 Their largest scalar discrepancy was `1.15e-16`. This released the
 `24³×64` job's verification dependency. The full-volume geometry
 job subsequently entered the queue behind the scheduler limit.
-On cn12048 the 64-rank `24³×64` job `2171098` accepted its first
-warmup proposal in 380.51 s with delta-H 0.13247. Job `2171358`
-publishes the generated LIME files from node-local storage to shared
-storage after independent verification and checks their SHA256.
+On cn12048 the 64-rank `24³×64` job `2171098` accepted all three
+proposals in 380.51, 309.63 and 286.10 s. The delta-H values were
+0.13247, 0.13264 and 0.13175. This cold-start calibration used
+`beta=5.6`, Wilson masses `0.5` and `0.8`, `cSW=1`, and trajectory
+length `0.018`. Thermalization and autocorrelations remain unmeasured.
+The two saved plaquettes were 0.9982771161 and 0.9974206523.
+Independent SciDAC CRC, SU(3), and scalar C++ Dirac checks passed
+for both files. The maximum relative operator discrepancy was
+`1.15e-16`. Job `2171358` published the two 509609712-byte LIME files
+to `~/lqcd-run/hmc-l24t64-publication-run01/published`. The SHA256
+values in the verification manifest were reproduced on the local
+copies. See [chain](distributed-l24t64-mpi64-chain.json) and
+[verification](distributed-l24t64-mpi64-verification.json).
 
 Job `2171240` compared a continuous three-trajectory chain with one
 trajectory followed by a two-trajectory restart. The configurations
@@ -334,9 +343,15 @@ per rank between extensive values whose FP64 totals were equal.
 The complete test used packed faces, analytic Clover and compact spin
 with Zolotarev, and the separate MPI2 restart oracle still matched.
 
-Job `2171439` is staged to compare the combined optimizations at
-`24³×64` using a common, independently verified full-volume LIME file.
-It waits for job `2171358` to publish the configuration.
+Job `2171391` compared `--compact-spin` with the four-spin force
+contractions on four ranks. At `24³×4`, the force median changed
+from 64.19 to 56.04 s across three pairs. The maximum force difference
+was `8.89e-16` across all four volumes. The two- and four-rank dense
+RHMC and reversal checks also passed.
+
+Job `2171439` started the `24³×64` full trajectory comparison of
+packed faces, analytic Clover differentiation, compact spin, and
+Zolotarev. Both cases read the verified `hmc_000002.lime` on 64 ranks.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
