@@ -1,12 +1,28 @@
 # 2+1 味 Wilson–Clover HMC：实现步骤与当前边界
 
-本项目增加了真正含海夸克权重的**小体积精确行列式 HMC 基准**。它在 CPU 上使用
-complex128/float64，用自动微分计算规范力和包含 Clover 变化的海夸克力，配合
-SU(3) 群指数更新、leapfrog 和 Metropolis。它不是纯规范场热浴，不用伪费米子，
-也不是已完成的可扩展 RHMC。现有生产求解 API、MG 后端和独立 C++ 验算路径未改动。
+项目提供三条使用 complex128/float64 的 2+1 味 Wilson–Clover 生成路径。
 
-当前实现限制总格点数不超过32，默认 `2×2×2×2`。此限制显式拒绝24格子，避免把
-稠密行列式的 O((12V)^3) 工作和 O((12V)^2) 存储误当成生产方案；V 是格点总数。
+| `--sea-action` | 热浴与验收 | MD 力 | 用途 |
+|---|---|---|---|
+| `determinant`（默认） | 密集精确行列式 | 自动微分 | 最高 32 点的独立基准 |
+| `pseudofermion` | 密集谱分解 | 多移位 CG、有理奇异味力 | 最高 32 点的伪费米子正确性验证 |
+| `matrix-free` | 奇偶 Schur 算子和有理矩阵幂 | 多移位 CG、按极点分批反传 | 单节点无矩阵 RHMC 验证 |
+
+无矩阵路径以局部 Clover 本征值和 Wilson hopping 范数的充分条件检查单奇异味
+行列式为正，并在固定区间检查有理近似。本轮参数为 mₗ=0.5、mₛ=0.8、cSW=1。
+当前充分条件对拟用于生产的负质量有局限，L24 生产还需要分布式力和谱监测。
+[灵晟试跑与验算数据](../experiments/ls-performance-20261119/README.md)
+
+```bash
+python tools/hmc/generate.py --output /outside/source/matrixfree-64 \
+  --sea-action matrix-free --lattice 2 2 4 4 --beta 5.6 \
+  --mass-light 0.5 --mass-strange 0.8 --csw 1 --integrator omelyan \
+  --trajectories 4 --warmup 1 --length 0.1 --steps 1 --save-every 1 --seed 1729
+python tools/hmc/verify_configs.py /outside/source/matrixfree-64 \
+  --reference /outside/source/build/multigrid
+```
+
+下面先介绍精确行列式基准，再给出扩展到生产规模的步骤。
 
 ## 1. 先确定要生成哪一种理论
 
