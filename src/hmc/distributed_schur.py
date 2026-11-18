@@ -88,7 +88,7 @@ def prepare_slab_schur(model, gauge, mass, clover, comm, library):
     return apply
 
 
-def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library):
+def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, projected=True):
     """Prepare Schur from only an owned Clover slab and its gauge faces.
 
     The returned operator differentiates through link and spinor halo adjoints
@@ -156,7 +156,22 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library):
         blocks_e, blocks_o = even_clover.detach().contiguous(), odd_inverse.detach().contiguous()
 
     def halo(spinor):
-        return time_faces(spinor.reshape(nt, face, 4, 3), comm)
+        owned = spinor.reshape(nt, face, 4, 3)
+        if not projected:
+            return time_faces(owned, comm)
+        # The time gamma swaps the upper and lower spin pairs. Carry only
+        # the pair consumed by the destination's forward/backward projector.
+        extended = owned.new_zeros((nt + 2, face, 4, 3))
+        extended[1:-1].copy_(owned)
+        to_prev = (owned[0, :, :2] - owned[0, :, 2:]).contiguous()
+        to_next = (owned[-1, :, :2] + owned[-1, :, 2:]).contiguous()
+        received = torch.empty_like(to_prev)
+        prev, nxt = (comm.rank - 1) % comm.size, (comm.rank + 1) % comm.size
+        comm.Sendrecv(to_prev.numpy(), prev, 20, received.numpy(), nxt, 20)
+        extended[-1, :, :2].copy_(received)
+        comm.Sendrecv(to_next.numpy(), nxt, 21, received.numpy(), prev, 21)
+        extended[0, :, :2].copy_(received)
+        return extended
 
     def torch_hop(spinor, terms):
         fields = spinor.reshape(-1, nt, face, 4, 3).transpose(0, 1)

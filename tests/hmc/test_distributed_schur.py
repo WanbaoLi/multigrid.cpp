@@ -79,8 +79,13 @@ def main():
                 global_image = model.apply_even_schur(full, mass, field)
                 with torch.no_grad():
                     native_image = local_apply(field[slab])
+                    full_halo = prepare_local_slab_schur(
+                        extended, local_clover, mass, comm, library, projected=False)
+                    native_full_halo = full_halo(field[slab])
                 local_error = max(float((x - global_image[slab]).abs().max())
-                                  for x in (local_image, native_image))
+                                  for x in (local_image, native_image, native_full_halo))
+                halo_error = comm.allreduce(float((native_image - native_full_halo).abs().max()),
+                                            op=MPI.MAX)
                 local_grad, = torch.autograd.grad(local_image.abs().square().sum(), local)
                 full_grad, = torch.autograd.grad(global_image.abs().square().sum(), full)
                 grad_error = float((local_grad - full_grad.reshape(*reversed(lattice), 4, 3, 3)[ti]).abs().max())
@@ -91,7 +96,8 @@ def main():
                 results.append(dict(lattice=lattice, mass=mass, schur_error=max_schur,
                                     normal_error=max_normal, independent_shifted_residuals=independent,
                                     distributed_shifted_residuals=residuals,
-                                    local_schur_error=local_error, schur_link_gradient_error=grad_error))
+                                    local_schur_error=local_error, projected_halo_error=halo_error,
+                                    schur_link_gradient_error=grad_error))
         if comm.rank == 0:
             args.output.write_text(json.dumps(dict(ranks=comm.size, cases=results, passed=True),
                                               indent=2) + "\n")
