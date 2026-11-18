@@ -39,7 +39,8 @@ printf "import sys; sys.path.insert(0, '%s')\n" \
   > "$scratch/python/lib/python3.10/site-packages/00-setuptools-vendor.pth"
 own=/home/share/nsls_lwb/lqcd-run/health-20261113/source
 export PYTHONPATH=$upstream:$own/bindings
-export PYQCU_KUPL_LIB=$out/build/libqcu.so
+build=$scratch/build
+export PYQCU_KUPL_LIB=$build/libqcu.so
 lime=/home/share/nsls_lwb/.cache/pyqcu-propagator24-v20261103/inputs/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime
 git -C "$upstream" rev-parse HEAD > "$out/upstream-commit.txt"
 git -C "$upstream" status --short > "$out/upstream-status.txt"
@@ -57,24 +58,24 @@ PY
   exit "$code"
 }
 trap on_exit EXIT
-cmake -S "$upstream/cpp/kupl/qcu" -B "$out/build" -DCMAKE_BUILD_TYPE=Release \
+cmake -S "$upstream/cpp/kupl/qcu" -B "$build" -DCMAKE_BUILD_TYPE=Release \
   -DPython3_EXECUTABLE="$python_bin" \
   -DKUPL_ENABLE_NATIVE=ON -DKUPL_ENABLE_LTO=ON -DKUPL_BUILD_TESTS=ON \
   -DCMAKE_CXX_COMPILER="$CXX" -DMPI_CXX_COMPILER="$(command -v mpicxx)" \
   '-DMPIEXEC_PREFLAGS=--host;localhost:4;--map-by;ppr:1:numa:PE=2;--bind-to;core' \
   -DCMAKE_EXE_LINKER_FLAGS="-L$task_sdk/compiler/gcc/lib64 -Wl,-rpath,$task_sdk/compiler/gcc/lib64" \
   -DCMAKE_SHARED_LINKER_FLAGS="-L$task_sdk/compiler/gcc/lib64 -Wl,-rpath,$task_sdk/compiler/gcc/lib64"
-cmake --build "$out/build" -j16
+cmake --build "$build" -j16
 # Some upstream Python MPI tests omit MPIEXEC_PREFLAGS; prevent HMPI's
 # default one-core binding from conflicting with their two OpenMP threads.
-OMPI_MCA_hwloc_base_binding_policy=none ctest --test-dir "$out/build" \
+OMPI_MCA_hwloc_base_binding_policy=none ctest --test-dir "$build" \
   --output-on-failure --parallel 1 -E '^kupl_qcu_(kunpeng_profile|pure_kupl)_contract$'
 # This contract deliberately requires its parent to own exactly one NUMA
 # domain. It is a correctness test, so one allowed core suffices.
 test_cpu=$("$python_bin" -c 'import os; print(min(os.sched_getaffinity(0)))')
-taskset -c "$test_cpu" ctest --test-dir "$out/build" --output-on-failure \
+taskset -c "$test_cpu" ctest --test-dir "$build" --output-on-failure \
   -R '^kupl_qcu_kunpeng_profile_contract$'
-sha256sum "$out/build/libqcu.so" > "$out/build.sha256"
+sha256sum "$build/libqcu.so" > "$out/build.sha256"
 export KUPL_NUMA_BIND=1 KUPL_MEMORY_POLICY=preferred KUPL_MEMORY_NODE=local+16
 export KUPL_REQUIRE_MEMORY_BIND=1 KUPL_HUGEPAGE=1 KUPL_TOPOLOGY_REPORT=1
 export KUPL_PROFILE_OPT=1 KUPL_SKIP_FINAL_RESIDUAL=1 OMP_WAIT_POLICY=ACTIVE OMP_DYNAMIC=FALSE
@@ -133,7 +134,7 @@ PYTHONPATH=$own/bindings OMP_NUM_THREADS=8 OMP_PLACES=cores OMP_PROC_BIND=spread
   --reference-threads 8 --tol 1e-8 > "$out/own-mg/scalar.log" 2>&1
 find "$scratch/own-mg" -maxdepth 1 -name '*.json' -type f -exec cp '{}' "$out/own-mg/" ';'
 # Record the packaging contract independently of numerical benchmarks.
-OMPI_MCA_hwloc_base_binding_policy=none ctest --test-dir "$out/build" \
+OMPI_MCA_hwloc_base_binding_policy=none ctest --test-dir "$build" \
   --output-on-failure -R '^kupl_qcu_pure_kupl_contract$' > "$out/packaging-test.log" 2>&1 || failed=1
 [[ $failed == 0 ]]
 echo "PYQCU_REVIEW_COMPLETE $out"
