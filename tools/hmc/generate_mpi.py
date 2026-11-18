@@ -19,6 +19,13 @@ from hmc.distributed_rhmc import DistributedRHMC
 from hmc.reference import lime_sha256, write_lime
 from generate import atomic_json
 
+CHECKPOINT_COMPATIBILITY = (
+    "lattice_xyzt", "beta", "mass_light", "mass_strange", "csw", "mpi_ranks",
+    "threads", "seed", "torch_version", "native_schur_sha256", "integrator",
+    "trajectory_length", "integration_steps", "gauge_substeps_per_drift",
+    "strange_md_interval", "strange_rational_poles", "md_relative_true_residual_tolerance",
+)
+
 
 def on_root(comm, function):
     """Share root I/O failures before any rank proceeds to the next collective."""
@@ -34,9 +41,54 @@ def on_root(comm, function):
     return value
 
 
+def resume_from(path, report, rng, comm):
+    sys.path.insert(0, str(ROOT / "bindings"))
+    from lqcd_cpu.io import read_lime_gauge
+
+    def read_checkpoint():
+        previous = json.loads(path.read_text())
+        mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
+        if mismatches:
+            raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
+        saved = previous.get("saved_configurations", [])
+        if not saved or "rng_state" not in saved[-1]:
+            raise ValueError("No saved configuration with a restart state")
+        checkpoint = saved[-1]
+        if type(checkpoint.get("trajectory")) is not int or checkpoint["trajectory"] < 1:
+            raise ValueError("Invalid checkpoint trajectory index")
+        gauge_file, rng_file = checkpoint["file"], checkpoint["rng_state"]["file"]
+        if Path(gauge_file).name != gauge_file or Path(rng_file).name != rng_file:
+            raise ValueError("Checkpoint filenames must be relative to the report directory")
+        gauge_path, rng_path = path.parent / gauge_file, path.parent / rng_file
+        if lime_sha256(gauge_path) != checkpoint["sha256"]:
+            raise ValueError("Checkpoint LIME digest mismatch")
+        if lime_sha256(rng_path) != checkpoint["rng_state"]["sha256"]:
+            raise ValueError("Checkpoint RNG digest mismatch")
+        states = np.load(rng_path, allow_pickle=False)
+        if states.shape != (comm.size, rng.get_state().numel()) or states.dtype != np.uint8:
+            raise ValueError("Invalid rank-local RNG state table")
+        return checkpoint["trajectory"], gauge_path, checkpoint["sha256"], states
+
+    last, gauge_path, digest, states = on_root(comm, read_checkpoint)
+    error = None
+    try:
+        rng.set_state(torch.from_numpy(states[comm.rank]))
+    except RuntimeError as exc:
+        error = f"Rank {comm.rank} could not restore its RNG state: {exc}"
+    errors = comm.allgather(error)
+    if any(errors):
+        raise ValueError(next(error for error in errors if error is not None))
+    gauge = read_lime_gauge(gauge_path, grid=(1, 1, 1, comm.size),
+                            coords=(0, 0, 0, comm.rank), comm=comm)
+    return torch.from_numpy(gauge.reshape(-1, 4, 3, 3)), dict(
+        trajectory=last, configuration_sha256=digest, report=str(path.resolve()))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--resume-from", type=Path,
+                        help="resume the newest saved LIME and RNG state from a previous result.json")
     parser.add_argument("--library", type=Path, default=os.environ.get("LQCD_HMC_SCHUR_LIBRARY"))
     parser.add_argument("--lattice", nargs=4, type=int, default=(4, 4, 4, 4))
     parser.add_argument("--beta", type=float, default=5.6)
@@ -88,16 +140,15 @@ def run(args, comm):
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
-    on_root(comm, lambda: args.output.mkdir(parents=True))
     rng = torch.Generator().manual_seed(args.seed + comm.rank)
-    gauge = model.cold()
     report = dict(complete=False, algorithm="time-slab matrix-free 2+1 RHMC",
-                  lattice_xyzt=args.lattice, beta=args.beta, mass_light=args.mass_light,
+                  lattice_xyzt=list(args.lattice), beta=args.beta, mass_light=args.mass_light,
                   mass_strange=args.mass_strange, csw=args.csw, nf="2+1", rhmc=True,
                   mpi_ranks=comm.size, threads=args.threads, seed=args.seed,
                   timing_aggregation="maximum rank elapsed time for each phase independently",
                   rank_seed_rule="seed + MPI rank", source_commit=commit, native_schur_sha256=lib_digest,
-                  strange_md_interval=model.interval, strange_rational_grid_error=model.grid_errors,
+                  torch_version=str(torch.__version__),
+                  strange_md_interval=list(model.interval), strange_rational_grid_error=model.grid_errors,
                   strange_cold_free_gap=model.strange_cold_gap,
                   strange_rational_poles=dict(md=len(model.md_terms), endpoint=len(model.endpoint_terms),
                                               refresh=len(model.refresh_terms)),
@@ -106,7 +157,15 @@ def run(args, comm):
                   gauge_substeps_per_drift=args.gauge_steps,
                   thermalization_established=False, independent_samples_established=False,
                   trajectories=args.trajectories, warmup=args.warmup, samples=[], saved_configurations=[])
-    for trajectory in range(1, args.trajectories + 1):
+    if args.resume_from is None:
+        gauge, first_trajectory = model.cold(), 0
+    else:
+        gauge, checkpoint = resume_from(args.resume_from, report, rng, comm)
+        report["resumed_from"] = checkpoint
+        first_trajectory = checkpoint["trajectory"]
+    on_root(comm, lambda: args.output.mkdir(parents=True))
+    for segment_index in range(1, args.trajectories + 1):
+        trajectory = first_trajectory + segment_index
         start = perf_counter()
         gauge, sample = model.trajectory(gauge, rng, args.length, args.steps, gauge_steps=args.gauge_steps)
         total = perf_counter() - start
@@ -118,27 +177,36 @@ def run(args, comm):
         phases.update(zip(phases, phase_seconds[:len(phases)]))
         force_phases.update(zip(force_phases, phase_seconds[len(phases):]))
         sample.update(model.observables(gauge), trajectory=trajectory,
-                      warmup=trajectory <= args.warmup, seconds=seconds)
+                      warmup=segment_index <= args.warmup, seconds=seconds)
         report["samples"].append(sample)
-        if trajectory > args.warmup and (trajectory - args.warmup) % args.save_every == 0:
+        if segment_index > args.warmup and (segment_index - args.warmup) % args.save_every == 0:
             local = gauge.contiguous().numpy()
             global_links = np.empty((comm.size, *local.shape), dtype=local.dtype) if comm.rank == 0 else None
             comm.Gather(local, global_links, root=0)
+            rng_states = comm.gather(rng.get_state().numpy(), root=0)
 
             def save():
                 path = args.output / f"hmc_{trajectory:06d}.lime"
                 write_lime(path, global_links, args.lattice,
                            {key: report[key] for key in ("nf", "beta", "mass_light", "mass_strange",
                                                          "csw", "source_commit", "mpi_ranks", "seed")})
+                rng_path = path.with_suffix(".rng.npy")
+                temporary = rng_path.with_suffix(".tmp")
+                with temporary.open("wb") as stream:
+                    np.save(stream, np.stack(rng_states), allow_pickle=False)
+                    stream.flush()
+                    os.fsync(stream.fileno())
+                temporary.replace(rng_path)
                 return dict(file=path.name, trajectory=trajectory, sha256=lime_sha256(path),
-                            plaquette=sample["plaquette"], bytes=path.stat().st_size)
+                            plaquette=sample["plaquette"], bytes=path.stat().st_size,
+                            rng_state=dict(file=rng_path.name, sha256=lime_sha256(rng_path)))
 
             report["saved_configurations"].append(on_root(comm, save))
         on_root(comm, lambda: atomic_json(args.output / "result.json", report))
         if comm.rank == 0:
             print(json.dumps(sample), flush=True)
     accepted = sum(item["accepted"] for item in report["samples"])
-    if not report["saved_configurations"] or not accepted:
+    if not report["saved_configurations"] or (not accepted and args.resume_from is None):
         raise RuntimeError("The run must save an updated gauge field")
     report.update(complete=True, accepted=accepted, acceptance_rate=accepted / args.trajectories)
     on_root(comm, lambda: atomic_json(args.output / "result.json", report))
