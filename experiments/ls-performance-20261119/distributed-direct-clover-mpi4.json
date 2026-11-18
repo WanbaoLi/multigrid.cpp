@@ -1,0 +1,32 @@
+{
+  "ranks": 4,
+  "cases": [
+    {
+      "lattice": [
+        2,
+        4,
+        2,
+        4
+      ],
+      "gauge_action_error": 5.684341886080802e-14,
+      "field_strength_error": 0.0,
+      "link_gradient_error": 7.119291619286993e-15,
+      "direct_gauge_gradient_error": 5.329070518200751e-15,
+      "direct_clover_gradient_error": 3.580361673049448e-15
+    },
+    {
+      "lattice": [
+        4,
+        4,
+        4,
+        8
+      ],
+      "gauge_action_error": 4.547473508864641e-13,
+      "field_strength_error": 0.0,
+      "link_gradient_error": 8.89287949701369e-15,
+      "direct_gauge_gradient_error": 3.614624287906422e-15,
+      "direct_clover_gradient_error": 3.580361673049448e-15
+    }
+  ],
+  "passed": true
+}

@@ -296,6 +296,13 @@ and acceptance decisions matched exactly. An incompatible mass was
 rejected before opening the new output directory, and the two resumed
 LIME files passed independent verification.
 
+Job `2171250` compared the optional analytic Clover-leaf adjoint to
+ordinary Torch differentiation on four ranks. The independent gauge
+gradient error was at most `3.59e-15`. Full RHMC force and split-link
+reversal errors were `8.89e-16` and `6.11e-15`. The `12⁴` force
+median fell from 25.56 to 22.32 s, while the `8⁴` median increased
+from 4.77 to 4.88 s. `--direct-clover` selects the candidate.
+
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
 matrix contraction. The contraction avoids constructing all eight
@@ -373,3 +380,13 @@ The wall medians were 19.822 s (control), 19.555 s (cap 12), 19.374 s
 maximum residual was `4.91e-9`. Separate jobs `2171049` and
 `2171082` compare smaller coarse OpenMP teams and CGS2 with two packed
 MPI reductions when the coarse basis has more than two directions.
+
+Job `2171049` again favored cap 14, with wall medians of 16.143 s
+(cap 40 control) and 15.684 s (cap 14 with the full coarse team).
+Reducing the coarse team to 16 or 8 threads increased the cap 14 median
+to 16.501 and 19.517 s. All four cases passed the twelve-column
+independent verification. Job `2171082` built the packed CGS2
+candidate and passed its serial gate. The unbound MPI2 gate reached
+the CTest timeout. Job `2171303` reuses the same library on the same
+node with explicit distinct NUMA placements before the full-volume
+comparison.
