@@ -479,6 +479,13 @@ Job `2171712` tests the native implementation of the same bounded
 Padé drift against the tensor Padé and spectral versions. The native
 path assembles the fixed SU(3) generators and solves the near-identity
 3×3 system in one pass. The spectral drift covers larger arguments.
+At `24³×4` the four-rank single-drift medians were 546.16 ms (spectral),
+720.22 ms (tensor Padé), and 78.72 ms (native Padé). The native result
+agreed with both controls within `2.56e-15`. All large-step fallbacks
+were bitwise equal, and the two- and four-rank dense tests passed.
+Job `2171748` extends the comparison to paired entire trajectories
+using the verified `24³×8` field. See
+[single-drift results](distributed-native-pade-drift-paired.json).
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
