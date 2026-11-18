@@ -105,10 +105,14 @@ class DistributedRHMC:
         local = owned_gauge_action(extended, self.beta)
         for i, clover in enumerate(coefficients):
             local = local - (2 - i) * torch.linalg.slogdet(clover[self.odd])[1].sum()
-        gradient, = torch.autograd.grad(local, links, retain_graph=True)
+        schur_links = extended.detach().requires_grad_(True)
+        link_gradient = torch.zeros_like(extended)
+        clover_gradients = []
         for i, (mass, phi, clover, terms) in enumerate(zip(
                 (self.ml, self.ms), fields, coefficients, (((0., 1.),), self.md_terms))):
-            schur = self._schur(extended, clover, mass)
+            schur_clover = clover.detach().requires_grad_(True)
+            clover_gradient = torch.zeros_like(clover)
+            schur = self._schur(schur_links, schur_clover, mass)
 
             def normal(vec):
                 return self._normal(schur, vec)
@@ -118,16 +122,21 @@ class DistributedRHMC:
                 solutions = [solve_shifted(normal, phi, shifts[0], comm=self.comm)[0]]
             else:
                 solutions, _ = solve_multi_shift(normal, phi, shifts, comm=self.comm)
-            # Backpropagate one block at a time. The owned link and Clover
-            # graph is shared while the spinor intermediates are released.
+            # Release spinor intermediates after each block. Accumulate the
+            # coefficient cotangents before differentiating the gauge geometry.
             for first in range(0, len(weights), 8):
                 end = min(first + 8, len(weights))
                 image = schur(torch.stack(solutions[first:end])).reshape(end - first, -1)
                 norm = (image.real.square() + image.imag.square()).sum(dim=1)
                 weight = torch.tensor(weights[first:end], dtype=RD)
-                grad, = torch.autograd.grad(-(weight * norm).sum(), links,
-                                            retain_graph=i == 0 or end < len(weights))
-                gradient.add_(grad)
+                gauge_grad, clover_grad = torch.autograd.grad(
+                    -(weight * norm).sum(), (schur_links, schur_clover), retain_graph=end < len(weights))
+                link_gradient.add_(gauge_grad)
+                clover_gradient.add_(clover_grad)
+            clover_gradients.append(clover_gradient)
+        gradient, = torch.autograd.grad(
+            (local, extended, *coefficients), links,
+            grad_outputs=(torch.ones_like(local), link_gradient, *clover_gradients))
         rotations = 1j * torch.einsum("aij,vmjk->vmaik", self.basis, u)
         return (gradient.conj().unsqueeze(-3) * rotations).real.sum((-1, -2))
 
