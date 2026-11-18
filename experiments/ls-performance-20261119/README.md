@@ -669,7 +669,7 @@ full12 solves had median 213.28 s. The columns took 212–226 iterations
 in the first solve. The independent scalar C++ check passed the
 twelve columns and the separate single-column control at maximum
 relative residual `4.98e-9`. PyQUDA read all complex128 array elements
-and spin-color columns exactly on 16 ranks. Job `2171855` moved the
+and spin-color columns exactly on 16 ranks. Job `2171855` published the
 NPY to `~/lqcd-run/mg-l24-generated-propagator-publication-run01` and
 verified its digest after the copy. See [end-to-end verification](generated-lime-propagator/).
 
