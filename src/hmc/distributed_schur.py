@@ -154,22 +154,26 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
         neighbors_e, neighbors_o = [torch.stack([i for i, _, _ in terms]) for terms in hopping]
         links_e, links_o = [torch.stack([u for _, u, _ in terms]) for terms in hopping]
         blocks_e, blocks_o = even_clover.detach().contiguous(), odd_inverse.detach().contiguous()
+    scratch_odd = links.new_empty((local_sites, 4, 3))
+    if projected:
+        extended = links.new_zeros((nt + 2, face, 4, 3))
+        send = links.new_empty((face, 2, 3))
+        received = torch.empty_like(send)
+        send_buffer, receive_buffer = send.numpy(), received.numpy()
+        prev, nxt = (comm.rank - 1) % comm.size, (comm.rank + 1) % comm.size
 
     def halo(spinor):
         owned = spinor.reshape(nt, face, 4, 3)
         if not projected:
             return time_faces(owned, comm)
         # The time gamma swaps the upper and lower spin pairs. Carry only
-        # the pair consumed by the destination's forward/backward projector.
-        extended = owned.new_zeros((nt + 2, face, 4, 3))
+        # the pair consumed by the projector. The lower halo spins stay zero.
         extended[1:-1].copy_(owned)
-        to_prev = (owned[0, :, :2] - owned[0, :, 2:]).contiguous()
-        to_next = (owned[-1, :, :2] + owned[-1, :, 2:]).contiguous()
-        received = torch.empty_like(to_prev)
-        prev, nxt = (comm.rank - 1) % comm.size, (comm.rank + 1) % comm.size
-        comm.Sendrecv(to_prev.numpy(), prev, 20, received.numpy(), nxt, 20)
+        torch.sub(owned[0, :, :2], owned[0, :, 2:], out=send)
+        comm.Sendrecv(send_buffer, prev, 20, receive_buffer, nxt, 20)
         extended[-1, :, :2].copy_(received)
-        comm.Sendrecv(to_next.numpy(), nxt, 21, received.numpy(), prev, 21)
+        torch.add(owned[-1, :, :2], owned[-1, :, 2:], out=send)
+        comm.Sendrecv(send_buffer, nxt, 21, receive_buffer, prev, 21)
         extended[0, :, :2].copy_(received)
         return extended
 
@@ -187,12 +191,13 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
             even = even_clover @ spinor.reshape(-1, local_sites, 2, 6, 1)
             return (even - torch_hop(odd, hopping[0])).reshape_as(spinor)
         even = spinor.resolve_conj().contiguous()
-        odd = torch.empty_like(even)
         output = torch.empty_like(even)
+        # The two blocking phases consume shared scratch in order. Return a
+        # separate field because Krylov callers can retain previous results.
         extended_even = halo(even)
         odd_kernel(local_sites, kappa, threads, neighbors_o.data_ptr(), links_o.data_ptr(),
-                   blocks_o.data_ptr(), extended_even.data_ptr(), odd.data_ptr())
-        extended_odd = halo(odd)
+                   blocks_o.data_ptr(), extended_even.data_ptr(), scratch_odd.data_ptr())
+        extended_odd = halo(scratch_odd)
         even_kernel(local_sites, kappa, threads, neighbors_e.data_ptr(), links_e.data_ptr(),
                     blocks_e.data_ptr(), even.data_ptr(), extended_odd.data_ptr(), output.data_ptr())
         return output

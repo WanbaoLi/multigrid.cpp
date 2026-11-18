@@ -7,8 +7,18 @@ import numpy as np
 import torch
 
 
-def _sum(value, comm):
-    return value if comm is None else comm.allreduce(value)
+def _scalar_sum(comm):
+    if comm is None:
+        return float
+    send = np.empty(1, dtype=np.float64)
+    receive = np.empty_like(send)
+
+    def reduce(value):
+        send[0] = value
+        comm.Allreduce(send, receive)
+        return float(receive[0])
+
+    return reduce
 
 
 def _norm2(vector):
@@ -23,7 +33,8 @@ def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000, *, comm=None):
     x = torch.zeros_like(rhs)
     r = rhs.clone()
     p = r.clone()
-    rho = _sum(_norm2(r), comm)
+    reduce = _scalar_sum(comm)
+    rho = reduce(_norm2(r))
     if not math.isfinite(rho):
         raise ArithmeticError("Nonfinite right-hand side norm")
     if rho == 0:
@@ -32,18 +43,18 @@ def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000, *, comm=None):
     threshold = tol * b_norm
     for iteration in range(1, maxiter + 1):
         image = apply(p) + shift * p
-        curvature = _sum((p.real * image.real + p.imag * image.imag).sum().item(), comm)
+        curvature = reduce((p.real * image.real + p.imag * image.imag).sum().item())
         if not math.isfinite(curvature) or curvature <= 0:
             raise ArithmeticError("Nonpositive shifted CG curvature")
         alpha = rho / curvature
         x.add_(p, alpha=alpha)
         r.add_(image, alpha=-alpha)
-        new_rho = _sum(_norm2(r), comm)
+        new_rho = reduce(_norm2(r))
         if not math.isfinite(new_rho):
             raise ArithmeticError("Nonfinite shifted CG residual")
         if math.sqrt(new_rho) <= threshold:
             r = rhs - apply(x) - shift * x
-            norm = math.sqrt(_sum(_norm2(r), comm))
+            norm = math.sqrt(reduce(_norm2(r)))
             if not math.isfinite(norm):
                 raise ArithmeticError("Nonfinite true shifted CG residual")
             if norm <= threshold:
@@ -72,7 +83,8 @@ def solve_multi_shift(apply, rhs, shifts, tol=1e-12, maxiter=1000, *, comm=None)
     base_shift = min(shifts)
     r = rhs.clone()
     p = r.clone()
-    rho = _sum(_norm2(r), comm)
+    reduce = _scalar_sum(comm)
+    rho = reduce(_norm2(r))
     if not math.isfinite(rho):
         raise ArithmeticError("Nonfinite right-hand side norm")
     if rho == 0:
@@ -81,12 +93,12 @@ def solve_multi_shift(apply, rhs, shifts, tol=1e-12, maxiter=1000, *, comm=None)
     threshold = tol * b_norm
     for _ in range(maxiter):
         image = apply(p) + base_shift * p
-        curvature = _sum((p.real * image.real + p.imag * image.imag).sum().item(), comm)
+        curvature = reduce((p.real * image.real + p.imag * image.imag).sum().item())
         if not math.isfinite(curvature) or curvature <= 0:
             break
         alpha = rho / curvature
         r.add_(image, alpha=-alpha)
-        new_rho = _sum(_norm2(r), comm)
+        new_rho = reduce(_norm2(r))
         if not math.isfinite(new_rho):
             break
         beta = new_rho / rho
