@@ -1,0 +1,82 @@
+{
+  "complete": true,
+  "run": "/tmp/mg-l24-nonorigin-verify-hVAWg78j/run",
+  "reference": "/tmp/mg-l24-packed-cgs2-oZsR7f81/build/multigrid",
+  "reference_sha256": "f67e26a3ba3553e404a7bd9a042116d9825bc0e7d5dcbb1ea6c8d4500983c0e1",
+  "run_report_sha256": "aaa07df1b21d14a6bb505801cec03e43b533b90afe5a7880b69364404d8747a2",
+  "propagator_sha256": "6553ad27a6e16489daf5f9c0b094147505cd6deebce255533f9492de82c8e33d",
+  "method": "byte-only column extraction + independent scalar C++",
+  "source_xyzt": [
+    3,
+    1,
+    2,
+    5
+  ],
+  "source_scale": 1.0,
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "normalization": "mass",
+  "columns": [
+    {
+      "source_spin": 0,
+      "source_color": 0,
+      "residual": 4.649703231141258e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 1,
+      "residual": 4.951709763850696e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 2,
+      "residual": 4.963785765254595e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 0,
+      "residual": 4.555970814782423e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 1,
+      "residual": 4.974501867337762e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 2,
+      "residual": 4.935089135204224e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 0,
+      "residual": 4.808627252331933e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 1,
+      "residual": 4.67911521152859e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 2,
+      "residual": 4.688503168089973e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 0,
+      "residual": 4.956713389451911e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 1,
+      "residual": 4.9095864072668994e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 2,
+      "residual": 4.924851755154626e-09
+    }
+  ],
+  "assembled_gauge_sha256": "0e34702da294e351bfdc1f5e6815b6b13aabffe3b7ee2cae4b145ab56c644dba"
+}

@@ -407,6 +407,12 @@ Job `2171615` waits for that comparison and then tests one, two, and
 four cores per rank on an exclusive node. Each MPI rank keeps its lead
 core and NUMA domain. The threaded cases independently read the fixed
 input and compare proposal links and momenta against the one-core case.
+On cn12056, the two short `24³×64` trajectories had medians of
+86.76, 94.18, and 96.15 s at one, two, and four cores per rank.
+One core per rank was fastest for both seeds. All placements reproduced
+the same accept or reject decision for each seed, with maximum link
+and delta-H differences of `8.56e-15` and `7.69e-10`. See the
+[exclusive thread-width comparison](rhmc-numa-threads/).
 
 Job `2171583` compares cached and rebuilt checkerboard indices for
 RHMC. It runs native Schur, dense force and reversal gates on two and
@@ -678,7 +684,13 @@ verified its digest after the copy. See [end-to-end verification](generated-lime
 Job `2171846` uses the verified, preprocessed gauge slabs and same
 source to screen coarse iteration caps 14, 40, and 80 and a tighter
 coarse residual target. Its two-column runs use one common hierarchy.
-Any faster setting still needs full12 independent verification before use.
+Job `2171893` runs the fastest candidate against cap 14 in the full12
+driver if it improves the two-column median by at least 3%. The full12
+driver shares one hierarchy, alternates case order, and independently
+validates all twelve columns of both outputs. Job `2171889` exercised
+the new source-coordinate support on the existing NPY and confirmed
+all twelve residuals with maximum `4.975e-9`. See the
+[non-origin scalar verification](generated-lime-propagator/nonorigin-scalar-verification.json).
 
 Job `2171803` compares the verified cap-14 solve with three hierarchy
 construction budgets. It holds the input, node, seed, initial smooth
