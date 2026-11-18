@@ -93,9 +93,13 @@ file after sparse checkout. The second build uses the full source in scratch.
   applications with shared Krylov vectors versus 59 independently, with
   maximum true residual `7.81e-13`. The optimized rational force also
   accumulates the pole contributions before differentiating the shared
-  Clover graph. Job `2169695` passed the seventeen physics checks
-  and started the optimized chain. Job `2169722` measures the force
-  using the same gauge, pseudofermion field and rational poles.
+  Clover graph. Job `2169722` measured 106.694 s versus 19.065 s on
+  identical gauge links, pseudofermions and 48 poles, a 5.60× gain for
+  the strange action and force. The maximum link-gradient difference
+  was `4.58e-16`. Job `2169695` passed all seventeen tests and
+  ran eight trajectories with rational MD and dense exact Metropolis.
+  Seven trajectories were accepted and both saved LIME files passed
+  independent verification.
 
 Direct assembly reduced the paired median four-step MD time from 3.266 to
 2.212 s on `2⁴` and from 6.343 to 3.477 s on `2³×4` on cn12038.

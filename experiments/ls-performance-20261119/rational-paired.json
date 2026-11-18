@@ -1,0 +1,29 @@
+{
+  "lattice": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "poles": 48,
+  "threads": 2,
+  "samples_seconds": {
+    "independent": [
+      130.7331824968569,
+      93.62225797097199,
+      106.69353598798625
+    ],
+    "shared": [
+      23.38320054905489,
+      19.06493162806146,
+      18.693120488896966
+    ]
+  },
+  "median_seconds": {
+    "independent": 106.69353598798625,
+    "shared": 19.06493162806146
+  },
+  "speedup": 5.59632408179976,
+  "action_absolute_difference": 4.263256414560601e-14,
+  "link_gradient_max_difference": 4.577566798522237e-16
+}
