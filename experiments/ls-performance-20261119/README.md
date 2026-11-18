@@ -547,6 +547,9 @@ application uses two such stores, eliminating the separate gamma5
 array passes. Job `2171922` checks the new kernels and dense RHMC
 reference, and job `2171917` pairs two complete `24³×64` trajectories
 with the same LIME field, rank placement and seeds.
+The four-rank packed test reproduced the explicit gamma5 Schur and
+normal outputs exactly for both masses on two time decompositions.
+See the [packed gate](distributed-schur-gamma5-packed-mpi4.json).
 
 Job `2171814` checks reuse of the selected Hamiltonian endpoint when
 the RHMC generator records observables. The code reuses the local gauge
