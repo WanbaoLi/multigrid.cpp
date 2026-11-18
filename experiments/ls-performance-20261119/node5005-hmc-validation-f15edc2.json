@@ -1,0 +1,94 @@
+{
+  "passed": true,
+  "tests_run": 18,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 1,
+  "metrics": {
+    "force_gauge_absolute_error": 3.828715122722315e-10,
+    "force_fermion_absolute_error": 3.332859682680933e-10,
+    "force_total_absolute_error": 5.385217272113607e-10,
+    "matrix_free_refresh_endpoint_error": 1.1368683772161603e-13,
+    "matrix_free_rational_poles": {
+      "endpoint": 48,
+      "refresh": 48
+    },
+    "native_operator_relative_error_mass_0.5": 2.219178360409844e-16,
+    "native_operator_relative_error_mass_0.8": 1.9218968175096068e-16,
+    "equal_force_energy_errors": {
+      "leapfrog": 0.1337056014442055,
+      "omelyan": 0.02104094519421551
+    },
+    "reversibility_links_max": 3.797547027170516e-15,
+    "reversibility_momenta_max": 1.7763568394002505e-15,
+    "multi_shift": {
+      "shared_operator_calls": 22,
+      "independent_operator_calls": 59,
+      "max_residual": 7.806228569734319e-13
+    },
+    "shifted_cg_0.5_0.0": {
+      "iterations": 18,
+      "residual": 7.595168780894174e-13
+    },
+    "shifted_cg_0.5_0.01": {
+      "iterations": 18,
+      "residual": 5.805192094587129e-13
+    },
+    "shifted_cg_0.5_1.0": {
+      "iterations": 12,
+      "residual": 2.108240337241652e-13
+    },
+    "shifted_cg_0.8_0.0": {
+      "iterations": 17,
+      "residual": 6.007000700762195e-13
+    },
+    "shifted_cg_0.8_0.01": {
+      "iterations": 17,
+      "residual": 4.725780527018996e-13
+    },
+    "shifted_cg_0.8_1.0": {
+      "iterations": 11,
+      "residual": 7.806396816157271e-13
+    },
+    "energy_errors_steps_4_8": [
+      0.5363663227241773,
+      0.1337056014442055
+    ],
+    "energy_error_ratio": 0.24928038129821717,
+    "positive_strange_schur_bounds": [
+      0.020347037284244654,
+      3.0010887632524774
+    ],
+    "strange_inverse_power_0.25": {
+      "spectral_bounds": [
+        0.4085642855495883,
+        1.224126022036552
+      ],
+      "poles": 48,
+      "relative_error": 8.561895781448285e-14,
+      "max_shifted_residual": 9.009188103140789e-13
+    },
+    "strange_inverse_power_0.5": {
+      "spectral_bounds": [
+        0.4085642855495883,
+        1.224126022036552
+      ],
+      "poles": 48,
+      "relative_error": 1.6262480685356534e-13,
+      "max_shifted_residual": 9.009188103140789e-13
+    },
+    "strange_inverse_power_0.75": {
+      "spectral_bounds": [
+        0.4085642855495883,
+        1.224126022036552
+      ],
+      "poles": 48,
+      "relative_error": 3.208450326677638e-13,
+      "max_shifted_residual": 9.009188103140789e-13
+    },
+    "strange_rational_force_absolute_error": 1.2834660851474e-11,
+    "matrix_free_endpoint_absolute_error": 2.2737367544323206e-13,
+    "pseudofermion_force_absolute_error": 1.0313890852486907e-09,
+    "pseudofermion_trajectory_delta_h": 0.00048514103662000707
+  }
+}

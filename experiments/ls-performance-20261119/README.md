@@ -141,7 +141,11 @@ reader across multiple chunks, including a partial final chunk. Job
 `2170005` takes the matrix-free path to `4⁴` with this writer and grouped
 pole fields. The previous frozen HMC version `b9556bb` also passed
 15 tests on node5005 through itp. The independent C++ and MPI LIME
-checks were skipped in that run.
+checks were skipped in that run. The later `f15edc2` snapshot passed
+17 tests on node5005, including the independent C++ Dirac comparison.
+The PyTorch environment lacked MPI Python bindings. The adaptive
+endpoint and refresh each selected 48 poles, with endpoint energy
+agreement `1.14e-13` against the dense oracle.
 
 Jobs `2170028`, `2170115` and `2170133` check smaller rational
 refresh and acceptance expansions, storage of the two 6×6 Clover
