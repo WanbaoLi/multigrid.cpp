@@ -1,0 +1,101 @@
+{
+  "complete": true,
+  "algorithm": "time-slab matrix-free 2+1 RHMC",
+  "lattice_xyzt": [
+    4,
+    4,
+    4,
+    4
+  ],
+  "beta": 5.6,
+  "mass_light": 0.5,
+  "mass_strange": 0.8,
+  "csw": 1.0,
+  "nf": "2+1",
+  "rhmc": true,
+  "mpi_ranks": 4,
+  "threads": 1,
+  "seed": 1729,
+  "timing_aggregation": "maximum rank elapsed time for each phase independently",
+  "rank_seed_rule": "seed + MPI rank",
+  "source_commit": "79ef59d12701900dec19c2a99bd5b6e48ccfc4c3",
+  "native_schur_sha256": "d32f5cddbbabc4e7c56049550e568c9dbb5667f8a9e702ce106193256d7ecae6",
+  "strange_md_interval": [
+    0.004,
+    4.0
+  ],
+  "strange_rational_grid_error": {
+    "endpoint": 3.7547742692822794e-13,
+    "refresh": 4.505285033928885e-13,
+    "md": 1.1102230246251565e-15
+  },
+  "trajectory_length": 0.06,
+  "integration_steps": 1,
+  "integrator": "omelyan",
+  "thermalization_established": false,
+  "independent_samples_established": false,
+  "trajectories": 2,
+  "warmup": 0,
+  "samples": [
+    {
+      "accepted": true,
+      "delta_h": 0.031919333771838865,
+      "h_initial": 7119.002770247755,
+      "h_final": 7119.034689581526,
+      "metropolis_probability": 0.9685847110032636,
+      "phase_seconds": {
+        "refresh": 0.48868366703391075,
+        "md": 5.941733814077452,
+        "endpoint": 1.4708998471032828
+      },
+      "plaquette": 0.9905965242766304,
+      "max_unitarity_error": 5.107026191320615e-15,
+      "max_det_su3_error": 5.995230774735814e-15,
+      "strange_det_phase": 1.0,
+      "strange_normal_lower": 0.018698719504046734,
+      "strange_normal_upper": 3.0338224956617643,
+      "trajectory": 1,
+      "warmup": false,
+      "seconds": 7.889604615978897
+    },
+    {
+      "accepted": true,
+      "delta_h": 0.03502872765147913,
+      "h_initial": 7401.860717265495,
+      "h_final": 7401.895745993146,
+      "metropolis_probability": 0.9655776770801445,
+      "phase_seconds": {
+        "refresh": 0.678054136922583,
+        "md": 6.003920120187104,
+        "endpoint": 1.8320647962391376
+      },
+      "plaquette": 0.98126616940827,
+      "max_unitarity_error": 6.883383172333889e-15,
+      "max_det_su3_error": 7.32763398448701e-15,
+      "strange_det_phase": 1.0,
+      "strange_normal_lower": 0.01433668894352017,
+      "strange_normal_upper": 3.121647645516835,
+      "trajectory": 2,
+      "warmup": false,
+      "seconds": 8.512978416867554
+    }
+  ],
+  "saved_configurations": [
+    {
+      "file": "hmc_000001.lime",
+      "trajectory": 1,
+      "sha256": "d6c9fb87d2c8296dad235060398c0256da8d845cec0f3bddbdc2097c88ed987a",
+      "plaquette": 0.9905965242766304,
+      "bytes": 149224
+    },
+    {
+      "file": "hmc_000002.lime",
+      "trajectory": 2,
+      "sha256": "913c3e7fa4ccdd9ee84f2ae78692a4df02f87d0d797f01d91d8c601e35ca46f5",
+      "plaquette": 0.98126616940827,
+      "bytes": 149224
+    }
+  ],
+  "accepted": 2,
+  "acceptance_rate": 1.0
+}

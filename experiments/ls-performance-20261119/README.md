@@ -213,6 +213,17 @@ three targeted tests with snapshot `8ad2514`. Its benchmark showed
 large run-to-run timing variation, so its numerical results are
 the cross-platform check for this snapshot.
 
+Job `2170664` rechecked the reusable native scratch and typed CG scalar
+reductions at MPI2 and MPI4. Job `2170685` pinned each time rank to its
+own CPU on cn12039 and generated two `4⁴` LIME files each with one and
+four ranks. The four-rank trajectories ran in 7.890 and 8.513 s. MD
+accounted for 5.942 and 6.004 s. All four fields passed the independent
+SciDAC CRC, plaquette, SU(3) and C++ Dirac gates. The maximum four-rank
+Dirac discrepancy was `1.19e-16`. The one- and four-rank chains use
+different random streams; their timings are stage profiles. The earlier
+unpinned MPI4 pilot and the pinned run differ in software, affinity and
+wait policy, so those timings cannot isolate a single cause.
+
 ### ARM propagation and Legacy MG follow-up
 
 Job `2169866` interleaved disabled, 64-site and 128-site RHS tiling at

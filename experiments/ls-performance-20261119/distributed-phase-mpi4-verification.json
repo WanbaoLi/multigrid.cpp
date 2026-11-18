@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "configurations": [
+    {
+      "file": "hmc_000001.lime",
+      "scidac_crc_passed": true,
+      "sha256": "d6c9fb87d2c8296dad235060398c0256da8d845cec0f3bddbdc2097c88ed987a",
+      "unitarity_error": 5.1070262017720525e-15,
+      "determinant_error": 5.884206518836035e-15,
+      "numpy_plaquette": 0.9905965242766305,
+      "native_operator_errors_light_strange": [
+        1.15838732360279e-16,
+        1.1510353563226742e-16
+      ]
+    },
+    {
+      "file": "hmc_000002.lime",
+      "scidac_crc_passed": true,
+      "sha256": "913c3e7fa4ccdd9ee84f2ae78692a4df02f87d0d797f01d91d8c601e35ca46f5",
+      "unitarity_error": 6.8833831789872695e-15,
+      "determinant_error": 7.216595267790606e-15,
+      "numpy_plaquette": 0.9812661694082698,
+      "native_operator_errors_light_strange": [
+        1.1828298665456382e-16,
+        1.1636052606977571e-16
+      ]
+    }
+  ],
+  "method": "existing SciDAC reader/CRC + NumPy plaquette + independent scalar native Dirac"
+}
