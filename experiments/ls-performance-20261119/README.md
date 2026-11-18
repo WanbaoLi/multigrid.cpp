@@ -303,6 +303,16 @@ reversal errors were `8.89e-16` and `6.11e-15`. The `12⁴` force
 median fell from 25.56 to 22.32 s, while the `8⁴` median increased
 from 4.77 to 4.88 s. `--direct-clover` selects the candidate.
 
+Job `2171301` tested the optional `--packed-faces` kernel with
+separate projected temporal receive buffers. It posts both directions
+before waiting and reads the owned field directly. The Schur-normal
+application at `24³×4` fell from 62.82 to 51.17 ms on four ranks.
+The paired values were bitwise equal in all three tested geometries.
+The two- and four-rank checks passed with true shifted residual at most
+`9.76e-13`, and the complete four-rank RHMC gate passed. Job `2171328`
+pairs full `24³×4` trajectories with both the packed faces and analytic
+Clover options enabled against the baseline implementation.
+
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
 matrix contraction. The contraction avoids constructing all eight
@@ -387,6 +397,7 @@ Reducing the coarse team to 16 or 8 threads increased the cap 14 median
 to 16.501 and 19.517 s. All four cases passed the twelve-column
 independent verification. Job `2171082` built the packed CGS2
 candidate and passed its serial gate. The unbound MPI2 gate reached
-the CTest timeout. Job `2171303` reuses the same library on the same
-node with explicit distinct NUMA placements before the full-volume
-comparison.
+the CTest timeout. The first retry, `2171303`, used a fixed-length
+abbreviated commit comparison and exited in the preflight. Job
+`2171323` checks the full SHA and reuses the same library on the same
+node with distinct NUMA placements before the full-volume comparison.
