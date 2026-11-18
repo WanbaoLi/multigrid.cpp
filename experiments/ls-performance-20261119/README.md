@@ -22,7 +22,8 @@ setup time separately, and independent FP64 full-operator residuals at
   test the control, fusing the FP64 residual update and norm, and splitting
   SAP work by block and RHS to balance the thread team. Each case receives
   three timed rounds following its warm-up, with independent verification.
-- Job `2169391` exercises the existing PyQUDA MPI2 NPY read/write contract.
+- Job `2169391` passed the actual PyQUDA MPI2 loader test. The output
+  matched every element of all twelve input columns after the EO conversion.
 
 The old PyQCU run failed because the packaging subprocess timed out after
 60 seconds. The replacement records packaging independently of the physics
@@ -40,8 +41,15 @@ Builds and benchmark arrays now use the compute node's temporary filesystem.
   energy error was `0.0210409452` with Omelyan and `0.1337056014` with
   leapfrog. Chain statistics and configuration verification follow separately.
 - Job `2169372` checks the matrix-free Wilson–Clover application and its
-  link gradient against the dense reference at both sea masses. This is
-  a prerequisite for sparsely applying the normal operator in RHMC.
+  link gradient against the dense reference at both sea masses. All eleven
+  checks passed. Job `2169405` extends the comparison to the even Schur
+  operator, the local odd-site Clover determinant and the log-weight gradient.
+
+Direct assembly reduced the paired median four-step MD time from 3.266 to
+2.212 s on `2⁴` and from 6.343 to 3.477 s on `2³×4` on cn12038.
+Ten alternating measurements used identical initial links and momenta.
+The maximum force discrepancy was `4.45e-16` and the final links differed
+by less than `3e-15`. Raw samples are in `hmc-paired.json`.
 
 [Grid's minimum-norm and nested integrators](https://github.com/paboyle/Grid/blob/3232b438f2cf729e515c185e2dbf29d7cc276bb7/Grid/qcd/hmc/integrators/Integrator_algorithm.h)
 provide the Omelyan step sequence. The [one-flavor even–odd rational
