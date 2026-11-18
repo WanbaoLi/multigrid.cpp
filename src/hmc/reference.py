@@ -67,12 +67,13 @@ class CloverHMC:
         self.eye3 = torch.eye(3, dtype=CD)
         self.eye4 = torch.eye(4, dtype=CD)
         self.gamma = gamma_matrices()
+        self.gamma5 = self.gamma[0] @ self.gamma[1] @ self.gamma[2] @ self.gamma[3]
         self.t = generators()
         sites = torch.arange(self.volume)
         parity = torch.zeros_like(sites)
         stride = 1
         for extent in self.lattice:
-            parity += (sites // stride) % extent
+            parity += torch.div(sites, stride, rounding_mode="floor") % extent
             stride *= extent
         self.even = sites[parity % 2 == 0]
         self.odd = sites[parity % 2 == 1]
@@ -194,6 +195,16 @@ class CloverHMC:
         correction = self.apply_hopping(u, mass, odd_field)[self.even]
         local = (clover[self.even] @ even_spinor.unsqueeze(-1)).squeeze(-1)
         return (local - correction).reshape_as(spinor)
+
+    def apply_even_normal(self, u, mass, spinor, clover=None):
+        """Apply S_e† S_e using S_e† = gamma5 S_e gamma5."""
+        if clover is None:
+            clover = self.clover(self.field_strength(u), mass)
+        shape = (self.volume // 2, 4, 3)
+        image = self.apply_even_schur(u, mass, spinor, clover).reshape(shape)
+        reflected = torch.einsum("st,vta->vsa", self.gamma5, image)
+        result = self.apply_even_schur(u, mass, reflected, clover)
+        return torch.einsum("st,vta->vsa", self.gamma5, result).reshape_as(spinor)
 
     def fermion_action(self, u):
         field = self.field_strength(u)

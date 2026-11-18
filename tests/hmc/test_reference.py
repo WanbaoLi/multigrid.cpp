@@ -15,6 +15,7 @@ import torch
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 from hmc.reference import CloverHMC, CD, RD, dagger, generators, write_lime
+from hmc.shifted import solve_shifted
 
 REFERENCE = None
 REQUIRE_LIME = False
@@ -169,6 +170,8 @@ class HMCPhysicsTests(unittest.TestCase):
             direct_grad, = torch.autograd.grad(torch.vdot(x, direct).real, u, retain_graph=True)
             expected_grad, = torch.autograd.grad(torch.vdot(x, expected).real, u, retain_graph=True)
             torch.testing.assert_close(direct_grad, expected_grad, atol=3e-14, rtol=3e-14)
+            torch.testing.assert_close(self.m.apply_even_normal(u, mass, x, c),
+                                       dagger(schur) @ expected, atol=3e-14, rtol=3e-14)
             sign, logdet = torch.linalg.slogdet(full)
             schur_sign, schur_logdet = torch.linalg.slogdet(schur)
             clover_signs, clover_logdets = torch.linalg.slogdet(c[self.m.odd])
@@ -179,6 +182,27 @@ class HMCPhysicsTests(unittest.TestCase):
             full_grad, = torch.autograd.grad(logdet, u, retain_graph=True)
             reduced_grad, = torch.autograd.grad(reduced_logdet, u)
             torch.testing.assert_close(reduced_grad, full_grad, atol=3e-14, rtol=3e-14)
+
+    def test_shifted_normal_against_dense_solve(self):
+        spin_color = torch.arange(12)
+        even = (12 * self.m.even[:, None] + spin_color).flatten()
+        odd = (12 * self.m.odd[:, None] + spin_color).flatten()
+        rhs = torch.randn(even.shape, dtype=CD, generator=self.rng)
+        for mass in (self.m.ml, self.m.ms):
+            full = self.m.dirac(self.u, mass)
+            c = self.m.clover(self.m.field_strength(self.u), mass)
+            schur = (full[even][:, even] - full[even][:, odd] @
+                     torch.linalg.solve(full[odd][:, odd], full[odd][:, even]))
+            normal = dagger(schur) @ schur
+            for shift in (0.0, 0.01, 1.0):
+                def apply(vec):
+                    return self.m.apply_even_normal(self.u, mass, vec, c)
+                actual, iterations, residual = solve_shifted(apply, rhs, shift)
+                expected = torch.linalg.solve(normal + shift * torch.eye(even.numel(), dtype=CD), rhs)
+                torch.testing.assert_close(actual, expected, atol=2e-11, rtol=2e-11)
+                self.assertLessEqual(residual, 1e-12)
+                METRICS[f"shifted_cg_{mass}_{shift}"] = dict(
+                    iterations=iterations, residual=residual)
 
 
 if __name__ == '__main__':
