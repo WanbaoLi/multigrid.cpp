@@ -361,8 +361,13 @@ between the heatbath and the initial Hamiltonian. Fields and individual
 Hamiltonian terms were bitwise equal on both tested volumes. Four-rank
 median time for those two operations fell from 7.23 to 6.79 s at
 `12⁴` and from 15.42 to 14.44 s at `24³×4`. The two- and four-rank
-dense and reversal gates passed. Job `2171491` compares differentiation
+dense and reversal gates passed. Job `2171491` compared differentiation
 batch sizes of 4, 8 and 11 strange poles with identical force inputs.
+Using all 11 poles together reduced median force time from 5.50 to
+5.29 s at `12⁴` and from 12.66 to 12.16 s at `24³×4`, relative to a
+batch of eight. The maximum force difference was `8.89e-16` and the
+default batch passed the two-rank LIME and RNG restart tests. See
+[timings](distributed-force-pole-batch-paired.json).
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
@@ -456,3 +461,8 @@ The pinned two-rank fixture passed all widths with an independent
 maximum residual of `3.97e-11`. Its eight cap-40 diagnostic calls
 used 734 MPI reductions with packed MGS and 383 with packed CGS2.
 The real L24 timing continues in the same allocation.
+
+Job `2171520` holds the coarse cap at 14 and sweeps coarse residual
+targets 0.1, 0.20 and 0.35 alongside the cap-40 control. It runs on
+cn12065 after job `2171323` releases the allocation. Each case receives
+an independent twelve-column verification.

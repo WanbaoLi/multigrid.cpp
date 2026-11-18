@@ -1,0 +1,149 @@
+{
+  "ranks": 4,
+  "results": [
+    {
+      "lattice": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "poles": 11,
+      "maximum_error": {
+        "8": 0.0,
+        "4": 8.881784197001252e-16,
+        "11": 8.881784197001252e-16
+      },
+      "seconds": {
+        "8": [
+          {
+            "seconds": 5.591137999901548,
+            "spinor_differentiation": 1.8413973089773208
+          },
+          {
+            "seconds": 5.498535775113851,
+            "spinor_differentiation": 1.7870467060711235
+          },
+          {
+            "seconds": 5.484480100916699,
+            "spinor_differentiation": 1.761340495897457
+          }
+        ],
+        "4": [
+          {
+            "seconds": 5.650860236957669,
+            "spinor_differentiation": 1.9404806648381054
+          },
+          {
+            "seconds": 5.67018372612074,
+            "spinor_differentiation": 1.9510680651292205
+          },
+          {
+            "seconds": 5.687647104961798,
+            "spinor_differentiation": 1.9687772449105978
+          }
+        ],
+        "11": [
+          {
+            "seconds": 5.288600759813562,
+            "spinor_differentiation": 1.5929866540245712
+          },
+          {
+            "seconds": 5.362593102967367,
+            "spinor_differentiation": 1.6047448969911784
+          },
+          {
+            "seconds": 5.244685099925846,
+            "spinor_differentiation": 1.5298852720297873
+          }
+        ]
+      },
+      "medians": {
+        "8": {
+          "seconds": 5.498535775113851,
+          "spinor_differentiation": 1.7870467060711235
+        },
+        "4": {
+          "seconds": 5.67018372612074,
+          "spinor_differentiation": 1.9510680651292205
+        },
+        "11": {
+          "seconds": 5.288600759813562,
+          "spinor_differentiation": 1.5929866540245712
+        }
+      }
+    },
+    {
+      "lattice": [
+        24,
+        24,
+        24,
+        4
+      ],
+      "poles": 11,
+      "maximum_error": {
+        "8": 0.0,
+        "4": 8.881784197001252e-16,
+        "11": 8.881784197001252e-16
+      },
+      "seconds": {
+        "8": [
+          {
+            "seconds": 12.75294291600585,
+            "spinor_differentiation": 5.26316765579395
+          },
+          {
+            "seconds": 12.664200115017593,
+            "spinor_differentiation": 5.17371912393719
+          },
+          {
+            "seconds": 12.558630031067878,
+            "spinor_differentiation": 5.094850002089515
+          }
+        ],
+        "4": [
+          {
+            "seconds": 13.215162328910083,
+            "spinor_differentiation": 5.759788753930479
+          },
+          {
+            "seconds": 13.263272412121296,
+            "spinor_differentiation": 5.7811954009812325
+          },
+          {
+            "seconds": 13.123775921063498,
+            "spinor_differentiation": 5.683625262696296
+          }
+        ],
+        "11": [
+          {
+            "seconds": 12.385643902001902,
+            "spinor_differentiation": 4.8608175159897655
+          },
+          {
+            "seconds": 12.164633519016206,
+            "spinor_differentiation": 4.702549342997372
+          },
+          {
+            "seconds": 12.086369156138971,
+            "spinor_differentiation": 4.63793673296459
+          }
+        ]
+      },
+      "medians": {
+        "8": {
+          "seconds": 12.664200115017593,
+          "spinor_differentiation": 5.17371912393719
+        },
+        "4": {
+          "seconds": 13.215162328910083,
+          "spinor_differentiation": 5.759788753930479
+        },
+        "11": {
+          "seconds": 12.164633519016206,
+          "spinor_differentiation": 4.702549342997372
+        }
+      }
+    }
+  ]
+}
