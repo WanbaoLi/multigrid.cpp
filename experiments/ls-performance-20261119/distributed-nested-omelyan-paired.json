@@ -1,0 +1,290 @@
+{
+  "ranks": 4,
+  "length": 0.08,
+  "results": {
+    "4": {
+      "single1": {
+        "samples": [
+          {
+            "seconds": 2.4130673711188138,
+            "delta_h": 0.09663957172688242,
+            "p_accept": 0.9078831739340416,
+            "accepted": true
+          },
+          {
+            "seconds": 2.442959780106321,
+            "delta_h": 0.09069151979019807,
+            "p_accept": 0.913299402240145,
+            "accepted": true
+          },
+          {
+            "seconds": 2.453513259999454,
+            "delta_h": 0.09381809380192863,
+            "p_accept": 0.9104483633786962,
+            "accepted": true
+          },
+          {
+            "seconds": 2.4375392328947783,
+            "delta_h": 0.09448897052698157,
+            "p_accept": 0.9098377696018206,
+            "accepted": false
+          }
+        ],
+        "md_steps": [
+          1,
+          0
+        ],
+        "median_s": 2.4402495065005496,
+        "rms_delta": 0.09393369850762746,
+        "mean_accept_probability": 0.9103671772886759
+      },
+      "nested1": {
+        "samples": [
+          {
+            "seconds": 2.522676707012579,
+            "delta_h": 0.010051648782791744,
+            "p_accept": 0.9899987002008559,
+            "accepted": true
+          },
+          {
+            "seconds": 2.5730227490421385,
+            "delta_h": 0.014573165769434127,
+            "p_accept": 0.9855325088501147,
+            "accepted": true
+          },
+          {
+            "seconds": 2.550470304908231,
+            "delta_h": 0.016484863279401907,
+            "p_accept": 0.9836502685172667,
+            "accepted": true
+          },
+          {
+            "seconds": 2.556022522971034,
+            "delta_h": 0.012610365632099274,
+            "p_accept": 0.987468811860093,
+            "accepted": true
+          }
+        ],
+        "md_steps": [
+          1,
+          2
+        ],
+        "median_s": 2.5532464139396325,
+        "rms_delta": 0.013639875755590749,
+        "mean_accept_probability": 0.9866625723570825
+      },
+      "single2": {
+        "samples": [
+          {
+            "seconds": 3.426107468083501,
+            "delta_h": 0.025509538355436234,
+            "p_accept": 0.974813080807748,
+            "accepted": true
+          },
+          {
+            "seconds": 3.5211820320691913,
+            "delta_h": 0.023947703894009464,
+            "p_accept": 0.9763367670339006,
+            "accepted": true
+          },
+          {
+            "seconds": 3.5583463239017874,
+            "delta_h": 0.024704518176804413,
+            "p_accept": 0.9755981409604276,
+            "accepted": true
+          },
+          {
+            "seconds": 3.541560774901882,
+            "delta_h": 0.024836164326188737,
+            "p_accept": 0.9754697156753562,
+            "accepted": true
+          }
+        ],
+        "md_steps": [
+          2,
+          0
+        ],
+        "median_s": 3.5313714034855366,
+        "rms_delta": 0.024755693010336723,
+        "mean_accept_probability": 0.975554426119358
+      },
+      "nested2": {
+        "samples": [
+          {
+            "seconds": 3.6403229150455445,
+            "delta_h": 0.0025383133624927723,
+            "p_accept": 0.997464905430859,
+            "accepted": true
+          },
+          {
+            "seconds": 3.7531693999189883,
+            "delta_h": 0.003686476627990487,
+            "p_accept": 0.9963203100847265,
+            "accepted": true
+          },
+          {
+            "seconds": 3.7698469581082463,
+            "delta_h": 0.004166945517681597,
+            "p_accept": 0.9958417241535957,
+            "accepted": true
+          },
+          {
+            "seconds": 3.7354162582196295,
+            "delta_h": 0.0031813416999284527,
+            "p_accept": 0.9968237134054839,
+            "accepted": true
+          }
+        ],
+        "md_steps": [
+          2,
+          2
+        ],
+        "median_s": 3.744292829069309,
+        "rms_delta": 0.0034466474512908876,
+        "mean_accept_probability": 0.9966126632686663
+      }
+    },
+    "8": {
+      "single1": {
+        "samples": [
+          {
+            "seconds": 15.469498746097088,
+            "delta_h": 1.5426088442909531,
+            "p_accept": 0.21382254342665571,
+            "accepted": false
+          },
+          {
+            "seconds": 15.149948030943051,
+            "delta_h": 1.560494280201965,
+            "p_accept": 0.21003223076630106,
+            "accepted": true
+          },
+          {
+            "seconds": 15.143460934050381,
+            "delta_h": 1.5151978801150108,
+            "p_accept": 0.21976469348204386,
+            "accepted": false
+          },
+          {
+            "seconds": 15.647385460091755,
+            "delta_h": 1.4590000938333105,
+            "p_accept": 0.2324686053480418,
+            "accepted": false
+          }
+        ],
+        "md_steps": [
+          1,
+          0
+        ],
+        "median_s": 15.30972338852007,
+        "rms_delta": 1.51981004855363,
+        "mean_accept_probability": 0.21902201825576062
+      },
+      "nested1": {
+        "samples": [
+          {
+            "seconds": 15.999345670919865,
+            "delta_h": 0.21088999735366087,
+            "p_accept": 0.8098631490711186,
+            "accepted": false
+          },
+          {
+            "seconds": 16.094452256103978,
+            "delta_h": 0.22149139124667272,
+            "p_accept": 0.8013228205087389,
+            "accepted": true
+          },
+          {
+            "seconds": 15.85649112984538,
+            "delta_h": 0.20300416537793353,
+            "p_accept": 0.8162748413253168,
+            "accepted": false
+          },
+          {
+            "seconds": 15.902716072043404,
+            "delta_h": 0.19880369436577894,
+            "p_accept": 0.8197107913865926,
+            "accepted": true
+          }
+        ],
+        "md_steps": [
+          1,
+          2
+        ],
+        "median_s": 15.951030871481635,
+        "rms_delta": 0.20872627256438464,
+        "mean_accept_probability": 0.8117929005729417
+      },
+      "single2": {
+        "samples": [
+          {
+            "seconds": 22.32759869401343,
+            "delta_h": 0.40650770341744646,
+            "p_accept": 0.6659719653362481,
+            "accepted": false
+          },
+          {
+            "seconds": 21.826022376073524,
+            "delta_h": 0.4110649989597732,
+            "p_accept": 0.6629438395403148,
+            "accepted": true
+          },
+          {
+            "seconds": 21.84549147891812,
+            "delta_h": 0.3988217371952487,
+            "p_accept": 0.671110324699711,
+            "accepted": false
+          },
+          {
+            "seconds": 22.000703618163243,
+            "delta_h": 0.3834546900179703,
+            "p_accept": 0.6815029562359072,
+            "accepted": true
+          }
+        ],
+        "md_steps": [
+          2,
+          0
+        ],
+        "median_s": 21.92309754854068,
+        "rms_delta": 0.4000997449585974,
+        "mean_accept_probability": 0.6703822714530453
+      },
+      "nested2": {
+        "samples": [
+          {
+            "seconds": 24.309068369911984,
+            "delta_h": 0.05325845742481761,
+            "p_accept": 0.9481349282998012,
+            "accepted": true
+          },
+          {
+            "seconds": 23.362087684916332,
+            "delta_h": 0.05595897500461433,
+            "p_accept": 0.945577927424789,
+            "accepted": true
+          },
+          {
+            "seconds": 23.452602333854884,
+            "delta_h": 0.051269093179143965,
+            "p_accept": 0.9500229914261953,
+            "accepted": true
+          },
+          {
+            "seconds": 24.155228808056563,
+            "delta_h": 0.05021410627523437,
+            "p_accept": 0.9510257821130753,
+            "accepted": true
+          }
+        ],
+        "md_steps": [
+          2,
+          2
+        ],
+        "median_s": 23.803915570955724,
+        "rms_delta": 0.052720599757757024,
+        "mean_accept_probability": 0.9486904073159652
+      }
+    }
+  }
+}

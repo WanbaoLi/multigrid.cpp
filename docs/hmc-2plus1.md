@@ -165,3 +165,7 @@ Metropolis 端点仍使用各自通过精度检查的有理式。报告包括各
 
 `--md-tolerance` 只调整 MD 中轻味与奇异味线性系统的相对真残差门槛，
 默认 `1e-12`。热浴和 Metropolis 继续使用各自原有的精度设置。
+
+`--gauge-steps 2` 将规范场力放入 Omelyan 内层，在每个费米子漂移区间做
+两步规范场积分。省略该参数时使用单时间尺度。两种积分器使用相同的端点
+Hamiltonian 和 Metropolis 判定。

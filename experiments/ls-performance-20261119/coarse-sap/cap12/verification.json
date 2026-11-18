@@ -1,0 +1,82 @@
+{
+  "complete": true,
+  "run": "/tmp/mg-l24-coarse-sap-kjrUFeBE/measurements/cap12",
+  "reference": "/home/share/nsls_lwb/lqcd-run/arm-pack-20261115/run01/baseline-a/build/multigrid",
+  "reference_sha256": "b1889bdc0185fa48410c826a10ca3921c9cd04e86a5e9b64c8f1731f89dd6cb8",
+  "run_report_sha256": "43414551bd95803fd2a023246b5459a82f863d0b2f7b1a821da4a395a5ac743a",
+  "propagator_sha256": "5c1e7425fa3e0a8f5ff488ed4fe4bf40de6156e915ef0f97e1b6afc5927a2aa7",
+  "method": "byte-only column extraction + independent scalar C++",
+  "source_xyzt": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_scale": 1.0,
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "normalization": "mass",
+  "columns": [
+    {
+      "source_spin": 0,
+      "source_color": 0,
+      "residual": 3.4035931840565123e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 1,
+      "residual": 2.5176328591136214e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 2,
+      "residual": 3.369605007265487e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 0,
+      "residual": 2.573819125248355e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 1,
+      "residual": 3.32313545370727e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 2,
+      "residual": 3.0582955203245484e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 0,
+      "residual": 3.6736752009422503e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 1,
+      "residual": 4.406862574137178e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 2,
+      "residual": 4.889845499011477e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 0,
+      "residual": 3.0209528287729412e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 1,
+      "residual": 3.879279953352033e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 2,
+      "residual": 4.390089082124991e-09
+    }
+  ],
+  "assembled_gauge_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834"
+}

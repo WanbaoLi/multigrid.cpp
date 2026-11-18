@@ -298,6 +298,16 @@ All acceptance decisions agreed and both candidates passed reversal.
 Their largest changes in delta-H were `5.16e-9` and `1.06e-6`.
 The refresh and endpoint tolerances were fixed for all three cases.
 
+Job `2171059` compared fixed-length `0.08` proposals. With one slow
+step, moving the gauge force to two inner Omelyan steps per drift
+changed the `8⁴` trajectory median from 15.310 to 15.951 s and the
+RMS Hamiltonian change from 1.520 to 0.209. Mean Metropolis probability
+across four matched proposals changed from 0.219 to 0.812. With two
+slow steps the corresponding RMS values were 0.400 and 0.053.
+The four-rank force split and link reversal agreed within `8.89e-16`
+and `7.56e-15`. Job `2171098` applies the split integrator at
+`24³×64` after job `2171047` passes its `24³×8` file gates.
+
 ### ARM propagation and Legacy MG follow-up
 
 Job `2169866` interleaved disabled, 64-site and 128-site RHS tiling at
@@ -324,3 +334,11 @@ were 15.657, 15.304 and 16.726 s, with total outer iterations of 289,
 and had maximum true residual `4.89e-9`. The diagnostic coarse time
 fell as the cap was reduced, while more outer iterations increased SAP
 time. The default remains 40 pending a matched repeat.
+
+Job `2170764` repeated the control and cap 12 and tried cap 14 and
+reduced SAP smoothing. All 48 columns passed independent verification.
+The wall medians were 19.822 s (control), 19.555 s (cap 12), 19.374 s
+(cap 14) and 20.351 s (cap 12 plus three SAP steps). The cap 14
+maximum residual was `4.91e-9`. Separate jobs `2171049` and
+`2171082` compare smaller coarse OpenMP teams and CGS2 with two packed
+MPI reductions when the coarse basis has more than two directions.
