@@ -428,6 +428,18 @@ when the bound cannot certify nonsingularity and at the final endpoint.
 The two- and four-rank tests matched the explicit initial light action
 within `7.11e-15`, kept the heatbath fields bitwise equal, and
 exercised the fallback with a singular Clover fixture.
+The four-rank `24³×4` median for refresh and initial action fell from
+31.98 to 27.91 s in three measured pairs. The refresh fields were
+bitwise equal at both volumes and the largest relative change in
+the explicit light action was `8.78e-17`. The `12⁴` timing overlapped
+the geometry-cache job on cn12038. See the
+[paired initial-phase timings](distributed-light-heatbath-action-paired.json).
+
+Job `2171630` tests the optional `--real-krylov-dot` recurrence with
+interleaved real FP64 buffers. It retains the explicit true-residual
+norm and per-pole verification, checks the Schur solves against the
+independent operator, and pairs initial-phase and force timings on
+the same gauge, momentum and heatbath noise.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
