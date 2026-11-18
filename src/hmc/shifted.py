@@ -25,8 +25,24 @@ def _norm2(vector):
     return (vector.real.square() + vector.imag.square()).sum().item()
 
 
+def _inner(left, right):
+    return (left.real * right.real + left.imag * right.imag).sum().item()
+
+
+def _real_buffer_dot(left, right):
+    # Use a real dot over the interleaved components. This avoids allocating
+    # separate real and imaginary products, and does not use a complex BLAS dot.
+    lhs = torch.view_as_real(left.resolve_conj()).reshape(-1)
+    rhs = lhs if right is left else torch.view_as_real(right.resolve_conj()).reshape(-1)
+    return torch.dot(lhs, rhs).item()
+
+
+def _dot_norm2(vector):
+    return _real_buffer_dot(vector, vector)
+
+
 @torch.no_grad()
-def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000, *, comm=None):
+def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000, *, comm=None, real_dot=False):
     """Solve (A + shift I)x=b for one shift and check the true residual."""
     if not math.isfinite(shift) or shift < 0 or not 0 < tol < 1 or maxiter < 1:
         raise ValueError("Invalid shifted solve parameters")
@@ -34,7 +50,9 @@ def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000, *, comm=None):
     r = rhs.clone()
     p = r.clone()
     reduce = _scalar_sum(comm)
-    rho = reduce(_norm2(r))
+    inner = _real_buffer_dot if real_dot else _inner
+    norm2 = _dot_norm2 if real_dot else _norm2
+    rho = reduce(norm2(r))
     if not math.isfinite(rho):
         raise ArithmeticError("Nonfinite right-hand side norm")
     if rho == 0:
@@ -43,17 +61,18 @@ def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000, *, comm=None):
     threshold = tol * b_norm
     for iteration in range(1, maxiter + 1):
         image = apply(p) + shift * p
-        curvature = reduce((p.real * image.real + p.imag * image.imag).sum().item())
+        curvature = reduce(inner(p, image))
         if not math.isfinite(curvature) or curvature <= 0:
             raise ArithmeticError("Nonpositive shifted CG curvature")
         alpha = rho / curvature
         x.add_(p, alpha=alpha)
         r.add_(image, alpha=-alpha)
-        new_rho = reduce(_norm2(r))
+        new_rho = reduce(norm2(r))
         if not math.isfinite(new_rho):
             raise ArithmeticError("Nonfinite shifted CG residual")
         if math.sqrt(new_rho) <= threshold:
             r = rhs - apply(x) - shift * x
+            # Use the same explicit FP64 residual norm for both paths.
             norm = math.sqrt(reduce(_norm2(r)))
             if not math.isfinite(norm):
                 raise ArithmeticError("Nonfinite true shifted CG residual")
@@ -68,7 +87,7 @@ def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000, *, comm=None):
 
 
 @torch.no_grad()
-def solve_multi_shift(apply, rhs, shifts, tol=1e-12, maxiter=1000, *, comm=None):
+def solve_multi_shift(apply, rhs, shifts, tol=1e-12, maxiter=1000, *, comm=None, real_dot=False):
     """Solve all positive shifts with a shared CG recurrence and true-residual checks."""
     shifts = tuple(shifts)
     if (not shifts or not all(math.isfinite(s) and s >= 0 for s in shifts) or
@@ -84,7 +103,9 @@ def solve_multi_shift(apply, rhs, shifts, tol=1e-12, maxiter=1000, *, comm=None)
     r = rhs.clone()
     p = r.clone()
     reduce = _scalar_sum(comm)
-    rho = reduce(_norm2(r))
+    inner = _real_buffer_dot if real_dot else _inner
+    norm2 = _dot_norm2 if real_dot else _norm2
+    rho = reduce(norm2(r))
     if not math.isfinite(rho):
         raise ArithmeticError("Nonfinite right-hand side norm")
     if rho == 0:
@@ -93,12 +114,12 @@ def solve_multi_shift(apply, rhs, shifts, tol=1e-12, maxiter=1000, *, comm=None)
     threshold = tol * b_norm
     for _ in range(maxiter):
         image = apply(p) + base_shift * p
-        curvature = reduce((p.real * image.real + p.imag * image.imag).sum().item())
+        curvature = reduce(inner(p, image))
         if not math.isfinite(curvature) or curvature <= 0:
             break
         alpha = rho / curvature
         r.add_(image, alpha=-alpha)
-        new_rho = reduce(_norm2(r))
+        new_rho = reduce(norm2(r))
         if not math.isfinite(new_rho):
             break
         beta = new_rho / rho
@@ -136,7 +157,7 @@ def solve_multi_shift(apply, rhs, shifts, tol=1e-12, maxiter=1000, *, comm=None)
     for i, (norm2, shift) in enumerate(zip(norms, shifts)):
         norm = math.sqrt(norm2)
         if not math.isfinite(norm) or norm > threshold:
-            solutions[i], _, relative = solve_shifted(apply, rhs, shift, tol, maxiter, comm=comm)
+            solutions[i], _, relative = solve_shifted(apply, rhs, shift, tol, maxiter, comm=comm, real_dot=real_dot)
         else:
             relative = norm / b_norm
         residuals.append(relative)

@@ -28,10 +28,10 @@ def inverse_power_terms(power, lower, upper, order=16):
     return tuple(zip(shifts.tolist(), np.concatenate((low_weights, high_weights)).tolist()))
 
 
-def apply_rational(apply, rhs, terms, tol=1e-12, *, comm=None):
+def apply_rational(apply, rhs, terms, tol=1e-12, *, comm=None, real_dot=False):
     """Apply the partial fraction and return the largest shifted residual."""
     shifts, weights = zip(*terms)
-    solutions, residuals = solve_multi_shift(apply, rhs, shifts, tol, comm=comm)
+    solutions, residuals = solve_multi_shift(apply, rhs, shifts, tol, comm=comm, real_dot=real_dot)
     result = torch.zeros_like(rhs)
     for solution, weight in zip(solutions, weights):
         result.add_(solution, alpha=weight)

@@ -18,6 +18,7 @@ from hmc.shifted import solve_multi_shift, solve_shifted
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--real-krylov-dot", action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(1)
     library = os.environ["LQCD_HMC_SCHUR_LIBRARY"]
@@ -53,9 +54,9 @@ def main():
 
                 shifts = (0., .01, 1., 1000.)
                 solutions, residuals = solve_multi_shift(
-                    distributed_normal, field[slab], shifts, comm=comm)
+                    distributed_normal, field[slab], shifts, comm=comm, real_dot=args.real_krylov_dot)
                 plain, _, plain_residual = solve_shifted(
-                    distributed_normal, field[slab], shifts[0], comm=comm)
+                    distributed_normal, field[slab], shifts[0], comm=comm, real_dot=args.real_krylov_dot)
                 torch.testing.assert_close(plain, solutions[0], rtol=2e-11, atol=2e-11)
                 independent = []
                 for shift, solution in zip(shifts, solutions):
@@ -90,7 +91,7 @@ def main():
                         return model.gamma5 @ packed_apply(model.gamma5 @ packed_apply(x))
 
                     packed_solution, _, packed_residual = solve_shifted(
-                        packed_normal, field[slab], shifts[1], comm=comm)
+                        packed_normal, field[slab], shifts[1], comm=comm, real_dot=args.real_krylov_dot)
                     torch.testing.assert_close(packed_solution, solutions[1], rtol=2e-11, atol=2e-11)
                 local_error = max(float((x - global_image[slab]).abs().max())
                                   for x in (local_image, native_image, native_full_halo, native_packed))

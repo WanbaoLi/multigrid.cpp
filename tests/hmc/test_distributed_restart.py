@@ -25,7 +25,8 @@ def main():
                         csw=1., strange_interval=(.004, 4.), md_order=16, md_tolerance=1e-12,
                         length=.025, steps=1, gauge_steps=2, threads=1, seed=1729, warmup=0,
                         save_every=1, direct_clover=False, packed_faces=False, compact_spin=False, zolotarev=False,
-                        force_pole_batch=8, projected_force_faces=False, initial_lime=None, light_heatbath_action=False,
+                        force_pole_batch=8, projected_force_faces=False, initial_lime=None,
+                        light_heatbath_action=False, real_krylov_dot=False,
                         library=Path(os.environ["LQCD_HMC_SCHUR_LIBRARY"]))
         whole = run(SimpleNamespace(**settings, output=args.output / "whole",
                                     trajectories=3, resume_from=None), comm)

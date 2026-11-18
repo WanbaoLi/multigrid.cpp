@@ -27,7 +27,7 @@ CHECKPOINT_COMPATIBILITY = (
     "strange_md_interval", "strange_rational_poles", "md_relative_true_residual_tolerance",
     "direct_clover_adjoint", "packed_temporal_faces", "compact_spin_force",
     "half_power_rational_method", "rational_coefficients_sha256", "force_pole_batch",
-    "projected_force_faces", "light_heatbath_action",
+    "projected_force_faces", "light_heatbath_action", "real_krylov_dot",
 )
 
 
@@ -77,6 +77,7 @@ def resume_from(path, report, rng, comm):
         previous.setdefault("force_pole_batch", 8)
         previous.setdefault("projected_force_faces", False)
         previous.setdefault("light_heatbath_action", False)
+        previous.setdefault("real_krylov_dot", False)
         mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
         if mismatches:
             raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
@@ -152,6 +153,8 @@ def main():
                         help="exchange two temporal spin components in the compact force and its adjoint")
     parser.add_argument("--light-heatbath-action", action="store_true",
                         help="use the light Gaussian action when the initial Schur operator is certified invertible")
+    parser.add_argument("--real-krylov-dot", action="store_true",
+                        help="use interleaved real buffers for local FP64 Krylov reductions")
     parser.add_argument("--save-every", type=int, default=1)
     parser.add_argument("--threads", type=int, default=1)
     parser.add_argument("--seed", type=int, default=1729)
@@ -191,7 +194,7 @@ def run(args, comm):
                             compact_spin=args.compact_spin, zolotarev=args.zolotarev,
                             force_pole_batch=args.force_pole_batch,
                             projected_force_faces=args.projected_force_faces,
-                            light_heatbath_action=args.light_heatbath_action)
+                            light_heatbath_action=args.light_heatbath_action, real_krylov_dot=args.real_krylov_dot)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
@@ -217,6 +220,7 @@ def run(args, comm):
                   force_pole_batch=model.force_pole_batch,
                   projected_force_faces=model.projected_force_faces,
                   light_heatbath_action=model.light_heatbath_action,
+                  real_krylov_dot=model.real_krylov_dot,
                   half_power_rational_method="zolotarev" if model.zolotarev else "quadrature",
                   rational_coefficients_sha256=rational_digest,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",

@@ -21,7 +21,7 @@ class DistributedRHMC:
     def __init__(self, lattice, beta, ml, ms, csw, comm, library, interval=(.004, 4.), *,
                  md_order=32, md_tolerance=1e-12, direct_clover=False, packed_faces=False, compact_spin=False,
                  zolotarev=False, force_pole_batch=8, projected_force_faces=False,
-                 light_heatbath_action=False):
+                 light_heatbath_action=False, real_krylov_dot=False):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -60,6 +60,7 @@ class DistributedRHMC:
         self.force_pole_batch = force_pole_batch
         self.projected_force_faces = projected_force_faces
         self.light_heatbath_action = light_heatbath_action
+        self.real_krylov_dot = real_krylov_dot
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
             self.interval, md_order=md_order, zolotarev=zolotarev)
 
@@ -100,7 +101,7 @@ class DistributedRHMC:
         def normal(vec):
             return self._normal(schur_s, vec)
 
-        fraction, _ = apply_rational(normal, noise_s, self.refresh_terms, comm=self.comm)
+        fraction, _ = apply_rational(normal, noise_s, self.refresh_terms, comm=self.comm, real_dot=self.real_krylov_dot)
         return self.gamma5 * schur_l(self.gamma5 * noise_l), normal(fraction)
 
     @torch.no_grad()
@@ -127,9 +128,10 @@ class DistributedRHMC:
                     return self._normal(schur, vec)
 
                 if i == 0:
-                    solved, _, _ = solve_shifted(normal, phi, 0., comm=self.comm)
+                    solved, _, _ = solve_shifted(normal, phi, 0., comm=self.comm, real_dot=self.real_krylov_dot)
                 else:
-                    solved, _ = apply_rational(normal, phi, self.endpoint_terms, comm=self.comm)
+                    solved, _ = apply_rational(normal, phi, self.endpoint_terms, comm=self.comm,
+                                               real_dot=self.real_krylov_dot)
                 action = float((phi.conj() * solved).real.sum())
             terms.extend((action, -(2 - i) * float(torch.linalg.slogdet(clover[self.odd])[1].sum())))
         return terms
@@ -209,9 +211,11 @@ class DistributedRHMC:
 
             shifts, weights = zip(*terms)
             if len(shifts) == 1:
-                solutions = [solve_shifted(normal, phi, shifts[0], self.md_tolerance, comm=self.comm)[0]]
+                solutions = [solve_shifted(normal, phi, shifts[0], self.md_tolerance, comm=self.comm,
+                                           real_dot=self.real_krylov_dot)[0]]
             else:
-                solutions, _ = solve_multi_shift(normal, phi, shifts, self.md_tolerance, comm=self.comm)
+                solutions, _ = solve_multi_shift(normal, phi, shifts, self.md_tolerance, comm=self.comm,
+                                                 real_dot=self.real_krylov_dot)
             finished_solve = perf_counter()
             solves += finished_solve - start
             # Release spinor intermediates after each block. Accumulate the
