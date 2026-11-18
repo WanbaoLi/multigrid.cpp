@@ -34,7 +34,7 @@ setup time separately, and independent FP64 full-operator residuals at
 - Job `2169656` retries Legacy MG. Upstream writes a HDF5 cache root
   and a sibling JSON manifest. The original controller passed a JSON
   root name, so the paths collided. The retry passes an HDF5 root.
-- Job `2169510`, output `~/lqcd-run/mg-l24-reliable-sap-run02`. One
+- Job `2169865`, output `~/lqcd-run/mg-l24-reliable-sap-run03`. One
   hierarchy and the frozen `820918f` library. The three interleaved cases
   test the control, fusing the FP64 residual update and norm, and splitting
   SAP work by block and RHS to balance the thread team. Each case receives
@@ -44,7 +44,7 @@ setup time separately, and independent FP64 full-operator residuals at
 - Job `2169509` builds the opt-in AArch64 coefficient tiling candidate
   `6b7c1c7`. Threads visit all RHS columns before moving to the next
   64- or 128-site tile. The first MPI2 test geometry violated the native
-  solver's coarse extent constraints. Job `2169687` uses a valid MPI2
+  solver's coarse extent constraints. Job `2169866` uses a valid MPI2
   regression fixture before timing off/64/128 on real L24. The three
   timing cases share the library and hierarchy.
 
@@ -56,6 +56,9 @@ The first SAP tuning allocation, `2169363`, failed before the payload
 started because the compute node's scheduler directory exhausted its
 inodes. The first tiling build, `2169502`, was missing the top-level build
 file after sparse checkout. The second build uses the full source in scratch.
+The second SAP run, `2169510`, stopped because its controller omitted the
+required source digest. Both pending experiments now pass the archive
+digest of the matching library source to `bench_full12.py`.
 
 ## HMC
 
