@@ -125,17 +125,23 @@ class MatrixFreePseudofermionHMC(PseudofermionHMC):
     def __init__(self, *args, strange_interval=(0.004, 4.), endpoint_order=64, **kwargs):
         super().__init__(*args, strange_interval=strange_interval, rational_order=32,
                          dense_reference=False, **kwargs)
-        self.endpoint_terms = inverse_power_terms(0.5, *self.strange_interval, order=endpoint_order)
-        self.refresh_terms = inverse_power_terms(0.75, *self.strange_interval, order=endpoint_order)
         points = np.geomspace(*self.strange_interval, 4097)
-        self.rational_grid_error = {}
-        for name, power, terms in (("endpoint", 0.5, self.endpoint_terms),
-                                   ("refresh", 0.75, self.refresh_terms),
-                                   ("md", 0.5, self.strange_terms)):
+        def grid_error(power, terms):
             approximation = sum(weight / (points + shift) for shift, weight in terms)
-            self.rational_grid_error[name] = float(np.max(np.abs(approximation * points ** power - 1)))
-        if max(self.rational_grid_error["endpoint"], self.rational_grid_error["refresh"]) > 1e-11:
+            return float(np.max(np.abs(approximation * points ** power - 1)))
+
+        def choose_terms(power):
+            for order in (*range(8, endpoint_order, 4), endpoint_order):
+                terms = inverse_power_terms(power, *self.strange_interval, order=order)
+                error = grid_error(power, terms)
+                if error <= 1e-12:
+                    return terms, error
             raise ArithmeticError("Endpoint or refresh rational approximation exceeds grid tolerance")
+
+        self.endpoint_terms, endpoint_error = choose_terms(0.5)
+        self.refresh_terms, refresh_error = choose_terms(0.75)
+        self.rational_grid_error = dict(endpoint=endpoint_error, refresh=refresh_error,
+                                        md=grid_error(0.5, self.strange_terms))
 
     def _certify_strange(self, clover):
         lower, upper = positive_schur_bounds(clover[self.even], clover[self.odd], self.ms)

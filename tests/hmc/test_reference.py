@@ -361,6 +361,10 @@ class HMCPhysicsTests(unittest.TestCase):
                     dense.endpoint_energy(self.u, self.p, (exact_l, exact_s)))
         self.assertLess(error, 1e-9)
         METRICS["matrix_free_refresh_endpoint_error"] = error
+        METRICS["matrix_free_rational_poles"] = dict(endpoint=len(sparse.endpoint_terms),
+                                                     refresh=len(sparse.refresh_terms))
+        self.assertLess(len(sparse.endpoint_terms), 128)
+        self.assertLess(len(sparse.refresh_terms), 128)
 
 
 if __name__ == '__main__':
