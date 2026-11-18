@@ -23,6 +23,7 @@ OPTIMIZATIONS = {
     "fused-schur-gamma5": "fused_schur_gamma5",
     "compress-refresh": "compress_refresh",
     "native-pade": "native_pade",
+    "md-tolerance": "md_tolerance",
 }
 
 
@@ -75,8 +76,10 @@ def pair(args, comm):
                     native_pade=True, fused_schur_gamma5=True,
                     overlap_schur_faces=False, compress_refresh=False)
     flag = OPTIMIZATIONS[args.optimization]
-    settings[flag] = False
-    specifications = dict(control=settings, candidate={**settings, flag: True})
+    tolerance_pair = args.optimization == "md-tolerance"
+    settings[flag] = 1e-12 if tolerance_pair else False
+    candidate_value = args.candidate_md_tolerance if tolerance_pair else True
+    specifications = dict(control=settings, candidate={**settings, flag: candidate_value})
     models = {key: TimedRHMC(chain["lattice_xyzt"], chain["beta"], chain["mass_light"],
                              chain["mass_strange"], chain["csw"], comm, args.library, **settings)
               for key, settings in specifications.items()}
@@ -87,6 +90,7 @@ def pair(args, comm):
         raise RuntimeError("Benchmark coefficients differ across MPI ranks")
     if args.optimization == "compress-refresh" and len(models["candidate"].refresh_terms) >= len(models["control"].refresh_terms):
         raise ArithmeticError("The selected interval did not yield a compressed heatbath")
+    limits = dict(links=2e-12, momenta=2e-11, delta_h=2e-8)
     report = dict(complete=False, gauge=source, trajectory=item["trajectory"], ranks=comm.size,
                   threads=args.threads, placement=placement, optimization=args.optimization,
                   settings=specifications, rational_sha256=rational_digests,
@@ -95,7 +99,7 @@ def pair(args, comm):
                   length=args.length, steps=args.steps, gauge_steps=args.gauge_steps,
                   lattice_xyzt=chain["lattice_xyzt"], beta=chain["beta"], csw=chain["csw"],
                   mass_light=chain["mass_light"], mass_strange=chain["mass_strange"],
-                  seed=args.seed, repeats=args.repeats, samples=[])
+                  seed=args.seed, repeats=args.repeats, proposal_limits=limits, samples=[])
     on_root(comm, lambda: atomic_json(args.output, report))
 
     for trial in range(args.repeats):
@@ -122,13 +126,14 @@ def pair(args, comm):
         errors = dict(links=difference(baseline.proposal, candidate.proposal),
                       momenta=difference(baseline.momentum, candidate.momentum),
                       delta_h=abs(timings["control"]["delta_h"] - timings["candidate"]["delta_h"]))
-        limits = dict(links=2e-12, momenta=2e-11, delta_h=2e-8)
-        if (timings["control"]["accepted"] != timings["candidate"]["accepted"]
-                or any(not 0 <= errors[key] <= limit for key, limit in limits.items())):
-            raise ArithmeticError(f"Matched proposals failed agreement checks: {errors}")
-        report["samples"].append(dict(trial=trial, order=order, maximum_error=errors, **timings))
-        report["complete"] = len(report["samples"]) == args.repeats
+        passed = (timings["control"]["accepted"] == timings["candidate"]["accepted"]
+                  and all(0 <= errors[key] <= limit for key, limit in limits.items()))
+        report["samples"].append(dict(trial=trial, order=order, maximum_error=errors,
+                                      passed=passed, **timings))
+        report["complete"] = passed and len(report["samples"]) == args.repeats
         on_root(comm, lambda: atomic_json(args.output, report))
+        if not passed:
+            raise ArithmeticError(f"Matched proposals failed agreement checks: {errors}")
 
 
 def main():
@@ -144,11 +149,14 @@ def main():
     parser.add_argument("--steps", type=int, default=1)
     parser.add_argument("--gauge-steps", type=int, default=2)
     parser.add_argument("--md-order", type=int, default=16)
+    parser.add_argument("--candidate-md-tolerance", type=float, default=1e-10)
     parser.add_argument("--seed", type=int, default=1729)
     args = parser.parse_args()
     if (min(args.repeats, args.threads, args.steps, args.md_order) < 1 or args.gauge_steps < 0
             or not math.isfinite(args.length) or args.length <= 0 or args.seed < 0):
         parser.error("Invalid trajectory or benchmark parameters")
+    if args.optimization == "md-tolerance" and not 0 < args.candidate_md_tolerance < 1:
+        parser.error("The candidate MD relative tolerance must be between zero and one")
     pair(args, MPI.COMM_WORLD)
 
 

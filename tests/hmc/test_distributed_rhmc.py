@@ -34,6 +34,7 @@ def main():
     parser.add_argument("--gershgorin-strange", action="store_true")
     parser.add_argument("--fused-schur-gamma5", action="store_true")
     parser.add_argument("--compress-refresh", action="store_true")
+    parser.add_argument("--md-tolerance", type=float, default=1e-12)
     args = parser.parse_args()
     torch.set_num_threads(1)
     comm = MPI.COMM_WORLD.Dup()
@@ -50,7 +51,7 @@ def main():
                                 overlap_schur_faces=args.overlap_schur_faces,
                                 gershgorin_strange=args.gershgorin_strange,
                                 fused_schur_gamma5=args.fused_schur_gamma5,
-                                compress_refresh=args.compress_refresh)
+                                compress_refresh=args.compress_refresh, md_tolerance=args.md_tolerance)
         baseline, final, precise_difference = model._hamiltonian_pair([2.**56, 2.], [2.**56, 3.])
         assert final == baseline and precise_difference == comm.size
         serial = MatrixFreePseudofermionHMC(*params)
