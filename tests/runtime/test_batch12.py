@@ -59,8 +59,7 @@ def verify(actual, sources, stats, grouping):
             assert st['batch_size'] == group_size and st['timing_scope'] == 'shared_batch'
             assert st['solver_seconds'] == stats[(k//grouping)*grouping]['solver_seconds']
 
-block_extent = 4 if os.environ.get("LQCD_ARM_RHS_SITE_TILE", "0") != "0" else 2
-with Solver([8]*4, [1,1,1,comm.size], mass=mass, block=[block_extent]*4, threads=1+comm.rank%2) as solver:
+with Solver([8]*4, [1,1,1,comm.size], mass=mass, block=[2]*4, threads=1+comm.rank%2) as solver:
     solver.load_gauge(gauge, layout='lex')
     solver.setup()
     # Full 12 independent nonzero sources, then partial tail 3, then mixed

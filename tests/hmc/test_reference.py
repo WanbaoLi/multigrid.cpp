@@ -15,7 +15,7 @@ import torch
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 from hmc.reference import CloverHMC, CD, RD, dagger, generators, write_lime
-from hmc.shifted import solve_shifted
+from hmc.shifted import solve_multi_shift, solve_shifted
 from hmc.rational import apply_rational, inverse_power_terms, rational_action_gradient
 from hmc.pseudofermion import PseudofermionHMC
 
@@ -237,6 +237,26 @@ class HMCPhysicsTests(unittest.TestCase):
             METRICS[f"strange_inverse_power_{power}"] = dict(
                 spectral_bounds=[lower, upper], poles=len(terms), relative_error=error,
                 max_shifted_residual=residual)
+
+    def test_shared_shifted_krylov_basis(self):
+        mass = self.m.ms
+        clover = self.m.clover(self.m.field_strength(self.u), mass)
+        rhs = torch.randn((self.m.volume * 6,), dtype=CD, generator=self.rng)
+        calls = 0
+        def apply(x):
+            nonlocal calls
+            calls += 1
+            return self.m.apply_even_normal(self.u, mass, x, clover)
+        shifts = (0.01, 25., 0., 1., 10000.)
+        expected = [solve_shifted(apply, rhs, shift)[0] for shift in shifts]
+        independent_calls, calls = calls, 0
+        actual, residuals = solve_multi_shift(apply, rhs, shifts)
+        for result, reference in zip(actual, expected):
+            torch.testing.assert_close(result, reference, atol=2e-11, rtol=2e-11)
+        self.assertLessEqual(max(residuals), 1e-12)
+        self.assertLess(calls, independent_calls)
+        METRICS["multi_shift"] = dict(shared_operator_calls=calls,
+            independent_operator_calls=independent_calls, max_residual=max(residuals))
 
     def test_strange_rational_force_against_dense_variation(self):
         mass = self.m.ms
