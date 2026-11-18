@@ -47,7 +47,7 @@ def main():
     torch.testing.assert_close(old[1], new[1], atol=1e-10, rtol=1e-10)
     cases = (("independent", baseline.rational_action_gradient, old_parameters),
              ("shared", rational_action_gradient, parameters))
-    samples = {label: [] for label, _ in cases}
+    samples = {label: [] for label, _, _ in cases}
     for trial in range(args.repeats):
         for label, run, inputs in (cases if trial % 2 == 0 else reversed(cases)):
             start = perf_counter()
