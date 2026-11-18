@@ -575,9 +575,13 @@ of 48. On a 24-mode diagonal operator, the complete sample transformation
 used 58 normal-operator applications versus 89 for the original poles.
 An independent 65,535-point grid measured maximum relative error
 `4.49e-13`. The MD and Metropolis rational coefficients compare equal.
-Jobs `2171959` and `2171960` run the dense RHMC and physical-volume
-paired checks. See the [diagonal check](distributed-compressed-refresh-dense.json)
-and the [rational Krylov literature](https://arxiv.org/abs/1812.01405).
+The four-rank dense RHMC check in job `2171959` passed with maximum
+refresh error `2.02e-13`, force error `1.94e-13`, delta-H error
+`1.87e-12`, and nested link reversal error `9.37e-15`. Job `2171960`
+is queued for the physical-volume timing. See the
+[diagonal check](distributed-compressed-refresh-dense.json),
+[dense RHMC check](distributed-compressed-refresh-rhmc-mpi4.json), and
+[rational Krylov literature](https://arxiv.org/abs/1812.01405).
 
 Job `2171814` checks reuse of the selected Hamiltonian endpoint when
 the RHMC generator records observables. The code reuses the local gauge
