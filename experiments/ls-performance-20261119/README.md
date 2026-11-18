@@ -275,10 +275,26 @@ and had one slow 75.28 s sample. All acceptance decisions agreed. The
 six-rank `12⁴` pilot uses 32 poles in MD and the same high-precision
 refresh and acceptance expansions.
 
+The `12⁴` pilot completed three trajectories in 96.25, 95.86 and
+98.21 s. The first warmup proposal was rejected and both subsequent
+proposals were accepted. Both saved files passed the independent SciDAC
+CRC, plaquette, SU(3) and scalar Dirac checks. The largest scalar Dirac
+discrepancy was `1.15e-16`. Job `2171047` extends the same validation
+parameters to the production spatial extent `24³×8`.
+
+Job `2171040` replaced reverse differentiation of the Wilson plaquette
+loops with owned-site staples and projects link derivatives via a color
+matrix contraction. The contraction avoids constructing all eight
+rotated 3×3 matrices per link. The direct derivative agreed with the
+halo adjoint within `5.33e-15` on four ranks. Full RHMC force and
+reversibility agreed with the reference within `1.23e-15` and
+`4.25e-15`, respectively. The paired `4⁴` and `8⁴` force timing
+changes were below 1%.
+
 ### ARM propagation and Legacy MG follow-up
 
 Job `2169866` interleaved disabled, 64-site and 128-site RHS tiling at
-`24⁴`. Its verifier controller expected a missing byte extractor;
+`24³×64`. Its verifier controller expected a missing byte extractor;
 job `2170458` reused the original arrays and a frozen standalone
 extractor. All three sets of 12 saved columns passed an independent
 scalar C++ operator check with maximum relative residual `4.819e-9`.
