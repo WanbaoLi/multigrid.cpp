@@ -1,0 +1,105 @@
+{
+  "lattice": [
+    24,
+    24,
+    24,
+    4
+  ],
+  "ranks": 4,
+  "paired_samples": 2,
+  "samples": {
+    "control": [
+      {
+        "link_error": 6.883698388168532e-15,
+        "delta_h_error": 0.0,
+        "accepted": true,
+        "delta_h": 0.0017371121793985367,
+        "h_initial": 1549741.564374589,
+        "h_final": 1549741.566111701,
+        "metropolis_probability": 0.998264395726703,
+        "force_seconds": {
+          "coefficient_build": 9.848537075798959,
+          "prepare_and_solve": 90.44638605508953,
+          "spinor_differentiation": 112.06547262216918,
+          "gauge_differentiation": 41.28720097406767
+        },
+        "phase_seconds": {
+          "refresh": 35.519361292012036,
+          "md": 271.34084545099176,
+          "endpoint": 81.88295078394003
+        },
+        "seconds": 388.1365268160589
+      },
+      {
+        "link_error": 6.550605323169073e-15,
+        "delta_h_error": 0.0,
+        "accepted": true,
+        "delta_h": 0.001552574336528778,
+        "h_initial": 1552982.4619267837,
+        "h_final": 1552982.463479358,
+        "metropolis_probability": 0.9984486302835051,
+        "force_seconds": {
+          "coefficient_build": 6.2487095152027905,
+          "prepare_and_solve": 72.81665829499252,
+          "spinor_differentiation": 94.63443240104243,
+          "gauge_differentiation": 33.520235585048795
+        },
+        "phase_seconds": {
+          "refresh": 28.041887101950124,
+          "md": 224.22545405686833,
+          "endpoint": 67.19881562096998
+        },
+        "seconds": 319.2992073369678
+      }
+    ],
+    "optimized": [
+      {
+        "link_error": 6.883698388168532e-15,
+        "delta_h_error": 0.0,
+        "accepted": true,
+        "delta_h": 0.0017371121793985367,
+        "h_initial": 1549741.564374589,
+        "h_final": 1549741.566111701,
+        "metropolis_probability": 0.998264395726703,
+        "force_seconds": {
+          "coefficient_build": 8.637542565120384,
+          "prepare_and_solve": 70.59822313580662,
+          "spinor_differentiation": 109.73415530053899,
+          "gauge_differentiation": 19.341503612697124
+        },
+        "phase_seconds": {
+          "refresh": 30.71285958099179,
+          "md": 226.42781551601365,
+          "endpoint": 71.45482259080745
+        },
+        "seconds": 328.29345028381795
+      },
+      {
+        "link_error": 6.550605323169073e-15,
+        "delta_h_error": 0.0,
+        "accepted": true,
+        "delta_h": 0.001552574336528778,
+        "h_initial": 1552982.4619267837,
+        "h_final": 1552982.463479358,
+        "metropolis_probability": 0.9984486302835051,
+        "force_seconds": {
+          "coefficient_build": 8.283800545148551,
+          "prepare_and_solve": 66.41626752074808,
+          "spinor_differentiation": 107.1223167120479,
+          "gauge_differentiation": 18.052032579202205
+        },
+        "phase_seconds": {
+          "refresh": 30.122097082901746,
+          "md": 218.04115711688064,
+          "endpoint": 69.18323792587034
+        },
+        "seconds": 317.02732932008803
+      }
+    ]
+  },
+  "medians": {
+    "control": 353.71786707651336,
+    "optimized": 322.660389801953
+  },
+  "speedup": 1.0962543846600548
+}

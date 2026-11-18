@@ -323,8 +323,11 @@ application at `24³×4` fell from 62.82 to 51.17 ms on four ranks.
 The paired values were bitwise equal in all three tested geometries.
 The two- and four-rank checks passed with true shifted residual at most
 `9.76e-13`, and the complete four-rank RHMC gate passed. Job `2171328`
-pairs full `24³×4` trajectories with both the packed faces and analytic
-Clover options enabled against the baseline implementation.
+tested the combined packed faces and analytic Clover options over two
+matched full `24³×4` trajectories. Median elapsed time fell from
+353.72 to 322.66 s, with equal delta-H and Metropolis decisions and
+maximum link difference `6.89e-15`. See the
+[paired trajectories](distributed-packed-clover-l24t4-trajectory-paired.json).
 
 Job `2171400` evaluated the optional Zolotarev inverse square root.
 On the standard spectral interval it used 15 poles at the Metropolis
