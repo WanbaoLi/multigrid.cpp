@@ -555,8 +555,11 @@ The [paired trajectory driver](../../tools/hmc/benchmark_mpi.py) takes
 an independently verified LIME checkpoint and records its SHA256,
 native library, code revision, rank placement and seeds. It alternates
 control and candidate order and checks pre-Metropolis links and
-momenta, energy differences and acceptance. Job `2172052` exercises
-this path on two ranks. Job `2172056` pairs Schur overlap on the
+momenta, energy differences and acceptance. In job `2172052`, both
+two-rank test pairs used an independently verified checkpoint and
+produced zero link, momentum and delta-H differences. See the
+[driver check](distributed-schur-overlap-trajectory-smoke-mpi2.json).
+Job `2172056` pairs Schur overlap on the
 verified `hmc_000008.lime` at `24³×64`.
 
 The optional `--fused-schur-gamma5` stores the sign-flipped lower spin
@@ -750,7 +753,9 @@ independent residual checks, with maximum `4.94e-9`. See
 
 The optional `LQCD_MG_SETUP_BATCH` groups inverse-iteration test vectors
 into existing batched V-cycles. Job `2171999` builds the candidate and
-checks numerical and rank-collective behavior. Job `2172000` compares
+checks numerical and rank-collective behavior. The focused MPI test
+checks widths 1 and 5 against exact free Wilson solutions and rejects
+out-of-range, malformed, and rank-inconsistent widths. Job `2172000` compares
 widths 1, 2 and 4 on the same real L24 field with the same setup
 budget, with a final repeat of width 1 and independent full12 checks.
 
