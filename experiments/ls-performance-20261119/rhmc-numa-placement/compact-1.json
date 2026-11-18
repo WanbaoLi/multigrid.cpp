@@ -1,0 +1,21 @@
+{
+  "accepted": true,
+  "delta_h": 0.13101937213145076,
+  "h_initial": 24824822.694251094,
+  "h_final": 24824822.825270467,
+  "metropolis_probability": 0.877200780977607,
+  "force_seconds": {
+    "coefficient_build": 12.649712030310184,
+    "prepare_and_solve": 70.2677896223031,
+    "spinor_differentiation": 59.72781587392092,
+    "gauge_differentiation": 17.408058693166822
+  },
+  "phase_seconds": {
+    "refresh": 32.644467969890684,
+    "md": 155.0349722839892,
+    "endpoint": 37.26752607501112
+  },
+  "seconds": 223.70439703413285,
+  "proposal_sha256": "d789f4869d570de80594698adff6bcbad0cd87dc7e49e32bc31d2340d93b888e",
+  "momentum_sha256": "5ca61e85ae4f6c4bc3afa430fd7530e9d35bd1ac2846f29c922828d31b9ffb09"
+}

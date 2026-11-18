@@ -399,8 +399,10 @@ domain on an exclusive node. Both layouts record hashes of the
 pre-Metropolis links and momentum. On cn12065 the compact layout
 assigned 37 and 27 ranks to two NUMA domains, while the spread layout
 assigned four ranks to each of 16 domains. The first matched sample
-took 212.56 s compact and 141.04 s spread. The links, momenta,
-delta-H and decision matched exactly.
+took 212.56 s compact and 141.04 s spread. The second took 223.70 and
+140.61 s. The proposed links and momenta were bitwise equal within each
+pair, with identical delta-H and decisions. One proposal was accepted
+and one rejected. See the [exclusive comparison](rhmc-numa-placement/).
 Job `2171615` waits for that comparison and then tests one, two, and
 four cores per rank on an exclusive node. Each MPI rank keeps its lead
 core and NUMA domain. The threaded cases independently read the fixed
@@ -468,6 +470,10 @@ The original controller stopped at a memory-only NUMA node with an
 empty CPU list. Job `2171673` reuses the SHA256-checked library and LIME
 file after correcting that preflight. The queued NUMA comparisons
 received the same correction.
+The first matched whole trajectory took 657.48 s with spectral drift
+and 643.79 s with tensor Padé. Drift alone took 27.82 and 19.75 s.
+Both proposals were accepted, with maximum link difference `7.22e-15`
+and delta-H difference `2.02e-9`. The second pair is in progress.
 
 Job `2171679` compares the optional `--shared-clover-spin` path, which
 reuses the spin contractions before applying the two mass factors.
@@ -495,7 +501,16 @@ on cn12048 with four physical cores per CPU NUMA domain. The same
 launcher ran two- and four-rank dense RHMC tests with the optional
 `--reuse-odd-inverse` force. The force reuses the Schur inverse for
 the exact derivative of the odd Clover log determinant. The largest
-dense force difference was `1.78e-13`; paired force timings are in progress.
+dense force difference was `1.78e-13`. The matched force was bitwise
+equal at both volumes. At `24³×4`, the median force changed from
+11.64 to 11.35 s. See [force timings](distributed-odd-inverse-force-paired.json).
+
+Job `2171795` compares the optional `--overlap-schur-faces` native
+Schur path at `24³×64` with 32 and 64 ranks on the verified LIME
+input. It evaluates the six spatial hoppings while the projected
+time faces are in flight, then adds the temporal terms in order.
+The test gates include the independent packed operator and shifted
+solve comparisons and dense force and reversibility checks.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color

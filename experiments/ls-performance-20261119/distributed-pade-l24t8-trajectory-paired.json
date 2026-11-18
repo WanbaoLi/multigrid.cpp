@@ -1,0 +1,59 @@
+{
+  "lattice": [
+    24,
+    24,
+    24,
+    8
+  ],
+  "ranks": 8,
+  "samples": [
+    {
+      "trial": 0,
+      "control": {
+        "accepted": true,
+        "delta_h": 0.015641540487941086,
+        "h_initial": 3100498.5223514643,
+        "h_final": 3100498.537993005,
+        "metropolis_probability": 0.9844801530886365,
+        "force_seconds": {
+          "coefficient_build": 15.72533551696688,
+          "prepare_and_solve": 235.3030990040861,
+          "spinor_differentiation": 44.75769727490842,
+          "gauge_differentiation": 30.149209412978962
+        },
+        "phase_seconds": {
+          "refresh": 99.32293184497394,
+          "md": 411.0269901158754,
+          "endpoint": 147.03702702815644
+        },
+        "seconds": 657.4801099509932,
+        "drift_seconds": 27.822887836024165
+      },
+      "candidate": {
+        "accepted": true,
+        "delta_h": 0.015641538466198313,
+        "h_initial": 3100498.5223514643,
+        "h_final": 3100498.537993003,
+        "metropolis_probability": 0.984480155079002,
+        "force_seconds": {
+          "coefficient_build": 14.184779830044135,
+          "prepare_and_solve": 233.87765807518736,
+          "spinor_differentiation": 41.50523403449915,
+          "gauge_differentiation": 30.852200139779598
+        },
+        "phase_seconds": {
+          "refresh": 97.55843103816733,
+          "md": 399.396493190201,
+          "endpoint": 146.69585248362273
+        },
+        "seconds": 643.7878957379144,
+        "drift_seconds": 19.754607730312273
+      },
+      "maximum_error": {
+        "links": 7.218176045522298e-15,
+        "momentum": 1.3322676295501878e-15,
+        "delta_h": 2.021742773195001e-09
+      }
+    }
+  ]
+}
