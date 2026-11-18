@@ -38,7 +38,7 @@ def apply_rational(apply, rhs, terms, tol=1e-12, *, comm=None):
     return result, max(residuals)
 
 
-def checked_rational_terms(interval, endpoint_order=64):
+def checked_rational_terms(interval, endpoint_order=64, *, md_order=32):
     """Choose fixed refresh, endpoint and MD expansions on a tested scalar grid."""
     points = np.geomspace(*interval, 4097)
 
@@ -56,7 +56,7 @@ def checked_rational_terms(interval, endpoint_order=64):
 
     endpoint, err_endpoint = choose(0.5)
     refresh, err_refresh = choose(0.75)
-    md = inverse_power_terms(0.5, *interval, order=32)
+    md = inverse_power_terms(0.5, *interval, order=md_order)
     return md, endpoint, refresh, dict(endpoint=err_endpoint, refresh=err_refresh, md=grid_error(0.5, md))
 
 

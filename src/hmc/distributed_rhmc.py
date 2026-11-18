@@ -13,7 +13,7 @@ from .spectral import positive_schur_bounds
 
 
 class DistributedRHMC:
-    def __init__(self, lattice, beta, ml, ms, csw, comm, library, interval=(.004, 4.)):
+    def __init__(self, lattice, beta, ml, ms, csw, comm, library, interval=(.004, 4.), *, md_order=32):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -37,7 +37,8 @@ class DistributedRHMC:
         self.eye = torch.eye(3, dtype=CD)
         self.gamma5 = torch.tensor([1., 1., -1., -1.], dtype=RD)[:, None]
         self.interval = tuple(interval)
-        self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(self.interval)
+        self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
+            self.interval, md_order=md_order)
 
     def cold(self):
         return self.eye.repeat(self.local_volume, 4, 1, 1)
