@@ -163,8 +163,12 @@ class HMCPhysicsTests(unittest.TestCase):
             c = self.m.clover(self.m.field_strength(u), mass)
             schur = (full[even][:, even] - full[even][:, odd] @
                      torch.linalg.solve(full[odd][:, odd], full[odd][:, even]))
-            torch.testing.assert_close(self.m.apply_even_schur(u, mass, x, c),
-                                       schur @ x, atol=3e-14, rtol=3e-14)
+            direct = self.m.apply_even_schur(u, mass, x, c)
+            expected = schur @ x
+            torch.testing.assert_close(direct, expected, atol=3e-14, rtol=3e-14)
+            direct_grad, = torch.autograd.grad(torch.vdot(x, direct).real, u, retain_graph=True)
+            expected_grad, = torch.autograd.grad(torch.vdot(x, expected).real, u, retain_graph=True)
+            torch.testing.assert_close(direct_grad, expected_grad, atol=3e-14, rtol=3e-14)
             sign, logdet = torch.linalg.slogdet(full)
             schur_sign, schur_logdet = torch.linalg.slogdet(schur)
             clover_signs, clover_logdets = torch.linalg.slogdet(c[self.m.odd])
@@ -172,7 +176,7 @@ class HMCPhysicsTests(unittest.TestCase):
             torch.testing.assert_close(schur_sign * clover_signs.prod(), sign,
                                        atol=3e-14, rtol=3e-14)
             torch.testing.assert_close(reduced_logdet, logdet, atol=3e-14, rtol=3e-14)
-            full_grad, = torch.autograd.grad(logdet, u)
+            full_grad, = torch.autograd.grad(logdet, u, retain_graph=True)
             reduced_grad, = torch.autograd.grad(reduced_logdet, u)
             torch.testing.assert_close(reduced_grad, full_grad, atol=3e-14, rtol=3e-14)
 
