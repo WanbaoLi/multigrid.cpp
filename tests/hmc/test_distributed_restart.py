@@ -33,12 +33,16 @@ def main():
         checkpoint = args.output / "head" / "result.json"
         tail = run(SimpleNamespace(**settings, output=args.output / "tail",
                                    trajectories=2, resume_from=checkpoint), comm)
-        for left, right in zip(whole["saved_configurations"],
-                               head["saved_configurations"] + tail["saved_configurations"]):
+        assert tail["resumed_from"]["trajectory"] == 1
+        saved = head["saved_configurations"] + tail["saved_configurations"]
+        assert len(whole["saved_configurations"]) == len(saved) == 3
+        for left, right in zip(whole["saved_configurations"], saved):
             assert left["trajectory"] == right["trajectory"]
             assert left["sha256"] == right["sha256"]
             assert left["rng_state"]["sha256"] == right["rng_state"]["sha256"]
-        for left, right in zip(whole["samples"], head["samples"] + tail["samples"]):
+        samples = head["samples"] + tail["samples"]
+        assert len(whole["samples"]) == len(samples) == 3
+        for left, right in zip(whole["samples"], samples):
             for key in ("accepted", "h_initial", "h_final", "delta_h", "plaquette"):
                 assert left[key] == right[key], key
         invalid = dict(settings, mass_strange=1.0)
