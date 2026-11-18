@@ -230,25 +230,29 @@ class CloverHMC:
         local = (clover[self.even] @ even_spinor.unsqueeze(-1)).squeeze(-1)
         return (local - correction).reshape_as(spinor)
 
-    def prepare_even_schur(self, u, mass, clover):
-        """Prepare parity-local coefficients and apply one or more Schur fields."""
+    def prepare_schur_coefficients(self, u, mass, clover, sites=slice(None)):
         if clover.ndim == 3:
             clover = torch.stack((clover[:, :6, :6], clover[:, 6:, 6:]), dim=1)
-        even_clover = clover[self.even]
-        odd_inverse = torch.linalg.inv(clover[self.odd])
+        even_clover = clover[self.even[sites]]
+        odd_inverse = torch.linalg.inv(clover[self.odd[sites]])
         hopping = []
         for target, indices in zip((self.even, self.odd), self.parity_hops):
+            target = target[sites]
             terms = []
             for mu, (plus, minus, backward_sites) in enumerate(indices):
                 forward = u[target, mu]
-                backward = dagger(u[backward_sites, mu])
+                backward = dagger(u[backward_sites[sites], mu])
                 if mu == 3:
                     forward = forward * self.forward_sign[target, None, None]
                     backward = backward * self.backward_sign[target, None, None]
-                terms.extend(((plus, forward, self.eye4 - self.gamma[mu]),
-                              (minus, backward, self.eye4 + self.gamma[mu])))
+                terms.extend(((plus[sites], forward, self.eye4 - self.gamma[mu]),
+                              (minus[sites], backward, self.eye4 + self.gamma[mu])))
             hopping.append(terms)
-        kappa = 1 / (2 * (mass + 4))
+        return hopping, even_clover, odd_inverse, 1 / (2 * (mass + 4))
+
+    def prepare_even_schur(self, u, mass, clover):
+        """Prepare parity-local coefficients and apply one or more Schur fields."""
+        hopping, even_clover, odd_inverse, kappa = self.prepare_schur_coefficients(u, mass, clover)
         native, native_normal = prepare_native_schur(hopping, even_clover, odd_inverse, kappa)
 
         def hop(spinor, terms):

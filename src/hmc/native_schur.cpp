@@ -61,21 +61,27 @@ void clover_product(const Complex *blocks, const Complex *input, Complex *output
         }
 }
 
-void schur_team(
+void odd_team(
     std::int64_t n, double kappa, const std::int64_t *neighbors,
-    const Complex *links, const Complex *even_clover, const Complex *odd_inverse,
-    const Complex *input, Complex *odd, Complex *output,
-    const ProjectorTable &table, bool reflect_output) {
+    const Complex *links, const Complex *odd_inverse, const Complex *input,
+    Complex *odd, const ProjectorTable &table) {
 #pragma omp for schedule(static)
     for (std::int64_t site = 0; site < n; ++site) {
         Complex sum[4][3]{};
-        hopping_sum(n, site, neighbors + 8 * n, links + 72 * n, input, sum, table);
+        hopping_sum(n, site, neighbors, links, input, sum, table);
         Complex source[12];
         for (int spin = 0; spin < 4; ++spin)
             for (int color = 0; color < 3; ++color)
                 source[3 * spin + color] = -kappa * sum[spin][color];
         clover_product(odd_inverse + 72 * site, source, odd + 12 * site);
     }
+}
+
+void even_team(
+    std::int64_t n, double kappa, const std::int64_t *neighbors,
+    const Complex *links, const Complex *even_clover, const Complex *input,
+    const Complex *odd, Complex *output, const ProjectorTable &table,
+    bool reflect_output) {
 #pragma omp for schedule(static)
     for (std::int64_t site = 0; site < n; ++site) {
         Complex sum[4][3]{};
@@ -90,6 +96,15 @@ void schur_team(
                     value = -value;
             }
     }
+}
+
+void schur_team(
+    std::int64_t n, double kappa, const std::int64_t *neighbors,
+    const Complex *links, const Complex *even_clover, const Complex *odd_inverse,
+    const Complex *input, Complex *odd, Complex *output,
+    const ProjectorTable &table, bool reflect_output) {
+    odd_team(n, kappa, neighbors + 8 * n, links + 72 * n, odd_inverse, input, odd, table);
+    even_team(n, kappa, neighbors, links, even_clover, input, odd, output, table, reflect_output);
 }
 }
 
@@ -119,5 +134,27 @@ extern "C" void lqcd_hmc_normal_apply(
                    input, odd, intermediate, table, true);
         schur_team(n, kappa, neighbors, links, even_clover, odd_inverse,
                    intermediate, odd, output, table, true);
+    }
+}
+
+// The opposite-parity input can include halo sites appended after the owned sites.
+extern "C" void lqcd_hmc_schur_odd(
+    std::int64_t n, double kappa, int threads, const std::int64_t *neighbors,
+    const Complex *links, const Complex *odd_inverse, const Complex *even, Complex *odd) {
+    const auto &table = projectors();
+#pragma omp parallel if(n >= 128) num_threads(threads)
+    {
+        odd_team(n, kappa, neighbors, links, odd_inverse, even, odd, table);
+    }
+}
+
+extern "C" void lqcd_hmc_schur_even(
+    std::int64_t n, double kappa, int threads, const std::int64_t *neighbors,
+    const Complex *links, const Complex *even_clover, const Complex *even,
+    const Complex *odd, Complex *output) {
+    const auto &table = projectors();
+#pragma omp parallel if(n >= 128) num_threads(threads)
+    {
+        even_team(n, kappa, neighbors, links, even_clover, even, odd, output, table, false);
     }
 }
