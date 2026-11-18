@@ -172,7 +172,7 @@ python tools/run_numa.py --time-slab --lattice 24 24 24 64 \
   --trajectories 4 --warmup 1 --length 0.018 --steps 1 --gauge-steps 2 \
   --threads '{threads}' --md-order 16 --packed-faces --direct-clover \
   --compact-spin --projected-force-faces --zolotarev --force-pole-batch 11 \
-  --fused-schur-gamma5 --compress-refresh
+  --fused-schur-gamma5 --compress-refresh --native-pade-drift
 ```
 
 用已有独立验证报告的目录可复跑配对计时。下面比较 Schur 通信重叠，

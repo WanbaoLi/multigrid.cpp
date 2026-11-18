@@ -1,0 +1,20 @@
+{
+  "host": "node5005",
+  "source_commit": "99e033d61c45c1d0ba5a9b9723f8f1a13ca24765",
+  "torch": "2.14.1+cu132",
+  "numpy": "2.5.3",
+  "passed": true,
+  "tests_run": 1,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "metrics": {
+    "compressed_refresh": {
+      "baseline_poles": 48,
+      "candidate_poles": 17,
+      "baseline_normal_calls": 89,
+      "candidate_normal_calls": 58,
+      "scalar_error": 4.518607710224387e-13
+    }
+  }
+}

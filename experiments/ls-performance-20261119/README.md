@@ -517,8 +517,13 @@ Its first matched trajectory took 1660.65 s with spectral drift and
 timing includes variation outside the drift. The allocation hit its
 wall-time limit before the second pair finished. See the
 [completed native Padé pair](distributed-native-pade-l24t8-trajectory-paired.json).
-Job `2171973` repeats the matched comparison on an exclusive
-`24³×64`, 64-rank allocation with a longer wall-time limit.
+Job `2171973` completed both matched pairs on exclusive cn19572
+at `24³×64` with 64 ranks. Native Padé reduced the drift median from
+5.65 to 0.43 s and the complete trajectory median from 79.34 to
+73.41 s. The maximum link difference was `8.89e-15`. Delta-H differences
+reached `1.61e-8` against the `2e-8` gate. Both implementations
+accepted one seed and rejected the other. See
+[the 64-rank trajectory data](distributed-native-pade-l24t64-paired.json).
 The node5005 comparison compiled the same C++ kernel independently
 and used a single spatial `24³` slab. One-thread medians were
 2.243 s (spectral), 1.416 s (tensor Padé), and 0.354 s (native).
@@ -603,12 +608,24 @@ Metropolis decisions matched for both seeds. See the
 [full-volume results](distributed-compressed-refresh-l24t64-paired.json),
 [dense RHMC check](distributed-compressed-refresh-rhmc-mpi4.json), and
 [rational Krylov literature](https://arxiv.org/abs/1812.01405).
+The diagonal check also passed on node5005 with 17 poles, 58 versus
+89 operator calls, and relative scalar error `4.52e-13`. See
+[the x86 cross-check](node5005-compressed-refresh-dense.json).
 
 Jobs `2172093` and `2172094` screen a `1e-10` MD relative true
 residual tolerance against the `1e-12` control. The dense check
-validates force, exact endpoint energy and reversal. The real-volume
-paired driver holds the heatbath and endpoint settings fixed, and
-stores the differences and gate outcome for each proposal.
+passed at four ranks with force error `1.83e-10`, delta-H error
+`1.86e-12` and maximum nested link reversal error `1.67e-15`.
+The real-volume paired driver holds the heatbath and endpoint settings
+fixed and stores the differences and gate outcome for each proposal.
+See [the dense MD-tolerance check](distributed-md-tolerance-rhmc-mpi4.json).
+
+Job `2172132` builds the optional `LQCD_HMC_CLOVER_SIMD` path with
+separate FP64 real and imaginary accumulators, then checks the
+distributed Schur operator, force and reversibility. Job `2172133`
+uses the same benchmark driver to compare the two native libraries
+at the full volume with fixed input, algorithm settings and rank
+placement.
 
 Job `2171814` checks reuse of the selected Hamiltonian endpoint when
 the RHMC generator records observables. The code reuses the local gauge
@@ -795,7 +812,9 @@ Job `2172060` pairs caps 14 and 80 in the full12 driver after the
 initial submission `2171893` encountered a shared-directory quota
 error before solving. The full12 driver shares one hierarchy,
 alternates case order, and independently validates all twelve columns
-of both outputs. Job `2171889` exercised the non-origin verifier on
+of both outputs. After that passes, job `2172135` reads the cap-80 NPY
+with PyQUDA on 16 ranks, compares all elements and spin-color columns,
+and publishes the SHA256-checked array. Job `2171889` exercised the non-origin verifier on
 the original NPY with maximum residual `4.975e-9`. See the
 [two-column probe](generated-lime-propagator/coarse-probe.json) and
 [non-origin scalar verification](generated-lime-propagator/nonorigin-scalar-verification.json).
