@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "tests_run": 2,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "metrics": {
+    "negative_mass_cold_certificate": {
+      "free_gap": 0.3314501906846871,
+      "dense_free_gap": 0.3314501906846867,
+      "certified_bounds": [
+        0.07191074244650089,
+        4.644062921892815
+      ],
+      "exact_bounds": [
+        0.35792575995162756,
+        1.0356928871617443
+      ]
+    },
+    "positive_strange_schur_bounds": [
+      0.02034703728424481,
+      3.0010887632524788
+    ],
+    "strange_inverse_power_0.25": {
+      "spectral_bounds": [
+        0.40856428554958857,
+        1.2241260220365517
+      ],
+      "poles": 48,
+      "relative_error": 8.533249152457747e-14,
+      "max_shifted_residual": 9.009196195644843e-13
+    },
+    "strange_inverse_power_0.5": {
+      "spectral_bounds": [
+        0.40856428554958857,
+        1.2241260220365517
+      ],
+      "poles": 48,
+      "relative_error": 1.623289695181634e-13,
+      "max_shifted_residual": 9.009196195644843e-13
+    },
+    "strange_inverse_power_0.75": {
+      "spectral_bounds": [
+        0.40856428554958857,
+        1.2241260220365517
+      ],
+      "poles": 48,
+      "relative_error": 3.2028664733231645e-13,
+      "max_shifted_residual": 9.009196195644843e-13
+    }
+  }
+}

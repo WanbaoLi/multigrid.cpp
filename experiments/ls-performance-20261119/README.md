@@ -308,6 +308,16 @@ The four-rank force split and link reversal agreed within `8.89e-16`
 and `7.56e-15`. Job `2171098` applies the split integrator at
 `24³×64` after job `2171047` passes its `24³×8` file gates.
 
+Job `2171164` passed the dense sign and spectral gates for the new
+cold-field perturbation certificate at Wilson strange mass `-0.277`.
+The free gap agreed with dense SVD within `4.5e-16`. At the perturbed
+`2⁴` field the certified interval `[0.07191, 4.64407]` enclosed the
+dense Schur-normal interval `[0.35793, 1.03569]`. A farther field was
+correctly rejected by the certificate. The same job also attempts an
+`8⁴` validation chain with this mass and trial light mass `-0.32`.
+The first test controller, job `2171113`, used the wrong dense-model
+keyword and stopped before running the chain.
+
 ### ARM propagation and Legacy MG follow-up
 
 Job `2169866` interleaved disabled, 64-site and 128-site RHS tiling at
