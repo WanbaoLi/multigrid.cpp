@@ -502,6 +502,12 @@ were bitwise equal, and the two- and four-rank dense tests passed.
 Job `2171748` extends the comparison to paired entire trajectories
 using the verified `24³×8` field. See
 [single-drift results](distributed-native-pade-drift-paired.json).
+Its first matched trajectory took 1660.65 s with spectral drift and
+1439.94 s with native Padé. The measured drift portion fell from
+35.86 to 4.71 s. Both proposals were accepted and differed by at most
+`7.44e-15` in the links and `2.02e-9` in delta-H. The whole-trajectory
+timing includes variation outside the drift and currently has one
+pair. See [native Padé trajectory data](distributed-native-pade-l24t8-trajectory-paired.json).
 The node5005 comparison compiled the same C++ kernel independently
 and used a single spatial `24³` slab. One-thread medians were
 2.243 s (spectral), 1.416 s (tensor Padé), and 0.354 s (native).
@@ -527,10 +533,20 @@ The test gates include the independent packed operator and shifted
 solve comparisons and dense force and reversibility checks. Both
 rank counts passed. The packed operators were bitwise equal, with
 maximum shifted true residual `9.76e-13`.
-At 32 ranks on the verified LIME input, both Schur-normal outputs
-were bitwise equal. Per-application median time was 2.898 vs 2.815 s
-at mass 0.5 and 2.862 vs 2.799 s at mass 0.8. The 64-rank timing
-is in progress. See [32-rank overlap data](distributed-schur-overlap-paired-mpi32.json).
+At 32 ranks on the verified LIME input, per-application medians were
+2.898 vs 2.815 s at mass 0.5 and 2.862 vs 2.799 s at mass 0.8.
+At 64 ranks they were 3.263 vs 3.139 s and 3.266 vs 3.147 s,
+respectively. Outputs were bitwise equal for both masses at each rank
+count. These are within-allocation kernel comparisons. See the
+[32-rank data](distributed-schur-overlap-paired-mpi32.json) and
+[64-rank data](distributed-schur-overlap-paired-mpi64.json).
+
+The optional `--fused-schur-gamma5` stores the sign-flipped lower spin
+components directly in the native even Schur phase. Each `S†S`
+application uses two such stores, eliminating the separate gamma5
+array passes. Job `2171922` checks the new kernels and dense RHMC
+reference, and job `2171917` pairs two complete `24³×64` trajectories
+with the same LIME field, rank placement and seeds.
 
 Job `2171814` checks reuse of the selected Hamiltonian endpoint when
 the RHMC generator records observables. The code reuses the local gauge
