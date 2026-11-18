@@ -8,7 +8,7 @@ control=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 mkdir -p "$out"
 exec > >(tee "$out/run.log") 2>&1
 task_sdk=/work_ssd/software/HPCKit/25.2.1
-source "$task_sdk/setvars.sh"
+source "$task_sdk/setvars.sh" --use-gcc
 export OPAL_PREFIX=$task_sdk/hmpi/bisheng/release/hmpi
 export PATH=$OPAL_PREFIX/bin:/work_ssd/software/soft/tool/anaconda3/2023.3/bin:$PATH
 task_sysroot=/work_ssd/system/os_jasmine_v01/vroot
@@ -68,7 +68,7 @@ cmake --build "$out/build" -j16
 # Some upstream Python MPI tests omit MPIEXEC_PREFLAGS; prevent HMPI's
 # default one-core binding from conflicting with their two OpenMP threads.
 OMPI_MCA_hwloc_base_binding_policy=none ctest --test-dir "$out/build" \
-  --output-on-failure --parallel 1 -E '^kupl_qcu_kunpeng_profile_contract$'
+  --output-on-failure --parallel 1 -E '^kupl_qcu_(kunpeng_profile|pure_kupl)_contract$'
 # This contract deliberately requires its parent to own exactly one NUMA
 # domain. It is a correctness test, so one allowed core suffices.
 test_cpu=$("$python_bin" -c 'import os; print(min(os.sched_getaffinity(0)))')
@@ -105,10 +105,12 @@ run_case() {
       "$python_bin" -u "$control/reproduce.py" verify --upstream "$upstream" \
       --inputs "$scratch/inputs" --out "$scratch/$label" \
       --reference /home/share/nsls_lwb/lqcd-run/reproduce-efe57de-20261116-1749/build/multigrid \
-      > "$out/$label/scalar.log" 2>&1 || true
+      > "$out/$label/scalar.log" 2>&1 || failed=1
     cp "$scratch/$label/scalar-verification.json" "$out/$label/"
   fi
+  if [[ $code != 0 ]]; then failed=1; fi
 }
+failed=0
 run_case report-c64-random single --dtype c64 --tol 1e-6 --source random
 run_case report-c128-ones single --dtype c128 --tol 1e-9 --source ones
 run_case report-c128-mg single --dtype c128 --tol 1e-9 --source ones --solver mg
@@ -130,4 +132,8 @@ PYTHONPATH=$own/bindings OMP_NUM_THREADS=8 OMP_PLACES=cores OMP_PROC_BIND=spread
   --reference "$own_build/multigrid" --extractor "$own_build/extract_columns" \
   --reference-threads 8 --tol 1e-8 > "$out/own-mg/scalar.log" 2>&1
 find "$scratch/own-mg" -maxdepth 1 -name '*.json' -type f -exec cp '{}' "$out/own-mg/" ';'
+# Record the packaging contract independently of numerical benchmarks.
+OMPI_MCA_hwloc_base_binding_policy=none ctest --test-dir "$out/build" \
+  --output-on-failure -R '^kupl_qcu_pure_kupl_contract$' > "$out/packaging-test.log" 2>&1 || failed=1
+[[ $failed == 0 ]]
 echo "PYQCU_REVIEW_COMPLETE $out"

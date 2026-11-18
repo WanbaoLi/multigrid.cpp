@@ -68,8 +68,11 @@ class CloverHMC:
         self.eye4 = torch.eye(4, dtype=CD)
         self.gamma = gamma_matrices()
         self.t = generators()
-        self.select = [torch.eye(self.volume, dtype=CD)[idx] for idx in self.plus]
-        self.select_back = [torch.eye(self.volume, dtype=CD)[idx] for idx in self.minus]
+        sites = torch.arange(self.volume)
+        self.block_indices = torch.cat(
+            [sites * self.volume + sites]
+            + [sites * self.volume + neighbors
+               for pair in zip(self.plus, self.minus) for neighbors in pair])
         times = torch.div(torch.arange(self.volume), math.prod(self.lattice[:3]), rounding_mode='floor')
         self.forward_sign = torch.where(times == self.lattice[3] - 1, -1., 1.)
         self.backward_sign = torch.where(times == 0, -1., 1.)
@@ -133,7 +136,7 @@ class CloverHMC:
 
     def dirac(self, u, mass, field=None):
         c = self.clover(self.field_strength(u) if field is None else field, mass)
-        result = torch.einsum("xy,xab->xayb", torch.eye(self.volume, dtype=CD), c)
+        hopping = []
         for mu in range(4):
             forward = u[:, mu]
             backward = dagger(u[self.minus[mu], mu])
@@ -142,9 +145,13 @@ class CloverHMC:
                 backward = backward * self.backward_sign[:, None, None]
             hf = torch.einsum("ab,vcd->vacbd", self.eye4 - self.gamma[mu], forward).reshape(-1, 12, 12)
             hb = torch.einsum("ab,vcd->vacbd", self.eye4 + self.gamma[mu], backward).reshape(-1, 12, 12)
-            result = result - (torch.einsum("xy,xab->xayb", self.select[mu], hf) +
-                               torch.einsum("xy,xab->xayb", self.select_back[mu], hb)) / (2 * (mass + 4))
-        return result.reshape(12 * self.volume, 12 * self.volume)
+            hopping.extend((hf, hb))
+        blocks = torch.cat((c, -torch.cat(hopping) / (2 * (mass + 4))))
+        # On an extent of two the forward and backward blocks share an index.
+        assembled = blocks.new_zeros((self.volume ** 2, 12, 12))
+        assembled.index_add_(0, self.block_indices, blocks)
+        return assembled.view(self.volume, self.volume, 12, 12).transpose(1, 2).reshape(
+            12 * self.volume, 12 * self.volume)
 
     def fermion_action(self, u):
         field = self.field_strength(u)
