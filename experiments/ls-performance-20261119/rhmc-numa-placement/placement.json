@@ -1,0 +1,38 @@
+{
+  "compact": {
+    "node0": 37,
+    "node1": 27,
+    "node2": 0,
+    "node3": 0,
+    "node4": 0,
+    "node5": 0,
+    "node6": 0,
+    "node7": 0,
+    "node8": 0,
+    "node9": 0,
+    "node10": 0,
+    "node11": 0,
+    "node12": 0,
+    "node13": 0,
+    "node14": 0,
+    "node15": 0
+  },
+  "spread": {
+    "node0": 4,
+    "node1": 4,
+    "node2": 4,
+    "node3": 4,
+    "node4": 4,
+    "node5": 4,
+    "node6": 4,
+    "node7": 4,
+    "node8": 4,
+    "node9": 4,
+    "node10": 4,
+    "node11": 4,
+    "node12": 4,
+    "node13": 4,
+    "node14": 4,
+    "node15": 4
+  }
+}
