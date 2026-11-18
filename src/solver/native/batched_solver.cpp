@@ -95,6 +95,7 @@ std::vector<int> NativeMG::solve_batch(const std::vector<Field> &b, std::vector<
         }
         return counts;
     }
+    const Impl::CoarseLimitScope coarse_limit(impl->coarse_it);
     if (distributed_storage()) {
         // A zero-start batch cannot reuse scalar Krylov directions. Release
         // scalar warmup capacity before allocating two batched GCR workspaces.
@@ -201,6 +202,8 @@ std::vector<int> NativeMG::solve_batch(const std::vector<Field> &b, std::vector<
                     if (!std::isfinite(rn))
                         throw std::runtime_error("nonfinite batch refreshed residual");
                     w.correction_done = rn < w.target;
+                    if (!w.correction_done && w.active == (size_t)restart)
+                        impl->strengthen_coarse_after_restart();
                     w.active = 0;
                 }
             }

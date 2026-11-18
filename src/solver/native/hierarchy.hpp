@@ -106,6 +106,7 @@ struct NativeMG::Impl {
     bool coarse_cgs2 = false;
     bool coarse_batch_cgs2 = false;
     int coarse_threads = 0; // 0 retains the calling thread's fine-team size.
+    int coarse_rescue_it = 0;
     double correction_base_tol = 1e-3, coarse_tolerance = .1;
     SetupUpdate setup_update = SetupUpdate::Inverse;
     bool profile_active = false;
@@ -123,6 +124,14 @@ struct NativeMG::Impl {
     // Validated collective tuning, also callable between independent solves.
     // Changing these values does not reuse an old solution or rebuild P/R.
     void configure_solve();
+    void strengthen_coarse_after_restart();
+
+    struct CoarseLimitScope {
+        int &limit;
+        const int initial;
+        explicit CoarseLimitScope(int &limit_in) : limit(limit_in), initial(limit_in) {}
+        ~CoarseLimitScope() { limit = initial; }
+    };
 
     void build_clover_inverse();
 

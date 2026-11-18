@@ -1041,6 +1041,7 @@ python tools/run_numa.py -- python -u tools/solve_propagator.py \
 | `LQCD_SAP_EO` / `LQCD_COARSE_EO` | 默认1，块内/粗格Schur | `hierarchy.cpp` |
 | `LQCD_MG_SAP_STEPS` / `CYCLES` | 默认4 / 2，solve局部MR预算与红黑cycle | `hierarchy.cpp` |
 | `LQCD_MG_COARSE_IT` / `COARSE_TOL` | 默认40 / 0.1 | `hierarchy.cpp` |
+| `LQCD_MG_COARSE_RESCUE_IT` | 默认 0。设更高的上限时，外层 GCR 首次重启且刷新残差仍未达标后，提高本次求解的粗网格上限 | `native/solver.cpp` |
 | `LQCD_CORRECTION_BASE_TOL` | 默认0.001，float correction基准阈值 | `solver.cpp`、`hierarchy.cpp` |
 | `LQCD_HALO_OVERLAP` | 默认1，halo与内部计算重叠 | `hierarchy.hpp`、operator文件 |
 | `LQCD_RHS_BATCH` | 默认1，显式2启用两列求解 | Python `solve_many()` |

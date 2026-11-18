@@ -4,6 +4,14 @@
 
 using namespace lqcd_native::detail;
 
+void NativeMG::Impl::strengthen_coarse_after_restart() {
+    if (coarse_rescue_it > coarse_it) {
+        coarse_it = coarse_rescue_it;
+        if (native_rank == 0 && setting("LQCD_VERBOSE", 0))
+            std::cerr << "native coarse iteration limit after GCR restart " << coarse_it << '\n';
+    }
+}
+
 int NativeMG::Impl::solve_float_gcr(const FloatField &b, FloatField &solution, double tol,
                                     int budget, int restart) {
     // Ghost storage is initialized by fine_apply; only owned values enter BLAS.
@@ -110,6 +118,8 @@ int NativeMG::Impl::solve_float_gcr(const FloatField &b, FloatField &solution, d
             fine_axpy(residual, -1., image);
             if (fine_norm(residual) / bn < tol)
                 return it + 1;
+            if (active == (size_t)restart)
+                strengthen_coarse_after_restart();
             active = 0;
         }
     }
@@ -118,6 +128,7 @@ int NativeMG::Impl::solve_float_gcr(const FloatField &b, FloatField &solution, d
 
 void NativeMG::solve(const Field &b, Field &x, double tol, int maxiter, int restart) {
     impl->configure_solve();
+    const Impl::CoarseLimitScope coarse_limit(impl->coarse_it);
     impl->restrict_seconds = impl->coarse_seconds = impl->prolong_seconds = impl->sap_seconds = 0;
     impl->begin_halo_profile();
     const bool verbose = setting("LQCD_VERBOSE", 0) && native_rank == 0;
@@ -222,6 +233,8 @@ void NativeMG::solve(const Field &b, Field &x, double tol, int maxiter, int rest
                 impl->report_halo_profile();
                 return;
             }
+            if (qs.size() == (size_t)restart)
+                impl->strengthen_coarse_after_restart();
             zs.clear();
             qs.clear();
         }
