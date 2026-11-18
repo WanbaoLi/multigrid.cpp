@@ -397,12 +397,26 @@ Job `2171561` holds the optimized algorithm, 64 ranks, input, and seeds
 fixed while pairing sequential CPU binding with four ranks per NUMA
 domain on an exclusive node. Both layouts record hashes of the
 pre-Metropolis links and momentum.
+Job `2171615` waits for that comparison and then tests one, two, and
+four cores per rank on an exclusive node. Each MPI rank keeps its lead
+core and NUMA domain. The threaded cases independently read the fixed
+input and compare proposal links and momenta against the one-core case.
 
 Job `2171583` compares cached and rebuilt checkerboard indices for
 RHMC. It runs native Schur, dense force and reversal gates on two and
 four ranks, then paired force timings at `12⁴` and `24³×4` with bitwise
 agreement required. Both rank counts passed the native Schur and dense
-RHMC comparisons.
+RHMC comparisons. Both paired force runs were bitwise equal. Median
+times moved from 11.31 to 10.70 s at `12⁴` and from 49.60 to 50.29 s at
+`24³×4`. The latter comparison overlapped a separate job on the same
+node, so this series does not establish a consistent speedup.
+
+On node5005 the `dac8425` build passed all five selected tests in the
+`deepinfer-sm90` Python environment with SciPy 1.17.0 and Torch 2.13.0.
+The cross-check covered the independently compiled C++ operator, native
+Schur-normal, dense endpoints, the near-free determinant certificate,
+and 15- and 19-pole Zolotarev scalar accuracy. See
+[node5005 results](node5005-rhmc-dac8425.json).
 
 Job `2171597` compares the optional `--light-heatbath-action` path
 against the explicit light normal solve at the initial endpoint.
@@ -520,3 +534,8 @@ Job `2171520` holds the coarse cap at 14 and sweeps coarse residual
 targets 0.1, 0.20 and 0.35 alongside the cap-40 control. It runs on
 cn12065 after job `2171323` releases the allocation. Each case receives
 an independent twelve-column verification.
+The measured warmed medians were 21.914, 21.489, 22.506, and 24.871 s
+for cap 40 and the three cap-14 targets, respectively. The independent
+verification is in progress. The opt-in
+[LingSheng L24 plan](../../profiles/optimization/lingsheng-l24-cap14-full12.json)
+replays the previously verified cap-14 target of 0.1.

@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "tests_run": 5,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "metrics": {
+    "native_schur_normal_error_(2, 2, 2, 2)_0.5": 3.1401849173675503e-16,
+    "native_schur_normal_error_(2, 2, 2, 2)_0.8": 2.2729511820139823e-16,
+    "native_schur_normal_error_(2, 2, 4, 4)_0.5": 4.449557262054371e-16,
+    "native_schur_normal_error_(2, 2, 4, 4)_0.8": 3.3306690738754696e-16,
+    "native_schur_normal_error_(4, 4, 4, 4)_0.5": 4.577566798522237e-16,
+    "native_schur_normal_error_(4, 4, 4, 4)_0.8": 4.577566798522237e-16,
+    "native_operator_relative_error_mass_0.5": 2.219178360409844e-16,
+    "native_operator_relative_error_mass_0.8": 1.9218968175096068e-16,
+    "matrix_free_refresh_endpoint_error": 1.1368683772161603e-13,
+    "matrix_free_rational_poles": {
+      "endpoint": 48,
+      "refresh": 48
+    },
+    "negative_mass_cold_certificate": {
+      "free_gap": 0.3314501906846871,
+      "dense_free_gap": 0.33145019068468656,
+      "certified_bounds": [
+        0.07191074244650089,
+        4.644062921892812
+      ],
+      "exact_bounds": [
+        0.35792575995162745,
+        1.0356928871617441
+      ]
+    },
+    "zolotarev_inverse_square_root": [
+      {
+        "interval": [
+          0.004,
+          4.0
+        ],
+        "poles": 15,
+        "generation_error": 2.1049828546892968e-13,
+        "independent_grid_error": 2.1049828546892968e-13
+      },
+      {
+        "interval": [
+          0.0005,
+          6.0
+        ],
+        "poles": 19,
+        "generation_error": 1.8762769116165146e-13,
+        "independent_grid_error": 1.8762769116165146e-13
+      }
+    ]
+  }
+}
