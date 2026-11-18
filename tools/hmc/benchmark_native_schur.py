@@ -11,6 +11,7 @@ from unittest.mock import patch
 import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
+from hmc.pseudofermion import MatrixFreePseudofermionHMC
 from hmc.reference import CD, RD, CloverHMC
 
 
@@ -19,6 +20,7 @@ def main():
     parser.add_argument("library", type=Path)
     parser.add_argument("--threads", type=int, default=2)
     parser.add_argument("--applications", type=int, default=24)
+    parser.add_argument("--compare-trajectory", action="store_true")
     args = parser.parse_args()
     if args.applications < 1 or args.threads < 1:
         parser.error("Positive thread and application counts required")
@@ -55,8 +57,43 @@ def main():
                 speedup=medians["torch"] / medians["native"],
                 fusion_speedup=medians["split_native"] / medians["native"],
                 max_absolute_error=(actual - baseline).abs().max().item()))
-    print(json.dumps(dict(threads=args.threads, applications_per_sample=args.applications,
-                          torch=torch.__version__, results=results), indent=2))
+    report = dict(threads=args.threads, applications_per_sample=args.applications,
+                  torch=torch.__version__, results=results)
+    if args.compare_trajectory:
+        report["trajectory"] = trajectory_pair(args.library.resolve(), rng)
+    print(json.dumps(report, indent=2))
+
+
+def trajectory_pair(library, rng):
+    model = MatrixFreePseudofermionHMC((4,) * 4)
+    p = torch.randn((model.volume, 4, 8), dtype=RD, generator=rng)
+    gauge = model.drift(model.cold(), p, 0.15)
+    cases = (("torch", ""), ("native", str(library)))
+    samples = {name: [] for name, _ in cases}
+    max_link_error, max_energy_error = 0., 0.
+    for trial in range(3):
+        outputs = {}
+        for name, path in (cases if trial % 2 == 0 else reversed(cases)):
+            trajectory_rng = torch.Generator().manual_seed(1853 + trial)
+            with patch.dict(os.environ, {"LQCD_HMC_SCHUR_LIBRARY": path,
+                                         "LQCD_HMC_SPLIT_NORMAL": "0"}):
+                start = perf_counter()
+                links, report = model.trajectory(gauge, trajectory_rng, .08, 1, "omelyan")
+                wall = perf_counter() - start
+            outputs[name] = (links, report)
+            samples[name].append(dict(seconds=wall, **report))
+        old, old_info = outputs["torch"]
+        new, new_info = outputs["native"]
+        if new_info["accepted"] != old_info["accepted"]:
+            raise AssertionError("Paired trajectory acceptance mismatch")
+        max_link_error = max(max_link_error, float((new - old).abs().max()))
+        max_energy_error = max(max_energy_error, abs(new_info["delta_h"] - old_info["delta_h"]))
+    if max_link_error > 2e-12 or max_energy_error > 1e-9:
+        raise AssertionError((max_link_error, max_energy_error))
+    medians = {name: statistics.median(row["seconds"] for row in rows) for name, rows in samples.items()}
+    return dict(lattice=model.lattice, tau=.08, steps=1, median_seconds=medians, samples=samples,
+                speedup=medians["torch"] / medians["native"],
+                max_link_error=max_link_error, max_energy_error=max_energy_error)
 
 
 if __name__ == "__main__":
