@@ -1,0 +1,324 @@
+{
+  "lattice": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "trajectory_length": 0.5,
+  "threads": 2,
+  "results": {
+    "leapfrog-10": {
+      "force_evaluations": 11,
+      "rms_delta_h": 0.0908382211526359,
+      "mean_acceptance_probability": 0.970526434620731,
+      "median_seconds": 4.126600535470061,
+      "samples": [
+        {
+          "file": "hmc_000050.lime",
+          "trial": 0,
+          "delta_h": -0.008593786503524825,
+          "seconds": 4.1394283848349005
+        },
+        {
+          "file": "hmc_000050.lime",
+          "trial": 1,
+          "delta_h": -0.1056718847868865,
+          "seconds": 4.122153090778738
+        },
+        {
+          "file": "hmc_000050.lime",
+          "trial": 2,
+          "delta_h": -0.04467618723845135,
+          "seconds": 4.123052070150152
+        },
+        {
+          "file": "hmc_000050.lime",
+          "trial": 3,
+          "delta_h": -0.06911526860437789,
+          "seconds": 4.1344160691369325
+        },
+        {
+          "file": "hmc_000060.lime",
+          "trial": 0,
+          "delta_h": -0.06771805457128721,
+          "seconds": 4.127963287988678
+        },
+        {
+          "file": "hmc_000060.lime",
+          "trial": 1,
+          "delta_h": -0.00899047401981079,
+          "seconds": 4.153746978845447
+        },
+        {
+          "file": "hmc_000060.lime",
+          "trial": 2,
+          "delta_h": -0.11511376093767467,
+          "seconds": 4.125237782951444
+        },
+        {
+          "file": "hmc_000060.lime",
+          "trial": 3,
+          "delta_h": -0.14379544981909476,
+          "seconds": 4.142767078010365
+        },
+        {
+          "file": "hmc_000070.lime",
+          "trial": 0,
+          "delta_h": -0.049630499568309006,
+          "seconds": 4.122684567933902
+        },
+        {
+          "file": "hmc_000070.lime",
+          "trial": 1,
+          "delta_h": 0.05533453827041512,
+          "seconds": 4.123044992098585
+        },
+        {
+          "file": "hmc_000070.lime",
+          "trial": 2,
+          "delta_h": -0.07264100863375234,
+          "seconds": 4.114542357856408
+        },
+        {
+          "file": "hmc_000070.lime",
+          "trial": 3,
+          "delta_h": -0.04130260353326776,
+          "seconds": 4.6003999228123575
+        },
+        {
+          "file": "hmc_000080.lime",
+          "trial": 0,
+          "delta_h": 0.0483011515183307,
+          "seconds": 4.131229886086658
+        },
+        {
+          "file": "hmc_000080.lime",
+          "trial": 1,
+          "delta_h": 0.06696311972496005,
+          "seconds": 4.120102228131145
+        },
+        {
+          "file": "hmc_000080.lime",
+          "trial": 2,
+          "delta_h": 0.18701745470144715,
+          "seconds": 4.1220740880817175
+        },
+        {
+          "file": "hmc_000080.lime",
+          "trial": 3,
+          "delta_h": 0.14531639824303966,
+          "seconds": 4.175794482929632
+        }
+      ]
+    },
+    "omelyan-5": {
+      "force_evaluations": 11,
+      "rms_delta_h": 0.021071979847082513,
+      "mean_acceptance_probability": 0.9912262975031976,
+      "median_seconds": 4.128286115010269,
+      "samples": [
+        {
+          "file": "hmc_000050.lime",
+          "trial": 0,
+          "delta_h": 0.004311078195144091,
+          "seconds": 4.134046632098034
+        },
+        {
+          "file": "hmc_000050.lime",
+          "trial": 1,
+          "delta_h": -0.01501009465715697,
+          "seconds": 4.135715801035985
+        },
+        {
+          "file": "hmc_000050.lime",
+          "trial": 2,
+          "delta_h": -0.005547355935448195,
+          "seconds": 4.130043400917202
+        },
+        {
+          "file": "hmc_000050.lime",
+          "trial": 3,
+          "delta_h": -0.01425832702199159,
+          "seconds": 4.1418079771101475
+        },
+        {
+          "file": "hmc_000060.lime",
+          "trial": 0,
+          "delta_h": -0.015319184731993118,
+          "seconds": 4.1331566739827394
+        },
+        {
+          "file": "hmc_000060.lime",
+          "trial": 1,
+          "delta_h": 0.01348378952911844,
+          "seconds": 4.125051581999287
+        },
+        {
+          "file": "hmc_000060.lime",
+          "trial": 2,
+          "delta_h": -0.0250678672737763,
+          "seconds": 4.127406090032309
+        },
+        {
+          "file": "hmc_000060.lime",
+          "trial": 3,
+          "delta_h": -0.032599107414284845,
+          "seconds": 4.126875649904832
+        },
+        {
+          "file": "hmc_000070.lime",
+          "trial": 0,
+          "delta_h": -0.014511325912735629,
+          "seconds": 4.120530121959746
+        },
+        {
+          "file": "hmc_000070.lime",
+          "trial": 1,
+          "delta_h": 0.016487250541956655,
+          "seconds": 4.124950821977109
+        },
+        {
+          "file": "hmc_000070.lime",
+          "trial": 2,
+          "delta_h": -0.01122773939232502,
+          "seconds": 4.112326818984002
+        },
+        {
+          "file": "hmc_000070.lime",
+          "trial": 3,
+          "delta_h": -0.004429936588849159,
+          "seconds": 4.129166139988229
+        },
+        {
+          "file": "hmc_000080.lime",
+          "trial": 0,
+          "delta_h": 0.009317774186229144,
+          "seconds": 4.1222641749773175
+        },
+        {
+          "file": "hmc_000080.lime",
+          "trial": 1,
+          "delta_h": 0.016070366148483117,
+          "seconds": 4.120228659827262
+        },
+        {
+          "file": "hmc_000080.lime",
+          "trial": 2,
+          "delta_h": 0.048935093076750036,
+          "seconds": 4.133160406956449
+        },
+        {
+          "file": "hmc_000080.lime",
+          "trial": 3,
+          "delta_h": 0.03392767008335795,
+          "seconds": 4.140017671044916
+        }
+      ]
+    },
+    "omelyan-3": {
+      "force_evaluations": 7,
+      "rms_delta_h": 0.05702632463417516,
+      "mean_acceptance_probability": 0.9762366062712065,
+      "median_seconds": 2.6700346134603024,
+      "samples": [
+        {
+          "file": "hmc_000050.lime",
+          "trial": 0,
+          "delta_h": 0.014914645897931678,
+          "seconds": 2.704035798087716
+        },
+        {
+          "file": "hmc_000050.lime",
+          "trial": 1,
+          "delta_h": -0.037657062761127236,
+          "seconds": 2.678432577988133
+        },
+        {
+          "file": "hmc_000050.lime",
+          "trial": 2,
+          "delta_h": -0.013619295545197474,
+          "seconds": 2.6757341460324824
+        },
+        {
+          "file": "hmc_000050.lime",
+          "trial": 3,
+          "delta_h": -0.038581554969766785,
+          "seconds": 2.6673860389273614
+        },
+        {
+          "file": "hmc_000060.lime",
+          "trial": 0,
+          "delta_h": -0.03983115861319675,
+          "seconds": 2.670344749931246
+        },
+        {
+          "file": "hmc_000060.lime",
+          "trial": 1,
+          "delta_h": 0.04053238624987898,
+          "seconds": 2.6889308518730104
+        },
+        {
+          "file": "hmc_000060.lime",
+          "trial": 2,
+          "delta_h": -0.06599652778140808,
+          "seconds": 2.6720643769949675
+        },
+        {
+          "file": "hmc_000060.lime",
+          "trial": 3,
+          "delta_h": -0.0873408007183798,
+          "seconds": 2.669080357067287
+        },
+        {
+          "file": "hmc_000070.lime",
+          "trial": 0,
+          "delta_h": -0.040136642733841654,
+          "seconds": 2.6697244769893587
+        },
+        {
+          "file": "hmc_000070.lime",
+          "trial": 1,
+          "delta_h": 0.04618452823177677,
+          "seconds": 2.66404050309211
+        },
+        {
+          "file": "hmc_000070.lime",
+          "trial": 2,
+          "delta_h": -0.028000454212985915,
+          "seconds": 2.669532174943015
+        },
+        {
+          "file": "hmc_000070.lime",
+          "trial": 3,
+          "delta_h": -0.010049518191067364,
+          "seconds": 4.674068913795054
+        },
+        {
+          "file": "hmc_000080.lime",
+          "trial": 0,
+          "delta_h": 0.0238982235798062,
+          "seconds": 2.655086130835116
+        },
+        {
+          "file": "hmc_000080.lime",
+          "trial": 1,
+          "delta_h": 0.04504677101283505,
+          "seconds": 2.666980316862464
+        },
+        {
+          "file": "hmc_000080.lime",
+          "trial": 2,
+          "delta_h": 0.1333181113241153,
+          "seconds": 2.6621396420523524
+        },
+        {
+          "file": "hmc_000080.lime",
+          "trial": 3,
+          "delta_h": 0.09220150454626719,
+          "seconds": 2.6926282660569996
+        }
+      ]
+    }
+  }
+}

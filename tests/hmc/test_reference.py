@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 from hmc.reference import CloverHMC, CD, RD, dagger, generators, write_lime
 from hmc.shifted import solve_shifted
+from hmc.rational import apply_rational, inverse_power_terms
 
 REFERENCE = None
 REQUIRE_LIME = False
@@ -206,6 +207,35 @@ class HMCPhysicsTests(unittest.TestCase):
                 self.assertLessEqual(residual, 1e-12)
                 METRICS[f"shifted_cg_{mass}_{shift}"] = dict(
                     iterations=iterations, residual=residual)
+
+    def test_strange_fractional_power_against_dense_spectrum(self):
+        mass = self.m.ms
+        spin_color = torch.arange(12)
+        even = (12 * self.m.even[:, None] + spin_color).flatten()
+        odd = (12 * self.m.odd[:, None] + spin_color).flatten()
+        rhs = torch.randn(even.shape, dtype=CD, generator=self.rng)
+        full = self.m.dirac(self.u, mass)
+        c = self.m.clover(self.m.field_strength(self.u), mass)
+        schur = (full[even][:, even] - full[even][:, odd] @
+                 torch.linalg.solve(full[odd][:, odd], full[odd][:, even]))
+        eigenvalues, vectors = torch.linalg.eigh(dagger(schur) @ schur)
+        lower, upper = eigenvalues[0].item() * 0.9, eigenvalues[-1].item() * 1.1
+        projection = dagger(vectors) @ rhs
+        for power in (0.25, 0.5, 0.75):
+            terms = inverse_power_terms(power, lower, upper, order=24)
+            points = np.geomspace(lower, upper, 257)
+            scalar = sum(weight / (points + shift) for shift, weight in terms)
+            self.assertLess(np.max(np.abs(scalar * points ** power - 1)), 1e-11)
+            def apply(vec):
+                return self.m.apply_even_normal(self.u, mass, vec, c)
+            actual, residual = apply_rational(apply, rhs, terms)
+            expected = vectors @ (eigenvalues.pow(-power) * projection)
+            error = (torch.linalg.vector_norm(actual - expected) /
+                     torch.linalg.vector_norm(expected)).item()
+            self.assertLess(error, 2e-11)
+            METRICS[f"strange_inverse_power_{power}"] = dict(
+                spectral_bounds=[lower, upper], poles=len(terms), relative_error=error,
+                max_shifted_residual=residual)
 
 
 if __name__ == '__main__':
