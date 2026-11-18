@@ -116,6 +116,58 @@ def prepare_slab_schur(model, gauge, mass, clover, comm, library):
     return apply
 
 
+@lru_cache(maxsize=8)
+@torch.inference_mode(False)
+def _slab_geometry(nt, spatial, rank, ranks, packed_faces, projected_force_faces):
+    """Cache gauge-independent checkerboard indices and time-boundary phases."""
+    grid = torch.arange((nt + 2) * math.prod(spatial)).reshape(nt + 2, *spatial)
+    area = math.prod(spatial)
+    face = area // 2
+    local_sites = nt * face
+    t = (torch.arange(nt + 2) + rank * nt - 1) % (nt * ranks)
+    parity = t[:, None, None, None]
+    for axis, extent in enumerate(spatial, start=1):
+        shape = [1, 1, 1, 1]
+        shape[axis] = extent
+        parity = parity + torch.arange(extent).reshape(shape)
+    parity = parity % 2
+    # Opposite-parity spinor indices follow the [lower halo, owned, upper halo]
+    # field order. Each parity has exactly half of every spatial time slice.
+    parity_indices = torch.empty_like(grid)
+    targets = []
+    for p in (0, 1):
+        mask = parity == p
+        parity_indices[mask] = torch.arange((nt + 2) * face)
+        targets.append(grid[mask][face:-face])
+    owned_grid = grid[1:-1]
+    parity_indices = parity_indices.flatten()
+    geometry = []
+    for target in targets:
+        offset = target - area
+        times = t[torch.div(target, area, rounding_mode="floor")]
+        signs = (torch.where(times == nt * ranks - 1, -1., 1.)[:, None, None],
+                 torch.where(times == 0, -1., 1.)[:, None, None])
+        backward_links = []
+        neighbors = []
+        for mu in range(4):
+            if mu == 3:
+                plus, minus = target + area, target - area
+            else:
+                plus = torch.roll(owned_grid, -1, 3 - mu).flatten()[offset]
+                minus = torch.roll(owned_grid, 1, 3 - mu).flatten()[offset]
+            backward_links.append(minus)
+            neighbors.extend((parity_indices[plus], parity_indices[minus]))
+        native = torch.stack(neighbors)
+        if packed_faces:
+            native = torch.where(native < face, -native - 1,
+                                 torch.where(native >= face + local_sites,
+                                             face + local_sites - native - 1, native - face))
+        if projected_force_faces:
+            neighbors[:6] = [index - face for index in neighbors[:6]]
+        geometry.append((target, tuple(backward_links), signs, tuple(neighbors), native))
+    return tuple(geometry)
+
+
 def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, projected=True,
                              packed_faces=False, compact_spin=False, projected_force_faces=False):
     """Prepare Schur from only an owned Clover slab and its gauge faces.
@@ -133,27 +185,11 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
     spatial = tuple(extended_gauge.shape[1:4])
     if any(n % 2 for n in spatial) or nt * comm.size % 2:
         raise ValueError("Even global Wilson–Clover extents required")
-    grid = torch.arange((nt + 2) * math.prod(spatial)).reshape(nt + 2, *spatial)
     area = math.prod(spatial)
     face = area // 2
     local_sites = nt * face
-    t = (torch.arange(nt + 2) + comm.rank * nt - 1) % (nt * comm.size)
-    parity = t[:, None, None, None]
-    for axis, extent in enumerate(spatial, start=1):
-        shape = [1, 1, 1, 1]
-        shape[axis] = extent
-        parity = parity + torch.arange(extent).reshape(shape)
-    parity = parity % 2
-    # Opposite-parity spinor indices follow the [lower halo, owned, upper halo]
-    # field order. Each parity has exactly half of every spatial time slice.
-    parity_indices = torch.empty_like(grid)
-    targets = []
-    for p in (0, 1):
-        mask = parity == p
-        parity_indices[mask] = torch.arange((nt + 2) * face)
-        targets.append(grid[mask][face:-face])
+    geometry = _slab_geometry(nt, spatial, comm.rank, comm.size, packed_faces, projected_force_faces)
     links = extended_gauge.reshape(-1, 4, 3, 3)
-    owned_grid = grid[1:-1]
     gamma = gamma_matrices()
     eye4 = torch.eye(4, dtype=links.dtype)
     if compact_spin:
@@ -168,39 +204,24 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
                 phase = (sign * gamma[mu, spins, partner]).reshape(2, 1)
                 half_projectors.append((phase, swap))
     hopping = []
-    for target in targets:
+    for target, backwards, signs, neighbors, _ in geometry:
         terms = []
-        offset = target - area
-        for mu in range(4):
-            if mu == 3:
-                plus = (owned_grid + area).flatten()[offset]
-                minus = (owned_grid - area).flatten()[offset]
-            else:
-                plus = torch.roll(owned_grid, -1, 3 - mu).flatten()[offset]
-                minus = torch.roll(owned_grid, 1, 3 - mu).flatten()[offset]
+        for mu, minus in enumerate(backwards):
             forward, backward = links[target, mu], dagger(links[minus, mu])
             if mu == 3:
-                times = t[torch.div(target, area, rounding_mode="floor")]
-                sf = torch.where(times == nt * comm.size - 1, -1., 1.)
-                sb = torch.where(times == 0, -1., 1.)
-                forward = forward * sf[:, None, None]
-                backward = backward * sb[:, None, None]
-            terms.extend(((parity_indices.flatten()[plus], forward, eye4 - gamma[mu]),
-                          (parity_indices.flatten()[minus], backward, eye4 + gamma[mu])))
+                forward = forward * signs[0]
+                backward = backward * signs[1]
+            terms.extend(((neighbors[2 * mu], forward, eye4 - gamma[mu]),
+                          (neighbors[2 * mu + 1], backward, eye4 + gamma[mu])))
         hopping.append(terms)
     clover = clover.reshape(nt * area, 2, 6, 6)
-    even_clover = clover[targets[0] - area]
-    odd_inverse = torch.linalg.inv(clover[targets[1] - area])
+    even_clover = clover[geometry[0][0] - area]
+    odd_inverse = torch.linalg.inv(clover[geometry[1][0] - area])
     kappa = 1 / (2 * (mass + 4))
     odd_kernel, even_kernel = _kernels(str(library), packed_faces)
     threads = torch.get_num_threads()
     with torch.no_grad():
-        neighbors_e, neighbors_o = [torch.stack([i for i, _, _ in terms]) for terms in hopping]
-        if packed_faces:
-            for indices in (neighbors_e, neighbors_o):
-                indices.copy_(torch.where(indices < face, -indices - 1,
-                    torch.where(indices >= face + local_sites, face + local_sites - indices - 1,
-                                indices - face)))
+        neighbors_e, neighbors_o = [entry[-1] for entry in geometry]
         links_e, links_o = [torch.stack([u for _, u, _ in terms]) for terms in hopping]
         blocks_e, blocks_o = even_clover.detach().contiguous(), odd_inverse.detach().contiguous()
     scratch_odd = links.new_empty((local_sites, 4, 3))
@@ -261,8 +282,7 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
                 if projected_force_faces and direction >= 6:
                     half = temporal[direction - 6].reshape(batches, local_sites, 2, 3)
                 else:
-                    owned_indices = indices - face if projected_force_faces else indices
-                    source_upper, source_lower = neighbors[:, owned_indices].split(2, dim=-2)
+                    source_upper, source_lower = neighbors[:, indices].split(2, dim=-2)
                     source_lower = source_lower.flip(-2) if swap else source_lower
                     half = source_upper + phase * source_lower
                 projected = half @ link.transpose(-2, -1)
