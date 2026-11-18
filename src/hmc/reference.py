@@ -177,11 +177,20 @@ class CloverHMC:
         tangent = 1j * torch.einsum("aij,vmjk->vmaik", self.t, leaf.detach())
         return (grad.conj().unsqueeze(-3) * tangent).sum((-1, -2)).real.detach()
 
-    def integrate(self, u, p, length, steps):
-        if steps < 1 or not math.isfinite(length):
+    def integrate(self, u, p, length, steps, integrator="leapfrog"):
+        if steps < 1 or not math.isfinite(length) or integrator not in ("leapfrog", "omelyan"):
             raise ValueError("Invalid integration parameters")
         step = length / steps
         u, p = u.clone(), p.clone()
+        if integrator == "omelyan":
+            edge = 0.1931833275037836 * step
+            p = p - edge * self.force(u)
+            for i in range(steps):
+                u = self.drift(u, p, step / 2)
+                p = p - (step - 2 * edge) * self.force(u)
+                u = self.drift(u, p, step / 2)
+                p = p - (edge if i == steps - 1 else 2 * edge) * self.force(u)
+            return u, p
         p = p - step / 2 * self.force(u)
         for i in range(steps):
             u = self.drift(u, p, step)
@@ -191,10 +200,10 @@ class CloverHMC:
     def hamiltonian(self, u, p):
         return float(self.action(u)) + float(p.square().sum()) / 2
 
-    def trajectory(self, u, rng, length=0.5, steps=10):
+    def trajectory(self, u, rng, length=0.5, steps=10, integrator="leapfrog"):
         p = torch.randn((self.volume, 4, 8), dtype=RD, generator=rng)
         h0 = self.hamiltonian(u, p)
-        proposal, pend = self.integrate(u, p, length, steps)
+        proposal, pend = self.integrate(u, p, length, steps, integrator)
         h1 = self.hamiltonian(proposal, -pend)
         delta = h1 - h0
         log_uniform = math.log(max(float(torch.rand((), generator=rng, dtype=RD)), 1e-300))

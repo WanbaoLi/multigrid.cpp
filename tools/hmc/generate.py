@@ -33,6 +33,7 @@ def main():
     p.add_argument('--csw', type=float, default=1.0)
     p.add_argument('--length', type=float, default=0.5)
     p.add_argument('--steps', type=int, default=10)
+    p.add_argument('--integrator', choices=('leapfrog', 'omelyan'), default='leapfrog')
     p.add_argument('--warmup', type=int, default=40)
     p.add_argument('--trajectories', type=int, default=80)
     p.add_argument('--save-every', type=int, default=10)
@@ -51,7 +52,7 @@ def main():
     args.output.mkdir(parents=True)
     rng = torch.Generator().manual_seed(args.seed)
     u = model.cold()
-    report = dict(complete=False, algorithm='exact dense determinant HMC, leapfrog + Metropolis',
+    report = dict(complete=False, algorithm=f'exact dense determinant HMC, {args.integrator} + Metropolis',
                   target='exp(-Sg) det(M_light)^2 det(M_strange), positive strange determinant required',
                   nf='2+1', lattice_xyzt=args.lattice, beta=args.beta, mass_light=args.mass_light,
                   mass_strange=args.mass_strange, csw=args.csw, gauge_action='Wilson plaquette',
@@ -73,7 +74,7 @@ def main():
     started = time.perf_counter()
     for trajectory in range(1, args.trajectories + 1):
         t = time.perf_counter()
-        u, item = model.trajectory(u, rng, args.length, args.steps)
+        u, item = model.trajectory(u, rng, args.length, args.steps, args.integrator)
         item.update(trajectory=trajectory, warmup=trajectory <= args.warmup,
                     seconds=time.perf_counter() - t, **model.observables(u))
         report['samples'].append(item)

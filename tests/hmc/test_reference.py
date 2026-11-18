@@ -87,6 +87,18 @@ class HMCPhysicsTests(unittest.TestCase):
         METRICS['energy_errors_steps_4_8'] = errors
         METRICS['energy_error_ratio'] = errors[1] / errors[0]
 
+    def test_omelyan_reversibility_and_equal_force_budget(self):
+        h0 = self.m.hamiltonian(self.u, self.p)
+        errors = {}
+        # Both trajectories use nine force evaluations.
+        for integrator, steps in (("leapfrog", 8), ("omelyan", 4)):
+            u, p = self.m.integrate(self.u, self.p, 0.2, steps, integrator)
+            errors[integrator] = abs(self.m.hamiltonian(u, p) - h0)
+            u_back, p_back = self.m.integrate(u, -p, 0.2, steps, integrator)
+            torch.testing.assert_close(u_back, self.u, atol=2e-12, rtol=0)
+            torch.testing.assert_close(p_back, -self.p, atol=2e-11, rtol=0)
+        METRICS['equal_force_energy_errors'] = errors
+
     def test_native_independent_operator(self):
         if REFERENCE is None:
             self.skipTest('Pass --reference to check the independent native operator')
