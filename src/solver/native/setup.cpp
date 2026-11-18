@@ -6,7 +6,7 @@
 
 using namespace lqcd_native::detail;
 
-void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive) {
+void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive, int inverse_batch) {
     if (m.distributed && native_size>1) {
         // Previous coarse halos are setup-only. Fine/adaptive iterations read
         // the independent packed FP32 owned basis, so drop stale halos before
@@ -18,14 +18,15 @@ void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive) {
         m.basis.discard_sparse_region(lo*stride,(lo+plane)*stride);
         m.basis.discard_sparse_region(hi*stride,(hi+plane)*stride);
     }
+    const bool paper_update = impl->setup_update == SetupUpdate::Paper;
+    const int batch = adaptive && !paper_update ? inverse_batch : 1;
     if (native_rank == 0)
         std::cerr << "native setup update="
                   << (impl->setup_update == SetupUpdate::Paper ? "paper" : "inverse")
                   << " sap_cycles=" << cycles << " adaptive_steps=" << adaptive
+                  << " inverse_batch=" << batch
                   << " sap_eo=" << impl->sap_eo << " coarse_eo=" << impl->coarse_eo << std::endl;
     std::vector<FloatField> vectors(24);
-    for (auto &v : vectors)
-        v.resize(impl->fine_sites * 24);
     // Adaptive passes immediately reuse the vectors produced by the prior
     // setup pass. Avoid consuming Gaussian RNG and writing an entire field
     // that would be discarded; the no-cache path remains bitwise identical.
@@ -34,12 +35,12 @@ void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive) {
     const size_t owned_first = (size_t)impl->first_aggregate*24*impl->block_sites;
     const size_t owned_end = (size_t)impl->end_aggregate*24*impl->block_sites;
     if (cycles) std::fill(zero.begin()+owned_first, zero.begin()+owned_end, 0.f);
-    for (int v = 0; v < 24; v++) {
+    auto initial_vector = [&](int v) {
         if (reuse_vectors) {
             if(m.distributed) vectors[v] = std::move(impl->test_vectors[v]);
             else impl->fine_copy(impl->test_vectors[v], vectors[v]);
-        }
-        else {
+        } else {
+            vectors[v].resize(impl->fine_sites * 24);
             std::mt19937 gen(native_seed + v);
             std::normal_distribution<float> normal;
             if (distributed_storage()) {
@@ -51,41 +52,56 @@ void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive) {
             if (cycles)
                 impl->sap(zero, vectors[v], cycles);
         }
-        if (adaptive) {
-            for (int step = 0; step < adaptive; step++) {
-                FloatField update;
-                if (impl->setup_update == SetupUpdate::Paper) {
-                    // DD-alphaAMG Algorithm 5.1: v <- v + C(v - Dv).
-                    // Fine workspaces use owned entries plus exchange halos;
-                    // never copy uninitialized off-rank workspace entries.
-                    FloatField image, residual;
-                    impl->fine_apply(vectors[v], image);
-                    impl->fine_copy(vectors[v], residual);
-                    impl->fine_axpy(residual, -1., image);
-                    FloatField correction;
-                    impl->apply_vcycle(residual, correction);
-                    impl->fine_copy(vectors[v], update);
-                    impl->fine_axpy(update, Complex(1., 0.), correction);
-                } else
-                    impl->apply_vcycle(vectors[v], update);
+    };
+    std::vector<FloatField> updates(batch);
+    std::vector<const FloatField *> sources;
+    std::vector<FloatField *> destinations;
+    for (int begin = 0; begin < (int)vectors.size(); begin += batch) {
+        const int count = std::min(batch, (int)vectors.size() - begin);
+        sources.clear();
+        destinations.clear();
+        for (int i = 0; i < count; ++i) {
+            initial_vector(begin + i);
+            sources.push_back(&vectors[begin + i]);
+            destinations.push_back(&updates[i]);
+        }
+        for (int step = 0; step < adaptive; ++step) {
+            if (paper_update) {
+                // DD-alphaAMG Algorithm 5.1: v <- v + C(v - Dv).
+                // Fine workspaces use owned entries plus exchange halos.
+                FloatField image, residual, correction;
+                impl->fine_apply(*sources[0], image);
+                impl->fine_copy(*sources[0], residual);
+                impl->fine_axpy(residual, -1., image);
+                impl->apply_vcycle(residual, correction);
+                impl->fine_copy(*sources[0], updates[0]);
+                impl->fine_axpy(updates[0], Complex(1., 0.), correction);
+            } else {
+                impl->apply_vcycle_batch(sources, destinations);
+            }
+            for (int i = 0; i < count; ++i) {
+                auto &update = updates[i];
                 double vn = fine_norm(update);
                 if (!std::isfinite(vn) || vn == 0)
                     throw std::runtime_error("nonfinite or zero adaptive setup vector");
 #pragma omp parallel for schedule(static)
-                for (size_t i = (size_t)impl->first_aggregate * 24 * impl->block_sites;
-                     i < (size_t)impl->end_aggregate * 24 * impl->block_sites; i++)
-                    update[i] /= vn;
-                vectors[v] = std::move(update);
+                for (size_t j = owned_first; j < owned_end; ++j)
+                    update[j] /= vn;
+                vectors[begin + i].swap(update);
             }
         }
-        if (native_size > 1 && !m.distributed)
-            MPI_Allgather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, vectors[v].data(),
-                          vectors[v].size() / native_size, MPI_FLOAT, native_comm);
-        double vn = fine_norm(vectors[v]);
-        if (!std::isfinite(vn) || vn == 0)
-            throw std::runtime_error("nonfinite homogeneous setup vector");
-        std::cerr << "setup vector " << v + 1 << " norm " << vn << std::endl;
+        for (int i = 0; i < count; ++i) {
+            auto &vector = vectors[begin + i];
+            if (native_size > 1 && !m.distributed)
+                MPI_Allgather(MPI_IN_PLACE, 0, MPI_DATATYPE_NULL, vector.data(),
+                              vector.size() / native_size, MPI_FLOAT, native_comm);
+            double vn = fine_norm(vector);
+            if (!std::isfinite(vn) || vn == 0)
+                throw std::runtime_error("nonfinite homogeneous setup vector");
+            std::cerr << "setup vector " << begin + i + 1 << " norm " << vn << std::endl;
+        }
     }
+    updates.clear();
     const int basis_first = (m.synchronize_shared || m.distributed) ? impl->first_aggregate : 0;
     const int basis_end = (m.synchronize_shared || m.distributed) ? impl->end_aggregate : impl->aggregate_count;
     const size_t basis_stride = (size_t)impl->block_sites * 12 * m.coarse_dof;

@@ -21,15 +21,16 @@ class NativeBackend final : public Backend {
     Vector rhs;
     std::vector<Vector> batch_rhs;
     size_t volume;
-    int setup_passes = 2, setup_iterations = 3, setup_smooth = 12;
+    int setup_passes = 2, setup_iterations = 3, setup_smooth = 12, setup_batch = 1;
 
     void configure_setup() {
-        const char *names[3] = {"LQCD_MG_SETUP_PASSES", "LQCD_MG_SETUP_ITERATIONS",
-                                "LQCD_MG_SETUP_SMOOTH"};
-        const int lower[3] = {0, 1, 0}, upper[3] = {8, 12, 64};
-        int values[3] = {2, 3, 12};
+        const char *names[] = {"LQCD_MG_SETUP_PASSES", "LQCD_MG_SETUP_ITERATIONS",
+                               "LQCD_MG_SETUP_SMOOTH", "LQCD_MG_SETUP_BATCH"};
+        const int lower[] = {0, 1, 0, 1}, upper[] = {8, 12, 64, 12};
+        int values[] = {2, 3, 12, 1};
+        constexpr int controls = sizeof(values) / sizeof(values[0]);
         int invalid = 0;
-        for (int i = 0; i < 3; ++i) {
+        for (int i = 0; i < controls; ++i) {
             const char *text = std::getenv(names[i]);
             if (!text)
                 continue;
@@ -50,19 +51,20 @@ class NativeBackend final : public Backend {
         }
         // Every rank reaches the same collectives even on malformed input.
         // Do this before any rank can enter hierarchy setup communication.
-        int minimum[3], maximum[3], any_invalid;
-        MPI_Allreduce(values, minimum, 3, MPI_INT, MPI_MIN, comm);
-        MPI_Allreduce(values, maximum, 3, MPI_INT, MPI_MAX, comm);
+        int minimum[controls], maximum[controls], any_invalid;
+        MPI_Allreduce(values, minimum, controls, MPI_INT, MPI_MIN, comm);
+        MPI_Allreduce(values, maximum, controls, MPI_INT, MPI_MAX, comm);
         MPI_Allreduce(&invalid, &any_invalid, 1, MPI_INT, MPI_MAX, comm);
-        if (any_invalid || minimum[0] != maximum[0] || minimum[1] != maximum[1] ||
-            minimum[2] != maximum[2])
+        if (any_invalid || !std::equal(minimum, minimum + controls, maximum))
             throw Error(LQCD_INVALID_ARGUMENT,
                         "LQCD_MG_SETUP_PASSES (0..8), LQCD_MG_SETUP_ITERATIONS (1..12), "
-                        "LQCD_MG_SETUP_SMOOTH (0..64) must be decimal integers and agree "
+                        "LQCD_MG_SETUP_SMOOTH (0..64), LQCD_MG_SETUP_BATCH (1..12) "
+                        "must be decimal integers and agree "
                         "on every MPI rank");
         setup_passes = values[0];
         setup_iterations = values[1];
         setup_smooth = values[2];
+        setup_batch = values[3];
     }
 
   public:
@@ -219,7 +221,7 @@ class NativeBackend final : public Backend {
         if (shared_coefficients)
             shared_coefficients->synchronize();
         for (int pass = 0; pass < setup_passes; ++pass)
-            solver->generate_basis(hierarchy, 0, setup_iterations);
+            solver->generate_basis(hierarchy, 0, setup_iterations, setup_batch);
         if (shared_coefficients)
             shared_coefficients->synchronize();
         solver->release_setup_vectors();

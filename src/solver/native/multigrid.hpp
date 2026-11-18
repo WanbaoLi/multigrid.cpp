@@ -16,7 +16,7 @@ class NativeMG {
     void solve(const Field &, Field &, double tol, int maxiter, int restart);
     std::vector<int> solve_batch(const std::vector<Field> &b, std::vector<Field> &x,
                                  double tol, int maxiter, int restart);
-    void generate_basis(Multigrid &, int homogeneous_cycles, int adaptive_steps);
+    void generate_basis(Multigrid &, int homogeneous_cycles, int adaptive_steps, int inverse_batch = 1);
     void verify() const;
     void release_setup_vectors();
     // Optional NUMA policy for immutable rank-owned coefficient pages.

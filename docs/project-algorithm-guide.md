@@ -1036,6 +1036,7 @@ python tools/run_numa.py -- python -u tools/solve_propagator.py \
 |---|---|---|
 | `LQCD_MG_SETUP_SMOOTH` | 12，初始齐次SAP平滑 | `native/backend.cpp` |
 | `LQCD_MG_SETUP_PASSES` / `ITERATIONS` | 2 / 3，自适应pass与每pass更新次数 | `native/backend.cpp` |
+| `LQCD_MG_SETUP_BATCH` | 1，inverse 自适应更新的向量批大小，可设 1–12 | `native/setup.cpp` |
 | `LQCD_SETUP_UPDATE` | `inverse`；可选 `paper` | `hierarchy.cpp`、`setup.cpp` |
 | `LQCD_SAP_EO` / `LQCD_COARSE_EO` | 默认1，块内/粗格Schur | `hierarchy.cpp` |
 | `LQCD_MG_SAP_STEPS` / `CYCLES` | 默认4 / 2，solve局部MR预算与红黑cycle | `hierarchy.cpp` |
