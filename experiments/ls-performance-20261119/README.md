@@ -393,10 +393,13 @@ fresh starts and exact restarts before the full-volume stage. This gate
 passed, including rejection of a LIME field with mismatched dimensions.
 On cn12051, the 64-rank chain accepted five of eight proposals, including
 four of six after warmup. Delta-H ranged from 0.476 to 0.524. It saved
-three checkpoints at trajectories 4, 6, and 8. The independent SciDAC,
-plaquette, SU(3), and Dirac checks run after generation. Job `2171928`
-publishes the verified LIME files and digest-checked RNG states. See the
-[chain report](rhmc-optimized-chain/result.json).
+three checkpoints at trajectories 4, 6, and 8. All three passed the
+independent SciDAC CRC, plaquette, SU(3), and light/strange Dirac checks.
+The maximum relative Dirac difference was `1.17e-16`. Job `2171928`
+published the LIME files and digest-checked RNG states to
+`~/lqcd-run/hmc-l24t64-optimized-publication-run01/published`.
+See the [chain report](rhmc-optimized-chain/result.json) and
+[independent readback](rhmc-optimized-chain/verification.json).
 
 Job `2171561` holds the optimized algorithm, 64 ranks, input, and seeds
 fixed while pairing sequential CPU binding with four ranks per NUMA
@@ -718,11 +721,21 @@ Job `2171803` varies hierarchy setup work on the same verified L24
 fixture and cap-14 solve. Reducing inverse-refinement setup from two
 passes to one, at three iterations per pass, cut setup time from
 246.96 to 176.62 s. The warmed full12 median rose from 23.56 to
-28.35 s. These timings put the estimated crossover near 15
-propagators per hierarchy, using warmed solve times for the estimate.
-Both cases passed all twelve independent columns with maximum residual
-below `4.91e-9`. The one-pass, two-iteration case is still running.
-See [setup and solve records](setup-budget/).
+28.35 s. One pass with two iterations took 167.81 s to set up and
+31.20 s per warmed propagator. Setup plus the first solve took 271.35,
+205.83, and 199.95 s for the three configurations, respectively.
+Using the first solve followed by warmed medians, the estimated
+minimum is one pass with two iterations for one to three propagators,
+one pass with three iterations for four to fourteen propagators, and
+the two-pass control from fifteen onward. All three passed twelve
+independent residual checks, with maximum `4.94e-9`. See
+[setup and solve records](setup-budget/).
+
+The optional `LQCD_MG_SETUP_BATCH` groups inverse-iteration test vectors
+into existing batched V-cycles. Job `2171999` builds the candidate and
+checks numerical and rank-collective behavior. Job `2172000` compares
+widths 1, 2 and 4 on the same real L24 field with the same setup
+budget, with a final repeat of width 1 and independent full12 checks.
 
 Job `2171659` reused the same library and cap-14 plan on the generated
 `hmc_000003.lime` with source `(3,1,2,5)`, sample valence mass `-0.277`,
