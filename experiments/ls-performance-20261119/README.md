@@ -520,6 +520,14 @@ solve comparisons and dense force and reversibility checks. Both
 rank counts passed. The packed operators were bitwise equal, with
 maximum shifted true residual `9.76e-13`.
 
+Job `2171814` checks reuse of the selected Hamiltonian endpoint when
+the RHMC generator records observables. The code reuses the local gauge
+action and certified strange spectrum for either accepted or rejected
+proposals, then evaluates unitarity and determinant errors on the
+selected field. It records observables time separately. The gate
+compares against a fresh calculation after each possible decision
+and checks the LIME and RNG restart before paired timings.
+
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
 matrix contraction. The contraction avoids constructing all eight
