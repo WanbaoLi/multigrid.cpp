@@ -1,0 +1,82 @@
+{
+  "complete": true,
+  "run": "/tmp/mg-l24-generated-full12-K0wXr4qn/measurement/cap80",
+  "reference": "/tmp/mg-l24-packed-cgs2-oZsR7f81/build/multigrid",
+  "reference_sha256": "f67e26a3ba3553e404a7bd9a042116d9825bc0e7d5dcbb1ea6c8d4500983c0e1",
+  "run_report_sha256": "4829105e934e78eb005c375933886b110f8b037ebc191339a482bf54f6eef59c",
+  "propagator_sha256": "bd3502d6b6dc297608f3ab7850adbb47d3f06ce2203ba8b412d993d2465d67c6",
+  "method": "byte-only column extraction + independent scalar C++",
+  "source_xyzt": [
+    3,
+    1,
+    2,
+    5
+  ],
+  "source_scale": 1.0,
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "normalization": "mass",
+  "columns": [
+    {
+      "source_spin": 0,
+      "source_color": 0,
+      "residual": 4.4662121973917654e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 1,
+      "residual": 4.000561057918994e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 2,
+      "residual": 4.550895813428945e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 0,
+      "residual": 3.989672068816372e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 1,
+      "residual": 4.310045474562834e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 2,
+      "residual": 3.986943701060036e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 0,
+      "residual": 4.302774524975963e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 1,
+      "residual": 3.9932675967328135e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 2,
+      "residual": 4.5879464964365495e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 0,
+      "residual": 4.398326669864462e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 1,
+      "residual": 3.927050767196392e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 2,
+      "residual": 4.387216110383227e-09
+    }
+  ],
+  "assembled_gauge_sha256": "0e34702da294e351bfdc1f5e6815b6b13aabffe3b7ee2cae4b145ab56c644dba"
+}

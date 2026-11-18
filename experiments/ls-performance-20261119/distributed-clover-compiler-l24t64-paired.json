@@ -1,0 +1,577 @@
+{
+  "complete": true,
+  "gauge": {
+    "file": "/home/share/nsls_lwb/lqcd-run/hmc-l24t64-optimized-publication-run01/published/hmc_000008.lime",
+    "sha256": "968be55e7937b0ced24fe3b67488b3e8cc3c356db1156091ab39ac66acd2186c"
+  },
+  "trajectory": 8,
+  "ranks": 64,
+  "threads": 1,
+  "placement": [
+    {
+      "host": "cn19572",
+      "cpus": [
+        0
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        1
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        2
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        3
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        38
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        39
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        40
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        41
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        76
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        77
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        78
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        79
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        114
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        115
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        116
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        117
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        152
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        153
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        154
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        155
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        190
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        191
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        192
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        193
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        228
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        229
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        230
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        231
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        266
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        267
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        268
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        269
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        304
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        305
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        306
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        307
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        342
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        343
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        344
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        345
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        380
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        381
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        382
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        383
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        418
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        419
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        420
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        421
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        456
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        457
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        458
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        459
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        494
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        495
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        496
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        497
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        532
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        533
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        534
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        535
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        570
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        571
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        572
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        573
+      ]
+    }
+  ],
+  "optimization": "native-library",
+  "settings": {
+    "control": {
+      "interval": [
+        0.004,
+        4.0
+      ],
+      "md_order": 16,
+      "packed_faces": true,
+      "direct_clover": true,
+      "compact_spin": true,
+      "zolotarev": true,
+      "projected_force_faces": true,
+      "force_pole_batch": 11,
+      "real_krylov_dot": true,
+      "light_heatbath_action": true,
+      "reuse_odd_inverse": true,
+      "gershgorin_strange": true,
+      "native_pade": true,
+      "fused_schur_gamma5": true,
+      "overlap_schur_faces": false,
+      "compress_refresh": false
+    },
+    "candidate": {
+      "interval": [
+        0.004,
+        4.0
+      ],
+      "md_order": 16,
+      "packed_faces": true,
+      "direct_clover": true,
+      "compact_spin": true,
+      "zolotarev": true,
+      "projected_force_faces": true,
+      "force_pole_batch": 11,
+      "real_krylov_dot": true,
+      "light_heatbath_action": true,
+      "reuse_odd_inverse": true,
+      "gershgorin_strange": true,
+      "native_pade": true,
+      "fused_schur_gamma5": true,
+      "overlap_schur_faces": false,
+      "compress_refresh": false
+    }
+  },
+  "rational_sha256": {
+    "control": "a68febdad202b935b8b3d7b04e9ecc0bf953af49893e20df6d1eee4db4eec4fa",
+    "candidate": "a68febdad202b935b8b3d7b04e9ecc0bf953af49893e20df6d1eee4db4eec4fa"
+  },
+  "source_commit": "2f3ae0b5123554f92f68e9d0f00b28f7dfb79c06",
+  "torch_version": "1.12.1",
+  "native_schur_sha256": "8e1c8260d3732246de0c7911ab5420d8eeaea426373dffff55e99f335dad4857",
+  "candidate_native_schur_sha256": "8fa4f7ec276444f56d9a037737d52f3be3699b0f5e48f3efaf583a21d0af1ee3",
+  "length": 0.018,
+  "steps": 1,
+  "gauge_steps": 2,
+  "lattice_xyzt": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "beta": 5.6,
+  "csw": 1.0,
+  "mass_light": 0.5,
+  "mass_strange": 0.8,
+  "seed": 1729,
+  "repeats": 2,
+  "proposal_limits": {
+    "links": 2e-12,
+    "momenta": 2e-11,
+    "delta_h": 2e-08
+  },
+  "samples": [
+    {
+      "trial": 0,
+      "order": [
+        "control",
+        "candidate"
+      ],
+      "maximum_error": {
+        "links": 0.0,
+        "momenta": 0.0,
+        "delta_h": 0.0
+      },
+      "passed": true,
+      "control": {
+        "accepted": true,
+        "delta_h": 0.36375286316526,
+        "h_initial": 25346066.824489415,
+        "h_final": 25346067.188242275,
+        "metropolis_probability": 0.6950629491758173,
+        "force_seconds": {
+          "coefficient_build": 1.8168087090016343,
+          "prepare_and_solve": 25.274741884029936,
+          "spinor_differentiation": 13.355770098991343,
+          "gauge_differentiation": 4.113040431999252
+        },
+        "phase_seconds": {
+          "refresh": 12.12696840800345,
+          "md": 47.5901038209995,
+          "endpoint": 15.357941365989973
+        },
+        "seconds": 74.772510417999,
+        "drift_seconds": 0.4298663940135157
+      },
+      "candidate": {
+        "accepted": true,
+        "delta_h": 0.36375286316526,
+        "h_initial": 25346066.824489415,
+        "h_final": 25346067.188242275,
+        "metropolis_probability": 0.6950629491758173,
+        "force_seconds": {
+          "coefficient_build": 1.7377619080070872,
+          "prepare_and_solve": 25.501730367992423,
+          "spinor_differentiation": 13.200048132013762,
+          "gauge_differentiation": 4.052027027995791
+        },
+        "phase_seconds": {
+          "refresh": 11.435480492000352,
+          "md": 47.713024319004035,
+          "endpoint": 15.451294489001157
+        },
+        "seconds": 74.278525110989,
+        "drift_seconds": 0.5324254459992517
+      }
+    },
+    {
+      "trial": 1,
+      "order": [
+        "candidate",
+        "control"
+      ],
+      "maximum_error": {
+        "links": 0.0,
+        "momenta": 0.0,
+        "delta_h": 0.0
+      },
+      "passed": true,
+      "candidate": {
+        "accepted": true,
+        "delta_h": 0.11907759188438405,
+        "h_initial": 25343957.22063125,
+        "h_final": 25343957.339708842,
+        "metropolis_probability": 0.8877389167541726,
+        "force_seconds": {
+          "coefficient_build": 1.740035273018293,
+          "prepare_and_solve": 25.50876974001585,
+          "spinor_differentiation": 12.88168457201391,
+          "gauge_differentiation": 4.092785240994999
+        },
+        "phase_seconds": {
+          "refresh": 11.269678680997458,
+          "md": 47.44823140499648,
+          "endpoint": 15.181402047004667
+        },
+        "seconds": 73.70291351400374,
+        "drift_seconds": 0.6795786640141159
+      },
+      "control": {
+        "accepted": true,
+        "delta_h": 0.11907759188438405,
+        "h_initial": 25343957.22063125,
+        "h_final": 25343957.339708842,
+        "metropolis_probability": 0.8877389167541726,
+        "force_seconds": {
+          "coefficient_build": 1.7797438859997783,
+          "prepare_and_solve": 25.17542337400664,
+          "spinor_differentiation": 13.159469791993615,
+          "gauge_differentiation": 4.194782027989277
+        },
+        "phase_seconds": {
+          "refresh": 11.189316218995373,
+          "md": 47.1707186249987,
+          "endpoint": 15.007678032998228
+        },
+        "seconds": 73.12340369599406,
+        "drift_seconds": 0.430240198969841
+      }
+    }
+  ]
+}

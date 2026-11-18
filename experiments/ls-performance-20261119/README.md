@@ -639,14 +639,16 @@ Schur test passed, with maximum independent normal difference
 force and delta-H differences of `1.78e-13` and `1.73e-12`. See the
 [Schur gate](distributed-clover-simd-schur-mpi4.json) and
 [dense RHMC gate](distributed-clover-simd-rhmc-mpi4.json).
-Job `2172133`
-uses the same benchmark driver to compare the two native libraries
-at the full volume with fixed input, algorithm settings and rank
-placement. The original Arm build did not confirm emitted FP64 vector
-instructions from the compiler-directed reduction. Job `2172192`
-builds the explicit Arm NEON lane implementation. Its emitted binary
-contains FP64 two-lane `fmla`; the Schur and dense RHMC checks follow. See
-[the original build inspection](distributed-clover-simd-compiler.txt).
+Job `2172133` completed the full-volume compiler-directed comparison
+with identical proposals and trajectory medians of 73.95 and 73.99 s.
+The Arm build did not confirm emitted FP64 vector instructions for
+that reduction. Job `2172192` built the explicit Arm NEON path and
+confirmed two-lane FP64 `fmla`. Its four-rank Schur check passed with
+maximum normal difference `8.01e-16`. Job `2172222` pairs the NEON
+library on a full verified L24 field after the dense check.
+See the [compiler-directed pair](distributed-clover-compiler-l24t64-paired.json),
+[build inspection](distributed-clover-simd-compiler.txt), and
+[NEON Schur gate](distributed-clover-neon-schur-mpi4.json).
 
 Job `2172158` checked exact LIME and RNG resumption with native Padé,
 fused gamma5, Schur overlap and compressed refresh enabled together.
@@ -841,15 +843,28 @@ initial submission `2171893` encountered a shared-directory quota
 error before solving. The full12 driver shares one hierarchy,
 alternates case order, and independently validates all twelve columns
 of both outputs. The three warmed timing pairs give medians of 181.53
-and 121.38 s. After the independent check passes, job `2172135` reads the cap-80 NPY
-with PyQUDA on 16 ranks, compares all elements and spin-color columns,
-and publishes the SHA256-checked array. Job `2172178` then compares
+and 121.38 s, with a shared 255.04 s setup. All 24 independent columns
+passed. The maximum cap-80 residual was `4.59e-9`, and the maximum
+column difference relative to the original NPY was `3.56e-8`.
+The [optional solver settings](../../profiles/optimization/lingsheng-generated-l24-cap80-solver-options.json)
+replay the cap-80 solve with `--solver-options` and RHS batch width 2.
+Job `2172135` reads the cap-80 NPY with PyQUDA on 16 ranks, compares
+all elements and spin-color columns, and publishes the SHA256-checked
+array. Job `2172178` then compares
 RHS batch widths 2, 3 and 4 at cap 80 on the same prepared gauge,
 keeping one hierarchy and applying the independent full12 gate to
 all candidates. Job `2171889` exercised the non-origin verifier on
 the original NPY with maximum residual `4.975e-9`. See the
 [two-column probe](generated-lime-propagator/coarse-probe.json) and
-[non-origin scalar verification](generated-lime-propagator/nonorigin-scalar-verification.json).
+[paired full12 evidence](generated-lime-propagator/cap-paired/).
+
+The new opt-in `LQCD_MG_COARSE_RESCUE_IT` keeps the starting cap while
+outer GCR reaches its target within a restart block. If a restart is
+needed and its refreshed residual still misses the target, it can
+raise the cap for the rest of the solve. Job `2172219` builds the
+candidate and checks the runtime. Job `2172220` screens cap 14, cap
+80, and cap 14 with rescue at 80 on both the generated and external
+L24 fixtures before any full12 promotion.
 
 Job `2171803` compares the verified cap-14 solve with three hierarchy
 construction budgets. It holds the input, node, seed, initial smooth
