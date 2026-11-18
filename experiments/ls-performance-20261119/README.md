@@ -44,7 +44,11 @@ setup time separately, and independent FP64 full-operator residuals at
   hierarchy and the frozen `820918f` library. The three interleaved cases
   test the control, fusing the FP64 residual update and norm, and splitting
   SAP work by block and RHS to balance the thread team. Each case receives
-  three timed rounds following its warm-up, with independent verification.
+  four timed rounds following its warm-up, with independent verification.
+  All cases passed the independent 12-column test on cn12124. API medians
+  were 15.173 s for the control, 15.058 s for fused reliable residuals,
+  and 15.178 s for RHS-split SAP. The fused change was 0.76% faster in
+  this allocation. A repeat allocation is needed to establish the gain.
 - Job `2169391` passed the actual PyQUDA MPI2 loader test. The output
   matched every element of all twelve input columns after the EO conversion.
 - Job `2169509` builds the opt-in AArch64 coefficient tiling candidate
@@ -150,8 +154,12 @@ agreement `1.14e-13` against the dense oracle.
 Jobs `2170028`, `2170115` and `2170133` check smaller rational
 refresh and acceptance expansions, storage of the two 6×6 Clover
 blocks, and direct Wilson staples against their respective reference
-evaluators. The matrix-free defaults still use the same FP64
-true-residual checks in every shifted solve.
+evaluators. On cn12038 the pole selection reduced both expansions from
+128 to 48 poles with dense-oracle endpoint energy difference
+`3.41e-13`. The direct staple gradient agreed with differentiation of
+the plaquette loops within `5.33e-15` across three lattice geometries,
+including `4⁴`. The matrix-free path uses FP64 true-residual checks
+in every shifted solve.
 
 Direct assembly reduced the paired median four-step MD time from 3.266 to
 2.212 s on `2⁴` and from 6.343 to 3.477 s on `2³×4` on cn12038.
