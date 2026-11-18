@@ -172,7 +172,7 @@ python tools/run_numa.py --time-slab --lattice 24 24 24 64 \
   --trajectories 4 --warmup 1 --length 0.018 --steps 1 --gauge-steps 2 \
   --threads '{threads}' --md-order 16 --packed-faces --direct-clover \
   --compact-spin --projected-force-faces --zolotarev --force-pole-batch 11 \
-  --fused-schur-gamma5
+  --fused-schur-gamma5 --compress-refresh
 ```
 
 用已有独立验证报告的目录可复跑配对计时。下面比较 Schur 通信重叠，
@@ -211,7 +211,9 @@ MPI 生成器随每份 SciDAC LIME 保存各 rank 的 `.rng.npy` 状态。将上
 
 `--zolotarev` 需要 SciPy，通过椭圆函数计算奇异味 MD 和 Metropolis
 端点所需的逆平方根部分分式。程序检查标量谱区间的逼近误差并保留逐极点
-真残差检查。奇异味热浴的四分之三负幂继续采用原有求积。[有理式的椭圆函数系数](https://www.sciencedirect.com/science/article/pii/S0370269315001999)
+真残差检查。`--compress-refresh` 只压缩热浴所用的四分之三负幂。
+它在固定谱区间上检验逼近误差和正极点，压缩未通过时使用原求积。
+[有理式的椭圆函数系数](https://www.sciencedirect.com/science/article/pii/S0370269315001999)
 
 轨迹报告中的 `delta_h` 先在各 rank 上逐项相减，再做 MPI 求和，避免
 从两个已舍入的全局 Hamiltonian 相减。由于舍入顺序不同，

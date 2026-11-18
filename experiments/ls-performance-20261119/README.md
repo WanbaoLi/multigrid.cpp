@@ -593,11 +593,22 @@ An independent 65,535-point grid measured maximum relative error
 `4.49e-13`. The MD and Metropolis rational coefficients compare equal.
 The four-rank dense RHMC check in job `2171959` passed with maximum
 refresh error `2.02e-13`, force error `1.94e-13`, delta-H error
-`1.87e-12`, and nested link reversal error `9.37e-15`. Job `2171960`
-is queued for the physical-volume timing. See the
-[diagonal check](distributed-compressed-refresh-dense.json),
+`1.87e-12`, and nested link reversal error `9.37e-15`. On exclusive
+cn19572, job `2171960` reduced the 64-rank `24³×64` warmed heatbath
+median from 11.56 to 6.32 s and the number of normal-operator calls
+from 97 to 66. The full trajectory median fell from 74.28 to 68.94 s
+in two matched pairs. The largest strange-field difference was
+`5.07e-13`, the largest delta-H difference was `4.30e-11`, and the
+Metropolis decisions matched for both seeds. See the
+[full-volume results](distributed-compressed-refresh-l24t64-paired.json),
 [dense RHMC check](distributed-compressed-refresh-rhmc-mpi4.json), and
 [rational Krylov literature](https://arxiv.org/abs/1812.01405).
+
+Jobs `2172093` and `2172094` screen a `1e-10` MD relative true
+residual tolerance against the `1e-12` control. The dense check
+validates force, exact endpoint energy and reversal. The real-volume
+paired driver holds the heatbath and endpoint settings fixed, and
+stores the differences and gate outcome for each proposal.
 
 Job `2171814` checks reuse of the selected Hamiltonian endpoint when
 the RHMC generator records observables. The code reuses the local gauge
@@ -752,12 +763,16 @@ independent residual checks, with maximum `4.94e-9`. See
 [setup and solve records](setup-budget/).
 
 The optional `LQCD_MG_SETUP_BATCH` groups inverse-iteration test vectors
-into existing batched V-cycles. Job `2171999` builds the candidate and
-checks numerical and rank-collective behavior. The focused MPI test
-checks widths 1 and 5 against exact free Wilson solutions and rejects
-out-of-range, malformed, and rank-inconsistent widths. Job `2172000` compares
-widths 1, 2 and 4 on the same real L24 field with the same setup
-budget, with a final repeat of width 1 and independent full12 checks.
+into existing batched V-cycles. Job `2171999` built the candidate and
+passed the serial coarse-batch suite. Its broader two-rank suite hit
+the test timeout, so dependent job `2172000` never ran. The focused
+MPI check in job `2172090` used the same binary and checked widths 1
+and 5 against two exact free Wilson solutions. Both widths had the
+same residuals below `6.44e-11` and rejected out-of-range, malformed,
+and rank-inconsistent widths. Job `2172105` uses that SHA256-checked
+binary to compare widths 1, 2 and 4 at a fixed setup budget on the
+same real L24 field, with a final repeat of width 1 and independent
+full12 checks. See the [focused MPI result](setup-budget/batch-focused-mpi2.json).
 
 Job `2171659` reused the same library and cap-14 plan on the generated
 `hmc_000003.lime` with source `(3,1,2,5)`, sample valence mass `-0.277`,

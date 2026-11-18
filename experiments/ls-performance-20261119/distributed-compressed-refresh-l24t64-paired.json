@@ -1,0 +1,364 @@
+{
+  "host": "cn19572",
+  "lattice_xyzt": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "ranks": 64,
+  "cpus_by_rank": [
+    [
+      0
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      38
+    ],
+    [
+      39
+    ],
+    [
+      40
+    ],
+    [
+      41
+    ],
+    [
+      76
+    ],
+    [
+      77
+    ],
+    [
+      78
+    ],
+    [
+      79
+    ],
+    [
+      114
+    ],
+    [
+      115
+    ],
+    [
+      116
+    ],
+    [
+      117
+    ],
+    [
+      152
+    ],
+    [
+      153
+    ],
+    [
+      154
+    ],
+    [
+      155
+    ],
+    [
+      190
+    ],
+    [
+      191
+    ],
+    [
+      192
+    ],
+    [
+      193
+    ],
+    [
+      228
+    ],
+    [
+      229
+    ],
+    [
+      230
+    ],
+    [
+      231
+    ],
+    [
+      266
+    ],
+    [
+      267
+    ],
+    [
+      268
+    ],
+    [
+      269
+    ],
+    [
+      304
+    ],
+    [
+      305
+    ],
+    [
+      306
+    ],
+    [
+      307
+    ],
+    [
+      342
+    ],
+    [
+      343
+    ],
+    [
+      344
+    ],
+    [
+      345
+    ],
+    [
+      380
+    ],
+    [
+      381
+    ],
+    [
+      382
+    ],
+    [
+      383
+    ],
+    [
+      418
+    ],
+    [
+      419
+    ],
+    [
+      420
+    ],
+    [
+      421
+    ],
+    [
+      456
+    ],
+    [
+      457
+    ],
+    [
+      458
+    ],
+    [
+      459
+    ],
+    [
+      494
+    ],
+    [
+      495
+    ],
+    [
+      496
+    ],
+    [
+      497
+    ],
+    [
+      532
+    ],
+    [
+      533
+    ],
+    [
+      534
+    ],
+    [
+      535
+    ],
+    [
+      570
+    ],
+    [
+      571
+    ],
+    [
+      572
+    ],
+    [
+      573
+    ]
+  ],
+  "poles": {
+    "control": 48,
+    "candidate": 17
+  },
+  "scalar_errors": {
+    "control": {
+      "endpoint": 2.1049828546892968e-13,
+      "refresh": 4.505285033928885e-13,
+      "md": 7.249039146728364e-10
+    },
+    "candidate": {
+      "endpoint": 2.1049828546892968e-13,
+      "refresh": 4.489741911584133e-13,
+      "md": 7.249039146728364e-10
+    }
+  },
+  "heatbath": [
+    {
+      "trial": 0,
+      "warmup": true,
+      "maximum_field_error": [
+        0.0,
+        5.061671510142068e-13
+      ],
+      "control": {
+        "seconds": 12.094599787989864,
+        "operator_calls": 97
+      },
+      "candidate": {
+        "seconds": 6.36568193200219,
+        "operator_calls": 66
+      }
+    },
+    {
+      "trial": 1,
+      "warmup": false,
+      "maximum_field_error": [
+        0.0,
+        4.657691401617989e-13
+      ],
+      "candidate": {
+        "seconds": 6.334462432001601,
+        "operator_calls": 66
+      },
+      "control": {
+        "seconds": 11.452326664992142,
+        "operator_calls": 97
+      }
+    },
+    {
+      "trial": 2,
+      "warmup": false,
+      "maximum_field_error": [
+        0.0,
+        4.868345053043484e-13
+      ],
+      "control": {
+        "seconds": 11.670463742004358,
+        "operator_calls": 97
+      },
+      "candidate": {
+        "seconds": 6.306021373995463,
+        "operator_calls": 66
+      }
+    }
+  ],
+  "trajectories": [
+    {
+      "trial": 0,
+      "maximum_error": {
+        "links": 2.2301825219878386e-16,
+        "momentum": 2.886579864025407e-15,
+        "delta_h": 4.293099209462525e-11
+      },
+      "control": {
+        "accepted": false,
+        "delta_h": 0.3938552119310401,
+        "h_initial": 24826932.298109256,
+        "h_final": 24826932.691964462,
+        "metropolis_probability": 0.6744517017308229,
+        "force_seconds": {
+          "coefficient_build": 1.7772722250083461,
+          "prepare_and_solve": 25.64204355000402,
+          "spinor_differentiation": 13.447121638004319,
+          "gauge_differentiation": 4.144619495986262
+        },
+        "phase_seconds": {
+          "refresh": 11.367769891003263,
+          "md": 48.09817853898858,
+          "endpoint": 15.536445089994231
+        },
+        "seconds": 74.70853646000614
+      },
+      "candidate": {
+        "accepted": false,
+        "delta_h": 0.3938552118881091,
+        "h_initial": 24826932.298109226,
+        "h_final": 24826932.69196444,
+        "metropolis_probability": 0.6744517017597779,
+        "force_seconds": {
+          "coefficient_build": 1.7163208300044062,
+          "prepare_and_solve": 25.537313511013053,
+          "spinor_differentiation": 13.176521719971788,
+          "gauge_differentiation": 4.13956244601286
+        },
+        "phase_seconds": {
+          "refresh": 6.42053271101031,
+          "md": 47.75574528099969,
+          "endpoint": 15.2598141960043
+        },
+        "seconds": 69.23361176899925
+      }
+    },
+    {
+      "trial": 1,
+      "maximum_error": {
+        "links": 2.2301825219878386e-16,
+        "momentum": 2.886579864025407e-15,
+        "delta_h": 2.845013113983441e-11
+      },
+      "candidate": {
+        "accepted": true,
+        "delta_h": 0.1310193564695723,
+        "h_initial": 24824822.694251064,
+        "h_final": 24824822.82527042,
+        "metropolis_probability": 0.8772007947162191,
+        "force_seconds": {
+          "coefficient_build": 1.7372902310016798,
+          "prepare_and_solve": 25.37148946299567,
+          "spinor_differentiation": 13.064974069988239,
+          "gauge_differentiation": 4.047559832004481
+        },
+        "phase_seconds": {
+          "refresh": 6.272165275004227,
+          "md": 47.4708827430004,
+          "endpoint": 15.112404883999261
+        },
+        "seconds": 68.65001181799744
+      },
+      "control": {
+        "accepted": true,
+        "delta_h": 0.13101935644112217,
+        "h_initial": 24824822.69425109,
+        "h_final": 24824822.82527045,
+        "metropolis_probability": 0.8772007947411755,
+        "force_seconds": {
+          "coefficient_build": 1.7213195740041556,
+          "prepare_and_solve": 25.67432015200029,
+          "spinor_differentiation": 13.126029556980939,
+          "gauge_differentiation": 4.120485630992334
+        },
+        "phase_seconds": {
+          "refresh": 11.24698527000146,
+          "md": 47.65224076800223,
+          "endpoint": 15.202724777002004
+        },
+        "seconds": 73.84807349200128
+      }
+    }
+  ]
+}
