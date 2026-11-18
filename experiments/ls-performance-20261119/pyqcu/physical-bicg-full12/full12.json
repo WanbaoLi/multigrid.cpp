@@ -1,0 +1,97 @@
+{
+  "mode": "full12",
+  "solver": "bicgstab",
+  "dtype": "c128",
+  "host": "cn12075",
+  "ranks": 16,
+  "threads": "32",
+  "zero_initial_guesses": true,
+  "hierarchy_reused": true,
+  "samples": [
+    {
+      "repeat": 1,
+      "wall_seconds": 232.21408964996226,
+      "native_call_sum_seconds": 231.96149295545183,
+      "iterations": [
+        952,
+        937,
+        963,
+        917,
+        907,
+        950,
+        924,
+        920,
+        940,
+        934,
+        938,
+        871
+      ]
+    },
+    {
+      "repeat": 2,
+      "wall_seconds": 232.63380095898174,
+      "native_call_sum_seconds": 232.47657025209628,
+      "iterations": [
+        950,
+        934,
+        984,
+        923,
+        908,
+        940,
+        960,
+        927,
+        950,
+        941,
+        928,
+        858
+      ]
+    },
+    {
+      "repeat": 3,
+      "wall_seconds": 230.69148054299876,
+      "native_call_sum_seconds": 230.53390913829207,
+      "iterations": [
+        947,
+        910,
+        986,
+        939,
+        908,
+        950,
+        961,
+        857,
+        937,
+        934,
+        920,
+        860
+      ]
+    }
+  ],
+  "source": "12 separate spin/color unit point columns, divided by mass+4 for reference normalization",
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "atol": 1e-08,
+  "stout": {
+    "steps": 1,
+    "rho": 0.125,
+    "dir_ignore": 4
+  },
+  "temporal_boundary": -1,
+  "steady_api_seconds": 231.66264075099025,
+  "steady_native_seconds": 231.50523969519418,
+  "independent_numpy_residuals": [
+    5.598055399463602e-10,
+    5.235310757479034e-10,
+    4.0010860458306066e-10,
+    5.325956375231953e-10,
+    4.953261344334775e-10,
+    5.01580777959836e-10,
+    4.2502153641050684e-10,
+    5.079732809297298e-10,
+    5.620785650786109e-10,
+    5.241090670016267e-10,
+    4.756848311977255e-10,
+    4.886744638079813e-10
+  ],
+  "passed": true,
+  "note": "Direct ctypes full12 loop incl source packing/output copies; no optimized multi-RHS API. Scalar checks recorded separately."
+}

@@ -1,0 +1,66 @@
+{
+  "complete": true,
+  "checks": [
+    {
+      "column": 0,
+      "residual": 5.598055399113883e-10,
+      "returncode": 0
+    },
+    {
+      "column": 1,
+      "residual": 5.23531075744999e-10,
+      "returncode": 0
+    },
+    {
+      "column": 2,
+      "residual": 4.0010860455886687e-10,
+      "returncode": 0
+    },
+    {
+      "column": 3,
+      "residual": 5.325956375190717e-10,
+      "returncode": 0
+    },
+    {
+      "column": 4,
+      "residual": 4.953261344138184e-10,
+      "returncode": 0
+    },
+    {
+      "column": 5,
+      "residual": 5.015807778892549e-10,
+      "returncode": 0
+    },
+    {
+      "column": 6,
+      "residual": 4.2502153642453665e-10,
+      "returncode": 0
+    },
+    {
+      "column": 7,
+      "residual": 5.079732809256807e-10,
+      "returncode": 0
+    },
+    {
+      "column": 8,
+      "residual": 5.620785651030331e-10,
+      "returncode": 0
+    },
+    {
+      "column": 9,
+      "residual": 5.241090670014212e-10,
+      "returncode": 0
+    },
+    {
+      "column": 10,
+      "residual": 4.756848312421716e-10,
+      "returncode": 0
+    },
+    {
+      "column": 11,
+      "residual": 4.886744638228592e-10,
+      "returncode": 0
+    }
+  ],
+  "passed": true
+}
