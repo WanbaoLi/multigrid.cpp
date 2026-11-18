@@ -112,8 +112,8 @@ class DistributedRHMC:
     def _endpoint_geometry(self, u):
         extended = self._gauge_faces(u)
         coefficients = self._coefficients(extended)
-        self._certify(coefficients[1], u)
-        return extended, coefficients
+        bounds = self._certify(coefficients[1], u)
+        return extended, coefficients, bounds
 
     def _refresh_fields(self, schur_l, schur_s, noise_l, noise_s):
         def normal(vec):
@@ -124,14 +124,14 @@ class DistributedRHMC:
 
     @torch.no_grad()
     def refresh(self, u, noise_l, noise_s):
-        extended, (light, strange) = self._endpoint_geometry(u)
+        extended, (light, strange), _ = self._endpoint_geometry(u)
         schur_l = self._schur(extended, light, self.ml)
         schur_s = self._schur(extended, strange, self.ms)
         return self._refresh_fields(schur_l, schur_s, noise_l, noise_s)
 
     @torch.no_grad()
     def _local_endpoint_terms(self, u, p, fields):
-        extended, coefficients = self._endpoint_geometry(u)
+        extended, coefficients, _ = self._endpoint_geometry(u)
         return self._endpoint_terms(extended, coefficients, p, fields)
 
     def _endpoint_terms(self, extended, coefficients, p, fields, operators=None, light_action=None):
@@ -179,13 +179,14 @@ class DistributedRHMC:
     def _heatbath_and_initial_terms(self, u, p, noises):
         # The freshly drawn fields and H at the initial configuration use
         # the same halo, Clover factors, and native Schur workspaces.
-        extended, coefficients = self._endpoint_geometry(u)
+        extended, coefficients, bounds = self._endpoint_geometry(u)
         operators = tuple(self._schur(extended, clover, mass)
                           for clover, mass in zip(coefficients, (self.ml, self.ms)))
         fields = self._refresh_fields(*operators, *noises)
         refreshed = perf_counter()
         light_action = self._light_noise_action(u, coefficients[0], noises[0]) if self.light_heatbath_action else None
-        return fields, self._endpoint_terms(extended, coefficients, p, fields, operators, light_action), refreshed
+        terms = self._endpoint_terms(extended, coefficients, p, fields, operators, light_action)
+        return fields, terms, refreshed, bounds
 
     def endpoint_energy(self, u, p, fields):
         energy = self.comm.allreduce(_finite_sum(self._local_endpoint_terms(u, p, fields)))
@@ -296,36 +297,54 @@ class DistributedRHMC:
                                fermion_step, self.drift, fast_force=self.gauge_force if gauge_steps else None,
                                fast_steps=gauge_steps)
 
-    def trajectory(self, u, rng, length, steps, integrator="omelyan", *, gauge_steps=0):
+    def trajectory(self, u, rng, length, steps, integrator="omelyan", *, gauge_steps=0,
+                   with_observables=False):
+        started = perf_counter()
         p = torch.randn((self.local_volume, 4, 8), dtype=RD, generator=rng)
         noises = [torch.randn(self.spinor_shape, dtype=CD, generator=rng) for _ in range(2)]
         start = perf_counter()
-        fields, initial_terms, refreshed = self._heatbath_and_initial_terms(u, p, noises)
+        fields, initial_terms, refreshed, initial_bounds = self._heatbath_and_initial_terms(u, p, noises)
         force_timing = dict(coefficient_build=0., prepare_and_solve=0.,
                             spinor_differentiation=0., gauge_differentiation=0.)
         started_md = perf_counter()
         proposed, final_p = self.integrate(u, p, fields, length, steps, integrator,
                                            force_timing=force_timing, gauge_steps=gauge_steps)
         finished_md = perf_counter()
-        final_terms = self._local_endpoint_terms(proposed, final_p, fields)
+        with torch.no_grad():
+            extended, coefficients, final_bounds = self._endpoint_geometry(proposed)
+            final_terms = self._endpoint_terms(extended, coefficients, final_p, fields)
+        del extended, coefficients
         initial, final, delta = self._hamiltonian_pair(initial_terms, final_terms)
         finished_endpoint = perf_counter()
         probability = math.exp(min(0., -delta))
         draw = float(torch.rand((), dtype=RD, generator=rng)) if self.comm.rank == 0 else None
         accepted = self.comm.bcast(draw, root=0) < probability
-        return (proposed if accepted else u.clone()), dict(
+        selected = proposed if accepted else u.clone()
+        report = dict(
             accepted=accepted, delta_h=delta, h_initial=initial, h_final=final,
             metropolis_probability=probability, force_seconds=force_timing,
             phase_seconds=dict(refresh=refreshed - start, md=finished_md - started_md,
                                endpoint=(started_md - refreshed) + (finished_endpoint - finished_md)))
+        if with_observables:
+            finished = perf_counter()
+            action, bounds = (final_terms[0], final_bounds) if accepted else (initial_terms[0], initial_bounds)
+            report.update(self._field_observables(selected, action, bounds))
+            report.update(trajectory_seconds=finished - started, observables_seconds=perf_counter() - finished)
+        return selected, report
 
     @torch.no_grad()
     def observables(self, u):
         extended = self._gauge_faces(u)
-        action = self.comm.allreduce(float(owned_gauge_action(extended, self.beta)))
+        action = float(owned_gauge_action(extended, self.beta))
+        bounds = self._certify(self._coefficients(extended)[1], u)
+        return self._field_observables(u, action, bounds)
+
+    @torch.no_grad()
+    def _field_observables(self, u, local_gauge_action, bounds):
+        action = self.comm.allreduce(local_gauge_action)
         errors = self.comm.allgather((float((dagger(u) @ u - self.eye).abs().max()),
                                       float((torch.linalg.det(u) - 1).abs().max())))
-        lower, upper = self._certify(self._coefficients(extended)[1], u)
+        lower, upper = bounds
         return dict(plaquette=1 - action / (6 * self.volume * self.beta),
                     max_unitarity_error=max(x[0] for x in errors),
                     max_det_su3_error=max(x[1] for x in errors),

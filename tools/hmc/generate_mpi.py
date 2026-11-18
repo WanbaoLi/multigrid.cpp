@@ -8,7 +8,6 @@ import os
 from pathlib import Path
 import subprocess
 import sys
-from time import perf_counter
 
 from mpi4py import MPI
 import numpy as np
@@ -267,18 +266,18 @@ def run(args, comm):
     on_root(comm, lambda: args.output.mkdir(parents=True))
     for segment_index in range(1, args.trajectories + 1):
         trajectory = first_trajectory + segment_index
-        start = perf_counter()
-        gauge, sample = model.trajectory(gauge, rng, args.length, args.steps, gauge_steps=args.gauge_steps)
-        total = perf_counter() - start
+        gauge, sample = model.trajectory(gauge, rng, args.length, args.steps,
+                                         gauge_steps=args.gauge_steps, with_observables=True)
         phases = sample["phase_seconds"]
         force_phases = sample["force_seconds"]
-        elapsed = np.array([total, *phases.values(), *force_phases.values()], dtype=np.float64)
+        elapsed = np.array([sample.pop("trajectory_seconds"), sample["observables_seconds"],
+                            *phases.values(), *force_phases.values()], dtype=np.float64)
         comm.Allreduce(MPI.IN_PLACE, elapsed, op=MPI.MAX)
-        seconds, *phase_seconds = elapsed.tolist()
+        seconds, observables_seconds, *phase_seconds = elapsed.tolist()
         phases.update(zip(phases, phase_seconds[:len(phases)]))
         force_phases.update(zip(force_phases, phase_seconds[len(phases):]))
-        sample.update(model.observables(gauge), trajectory=trajectory,
-                      warmup=segment_index <= args.warmup, seconds=seconds)
+        sample.update(trajectory=trajectory, warmup=segment_index <= args.warmup,
+                      seconds=seconds, observables_seconds=observables_seconds)
         report["samples"].append(sample)
         if segment_index > args.warmup and (segment_index - args.warmup) % args.save_every == 0:
             local = gauge.contiguous().numpy()

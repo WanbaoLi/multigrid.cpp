@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import sys
+from unittest.mock import patch
 
 from mpi4py import MPI
 import torch
@@ -59,7 +60,7 @@ def main():
         noise_rng = torch.Generator().manual_seed(seed)
         noise = [torch.randn(field.shape, dtype=CD, generator=noise_rng)[half] for field in expected]
         actual = model.refresh(local_u, *noise)
-        reused_fields, reused_terms, _ = model._heatbath_and_initial_terms(local_u, local_p, noise)
+        reused_fields, reused_terms, _, _ = model._heatbath_and_initial_terms(local_u, local_p, noise)
         assert all(torch.equal(a, b) for a, b in zip(actual, reused_fields))
         explicit_terms = model._local_endpoint_terms(local_u, local_p, actual)
         heatbath_error = 0.
@@ -102,11 +103,19 @@ def main():
                       split_force=2e-12, split_reversible_links=2e-12, split_reversible_momenta=2e-11)
         if any(errors[key] > tolerance for key, tolerance in limits.items()):
             raise AssertionError(errors)
+        for energy_change in (-1000., 1000.):
+            with patch.object(model, "_hamiltonian_pair", return_value=(0., 0., energy_change)):
+                output, report = model.trajectory(local_u, torch.Generator().manual_seed(7902 + comm.rank),
+                                                  .01, 1, with_observables=True)
+            assert report["accepted"] == (energy_change < 0)
+            independent = model.observables(output)
+            assert {key: report[key] for key in independent} == independent
         if comm.rank == 0:
             args.output.write_text(json.dumps(dict(passed=True, ranks=comm.size, lattice=lattice,
                                                    extensive_difference_check=precise_difference,
                                                    identical_heatbath_fields=True,
                                                    identical_initial_terms=not args.light_heatbath_action,
+                                                   reused_observables_both_decisions=True,
                                                    max_error=errors), indent=2) + "\n")
     finally:
         comm.Free()
