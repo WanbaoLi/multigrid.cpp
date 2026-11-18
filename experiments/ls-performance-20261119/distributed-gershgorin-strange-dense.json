@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "metrics": {
+    "positive_strange_schur_bounds": [
+      0.02034703728424481,
+      3.0010887632524788
+    ],
+    "gershgorin_strange_schur_bounds": [
+      0.016312582986953896,
+      3.088424454575283
+    ],
+    "strange_inverse_power_0.25": {
+      "spectral_bounds": [
+        0.40856428554958857,
+        1.2241260220365517
+      ],
+      "poles": 48,
+      "relative_error": 8.533249152457747e-14,
+      "max_shifted_residual": 9.009196195644843e-13
+    },
+    "strange_inverse_power_0.5": {
+      "spectral_bounds": [
+        0.40856428554958857,
+        1.2241260220365517
+      ],
+      "poles": 48,
+      "relative_error": 1.623289695181634e-13,
+      "max_shifted_residual": 9.009196195644843e-13
+    },
+    "strange_inverse_power_0.75": {
+      "spectral_bounds": [
+        0.40856428554958857,
+        1.2241260220365517
+      ],
+      "poles": 48,
+      "relative_error": 3.2028664733231645e-13,
+      "max_shifted_residual": 9.009196195644843e-13
+    }
+  }
+}

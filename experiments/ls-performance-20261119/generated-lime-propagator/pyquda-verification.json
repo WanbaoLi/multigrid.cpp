@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "ranks": 16,
+  "lattice_xyzt": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "dtype": "complex128",
+  "exact_elements": true,
+  "exact_spin_color_columns": 12
+}

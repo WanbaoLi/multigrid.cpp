@@ -519,6 +519,10 @@ The test gates include the independent packed operator and shifted
 solve comparisons and dense force and reversibility checks. Both
 rank counts passed. The packed operators were bitwise equal, with
 maximum shifted true residual `9.76e-13`.
+At 32 ranks on the verified LIME input, both Schur-normal outputs
+were bitwise equal. Per-application median time was 2.898 vs 2.815 s
+at mass 0.5 and 2.862 vs 2.799 s at mass 0.8. The 64-rank timing
+is in progress. See [32-rank overlap data](distributed-schur-overlap-paired-mpi32.json).
 
 Job `2171814` checks reuse of the selected Hamiltonian endpoint when
 the RHMC generator records observables. The code reuses the local gauge
@@ -529,7 +533,7 @@ compares against a fresh calculation after each possible decision
 and checks the LIME and RNG restart before paired timings. Both
 the two- and four-rank tests reproduced all observables exactly
 after acceptance and after rejection. The two-rank LIME and RNG
-restart digests also matched exactly. The four-rank (24³×4) median
+restart digests also matched exactly. The four-rank `24³×4` median
 observables time changed from 1.529 to 0.084 s across seven pairs.
 See the [observables timings](distributed-reused-observables-paired.json).
 
@@ -538,6 +542,13 @@ with the existing Clover eigenvalue bounds. It uses the row-sum
 enclosure only when it certifies positivity and fits the fixed
 rational interval. The checks include a dense Schur reference and a
 deliberately tighter interval that exercises the eigenvalue fallback.
+The dense, two-rank, four-rank and restart gates passed. The first
+timing controller incorrectly required the row-sum bound to qualify
+on every field. Retry `2171850` checked both paths. At `24³×4` the
+row-sum certificate changed 0.364 to 0.073 s on the smoother field.
+When its lower bound fell below the rational interval, the fallback
+reproduced the eigenvalue bounds exactly and took 0.416 vs 0.364 s.
+See [certificate results](distributed-gershgorin-strange-paired.json).
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
@@ -651,10 +662,21 @@ passed independent twelve-column checks at maximum residuals
 [LingSheng L24 plan](../../profiles/optimization/lingsheng-l24-cap14-full12.json)
 replays the previously verified cap-14 target of 0.1.
 
-Job `2171659` was released after the independent checks and is queued
-to reuse the same library and cap-14 plan on the generated `hmc_000003.lime`. It
-uses source `(3,1,2,5)`, sample valence mass `-0.277`, one stout step,
-and checks all 12 NPY columns with independent scalar C++ and PyQUDA.
+Job `2171659` reused the same library and cap-14 plan on the generated
+`hmc_000003.lime` with source `(3,1,2,5)`, sample valence mass `-0.277`,
+and one stout step. Hierarchy setup took 247.87 s and the two warmed
+full12 solves had median 213.28 s. The columns took 212–226 iterations
+in the first solve. The independent scalar C++ check passed the
+twelve columns and the separate single-column control at maximum
+relative residual `4.98e-9`. PyQUDA read all complex128 array elements
+and spin-color columns exactly on 16 ranks. Job `2171855` moved the
+NPY to `~/lqcd-run/mg-l24-generated-propagator-publication-run01` and
+verified its digest after the copy. See [end-to-end verification](generated-lime-propagator/).
+
+Job `2171846` uses the verified, preprocessed gauge slabs and same
+source to screen coarse iteration caps 14, 40, and 80 and a tighter
+coarse residual target. Its two-column runs use one common hierarchy.
+Any faster setting still needs full12 independent verification before use.
 
 Job `2171803` compares the verified cap-14 solve with three hierarchy
 construction budgets. It holds the input, node, seed, initial smooth
