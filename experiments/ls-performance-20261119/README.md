@@ -401,7 +401,18 @@ pre-Metropolis links and momentum.
 Job `2171583` compares cached and rebuilt checkerboard indices for
 RHMC. It runs native Schur, dense force and reversal gates on two and
 four ranks, then paired force timings at `12⁴` and `24³×4` with bitwise
-agreement required.
+agreement required. Both rank counts passed the native Schur and dense
+RHMC comparisons.
+
+Job `2171597` compares the optional `--light-heatbath-action` path
+against the explicit light normal solve at the initial endpoint.
+With a nonsingular Schur operator $S$, the freshly drawn light
+field is $S^\dagger\eta$ and its initial action is $\|\eta\|^2$.
+The implementation uses a collective Clover and gauge-link norm
+bound before applying this identity. It retains the explicit solve
+when the bound cannot certify nonsingularity and at the final endpoint.
+The two-rank test matched the explicit initial light action to `7.11e-15`
+and exercised the fallback with a singular Clover fixture.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
