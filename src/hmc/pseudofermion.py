@@ -3,10 +3,9 @@ from __future__ import annotations
 
 import math
 
-import numpy as np
 import torch
 
-from .rational import apply_rational, inverse_power_terms, rational_action_gradient
+from .rational import apply_rational, checked_rational_terms, inverse_power_terms, rational_action_gradient
 from .reference import CD, RD, CloverHMC, dagger
 from .shifted import solve_shifted
 from .spectral import positive_schur_bounds
@@ -126,23 +125,8 @@ class MatrixFreePseudofermionHMC(PseudofermionHMC):
     def __init__(self, *args, strange_interval=(0.004, 4.), endpoint_order=64, **kwargs):
         super().__init__(*args, strange_interval=strange_interval, rational_order=32,
                          dense_reference=False, **kwargs)
-        points = np.geomspace(*self.strange_interval, 4097)
-        def grid_error(power, terms):
-            approximation = sum(weight / (points + shift) for shift, weight in terms)
-            return float(np.max(np.abs(approximation * points ** power - 1)))
-
-        def choose_terms(power):
-            for order in (*range(8, endpoint_order, 4), endpoint_order):
-                terms = inverse_power_terms(power, *self.strange_interval, order=order)
-                error = grid_error(power, terms)
-                if error <= 1e-12:
-                    return terms, error
-            raise ArithmeticError("Endpoint or refresh rational approximation exceeds grid tolerance")
-
-        self.endpoint_terms, endpoint_error = choose_terms(0.5)
-        self.refresh_terms, refresh_error = choose_terms(0.75)
-        self.rational_grid_error = dict(endpoint=endpoint_error, refresh=refresh_error,
-                                        md=grid_error(0.5, self.strange_terms))
+        (self.strange_terms, self.endpoint_terms, self.refresh_terms,
+         self.rational_grid_error) = checked_rational_terms(self.strange_interval, endpoint_order)
 
     def _certify_strange(self, clover):
         lower, upper = positive_schur_bounds(clover[self.even], clover[self.odd], self.ms)

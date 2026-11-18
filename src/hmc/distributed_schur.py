@@ -159,16 +159,17 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library):
         return time_faces(spinor.reshape(nt, face, 4, 3), comm)
 
     def torch_hop(spinor, terms):
-        neighbors = halo(spinor).reshape(-1, 4, 3)
-        result = spinor.new_zeros((local_sites, 4, 3))
+        fields = spinor.reshape(-1, nt, face, 4, 3).transpose(0, 1)
+        neighbors = time_faces(fields, comm).transpose(0, 1).reshape(-1, (nt + 2) * face, 4, 3)
+        result = spinor.new_zeros((fields.shape[1], local_sites, 4, 3))
         for indices, link, projector in terms:
-            result = result + projector @ (neighbors[indices] @ link.transpose(-2, -1))
-        return (-kappa * result).reshape(local_sites, 2, 6, 1)
+            result = result + projector @ (neighbors[:, indices] @ link.transpose(-2, -1))
+        return (-kappa * result).reshape(-1, local_sites, 2, 6, 1)
 
     def apply(spinor):
-        if torch.is_grad_enabled():
+        if torch.is_grad_enabled() or spinor.numel() != local_sites * 12:
             odd = odd_inverse @ torch_hop(spinor, hopping[1])
-            even = even_clover @ spinor.reshape(local_sites, 2, 6, 1)
+            even = even_clover @ spinor.reshape(-1, local_sites, 2, 6, 1)
             return (even - torch_hop(odd, hopping[0])).reshape_as(spinor)
         even = spinor.resolve_conj().contiguous()
         odd = torch.empty_like(even)

@@ -6,7 +6,7 @@ import math
 import torch
 
 
-def positive_schur_bounds(even_clover, odd_clover, mass):
+def positive_schur_bounds(even_clover, odd_clover, mass, *, comm=None):
     """Enclose the Schur normal spectrum, assuming unitary gauge links.
 
     Orthogonal spin projectors bound each directional hopping term by
@@ -21,6 +21,12 @@ def positive_schur_bounds(even_clover, odd_clover, mass):
     odd = torch.linalg.eigvalsh(odd_clover)
     even_min, even_max = float(even.min()), float(even.max())
     odd_min, odd_max = float(odd.min()), float(odd.max())
+    if comm is not None:
+        extrema = comm.allgather((even_min, even_max, odd_min, odd_max))
+        even_min = min(row[0] for row in extrema)
+        even_max = max(row[1] for row in extrema)
+        odd_min = min(row[2] for row in extrema)
+        odd_max = max(row[3] for row in extrema)
     hopping = 4 / (mass + 4)
     padding = 64 * torch.finfo(even.dtype).eps * max(1., abs(even_max), abs(odd_max), hopping)
     gap = min(even_min, odd_min) - hopping - padding

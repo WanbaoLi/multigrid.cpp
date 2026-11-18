@@ -30,6 +30,46 @@ def dagger(a):
     return a.conj().transpose(-1, -2)
 
 
+def clover_chiral_blocks(field, mass, csw):
+    coeff = csw / (2 * (mass + 4))
+    eye3 = torch.eye(3, dtype=field[0].dtype, device=field[0].device)
+    blocks = []
+    for sign in (-1, 1):
+        b10 = 1j * coeff * (field[0] + sign * field[5])
+        b20 = coeff * (field[1] - sign * field[4] - 1j * (field[2] + sign * field[3]))
+        blocks.append(torch.cat((torch.cat((eye3 - b10, dagger(b20)), -1),
+                                 torch.cat((b20, eye3 + b10), -1)), -2))
+    return torch.stack(blocks, dim=1)
+
+
+def drift_links(u, p, step, basis):
+    algebra = torch.einsum("vma,aij->vmij", p.to(CD), basis)
+    eigenvalues, vectors = torch.linalg.eigh(algebra)
+    rotation = (vectors * torch.exp(1j * step * eigenvalues).unsqueeze(-2)) @ dagger(vectors)
+    return (rotation @ u).detach()
+
+
+def integrate_links(u, p, length, steps, integrator, force, drift):
+    if steps < 1 or not math.isfinite(length) or integrator not in ("leapfrog", "omelyan"):
+        raise ValueError("Invalid integration parameters")
+    step = length / steps
+    u, p = u.clone(), p.clone()
+    if integrator == "omelyan":
+        edge = 0.1931833275037836 * step
+        p = p - edge * force(u)
+        for i in range(steps):
+            u = drift(u, p, step / 2)
+            p = p - (step - 2 * edge) * force(u)
+            u = drift(u, p, step / 2)
+            p = p - (edge if i == steps - 1 else 2 * edge) * force(u)
+        return u, p
+    p = p - step / 2 * force(u)
+    for i in range(steps):
+        u = drift(u, p, step)
+        p = p - (step / 2 if i == steps - 1 else step) * force(u)
+    return u, p
+
+
 def generators():
     result = []
     for i, j in ((0, 1), (0, 2), (1, 2)):
@@ -103,13 +143,10 @@ class CloverHMC:
         return self.eye3.repeat(self.volume, 4, 1, 1)
 
     def drift(self, u, p, step):
-        algebra = torch.einsum("vma,aij->vmij", p.to(CD), self.t)
         # Momentum is Hermitian. A spectral exponential preserves unitarity
         # accurately even on the site's old PyTorch 1.12 batch-exp backend.
         # MD does not differentiate through the drift/eigenvectors.
-        eigenvalues, vectors = torch.linalg.eigh(algebra)
-        rotation = (vectors * torch.exp(1j * step * eigenvalues).unsqueeze(-2)) @ dagger(vectors)
-        return (rotation @ u).detach()
+        return drift_links(u, p, step, self.t)
 
     def loop(self, u, directions):
         index = torch.arange(self.volume)
@@ -159,15 +196,7 @@ class CloverHMC:
         return field
 
     def clover_blocks(self, field, mass):
-        coeff = self.csw / (2 * (mass + 4))
-        blocks = []
-        for ch in (0, 1):
-            sign = 1 if ch else -1
-            b10 = 1j * coeff * (field[0] + sign * field[5])
-            b20 = coeff * (field[1] - sign * field[4] - 1j * (field[2] + sign * field[3]))
-            blocks.append(torch.cat((torch.cat((self.eye3 - b10, dagger(b20)), -1),
-                                     torch.cat((b20, self.eye3 + b10), -1)), -2))
-        return torch.stack(blocks, dim=1)
+        return clover_chiral_blocks(field, mass, self.csw)
 
     def clover(self, field, mass):
         upper, lower = self.clover_blocks(field, mass).unbind(1)
@@ -323,25 +352,8 @@ class CloverHMC:
         return (grad.conj().unsqueeze(-3) * tangent).sum((-1, -2)).real.detach()
 
     def integrate(self, u, p, length, steps, integrator="leapfrog", force=None):
-        if steps < 1 or not math.isfinite(length) or integrator not in ("leapfrog", "omelyan"):
-            raise ValueError("Invalid integration parameters")
-        step = length / steps
-        u, p = u.clone(), p.clone()
-        force = self.force if force is None else force
-        if integrator == "omelyan":
-            edge = 0.1931833275037836 * step
-            p = p - edge * force(u)
-            for i in range(steps):
-                u = self.drift(u, p, step / 2)
-                p = p - (step - 2 * edge) * force(u)
-                u = self.drift(u, p, step / 2)
-                p = p - (edge if i == steps - 1 else 2 * edge) * force(u)
-            return u, p
-        p = p - step / 2 * force(u)
-        for i in range(steps):
-            u = self.drift(u, p, step)
-            p = p - (step / 2 if i == steps - 1 else step) * force(u)
-        return u, p
+        return integrate_links(u, p, length, steps, integrator,
+                               self.force if force is None else force, self.drift)
 
     def hamiltonian(self, u, p):
         return float(self.action(u)) + float(p.square().sum()) / 2

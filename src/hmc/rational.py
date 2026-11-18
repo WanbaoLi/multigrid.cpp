@@ -28,14 +28,36 @@ def inverse_power_terms(power, lower, upper, order=16):
     return tuple(zip(shifts.tolist(), np.concatenate((low_weights, high_weights)).tolist()))
 
 
-def apply_rational(apply, rhs, terms, tol=1e-12):
+def apply_rational(apply, rhs, terms, tol=1e-12, *, comm=None):
     """Apply the partial fraction and return the largest shifted residual."""
     shifts, weights = zip(*terms)
-    solutions, residuals = solve_multi_shift(apply, rhs, shifts, tol)
+    solutions, residuals = solve_multi_shift(apply, rhs, shifts, tol, comm=comm)
     result = torch.zeros_like(rhs)
     for solution, weight in zip(solutions, weights):
         result.add_(solution, alpha=weight)
     return result, max(residuals)
+
+
+def checked_rational_terms(interval, endpoint_order=64):
+    """Choose fixed refresh, endpoint and MD expansions on a tested scalar grid."""
+    points = np.geomspace(*interval, 4097)
+
+    def grid_error(power, terms):
+        approximation = sum(weight / (points + shift) for shift, weight in terms)
+        return float(np.max(np.abs(approximation * points ** power - 1)))
+
+    def choose(power):
+        for order in (*range(8, endpoint_order, 4), endpoint_order):
+            terms = inverse_power_terms(power, *interval, order=order)
+            error = grid_error(power, terms)
+            if error <= 1e-12:
+                return terms, error
+        raise ArithmeticError("Endpoint or refresh rational approximation exceeds grid tolerance")
+
+    endpoint, err_endpoint = choose(0.5)
+    refresh, err_refresh = choose(0.75)
+    md = inverse_power_terms(0.5, *interval, order=32)
+    return md, endpoint, refresh, dict(endpoint=err_endpoint, refresh=err_refresh, md=grid_error(0.5, md))
 
 
 def rational_action_gradient(model, gauge, mass, rhs, terms, tol=1e-12):
