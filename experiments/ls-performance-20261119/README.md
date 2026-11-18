@@ -411,8 +411,9 @@ field is $S^\dagger\eta$ and its initial action is $\|\eta\|^2$.
 The implementation uses a collective Clover and gauge-link norm
 bound before applying this identity. It retains the explicit solve
 when the bound cannot certify nonsingularity and at the final endpoint.
-The two-rank test matched the explicit initial light action to `7.11e-15`
-and exercised the fallback with a singular Clover fixture.
+The two- and four-rank tests matched the explicit initial light action
+within `7.11e-15`, kept the heatbath fields bitwise equal, and
+exercised the fallback with a singular Clover fixture.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
