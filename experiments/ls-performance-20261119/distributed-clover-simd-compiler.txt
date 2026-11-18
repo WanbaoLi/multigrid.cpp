@@ -1,0 +1,6 @@
+CXX_DEFINES = -DLQCD_HMC_CLOVER_SIMD=1 -Dlqcd_hmc_kernels_EXPORTS
+CXX_FLAGS = -fopt-info-vec-optimized -O2 -DNDEBUG -fPIC -march=native -mtune=native -fopenmp -std=c++17
+library=/tmp/hmc-clover-simd-dHisLRZd/control.so
+8e1c8260d3732246de0c7911ab5420d8eeaea426373dffff55e99f335dad4857  /tmp/hmc-clover-simd-dHisLRZd/control.so
+library=/tmp/hmc-clover-simd-dHisLRZd/build/liblqcd_hmc_kernels.so
+8fa4f7ec276444f56d9a037737d52f3be3699b0f5e48f3efaf583a21d0af1ee3  /tmp/hmc-clover-simd-dHisLRZd/build/liblqcd_hmc_kernels.so

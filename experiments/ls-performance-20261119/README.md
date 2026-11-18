@@ -635,7 +635,11 @@ Schur test passed, with maximum independent normal difference
 Job `2172133`
 uses the same benchmark driver to compare the two native libraries
 at the full volume with fixed input, algorithm settings and rank
-placement.
+placement. The original Arm build did not confirm emitted FP64 vector
+instructions from the compiler-directed reduction. Job `2172192`
+builds the explicit Arm NEON lane implementation, checks the emitted
+instructions, and reruns the Schur and dense RHMC gates. See
+[the original build inspection](distributed-clover-simd-compiler.txt).
 
 Job `2172158` checks exact LIME and RNG resumption with native Padé,
 fused gamma5, Schur overlap and compressed refresh enabled together.
