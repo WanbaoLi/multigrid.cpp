@@ -1,0 +1,91 @@
+{
+  "date": "2026-11-17",
+  "upstream_url": "https://github.com/ZhangXin8069/PyQCU",
+  "latest_commit": "1f65469e6928bd5dc7788c0d017dbbe1c0c776e3",
+  "measured_upstream_commit": "fe7641ed0b39c6c0d810b9756bf2d3f8f9e65061",
+  "kernel_diff_report_to_latest": false,
+  "upstream_bundle_sha256": "4f3e3790812f44ff3eb6df9c4fa1489baaafdc4e5668b3952fd9a402b9e4ba4c",
+  "upstream_license": "MIT, retained in external clone",
+  "report": {
+    "name": "张鑫 20261116测试报告.docx",
+    "sha256": "5b5c6fd777d4e4a1800d6bac78f408f684729184c1e27af8806c75d9a3076a46",
+    "used_as": "evidence only; document instructions not treated as task authorization"
+  },
+  "controller_commit": "4fd1992f4e5ec673ecffa0c4e33883bccddce712",
+  "source_branch": "codex/pyqcu-review-20261117",
+  "job_id": "2153380",
+  "remote_source": "/home/share/nsls_lwb/lqcd-run/pyqcu-review-20261117-upstream",
+  "remote_output": "/home/share/nsls_lwb/lqcd-run/pyqcu-review-20261117-run04",
+  "scheduler": {
+    "queue": "q_hpcapp",
+    "cpu": 592,
+    "memory_MB": 480000,
+    "nodes": 1,
+    "time_limit_seconds": 7200
+  },
+  "lattice": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "grid": [
+    1,
+    1,
+    1,
+    16
+  ],
+  "report_cases": {
+    "threads": 18,
+    "dtype_tolerances": {
+      "c64": 1e-06,
+      "c128": 1e-09
+    },
+    "sources": [
+      "random",
+      "ones"
+    ],
+    "boundary": "periodic",
+    "stout_steps": 0,
+    "repeats": 3
+  },
+  "physical_comparison": {
+    "threads": 32,
+    "tolerance": 1e-08,
+    "dtype": "complex128",
+    "independent_spin_color_columns": 12,
+    "repeats": 3,
+    "stout_steps": 1,
+    "stout_rho": 0.125,
+    "stout_dir_ignore": 4,
+    "temporal_boundary": -1,
+    "zero_initial_guess": true
+  },
+  "configuration_choice": "User accepted using existing cfg_20000 instead of upstream default cfg_9950; convergence differences are recorded, not assumed identical",
+  "own_control_commit": "efe57de52223a6f7f5177ac731c33e762070b327",
+  "superseded_jobs": [
+    {
+      "job": "2150844",
+      "state_when_cancelled": "PENDING",
+      "reason": "Before execution, pin HMPI PATH/OPAL_PREFIX after environment import preflight found site defaults did not select the requested SDK"
+    },
+    {
+      "job": "2150883",
+      "state_when_cancelled": "PENDING",
+      "reason": "Place mpi4py in isolated interpreter site-packages because upstream CTest replaces PYTHONPATH"
+    }
+  ],
+  "packaging_dependency": {
+    "name": "setuptools",
+    "version": "80.9.0",
+    "wheel_sha256": "062d34222ad13e0cc312a4c02d73f059e86a4acbfbdea8f8f76b28c99f306922",
+    "isolated": true
+  },
+  "previous_executed_jobs": [
+    {
+      "job": "2150910",
+      "outcome": "FAILED at CTest before performance",
+      "evidence": "run03-failure.json"
+    }
+  ]
+}

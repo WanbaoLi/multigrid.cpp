@@ -1,0 +1,33 @@
+{
+  "complete": false,
+  "phase": "corrected_controller_queued",
+  "observed_at": "2026-11-17T17:05:02.239872+08:00",
+  "job_id": "2153380",
+  "scheduler_state": "PENDING",
+  "scheduler_reason": {
+    "mainReason": {
+      "code": "20626",
+      "message": "No available node can fit in the requirement of execution nodes preference in queue"
+    },
+    "reasonUpdateTime": 1794906272476
+  },
+  "upstream_clone_complete": true,
+  "source_review_complete": true,
+  "previous_job": "2150910",
+  "previous_build_succeeded": true,
+  "previous_ctest": {
+    "passed": 39,
+    "total": 42,
+    "failed": 3
+  },
+  "performance_started": false,
+  "performance_reproduced": false,
+  "controller_commit": "4fd1992f4e5ec673ecffa0c4e33883bccddce712",
+  "fix_validation": {
+    "python_syntax": "passed",
+    "bash_syntax": "passed",
+    "upstream_packaging_metadata": "passed under isolated setuptools 80.9.0 with bundled dependencies first",
+    "corrected_compute_ctest": "pending"
+  },
+  "conclusion": "No new real-input solve timings; corrected full test suite and performance workflow submitted to the normal queue."
+}
