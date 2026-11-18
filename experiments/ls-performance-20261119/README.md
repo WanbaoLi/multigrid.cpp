@@ -450,6 +450,10 @@ errors across both geometries were `5.22e-15` and `1.12e-15`.
 The large-step fallback matched bitwise, and the two- and four-rank
 dense RHMC and reversal gates passed. The norm cutoff uses the
 FP64 degree-five bound in [Higham's matrix exponential analysis](https://epubs.siam.org/doi/10.1137/04061101X).
+Job `2171666` uses the independently checked `24³×8` LIME field from
+job `2171047` as the shared input for two full trajectory pairs. The
+pair holds all other optimizations fixed and checks the proposed links,
+momenta, delta-H, and acceptance before interpreting the timings.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
@@ -557,8 +561,10 @@ targets 0.1, 0.20 and 0.35 alongside the cap-40 control. It runs on
 cn12065 after job `2171323` releases the allocation. Each case receives
 an independent twelve-column verification.
 The measured warmed medians were 21.914, 21.489, 22.506, and 24.871 s
-for cap 40 and the three cap-14 targets, respectively. The independent
-verification is in progress. The opt-in
+for cap 40 and the three cap-14 targets, respectively. The control and
+cap-14 target 0.1 passed the independent twelve-column check at maximum
+residuals `4.82e-9` and `4.91e-9`. Verification of the other two
+targets is in progress. The opt-in
 [LingSheng L24 plan](../../profiles/optimization/lingsheng-l24-cap14-full12.json)
 replays the previously verified cap-14 target of 0.1.
 
