@@ -266,7 +266,7 @@ class HMCPhysicsTests(unittest.TestCase):
         clover = self.m.clover_blocks(strength, mass)
         lower, upper = positive_schur_bounds(clover[self.m.even], clover[self.m.odd], mass,
                                              cold_gap=gap, links=near_cold)
-        dense = PseudofermionHMC(ms=mass, strange_interval=(.0005, 6.))
+        dense = PseudofermionHMC(mass_strange=mass, strange_interval=(.0005, 6.))
         eigenvalues, _, _ = dense._normal_spectrum(near_cold, mass, strength, True)
         self.assertLessEqual(lower, float(eigenvalues.min()))
         self.assertGreaterEqual(upper, float(eigenvalues.max()))
