@@ -13,7 +13,8 @@ setup time separately, and independent FP64 full-operator residuals at
 - PyQCU 0.1.18 at `cf3464c7218b9cedfa12076dd374c674087bd5ca`.
   The login node cannot resolve GitHub. The remote Git checkout uses a thin
   bundle with the prior PyQCU repository as its object store and retains the
-  upstream URL as origin.
+  upstream URL as origin. A clean persistent checkout is available at
+  `~/lqcd-run/pyqcu-upstream-cf3464c` on LingSheng.
 - Job `2169362`, output `~/lqcd-run/pyqcu-cf3464c-run04`. Includes raw
   report-style single-RHS runs, matched BiCGStab and Legacy MG full12
   runs, and the frozen `efe57de` solver control on the same node.
@@ -239,6 +240,23 @@ Job `2170744` split MD timing into coefficient construction, Krylov
 preparation and solves, and spinor and gauge differentiation. Preparation
 and solves used 21.73 s out of 27.92 s in MD on its profiled `4⁴`
 trajectory. These are per-phase rank maxima.
+
+Job `2170768` held the refresh and endpoint quadratures fixed and tried
+64, 32 and 24 poles in the strange MD force on `4⁴`, rotating execution
+order across three identical-input comparisons. The respective complete
+trajectory medians were 8.824, 6.966 and 6.144 s. The 64-pole samples
+included one 23.19 s outlier. Every proposal was accepted. Relative to
+64 poles, the 32-pole setting differed by at most `2.99e-10` in force and
+`1.50e-9` in delta-H; for 24 poles the differences were `4.36e-8` and
+`2.61e-7`. Both candidates passed the reversal checks. Job `2170870`
+extends the pairing to `8⁴` and uses 32 MD poles for a `12⁴` pilot.
+[Grid's general rational-ratio action](https://github.com/paboyle/Grid/blob/3232b438f2cf729e515c185e2dbf29d7cc276bb7/Grid/qcd/action/pseudofermion/GeneralEvenOddRationalRatio.h)
+also supports setting the MD and acceptance rational degrees separately.
+
+Job `2170780` tested GCC's `-fcx-limited-range` in an experimental
+library build. The normal application speedups were 1.168×, 1.089× and
+1.016× on `4⁴`, `8⁴` and `12⁴`. The largest discrepancy against Torch
+was `8.96e-16`. The flag remains outside the production build.
 
 ### ARM propagation and Legacy MG follow-up
 
