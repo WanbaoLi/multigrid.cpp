@@ -1,0 +1,569 @@
+{
+  "complete": true,
+  "gauge": {
+    "file": "/home/share/nsls_lwb/lqcd-run/hmc-l24t64-optimized-publication-run01/published/hmc_000008.lime",
+    "sha256": "968be55e7937b0ced24fe3b67488b3e8cc3c356db1156091ab39ac66acd2186c"
+  },
+  "trajectory": 8,
+  "ranks": 64,
+  "threads": 1,
+  "placement": [
+    {
+      "host": "cn19572",
+      "cpus": [
+        0
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        1
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        2
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        3
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        38
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        39
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        40
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        41
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        76
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        77
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        78
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        79
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        114
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        115
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        116
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        117
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        152
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        153
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        154
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        155
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        190
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        191
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        192
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        193
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        228
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        229
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        230
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        231
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        266
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        267
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        268
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        269
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        304
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        305
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        306
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        307
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        342
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        343
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        344
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        345
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        380
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        381
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        382
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        383
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        418
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        419
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        420
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        421
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        456
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        457
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        458
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        459
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        494
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        495
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        496
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        497
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        532
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        533
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        534
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        535
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        570
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        571
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        572
+      ]
+    },
+    {
+      "host": "cn19572",
+      "cpus": [
+        573
+      ]
+    }
+  ],
+  "optimization": "overlap-schur-faces",
+  "settings": {
+    "control": {
+      "interval": [
+        0.004,
+        4.0
+      ],
+      "md_order": 16,
+      "packed_faces": true,
+      "direct_clover": true,
+      "compact_spin": true,
+      "zolotarev": true,
+      "projected_force_faces": true,
+      "force_pole_batch": 11,
+      "real_krylov_dot": true,
+      "light_heatbath_action": true,
+      "reuse_odd_inverse": true,
+      "gershgorin_strange": true,
+      "native_pade": true,
+      "fused_schur_gamma5": true,
+      "overlap_schur_faces": false,
+      "compress_refresh": false
+    },
+    "candidate": {
+      "interval": [
+        0.004,
+        4.0
+      ],
+      "md_order": 16,
+      "packed_faces": true,
+      "direct_clover": true,
+      "compact_spin": true,
+      "zolotarev": true,
+      "projected_force_faces": true,
+      "force_pole_batch": 11,
+      "real_krylov_dot": true,
+      "light_heatbath_action": true,
+      "reuse_odd_inverse": true,
+      "gershgorin_strange": true,
+      "native_pade": true,
+      "fused_schur_gamma5": true,
+      "overlap_schur_faces": true,
+      "compress_refresh": false
+    }
+  },
+  "rational_sha256": {
+    "control": "a68febdad202b935b8b3d7b04e9ecc0bf953af49893e20df6d1eee4db4eec4fa",
+    "candidate": "a68febdad202b935b8b3d7b04e9ecc0bf953af49893e20df6d1eee4db4eec4fa"
+  },
+  "source_commit": "99e033d61c45c1d0ba5a9b9723f8f1a13ca24765",
+  "torch_version": "1.12.1",
+  "native_schur_sha256": "adfb0a3031917ab0e26328a06e2c6b0df1d4b27f25759a2dcff29538e5743e7f",
+  "length": 0.018,
+  "steps": 1,
+  "gauge_steps": 2,
+  "lattice_xyzt": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "beta": 5.6,
+  "csw": 1.0,
+  "mass_light": 0.5,
+  "mass_strange": 0.8,
+  "seed": 1729,
+  "repeats": 2,
+  "samples": [
+    {
+      "trial": 0,
+      "order": [
+        "control",
+        "candidate"
+      ],
+      "maximum_error": {
+        "links": 0.0,
+        "momenta": 0.0,
+        "delta_h": 0.0
+      },
+      "control": {
+        "accepted": true,
+        "delta_h": 0.36375286316526,
+        "h_initial": 25346066.824489415,
+        "h_final": 25346067.188242275,
+        "metropolis_probability": 0.6950629491758173,
+        "force_seconds": {
+          "coefficient_build": 1.8702414269937435,
+          "prepare_and_solve": 25.55935966700781,
+          "spinor_differentiation": 13.538155965012265,
+          "gauge_differentiation": 4.0609491980139865
+        },
+        "phase_seconds": {
+          "refresh": 11.939821070001926,
+          "md": 48.02531580498908,
+          "endpoint": 15.146871104007005
+        },
+        "seconds": 74.82477860699873,
+        "drift_seconds": 0.4288557359977858
+      },
+      "candidate": {
+        "accepted": true,
+        "delta_h": 0.36375286316526,
+        "h_initial": 25346066.824489415,
+        "h_final": 25346067.188242275,
+        "metropolis_probability": 0.6950629491758173,
+        "force_seconds": {
+          "coefficient_build": 1.8435626510035945,
+          "prepare_and_solve": 24.83220554399304,
+          "spinor_differentiation": 13.284134071029257,
+          "gauge_differentiation": 4.008446569016087
+        },
+        "phase_seconds": {
+          "refresh": 11.196836325005279,
+          "md": 47.02440670999931,
+          "endpoint": 14.974936972997966
+        },
+        "seconds": 72.96057524599019,
+        "drift_seconds": 0.4302322790026665
+      }
+    },
+    {
+      "trial": 1,
+      "order": [
+        "candidate",
+        "control"
+      ],
+      "maximum_error": {
+        "links": 0.0,
+        "momenta": 0.0,
+        "delta_h": 0.0
+      },
+      "candidate": {
+        "accepted": true,
+        "delta_h": 0.11907759188438405,
+        "h_initial": 25343957.22063125,
+        "h_final": 25343957.339708842,
+        "metropolis_probability": 0.8877389167541726,
+        "force_seconds": {
+          "coefficient_build": 1.858189509002841,
+          "prepare_and_solve": 25.189508659008425,
+          "spinor_differentiation": 13.326954102987656,
+          "gauge_differentiation": 4.131652319993009
+        },
+        "phase_seconds": {
+          "refresh": 11.15380924299825,
+          "md": 47.3679463580047,
+          "endpoint": 14.84163159300806
+        },
+        "seconds": 73.08204942700104,
+        "drift_seconds": 0.42708950498490594
+      },
+      "control": {
+        "accepted": true,
+        "delta_h": 0.11907759188438405,
+        "h_initial": 25343957.22063125,
+        "h_final": 25343957.339708842,
+        "metropolis_probability": 0.8877389167541726,
+        "force_seconds": {
+          "coefficient_build": 1.8572660080099013,
+          "prepare_and_solve": 25.568556929021724,
+          "spinor_differentiation": 13.156498064985499,
+          "gauge_differentiation": 4.099060295993695
+        },
+        "phase_seconds": {
+          "refresh": 11.186000731002423,
+          "md": 47.61528558201098,
+          "endpoint": 15.13466161499673
+        },
+        "seconds": 73.70309244400414,
+        "drift_seconds": 0.4278487630217569
+      }
+    }
+  ]
+}

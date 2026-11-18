@@ -564,8 +564,11 @@ momenta, energy differences and acceptance. In job `2172052`, both
 two-rank test pairs used an independently verified checkpoint and
 produced zero link, momentum and delta-H differences. See the
 [driver check](distributed-schur-overlap-trajectory-smoke-mpi2.json).
-Job `2172056` pairs Schur overlap on the
-verified `hmc_000008.lime` at `24³×64`.
+Job `2172056` paired Schur overlap on the verified `hmc_000008.lime`
+at `24³×64` and 64 ranks. The whole-trajectory median was 74.26 s
+for the control and 73.02 s with overlap. Both pairs matched exactly
+in links, momenta, delta-H and acceptance. See the
+[whole-trajectory overlap results](distributed-schur-overlap-l24t64-trajectory-paired.json).
 
 The optional `--fused-schur-gamma5` stores the sign-flipped lower spin
 components directly in the native even Schur phase. Each `S†S`
