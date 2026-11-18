@@ -57,7 +57,10 @@ file after sparse checkout. The second build uses the full source in scratch.
   five- and three-step Omelyan on sixteen identical initial conditions.
   Three-step Omelyan used seven force evaluations and took 2.670 s
   versus 4.127 s for leapfrog. The RMS energy errors were 0.05703 and 0.09084.
-  Job `2169517` checks the three-step setting over 80 trajectories.
+  Job `2169517` repeated the three-step setting over 80 trajectories.
+  It accepted 79/80 overall and 40/40 after the first 40 trajectories,
+  with post-warm-up RMS energy error 0.04543. All four saved LIME
+  configurations passed independent verification.
 - Job `2169372` checks the matrix-free Wilson–Clover application and its
   link gradient against the dense reference at both sea masses. All eleven
   checks passed. Job `2169446` extended the comparison to the even Schur
@@ -68,8 +71,9 @@ file after sparse checkout. The second build uses the full source in scratch.
   of `7.81e-13`.
 - Job `2169527` passed fourteen checks. Matrix-free rational powers at the
   strange mass agreed with a dense eigensolve within `3.21e-13` relative
-  over the tested spectral interval. Job `2169538` checks the associated
-  force against an independent dense finite difference.
+  over the tested spectral interval. Job `2169538` passed fifteen checks,
+  including the strange-pseudofermion force against a dense finite
+  difference with absolute discrepancy `2.05e-11`.
 
 Direct assembly reduced the paired median four-step MD time from 3.266 to
 2.212 s on `2⁴` and from 6.343 to 3.477 s on `2³×4` on cn12038.
