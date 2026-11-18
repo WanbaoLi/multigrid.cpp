@@ -20,7 +20,8 @@ def _finite_sum(terms):
 class DistributedRHMC:
     def __init__(self, lattice, beta, ml, ms, csw, comm, library, interval=(.004, 4.), *,
                  md_order=32, md_tolerance=1e-12, direct_clover=False, packed_faces=False, compact_spin=False,
-                 zolotarev=False, force_pole_batch=8, projected_force_faces=False):
+                 zolotarev=False, force_pole_batch=8, projected_force_faces=False,
+                 light_heatbath_action=False):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -58,6 +59,7 @@ class DistributedRHMC:
         self.zolotarev = zolotarev
         self.force_pole_batch = force_pole_batch
         self.projected_force_faces = projected_force_faces
+        self.light_heatbath_action = light_heatbath_action
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
             self.interval, md_order=md_order, zolotarev=zolotarev)
 
@@ -113,21 +115,45 @@ class DistributedRHMC:
         extended, coefficients = self._endpoint_geometry(u)
         return self._endpoint_terms(extended, coefficients, p, fields)
 
-    def _endpoint_terms(self, extended, coefficients, p, fields, operators=None):
+    def _endpoint_terms(self, extended, coefficients, p, fields, operators=None, light_action=None):
         terms = [float(owned_gauge_action(extended, self.beta)), float(p.square().sum()) / 2]
         for i, (mass, phi, clover) in enumerate(zip((self.ml, self.ms), fields, coefficients)):
-            schur = self._schur(extended, clover, mass) if operators is None else operators[i]
-
-            def normal(vec):
-                return self._normal(schur, vec)
-
-            if i == 0:
-                solved, _, _ = solve_shifted(normal, phi, 0., comm=self.comm)
+            if i == 0 and light_action is not None:
+                action = light_action
             else:
-                solved, _ = apply_rational(normal, phi, self.endpoint_terms, comm=self.comm)
-            terms.extend((float((phi.conj() * solved).real.sum()),
-                          -(2 - i) * float(torch.linalg.slogdet(clover[self.odd])[1].sum())))
+                schur = self._schur(extended, clover, mass) if operators is None else operators[i]
+
+                def normal(vec):
+                    return self._normal(schur, vec)
+
+                if i == 0:
+                    solved, _, _ = solve_shifted(normal, phi, 0., comm=self.comm)
+                else:
+                    solved, _ = apply_rational(normal, phi, self.endpoint_terms, comm=self.comm)
+                action = float((phi.conj() * solved).real.sum())
+            terms.extend((action, -(2 - i) * float(torch.linalg.slogdet(clover[self.odd])[1].sum())))
         return terms
+
+    def _light_noise_action(self, gauge, clover, noise):
+        # With phi = S† eta and nonsingular S, phi† (S†S)⁻¹ phi = ||eta||².
+        # Certify invertibility using local Gershgorin bounds and the same
+        # Wilson hopping norm bound used for the strange Schur operator.
+        entries = clover.abs()
+        diagonal = clover.diagonal(dim1=-2, dim2=-1).real
+        bound = float((diagonal + diagonal.abs() - entries.sum(dim=-1)).amin())
+        scale = float(entries.amax())
+        deviation = float((dagger(gauge) @ gauge - self.eye).abs().square().sum(dim=(-2, -1)).amax().sqrt())
+        # Each time hop may use another rank's gauge link.
+        extrema = self.comm.allgather((bound, scale, deviation))
+        if not all(math.isfinite(value) for row in extrema for value in row):
+            return None
+        bounds, scales, deviations = zip(*extrema)
+        hopping = 4 * math.sqrt(1 + max(deviations)) / (self.ml + 4)
+        bound, scale = min(bounds), max(scales)
+        margin = 64 * torch.finfo(diagonal.dtype).eps * max(1., scale, hopping)
+        if bound > hopping + margin:
+            return float((noise.real.square() + noise.imag.square()).sum())
+        return None
 
     @torch.no_grad()
     def _heatbath_and_initial_terms(self, u, p, noises):
@@ -138,7 +164,8 @@ class DistributedRHMC:
                           for clover, mass in zip(coefficients, (self.ml, self.ms)))
         fields = self._refresh_fields(*operators, *noises)
         refreshed = perf_counter()
-        return fields, self._endpoint_terms(extended, coefficients, p, fields, operators), refreshed
+        light_action = self._light_noise_action(u, coefficients[0], noises[0]) if self.light_heatbath_action else None
+        return fields, self._endpoint_terms(extended, coefficients, p, fields, operators, light_action), refreshed
 
     def endpoint_energy(self, u, p, fields):
         energy = self.comm.allreduce(_finite_sum(self._local_endpoint_terms(u, p, fields)))

@@ -22,6 +22,7 @@ def main():
     parser.add_argument("--compact-spin", action="store_true")
     parser.add_argument("--zolotarev", action="store_true")
     parser.add_argument("--projected-force-faces", action="store_true")
+    parser.add_argument("--light-heatbath-action", action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(1)
     comm = MPI.COMM_WORLD.Dup()
@@ -31,7 +32,8 @@ def main():
         model = DistributedRHMC(*params, comm, os.environ["LQCD_HMC_SCHUR_LIBRARY"],
                                 direct_clover=args.direct_clover, packed_faces=args.packed_faces,
                                 compact_spin=args.compact_spin, zolotarev=args.zolotarev,
-                                projected_force_faces=args.projected_force_faces)
+                                projected_force_faces=args.projected_force_faces,
+                                light_heatbath_action=args.light_heatbath_action)
         baseline, final, precise_difference = model._hamiltonian_pair([2.**56, 2.], [2.**56, 3.])
         assert final == baseline and precise_difference == comm.size
         serial = MatrixFreePseudofermionHMC(*params)
@@ -50,7 +52,16 @@ def main():
         actual = model.refresh(local_u, *noise)
         reused_fields, reused_terms, _ = model._heatbath_and_initial_terms(local_u, local_p, noise)
         assert all(torch.equal(a, b) for a, b in zip(actual, reused_fields))
-        assert reused_terms == model._local_endpoint_terms(local_u, local_p, actual)
+        explicit_terms = model._local_endpoint_terms(local_u, local_p, actual)
+        heatbath_error = 0.
+        if args.light_heatbath_action:
+            local_clover = model._coefficients(model._gauge_faces(local_u))[0]
+            assert reused_terms[2] == model._light_noise_action(local_u, local_clover, noise[0])
+            assert model._light_noise_action(local_u, torch.zeros_like(local_clover), noise[0]) is None
+            assert reused_terms[:2] == explicit_terms[:2] and reused_terms[3:] == explicit_terms[3:]
+            heatbath_error = abs(comm.allreduce(reused_terms[2] - explicit_terms[2]))
+        else:
+            assert reused_terms == explicit_terms
         refresh_error = max(float((a - e[half]).abs().max()) for a, e in zip(actual, expected))
         hamiltonian = model.endpoint_energy(local_u, local_p, actual)
         dense_fields = tuple(x.flatten() for x in expected)
@@ -62,7 +73,7 @@ def main():
         force_error = float((force - torch.from_numpy(serial_force[slab])).abs().max())
         up, pp = model.integrate(local_u, local_p, actual, .04, 1)
         _, _, measured_delta = model._hamiltonian_pair(
-            model._local_endpoint_terms(local_u, local_p, actual), model._local_endpoint_terms(up, pp, actual))
+            reused_terms, model._local_endpoint_terms(up, pp, actual))
         dense_final = dense.endpoint_energy(torch.cat(comm.allgather(up)), torch.cat(comm.allgather(pp)),
                                             dense_fields)
         ub, pb = model.integrate(up, -pp, actual, .04, 1)
@@ -70,13 +81,14 @@ def main():
         split_back_u, split_back_p = model.integrate(split_u, -split_p, actual, .04, 1, gauge_steps=2)
         errors = dict(refresh=refresh_error, endpoint=endpoint_error, force=force_error,
                       delta_h=abs(measured_delta - (dense_final - dense_initial)),
+                      light_heatbath_action=heatbath_error,
                       split_force=float((split_force - force).abs().max()),
                       split_reversible_links=float((split_back_u - local_u).abs().max()),
                       split_reversible_momenta=float((split_back_p + local_p).abs().max()),
                       reversible_links=float((ub - local_u).abs().max()),
                       reversible_momenta=float((pb + local_p).abs().max()))
         errors = {key: comm.allreduce(value, op=MPI.MAX) for key, value in errors.items()}
-        limits = dict(refresh=2e-11, endpoint=1e-9, force=3e-9, delta_h=1e-9,
+        limits = dict(refresh=2e-11, endpoint=1e-9, force=3e-9, delta_h=1e-9, light_heatbath_action=1e-9,
                       reversible_links=2e-12, reversible_momenta=2e-11,
                       split_force=2e-12, split_reversible_links=2e-12, split_reversible_momenta=2e-11)
         if any(errors[key] > tolerance for key, tolerance in limits.items()):
@@ -84,7 +96,8 @@ def main():
         if comm.rank == 0:
             args.output.write_text(json.dumps(dict(passed=True, ranks=comm.size, lattice=lattice,
                                                    extensive_difference_check=precise_difference,
-                                                   identical_reused_initial_workspace=True,
+                                                   identical_heatbath_fields=True,
+                                                   identical_initial_terms=not args.light_heatbath_action,
                                                    max_error=errors), indent=2) + "\n")
     finally:
         comm.Free()
