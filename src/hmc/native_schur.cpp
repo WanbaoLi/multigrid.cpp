@@ -76,13 +76,30 @@ void hopping_sum(std::int64_t n, std::int64_t site, const std::int64_t *neighbor
 }
 
 void clover_product(const Complex *blocks, const Complex *input, Complex *output) {
-    for (int chiral = 0; chiral < 2; ++chiral)
+    for (int chiral = 0; chiral < 2; ++chiral) {
+        const auto *block = blocks + 36 * chiral;
+        const auto *source = input + 6 * chiral;
         for (int row = 0; row < 6; ++row) {
+#if defined(LQCD_HMC_CLOVER_SIMD)
+            // Each row is a short FP64 complex dot product. Separate the
+            // accumulators so the compiler can vectorize the real lanes.
+            double real = 0., imag = 0.;
+#pragma omp simd reduction(+ : real, imag)
+            for (int col = 0; col < 6; ++col) {
+                const Complex link = block[6 * row + col];
+                const Complex value = source[col];
+                real += link.real() * value.real() - link.imag() * value.imag();
+                imag += link.real() * value.imag() + link.imag() * value.real();
+            }
+            output[6 * chiral + row] = {real, imag};
+#else
             Complex value{};
             for (int col = 0; col < 6; ++col)
-                value += blocks[36 * chiral + 6 * row + col] * input[6 * chiral + col];
+                value += block[6 * row + col] * source[col];
             output[6 * chiral + row] = value;
+#endif
         }
+    }
 }
 
 template<bool PackedFaces = false, bool ReuseSpatial = false>

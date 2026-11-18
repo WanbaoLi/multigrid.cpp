@@ -24,6 +24,7 @@ OPTIMIZATIONS = {
     "compress-refresh": "compress_refresh",
     "native-pade": "native_pade",
     "md-tolerance": "md_tolerance",
+    "native-library": None,
 }
 
 
@@ -76,12 +77,16 @@ def pair(args, comm):
                     native_pade=True, fused_schur_gamma5=True,
                     overlap_schur_faces=False, compress_refresh=False)
     flag = OPTIMIZATIONS[args.optimization]
-    tolerance_pair = args.optimization == "md-tolerance"
-    settings[flag] = 1e-12 if tolerance_pair else False
-    candidate_value = args.candidate_md_tolerance if tolerance_pair else True
-    specifications = dict(control=settings, candidate={**settings, flag: candidate_value})
+    if flag is None:
+        specifications = dict(control=settings, candidate=settings.copy())
+    else:
+        tolerance_pair = args.optimization == "md-tolerance"
+        settings[flag] = 1e-12 if tolerance_pair else False
+        candidate_value = args.candidate_md_tolerance if tolerance_pair else True
+        specifications = dict(control=settings, candidate={**settings, flag: candidate_value})
+    libraries = dict(control=args.library, candidate=args.candidate_library or args.library)
     models = {key: TimedRHMC(chain["lattice_xyzt"], chain["beta"], chain["mass_light"],
-                             chain["mass_strange"], chain["csw"], comm, args.library, **settings)
+                             chain["mass_strange"], chain["csw"], comm, libraries[key], **settings)
               for key, settings in specifications.items()}
     rational_digests = {key: hashlib.sha256(json.dumps(
         (model.md_terms, model.endpoint_terms, model.refresh_terms)).encode()).hexdigest()
@@ -96,6 +101,7 @@ def pair(args, comm):
                   settings=specifications, rational_sha256=rational_digests,
                   source_commit=commit, torch_version=str(torch.__version__),
                   native_schur_sha256=on_root(comm, lambda: lime_sha256(args.library)),
+                  candidate_native_schur_sha256=on_root(comm, lambda: lime_sha256(libraries["candidate"])),
                   length=args.length, steps=args.steps, gauge_steps=args.gauge_steps,
                   lattice_xyzt=chain["lattice_xyzt"], beta=chain["beta"], csw=chain["csw"],
                   mass_light=chain["mass_light"], mass_strange=chain["mass_strange"],
@@ -141,6 +147,7 @@ def main():
     parser.add_argument("chain", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--library", type=Path, required=True)
+    parser.add_argument("--candidate-library", type=Path)
     parser.add_argument("--optimization", choices=OPTIMIZATIONS, required=True)
     parser.add_argument("--trajectory", type=int)
     parser.add_argument("--threads", type=int, default=1)
@@ -157,6 +164,8 @@ def main():
         parser.error("Invalid trajectory or benchmark parameters")
     if args.optimization == "md-tolerance" and not 0 < args.candidate_md_tolerance < 1:
         parser.error("The candidate MD relative tolerance must be between zero and one")
+    if (args.candidate_library is not None) != (args.optimization == "native-library"):
+        parser.error("--candidate-library is required with --optimization native-library")
     pair(args, MPI.COMM_WORLD)
 
 
