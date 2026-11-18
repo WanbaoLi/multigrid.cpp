@@ -8,7 +8,7 @@ from mpi4py import MPI
 import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
-from hmc.distributed_gauge import owned_clover_strength, owned_gauge_action, time_faces
+from hmc.distributed_gauge import owned_clover_strength, owned_gauge_action, owned_gauge_gradient, time_faces
 from hmc.reference import CD, RD, CloverHMC
 
 
@@ -31,6 +31,9 @@ def compare(comm, lattice):
     strength_error = max(float((a - b.reshape(site_shape)[ti]).abs().max())
                          for a, b in zip(local_strength, whole_strength))
     action_error = abs(comm.allreduce(float(action.detach())) - float(whole_action.detach()))
+    gauge_gradient, = torch.autograd.grad(action, local, retain_graph=True)
+    direct_error = comm.allreduce(float((owned_gauge_gradient(extended, model.beta) -
+                                        gauge_gradient).abs().max()), op=MPI.MAX)
     local_loss = action + sum((p.conj() * f).real.sum() for p, f in zip(local_probe, local_strength))
     whole_loss = whole_action + sum((p.conj() * f).real.sum() for p, f in zip(probes, whole_strength))
     local_grad, = torch.autograd.grad(local_loss, local)
@@ -38,10 +41,11 @@ def compare(comm, lattice):
     grad_error = float((local_grad - whole_grad.reshape(*reversed(lattice), 4, 3, 3)[ti]).abs().max())
     strength_error = comm.allreduce(strength_error, op=MPI.MAX)
     grad_error = comm.allreduce(grad_error, op=MPI.MAX)
-    if action_error > 1e-10 or strength_error > 3e-14 or grad_error > 5e-14:
-        raise AssertionError((lattice, action_error, strength_error, grad_error))
+    if action_error > 1e-10 or strength_error > 3e-14 or max(grad_error, direct_error) > 5e-14:
+        raise AssertionError((lattice, action_error, strength_error, grad_error, direct_error))
     return dict(lattice=lattice, gauge_action_error=action_error,
-                field_strength_error=strength_error, link_gradient_error=grad_error)
+                field_strength_error=strength_error, link_gradient_error=grad_error,
+                direct_gauge_gradient_error=direct_error)
 
 
 def main():

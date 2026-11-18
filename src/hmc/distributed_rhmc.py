@@ -4,7 +4,7 @@ from time import perf_counter
 
 import torch
 
-from .distributed_gauge import owned_clover_strength, owned_gauge_action, time_faces
+from .distributed_gauge import owned_clover_strength, owned_gauge_action, owned_gauge_gradient, time_faces
 from .distributed_schur import prepare_local_slab_schur
 from .rational import apply_rational, checked_rational_terms
 from .reference import CD, RD, clover_chiral_blocks, dagger, drift_links, generators, integrate_links
@@ -109,9 +109,8 @@ class DistributedRHMC:
         links = u.detach().requires_grad_(True)
         extended = self._gauge_faces(links)
         coefficients = self._coefficients(extended)
-        local = owned_gauge_action(extended, self.beta)
-        for i, clover in enumerate(coefficients):
-            local = local - (2 - i) * torch.linalg.slogdet(clover[self.odd])[1].sum()
+        local = -sum((2 - i) * torch.linalg.slogdet(clover[self.odd])[1].sum()
+                     for i, clover in enumerate(coefficients))
         schur_links = extended.detach().requires_grad_(True)
         link_gradient = torch.zeros_like(extended)
         clover_gradients = []
@@ -152,8 +151,8 @@ class DistributedRHMC:
         gradient, = torch.autograd.grad(
             (local, extended, *coefficients), links,
             grad_outputs=(torch.ones_like(local), link_gradient, *clover_gradients))
-        rotations = 1j * torch.einsum("aij,vmjk->vmaik", self.basis, u)
-        force = (gradient.conj().unsqueeze(-3) * rotations).real.sum((-1, -2))
+        gradient.add_(owned_gauge_gradient(extended, self.beta).reshape_as(gradient))
+        force = torch.einsum("vmij,aji->vma", u @ dagger(gradient), 1j * self.basis).real
         if timing is not None:
             timing["coefficient_build"] += geometry
             timing["prepare_and_solve"] += solves

@@ -39,8 +39,8 @@ def _dagger(matrix):
     return matrix.conj().transpose(-1, -2)
 
 
-def _loop(extended, directions):
-    offset = [0, 0, 0, 0]
+def _loop(extended, directions, origin=(0, 0, 0, 0)):
+    offset = list(origin)
     nt = extended.shape[0] - 2
     result = None
     for direction in directions:
@@ -68,6 +68,22 @@ def owned_gauge_action(extended, beta):
             loop = _loop(extended, (m, n, -m, -n))
             total = total + (1 - loop.diagonal(dim1=-2, dim2=-1).sum(-1).real / 3).sum()
     return beta * total
+
+
+@torch.no_grad()
+def owned_gauge_gradient(extended, beta):
+    """Link derivative of the global plaquette action on owned sites."""
+    gradient = []
+    for mu in range(1, 5):
+        origin = tuple(int(axis == mu) for axis in range(1, 5))
+        staple = torch.zeros_like(extended[1:-1, ..., mu - 1, :, :])
+        for nu in range(1, 5):
+            if nu == mu:
+                continue
+            staple.add_(_loop(extended, (nu, -mu, -nu), origin))
+            staple.add_(_loop(extended, (-nu, -mu, nu), origin))
+        gradient.append((-beta / 3) * _dagger(staple))
+    return torch.stack(gradient, dim=-3)
 
 
 def owned_clover_strength(extended):
