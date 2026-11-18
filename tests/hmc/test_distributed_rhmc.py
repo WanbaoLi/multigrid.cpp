@@ -24,6 +24,7 @@ def main():
     parser.add_argument("--projected-force-faces", action="store_true")
     parser.add_argument("--light-heatbath-action", action="store_true")
     parser.add_argument("--real-krylov-dot", action="store_true")
+    parser.add_argument("--pade-drift", action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(1)
     comm = MPI.COMM_WORLD.Dup()
@@ -34,7 +35,8 @@ def main():
                                 direct_clover=args.direct_clover, packed_faces=args.packed_faces,
                                 compact_spin=args.compact_spin, zolotarev=args.zolotarev,
                                 projected_force_faces=args.projected_force_faces,
-                                light_heatbath_action=args.light_heatbath_action, real_krylov_dot=args.real_krylov_dot)
+                                light_heatbath_action=args.light_heatbath_action, real_krylov_dot=args.real_krylov_dot,
+                                pade_drift=args.pade_drift)
         baseline, final, precise_difference = model._hamiltonian_pair([2.**56, 2.], [2.**56, 3.])
         assert final == baseline and precise_difference == comm.size
         serial = MatrixFreePseudofermionHMC(*params)

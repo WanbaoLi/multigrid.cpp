@@ -42,8 +42,20 @@ def clover_chiral_blocks(field, mass, csw):
     return torch.stack(blocks, dim=1)
 
 
-def drift_links(u, p, step, basis):
+def drift_links(u, p, step, basis, *, pade=False):
     algebra = torch.einsum("vma,aij->vmij", p.to(CD), basis)
+    if pade:
+        argument = (1j * step) * algebra
+        # Table 2.3 of Higham (2005), DOI 10.1137/04061101X, gives
+        # theta_5 = 0.2539398 for FP64. Retain the spectral path outside
+        # this small-step region, using the same test for the reverse step.
+        if float(argument.abs().sum(dim=-2).amax()) <= .25:
+            identity = torch.eye(3, dtype=argument.dtype, device=argument.device)
+            argument2 = argument @ argument
+            argument4 = argument2 @ argument2
+            even = identity + argument2 / 9 + argument4 / 1008
+            odd = argument @ (identity / 2 + argument2 / 72 + argument4 / 30240)
+            return torch.linalg.solve(even - odd, (even + odd) @ u).detach()
     eigenvalues, vectors = torch.linalg.eigh(algebra)
     rotation = (vectors * torch.exp(1j * step * eigenvalues).unsqueeze(-2)) @ dagger(vectors)
     return (rotation @ u).detach()
