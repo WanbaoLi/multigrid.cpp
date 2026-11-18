@@ -551,6 +551,13 @@ respectively. Outputs were bitwise equal for both masses at each rank
 count. These are within-allocation kernel comparisons. See the
 [32-rank data](distributed-schur-overlap-paired-mpi32.json) and
 [64-rank data](distributed-schur-overlap-paired-mpi64.json).
+The [paired trajectory driver](../../tools/hmc/benchmark_mpi.py) takes
+an independently verified LIME checkpoint and records its SHA256,
+native library, code revision, rank placement and seeds. It alternates
+control and candidate order and checks pre-Metropolis links and
+momenta, energy differences and acceptance. Job `2172052` exercises
+this path on two ranks. Job `2172056` pairs Schur overlap on the
+verified `hmc_000008.lime` at `24³×64`.
 
 The optional `--fused-schur-gamma5` stores the sign-flipped lower spin
 components directly in the native even Schur phase. Each `S†S`
@@ -752,15 +759,19 @@ and spin-color columns exactly on 16 ranks. Job `2171855` published the
 NPY to `~/lqcd-run/mg-l24-generated-propagator-publication-run01` and
 verified its digest after the copy. See [end-to-end verification](generated-lime-propagator/).
 
-Job `2171846` uses the verified, preprocessed gauge slabs and same
-source to screen coarse iteration caps 14, 40, and 80 and a tighter
-coarse residual target. Its two-column runs use one common hierarchy.
-Job `2171893` runs the fastest candidate against cap 14 in the full12
-driver if it improves the two-column median by at least 3%. The full12
-driver shares one hierarchy, alternates case order, and independently
-validates all twelve columns of both outputs. Job `2171889` exercised
-the new source-coordinate support on the existing NPY and confirmed
-all twelve residuals with maximum `4.975e-9`. See the
+Job `2171846` screened coarse GCR caps and tolerances on the verified
+preprocessed gauge and non-origin source. With one common hierarchy,
+the two-column warmed medians were 22.94 s at cap 14, 18.40 s at cap
+40, 13.49 s at cap 80, and 13.52 s at cap 80 with the tighter target.
+At cap 80, the two outer iteration counts fell from 149 and 155 to 39
+and 40. Every measured column passed the internal true residual gate.
+Job `2172060` pairs caps 14 and 80 in the full12 driver after the
+initial submission `2171893` encountered a shared-directory quota
+error before solving. The full12 driver shares one hierarchy,
+alternates case order, and independently validates all twelve columns
+of both outputs. Job `2171889` exercised the non-origin verifier on
+the original NPY with maximum residual `4.975e-9`. See the
+[two-column probe](generated-lime-propagator/coarse-probe.json) and
 [non-origin scalar verification](generated-lime-propagator/nonorigin-scalar-verification.json).
 
 Job `2171803` compares the verified cap-14 solve with three hierarchy

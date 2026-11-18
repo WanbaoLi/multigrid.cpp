@@ -1,0 +1,367 @@
+{
+  "ranks": 16,
+  "setup_seconds": 252.819390758,
+  "fixture_gauge_sha256": "8d7cafc34cbdc2af6ac694b78c6be73fd8d0b7621f83267ef3c10c2ea9304942",
+  "source_xyzt": [
+    3,
+    1,
+    2,
+    5
+  ],
+  "sources": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "cases": {
+    "cap14": [
+      14,
+      0.1
+    ],
+    "cap40": [
+      40,
+      0.1
+    ],
+    "cap80": [
+      80,
+      0.1
+    ],
+    "cap80-tol025": [
+      80,
+      0.025
+    ]
+  },
+  "samples": {
+    "cap14": [
+      {
+        "wall_seconds": 24.315045427996665,
+        "stats": [
+          {
+            "converged": 1,
+            "iterations": 149,
+            "refinement_steps": 0,
+            "solver_seconds": 24.20772267199996,
+            "api_seconds": 24.31248386499999,
+            "true_residual": 4.963054493199528e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          },
+          {
+            "converged": 1,
+            "iterations": 155,
+            "refinement_steps": 0,
+            "solver_seconds": 24.20772267199996,
+            "api_seconds": 24.31248386499999,
+            "true_residual": 4.899962556272222e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          }
+        ],
+        "warmup": true
+      },
+      {
+        "wall_seconds": 22.95378747698851,
+        "stats": [
+          {
+            "converged": 1,
+            "iterations": 149,
+            "refinement_steps": 0,
+            "solver_seconds": 22.881656425000017,
+            "api_seconds": 22.951768214000026,
+            "true_residual": 4.963054493199528e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          },
+          {
+            "converged": 1,
+            "iterations": 155,
+            "refinement_steps": 0,
+            "solver_seconds": 22.881656425000017,
+            "api_seconds": 22.951768214000026,
+            "true_residual": 4.899962556272222e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          }
+        ],
+        "warmup": false
+      },
+      {
+        "wall_seconds": 22.928680970100686,
+        "stats": [
+          {
+            "converged": 1,
+            "iterations": 149,
+            "refinement_steps": 0,
+            "solver_seconds": 22.87776960100001,
+            "api_seconds": 22.92679818800002,
+            "true_residual": 4.963054493199528e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          },
+          {
+            "converged": 1,
+            "iterations": 155,
+            "refinement_steps": 0,
+            "solver_seconds": 22.87776960100001,
+            "api_seconds": 22.92679818800002,
+            "true_residual": 4.899962556272222e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          }
+        ],
+        "warmup": false
+      }
+    ],
+    "cap40": [
+      {
+        "wall_seconds": 18.440085253911093,
+        "stats": [
+          {
+            "converged": 1,
+            "iterations": 79,
+            "refinement_steps": 0,
+            "solver_seconds": 18.326530090999995,
+            "api_seconds": 18.43795746899997,
+            "true_residual": 4.840280780722796e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          },
+          {
+            "converged": 1,
+            "iterations": 83,
+            "refinement_steps": 0,
+            "solver_seconds": 18.326530090999995,
+            "api_seconds": 18.43795746899997,
+            "true_residual": 4.442903415523934e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          }
+        ],
+        "warmup": true
+      },
+      {
+        "wall_seconds": 18.396710101980716,
+        "stats": [
+          {
+            "converged": 1,
+            "iterations": 79,
+            "refinement_steps": 0,
+            "solver_seconds": 18.314511374000006,
+            "api_seconds": 18.394857489999993,
+            "true_residual": 4.840280780722796e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          },
+          {
+            "converged": 1,
+            "iterations": 83,
+            "refinement_steps": 0,
+            "solver_seconds": 18.314511374000006,
+            "api_seconds": 18.394857489999993,
+            "true_residual": 4.442903415523934e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          }
+        ],
+        "warmup": false
+      },
+      {
+        "wall_seconds": 18.395557864801958,
+        "stats": [
+          {
+            "converged": 1,
+            "iterations": 79,
+            "refinement_steps": 0,
+            "solver_seconds": 18.29797014600001,
+            "api_seconds": 18.39357338100001,
+            "true_residual": 4.840280780722796e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          },
+          {
+            "converged": 1,
+            "iterations": 83,
+            "refinement_steps": 0,
+            "solver_seconds": 18.29797014600001,
+            "api_seconds": 18.39357338100001,
+            "true_residual": 4.442903415523934e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          }
+        ],
+        "warmup": false
+      }
+    ],
+    "cap80": [
+      {
+        "wall_seconds": 13.519504158990458,
+        "stats": [
+          {
+            "converged": 1,
+            "iterations": 39,
+            "refinement_steps": 0,
+            "solver_seconds": 13.468454817000008,
+            "api_seconds": 13.517560586000002,
+            "true_residual": 4.178955319443725e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          },
+          {
+            "converged": 1,
+            "iterations": 40,
+            "refinement_steps": 0,
+            "solver_seconds": 13.468454817000008,
+            "api_seconds": 13.517560586000002,
+            "true_residual": 3.4179595331338997e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          }
+        ],
+        "warmup": true
+      },
+      {
+        "wall_seconds": 13.491474305046722,
+        "stats": [
+          {
+            "converged": 1,
+            "iterations": 39,
+            "refinement_steps": 0,
+            "solver_seconds": 13.431187035999983,
+            "api_seconds": 13.489586793,
+            "true_residual": 4.179036724679335e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          },
+          {
+            "converged": 1,
+            "iterations": 40,
+            "refinement_steps": 0,
+            "solver_seconds": 13.431187035999983,
+            "api_seconds": 13.489586793,
+            "true_residual": 3.4179595331338997e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          }
+        ],
+        "warmup": false
+      },
+      {
+        "wall_seconds": 13.495362533023581,
+        "stats": [
+          {
+            "converged": 1,
+            "iterations": 39,
+            "refinement_steps": 0,
+            "solver_seconds": 13.41093187399997,
+            "api_seconds": 13.49348594099996,
+            "true_residual": 4.178955319443725e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          },
+          {
+            "converged": 1,
+            "iterations": 40,
+            "refinement_steps": 0,
+            "solver_seconds": 13.41093187399997,
+            "api_seconds": 13.49348594099996,
+            "true_residual": 3.4179595331338997e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          }
+        ],
+        "warmup": false
+      }
+    ],
+    "cap80-tol025": [
+      {
+        "wall_seconds": 13.442890595877543,
+        "stats": [
+          {
+            "converged": 1,
+            "iterations": 39,
+            "refinement_steps": 0,
+            "solver_seconds": 13.391694709999967,
+            "api_seconds": 13.441025614000012,
+            "true_residual": 4.179036724679335e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          },
+          {
+            "converged": 1,
+            "iterations": 40,
+            "refinement_steps": 0,
+            "solver_seconds": 13.391694709999967,
+            "api_seconds": 13.441025614000012,
+            "true_residual": 3.4179595331338997e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          }
+        ],
+        "warmup": true
+      },
+      {
+        "wall_seconds": 13.51620350102894,
+        "stats": [
+          {
+            "converged": 1,
+            "iterations": 39,
+            "refinement_steps": 0,
+            "solver_seconds": 13.451364366000007,
+            "api_seconds": 13.51428526899997,
+            "true_residual": 4.179036724679335e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          },
+          {
+            "converged": 1,
+            "iterations": 40,
+            "refinement_steps": 0,
+            "solver_seconds": 13.451364366000007,
+            "api_seconds": 13.51428526899997,
+            "true_residual": 3.4179595331338997e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          }
+        ],
+        "warmup": false
+      },
+      {
+        "wall_seconds": 13.528064623009413,
+        "stats": [
+          {
+            "converged": 1,
+            "iterations": 39,
+            "refinement_steps": 0,
+            "solver_seconds": 13.459207276999962,
+            "api_seconds": 13.526006719000009,
+            "true_residual": 4.179036724679335e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          },
+          {
+            "converged": 1,
+            "iterations": 40,
+            "refinement_steps": 0,
+            "solver_seconds": 13.459207276999962,
+            "api_seconds": 13.526006719000009,
+            "true_residual": 3.4179595331338997e-09,
+            "batch_size": 2,
+            "timing_scope": "shared_batch"
+          }
+        ],
+        "warmup": false
+      }
+    ]
+  },
+  "measured_medians": {
+    "cap14": 22.941234223544598,
+    "cap40": 18.396133983391337,
+    "cap80": 13.493418419035152,
+    "cap80-tol025": 13.522134062019177
+  }
+}
