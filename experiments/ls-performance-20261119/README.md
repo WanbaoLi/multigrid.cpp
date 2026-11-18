@@ -206,9 +206,9 @@ two and four time ranks. They cover native Schur, packed collective
 shifted residuals, Clover and link gradient exchange, local-gauge
 coefficient preparation, and projected half-spin spinor exchange.
 The full distributed RHMC path in `101d1de` adds local heatbath, force
-and Metropolis; the two-rank trajectory check in job `2170504` agreed
-with the dense endpoint within `5.69e-14` and reproduced the links
-under reversal within `3.58e-15`. Node5005 through itp passed the
+and Metropolis. The two- and four-rank trajectory checks in job
+`2170504` agreed with the dense endpoint within `4.55e-13` and
+reproduced the links under reversal within `4.00e-15`. Node5005 through itp passed the
 three targeted tests with snapshot `8ad2514`. Its benchmark showed
 large run-to-run timing variation, so its numerical results are
 the cross-platform check for this snapshot.
