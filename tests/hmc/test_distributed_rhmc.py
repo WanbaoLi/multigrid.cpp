@@ -46,6 +46,9 @@ def main():
         noise_rng = torch.Generator().manual_seed(seed)
         noise = [torch.randn(field.shape, dtype=CD, generator=noise_rng)[half] for field in expected]
         actual = model.refresh(local_u, *noise)
+        reused_fields, reused_terms, _ = model._heatbath_and_initial_terms(local_u, local_p, noise)
+        assert all(torch.equal(a, b) for a, b in zip(actual, reused_fields))
+        assert reused_terms == model._local_endpoint_terms(local_u, local_p, actual)
         refresh_error = max(float((a - e[half]).abs().max()) for a, e in zip(actual, expected))
         hamiltonian = model.endpoint_energy(local_u, local_p, actual)
         dense_fields = tuple(x.flatten() for x in expected)
@@ -79,6 +82,7 @@ def main():
         if comm.rank == 0:
             args.output.write_text(json.dumps(dict(passed=True, ranks=comm.size, lattice=lattice,
                                                    extensive_difference_check=precise_difference,
+                                                   identical_reused_initial_workspace=True,
                                                    max_error=errors), indent=2) + "\n")
     finally:
         comm.Free()

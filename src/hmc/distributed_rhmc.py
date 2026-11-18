@@ -81,14 +81,13 @@ class DistributedRHMC:
     def _normal(self, schur, field):
         return self.gamma5 * schur(self.gamma5 * schur(field))
 
-    @torch.no_grad()
-    def refresh(self, u, noise_l, noise_s):
+    def _endpoint_geometry(self, u):
         extended = self._gauge_faces(u)
-        light, strange = self._coefficients(extended)
-        self._certify(strange, u)
-        schur_l = self._schur(extended, light, self.ml)
-        schur_s = self._schur(extended, strange, self.ms)
+        coefficients = self._coefficients(extended)
+        self._certify(coefficients[1], u)
+        return extended, coefficients
 
+    def _refresh_fields(self, schur_l, schur_s, noise_l, noise_s):
         def normal(vec):
             return self._normal(schur_s, vec)
 
@@ -96,13 +95,21 @@ class DistributedRHMC:
         return self.gamma5 * schur_l(self.gamma5 * noise_l), normal(fraction)
 
     @torch.no_grad()
+    def refresh(self, u, noise_l, noise_s):
+        extended, (light, strange) = self._endpoint_geometry(u)
+        schur_l = self._schur(extended, light, self.ml)
+        schur_s = self._schur(extended, strange, self.ms)
+        return self._refresh_fields(schur_l, schur_s, noise_l, noise_s)
+
+    @torch.no_grad()
     def _local_endpoint_terms(self, u, p, fields):
-        extended = self._gauge_faces(u)
-        coefficients = self._coefficients(extended)
-        self._certify(coefficients[1], u)
+        extended, coefficients = self._endpoint_geometry(u)
+        return self._endpoint_terms(extended, coefficients, p, fields)
+
+    def _endpoint_terms(self, extended, coefficients, p, fields, operators=None):
         terms = [float(owned_gauge_action(extended, self.beta)), float(p.square().sum()) / 2]
         for i, (mass, phi, clover) in enumerate(zip((self.ml, self.ms), fields, coefficients)):
-            schur = self._schur(extended, clover, mass)
+            schur = self._schur(extended, clover, mass) if operators is None else operators[i]
 
             def normal(vec):
                 return self._normal(schur, vec)
@@ -114,6 +121,17 @@ class DistributedRHMC:
             terms.extend((float((phi.conj() * solved).real.sum()),
                           -(2 - i) * float(torch.linalg.slogdet(clover[self.odd])[1].sum())))
         return terms
+
+    @torch.no_grad()
+    def _heatbath_and_initial_terms(self, u, p, noises):
+        # The freshly drawn fields and H at the initial configuration use
+        # the same halo, Clover factors, and native Schur workspaces.
+        extended, coefficients = self._endpoint_geometry(u)
+        operators = tuple(self._schur(extended, clover, mass)
+                          for clover, mass in zip(coefficients, (self.ml, self.ms)))
+        fields = self._refresh_fields(*operators, *noises)
+        refreshed = perf_counter()
+        return fields, self._endpoint_terms(extended, coefficients, p, fields, operators), refreshed
 
     def endpoint_energy(self, u, p, fields):
         energy = self.comm.allreduce(_finite_sum(self._local_endpoint_terms(u, p, fields)))
@@ -212,9 +230,7 @@ class DistributedRHMC:
         p = torch.randn((self.local_volume, 4, 8), dtype=RD, generator=rng)
         noises = [torch.randn(self.spinor_shape, dtype=CD, generator=rng) for _ in range(2)]
         start = perf_counter()
-        fields = self.refresh(u, *noises)
-        refreshed = perf_counter()
-        initial_terms = self._local_endpoint_terms(u, p, fields)
+        fields, initial_terms, refreshed = self._heatbath_and_initial_terms(u, p, noises)
         force_timing = dict(coefficient_build=0., prepare_and_solve=0.,
                             spinor_differentiation=0., gauge_differentiation=0.)
         started_md = perf_counter()
