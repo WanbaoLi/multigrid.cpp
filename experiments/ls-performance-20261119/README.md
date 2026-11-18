@@ -317,6 +317,27 @@ The two- and four-rank checks passed with true shifted residual at most
 pairs full `24³×4` trajectories with both the packed faces and analytic
 Clover options enabled against the baseline implementation.
 
+Job `2171400` evaluated the optional Zolotarev inverse square root.
+On the standard spectral interval it used 15 poles at the Metropolis
+endpoint and 11 for the trial MD target, versus 48 and 32 with
+quadrature. The 48-pole heatbath was identical in both branches.
+Independent scalar grid error was `2.11e-13` or less on both tested
+intervals. Two matched proposals at each geometry changed median
+time from 11.79 to 8.11 s at `8⁴` and from 43.57 to 29.20 s at `12⁴`.
+Every paired Metropolis decision agreed. Maximum paired link
+and delta-H differences were `9.05e-13` and `1.85e-7`.
+
+Job `2171435` checked Hamiltonian differences formed before the
+rank reduction. Two- and four-rank values agreed with dense differences
+within `1.78e-12`. A cancellation fixture recovered a unit difference
+per rank between extensive values whose FP64 totals were equal.
+The complete test used packed faces, analytic Clover and compact spin
+with Zolotarev, and the separate MPI2 restart oracle still matched.
+
+Job `2171439` is staged to compare the combined optimizations at
+`24³×64` using a common, independently verified full-volume LIME file.
+It waits for job `2171358` to publish the configuration.
+
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
 matrix contraction. The contraction avoids constructing all eight

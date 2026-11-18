@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "ranks": 2,
+  "checkpoint": {
+    "trajectory": 1,
+    "configuration_sha256": "0c94bd3f4033e36c35f0e384f48c3f94978c406ad7dcd3def9f109f3fa21211d",
+    "report": "/home/share/nsls_lwb/lqcd-run/hmc-delta-terms-run01/restart/head/result.json"
+  },
+  "matched_trajectories": 3,
+  "matched_lime_and_rng_digests": true,
+  "invalid_parameters_rejected": true
+}

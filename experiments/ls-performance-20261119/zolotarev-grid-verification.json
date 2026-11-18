@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "metrics": {
+    "zolotarev_inverse_square_root": [
+      {
+        "interval": [
+          0.004,
+          4.0
+        ],
+        "poles": 15,
+        "generation_error": 2.1049828546892968e-13,
+        "independent_grid_error": 2.1049828546892968e-13
+      },
+      {
+        "interval": [
+          0.0005,
+          6.0
+        ],
+        "poles": 19,
+        "generation_error": 1.8762769116165146e-13,
+        "independent_grid_error": 1.8762769116165146e-13
+      }
+    ]
+  }
+}

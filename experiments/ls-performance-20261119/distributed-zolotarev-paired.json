@@ -1,0 +1,259 @@
+{
+  "ranks": 4,
+  "results": [
+    {
+      "lattice": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "samples": {
+        "quadrature": [
+          {
+            "link_error": 7.795848969852069e-13,
+            "delta_h_error": 3.0340743251144886e-08,
+            "accepted": true,
+            "delta_h": 0.0019987156556453556,
+            "h_initial": 114959.09891118965,
+            "h_final": 114959.1009099053,
+            "metropolis_probability": 0.9980032804463891,
+            "force_seconds": {
+              "coefficient_build": 0.23693027789704502,
+              "prepare_and_solve": 3.0694334723521024,
+              "spinor_differentiation": 3.3285834956914186,
+              "gauge_differentiation": 0.5055384770967066
+            },
+            "phase_seconds": {
+              "refresh": 1.044874609913677,
+              "md": 7.998103634919971,
+              "endpoint": 2.7106197450775653
+            },
+            "seconds": 11.758310014847666
+          },
+          {
+            "link_error": 8.937655808151388e-13,
+            "delta_h_error": 2.9453076422214508e-08,
+            "accepted": true,
+            "delta_h": 0.0025624186819186434,
+            "h_initial": 115635.42187046903,
+            "h_final": 115635.42443288771,
+            "metropolis_probability": 0.9974408615104918,
+            "force_seconds": {
+              "coefficient_build": 0.23875849228352308,
+              "prepare_and_solve": 3.076146095758304,
+              "spinor_differentiation": 3.3261378090828657,
+              "gauge_differentiation": 0.5034249690361321
+            },
+            "phase_seconds": {
+              "refresh": 1.0305429268628359,
+              "md": 8.013188872020692,
+              "endpoint": 2.7562465080991387
+            },
+            "seconds": 11.817919238004833
+          }
+        ],
+        "zolotarev": [
+          {
+            "link_error": 7.795848969852069e-13,
+            "delta_h_error": 3.0340743251144886e-08,
+            "accepted": true,
+            "delta_h": 0.0019986853149021044,
+            "h_initial": 114959.09891118834,
+            "h_final": 114959.10090987365,
+            "metropolis_probability": 0.9980033107265509,
+            "force_seconds": {
+              "coefficient_build": 0.2408876100089401,
+              "prepare_and_solve": 2.2449502169620246,
+              "spinor_differentiation": 1.488001137971878,
+              "gauge_differentiation": 0.5072754239663482
+            },
+            "phase_seconds": {
+              "refresh": 1.021896556019783,
+              "md": 5.272193712880835,
+              "endpoint": 1.814597377087921
+            },
+            "seconds": 8.111705434974283
+          },
+          {
+            "link_error": 8.937655808151388e-13,
+            "delta_h_error": 2.9453076422214508e-08,
+            "accepted": true,
+            "delta_h": 0.002562389228842221,
+            "h_initial": 115635.42187046776,
+            "h_final": 115635.42443285699,
+            "metropolis_probability": 0.9974408908881942,
+            "force_seconds": {
+              "coefficient_build": 0.2396663532126695,
+              "prepare_and_solve": 2.2323136529885232,
+              "spinor_differentiation": 1.4815117532853037,
+              "gauge_differentiation": 0.5068140111397952
+            },
+            "phase_seconds": {
+              "refresh": 1.0255585750564933,
+              "md": 5.267504418035969,
+              "endpoint": 1.820617607794702
+            },
+            "seconds": 8.116735140094534
+          }
+        ]
+      },
+      "median_s": {
+        "quadrature": 11.78811462642625,
+        "zolotarev": 8.114220287534408
+      },
+      "speedup": 1.4527723192992328,
+      "poles": {
+        "quadrature": {
+          "md": 32,
+          "endpoint": 48,
+          "refresh": 48
+        },
+        "zolotarev": {
+          "md": 11,
+          "endpoint": 15,
+          "refresh": 48
+        }
+      },
+      "scalar_errors": {
+        "quadrature": {
+          "endpoint": 3.7547742692822794e-13,
+          "refresh": 4.505285033928885e-13,
+          "md": 4.969600508886174e-09
+        },
+        "zolotarev": {
+          "endpoint": 2.1049828546892968e-13,
+          "refresh": 4.505285033928885e-13,
+          "md": 7.249039146728364e-10
+        }
+      }
+    },
+    {
+      "lattice": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "samples": {
+        "quadrature": [
+          {
+            "link_error": 8.811388226227547e-13,
+            "delta_h_error": 1.7799902707338333e-07,
+            "accepted": true,
+            "delta_h": 0.011219143634662032,
+            "h_initial": 583040.6972923797,
+            "h_final": 583040.7085115233,
+            "metropolis_probability": 0.9888435562585254,
+            "force_seconds": {
+              "coefficient_build": 0.7732220087200403,
+              "prepare_and_solve": 11.497839383082464,
+              "spinor_differentiation": 12.173239501891658,
+              "gauge_differentiation": 1.7572480370290577
+            },
+            "phase_seconds": {
+              "refresh": 4.066554160090163,
+              "md": 29.06770797097124,
+              "endpoint": 10.379630204988644
+            },
+            "seconds": 43.52789628901519
+          },
+          {
+            "link_error": 9.047056440381367e-13,
+            "delta_h_error": 1.8451828509569168e-07,
+            "accepted": true,
+            "delta_h": 0.011721591115929186,
+            "h_initial": 584971.9233439927,
+            "h_final": 584971.9350655838,
+            "metropolis_probability": 0.988346839101908,
+            "force_seconds": {
+              "coefficient_build": 0.7831007079221308,
+              "prepare_and_solve": 11.56833786610514,
+              "spinor_differentiation": 12.093858605949208,
+              "gauge_differentiation": 1.7743910080753267
+            },
+            "phase_seconds": {
+              "refresh": 4.051989929983392,
+              "md": 29.137796892086044,
+              "endpoint": 10.415401336969808
+            },
+            "seconds": 43.61916873604059
+          }
+        ],
+        "zolotarev": [
+          {
+            "link_error": 8.811388226227547e-13,
+            "delta_h_error": 1.7799902707338333e-07,
+            "accepted": true,
+            "delta_h": 0.011218965635634959,
+            "h_initial": 583040.6972923729,
+            "h_final": 583040.7085113386,
+            "metropolis_probability": 0.988843732271732,
+            "force_seconds": {
+              "coefficient_build": 0.7832655808888376,
+              "prepare_and_solve": 7.975809765746817,
+              "spinor_differentiation": 5.152069787262008,
+              "gauge_differentiation": 1.7702746726572514
+            },
+            "phase_seconds": {
+              "refresh": 3.979650610126555,
+              "md": 18.49571402510628,
+              "endpoint": 6.641608926933259
+            },
+            "seconds": 29.130938256159425
+          },
+          {
+            "link_error": 9.047056440381367e-13,
+            "delta_h_error": 1.8451828509569168e-07,
+            "accepted": true,
+            "delta_h": 0.01172140659764409,
+            "h_initial": 584971.9233439859,
+            "h_final": 584971.9350653925,
+            "metropolis_probability": 0.9883470214699887,
+            "force_seconds": {
+              "coefficient_build": 0.781621296191588,
+              "prepare_and_solve": 8.110999339260161,
+              "spinor_differentiation": 5.109819325152785,
+              "gauge_differentiation": 1.7496228562667966
+            },
+            "phase_seconds": {
+              "refresh": 4.06264646910131,
+              "md": 18.52838769904338,
+              "endpoint": 6.667988000903279
+            },
+            "seconds": 29.27302741096355
+          }
+        ]
+      },
+      "median_s": {
+        "quadrature": 43.57353251252789,
+        "zolotarev": 29.201982833561487
+      },
+      "speedup": 1.4921429397749442,
+      "poles": {
+        "quadrature": {
+          "md": 32,
+          "endpoint": 48,
+          "refresh": 48
+        },
+        "zolotarev": {
+          "md": 11,
+          "endpoint": 15,
+          "refresh": 48
+        }
+      },
+      "scalar_errors": {
+        "quadrature": {
+          "endpoint": 3.7547742692822794e-13,
+          "refresh": 4.505285033928885e-13,
+          "md": 4.969600508886174e-09
+        },
+        "zolotarev": {
+          "endpoint": 2.1049828546892968e-13,
+          "refresh": 4.505285033928885e-13,
+          "md": 7.249039146728364e-10
+        }
+      }
+    }
+  ]
+}

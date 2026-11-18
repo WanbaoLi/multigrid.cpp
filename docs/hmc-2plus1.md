@@ -179,6 +179,15 @@ MPI 生成器随每份 SciDAC LIME 保存各 rank 的 `.rng.npy` 状态。将上
 `--packed-faces` 让原生 Schur 核直接读取本地自旋场与时间方向的半自旋
 边界缓冲区，省去每次调用把整个本地场复制到扩展缓冲区的操作。
 `--direct-clover` 可独立选择四叶 Clover 的解析伴随导数。
+`--compact-spin` 也将 MD 的自旋投影及其导数限制到两个分量。
+
+`--zolotarev` 需要 SciPy，通过椭圆函数计算奇异味 MD 和 Metropolis
+端点所需的逆平方根部分分式。程序检查标量谱区间的逼近误差并保留逐极点
+真残差检查。奇异味热浴的四分之三负幂继续采用原有求积。[有理式的椭圆函数系数](https://www.sciencedirect.com/science/article/pii/S0370269315001999)
+
+轨迹报告中的 `delta_h` 先在各 rank 上逐项相减，再做 MPI 求和，避免
+从两个已舍入的全局 Hamiltonian 相减。由于舍入顺序不同，
+`h_final - h_initial` 的打印值可能与 `delta_h` 有微小差异。
 
 接近冷场的负 Wilson 奇异质量可用自由算子的最小奇异值减去规范场扰动
 的范数上界来认证。该下界为正时，连接自由算子和当前算子的整条直线保持

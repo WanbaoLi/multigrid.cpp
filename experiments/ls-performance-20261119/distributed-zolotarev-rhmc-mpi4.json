@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "ranks": 4,
+  "lattice": [
+    2,
+    2,
+    2,
+    4
+  ],
+  "max_error": {
+    "refresh": 9.930136612989092e-16,
+    "endpoint": 9.094947017729282e-13,
+    "force": 1.7763568394002505e-13,
+    "split_force": 6.661338147750939e-16,
+    "split_reversible_links": 5.521057726179437e-15,
+    "split_reversible_momenta": 8.881784197001252e-16,
+    "reversible_links": 3.8899664497339916e-15,
+    "reversible_momenta": 4.440892098500626e-16
+  }
+}
