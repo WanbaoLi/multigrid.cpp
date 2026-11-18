@@ -24,6 +24,13 @@ setup time separately, and independent FP64 full-operator residuals at
   warmed API median was 231.663 s on cn12075. All twelve columns passed
   both NumPy and independent C++ checks with a maximum residual of
   `5.63e-10`.
+- The frozen MG/SAP flexible GCR control on cn12075 took 13.113 s in
+  the same warmed full12 API scope and 12.682 s in the native solver.
+  Its separate hierarchy setup took 222.573 s. Independent verification
+  passed all thirteen fields with maximum residual `4.82e-9`. In this
+  workload, the reusable-hierarchy API control was 17.67× faster than
+  the complex128 BiCGStab path. The separate raw periodic single-source
+  tests measure a different operator and right-hand side.
 - Job `2169656` retries Legacy MG. Upstream writes a HDF5 cache root
   and a sibling JSON manifest. The original controller passed a JSON
   root name, so the paths collided. The retry passes an HDF5 root.
