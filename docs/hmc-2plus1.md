@@ -131,3 +131,29 @@ python tools/hmc/verify_configs.py /outside/source/new-chain \
 
 本次小体积实际 HMC 组态证明的是算法/算子/文件链路；80条轨迹、指定40条预热段、
 每10条保存不构成热化或独立样本的证明，也不外推24格子速度。
+
+## 6. 原生 Schur 内核和 MPI 版 RHMC
+
+可选 C++/OpenMP 内核为 FP64 Krylov 求解提供半自旋 Schur 算子。设置
+`LQCD_HMC_SCHUR_LIBRARY` 后，单进程矩阵自由 RHMC 会调用该内核。
+MPI 入口要求安装 mpi4py，按时间方向等分，四个全局格长必须为偶数，
+MPI rank 数须整除全局时间格长。正常求解时每个 rank 仅保留本地场及边界，
+保存时由 rank 0 汇集并写出 SciDAC LIME。
+
+```bash
+cmake -S . -B /outside/source/build -DCMAKE_BUILD_TYPE=Release \
+  -DLQCD_BUILD_HMC_KERNELS=ON
+cmake --build /outside/source/build -j4 --target lqcd_hmc_kernels multigrid
+export LQCD_HMC_SCHUR_LIBRARY=/outside/source/build/liblqcd_hmc_kernels.so
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
+mpirun -n 4 python tools/hmc/generate_mpi.py --output /outside/source/mpi-chain \
+  --lattice 4 4 4 4 --beta 5.6 --mass-light 0.5 --mass-strange 0.8 --csw 1 \
+  --trajectories 4 --warmup 1 --length 0.06 --steps 1 --save-every 1 --threads 1
+python tools/hmc/verify_configs.py /outside/source/mpi-chain \
+  --reference /outside/source/build/multigrid
+```
+
+力通过自动微分处理海夸克项和边界伴随通信。奇异味使用固定有理谱区间，
+严格增生性下界在每次热浴和端点计算时检查。上述重质量用于小体积验证。
+当前充分条件无法认证传播子基准的负奇异质量。MPI 随机种子为基础种子加
+rank 编号，变更分解会改变随机流。同一场上的性能比较应显式复用动量及伪费米子噪声。

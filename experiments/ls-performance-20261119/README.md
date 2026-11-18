@@ -187,3 +187,44 @@ MPI halo exchanges.
 uses a residual-drop criterion for reliable updates. Compare reliable-update
 frequency and time in profile data before changing our GCR correction policy.
 Retain the independent FP64 convergence check across candidates.
+
+### Native and distributed RHMC
+
+Job `2170342` passed twenty checks and ran three native-assisted
+trajectories at `4⁴`, accepting two. Both saved configurations passed
+the independent SciDAC and scalar Dirac checks. The paired rerun
+(`native-rhmc-trajectory-paired.json`) uses the same field and RNG state
+for each Torch/native pair. The complete trajectory median fell from
+41.809 to 12.479 s (3.350×), with all acceptance decisions equal.
+The largest end-to-end link discrepancy was `2.13e-15` and the largest
+Hamiltonian discrepancy was `1.82e-12`. On `8⁴` the paired Schur normal
+application was 10.228× faster with the native backend. These jobs used
+validation masses 0.5 and 0.8 with beta 5.6 and cSW 1.
+
+Jobs `2170388`, `2170397`, `2170417`, `2170444` and `2170526` test
+two and four time ranks. They cover native Schur, packed collective
+shifted residuals, Clover and link gradient exchange, local-gauge
+coefficient preparation, and projected half-spin spinor exchange.
+The full distributed RHMC path in `101d1de` adds local heatbath, force
+and Metropolis; the two-rank trajectory check in job `2170504` agreed
+with the dense endpoint within `5.69e-14` and reproduced the links
+under reversal within `3.58e-15`. Node5005 through itp passed the
+three targeted tests with snapshot `8ad2514`. Its benchmark showed
+large run-to-run timing variation, so its numerical results are
+the cross-platform check for this snapshot.
+
+### ARM propagation and Legacy MG follow-up
+
+Job `2169866` interleaved disabled, 64-site and 128-site RHS tiling at
+`24⁴`. Its verifier controller expected a missing byte extractor;
+job `2170458` reused the original arrays and a frozen standalone
+extractor. All three sets of 12 saved columns passed an independent
+scalar C++ operator check with maximum relative residual `4.819e-9`.
+The respective warmed wall medians were 13.664, 13.651 and 13.663 s.
+The matching summed API medians were 13.592, 13.579 and 13.591 s.
+The timing spread gives no reason to change the default.
+
+PyQCU job `2170012` relaxed the Legacy MG coarse tolerance. Coarse
+BiCGStab met its local convergence criterion, but the outer correction
+then requested the fine-grid fallback. The strict MG gate terminated
+the run before a full 12-column benchmark was available.
