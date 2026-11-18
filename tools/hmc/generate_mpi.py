@@ -24,6 +24,7 @@ CHECKPOINT_COMPATIBILITY = (
     "threads", "seed", "torch_version", "native_schur_sha256", "integrator",
     "trajectory_length", "integration_steps", "gauge_substeps_per_drift",
     "strange_md_interval", "strange_rational_poles", "md_relative_true_residual_tolerance",
+    "direct_clover_adjoint",
 )
 
 
@@ -47,6 +48,7 @@ def resume_from(path, report, rng, comm):
 
     def read_checkpoint():
         previous = json.loads(path.read_text())
+        previous.setdefault("direct_clover_adjoint", False)
         mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
         if mismatches:
             raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
@@ -107,6 +109,8 @@ def main():
                         help="strange-force quadrature order per tail (twice as many poles)")
     parser.add_argument("--md-tolerance", type=float, default=1e-12,
                         help="relative true residual for the light and strange MD solves")
+    parser.add_argument("--direct-clover", action="store_true",
+                        help="evaluate Clover leaf derivatives with the local analytic adjoint")
     parser.add_argument("--save-every", type=int, default=1)
     parser.add_argument("--threads", type=int, default=1)
     parser.add_argument("--seed", type=int, default=1729)
@@ -136,7 +140,8 @@ def main():
 def run(args, comm):
     model = DistributedRHMC(args.lattice, args.beta, args.mass_light, args.mass_strange,
                             args.csw, comm, args.library, interval=args.strange_interval,
-                            md_order=args.md_order, md_tolerance=args.md_tolerance)
+                            md_order=args.md_order, md_tolerance=args.md_tolerance,
+                            direct_clover=args.direct_clover)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
@@ -153,6 +158,7 @@ def run(args, comm):
                   strange_rational_poles=dict(md=len(model.md_terms), endpoint=len(model.endpoint_terms),
                                               refresh=len(model.refresh_terms)),
                   md_relative_true_residual_tolerance=model.md_tolerance,
+                  direct_clover_adjoint=model.direct_clover,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",
                   gauge_substeps_per_drift=args.gauge_steps,
                   thermalization_established=False, independent_samples_established=False,

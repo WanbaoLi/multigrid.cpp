@@ -38,14 +38,21 @@ def compare(comm, lattice):
     whole_loss = whole_action + sum((p.conj() * f).real.sum() for p, f in zip(probes, whole_strength))
     local_grad, = torch.autograd.grad(local_loss, local)
     whole_grad, = torch.autograd.grad(whole_loss, full)
+    direct_extended = time_faces(local, comm)
+    direct_strength = owned_clover_strength(direct_extended, direct=True)
+    direct_loss = owned_gauge_action(direct_extended, model.beta) + sum(
+        (p.conj() * f).real.sum() for p, f in zip(local_probe, direct_strength))
+    direct_grad, = torch.autograd.grad(direct_loss, local)
+    direct_clover_error = comm.allreduce(float((direct_grad - local_grad).abs().max()), op=MPI.MAX)
     grad_error = float((local_grad - whole_grad.reshape(*reversed(lattice), 4, 3, 3)[ti]).abs().max())
     strength_error = comm.allreduce(strength_error, op=MPI.MAX)
     grad_error = comm.allreduce(grad_error, op=MPI.MAX)
-    if action_error > 1e-10 or strength_error > 3e-14 or max(grad_error, direct_error) > 5e-14:
-        raise AssertionError((lattice, action_error, strength_error, grad_error, direct_error))
+    if (action_error > 1e-10 or strength_error > 3e-14 or
+            max(grad_error, direct_error, direct_clover_error) > 5e-14):
+        raise AssertionError((lattice, action_error, strength_error, grad_error, direct_error, direct_clover_error))
     return dict(lattice=lattice, gauge_action_error=action_error,
                 field_strength_error=strength_error, link_gradient_error=grad_error,
-                direct_gauge_gradient_error=direct_error)
+                direct_gauge_gradient_error=direct_error, direct_clover_gradient_error=direct_clover_error)
 
 
 def main():

@@ -14,7 +14,7 @@ from .spectral import cold_wilson_gap, positive_schur_bounds
 
 class DistributedRHMC:
     def __init__(self, lattice, beta, ml, ms, csw, comm, library, interval=(.004, 4.), *,
-                 md_order=32, md_tolerance=1e-12):
+                 md_order=32, md_tolerance=1e-12, direct_clover=False):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -42,6 +42,7 @@ class DistributedRHMC:
         self.gamma5 = torch.tensor([1., 1., -1., -1.], dtype=RD)[:, None]
         self.interval = tuple(interval)
         self.md_tolerance = md_tolerance
+        self.direct_clover = direct_clover
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
             self.interval, md_order=md_order)
 
@@ -52,7 +53,8 @@ class DistributedRHMC:
         return time_faces(u.reshape(*self.site_shape, 4, 3, 3), self.comm)
 
     def _coefficients(self, extended):
-        field = [value.reshape(-1, 3, 3) for value in owned_clover_strength(extended)]
+        field = [value.reshape(-1, 3, 3)
+                 for value in owned_clover_strength(extended, direct=self.direct_clover)]
         return tuple(clover_chiral_blocks(field, mass, self.csw) for mass in (self.ml, self.ms))
 
     def _certify(self, strange_clover, gauge):
