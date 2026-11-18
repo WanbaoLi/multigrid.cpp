@@ -494,6 +494,12 @@ were bitwise equal, and the two- and four-rank dense tests passed.
 Job `2171748` extends the comparison to paired entire trajectories
 using the verified `24³×8` field. See
 [single-drift results](distributed-native-pade-drift-paired.json).
+The node5005 comparison compiled the same C++ kernel independently
+and used a single spatial `24³` slab. One-thread medians were
+2.243 s (spectral), 1.416 s (tensor Padé), and 0.354 s (native).
+The largest link discrepancy was `2.11e-15`. The four-thread
+samples fluctuated, so the single-kernel test does not establish
+whole-trajectory scaling. See [node5005 measurements](node5005-native-pade-961194b.json).
 
 Job `2171768` passed all 13 NUMA launcher tests and generated a
 [64-rank single-slice plan](distributed-rhmc-numa-launcher-l24t64.json)
@@ -510,7 +516,9 @@ Schur path at `24³×64` with 32 and 64 ranks on the verified LIME
 input. It evaluates the six spatial hoppings while the projected
 time faces are in flight, then adds the temporal terms in order.
 The test gates include the independent packed operator and shifted
-solve comparisons and dense force and reversibility checks.
+solve comparisons and dense force and reversibility checks. Both
+rank counts passed. The packed operators were bitwise equal, with
+maximum shifted true residual `9.76e-13`.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
@@ -628,3 +636,10 @@ Job `2171659` was released after the independent checks and is queued
 to reuse the same library and cap-14 plan on the generated `hmc_000003.lime`. It
 uses source `(3,1,2,5)`, sample valence mass `-0.277`, one stout step,
 and checks all 12 NPY columns with independent scalar C++ and PyQUDA.
+
+Job `2171803` compares the verified cap-14 solve with three hierarchy
+construction budgets. It holds the input, node, seed, initial smooth
+count of 12, and all solve settings fixed. The plans use two passes
+with three updates, one with three, and one with two. Each plan has
+one warm-up, three measured full12 calls, and independent verification.
+See the [setup plans](setup-budget/).
