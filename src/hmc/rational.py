@@ -37,3 +37,24 @@ def apply_rational(apply, rhs, terms, tol=1e-12):
         result.add_(solution, alpha=weight)
         worst_residual = max(worst_residual, residual)
     return result, worst_residual
+
+
+def rational_action_gradient(model, gauge, mass, rhs, terms, tol=1e-12):
+    """Return the fixed-pseudofermion quadratic action and its link gradient."""
+    links = gauge.detach().requires_grad_(True)
+    clover = model.clover(model.field_strength(links), mass)
+
+    def normal(vec):
+        return model.apply_even_normal(links.detach(), mass, vec, clover.detach())
+
+    gradient = torch.zeros_like(links)
+    action = 0.
+    for pole, (shift, weight) in enumerate(terms):
+        solution, _, _ = solve_shifted(normal, rhs, shift, tol)
+        action += weight * (rhs.conj() * solution).real.sum().item()
+        # The derivative of the inverse contributes -x† (dA) x at fixed x.
+        image = model.apply_even_schur(links, mass, solution, clover)
+        quadratic = (image.real.square() + image.imag.square()).sum()
+        term_gradient, = torch.autograd.grad(quadratic, links, retain_graph=pole + 1 < len(terms))
+        gradient.add_(term_gradient, alpha=-weight)
+    return action, gradient

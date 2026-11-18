@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 from hmc.reference import CloverHMC, CD, RD, dagger, generators, write_lime
 from hmc.shifted import solve_shifted
-from hmc.rational import apply_rational, inverse_power_terms
+from hmc.rational import apply_rational, inverse_power_terms, rational_action_gradient
 
 REFERENCE = None
 REQUIRE_LIME = False
@@ -236,6 +236,38 @@ class HMCPhysicsTests(unittest.TestCase):
             METRICS[f"strange_inverse_power_{power}"] = dict(
                 spectral_bounds=[lower, upper], poles=len(terms), relative_error=error,
                 max_shifted_residual=residual)
+
+    def test_strange_rational_force_against_dense_variation(self):
+        mass = self.m.ms
+        offsets = torch.arange(12)
+        even = (12 * self.m.even[:, None] + offsets).flatten()
+        odd = (12 * self.m.odd[:, None] + offsets).flatten()
+        rhs = torch.randn(even.shape, dtype=CD, generator=self.rng)
+        rhs /= torch.linalg.vector_norm(rhs)
+
+        def exact(gauge):
+            full = self.m.dirac(gauge, mass)
+            schur = (full[even][:, even] - full[even][:, odd] @
+                     torch.linalg.solve(full[odd][:, odd], full[odd][:, even]))
+            eigenvalues, vectors = torch.linalg.eigh(dagger(schur) @ schur)
+            projected = dagger(vectors) @ rhs
+            return (projected.abs().square() * eigenvalues.rsqrt()).sum().item(), eigenvalues
+
+        expected, eigs = exact(self.u)
+        terms = inverse_power_terms(0.5, eigs[0].item() * 0.9, eigs[-1].item() * 1.1, order=24)
+        action, gradient = rational_action_gradient(self.m, self.u, mass, rhs, terms)
+        self.assertAlmostEqual(action, expected, delta=1e-11)
+        direction = torch.randn(self.p.shape, dtype=RD, generator=self.rng)
+        direction /= torch.linalg.vector_norm(direction)
+        eps = 1e-5
+        plus = exact(self.m.drift(self.u, direction, eps))[0]
+        minus = exact(self.m.drift(self.u, direction, -eps))[0]
+        finite = (plus - minus) / (2 * eps)
+        algebra = torch.einsum("vma,aij->vmij", direction.to(CD), self.m.t)
+        analytic = (gradient.conj() * (1j * algebra @ self.u)).real.sum().item()
+        self.assertGreater(abs(finite), 1e-5)
+        self.assertAlmostEqual(analytic, finite, delta=1e-8)
+        METRICS["strange_rational_force_absolute_error"] = abs(analytic - finite)
 
 
 if __name__ == '__main__':

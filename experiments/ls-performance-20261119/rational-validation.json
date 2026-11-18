@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "tests_run": 14,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "metrics": {
+    "force_gauge_absolute_error": 2.7599367236064154e-11,
+    "force_fermion_absolute_error": 1.9962100028525498e-10,
+    "force_total_absolute_error": 1.72020897526437e-10,
+    "native_operator_relative_error_mass_0.5": 2.245803585937532e-16,
+    "native_operator_relative_error_mass_0.8": 2.0917535430672712e-16,
+    "equal_force_energy_errors": {
+      "leapfrog": 0.13370560144460342,
+      "omelyan": 0.021040945194442884
+    },
+    "reversibility_links_max": 3.914323474825132e-15,
+    "reversibility_momenta_max": 1.9984014443252818e-15,
+    "shifted_cg_0.5_0.0": {
+      "iterations": 18,
+      "residual": 7.59512743850936e-13
+    },
+    "shifted_cg_0.5_0.01": {
+      "iterations": 18,
+      "residual": 5.805198078872425e-13
+    },
+    "shifted_cg_0.5_1.0": {
+      "iterations": 12,
+      "residual": 2.1081954545418136e-13
+    },
+    "shifted_cg_0.8_0.0": {
+      "iterations": 17,
+      "residual": 6.007355170989965e-13
+    },
+    "shifted_cg_0.8_0.01": {
+      "iterations": 17,
+      "residual": 4.726108920094151e-13
+    },
+    "shifted_cg_0.8_1.0": {
+      "iterations": 11,
+      "residual": 7.806295903279326e-13
+    },
+    "energy_errors_steps_4_8": [
+      0.5363663227242341,
+      0.13370560144460342
+    ],
+    "energy_error_ratio": 0.2492803812989326,
+    "strange_inverse_power_0.25": {
+      "spectral_bounds": [
+        0.40856428554958857,
+        1.2241260220365517
+      ],
+      "poles": 48,
+      "relative_error": 8.533549626722621e-14,
+      "max_shifted_residual": 9.009244379379693e-13
+    },
+    "strange_inverse_power_0.5": {
+      "spectral_bounds": [
+        0.40856428554958857,
+        1.2241260220365517
+      ],
+      "poles": 48,
+      "relative_error": 1.6231936491962632e-13,
+      "max_shifted_residual": 9.009244379379693e-13
+    },
+    "strange_inverse_power_0.75": {
+      "spectral_bounds": [
+        0.40856428554958857,
+        1.2241260220365517
+      ],
+      "poles": 48,
+      "relative_error": 3.202852851230658e-13,
+      "max_shifted_residual": 9.009244379379693e-13
+    }
+  }
+}
