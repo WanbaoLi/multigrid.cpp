@@ -134,9 +134,12 @@ class HMCPhysicsTests(unittest.TestCase):
         spec.loader.exec_module(reader)
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / 'field.lime'
-            write_lime(path, self.u.numpy(), (2, 2, 2, 2), dict(nf='2+1', csw=1))
-            read = reader.read_lime_gauge(path, comm=MPI.COMM_SELF)
-            np.testing.assert_array_equal(read, self.u.numpy().reshape(2, 2, 2, 2, 4, 3, 3))
+            for lattice, copies in (((2, 2, 2, 2), 1), ((2, 2, 18, 32), 144)):
+                expected = np.tile(self.u.numpy(), (copies, 1, 1, 1))
+                expected = expected.reshape(*reversed(lattice), 4, 3, 3)
+                write_lime(path, expected, lattice, dict(nf='2+1', csw=1))
+                read = reader.read_lime_gauge(path, comm=MPI.COMM_SELF)
+                np.testing.assert_array_equal(read, expected)
 
     def test_size_guard(self):
         with self.assertRaises(ValueError):

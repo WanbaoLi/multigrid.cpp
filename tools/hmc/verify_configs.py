@@ -1,6 +1,5 @@
 """Independent SciDAC CRC/readback, NumPy plaquette and native Dirac gates."""
 import argparse
-import hashlib
 import json
 import os
 from pathlib import Path
@@ -16,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'bindings'))
 sys.path.insert(0, str(ROOT / 'src'))
 from lqcd_cpu.io import read_lime_gauge
-from hmc.reference import CloverHMC, CD
+from hmc.reference import CloverHMC, lime_sha256
 
 
 def numpy_plaquette(u):
@@ -44,7 +43,7 @@ def main():
     rng = np.random.default_rng(881)
     for item in d['saved_configurations']:
         path = args.run / item['file']
-        if hashlib.sha256(path.read_bytes()).hexdigest() != item['sha256']:
+        if lime_sha256(path) != item['sha256']:
             raise RuntimeError('Configuration hash mismatch')
         u = read_lime_gauge(path, comm=MPI.COMM_SELF)
         error = float(np.max(np.abs(u.conj().swapaxes(-1, -2) @ u - np.eye(3))))

@@ -8,7 +8,9 @@ Conventions match src/core/{clover,dslash}.cpp (normalized Dirac M, DR basis).
 """
 from __future__ import annotations
 
+import hashlib
 import math
+import os
 import struct
 import zlib
 from pathlib import Path
@@ -331,16 +333,18 @@ class CloverHMC:
                     strange_det_phase=complex(torch.linalg.slogdet(self.dirac(u, self.ms))[0]).real)
 
 
+def lime_sha256(path):
+    digest = hashlib.sha256()
+    with Path(path).open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1 << 20), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def write_lime(path, gauge, lattice, metadata):
     """Write untwisted SU(3) links, QIO site-major complex128 + SciDAC CRCs."""
-    array = np.asarray(gauge, dtype=np.complex128).reshape(*reversed(lattice), 4, 3, 3)
-    raw = np.ascontiguousarray(array, dtype=">c16")
-    sums = [0, 0]
-    for site, row in enumerate(raw.reshape(-1, 36).view(np.uint8).reshape(-1, 576)):
-        crc = zlib.crc32(row)
-        for i, modulo in enumerate((29, 31)):
-            shift = site % modulo
-            sums[i] ^= ((crc << shift) | (crc >> (32 - shift))) & 0xffffffff
+    sites = np.asarray(gauge).reshape(math.prod(lattice), 36)
+    bytes_per_site = 36 * np.dtype(">c16").itemsize
     xml = ET.Element("hmc")
     for key, value in metadata.items():
         ET.SubElement(xml, key).text = str(value)
@@ -349,17 +353,34 @@ def write_lime(path, gauge, lattice, metadata):
           " ".join(map(str, lattice)) + "</dims><volfmt>0</volfmt></scidacFile>").encode()),
         ("scidac-file-xml", ET.tostring(xml)),
         ("scidac-private-record-xml", b"<scidacRecord><version>1.1</version><recordtype>0</recordtype><datatype>QDP_D3_ColorMatrix</datatype><precision>D</precision><colors>3</colors><spins>1</spins><typesize>144</typesize><datacount>4</datacount></scidacRecord>"),
-        ("scidac-record-xml", ET.tostring(xml)),
-        ("ildg-binary-data", raw.tobytes()),
-        ("scidac-checksum", ("<scidacChecksum><version>1.0</version><suma>%08x</suma><sumb>%08x</sumb></scidacChecksum>" % tuple(sums)).encode())]
+        ("scidac-record-xml", ET.tostring(xml))]
     path = Path(path)
     temporary = path.with_suffix(path.suffix + ".tmp")
     with temporary.open("wb") as f:
-        for i, (name, data) in enumerate(records):
-            flags = (0x8000 if i == 0 else 0) | (0x4000 if i == len(records) - 1 else 0)
-            f.write(struct.pack(">IHHQ128s", 0x456789ab, 1, flags, len(data), name.encode()))
+        def header(name, size, flags):
+            f.write(struct.pack(">IHHQ128s", 0x456789ab, 1, flags, size, name.encode()))
+
+        def write_record(name, data, flags):
+            header(name, len(data), flags)
             f.write(data)
             f.write(b"\0" * ((-len(data)) % 8))
+
+        for i, (name, data) in enumerate(records):
+            write_record(name, data, 0x8000 if i == 0 else 0)
+        header("ildg-binary-data", sites.shape[0] * bytes_per_site, 0)
+        sums = [0, 0]
+        for first in range(0, sites.shape[0], 1024):
+            raw = np.ascontiguousarray(sites[first:first+1024], dtype=">c16")
+            rows = raw.view(np.uint8).reshape(-1, bytes_per_site)
+            for site, row in enumerate(rows, first):
+                crc = zlib.crc32(row)
+                for i, modulo in enumerate((29, 31)):
+                    shift = site % modulo
+                    sums[i] ^= ((crc << shift) | (crc >> (32 - shift))) & 0xffffffff
+            f.write(memoryview(rows).cast("B"))
+        check = ("<scidacChecksum><version>1.0</version><suma>%08x</suma>"
+                 "<sumb>%08x</sumb></scidacChecksum>" % tuple(sums)).encode()
+        write_record("scidac-checksum", check, 0x4000)
         f.flush()
-        __import__("os").fsync(f.fileno())
+        os.fsync(f.fileno())
     temporary.replace(path)

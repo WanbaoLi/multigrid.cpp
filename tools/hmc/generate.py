@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Generate small-volume Nf=2+1 Clover HMC validation fields."""
 import argparse
-import hashlib
 import json
 import math
 import os
@@ -15,7 +14,7 @@ import torch
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'src'))
-from hmc.reference import CloverHMC, RD, write_lime
+from hmc.reference import CloverHMC, RD, lime_sha256, write_lime
 from hmc.pseudofermion import MatrixFreePseudofermionHMC, PseudofermionHMC
 
 
@@ -103,7 +102,7 @@ def main():
             write_lime(path, u.numpy(), args.lattice,
                        {k: report[k] for k in ('nf', 'beta', 'mass_light', 'mass_strange', 'csw', 'source_commit', 'seed')})
             report['saved_configurations'].append(dict(file=filename, trajectory=trajectory,
-                sha256=hashlib.sha256(path.read_bytes()).hexdigest(), bytes=path.stat().st_size,
+                sha256=lime_sha256(path), bytes=path.stat().st_size,
                 **model.observables(u)))
             torch.save(dict(gauge=u, rng_state=rng.get_state(), trajectory=trajectory,
                             source_commit=report['source_commit']), args.output / 'latest-state.pt')
