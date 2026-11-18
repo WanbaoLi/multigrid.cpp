@@ -439,7 +439,17 @@ Job `2171630` tests the optional `--real-krylov-dot` recurrence with
 interleaved real FP64 buffers. It retains the explicit true-residual
 norm and per-pole verification, checks the Schur solves against the
 independent operator, and pairs initial-phase and force timings on
-the same gauge, momentum and heatbath noise.
+the same gauge, momentum and heatbath noise. The two- and four-rank
+checks passed, with maximum independent shifted residual `9.76e-13`.
+
+Job `2171643` tested the optional `--pade-drift` small-step gauge update
+in seven measured pairs per geometry. At `24³×4` the four-rank median
+went from 380.41 to 274.46 ms. The maximum difference from the
+eigendecomposition was `2.56e-15`, and the largest SU(3) and reversal
+errors across both geometries were `5.22e-15` and `1.12e-15`.
+The large-step fallback matched bitwise, and the two- and four-rank
+dense RHMC and reversal gates passed. The norm cutoff uses the
+FP64 degree-five bound in [Higham's matrix exponential analysis](https://epubs.siam.org/doi/10.1137/04061101X).
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
@@ -551,3 +561,8 @@ for cap 40 and the three cap-14 targets, respectively. The independent
 verification is in progress. The opt-in
 [LingSheng L24 plan](../../profiles/optimization/lingsheng-l24-cap14-full12.json)
 replays the previously verified cap-14 target of 0.1.
+
+Job `2171659` waits for the current verification and then reuses the
+same library and cap-14 plan on the generated `hmc_000003.lime`. It
+uses source `(3,1,2,5)`, sample valence mass `-0.277`, one stout step,
+and checks all 12 NPY columns with independent scalar C++ and PyQUDA.
