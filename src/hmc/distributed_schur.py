@@ -219,6 +219,9 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
     even_clover = clover[geometry[0][0] - area]
     if odd_inverse is None:
         odd_inverse = torch.linalg.inv(clover[geometry[1][0] - area])
+    elif (odd_inverse.shape != (local_sites, 2, 6, 6) or odd_inverse.dtype != clover.dtype or
+          odd_inverse.device != clover.device):
+        raise ValueError("Prepared odd inverse must match the local Clover blocks")
     kappa = 1 / (2 * (mass + 4))
     odd_kernel, even_kernel = _kernels(str(library), packed_faces)
     threads = torch.get_num_threads()

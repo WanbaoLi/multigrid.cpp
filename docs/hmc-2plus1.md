@@ -158,6 +158,22 @@ python tools/hmc/verify_configs.py /outside/source/mpi-chain \
 MPI 随机种子为基础种子加
 rank 编号，变更分解会改变随机流。同一场上的性能比较应显式复用动量及伪费米子噪声。
 
+灵晟单个计算节点可用 `tools/run_numa.py --time-slab` 运行
+`24³×64` 的 64 rank RHMC。每个 CPU NUMA 域放置四个 rank，
+每 rank 固定使用一个物理核。启动器只使用调度器允许的 CPU，并跳过
+没有 CPU 的内存域。以下命令以经过校验的 LIME 为起点，开启新的随机流。
+
+```bash
+python tools/run_numa.py --time-slab --lattice 24 24 24 64 \
+  --numa-nodes 0-15 --ranks-per-numa 4 --threads 1 -- \
+  python tools/hmc/generate_mpi.py --lattice 24 24 24 64 \
+  --initial-lime /outside/source/initial.lime --output /outside/source/mpi-chain-l24 \
+  --beta 5.6 --mass-light 0.5 --mass-strange 0.8 --csw 1 \
+  --trajectories 4 --warmup 1 --length 0.018 --steps 1 --gauge-steps 2 \
+  --threads '{threads}' --md-order 16 --packed-faces --direct-clover \
+  --compact-spin --projected-force-faces --zolotarev --force-pole-batch 11
+```
+
 `--md-order` 设置奇异味 MD 力在每侧积分尾部的求积阶数，两个尾部共
 `2 × md-order` 个极点。默认 32。该参数仅修改积分所用的力，热浴和
 Metropolis 端点仍使用各自通过精度检查的有理式。报告包括各阶段用时、
