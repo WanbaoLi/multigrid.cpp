@@ -396,7 +396,9 @@ The 64-rank stage is running on cn12051.
 Job `2171561` holds the optimized algorithm, 64 ranks, input, and seeds
 fixed while pairing sequential CPU binding with four ranks per NUMA
 domain on an exclusive node. Both layouts record hashes of the
-pre-Metropolis links and momentum.
+pre-Metropolis links and momentum. On cn12065 the compact layout
+assigned 37 and 27 ranks to two NUMA domains, while the spread layout
+assigned four ranks to each of 16 domains.
 Job `2171615` waits for that comparison and then tests one, two, and
 four cores per rank on an exclusive node. Each MPI rank keeps its lead
 core and NUMA domain. The threaded cases independently read the fixed
@@ -467,8 +469,16 @@ received the same correction.
 
 Job `2171679` compares the optional `--shared-clover-spin` path, which
 reuses the spin contractions before applying the two mass factors.
-The test requires bitwise equal Clover blocks and checks the force
-against both the control and the independent dense reference.
+The Clover blocks were bitwise equal and the maximum force difference
+was `8.89e-16`. On four ranks at `24³×4`, median coefficient build
+fell from 0.553 to 0.524 s and total force from 11.118 to 11.057 s.
+The two- and four-rank dense checks passed. See the
+[paired Clover results](distributed-shared-clover-spin-paired.json).
+
+Job `2171712` tests the native implementation of the same bounded
+Padé drift against the tensor Padé and spectral versions. The native
+path assembles the fixed SU(3) generators and solves the near-identity
+3×3 system in one pass. The spectral drift covers larger arguments.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
