@@ -1,0 +1,148 @@
+{
+  "complete": true,
+  "algorithm": "time-slab matrix-free 2+1 RHMC",
+  "lattice_xyzt": [
+    8,
+    8,
+    8,
+    8
+  ],
+  "beta": 5.6,
+  "mass_light": -0.32,
+  "mass_strange": -0.277,
+  "csw": 1.160920226,
+  "nf": "2+1",
+  "rhmc": true,
+  "mpi_ranks": 4,
+  "threads": 1,
+  "seed": 1729,
+  "timing_aggregation": "maximum rank elapsed time for each phase independently",
+  "rank_seed_rule": "seed + MPI rank",
+  "source_commit": "a58a2f80bb03e57942ad4198ff44fc63e5c58c05",
+  "native_schur_sha256": "fd400f9950c00b818eceef58e39369d4a176cd64b66ce06cef22c0110e06f4e4",
+  "strange_md_interval": [
+    0.0005,
+    6.0
+  ],
+  "strange_rational_grid_error": {
+    "endpoint": 7.105427357601002e-14,
+    "refresh": 4.8627768478581856e-14,
+    "md": 1.4345713506003221e-10
+  },
+  "strange_cold_free_gap": 0.11608990748544563,
+  "strange_rational_poles": {
+    "md": 48,
+    "endpoint": 64,
+    "refresh": 64
+  },
+  "md_relative_true_residual_tolerance": 1e-12,
+  "trajectory_length": 0.006,
+  "integration_steps": 1,
+  "integrator": "omelyan",
+  "gauge_substeps_per_drift": 2,
+  "thermalization_established": false,
+  "independent_samples_established": false,
+  "trajectories": 3,
+  "warmup": 1,
+  "samples": [
+    {
+      "accepted": true,
+      "delta_h": 9.812676580622792e-06,
+      "h_initial": 115269.97591298632,
+      "h_final": 115269.975922799,
+      "metropolis_probability": 0.9999901873715635,
+      "force_seconds": {
+        "coefficient_build": 0.6488895250950009,
+        "prepare_and_solve": 7.467197160003707,
+        "spinor_differentiation": 11.48799670767039,
+        "gauge_differentiation": 2.2025624730158597
+      },
+      "phase_seconds": {
+        "refresh": 2.1160234108101577,
+        "md": 23.413835280109197,
+        "endpoint": 5.669746989151463
+      },
+      "plaquette": 0.9999037393121075,
+      "max_unitarity_error": 1.4432899320182378e-14,
+      "max_det_su3_error": 1.3656305301294303e-14,
+      "strange_det_phase": 1.0,
+      "strange_normal_lower": 0.007372953275915289,
+      "strange_normal_upper": 4.68622988449371,
+      "trajectory": 1,
+      "warmup": true,
+      "seconds": 31.16352551104501
+    },
+    {
+      "accepted": true,
+      "delta_h": 2.833141479641199e-06,
+      "h_initial": 114976.48836685423,
+      "h_final": 114976.48836968737,
+      "metropolis_probability": 0.9999971668625337,
+      "force_seconds": {
+        "coefficient_build": 0.5368421310558915,
+        "prepare_and_solve": 7.420413498068228,
+        "spinor_differentiation": 10.876588186481968,
+        "gauge_differentiation": 2.0551903031300753
+      },
+      "phase_seconds": {
+        "refresh": 2.4638997609727085,
+        "md": 22.366955803940073,
+        "endpoint": 6.2264777787495404
+      },
+      "plaquette": 0.9998091813925208,
+      "max_unitarity_error": 1.7541523789413676e-14,
+      "max_det_su3_error": 1.787519163051162e-14,
+      "strange_det_phase": 1.0,
+      "strange_normal_lower": 0.005510134832799275,
+      "strange_normal_upper": 4.704400493639392,
+      "trajectory": 2,
+      "warmup": false,
+      "seconds": 31.075222426094115
+    },
+    {
+      "accepted": true,
+      "delta_h": 1.5989935491234064e-05,
+      "h_initial": 115040.62832667815,
+      "h_final": 115040.62834266809,
+      "metropolis_probability": 0.9999840101923471,
+      "force_seconds": {
+        "coefficient_build": 0.5493146458175033,
+        "prepare_and_solve": 7.336703710258007,
+        "spinor_differentiation": 10.560412924969569,
+        "gauge_differentiation": 2.038694034097716
+      },
+      "phase_seconds": {
+        "refresh": 2.479731289902702,
+        "md": 21.944537144852802,
+        "endpoint": 6.157903268001974
+      },
+      "plaquette": 0.9997134687294131,
+      "max_unitarity_error": 2.0539125955567857e-14,
+      "max_det_su3_error": 2.0650830600660827e-14,
+      "strange_det_phase": 1.0,
+      "strange_normal_lower": 0.004127880023861997,
+      "strange_normal_upper": 4.719492575096021,
+      "trajectory": 3,
+      "warmup": false,
+      "seconds": 30.588174605043605
+    }
+  ],
+  "saved_configurations": [
+    {
+      "file": "hmc_000002.lime",
+      "trajectory": 2,
+      "sha256": "216ad379897477ad73d457d85429e2601b4c030ff9f8f6acb59d5aa4d60c19c9",
+      "plaquette": 0.9998091813925208,
+      "bytes": 2361080
+    },
+    {
+      "file": "hmc_000003.lime",
+      "trajectory": 3,
+      "sha256": "3762cee0ed918b31724cf0b133017e539cb461f00d2728ad53c26e98f3e5a837",
+      "plaquette": 0.9997134687294131,
+      "bytes": 2361080
+    }
+  ],
+  "accepted": 3,
+  "acceptance_rate": 1.0
+}

@@ -318,6 +318,13 @@ correctly rejected by the certificate. The same job also attempts an
 The first test controller, job `2171113`, used the wrong dense-model
 keyword and stopped before running the chain.
 
+The corrected job accepted all three `8⁴` proposals and saved two
+independently verified LIME files. The largest scalar Dirac discrepancy
+was `1.17e-16`. The final plaquette was 0.9997135 and the final
+certified Schur-normal lower bound was `0.004128`. The run used a cold
+start and trajectory length 0.006. It tests the negative-mass
+certificate near the free field.
+
 ### ARM propagation and Legacy MG follow-up
 
 Job `2169866` interleaved disabled, 64-site and 128-site RHS tiling at
