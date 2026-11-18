@@ -152,6 +152,30 @@ class HMCPhysicsTests(unittest.TestCase):
             grad_sparse, = torch.autograd.grad(torch.vdot(y, sparse).real, gauge)
             torch.testing.assert_close(grad_sparse, grad_dense, atol=3e-14, rtol=3e-14)
 
+    def test_even_schur_and_clover_determinant(self):
+        spin_color = torch.arange(12)
+        even = (12 * self.m.even[:, None] + spin_color).flatten()
+        odd = (12 * self.m.odd[:, None] + spin_color).flatten()
+        x = torch.randn(even.shape, dtype=CD, generator=self.rng)
+        u = self.u.detach().requires_grad_(True)
+        for mass in (self.m.ml, self.m.ms):
+            full = self.m.dirac(u, mass)
+            c = self.m.clover(self.m.field_strength(u), mass)
+            schur = (full[even][:, even] - full[even][:, odd] @
+                     torch.linalg.solve(full[odd][:, odd], full[odd][:, even]))
+            torch.testing.assert_close(self.m.apply_even_schur(u, mass, x, c),
+                                       schur @ x, atol=3e-14, rtol=3e-14)
+            sign, logdet = torch.linalg.slogdet(full)
+            schur_sign, schur_logdet = torch.linalg.slogdet(schur)
+            clover_signs, clover_logdets = torch.linalg.slogdet(c[self.m.odd])
+            reduced_logdet = schur_logdet + clover_logdets.sum()
+            torch.testing.assert_close(schur_sign * clover_signs.prod(), sign,
+                                       atol=3e-14, rtol=3e-14)
+            torch.testing.assert_close(reduced_logdet, logdet, atol=3e-14, rtol=3e-14)
+            full_grad, = torch.autograd.grad(logdet, u)
+            reduced_grad, = torch.autograd.grad(reduced_logdet, u)
+            torch.testing.assert_close(reduced_grad, full_grad, atol=3e-14, rtol=3e-14)
+
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser()

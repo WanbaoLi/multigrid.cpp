@@ -69,6 +69,13 @@ class CloverHMC:
         self.gamma = gamma_matrices()
         self.t = generators()
         sites = torch.arange(self.volume)
+        parity = torch.zeros_like(sites)
+        stride = 1
+        for extent in self.lattice:
+            parity += (sites // stride) % extent
+            stride *= extent
+        self.even = sites[parity % 2 == 0]
+        self.odd = sites[parity % 2 == 1]
         self.block_indices = torch.cat(
             [sites * self.volume + sites]
             + [sites * self.volume + neighbors
@@ -153,11 +160,9 @@ class CloverHMC:
         return assembled.view(self.volume, self.volume, 12, 12).transpose(1, 2).reshape(
             12 * self.volume, 12 * self.volume)
 
-    def apply_dirac(self, u, mass, spinor, field=None):
-        """Apply the normalized operator to one site-major spin/color field."""
-        c = self.clover(self.field_strength(u) if field is None else field, mass)
+    def apply_hopping(self, u, mass, spinor):
         sites = spinor.reshape(self.volume, 4, 3)
-        result = (c @ sites.reshape(self.volume, 12, 1)).reshape_as(sites)
+        result = torch.zeros_like(sites)
         kappa = 1 / (2 * (mass + 4))
         for mu, (plus, minus) in enumerate(zip(self.plus, self.minus)):
             forward = torch.einsum("vab,vsb->vsa", u[:, mu], sites[plus])
@@ -169,6 +174,26 @@ class CloverHMC:
                          torch.einsum("st,vta->vsa", self.eye4 + self.gamma[mu], backward))
             result = result - kappa * projected
         return result.reshape_as(spinor)
+
+    def apply_dirac(self, u, mass, spinor, field=None):
+        """Apply the normalized operator to one site-major spin/color field."""
+        c = self.clover(self.field_strength(u) if field is None else field, mass)
+        local = (c @ spinor.reshape(self.volume, 12, 1)).reshape_as(spinor)
+        return local + self.apply_hopping(u, mass, spinor)
+
+    def apply_even_schur(self, u, mass, spinor, clover=None):
+        """Apply A_e - H_eo A_o^-1 H_oe in even-site lexicographic order."""
+        if clover is None:
+            clover = self.clover(self.field_strength(u), mass)
+        even_spinor = spinor.reshape(self.volume // 2, 12)
+        full_shape = (self.volume, 12)
+        even_field = spinor.new_zeros(full_shape).index_copy(0, self.even, even_spinor)
+        odd_image = self.apply_hopping(u, mass, even_field)[self.odd]
+        odd_solved = torch.linalg.solve(clover[self.odd], odd_image.unsqueeze(-1)).squeeze(-1)
+        odd_field = spinor.new_zeros(full_shape).index_copy(0, self.odd, odd_solved)
+        correction = self.apply_hopping(u, mass, odd_field)[self.even]
+        local = (clover[self.even] @ even_spinor.unsqueeze(-1)).squeeze(-1)
+        return (local - correction).reshape_as(spinor)
 
     def fermion_action(self, u):
         field = self.field_strength(u)
