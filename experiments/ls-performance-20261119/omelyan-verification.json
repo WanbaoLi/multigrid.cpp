@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "configurations": [
+    {
+      "file": "hmc_000050.lime",
+      "scidac_crc_passed": true,
+      "sha256": "fe34d7749128b25b6770715dbe6e784ecc5393dff586ceae06321556dbc66d8c",
+      "unitarity_error": 5.773159764028912e-14,
+      "determinant_error": 5.372506875895619e-14,
+      "numpy_plaquette": 0.6243517066779193,
+      "native_operator_errors_light_strange": [
+        2.5360085573291495e-16,
+        2.1601526262388005e-16
+      ]
+    },
+    {
+      "file": "hmc_000060.lime",
+      "scidac_crc_passed": true,
+      "sha256": "13cf7f9e0d744220dad2f4c99489a6b87df88bb13f68e63fc1047d36a7ef8a1c",
+      "unitarity_error": 5.906386870901011e-14,
+      "determinant_error": 6.994551351410396e-14,
+      "numpy_plaquette": 0.6022038451862461,
+      "native_operator_errors_light_strange": [
+        2.410019579771941e-16,
+        2.234304154907948e-16
+      ]
+    },
+    {
+      "file": "hmc_000070.lime",
+      "scidac_crc_passed": true,
+      "sha256": "3603dadbd8d52bb8e9d3c8daa4529cc57c95ea63a7648903cfcbd52eaf7f8fff",
+      "unitarity_error": 7.072120895383878e-14,
+      "determinant_error": 8.993551848971362e-14,
+      "numpy_plaquette": 0.627199919043394,
+      "native_operator_errors_light_strange": [
+        2.3060131423541333e-16,
+        2.1477386636973995e-16
+      ]
+    },
+    {
+      "file": "hmc_000080.lime",
+      "scidac_crc_passed": true,
+      "sha256": "bbc3b855297639ace7540021e20e5da35290771aecae6e3e935c1a1e6ea8b429",
+      "unitarity_error": 7.471801014238127e-14,
+      "determinant_error": 8.560721603206226e-14,
+      "numpy_plaquette": 0.6576062932806582,
+      "native_operator_errors_light_strange": [
+        2.1281888981584641e-16,
+        2.289911355889547e-16
+      ]
+    }
+  ],
+  "method": "existing SciDAC reader/CRC + NumPy plaquette + independent scalar native Dirac"
+}
