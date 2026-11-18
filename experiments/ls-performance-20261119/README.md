@@ -258,6 +258,14 @@ library build. The normal application speedups were 1.168×, 1.089× and
 1.016× on `4⁴`, `8⁴` and `12⁴`. The largest discrepancy against Torch
 was `8.96e-16`. The flag remains outside the production build.
 
+Job `2170886` specialized the real and imaginary unit phases in the
+DeGrand–Rossi projector. It measured 1.042×, 1.049× and 1.050× on
+`4⁴`, `8⁴` and `12⁴` without the experimental GCC flag. Both kernels
+agreed with Torch within `9e-16`. The four-rank Schur and shifted
+residual tests passed with the new kernel. The pre-specialization
+snapshot also passed the complete pinned two- and four-rank RHMC gates
+in job `2170879`, replacing the unpinned duplicate `2170587`.
+
 ### ARM propagation and Legacy MG follow-up
 
 Job `2169866` interleaved disabled, 64-site and 128-site RHS tiling at
