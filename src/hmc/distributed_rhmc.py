@@ -13,13 +13,16 @@ from .spectral import positive_schur_bounds
 
 
 class DistributedRHMC:
-    def __init__(self, lattice, beta, ml, ms, csw, comm, library, interval=(.004, 4.), *, md_order=32):
+    def __init__(self, lattice, beta, ml, ms, csw, comm, library, interval=(.004, 4.), *,
+                 md_order=32, md_tolerance=1e-12):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
             raise ValueError("Use even global extents and an equal decomposition in time")
         if not all(math.isfinite(x) for x in (beta, ml, ms, csw)) or beta <= 0 or min(ml, ms) <= -4:
             raise ValueError("Invalid Wilson–Clover parameters")
+        if not 0 < md_tolerance < 1:
+            raise ValueError("The MD relative residual tolerance must be between zero and one")
         self.beta, self.ml, self.ms, self.csw = beta, ml, ms, csw
         self.comm, self.library = comm, library
         nx, ny, nz, lt = self.lattice
@@ -37,6 +40,7 @@ class DistributedRHMC:
         self.eye = torch.eye(3, dtype=CD)
         self.gamma5 = torch.tensor([1., 1., -1., -1.], dtype=RD)[:, None]
         self.interval = tuple(interval)
+        self.md_tolerance = md_tolerance
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
             self.interval, md_order=md_order)
 
@@ -126,9 +130,9 @@ class DistributedRHMC:
 
             shifts, weights = zip(*terms)
             if len(shifts) == 1:
-                solutions = [solve_shifted(normal, phi, shifts[0], comm=self.comm)[0]]
+                solutions = [solve_shifted(normal, phi, shifts[0], self.md_tolerance, comm=self.comm)[0]]
             else:
-                solutions, _ = solve_multi_shift(normal, phi, shifts, comm=self.comm)
+                solutions, _ = solve_multi_shift(normal, phi, shifts, self.md_tolerance, comm=self.comm)
             finished_solve = perf_counter()
             solves += finished_solve - start
             # Release spinor intermediates after each block. Accumulate the
