@@ -9,7 +9,8 @@ from mpi4py import MPI
 import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
-from hmc.distributed_schur import prepare_slab_schur
+from hmc.distributed_gauge import owned_clover_strength, time_faces
+from hmc.distributed_schur import prepare_local_slab_schur, prepare_slab_schur
 from hmc.reference import CloverHMC, CD, RD
 from hmc.shifted import solve_multi_shift, solve_shifted
 
@@ -64,9 +65,33 @@ def main():
                                              torch.linalg.vector_norm(field)))
                 if max((*independent, *residuals, plain_residual)) > 1.01e-12:
                     raise AssertionError((lattice, mass, independent, residuals, plain_residual))
+                # Prepare strictly local gauge/Clover coefficients, then check
+                # both the native solve path and the adjoint through each halo.
+                nt = lattice[3] // comm.size
+                ti = slice(comm.rank * nt, (comm.rank + 1) * nt)
+                full = gauge.clone().requires_grad_(True)
+                local = full.reshape(*reversed(lattice), 4, 3, 3)[ti].detach().clone().requires_grad_(True)
+                extended = time_faces(local, comm)
+                local_clover = model.clover_blocks(
+                    [x.reshape(-1, 3, 3) for x in owned_clover_strength(extended)], mass)
+                local_apply = prepare_local_slab_schur(extended, local_clover, mass, comm, library)
+                local_image = local_apply(field[slab])
+                global_image = model.apply_even_schur(full, mass, field)
+                with torch.no_grad():
+                    native_image = local_apply(field[slab])
+                local_error = max(float((x - global_image[slab]).abs().max())
+                                  for x in (local_image, native_image))
+                local_grad, = torch.autograd.grad(local_image.abs().square().sum(), local)
+                full_grad, = torch.autograd.grad(global_image.abs().square().sum(), full)
+                grad_error = float((local_grad - full_grad.reshape(*reversed(lattice), 4, 3, 3)[ti]).abs().max())
+                local_error = comm.allreduce(local_error, op=MPI.MAX)
+                grad_error = comm.allreduce(grad_error, op=MPI.MAX)
+                if local_error > 3e-14 or grad_error > 5e-14:
+                    raise AssertionError((lattice, mass, local_error, grad_error))
                 results.append(dict(lattice=lattice, mass=mass, schur_error=max_schur,
                                     normal_error=max_normal, independent_shifted_residuals=independent,
-                                    distributed_shifted_residuals=residuals))
+                                    distributed_shifted_residuals=residuals,
+                                    local_schur_error=local_error, schur_link_gradient_error=grad_error))
         if comm.rank == 0:
             args.output.write_text(json.dumps(dict(ranks=comm.size, cases=results, passed=True),
                                               indent=2) + "\n")

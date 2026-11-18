@@ -30,8 +30,8 @@ class _TimeFaces(torch.autograd.Function):
 
 def time_faces(slab, comm):
     """Append periodic time faces, returning their gradients to their owners."""
-    if slab.device.type != "cpu" or slab.ndim != 7 or slab.shape[0] < 1:
-        raise ValueError("Use a nonempty CPU time slab in t,z,y,x,mu,row,column order")
+    if slab.device.type != "cpu" or slab.ndim < 2 or slab.shape[0] < 1:
+        raise ValueError("Use a nonempty CPU time slab with time as the leading axis")
     return _TimeFaces.apply(slab, comm)
 
 

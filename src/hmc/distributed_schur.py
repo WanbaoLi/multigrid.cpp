@@ -6,6 +6,9 @@ from pathlib import Path
 
 import torch
 
+from .distributed_gauge import time_faces
+from .reference import dagger, gamma_matrices
+
 
 @lru_cache(maxsize=None)
 def _kernels(path):
@@ -81,5 +84,101 @@ def prepare_slab_schur(model, gauge, mass, clover, comm, library):
         even_kernel(local_sites, kappa, threads, neighbors_e.data_ptr(), links_e.data_ptr(),
                     even_blocks.data_ptr(), even.data_ptr(), halo.data_ptr(), out.data_ptr())
         return out.reshape_as(spinor)
+
+    return apply
+
+
+def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library):
+    """Prepare Schur from only an owned Clover slab and its gauge faces.
+
+    The returned operator differentiates through link and spinor halo adjoints
+    when autograd is enabled. Under no_grad it uses the native half-spin phases.
+    """
+    if extended_gauge.ndim != 7 or extended_gauge.shape[0] < 3:
+        raise ValueError("Expected t,z,y,x,mu,row,column gauge with time faces")
+    nt = extended_gauge.shape[0] - 2
+    spatial = tuple(extended_gauge.shape[1:4])
+    if any(n % 2 for n in spatial) or nt * comm.size % 2:
+        raise ValueError("Even global Wilson–Clover extents required")
+    grid = torch.arange((nt + 2) * math.prod(spatial)).reshape(nt + 2, *spatial)
+    area = math.prod(spatial)
+    face = area // 2
+    local_sites = nt * face
+    t = (torch.arange(nt + 2) + comm.rank * nt - 1) % (nt * comm.size)
+    parity = t[:, None, None, None]
+    for axis, extent in enumerate(spatial, start=1):
+        shape = [1, 1, 1, 1]
+        shape[axis] = extent
+        parity = parity + torch.arange(extent).reshape(shape)
+    parity = parity % 2
+    # Opposite-parity spinor indices follow the [lower halo, owned, upper halo]
+    # field order. Each parity has exactly half of every spatial time slice.
+    parity_indices = torch.empty_like(grid)
+    targets = []
+    for p in (0, 1):
+        mask = parity == p
+        parity_indices[mask] = torch.arange((nt + 2) * face)
+        targets.append(grid[mask][face:-face])
+    links = extended_gauge.reshape(-1, 4, 3, 3)
+    owned_grid = grid[1:-1]
+    gamma = gamma_matrices()
+    eye4 = torch.eye(4, dtype=links.dtype)
+    hopping = []
+    for target in targets:
+        terms = []
+        offset = target - area
+        for mu in range(4):
+            if mu == 3:
+                plus = (owned_grid + area).flatten()[offset]
+                minus = (owned_grid - area).flatten()[offset]
+            else:
+                plus = torch.roll(owned_grid, -1, 3 - mu).flatten()[offset]
+                minus = torch.roll(owned_grid, 1, 3 - mu).flatten()[offset]
+            forward, backward = links[target, mu], dagger(links[minus, mu])
+            if mu == 3:
+                times = t[torch.div(target, area, rounding_mode="floor")]
+                sf = torch.where(times == nt * comm.size - 1, -1., 1.)
+                sb = torch.where(times == 0, -1., 1.)
+                forward = forward * sf[:, None, None]
+                backward = backward * sb[:, None, None]
+            terms.extend(((parity_indices.flatten()[plus], forward, eye4 - gamma[mu]),
+                          (parity_indices.flatten()[minus], backward, eye4 + gamma[mu])))
+        hopping.append(terms)
+    clover = clover.reshape(nt * area, 2, 6, 6)
+    even_clover = clover[targets[0] - area]
+    odd_inverse = torch.linalg.inv(clover[targets[1] - area])
+    kappa = 1 / (2 * (mass + 4))
+    odd_kernel, even_kernel = _kernels(str(library))
+    threads = torch.get_num_threads()
+    with torch.no_grad():
+        neighbors_e, neighbors_o = [torch.stack([i for i, _, _ in terms]) for terms in hopping]
+        links_e, links_o = [torch.stack([u for _, u, _ in terms]) for terms in hopping]
+        blocks_e, blocks_o = even_clover.detach().contiguous(), odd_inverse.detach().contiguous()
+
+    def halo(spinor):
+        return time_faces(spinor.reshape(nt, face, 4, 3), comm)
+
+    def torch_hop(spinor, terms):
+        neighbors = halo(spinor).reshape(-1, 4, 3)
+        result = spinor.new_zeros((local_sites, 4, 3))
+        for indices, link, projector in terms:
+            result = result + projector @ (neighbors[indices] @ link.transpose(-2, -1))
+        return (-kappa * result).reshape(local_sites, 2, 6, 1)
+
+    def apply(spinor):
+        if torch.is_grad_enabled():
+            odd = odd_inverse @ torch_hop(spinor, hopping[1])
+            even = even_clover @ spinor.reshape(local_sites, 2, 6, 1)
+            return (even - torch_hop(odd, hopping[0])).reshape_as(spinor)
+        even = spinor.resolve_conj().contiguous()
+        odd = torch.empty_like(even)
+        output = torch.empty_like(even)
+        extended_even = halo(even)
+        odd_kernel(local_sites, kappa, threads, neighbors_o.data_ptr(), links_o.data_ptr(),
+                   blocks_o.data_ptr(), extended_even.data_ptr(), odd.data_ptr())
+        extended_odd = halo(odd)
+        even_kernel(local_sites, kappa, threads, neighbors_e.data_ptr(), links_e.data_ptr(),
+                    blocks_e.data_ptr(), even.data_ptr(), extended_odd.data_ptr(), output.data_ptr())
+        return output
 
     return apply
