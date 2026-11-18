@@ -86,7 +86,8 @@ def main():
         library = os.environ.get('LQCD_HMC_SCHUR_LIBRARY')
         if library:
             library_path = Path(library).resolve(strict=True)
-            report.update(native_schur_library=str(library_path), native_schur_sha256=lime_sha256(library_path))
+            report.update(native_schur_library=str(library_path), native_schur_sha256=lime_sha256(library_path),
+                          native_schur_split_normal=os.environ.get('LQCD_HMC_SPLIT_NORMAL') == '1')
     if matrix_free:
         report.update(strange_endpoint_poles=len(model.endpoint_terms),
                       strange_refresh_poles=len(model.refresh_terms),

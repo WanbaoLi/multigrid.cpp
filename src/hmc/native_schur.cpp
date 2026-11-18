@@ -60,6 +60,37 @@ void clover_product(const Complex *blocks, const Complex *input, Complex *output
             output[6 * chiral + row] = value;
         }
 }
+
+void schur_team(
+    std::int64_t n, double kappa, const std::int64_t *neighbors,
+    const Complex *links, const Complex *even_clover, const Complex *odd_inverse,
+    const Complex *input, Complex *odd, Complex *output,
+    const ProjectorTable &table, bool reflect_output) {
+#pragma omp for schedule(static)
+    for (std::int64_t site = 0; site < n; ++site) {
+        Complex sum[4][3]{};
+        hopping_sum(n, site, neighbors + 8 * n, links + 72 * n, input, sum, table);
+        Complex source[12];
+        for (int spin = 0; spin < 4; ++spin)
+            for (int color = 0; color < 3; ++color)
+                source[3 * spin + color] = -kappa * sum[spin][color];
+        clover_product(odd_inverse + 72 * site, source, odd + 12 * site);
+    }
+#pragma omp for schedule(static)
+    for (std::int64_t site = 0; site < n; ++site) {
+        Complex sum[4][3]{};
+        hopping_sum(n, site, neighbors, links, odd, sum, table);
+        Complex *result = output + 12 * site;
+        clover_product(even_clover + 72 * site, input + 12 * site, result);
+        for (int spin = 0; spin < 4; ++spin)
+            for (int color = 0; color < 3; ++color) {
+                auto &value = result[3 * spin + color];
+                value += kappa * sum[spin][color];
+                if (reflect_output && spin >= 2)
+                    value = -value;
+            }
+    }
+}
 }
 
 // Coefficients are in prepared parity-local order, with the time-boundary
@@ -71,24 +102,22 @@ extern "C" void lqcd_hmc_schur_apply(
     const auto &table = projectors();
 #pragma omp parallel if(n >= 128) num_threads(threads)
     {
-#pragma omp for schedule(static)
-        for (std::int64_t site = 0; site < n; ++site) {
-            Complex sum[4][3]{};
-            hopping_sum(n, site, neighbors + 8 * n, links + 72 * n, input, sum, table);
-            Complex source[12];
-            for (int spin = 0; spin < 4; ++spin)
-                for (int color = 0; color < 3; ++color)
-                    source[3 * spin + color] = -kappa * sum[spin][color];
-            clover_product(odd_inverse + 72 * site, source, odd + 12 * site);
-        }
-#pragma omp for schedule(static)
-        for (std::int64_t site = 0; site < n; ++site) {
-            Complex sum[4][3]{};
-            hopping_sum(n, site, neighbors, links, odd, sum, table);
-            clover_product(even_clover + 72 * site, input + 12 * site, output + 12 * site);
-            for (int spin = 0; spin < 4; ++spin)
-                for (int color = 0; color < 3; ++color)
-                    output[12 * site + 3 * spin + color] += kappa * sum[spin][color];
-        }
+        schur_team(n, kappa, neighbors, links, even_clover, odd_inverse,
+                   input, odd, output, table, false);
+    }
+}
+
+extern "C" void lqcd_hmc_normal_apply(
+    std::int64_t n, double kappa, int threads, const std::int64_t *neighbors,
+    const Complex *links, const Complex *even_clover, const Complex *odd_inverse,
+    const Complex *input, Complex *odd, Complex *intermediate, Complex *output) {
+    const auto &table = projectors();
+#pragma omp parallel if(n >= 128) num_threads(threads)
+    {
+        // In DeGrand–Rossi gamma5 = diag(+1,+1,-1,-1).
+        schur_team(n, kappa, neighbors, links, even_clover, odd_inverse,
+                   input, odd, intermediate, table, true);
+        schur_team(n, kappa, neighbors, links, even_clover, odd_inverse,
+                   intermediate, odd, output, table, true);
     }
 }

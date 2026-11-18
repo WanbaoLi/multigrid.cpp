@@ -249,7 +249,7 @@ class CloverHMC:
                               (minus, backward, self.eye4 + self.gamma[mu])))
             hopping.append(terms)
         kappa = 1 / (2 * (mass + 4))
-        native = prepare_native_schur(hopping, even_clover, odd_inverse, kappa)
+        native, native_normal = prepare_native_schur(hopping, even_clover, odd_inverse, kappa)
 
         def hop(spinor, terms):
             sites = spinor.reshape(-1, self.volume // 2, 4, 3)
@@ -268,10 +268,16 @@ class CloverHMC:
             local = even_clover @ spinor.reshape(-1, self.volume // 2, 2, 6, 1)
             return (local - hop(odd_solved, hopping[0])).reshape_as(spinor)
 
+        apply.native_normal = native_normal
         return apply
 
     def even_normal_from_schur(self, apply_schur, spinor):
         """Apply S_e† S_e using S_e† = gamma5 S_e gamma5."""
+        native = getattr(apply_schur, "native_normal", None)
+        if (native is not None and not torch.is_grad_enabled() and
+                spinor.numel() == self.volume * 6 and spinor.dtype == CD
+                and spinor.device.type == "cpu"):
+            return native(spinor)
         shape = (self.volume // 2, 4, 3)
         image = apply_schur(spinor).reshape(shape)
         reflected = self.gamma5 @ image

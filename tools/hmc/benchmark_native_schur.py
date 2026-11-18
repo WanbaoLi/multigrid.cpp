@@ -33,12 +33,16 @@ def main():
             clover = model.clover_blocks(model.field_strength(gauge), model.ms)
             x = torch.randn((model.volume // 2, 4, 3), dtype=CD, generator=rng)
             ops = {}
-            for name, path in (("torch", ""), ("native", str(args.library.resolve()))):
-                with patch.dict(os.environ, {"LQCD_HMC_SCHUR_LIBRARY": path}):
+            lib = str(args.library.resolve())
+            for name, path, split in (("torch", "", "0"), ("split_native", lib, "1"), ("native", lib, "0")):
+                with patch.dict(os.environ, {"LQCD_HMC_SCHUR_LIBRARY": path,
+                                             "LQCD_HMC_SPLIT_NORMAL": split}):
                     ops[name] = model.prepare_even_schur(gauge, model.ms, clover)
             baseline = model.even_normal_from_schur(ops["torch"], x)
             actual = model.even_normal_from_schur(ops["native"], x)
             torch.testing.assert_close(actual, baseline, rtol=3e-14, atol=3e-14)
+            torch.testing.assert_close(model.even_normal_from_schur(ops["split_native"], x),
+                                       baseline, rtol=3e-14, atol=3e-14)
             times = {name: [] for name in ops}
             for repeat in range(4):
                 for name in (ops if repeat % 2 == 0 else reversed(ops)):
@@ -49,6 +53,7 @@ def main():
             medians = {name: statistics.median(values) for name, values in times.items()}
             results.append(dict(lattice=model.lattice, seconds=times, median_seconds=medians,
                 speedup=medians["torch"] / medians["native"],
+                fusion_speedup=medians["split_native"] / medians["native"],
                 max_absolute_error=(actual - baseline).abs().max().item()))
     print(json.dumps(dict(threads=args.threads, applications_per_sample=args.applications,
                           torch=torch.__version__, results=results), indent=2))
