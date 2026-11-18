@@ -11,13 +11,15 @@ from .reference import dagger, gamma_matrices
 
 
 @lru_cache(maxsize=None)
-def _kernels(path):
+def _kernels(path, packed_faces=False):
     library = ctypes.CDLL(str(Path(path).resolve()))
-    odd = library.lqcd_hmc_schur_odd
-    even = library.lqcd_hmc_schur_even
+    suffix = "_faces" if packed_faces else ""
+    odd = getattr(library, "lqcd_hmc_schur_odd" + suffix)
+    even = getattr(library, "lqcd_hmc_schur_even" + suffix)
     prefix = [ctypes.c_int64, ctypes.c_double, ctypes.c_int]
-    odd.argtypes = prefix + [ctypes.c_void_p] * 5
-    even.argtypes = prefix + [ctypes.c_void_p] * 6
+    extra = 2 if packed_faces else 0
+    odd.argtypes = prefix + [ctypes.c_void_p] * (5 + extra)
+    even.argtypes = prefix + [ctypes.c_void_p] * (6 + extra)
     odd.restype = even.restype = None
     return odd, even
 
@@ -88,7 +90,8 @@ def prepare_slab_schur(model, gauge, mass, clover, comm, library):
     return apply
 
 
-def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, projected=True):
+def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, projected=True,
+                             packed_faces=False):
     """Prepare Schur from only an owned Clover slab and its gauge faces.
 
     The returned operator differentiates through link and spinor halo adjoints
@@ -96,6 +99,8 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
     """
     if extended_gauge.ndim != 7 or extended_gauge.shape[0] < 3:
         raise ValueError("Expected t,z,y,x,mu,row,column gauge with time faces")
+    if packed_faces and not projected:
+        raise ValueError("Packed faces require the temporal Wilson projector")
     nt = extended_gauge.shape[0] - 2
     spatial = tuple(extended_gauge.shape[1:4])
     if any(n % 2 for n in spatial) or nt * comm.size % 2:
@@ -148,24 +153,42 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
     even_clover = clover[targets[0] - area]
     odd_inverse = torch.linalg.inv(clover[targets[1] - area])
     kappa = 1 / (2 * (mass + 4))
-    odd_kernel, even_kernel = _kernels(str(library))
+    odd_kernel, even_kernel = _kernels(str(library), packed_faces)
     threads = torch.get_num_threads()
     with torch.no_grad():
         neighbors_e, neighbors_o = [torch.stack([i for i, _, _ in terms]) for terms in hopping]
+        if packed_faces:
+            for indices in (neighbors_e, neighbors_o):
+                indices.copy_(torch.where(indices < face, -indices - 1,
+                    torch.where(indices >= face + local_sites, face + local_sites - indices - 1,
+                                indices - face)))
         links_e, links_o = [torch.stack([u for _, u, _ in terms]) for terms in hopping]
         blocks_e, blocks_o = even_clover.detach().contiguous(), odd_inverse.detach().contiguous()
     scratch_odd = links.new_empty((local_sites, 4, 3))
-    if projected:
+    prev, nxt = (comm.rank - 1) % comm.size, (comm.rank + 1) % comm.size
+    if packed_faces:
+        from mpi4py import MPI
+        sends = links.new_empty((2, face, 2, 3))
+        lower, upper = torch.empty_like(sends[0]), torch.empty_like(sends[0])
+        to_prev, to_next = sends[0].numpy(), sends[1].numpy()
+        receive_lower, receive_upper = lower.numpy(), upper.numpy()
+    elif projected:
         extended = links.new_zeros((nt + 2, face, 4, 3))
         send = links.new_empty((face, 2, 3))
         received = torch.empty_like(send)
         send_buffer, receive_buffer = send.numpy(), received.numpy()
-        prev, nxt = (comm.rank - 1) % comm.size, (comm.rank + 1) % comm.size
 
     def halo(spinor):
         owned = spinor.reshape(nt, face, 4, 3)
+        if packed_faces:
+            torch.sub(owned[0, :, :2], owned[0, :, 2:], out=sends[0])
+            torch.add(owned[-1, :, :2], owned[-1, :, 2:], out=sends[1])
+            requests = (comm.Irecv(receive_upper, nxt, 20), comm.Irecv(receive_lower, prev, 21),
+                        comm.Isend(to_prev, prev, 20), comm.Isend(to_next, nxt, 21))
+            MPI.Request.Waitall(requests)
+            return spinor, lower, upper
         if not projected:
-            return time_faces(owned, comm)
+            return time_faces(owned, comm),
         # The time gamma swaps the upper and lower spin pairs. Carry only
         # the pair consumed by the projector. The lower halo spins stay zero.
         extended[1:-1].copy_(owned)
@@ -175,7 +198,7 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
         torch.add(owned[-1, :, :2], owned[-1, :, 2:], out=send)
         comm.Sendrecv(send_buffer, nxt, 21, receive_buffer, prev, 21)
         extended[0, :, :2].copy_(received)
-        return extended
+        return extended,
 
     def torch_hop(spinor, terms):
         fields = spinor.reshape(-1, nt, face, 4, 3).transpose(0, 1)
@@ -196,10 +219,10 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
         # separate field because Krylov callers can retain previous results.
         extended_even = halo(even)
         odd_kernel(local_sites, kappa, threads, neighbors_o.data_ptr(), links_o.data_ptr(),
-                   blocks_o.data_ptr(), extended_even.data_ptr(), scratch_odd.data_ptr())
+                   blocks_o.data_ptr(), *(part.data_ptr() for part in extended_even), scratch_odd.data_ptr())
         extended_odd = halo(scratch_odd)
         even_kernel(local_sites, kappa, threads, neighbors_e.data_ptr(), links_e.data_ptr(),
-                    blocks_e.data_ptr(), even.data_ptr(), extended_odd.data_ptr(), output.data_ptr())
+                    blocks_e.data_ptr(), even.data_ptr(), *(part.data_ptr() for part in extended_odd), output.data_ptr())
         return output
 
     return apply

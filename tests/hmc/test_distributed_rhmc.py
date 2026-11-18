@@ -18,6 +18,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--direct-clover", action="store_true")
+    parser.add_argument("--packed-faces", action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(1)
     comm = MPI.COMM_WORLD.Dup()
@@ -25,7 +26,7 @@ def main():
         lattice = (2, 2, 2, comm.size)
         params = (lattice, 5.6, .5, .8, 1.)
         model = DistributedRHMC(*params, comm, os.environ["LQCD_HMC_SCHUR_LIBRARY"],
-                                direct_clover=args.direct_clover)
+                                direct_clover=args.direct_clover, packed_faces=args.packed_faces)
         serial = MatrixFreePseudofermionHMC(*params)
         dense = PseudofermionHMC(*params)
         rng = torch.Generator().manual_seed(1729)

@@ -82,10 +82,21 @@ def main():
                     full_halo = prepare_local_slab_schur(
                         extended, local_clover, mass, comm, library, projected=False)
                     native_full_halo = full_halo(field[slab])
+                    packed_apply = prepare_local_slab_schur(
+                        extended, local_clover, mass, comm, library, packed_faces=True)
+                    native_packed = packed_apply(field[slab])
+
+                    def packed_normal(x):
+                        return model.gamma5 @ packed_apply(model.gamma5 @ packed_apply(x))
+
+                    packed_solution, _, packed_residual = solve_shifted(
+                        packed_normal, field[slab], shifts[1], comm=comm)
+                    torch.testing.assert_close(packed_solution, solutions[1], rtol=2e-11, atol=2e-11)
                 local_error = max(float((x - global_image[slab]).abs().max())
-                                  for x in (local_image, native_image, native_full_halo))
+                                  for x in (local_image, native_image, native_full_halo, native_packed))
                 halo_error = comm.allreduce(float((native_image - native_full_halo).abs().max()),
                                             op=MPI.MAX)
+                packed_error = comm.allreduce(float((native_image - native_packed).abs().max()), op=MPI.MAX)
                 local_grad, = torch.autograd.grad(local_image.abs().square().sum(), local)
                 full_grad, = torch.autograd.grad(global_image.abs().square().sum(), full)
                 grad_error = float((local_grad - full_grad.reshape(*reversed(lattice), 4, 3, 3)[ti]).abs().max())
@@ -97,6 +108,7 @@ def main():
                                     normal_error=max_normal, independent_shifted_residuals=independent,
                                     distributed_shifted_residuals=residuals,
                                     local_schur_error=local_error, projected_halo_error=halo_error,
+                                    packed_halo_error=packed_error, packed_shifted_true_residual=packed_residual,
                                     schur_link_gradient_error=grad_error))
         if comm.rank == 0:
             args.output.write_text(json.dumps(dict(ranks=comm.size, cases=results, passed=True),

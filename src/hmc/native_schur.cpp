@@ -37,20 +37,33 @@ Complex rotate_phase(Complex value, double sign, bool imaginary) {
     return imaginary ? Complex{-sign * value.imag(), sign * value.real()} : sign * value;
 }
 
+template<bool PackedFaces = false>
 void hopping_sum(std::int64_t n, std::int64_t site, const std::int64_t *neighbors,
                  const Complex *links, const Complex *input, Complex (&sum)[4][3],
-                 const ProjectorTable &table) {
+                 const ProjectorTable &table, const Complex *lower_face, const Complex *upper_face) {
     for (int direction = 0; direction < 8; ++direction) {
         const auto offset = n * direction + site;
-        const Complex *spinor = input + 12 * neighbors[offset];
+        const auto source = neighbors[offset];
+        const Complex *spinor;
+        bool already_projected = false;
+        if constexpr (PackedFaces) {
+            // Only temporal directions can carry a negative face offset.
+            already_projected = source < 0;
+            spinor = already_projected ?
+                (direction == 6 ? upper_face : lower_face) + 6 * (-1 - source) : input + 12 * source;
+        } else {
+            spinor = input + 12 * source;
+        }
         const Complex *link = links + 9 * offset;
         for (int spin = 0; spin < 2; ++spin) {
             const auto [lower, sign, imaginary] = table[direction][spin];
             const double reconstruction_sign = imaginary ? -sign : sign;
             Complex projected[3];
-            for (int color = 0; color < 3; ++color)
-                projected[color] = spinor[3 * spin + color] +
-                                   rotate_phase(spinor[3 * lower + color], sign, imaginary);
+            for (int color = 0; color < 3; ++color) {
+                projected[color] = spinor[3 * spin + color];
+                if (!already_projected)
+                    projected[color] += rotate_phase(spinor[3 * lower + color], sign, imaginary);
+            }
             for (int row = 0; row < 3; ++row) {
                 const Complex rotated = link[3 * row] * projected[0] +
                                         link[3 * row + 1] * projected[1] +
@@ -72,14 +85,16 @@ void clover_product(const Complex *blocks, const Complex *input, Complex *output
         }
 }
 
+template<bool PackedFaces = false>
 void odd_team(
     std::int64_t n, double kappa, const std::int64_t *neighbors,
     const Complex *links, const Complex *odd_inverse, const Complex *input,
-    Complex *odd, const ProjectorTable &table) {
+    Complex *odd, const ProjectorTable &table,
+    const Complex *lower_face = nullptr, const Complex *upper_face = nullptr) {
 #pragma omp for schedule(static)
     for (std::int64_t site = 0; site < n; ++site) {
         Complex sum[4][3]{};
-        hopping_sum(n, site, neighbors, links, input, sum, table);
+        hopping_sum<PackedFaces>(n, site, neighbors, links, input, sum, table, lower_face, upper_face);
         Complex source[12];
         for (int spin = 0; spin < 4; ++spin)
             for (int color = 0; color < 3; ++color)
@@ -88,15 +103,16 @@ void odd_team(
     }
 }
 
+template<bool PackedFaces = false>
 void even_team(
     std::int64_t n, double kappa, const std::int64_t *neighbors,
     const Complex *links, const Complex *even_clover, const Complex *input,
     const Complex *odd, Complex *output, const ProjectorTable &table,
-    bool reflect_output) {
+    bool reflect_output, const Complex *lower_face = nullptr, const Complex *upper_face = nullptr) {
 #pragma omp for schedule(static)
     for (std::int64_t site = 0; site < n; ++site) {
         Complex sum[4][3]{};
-        hopping_sum(n, site, neighbors, links, odd, sum, table);
+        hopping_sum<PackedFaces>(n, site, neighbors, links, odd, sum, table, lower_face, upper_face);
         Complex *result = output + 12 * site;
         clover_product(even_clover + 72 * site, input + 12 * site, result);
         for (int spin = 0; spin < 4; ++spin)
@@ -167,5 +183,29 @@ extern "C" void lqcd_hmc_schur_even(
 #pragma omp parallel if(n >= 128) num_threads(threads)
     {
         even_team(n, kappa, neighbors, links, even_clover, even, odd, output, table, false);
+    }
+}
+
+// Encoded indices address the actual owned input or one packed temporal face.
+extern "C" void lqcd_hmc_schur_odd_faces(
+    std::int64_t n, double kappa, int threads, const std::int64_t *neighbors,
+    const Complex *links, const Complex *odd_inverse, const Complex *even,
+    const Complex *lower_face, const Complex *upper_face, Complex *odd) {
+    const auto &table = projectors();
+#pragma omp parallel if(n >= 128) num_threads(threads)
+    {
+        odd_team<true>(n, kappa, neighbors, links, odd_inverse, even, odd, table, lower_face, upper_face);
+    }
+}
+
+extern "C" void lqcd_hmc_schur_even_faces(
+    std::int64_t n, double kappa, int threads, const std::int64_t *neighbors,
+    const Complex *links, const Complex *even_clover, const Complex *even, const Complex *odd,
+    const Complex *lower_face, const Complex *upper_face, Complex *output) {
+    const auto &table = projectors();
+#pragma omp parallel if(n >= 128) num_threads(threads)
+    {
+        even_team<true>(n, kappa, neighbors, links, even_clover, even, odd, output,
+                        table, false, lower_face, upper_face);
     }
 }

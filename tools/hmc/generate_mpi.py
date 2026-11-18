@@ -24,7 +24,7 @@ CHECKPOINT_COMPATIBILITY = (
     "threads", "seed", "torch_version", "native_schur_sha256", "integrator",
     "trajectory_length", "integration_steps", "gauge_substeps_per_drift",
     "strange_md_interval", "strange_rational_poles", "md_relative_true_residual_tolerance",
-    "direct_clover_adjoint",
+    "direct_clover_adjoint", "packed_temporal_faces",
 )
 
 
@@ -49,6 +49,7 @@ def resume_from(path, report, rng, comm):
     def read_checkpoint():
         previous = json.loads(path.read_text())
         previous.setdefault("direct_clover_adjoint", False)
+        previous.setdefault("packed_temporal_faces", False)
         mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
         if mismatches:
             raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
@@ -111,6 +112,8 @@ def main():
                         help="relative true residual for the light and strange MD solves")
     parser.add_argument("--direct-clover", action="store_true",
                         help="evaluate Clover leaf derivatives with the local analytic adjoint")
+    parser.add_argument("--packed-faces", action="store_true",
+                        help="apply the native Schur operator directly to packed temporal faces")
     parser.add_argument("--save-every", type=int, default=1)
     parser.add_argument("--threads", type=int, default=1)
     parser.add_argument("--seed", type=int, default=1729)
@@ -141,7 +144,7 @@ def run(args, comm):
     model = DistributedRHMC(args.lattice, args.beta, args.mass_light, args.mass_strange,
                             args.csw, comm, args.library, interval=args.strange_interval,
                             md_order=args.md_order, md_tolerance=args.md_tolerance,
-                            direct_clover=args.direct_clover)
+                            direct_clover=args.direct_clover, packed_faces=args.packed_faces)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
@@ -159,6 +162,7 @@ def run(args, comm):
                                               refresh=len(model.refresh_terms)),
                   md_relative_true_residual_tolerance=model.md_tolerance,
                   direct_clover_adjoint=model.direct_clover,
+                  packed_temporal_faces=model.packed_faces,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",
                   gauge_substeps_per_drift=args.gauge_steps,
                   thermalization_established=False, independent_samples_established=False,

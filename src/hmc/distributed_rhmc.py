@@ -14,7 +14,7 @@ from .spectral import cold_wilson_gap, positive_schur_bounds
 
 class DistributedRHMC:
     def __init__(self, lattice, beta, ml, ms, csw, comm, library, interval=(.004, 4.), *,
-                 md_order=32, md_tolerance=1e-12, direct_clover=False):
+                 md_order=32, md_tolerance=1e-12, direct_clover=False, packed_faces=False):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -43,6 +43,7 @@ class DistributedRHMC:
         self.interval = tuple(interval)
         self.md_tolerance = md_tolerance
         self.direct_clover = direct_clover
+        self.packed_faces = packed_faces
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
             self.interval, md_order=md_order)
 
@@ -66,7 +67,8 @@ class DistributedRHMC:
         return lower, upper
 
     def _schur(self, extended, clover, mass):
-        return prepare_local_slab_schur(extended, clover, mass, self.comm, self.library)
+        return prepare_local_slab_schur(extended, clover, mass, self.comm, self.library,
+                                        packed_faces=self.packed_faces)
 
     def _normal(self, schur, field):
         return self.gamma5 * schur(self.gamma5 * schur(field))
