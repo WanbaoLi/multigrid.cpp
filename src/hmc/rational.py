@@ -72,7 +72,54 @@ def zolotarev_inverse_sqrt(lower, upper, tol, max_poles=64):
     raise ArithmeticError("Zolotarev inverse square root missed the checked error target")
 
 
-def checked_rational_terms(interval, endpoint_order=64, *, md_order=32, zolotarev=False):
+def _compress_refresh_terms(terms, interval, reference_error):
+    """Project the positive pole sum onto a small rational Krylov basis."""
+    poles, weights = np.asarray(terms, dtype=np.float64).T
+    center = math.sqrt(interval[0]) * math.sqrt(interval[1])
+    points = np.geomspace(*interval, 32769)
+    power = points ** 0.75
+
+    def evaluate(shifts, residues):
+        return power * sum(weight / (points + shift) for shift, weight in zip(shifts, residues))
+
+    reference = evaluate(poles, weights)
+    # With C = diag(1 / (poles + center)) and v = sqrt(weights * diag(C)),
+    # the original sum is v.T @ (I + (x - center) * C)^-1 @ v.
+    rates = 1. / (poles + center)
+    seed = np.sqrt(weights * rates)
+    basis = np.empty((len(poles), len(poles) - 1))
+    threshold = 32 * np.finfo(np.float64).eps * np.linalg.norm(seed)
+    sample = points[0]
+    for size in range(1, len(poles)):
+        previous = basis[:, :size - 1]
+        vector = seed / (1. + (sample - center) * rates)
+        for _ in range(2):
+            vector -= previous @ (previous.T @ vector)
+        length = np.linalg.norm(vector)
+        if length <= threshold or not np.isfinite(length):
+            break
+        basis[:, size - 1] = vector / length
+        space = basis[:, :size]
+        small_rates, rotation = np.linalg.eigh(space.T @ (rates[:, None] * space))
+        if not np.all(small_rates > 0.):
+            break
+        shifts = 1. / small_rates - center
+        residues = np.square(rotation.T @ (space.T @ seed)) / small_rates
+        if not (np.isfinite(shifts).all() and np.isfinite(residues).all()
+                and np.all(shifts > 0.) and np.all(residues > 0.)):
+            break
+        shifts, residues = shifts[::-1], residues[::-1]
+        values = evaluate(shifts, residues)
+        difference = np.abs(values - reference)
+        error = float(np.max(np.abs(values - 1.)))
+        if error <= 1e-12 and difference.max() <= 2.5e-13:
+            return tuple(zip(shifts.tolist(), residues.tolist())), error
+        sample = points[np.argmax(difference)]
+    return terms, reference_error
+
+
+def checked_rational_terms(interval, endpoint_order=64, *, md_order=32, zolotarev=False,
+                           compress_refresh=False):
     """Choose fixed refresh, endpoint and MD expansions on a tested scalar grid."""
     points = np.geomspace(*interval, 4097)
 
@@ -89,6 +136,8 @@ def checked_rational_terms(interval, endpoint_order=64, *, md_order=32, zolotare
         raise ArithmeticError("Endpoint or refresh rational approximation exceeds grid tolerance")
 
     refresh, err_refresh = choose(0.75)
+    if compress_refresh:
+        refresh, err_refresh = _compress_refresh_terms(refresh, interval, err_refresh)
     md = inverse_power_terms(0.5, *interval, order=md_order)
     err_md = grid_error(0.5, md)
     if zolotarev:

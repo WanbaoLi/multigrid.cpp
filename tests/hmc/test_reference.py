@@ -17,7 +17,8 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 from hmc.reference import CloverHMC, CD, RD, dagger, generators, write_lime
 from hmc.shifted import solve_multi_shift, solve_shifted
-from hmc.rational import apply_rational, inverse_power_terms, rational_action_gradient, zolotarev_inverse_sqrt
+from hmc.rational import (apply_rational, checked_rational_terms, inverse_power_terms,
+                          rational_action_gradient, zolotarev_inverse_sqrt)
 from hmc.pseudofermion import MatrixFreePseudofermionHMC, PseudofermionHMC
 from hmc.spectral import cold_wilson_gap, positive_schur_bounds
 
@@ -337,6 +338,39 @@ class HMCPhysicsTests(unittest.TestCase):
         self.assertLess(calls, independent_calls)
         METRICS["multi_shift"] = dict(shared_operator_calls=calls,
             independent_operator_calls=independent_calls, max_residual=max(residuals))
+
+    def test_compressed_strange_refresh(self):
+        interval = (.004, 4.)
+        baseline = checked_rational_terms(interval, md_order=16)
+        candidate = checked_rational_terms(interval, md_order=16, compress_refresh=True)
+        self.assertEqual(candidate[:2], baseline[:2])
+        self.assertLess(len(candidate[2]), len(baseline[2]) // 2)
+        self.assertTrue(all(shift > 0 and weight > 0 for shift, weight in candidate[2]))
+        points = np.geomspace(*interval, 65535)
+        approximation = points ** .75 * sum(weight / (points + shift) for shift, weight in candidate[2])
+        scalar_error = float(np.max(np.abs(approximation - 1)))
+        self.assertLessEqual(scalar_error, 1e-12)
+
+        eigenvalues = torch.from_numpy(np.geomspace(*interval, 24))
+        noise = torch.randn(eigenvalues.shape, dtype=CD, generator=self.rng)
+        expected = eigenvalues.pow(.25) * noise
+        counts = []
+        for terms in (baseline[2], candidate[2]):
+            calls = 0
+
+            def normal(field):
+                nonlocal calls
+                calls += 1
+                return eigenvalues * field
+
+            field, residual = apply_rational(normal, noise, terms)
+            torch.testing.assert_close(normal(field), expected, atol=2e-11, rtol=2e-11)
+            self.assertLessEqual(residual, 1e-12)
+            counts.append(calls)
+        self.assertLess(counts[1], counts[0])
+        METRICS["compressed_refresh"] = dict(baseline_poles=len(baseline[2]),
+            candidate_poles=len(candidate[2]), baseline_normal_calls=counts[0],
+            candidate_normal_calls=counts[1], scalar_error=scalar_error)
 
     @unittest.skipUnless(importlib.util.find_spec("scipy"), "optional elliptic coefficients require SciPy")
     def test_zolotarev_inverse_square_root(self):

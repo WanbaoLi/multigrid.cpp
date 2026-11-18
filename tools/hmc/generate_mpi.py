@@ -28,7 +28,7 @@ CHECKPOINT_COMPATIBILITY = (
     "half_power_rational_method", "rational_coefficients_sha256", "force_pole_batch",
     "projected_force_faces", "light_heatbath_action", "real_krylov_dot", "pade_drift", "shared_clover_spin",
     "native_pade_drift", "reuse_odd_inverse", "overlap_schur_faces", "gershgorin_strange",
-    "fused_schur_gamma5",
+    "fused_schur_gamma5", "compress_refresh",
 )
 
 
@@ -86,6 +86,7 @@ def resume_from(path, report, rng, comm):
         previous.setdefault("overlap_schur_faces", False)
         previous.setdefault("gershgorin_strange", False)
         previous.setdefault("fused_schur_gamma5", False)
+        previous.setdefault("compress_refresh", False)
         mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
         if mismatches:
             raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
@@ -155,6 +156,8 @@ def main():
                         help="differentiate a two-component Wilson hopping projection")
     parser.add_argument("--zolotarev", action="store_true",
                         help="use elliptic inverse-square-root coefficients for the strange MD and endpoint")
+    parser.add_argument("--compress-refresh", action="store_true",
+                        help="compress the strange heatbath partial fraction with checked positive poles")
     parser.add_argument("--force-pole-batch", type=int, default=8,
                         help="maximum number of shift solutions differentiated in one force batch")
     parser.add_argument("--projected-force-faces", action="store_true",
@@ -224,12 +227,14 @@ def run(args, comm):
                             native_pade=args.native_pade_drift, reuse_odd_inverse=args.reuse_odd_inverse,
                             overlap_schur_faces=args.overlap_schur_faces,
                             gershgorin_strange=args.gershgorin_strange,
-                            fused_schur_gamma5=args.fused_schur_gamma5)
+                            fused_schur_gamma5=args.fused_schur_gamma5, compress_refresh=args.compress_refresh)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
     terms = (model.md_terms, model.endpoint_terms, model.refresh_terms)
     rational_digest = hashlib.sha256(json.dumps(terms, allow_nan=False).encode()).hexdigest()
+    if len(set(comm.allgather(rational_digest))) != 1:
+        raise RuntimeError("Rational coefficients differ across MPI ranks")
     rng = torch.Generator().manual_seed(args.seed + comm.rank)
     report = dict(complete=False, algorithm="time-slab matrix-free 2+1 RHMC",
                   lattice_xyzt=list(args.lattice), beta=args.beta, mass_light=args.mass_light,
@@ -258,6 +263,7 @@ def run(args, comm):
                   overlap_schur_faces=model.overlap_schur_faces,
                   gershgorin_strange=model.gershgorin_strange,
                   fused_schur_gamma5=model.fused_schur_gamma5,
+                  compress_refresh=model.compress_refresh,
                   half_power_rational_method="zolotarev" if model.zolotarev else "quadrature",
                   rational_coefficients_sha256=rational_digest,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",

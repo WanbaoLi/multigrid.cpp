@@ -25,7 +25,8 @@ class DistributedRHMC:
                  zolotarev=False, force_pole_batch=8, projected_force_faces=False,
                  light_heatbath_action=False, real_krylov_dot=False, pade_drift=False,
                  shared_clover_spin=False, native_pade=False, reuse_odd_inverse=False,
-                 overlap_schur_faces=False, gershgorin_strange=False, fused_schur_gamma5=False):
+                 overlap_schur_faces=False, gershgorin_strange=False, fused_schur_gamma5=False,
+                 compress_refresh=False):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -76,8 +77,9 @@ class DistributedRHMC:
         self.overlap_schur_faces = overlap_schur_faces
         self.gershgorin_strange = gershgorin_strange
         self.fused_schur_gamma5 = fused_schur_gamma5
+        self.compress_refresh = compress_refresh
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
-            self.interval, md_order=md_order, zolotarev=zolotarev)
+            self.interval, md_order=md_order, zolotarev=zolotarev, compress_refresh=compress_refresh)
 
     def cold(self):
         return self.eye.repeat(self.local_volume, 4, 1, 1)

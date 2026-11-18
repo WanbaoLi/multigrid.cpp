@@ -29,6 +29,7 @@ def main():
                         light_heatbath_action=False, real_krylov_dot=False, pade_drift=False,
                         shared_clover_spin=False, native_pade_drift=False, reuse_odd_inverse=False,
                         overlap_schur_faces=False, gershgorin_strange=False, fused_schur_gamma5=False,
+                        compress_refresh=False,
                         library=Path(os.environ["LQCD_HMC_SCHUR_LIBRARY"]))
         whole = run(SimpleNamespace(**settings, output=args.output / "whole",
                                     trajectories=3, resume_from=None), comm)
