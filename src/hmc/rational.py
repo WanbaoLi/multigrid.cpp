@@ -6,7 +6,7 @@ import math
 import numpy as np
 import torch
 
-from .shifted import solve_shifted
+from .shifted import solve_multi_shift, solve_shifted
 
 
 def inverse_power_terms(power, lower, upper, order=16):
@@ -30,13 +30,12 @@ def inverse_power_terms(power, lower, upper, order=16):
 
 def apply_rational(apply, rhs, terms, tol=1e-12):
     """Apply the partial fraction and return the largest shifted residual."""
+    shifts, weights = zip(*terms)
+    solutions, residuals = solve_multi_shift(apply, rhs, shifts, tol)
     result = torch.zeros_like(rhs)
-    worst_residual = 0.
-    for shift, weight in terms:
-        solution, _, residual = solve_shifted(apply, rhs, shift, tol)
+    for solution, weight in zip(solutions, weights):
         result.add_(solution, alpha=weight)
-        worst_residual = max(worst_residual, residual)
-    return result, worst_residual
+    return result, max(residuals)
 
 
 def rational_action_gradient(model, gauge, mass, rhs, terms, tol=1e-12):
@@ -47,14 +46,18 @@ def rational_action_gradient(model, gauge, mass, rhs, terms, tol=1e-12):
     def normal(vec):
         return model.apply_even_normal(links.detach(), mass, vec, clover.detach())
 
-    gradient = torch.zeros_like(links)
+    shifts, weights = zip(*terms)
+    if len(shifts) == 1:
+        solutions = [solve_shifted(normal, rhs, shifts[0], tol)[0]]
+    else:
+        solutions, _ = solve_multi_shift(normal, rhs, shifts, tol)
     action = 0.
-    for pole, (shift, weight) in enumerate(terms):
-        solution, _, _ = solve_shifted(normal, rhs, shift, tol)
+    surrogate = 0.
+    for solution, weight in zip(solutions, weights):
         action += weight * (rhs.conj() * solution).real.sum().item()
         # The derivative of the inverse contributes -x† (dA) x at fixed x.
         image = model.apply_even_schur(links, mass, solution, clover)
         quadratic = (image.real.square() + image.imag.square()).sum()
-        term_gradient, = torch.autograd.grad(quadratic, links, retain_graph=pole + 1 < len(terms))
-        gradient.add_(term_gradient, alpha=-weight)
+        surrogate = surrogate - weight * quadratic
+    gradient, = torch.autograd.grad(surrogate, links)
     return action, gradient
