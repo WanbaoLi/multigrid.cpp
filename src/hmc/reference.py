@@ -129,6 +129,21 @@ class CloverHMC:
                 total = total + (1 - plaq.diagonal(dim1=-2, dim2=-1).sum(-1).real / 3).sum()
         return self.beta * total
 
+    def gauge_link_gradient(self, u):
+        """Differentiate the Wilson plaquette action via the six link staples."""
+        gradients = []
+        for mu, plus_mu in enumerate(self.plus):
+            staple = torch.zeros_like(u[:, mu])
+            for nu, (plus_nu, minus_nu) in enumerate(zip(self.plus, self.minus)):
+                if nu == mu:
+                    continue
+                forward = u[plus_mu, nu] @ dagger(u[plus_nu, mu]) @ dagger(u[:, nu])
+                backward = (dagger(u[plus_mu[minus_nu], nu]) @ dagger(u[minus_nu, mu])
+                            @ u[minus_nu, nu])
+                staple = staple + forward + backward
+            gradients.append(-self.beta / 3 * dagger(staple))
+        return torch.stack(gradients, dim=1)
+
     def field_strength(self, u):
         field = []
         for mu in range(4):

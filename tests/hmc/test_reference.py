@@ -58,6 +58,16 @@ class HMCPhysicsTests(unittest.TestCase):
         self.assertGreater(float((self.m.force(self.u, 'fermion') -
                                  no_clover.force(self.u, 'fermion')).abs().max()), 1e-5)
 
+    def test_gauge_staple_gradient_matches_loop_gradient(self):
+        for lattice in ((2, 2, 2, 2), (2, 2, 2, 4), (4, 4, 4, 4)):
+            model = CloverHMC(lattice, dense_reference=False)
+            p = torch.randn((model.volume, 4, 8), dtype=RD, generator=self.rng)
+            gauge = model.drift(model.cold(), p, 0.24).requires_grad_(True)
+            expected, = torch.autograd.grad(model.gauge_action(gauge), gauge)
+            actual = model.gauge_link_gradient(gauge.detach())
+            torch.testing.assert_close(actual, expected, rtol=2e-14, atol=2e-14)
+            METRICS[f"gauge_staple_gradient_max_error_{lattice}"] = (actual - expected).abs().max().item()
+
     def test_flavor_weights(self):
         m = CloverHMC(mass_light=0.5, mass_strange=0.5)
         expected = -3 * torch.linalg.slogdet(m.dirac(self.u, 0.5))[1]

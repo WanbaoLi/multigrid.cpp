@@ -91,11 +91,12 @@ class PseudofermionHMC(CloverHMC):
     def md_force(self, u, fields):
         links = u.detach().requires_grad_(True)
         strength = self.field_strength(links)
-        total = self.gauge_action(links)
+        total = 0.
         for mass, multiplicity in ((self.ml, 2), (self.ms, 1)):
             odd_clover = self.clover_blocks(strength, mass)[self.odd]
             total = total - multiplicity * torch.linalg.slogdet(odd_clover)[1].sum()
         gradient, = torch.autograd.grad(total, links)
+        gradient = gradient + self.gauge_link_gradient(u)
         for mass, phi, terms in ((self.ml, fields[0], ((0., 1.),)),
                                  (self.ms, fields[1], self.strange_terms)):
             _, sea_gradient = rational_action_gradient(self, u, mass, phi, terms)
