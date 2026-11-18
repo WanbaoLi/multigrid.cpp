@@ -208,7 +208,7 @@ class CloverHMC:
         return (local - correction).reshape_as(spinor)
 
     def prepare_even_schur(self, u, mass, clover):
-        """Prepare gauge-dependent coefficients for repeated parity-local applications."""
+        """Prepare parity-local coefficients and apply one or more Schur fields."""
         even_clover = clover[self.even]
         odd_inverse = torch.linalg.inv(clover[self.odd])
         hopping = []
@@ -226,16 +226,16 @@ class CloverHMC:
         kappa = 1 / (2 * (mass + 4))
 
         def hop(spinor, terms):
-            sites = spinor.reshape(self.volume // 2, 4, 3)
+            sites = spinor.reshape(-1, self.volume // 2, 4, 3)
             result = torch.zeros_like(sites)
             for source, link, projector in terms:
-                rotated = sites[source] @ link.transpose(-2, -1)
+                rotated = sites[:, source] @ link.transpose(-2, -1)
                 result = result + projector @ rotated
-            return (-kappa * result).reshape(self.volume // 2, 12, 1)
+            return (-kappa * result).reshape(-1, self.volume // 2, 12, 1)
 
         def apply(spinor):
             odd_solved = odd_inverse @ hop(spinor, hopping[1])
-            local = even_clover @ spinor.reshape(self.volume // 2, 12, 1)
+            local = even_clover @ spinor.reshape(-1, self.volume // 2, 12, 1)
             return (local - hop(odd_solved, hopping[0])).reshape_as(spinor)
 
         return apply

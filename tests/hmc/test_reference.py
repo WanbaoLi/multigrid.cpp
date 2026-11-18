@@ -172,6 +172,9 @@ class HMCPhysicsTests(unittest.TestCase):
             prepared_schur = self.m.prepare_even_schur(u, mass, c)
             prepared = prepared_schur(x)
             expected = schur @ x
+            batch = torch.stack((x, x.conj(), x * 2j))
+            torch.testing.assert_close(prepared_schur(batch), batch @ schur.transpose(-2, -1),
+                                       atol=3e-14, rtol=3e-14)
             torch.testing.assert_close(direct, expected, atol=3e-14, rtol=3e-14)
             torch.testing.assert_close(prepared, expected, atol=3e-14, rtol=3e-14)
             direct_grad, = torch.autograd.grad((x.conj() * direct).real.sum(), u, retain_graph=True)

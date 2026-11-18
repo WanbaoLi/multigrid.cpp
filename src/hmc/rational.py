@@ -52,13 +52,16 @@ def rational_action_gradient(model, gauge, mass, rhs, terms, tol=1e-12):
         solutions = [solve_shifted(normal, rhs, shifts[0], tol)[0]]
     else:
         solutions, _ = solve_multi_shift(normal, rhs, shifts, tol)
-    action = 0.
+    action = sum(weight * (rhs.conj() * solution).real.sum().item()
+                 for weight, solution in zip(weights, solutions))
     surrogate = 0.
-    for solution, weight in zip(solutions, weights):
-        action += weight * (rhs.conj() * solution).real.sum().item()
+    batch_size = 8
+    for first in range(0, len(weights), batch_size):
+        last = min(first + batch_size, len(weights))
         # The derivative of the inverse contributes -x† (dA) x at fixed x.
-        image = schur(solution)
-        quadratic = (image.real.square() + image.imag.square()).sum()
-        surrogate = surrogate - weight * quadratic
+        image = schur(torch.stack(solutions[first:last])).reshape(last - first, -1)
+        quadratic = (image.real.square() + image.imag.square()).sum(dim=1)
+        coefficients = torch.tensor(weights[first:last], dtype=quadratic.dtype, device=quadratic.device)
+        surrogate = surrogate - (coefficients * quadratic).sum()
     gradient, = torch.autograd.grad(surrogate, links)
     return action, gradient
