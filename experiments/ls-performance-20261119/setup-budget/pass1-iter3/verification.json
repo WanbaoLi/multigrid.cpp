@@ -1,0 +1,82 @@
+{
+  "complete": true,
+  "run": "/tmp/mg-l24-setup-budget-dllELS8O/pass1-iter3/cap14",
+  "reference": "/tmp/mg-l24-packed-cgs2-oZsR7f81/build/multigrid",
+  "reference_sha256": "f67e26a3ba3553e404a7bd9a042116d9825bc0e7d5dcbb1ea6c8d4500983c0e1",
+  "run_report_sha256": "d4659a60fe70f423c46103e35805824a9041baceb4e332032a763a0f85fa3ccf",
+  "propagator_sha256": "3d2d4f1379381024015d78a9e3c7cce9b1d254dbb473fff5b95924d8d4a33829",
+  "method": "byte-only column extraction + independent scalar C++",
+  "source_xyzt": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_scale": 1.0,
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "normalization": "mass",
+  "columns": [
+    {
+      "source_spin": 0,
+      "source_color": 0,
+      "residual": 4.151185283592171e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 1,
+      "residual": 3.503202204459163e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 2,
+      "residual": 3.442797112276967e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 0,
+      "residual": 4.877314863481547e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 1,
+      "residual": 4.138928700814767e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 2,
+      "residual": 2.968442841235432e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 0,
+      "residual": 4.554837749034506e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 1,
+      "residual": 3.2548771472567433e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 2,
+      "residual": 4.269695044824354e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 0,
+      "residual": 4.27408403503497e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 1,
+      "residual": 2.9513818467655997e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 2,
+      "residual": 3.6325473649852207e-09
+    }
+  ],
+  "assembled_gauge_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834"
+}

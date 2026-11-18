@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "metrics": {
+    "compressed_refresh": {
+      "baseline_poles": 48,
+      "candidate_poles": 17,
+      "baseline_normal_calls": 89,
+      "candidate_normal_calls": 58,
+      "scalar_error": 4.489741911584133e-13
+    }
+  }
+}

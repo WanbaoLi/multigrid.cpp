@@ -391,7 +391,12 @@ optimizations from the verified `hmc_000003.lime`. The new
 rank-local seeds, and records the input SHA256. A two-rank gate checks
 fresh starts and exact restarts before the full-volume stage. This gate
 passed, including rejection of a LIME field with mismatched dimensions.
-The 64-rank stage is running on cn12051.
+On cn12051, the 64-rank chain accepted five of eight proposals, including
+four of six after warmup. Delta-H ranged from 0.476 to 0.524. It saved
+three checkpoints at trajectories 4, 6, and 8. The independent SciDAC,
+plaquette, SU(3), and Dirac checks run after generation. Job `2171928`
+publishes the verified LIME files and digest-checked RNG states. See the
+[chain report](rhmc-optimized-chain/result.json).
 
 Job `2171561` holds the optimized algorithm, 64 ranks, input, and seeds
 fixed while pairing sequential CPU binding with four ranks per NUMA
@@ -506,8 +511,11 @@ Its first matched trajectory took 1660.65 s with spectral drift and
 1439.94 s with native Padé. The measured drift portion fell from
 35.86 to 4.71 s. Both proposals were accepted and differed by at most
 `7.44e-15` in the links and `2.02e-9` in delta-H. The whole-trajectory
-timing includes variation outside the drift and currently has one
-pair. See [native Padé trajectory data](distributed-native-pade-l24t8-trajectory-paired.json).
+timing includes variation outside the drift. The allocation hit its
+wall-time limit before the second pair finished. See the
+[completed native Padé pair](distributed-native-pade-l24t8-trajectory-paired.json).
+Job `2171973` repeats the matched comparison on an exclusive
+`24³×64`, 64-rank allocation with a longer wall-time limit.
 The node5005 comparison compiled the same C++ kernel independently
 and used a single spatial `24³` slab. One-thread medians were
 2.243 s (spectral), 1.416 s (tensor Padé), and 0.354 s (native).
@@ -547,9 +555,23 @@ application uses two such stores, eliminating the separate gamma5
 array passes. Job `2171922` checks the new kernels and dense RHMC
 reference, and job `2171917` pairs two complete `24³×64` trajectories
 with the same LIME field, rank placement and seeds.
-The four-rank packed test reproduced the explicit gamma5 Schur and
-normal outputs exactly for both masses on two time decompositions.
-See the [packed gate](distributed-schur-gamma5-packed-mpi4.json).
+The four-rank packed and overlap tests reproduced the explicit gamma5
+Schur and normal outputs exactly for both masses on two time decompositions.
+See the [packed gate](distributed-schur-gamma5-packed-mpi4.json) and
+[overlap gate](distributed-schur-gamma5-overlap-mpi4.json).
+
+The optional `--compress-refresh` projects the positive pole expansion
+for `(S†S)^(-3/4)` onto a rational Krylov basis built from that expansion's
+diagonal resolvent. The projected positive poles are accepted only after
+a 32,769-point scalar check against both the original expansion and
+the target power. The default interval `[0.004, 4]` uses 17 poles instead
+of 48. On a 24-mode diagonal operator, the complete sample transformation
+used 58 normal-operator applications versus 89 for the original poles.
+An independent 65,535-point grid measured maximum relative error
+`4.49e-13`. The MD and Metropolis rational coefficients compare equal.
+Jobs `2171959` and `2171960` run the dense RHMC and physical-volume
+paired checks. See the [diagonal check](distributed-compressed-refresh-dense.json)
+and the [rational Krylov literature](https://arxiv.org/abs/1812.01405).
 
 Job `2171814` checks reuse of the selected Hamiltonian endpoint when
 the RHMC generator records observables. The code reuses the local gauge
@@ -688,6 +710,16 @@ passed independent twelve-column checks at maximum residuals
 `4.82e-9`, `4.91e-9`, `4.49e-9`, and `4.97e-9`, respectively. The opt-in
 [LingSheng L24 plan](../../profiles/optimization/lingsheng-l24-cap14-full12.json)
 replays the previously verified cap-14 target of 0.1.
+
+Job `2171803` varies hierarchy setup work on the same verified L24
+fixture and cap-14 solve. Reducing inverse-refinement setup from two
+passes to one, at three iterations per pass, cut setup time from
+246.96 to 176.62 s. The warmed full12 median rose from 23.56 to
+28.35 s. These timings put the estimated crossover near 15
+propagators per hierarchy, using warmed solve times for the estimate.
+Both cases passed all twelve independent columns with maximum residual
+below `4.91e-9`. The one-pass, two-iteration case is still running.
+See [setup and solve records](setup-budget/).
 
 Job `2171659` reused the same library and cap-14 plan on the generated
 `hmc_000003.lime` with source `(3,1,2,5)`, sample valence mass `-0.277`,
