@@ -1,0 +1,69 @@
+{
+  "lattice": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "ranks": 64,
+  "source_sha256": "4ab09f55d8bdd4bb7d0fac03555a7bd38703eaa815e3a298d1af40b3875fe8f6",
+  "library_sha256": "6d812cf81ebbf6d8e5035d0e09a29610c43569f2bbd6cb0368106c2b0da7a933",
+  "paired_samples": 1,
+  "samples": {
+    "control": [
+      {
+        "link_error": 0.0,
+        "proposal_link_error": 5.288120091338587e-13,
+        "proposal_momentum_error": 1.0518452775443166e-10,
+        "delta_h_error": 1.3052351299336351e-05,
+        "accepted": false,
+        "delta_h": 0.39386827997805307,
+        "h_initial": 24826932.29810955,
+        "h_final": 24826932.69197783,
+        "metropolis_probability": 0.6744428880218658,
+        "force_seconds": {
+          "coefficient_build": 15.96507490798831,
+          "prepare_and_solve": 218.06522075925022,
+          "spinor_differentiation": 216.47268861113116,
+          "gauge_differentiation": 71.86169138806872
+        },
+        "phase_seconds": {
+          "refresh": 57.559798968955874,
+          "md": 525.8832267068792,
+          "endpoint": 167.62168859806843
+        },
+        "seconds": 743.432991530979
+      }
+    ],
+    "optimized": [
+      {
+        "link_error": 0.0,
+        "proposal_link_error": 5.288120091338587e-13,
+        "proposal_momentum_error": 1.0518452775443166e-10,
+        "delta_h_error": 1.3052351299336351e-05,
+        "accepted": false,
+        "delta_h": 0.39385522762675373,
+        "h_initial": 24826932.298109256,
+        "h_final": 24826932.69196448,
+        "metropolis_probability": 0.6744516911448223,
+        "force_seconds": {
+          "coefficient_build": 4.7901567469816655,
+          "prepare_and_solve": 43.34308574721217,
+          "spinor_differentiation": 35.92768254992552,
+          "gauge_differentiation": 12.34667594009079
+        },
+        "phase_seconds": {
+          "refresh": 30.583202651003376,
+          "md": 100.95545348292217,
+          "endpoint": 33.75310948281549
+        },
+        "seconds": 163.87071485398337
+      }
+    ]
+  },
+  "medians": {
+    "control": 743.432991530979,
+    "optimized": 163.87071485398337
+  },
+  "speedup": 4.536704390369038
+}

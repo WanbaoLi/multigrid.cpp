@@ -352,9 +352,18 @@ from 64.19 to 56.04 s across three pairs. The maximum force difference
 was `8.89e-16` across all four volumes. The two- and four-rank dense
 RHMC and reversal checks also passed.
 
-Job `2171439` started the `24³×64` full trajectory comparison of
-packed faces, analytic Clover differentiation, compact spin, and
-Zolotarev. Both cases read the verified `hmc_000002.lime` on 64 ranks.
+Job `2171439` completed two `24³×64` trajectory pairs on the verified
+`hmc_000002.lime` with 64 ranks. The first pair measured 284.69 s for
+the control and 160.42 s with packed faces, analytic Clover derivatives,
+compact spin and Zolotarev, before the proposal-gate job started.
+The second pair's CPU masks overlapped job `2171511` on cn12048
+and its timing is retained for diagnosis. Metropolis decisions agreed
+in both pairs. The accepted proposal's maximum link difference was
+`5.24e-13`. Job `2171511` captured the rejected pair's proposal
+before Metropolis and measured maximum differences of `5.29e-13` in
+the links, `1.06e-10` in the momenta, and `1.31e-5` in delta-H.
+See [matched trajectories](distributed-l24t64-optimized-paired.json)
+and the [pre-Metropolis comparison](distributed-l24t64-proposal-gate.json).
 
 Job `2171445` reused the prepared Clover factors and Schur workspaces
 between the heatbath and the initial Hamiltonian. Fields and individual
@@ -388,6 +397,11 @@ Job `2171561` holds the optimized algorithm, 64 ranks, input, and seeds
 fixed while pairing sequential CPU binding with four ranks per NUMA
 domain on an exclusive node. Both layouts record hashes of the
 pre-Metropolis links and momentum.
+
+Job `2171583` compares cached and rebuilt checkerboard indices for
+RHMC. It runs native Schur, dense force and reversal gates on two and
+four ranks, then paired force timings at `12⁴` and `24³×4` with bitwise
+agreement required.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
