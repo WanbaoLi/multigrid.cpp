@@ -78,20 +78,20 @@ def make_plan(nodes, lattice, block, selected=None, threads=None, ranks_per_numa
     if threads is not None and (isinstance(threads, bool) or not isinstance(threads, int) or threads < 1):
         raise ValueError("--threads must be a positive integer per MPI process")
     ranks = len(selected) * ranks_per_numa
-    if any(n <= 0 or b <= 0 or n % b for n, b in zip(lattice, block)):
-        raise ValueError(
-            "positive lattice extents must be divisible by aggregate extents"
-        )
-    if any(n // b < 4 or (n // b) % 2 for n, b in zip(lattice, block)):
-        raise ValueError("native SAP requires even coarse extents >=4")
-    if any(n % 2 for n in lattice):
-        raise ValueError("all global lattice extents must be even")
-    if lattice[3] % ranks or (lattice[3] // ranks) % block[3]:
-        raise ValueError(
-            "t-slab ranks must divide Lt and leave complete time aggregates"
-        )
-    if (lattice[3] // ranks) % 2:
-        raise ValueError("all local lattice extents must be even")
+    if len(lattice) != 4 or any(n <= 0 or n % 2 for n in lattice):
+        raise ValueError("all four global lattice extents must be positive and even")
+    if block is None:
+        if lattice[3] % ranks:
+            raise ValueError("time-slab ranks must divide Lt")
+    else:
+        if len(block) != 4 or any(b <= 0 or n % b for n, b in zip(lattice, block)):
+            raise ValueError("positive lattice extents must be divisible by aggregate extents")
+        if any(n // b < 4 or (n // b) % 2 for n, b in zip(lattice, block)):
+            raise ValueError("native SAP requires even coarse extents >=4")
+        if lattice[3] % ranks or (lattice[3] // ranks) % block[3]:
+            raise ValueError("t-slab ranks must divide Lt and leave complete time aggregates")
+        if (lattice[3] // ranks) % 2:
+            raise ValueError("all local lattice extents must be even")
     counts = [len(nodes[node]) for node in selected]
     if any(count < ranks_per_numa for count in counts) or (threads is not None and
             any(threads * ranks_per_numa > count for count in counts)):
@@ -116,7 +116,7 @@ def make_plan(nodes, lattice, block, selected=None, threads=None, ranks_per_numa
         "threads_per_rank": [len(p["cpus"]) for p in placement],
         "grid": [1, 1, 1, ranks],
         "lattice": list(lattice),
-        "block": list(block),
+        "block": list(block) if block is not None else None,
         "host": socket.gethostname(),
         "placement": placement,
     }
@@ -240,7 +240,10 @@ def main():
         default=[24, 24, 24, 64],
         metavar=("X", "Y", "Z", "T"),
     )
-    parser.add_argument("--block", nargs=4, type=int, default=[6, 6, 6, 4])
+    geometry = parser.add_mutually_exclusive_group()
+    geometry.add_argument("--block", nargs=4, type=int, default=[6, 6, 6, 4])
+    geometry.add_argument("--time-slab", action="store_true",
+                          help="allow equal time slabs without multigrid aggregates, including one slice per rank")
     parser.add_argument(
         "--numa-nodes",
         type=parse_cpu_list,
@@ -269,7 +272,8 @@ def main():
     if not command:
         parser.error("a command after -- is required")
     plan = make_plan(
-        discover_nodes(), args.lattice, args.block, args.numa_nodes, args.threads, args.ranks_per_numa
+        discover_nodes(), args.lattice, None if args.time_slab else args.block,
+        args.numa_nodes, args.threads, args.ranks_per_numa
     )
     family = detect_launcher(args.mpirun)
     argv = launcher_prefix(args.mpirun, family, plan["ranks"]) + [

@@ -174,6 +174,17 @@ class PlacementTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "local lattice extents must be even"):
             numa.make_plan({n: [n] for n in range(4)}, [8, 8, 8, 12], [2, 2, 2, 3])
 
+    def test_rhmc_single_slice_ranks_without_aggregate_constraints(self):
+        nodes = {node: list(range(8 * node, 8 * node + 8)) for node in range(16)}
+        plan = numa.make_plan(nodes, [24, 24, 24, 64], None, threads=1, ranks_per_numa=4)
+        self.assertIsNone(plan["block"])
+        self.assertEqual(plan["grid"], [1, 1, 1, 64])
+        self.assertEqual([rank["node"] for rank in plan["placement"]],
+                         [node for node in range(16) for _ in range(4)])
+        self.assertEqual(plan["placement"][-1]["cpus"], [123])
+        with self.assertRaisesRegex(ValueError, "must divide Lt"):
+            numa.make_plan(nodes, [24, 24, 24, 60], None, threads=1, ranks_per_numa=4)
+
     def test_core_counts_not_machine_specific(self):
         for cores in [1, 36, 38, 128, 304]:
             plan = numa.make_plan(
