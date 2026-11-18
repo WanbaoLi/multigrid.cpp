@@ -14,7 +14,7 @@ def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000):
     x = torch.zeros_like(rhs)
     r = rhs.clone()
     p = r.clone()
-    rho = torch.vdot(r.flatten(), r.flatten()).real.item()
+    rho = (r.real.square() + r.imag.square()).sum().item()
     if not math.isfinite(rho):
         raise ArithmeticError("Nonfinite right-hand side norm")
     if rho == 0:
@@ -23,18 +23,18 @@ def solve_shifted(apply, rhs, shift, tol=1e-12, maxiter=1000):
     threshold = tol * b_norm
     for iteration in range(1, maxiter + 1):
         image = apply(p) + shift * p
-        curvature = torch.vdot(p.flatten(), image.flatten()).real.item()
+        curvature = (p.real * image.real + p.imag * image.imag).sum().item()
         if not math.isfinite(curvature) or curvature <= 0:
             raise ArithmeticError("Nonpositive shifted CG curvature")
         alpha = rho / curvature
         x.add_(p, alpha=alpha)
         r.add_(image, alpha=-alpha)
-        new_rho = torch.vdot(r.flatten(), r.flatten()).real.item()
+        new_rho = (r.real.square() + r.imag.square()).sum().item()
         if not math.isfinite(new_rho):
             raise ArithmeticError("Nonfinite shifted CG residual")
         if math.sqrt(new_rho) <= threshold:
             r = rhs - apply(x) - shift * x
-            norm = torch.linalg.vector_norm(r).item()
+            norm = math.sqrt((r.real.square() + r.imag.square()).sum().item())
             if not math.isfinite(norm):
                 raise ArithmeticError("Nonfinite true shifted CG residual")
             if norm <= threshold:

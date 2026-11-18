@@ -149,8 +149,9 @@ class HMCPhysicsTests(unittest.TestCase):
             dense = model.dirac(gauge, mass) @ x
             sparse = model.apply_dirac(gauge, mass, x)
             torch.testing.assert_close(sparse, dense, atol=3e-14, rtol=3e-14)
-            grad_dense, = torch.autograd.grad(torch.vdot(y, dense).real, gauge)
-            grad_sparse, = torch.autograd.grad(torch.vdot(y, sparse).real, gauge)
+            grad_dense, = torch.autograd.grad((y.conj() * dense).real.sum(), gauge)
+            grad_sparse, = torch.autograd.grad((y.conj() * sparse).real.sum(), gauge)
+            self.assertGreater(grad_dense.abs().max().item(), 1e-4)
             torch.testing.assert_close(grad_sparse, grad_dense, atol=3e-14, rtol=3e-14)
 
     def test_even_schur_and_clover_determinant(self):
@@ -167,8 +168,9 @@ class HMCPhysicsTests(unittest.TestCase):
             direct = self.m.apply_even_schur(u, mass, x, c)
             expected = schur @ x
             torch.testing.assert_close(direct, expected, atol=3e-14, rtol=3e-14)
-            direct_grad, = torch.autograd.grad(torch.vdot(x, direct).real, u, retain_graph=True)
-            expected_grad, = torch.autograd.grad(torch.vdot(x, expected).real, u, retain_graph=True)
+            direct_grad, = torch.autograd.grad((x.conj() * direct).real.sum(), u, retain_graph=True)
+            expected_grad, = torch.autograd.grad((x.conj() * expected).real.sum(), u, retain_graph=True)
+            self.assertGreater(expected_grad.abs().max().item(), 1e-4)
             torch.testing.assert_close(direct_grad, expected_grad, atol=3e-14, rtol=3e-14)
             torch.testing.assert_close(self.m.apply_even_normal(u, mass, x, c),
                                        dagger(schur) @ expected, atol=3e-14, rtol=3e-14)
@@ -200,6 +202,7 @@ class HMCPhysicsTests(unittest.TestCase):
                 actual, iterations, residual = solve_shifted(apply, rhs, shift)
                 expected = torch.linalg.solve(normal + shift * torch.eye(even.numel(), dtype=CD), rhs)
                 torch.testing.assert_close(actual, expected, atol=2e-11, rtol=2e-11)
+                self.assertGreater(iterations, 0)
                 self.assertLessEqual(residual, 1e-12)
                 METRICS[f"shifted_cg_{mass}_{shift}"] = dict(
                     iterations=iterations, residual=residual)
