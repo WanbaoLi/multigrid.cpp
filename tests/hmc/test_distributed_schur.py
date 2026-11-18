@@ -19,6 +19,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--real-krylov-dot", action="store_true")
+    parser.add_argument("--overlap-schur-faces", action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(1)
     library = os.environ["LQCD_HMC_SCHUR_LIBRARY"]
@@ -84,7 +85,8 @@ def main():
                         extended, local_clover, mass, comm, library, projected=False)
                     native_full_halo = full_halo(field[slab])
                     packed_apply = prepare_local_slab_schur(
-                        extended, local_clover, mass, comm, library, packed_faces=True)
+                        extended, local_clover, mass, comm, library, packed_faces=True,
+                        overlap_faces=args.overlap_schur_faces)
                     native_packed = packed_apply(field[slab])
 
                     def packed_normal(x):

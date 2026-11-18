@@ -37,17 +37,25 @@ class _ProjectedTimeFaces(torch.autograd.Function):
 
 
 @lru_cache(maxsize=None)
-def _kernels(path, packed_faces=False):
+def _kernels(path, packed_faces=False, overlap_faces=False):
     library = ctypes.CDLL(str(Path(path).resolve()))
-    suffix = "_faces" if packed_faces else ""
+    suffix = ("_faces_finish" if overlap_faces else "_faces") if packed_faces else ""
     odd = getattr(library, "lqcd_hmc_schur_odd" + suffix)
     even = getattr(library, "lqcd_hmc_schur_even" + suffix)
     prefix = [ctypes.c_int64, ctypes.c_double, ctypes.c_int]
-    extra = 2 if packed_faces else 0
+    extra = (2 + int(overlap_faces)) if packed_faces else 0
     odd.argtypes = prefix + [ctypes.c_void_p] * (5 + extra)
     even.argtypes = prefix + [ctypes.c_void_p] * (6 + extra)
     odd.restype = even.restype = None
     return odd, even
+
+
+@lru_cache(maxsize=None)
+def _spatial_kernel(path):
+    kernel = ctypes.CDLL(str(Path(path).resolve())).lqcd_hmc_schur_spatial
+    kernel.argtypes = [ctypes.c_int64, ctypes.c_int] + [ctypes.c_void_p] * 4
+    kernel.restype = None
+    return kernel
 
 
 def prepare_slab_schur(model, gauge, mass, clover, comm, library):
@@ -170,7 +178,7 @@ def _slab_geometry(nt, spatial, rank, ranks, packed_faces, projected_force_faces
 
 def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, projected=True,
                              packed_faces=False, compact_spin=False, projected_force_faces=False,
-                             odd_inverse=None):
+                             odd_inverse=None, overlap_faces=False):
     """Prepare Schur from only an owned Clover slab and its gauge faces.
 
     The returned operator differentiates through link and spinor halo adjoints
@@ -182,6 +190,8 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
         raise ValueError("Packed faces require the temporal Wilson projector")
     if projected_force_faces and not compact_spin:
         raise ValueError("Projected force faces require compact spin contractions")
+    if overlap_faces and not packed_faces:
+        raise ValueError("Schur overlap requires packed temporal faces")
     nt = extended_gauge.shape[0] - 2
     spatial = tuple(extended_gauge.shape[1:4])
     if any(n % 2 for n in spatial) or nt * comm.size % 2:
@@ -223,13 +233,16 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
           odd_inverse.device != clover.device):
         raise ValueError("Prepared odd inverse must match the local Clover blocks")
     kappa = 1 / (2 * (mass + 4))
-    odd_kernel, even_kernel = _kernels(str(library), packed_faces)
+    odd_kernel, even_kernel = _kernels(str(library), packed_faces, overlap_faces)
     threads = torch.get_num_threads()
     with torch.no_grad():
         neighbors_e, neighbors_o = [entry[-1] for entry in geometry]
         links_e, links_o = [torch.stack([u for _, u, _ in terms]) for terms in hopping]
         blocks_e, blocks_o = even_clover.detach().contiguous(), odd_inverse.detach().contiguous()
     scratch_odd = links.new_empty((local_sites, 4, 3))
+    if overlap_faces:
+        spatial = torch.empty_like(scratch_odd)
+        spatial_kernel = _spatial_kernel(str(library))
     prev, nxt = (comm.rank - 1) % comm.size, (comm.rank + 1) % comm.size
     if packed_faces:
         from mpi4py import MPI
@@ -243,15 +256,26 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
         received = torch.empty_like(send)
         send_buffer, receive_buffer = send.numpy(), received.numpy()
 
-    def halo(spinor):
+    def post_packed(spinor):
         owned = spinor.reshape(nt, face, 4, 3)
+        torch.sub(owned[0, :, :2], owned[0, :, 2:], out=sends[0])
+        torch.add(owned[-1, :, :2], owned[-1, :, 2:], out=sends[1])
+        return (comm.Irecv(receive_upper, nxt, 20), comm.Irecv(receive_lower, prev, 21),
+                comm.Isend(to_prev, prev, 20), comm.Isend(to_next, nxt, 21))
+
+    def halo(spinor, neighbors, link_coefficients):
         if packed_faces:
-            torch.sub(owned[0, :, :2], owned[0, :, 2:], out=sends[0])
-            torch.add(owned[-1, :, :2], owned[-1, :, 2:], out=sends[1])
-            requests = (comm.Irecv(receive_upper, nxt, 20), comm.Irecv(receive_lower, prev, 21),
-                        comm.Isend(to_prev, prev, 20), comm.Isend(to_next, nxt, 21))
-            MPI.Request.Waitall(requests)
+            requests = post_packed(spinor)
+            try:
+                if overlap_faces:
+                    spatial_kernel(local_sites, threads, neighbors.data_ptr(), link_coefficients.data_ptr(),
+                                   spinor.data_ptr(), spatial.data_ptr())
+            finally:
+                MPI.Request.Waitall(requests)
+            if overlap_faces:
+                return spinor, lower, upper, spatial
             return spinor, lower, upper
+        owned = spinor.reshape(nt, face, 4, 3)
         if not projected:
             return time_faces(owned, comm),
         # The time gamma swaps the upper and lower spin pairs. Carry only
@@ -310,10 +334,10 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
         output = torch.empty_like(even)
         # The two blocking phases consume shared scratch in order. Return a
         # separate field because Krylov callers can retain previous results.
-        extended_even = halo(even)
+        extended_even = halo(even, neighbors_o, links_o)
         odd_kernel(local_sites, kappa, threads, neighbors_o.data_ptr(), links_o.data_ptr(),
                    blocks_o.data_ptr(), *(part.data_ptr() for part in extended_even), scratch_odd.data_ptr())
-        extended_odd = halo(scratch_odd)
+        extended_odd = halo(scratch_odd, neighbors_e, links_e)
         even_kernel(local_sites, kappa, threads, neighbors_e.data_ptr(), links_e.data_ptr(),
                     blocks_e.data_ptr(), even.data_ptr(), *(part.data_ptr() for part in extended_odd), output.data_ptr())
         return output

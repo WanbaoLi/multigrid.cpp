@@ -28,7 +28,7 @@ CHECKPOINT_COMPATIBILITY = (
     "direct_clover_adjoint", "packed_temporal_faces", "compact_spin_force",
     "half_power_rational_method", "rational_coefficients_sha256", "force_pole_batch",
     "projected_force_faces", "light_heatbath_action", "real_krylov_dot", "pade_drift", "shared_clover_spin",
-    "native_pade_drift", "reuse_odd_inverse",
+    "native_pade_drift", "reuse_odd_inverse", "overlap_schur_faces",
 )
 
 
@@ -83,6 +83,7 @@ def resume_from(path, report, rng, comm):
         previous.setdefault("shared_clover_spin", False)
         previous.setdefault("native_pade_drift", False)
         previous.setdefault("reuse_odd_inverse", False)
+        previous.setdefault("overlap_schur_faces", False)
         mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
         if mismatches:
             raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
@@ -169,6 +170,8 @@ def main():
                         help="reuse the mass-independent spin contractions for both Clover masses")
     parser.add_argument("--reuse-odd-inverse", action="store_true",
                         help="differentiate the odd Clover determinant using the Schur inverse blocks")
+    parser.add_argument("--overlap-schur-faces", action="store_true",
+                        help="evaluate spatial Schur hopping while packed temporal halos are in flight")
     parser.add_argument("--save-every", type=int, default=1)
     parser.add_argument("--threads", type=int, default=1)
     parser.add_argument("--seed", type=int, default=1729)
@@ -177,6 +180,8 @@ def main():
         parser.error("Provide the native Schur library")
     if args.projected_force_faces and not args.compact_spin:
         parser.error("--projected-force-faces requires --compact-spin")
+    if args.overlap_schur_faces and not args.packed_faces:
+        parser.error("--overlap-schur-faces requires --packed-faces")
     lower, upper = args.strange_interval
     if not 0 < lower < upper < math.inf:
         parser.error("The strange spectral interval must contain ascending positive finite endpoints")
@@ -210,7 +215,8 @@ def run(args, comm):
                             projected_force_faces=args.projected_force_faces,
                             light_heatbath_action=args.light_heatbath_action, real_krylov_dot=args.real_krylov_dot,
                             pade_drift=args.pade_drift, shared_clover_spin=args.shared_clover_spin,
-                            native_pade=args.native_pade_drift, reuse_odd_inverse=args.reuse_odd_inverse)
+                            native_pade=args.native_pade_drift, reuse_odd_inverse=args.reuse_odd_inverse,
+                            overlap_schur_faces=args.overlap_schur_faces)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
@@ -241,6 +247,7 @@ def run(args, comm):
                   shared_clover_spin=model.shared_clover_spin,
                   native_pade_drift=model.native_pade,
                   reuse_odd_inverse=model.reuse_odd_inverse,
+                  overlap_schur_faces=model.overlap_schur_faces,
                   half_power_rational_method="zolotarev" if model.zolotarev else "quadrature",
                   rational_coefficients_sha256=rational_digest,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",

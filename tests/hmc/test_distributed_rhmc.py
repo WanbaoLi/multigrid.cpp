@@ -28,6 +28,7 @@ def main():
     parser.add_argument("--native-pade-drift", action="store_true")
     parser.add_argument("--shared-clover-spin", action="store_true")
     parser.add_argument("--reuse-odd-inverse", action="store_true")
+    parser.add_argument("--overlap-schur-faces", action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(1)
     comm = MPI.COMM_WORLD.Dup()
@@ -40,7 +41,8 @@ def main():
                                 projected_force_faces=args.projected_force_faces,
                                 light_heatbath_action=args.light_heatbath_action, real_krylov_dot=args.real_krylov_dot,
                                 pade_drift=args.pade_drift, shared_clover_spin=args.shared_clover_spin,
-                                native_pade=args.native_pade_drift, reuse_odd_inverse=args.reuse_odd_inverse)
+                                native_pade=args.native_pade_drift, reuse_odd_inverse=args.reuse_odd_inverse,
+                                overlap_schur_faces=args.overlap_schur_faces)
         baseline, final, precise_difference = model._hamiltonian_pair([2.**56, 2.], [2.**56, 3.])
         assert final == baseline and precise_difference == comm.size
         serial = MatrixFreePseudofermionHMC(*params)
