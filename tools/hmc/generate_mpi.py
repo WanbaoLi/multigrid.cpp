@@ -81,6 +81,7 @@ def run(args, comm):
                   lattice_xyzt=args.lattice, beta=args.beta, mass_light=args.mass_light,
                   mass_strange=args.mass_strange, csw=args.csw, nf="2+1", rhmc=True,
                   mpi_ranks=comm.size, threads=args.threads, seed=args.seed,
+                  timing_aggregation="maximum rank elapsed time for each phase independently",
                   rank_seed_rule="seed + MPI rank", source_commit=commit, native_schur_sha256=lib_digest,
                   strange_md_interval=model.interval, strange_rational_grid_error=model.grid_errors,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",
@@ -89,7 +90,12 @@ def run(args, comm):
     for trajectory in range(1, args.trajectories + 1):
         start = perf_counter()
         gauge, sample = model.trajectory(gauge, rng, args.length, args.steps)
-        seconds = comm.allreduce(perf_counter() - start, op=MPI.MAX)
+        total = perf_counter() - start
+        phases = sample["phase_seconds"]
+        elapsed = np.array([total, *phases.values()], dtype=np.float64)
+        comm.Allreduce(MPI.IN_PLACE, elapsed, op=MPI.MAX)
+        seconds, *phase_seconds = elapsed.tolist()
+        phases.update(zip(phases, phase_seconds))
         sample.update(model.observables(gauge), trajectory=trajectory,
                       warmup=trajectory <= args.warmup, seconds=seconds)
         report["samples"].append(sample)

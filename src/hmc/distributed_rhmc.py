@@ -1,5 +1,6 @@
 """Time-slab 2+1 Wilson–Clover RHMC with native shifted solves."""
 import math
+from time import perf_counter
 
 import torch
 
@@ -150,17 +151,24 @@ class DistributedRHMC:
     def trajectory(self, u, rng, length, steps, integrator="omelyan"):
         p = torch.randn((self.local_volume, 4, 8), dtype=RD, generator=rng)
         noises = [torch.randn(self.spinor_shape, dtype=CD, generator=rng) for _ in range(2)]
+        start = perf_counter()
         fields = self.refresh(u, *noises)
+        refreshed = perf_counter()
         initial = self.endpoint_energy(u, p, fields)
+        started_md = perf_counter()
         proposed, final_p = self.integrate(u, p, fields, length, steps, integrator)
+        finished_md = perf_counter()
         final = self.endpoint_energy(proposed, final_p, fields)
+        finished_endpoint = perf_counter()
         delta = final - initial
         probability = math.exp(min(0., -delta))
         draw = float(torch.rand((), dtype=RD, generator=rng)) if self.comm.rank == 0 else None
         accepted = self.comm.bcast(draw, root=0) < probability
         return (proposed if accepted else u.clone()), dict(
             accepted=accepted, delta_h=delta, h_initial=initial, h_final=final,
-            metropolis_probability=probability)
+            metropolis_probability=probability,
+            phase_seconds=dict(refresh=refreshed - start, md=finished_md - started_md,
+                               endpoint=(started_md - refreshed) + (finished_endpoint - finished_md)))
 
     @torch.no_grad()
     def observables(self, u):
