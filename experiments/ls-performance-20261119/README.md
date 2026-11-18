@@ -33,7 +33,13 @@ setup time separately, and independent FP64 full-operator residuals at
   tests measure a different operator and right-hand side.
 - Job `2169656` retries Legacy MG. Upstream writes a HDF5 cache root
   and a sibling JSON manifest. The original controller passed a JSON
-  root name, so the paths collided. The retry passes an HDF5 root.
+  root name, so the paths collided. With an HDF5 root the three
+  periodic complex128 samples passed, with solves of 1.205, 1.190
+  and 1.213 s and NumPy residual `7.53e-10`. The matched full12
+  case reached the solve and aborted when coarse BiCGStab missed its
+  inner target. The printed norms were `1.6755e-2` and `3e-6`.
+  Job `2170012` retries with coarse tolerance factor `1e5`
+  and retains the outer tolerance `1e-8` and independent checks.
 - Job `2169865`, output `~/lqcd-run/mg-l24-reliable-sap-run03`. One
   hierarchy and the frozen `820918f` library. The three interleaved cases
   test the control, fusing the FP64 residual update and norm, and splitting
@@ -136,6 +142,12 @@ reader across multiple chunks, including a partial final chunk. Job
 pole fields. The previous frozen HMC version `b9556bb` also passed
 15 tests on node5005 through itp. The independent C++ and MPI LIME
 checks were skipped in that run.
+
+Jobs `2170028`, `2170115` and `2170133` check smaller rational
+refresh and acceptance expansions, storage of the two 6×6 Clover
+blocks, and direct Wilson staples against their respective reference
+evaluators. The matrix-free defaults still use the same FP64
+true-residual checks in every shifted solve.
 
 Direct assembly reduced the paired median four-step MD time from 3.266 to
 2.212 s on `2⁴` and from 6.343 to 3.477 s on `2³×4` on cn12038.
