@@ -3,6 +3,8 @@
 set -eo pipefail
 upstream=$1
 out=$2
+case_set=${3:-all}
+[[ $case_set == all || $case_set == mg-retry ]] || { echo 'Unknown case set'; exit 2; }
 control=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 [[ ! -e $out ]] || { echo 'Output exists'; exit 2; }
 mkdir -p "$out"
@@ -68,8 +70,14 @@ cmake -S "$upstream/cpp/kupl/qcu" -B "$build" -DCMAKE_BUILD_TYPE=Release \
 cmake --build "$build" -j16
 # Some upstream Python MPI tests omit MPIEXEC_PREFLAGS; prevent HMPI's
 # default one-core binding from conflicting with their two OpenMP threads.
-OMPI_MCA_hwloc_base_binding_policy=none ctest --test-dir "$build" \
-  --output-on-failure --parallel 1 -E '^kupl_qcu_(kunpeng_profile|pure_kupl)_contract$'
+if [[ $case_set == all ]]; then
+  OMPI_MCA_hwloc_base_binding_policy=none ctest --test-dir "$build" \
+    --output-on-failure --parallel 1 -E '^kupl_qcu_(kunpeng_profile|pure_kupl)_contract$'
+else
+  # The exact upstream version already passed its full numerical suite.
+  OMPI_MCA_hwloc_base_binding_policy=none ctest --test-dir "$build" \
+    --output-on-failure -R '^kupl_qcu_(1rank|python_legacy_mg_2rank|python_failure_modes)$'
+fi
 # This contract deliberately requires its parent to own exactly one NUMA
 # domain. It is a correctness test, so one allowed core suffices.
 test_cpu=$("$python_bin" -c 'import os; print(min(os.sched_getaffinity(0)))')
@@ -107,11 +115,22 @@ run_case() {
       --inputs "$scratch/inputs" --out "$scratch/$label" \
       --reference /home/share/nsls_lwb/lqcd-run/reproduce-efe57de-20261116-1749/build/multigrid \
       > "$out/$label/scalar.log" 2>&1 || failed=1
-    cp "$scratch/$label/scalar-verification.json" "$out/$label/"
+    if [[ -f $scratch/$label/scalar-verification.json ]]; then
+      cp "$scratch/$label/scalar-verification.json" "$out/$label/"
+    else
+      failed=1
+    fi
   fi
   if [[ $code != 0 ]]; then failed=1; fi
 }
 failed=0
+if [[ $case_set == mg-retry ]]; then
+  run_case report-c128-mg single --dtype c128 --tol 1e-9 --source ones --solver mg
+  export KUPL_OMP_THREADS=32 OMP_NUM_THREADS=32
+  run_case physical-mg-full12 full12 --dtype c128 --tol 1e-8 --source point --solver mg
+  [[ $failed == 0 ]]
+  exit
+fi
 run_case report-c64-random single --dtype c64 --tol 1e-6 --source random
 run_case report-c128-ones single --dtype c128 --tol 1e-9 --source ones
 run_case report-c128-mg single --dtype c128 --tol 1e-9 --source ones --solver mg

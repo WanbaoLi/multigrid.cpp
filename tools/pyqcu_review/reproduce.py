@@ -92,7 +92,8 @@ def measure(args):
     use_mg = args.solver == "mg"
     if use_mg:
         os.environ["KUPL_REQUIRE_MG_CORRECTION"] = "1"
-    cache = args.out / "cache.json"
+    # The KUPL ranked cache stores its HDF5 root and JSON sidecar separately.
+    cache = args.out / "cache.h5"
     if args.mode == "full12":
         real_call = qcu.applyCloverMultigridQcu
         summaries = []
