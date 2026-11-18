@@ -398,7 +398,9 @@ fixed while pairing sequential CPU binding with four ranks per NUMA
 domain on an exclusive node. Both layouts record hashes of the
 pre-Metropolis links and momentum. On cn12065 the compact layout
 assigned 37 and 27 ranks to two NUMA domains, while the spread layout
-assigned four ranks to each of 16 domains.
+assigned four ranks to each of 16 domains. The first matched sample
+took 212.56 s compact and 141.04 s spread. The links, momenta,
+delta-H and decision matched exactly.
 Job `2171615` waits for that comparison and then tests one, two, and
 four cores per rank on an exclusive node. Each MPI rank keeps its lead
 core and NUMA domain. The threaded cases independently read the fixed
@@ -486,6 +488,14 @@ were bitwise equal, and the two- and four-rank dense tests passed.
 Job `2171748` extends the comparison to paired entire trajectories
 using the verified `24³×8` field. See
 [single-drift results](distributed-native-pade-drift-paired.json).
+
+Job `2171768` passed all 13 NUMA launcher tests and generated a
+[64-rank single-slice plan](distributed-rhmc-numa-launcher-l24t64.json)
+on cn12048 with four physical cores per CPU NUMA domain. The same
+launcher ran two- and four-rank dense RHMC tests with the optional
+`--reuse-odd-inverse` force. The force reuses the Schur inverse for
+the exact derivative of the odd Clover log determinant. The largest
+dense force difference was `1.78e-13`; paired force timings are in progress.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color

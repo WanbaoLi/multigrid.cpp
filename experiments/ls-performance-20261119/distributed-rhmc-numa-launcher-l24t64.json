@@ -1,0 +1,1372 @@
+{
+  "mpi_launcher": "openmpi",
+  "topology": {
+    "ranks": 64,
+    "ranks_per_numa": 4,
+    "threads_per_rank": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "grid": [
+      1,
+      1,
+      1,
+      64
+    ],
+    "lattice": [
+      24,
+      24,
+      24,
+      64
+    ],
+    "block": null,
+    "host": "cn12048",
+    "placement": [
+      {
+        "rank": 0,
+        "node": 0,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          0
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 1,
+        "node": 0,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          1
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 2,
+        "node": 0,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          2
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 3,
+        "node": 0,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          3
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 4,
+        "node": 1,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          38
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 5,
+        "node": 1,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          39
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 6,
+        "node": 1,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          40
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 7,
+        "node": 1,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          41
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 8,
+        "node": 2,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          76
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 9,
+        "node": 2,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          77
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 10,
+        "node": 2,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          78
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 11,
+        "node": 2,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          79
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 12,
+        "node": 3,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          114
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 13,
+        "node": 3,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          115
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 14,
+        "node": 3,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          116
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 15,
+        "node": 3,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          117
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 16,
+        "node": 4,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          152
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 17,
+        "node": 4,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          153
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 18,
+        "node": 4,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          154
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 19,
+        "node": 4,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          155
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 20,
+        "node": 5,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          190
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 21,
+        "node": 5,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          191
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 22,
+        "node": 5,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          192
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 23,
+        "node": 5,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          193
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 24,
+        "node": 6,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          228
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 25,
+        "node": 6,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          229
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 26,
+        "node": 6,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          230
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 27,
+        "node": 6,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          231
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 28,
+        "node": 7,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          266
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 29,
+        "node": 7,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          267
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 30,
+        "node": 7,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          268
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 31,
+        "node": 7,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          269
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 32,
+        "node": 8,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          304
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 33,
+        "node": 8,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          305
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 34,
+        "node": 8,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          306
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 35,
+        "node": 8,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          307
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 36,
+        "node": 9,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          342
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 37,
+        "node": 9,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          343
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 38,
+        "node": 9,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          344
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 39,
+        "node": 9,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          345
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 40,
+        "node": 10,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          380
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 41,
+        "node": 10,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          381
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 42,
+        "node": 10,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          382
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 43,
+        "node": 10,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          383
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 44,
+        "node": 11,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          418
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 45,
+        "node": 11,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          419
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 46,
+        "node": 11,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          420
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 47,
+        "node": 11,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          421
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 48,
+        "node": 12,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          456
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 49,
+        "node": 12,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          457
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 50,
+        "node": 12,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          458
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 51,
+        "node": 12,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          459
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 52,
+        "node": 13,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          494
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 53,
+        "node": 13,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          495
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 54,
+        "node": 13,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          496
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 55,
+        "node": 13,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          497
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 56,
+        "node": 14,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          532
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 57,
+        "node": 14,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          533
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 58,
+        "node": 14,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          534
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 59,
+        "node": 14,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          535
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 60,
+        "node": 15,
+        "numa_partition": 0,
+        "ranks_per_numa": 4,
+        "cpus": [
+          570
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 61,
+        "node": 15,
+        "numa_partition": 1,
+        "ranks_per_numa": 4,
+        "cpus": [
+          571
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 62,
+        "node": 15,
+        "numa_partition": 2,
+        "ranks_per_numa": 4,
+        "cpus": [
+          572
+        ],
+        "available_physical_cores": 37
+      },
+      {
+        "rank": 63,
+        "node": 15,
+        "numa_partition": 3,
+        "ranks_per_numa": 4,
+        "cpus": [
+          573
+        ],
+        "available_physical_cores": 37
+      }
+    ]
+  },
+  "rank_environments": [
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{0}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "0",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{1}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "0",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{2}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "0",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{3}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "0",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{38}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "1",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{39}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "1",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{40}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "1",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{41}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "1",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{76}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "2",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{77}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "2",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{78}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "2",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{79}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "2",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{114}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "3",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{115}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "3",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{116}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "3",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{117}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "3",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{152}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "4",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{153}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "4",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{154}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "4",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{155}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "4",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{190}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "5",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{191}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "5",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{192}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "5",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{193}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "5",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{228}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "6",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{229}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "6",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{230}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "6",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{231}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "6",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{266}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "7",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{267}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "7",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{268}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "7",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{269}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "7",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{304}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "8",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{305}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "8",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{306}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "8",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{307}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "8",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{342}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "9",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{343}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "9",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{344}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "9",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{345}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "9",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{380}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "10",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{381}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "10",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{382}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "10",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{383}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "10",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{418}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "11",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{419}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "11",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{420}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "11",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{421}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "11",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{456}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "12",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{457}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "12",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{458}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "12",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{459}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "12",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{494}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "13",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{495}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "13",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{496}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "13",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{497}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "13",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{532}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "14",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{533}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "14",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{534}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "14",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{535}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "14",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{570}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "15",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{571}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "15",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{572}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "15",
+      "LQCD_CPU_THREADS": "1"
+    },
+    {
+      "OMP_NUM_THREADS": "1",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "{573}",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "LQCD_NUMA_NODE": "15",
+      "LQCD_CPU_THREADS": "1"
+    }
+  ],
+  "launch_command": "/work_ssd/software/HPCKit/25.2.1/hmpi/bisheng/release/hmpi/bin/mpirun --host localhost:64 -n 64 --bind-to none /work_ssd/software/soft/tool/anaconda3/2023.3/bin/python3 /tmp/mg-hmc-native-aD5uNoun/source/tools/run_numa.py --_rank '{\"ranks\":64,\"ranks_per_numa\":4,\"threads_per_rank\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"grid\":[1,1,1,64],\"lattice\":[24,24,24,64],\"block\":null,\"host\":\"cn12048\",\"placement\":[{\"rank\":0,\"node\":0,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[0],\"available_physical_cores\":37},{\"rank\":1,\"node\":0,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[1],\"available_physical_cores\":37},{\"rank\":2,\"node\":0,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[2],\"available_physical_cores\":37},{\"rank\":3,\"node\":0,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[3],\"available_physical_cores\":37},{\"rank\":4,\"node\":1,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[38],\"available_physical_cores\":37},{\"rank\":5,\"node\":1,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[39],\"available_physical_cores\":37},{\"rank\":6,\"node\":1,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[40],\"available_physical_cores\":37},{\"rank\":7,\"node\":1,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[41],\"available_physical_cores\":37},{\"rank\":8,\"node\":2,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[76],\"available_physical_cores\":37},{\"rank\":9,\"node\":2,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[77],\"available_physical_cores\":37},{\"rank\":10,\"node\":2,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[78],\"available_physical_cores\":37},{\"rank\":11,\"node\":2,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[79],\"available_physical_cores\":37},{\"rank\":12,\"node\":3,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[114],\"available_physical_cores\":37},{\"rank\":13,\"node\":3,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[115],\"available_physical_cores\":37},{\"rank\":14,\"node\":3,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[116],\"available_physical_cores\":37},{\"rank\":15,\"node\":3,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[117],\"available_physical_cores\":37},{\"rank\":16,\"node\":4,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[152],\"available_physical_cores\":37},{\"rank\":17,\"node\":4,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[153],\"available_physical_cores\":37},{\"rank\":18,\"node\":4,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[154],\"available_physical_cores\":37},{\"rank\":19,\"node\":4,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[155],\"available_physical_cores\":37},{\"rank\":20,\"node\":5,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[190],\"available_physical_cores\":37},{\"rank\":21,\"node\":5,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[191],\"available_physical_cores\":37},{\"rank\":22,\"node\":5,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[192],\"available_physical_cores\":37},{\"rank\":23,\"node\":5,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[193],\"available_physical_cores\":37},{\"rank\":24,\"node\":6,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[228],\"available_physical_cores\":37},{\"rank\":25,\"node\":6,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[229],\"available_physical_cores\":37},{\"rank\":26,\"node\":6,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[230],\"available_physical_cores\":37},{\"rank\":27,\"node\":6,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[231],\"available_physical_cores\":37},{\"rank\":28,\"node\":7,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[266],\"available_physical_cores\":37},{\"rank\":29,\"node\":7,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[267],\"available_physical_cores\":37},{\"rank\":30,\"node\":7,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[268],\"available_physical_cores\":37},{\"rank\":31,\"node\":7,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[269],\"available_physical_cores\":37},{\"rank\":32,\"node\":8,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[304],\"available_physical_cores\":37},{\"rank\":33,\"node\":8,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[305],\"available_physical_cores\":37},{\"rank\":34,\"node\":8,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[306],\"available_physical_cores\":37},{\"rank\":35,\"node\":8,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[307],\"available_physical_cores\":37},{\"rank\":36,\"node\":9,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[342],\"available_physical_cores\":37},{\"rank\":37,\"node\":9,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[343],\"available_physical_cores\":37},{\"rank\":38,\"node\":9,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[344],\"available_physical_cores\":37},{\"rank\":39,\"node\":9,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[345],\"available_physical_cores\":37},{\"rank\":40,\"node\":10,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[380],\"available_physical_cores\":37},{\"rank\":41,\"node\":10,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[381],\"available_physical_cores\":37},{\"rank\":42,\"node\":10,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[382],\"available_physical_cores\":37},{\"rank\":43,\"node\":10,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[383],\"available_physical_cores\":37},{\"rank\":44,\"node\":11,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[418],\"available_physical_cores\":37},{\"rank\":45,\"node\":11,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[419],\"available_physical_cores\":37},{\"rank\":46,\"node\":11,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[420],\"available_physical_cores\":37},{\"rank\":47,\"node\":11,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[421],\"available_physical_cores\":37},{\"rank\":48,\"node\":12,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[456],\"available_physical_cores\":37},{\"rank\":49,\"node\":12,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[457],\"available_physical_cores\":37},{\"rank\":50,\"node\":12,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[458],\"available_physical_cores\":37},{\"rank\":51,\"node\":12,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[459],\"available_physical_cores\":37},{\"rank\":52,\"node\":13,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[494],\"available_physical_cores\":37},{\"rank\":53,\"node\":13,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[495],\"available_physical_cores\":37},{\"rank\":54,\"node\":13,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[496],\"available_physical_cores\":37},{\"rank\":55,\"node\":13,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[497],\"available_physical_cores\":37},{\"rank\":56,\"node\":14,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[532],\"available_physical_cores\":37},{\"rank\":57,\"node\":14,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[533],\"available_physical_cores\":37},{\"rank\":58,\"node\":14,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[534],\"available_physical_cores\":37},{\"rank\":59,\"node\":14,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[535],\"available_physical_cores\":37},{\"rank\":60,\"node\":15,\"numa_partition\":0,\"ranks_per_numa\":4,\"cpus\":[570],\"available_physical_cores\":37},{\"rank\":61,\"node\":15,\"numa_partition\":1,\"ranks_per_numa\":4,\"cpus\":[571],\"available_physical_cores\":37},{\"rank\":62,\"node\":15,\"numa_partition\":2,\"ranks_per_numa\":4,\"cpus\":[572],\"available_physical_cores\":37},{\"rank\":63,\"node\":15,\"numa_partition\":3,\"ranks_per_numa\":4,\"cpus\":[573],\"available_physical_cores\":37}]}' /bin/true"
+}
