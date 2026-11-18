@@ -441,6 +441,12 @@ norm and per-pole verification, checks the Schur solves against the
 independent operator, and pairs initial-phase and force timings on
 the same gauge, momentum and heatbath noise. The two- and four-rank
 checks passed, with maximum independent shifted residual `9.76e-13`.
+Both force comparisons agreed within `9.93e-16`. At `24³×4`, median
+force time fell from 33.76 to 32.42 s while preparation and solve
+increased from 12.63 to 12.77 s and the initial phase increased from
+36.50 to 36.71 s. At `12⁴`, preparation and solve fell from 6.85 to
+6.64 s. These phase timings do not establish a consistent solve speedup.
+See the [paired real-buffer results](distributed-real-krylov-dot-paired.json).
 
 Job `2171643` tested the optional `--pade-drift` small-step gauge update
 in seven measured pairs per geometry. At `24³×4` the four-rank median
@@ -458,6 +464,11 @@ The original controller stopped at a memory-only NUMA node with an
 empty CPU list. Job `2171673` reuses the SHA256-checked library and LIME
 file after correcting that preflight. The queued NUMA comparisons
 received the same correction.
+
+Job `2171679` compares the optional `--shared-clover-spin` path, which
+reuses the spin contractions before applying the two mass factors.
+The test requires bitwise equal Clover blocks and checks the force
+against both the control and the independent dense reference.
 
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
