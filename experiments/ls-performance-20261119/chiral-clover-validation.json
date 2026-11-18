@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "tests_run": 3,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "metrics": {
+    "strange_rational_force_absolute_error": 2.0472029887280696e-11,
+    "matrix_free_refresh_endpoint_error": 3.410605131648481e-13,
+    "matrix_free_rational_poles": {
+      "endpoint": 48,
+      "refresh": 48
+    }
+  }
+}

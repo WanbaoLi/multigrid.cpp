@@ -142,8 +142,11 @@ cannot certify the benchmark's negative strange mass.
 
 Job `2169993` verified the streamed LIME writer with the independent
 reader across multiple chunks, including a partial final chunk. Job
-`2170005` takes the matrix-free path to `4⁴` with this writer and grouped
-pole fields. The previous frozen HMC version `b9556bb` also passed
+`2170005` ran `4⁴` with this writer and grouped pole fields. The three
+trajectories took 41.153, 44.784 and 46.232 s. Two were accepted.
+Both saved LIME files passed independent checks and contain the same
+gauge field because the last proposal was rejected. The previous
+frozen HMC version `b9556bb` also passed
 15 tests on node5005 through itp. The independent C++ and MPI LIME
 checks were skipped in that run. The later `f15edc2` snapshot passed
 17 tests on node5005, including the independent C++ Dirac comparison.
@@ -160,6 +163,10 @@ evaluators. On cn12038 the pole selection reduced both expansions from
 the plaquette loops within `5.33e-15` across three lattice geometries,
 including `4⁴`. The matrix-free path uses FP64 true-residual checks
 in every shifted solve.
+
+The compact Clover implementation passed all three physics tests
+in job `2170115`. Its timing controller failed while unpacking the
+benchmark cases. Job `2170195` reruns the corrected paired timer.
 
 Direct assembly reduced the paired median four-step MD time from 3.266 to
 2.212 s on `2⁴` and from 6.343 to 3.477 s on `2³×4` on cn12038.
