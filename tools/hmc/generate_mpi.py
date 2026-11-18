@@ -92,10 +92,12 @@ def run(args, comm):
         gauge, sample = model.trajectory(gauge, rng, args.length, args.steps)
         total = perf_counter() - start
         phases = sample["phase_seconds"]
-        elapsed = np.array([total, *phases.values()], dtype=np.float64)
+        force_phases = sample["force_seconds"]
+        elapsed = np.array([total, *phases.values(), *force_phases.values()], dtype=np.float64)
         comm.Allreduce(MPI.IN_PLACE, elapsed, op=MPI.MAX)
         seconds, *phase_seconds = elapsed.tolist()
-        phases.update(zip(phases, phase_seconds))
+        phases.update(zip(phases, phase_seconds[:len(phases)]))
+        force_phases.update(zip(force_phases, phase_seconds[len(phases):]))
         sample.update(model.observables(gauge), trajectory=trajectory,
                       warmup=trajectory <= args.warmup, seconds=seconds)
         report["samples"].append(sample)

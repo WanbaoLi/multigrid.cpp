@@ -99,7 +99,8 @@ class DistributedRHMC:
             raise ArithmeticError("Nonfinite distributed Hamiltonian")
         return energy
 
-    def force(self, u, fields):
+    def force(self, u, fields, timing=None):
+        start = perf_counter()
         links = u.detach().requires_grad_(True)
         extended = self._gauge_faces(links)
         coefficients = self._coefficients(extended)
@@ -109,8 +110,12 @@ class DistributedRHMC:
         schur_links = extended.detach().requires_grad_(True)
         link_gradient = torch.zeros_like(extended)
         clover_gradients = []
+        geometry = perf_counter() - start
+        solves = 0.
+        spinor_grad = 0.
         for i, (mass, phi, clover, terms) in enumerate(zip(
                 (self.ml, self.ms), fields, coefficients, (((0., 1.),), self.md_terms))):
+            start = perf_counter()
             schur_clover = clover.detach().requires_grad_(True)
             clover_gradient = torch.zeros_like(clover)
             schur = self._schur(schur_links, schur_clover, mass)
@@ -123,6 +128,8 @@ class DistributedRHMC:
                 solutions = [solve_shifted(normal, phi, shifts[0], comm=self.comm)[0]]
             else:
                 solutions, _ = solve_multi_shift(normal, phi, shifts, comm=self.comm)
+            finished_solve = perf_counter()
+            solves += finished_solve - start
             # Release spinor intermediates after each block. Accumulate the
             # coefficient cotangents before differentiating the gauge geometry.
             for first in range(0, len(weights), 8):
@@ -135,18 +142,26 @@ class DistributedRHMC:
                 link_gradient.add_(gauge_grad)
                 clover_gradient.add_(clover_grad)
             clover_gradients.append(clover_gradient)
+            spinor_grad += perf_counter() - finished_solve
+        start = perf_counter()
         gradient, = torch.autograd.grad(
             (local, extended, *coefficients), links,
             grad_outputs=(torch.ones_like(local), link_gradient, *clover_gradients))
         rotations = 1j * torch.einsum("aij,vmjk->vmaik", self.basis, u)
-        return (gradient.conj().unsqueeze(-3) * rotations).real.sum((-1, -2))
+        force = (gradient.conj().unsqueeze(-3) * rotations).real.sum((-1, -2))
+        if timing is not None:
+            timing["coefficient_build"] += geometry
+            timing["prepare_and_solve"] += solves
+            timing["spinor_differentiation"] += spinor_grad
+            timing["gauge_differentiation"] += perf_counter() - start
+        return force
 
     def drift(self, u, p, length):
         return drift_links(u, p, length, self.basis)
 
-    def integrate(self, u, p, fields, length, steps, integrator="omelyan"):
+    def integrate(self, u, p, fields, length, steps, integrator="omelyan", *, force_timing=None):
         return integrate_links(u, p, length, steps, integrator,
-                               lambda gauge: self.force(gauge, fields), self.drift)
+                               lambda gauge: self.force(gauge, fields, force_timing), self.drift)
 
     def trajectory(self, u, rng, length, steps, integrator="omelyan"):
         p = torch.randn((self.local_volume, 4, 8), dtype=RD, generator=rng)
@@ -155,8 +170,10 @@ class DistributedRHMC:
         fields = self.refresh(u, *noises)
         refreshed = perf_counter()
         initial = self.endpoint_energy(u, p, fields)
+        force_timing = dict(coefficient_build=0., prepare_and_solve=0.,
+                            spinor_differentiation=0., gauge_differentiation=0.)
         started_md = perf_counter()
-        proposed, final_p = self.integrate(u, p, fields, length, steps, integrator)
+        proposed, final_p = self.integrate(u, p, fields, length, steps, integrator, force_timing=force_timing)
         finished_md = perf_counter()
         final = self.endpoint_energy(proposed, final_p, fields)
         finished_endpoint = perf_counter()
@@ -166,7 +183,7 @@ class DistributedRHMC:
         accepted = self.comm.bcast(draw, root=0) < probability
         return (proposed if accepted else u.clone()), dict(
             accepted=accepted, delta_h=delta, h_initial=initial, h_final=final,
-            metropolis_probability=probability,
+            metropolis_probability=probability, force_seconds=force_timing,
             phase_seconds=dict(refresh=refreshed - start, md=finished_md - started_md,
                                endpoint=(started_md - refreshed) + (finished_endpoint - finished_md)))
 
