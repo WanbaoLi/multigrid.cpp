@@ -266,6 +266,15 @@ residual tests passed with the new kernel. The pre-specialization
 snapshot also passed the complete pinned two- and four-rank RHMC gates
 in job `2170879`, replacing the unpinned duplicate `2170587`.
 
+The `8⁴` pairing in job `2170870` passed all three same-input matches
+and both reduced-pole reversal checks. The 64, 32 and 24-pole trajectory
+medians were 45.132, 28.580 and 26.576 s. The 32-pole candidate was faster
+than the control in all three pairs and changed delta-H by at most
+`3.12e-9`. The 24-pole candidate changed delta-H by at most `6.48e-7`
+and had one slow 75.28 s sample. All acceptance decisions agreed. The
+six-rank `12⁴` pilot uses 32 poles in MD and the same high-precision
+refresh and acceptance expansions.
+
 ### ARM propagation and Legacy MG follow-up
 
 Job `2169866` interleaved disabled, 64-site and 128-site RHS tiling at
