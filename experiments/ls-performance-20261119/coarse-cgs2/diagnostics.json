@@ -1,0 +1,214 @@
+{
+  "job": 2171323,
+  "reports_scope": "Six batches of two RHS from one separate rank-0 diagnostic propagator per case",
+  "cases": {
+    "control": {
+      "calls": 142,
+      "allreduce_calls": 19746,
+      "coarse_iterations_sum": 4369,
+      "coarse_seconds_sum": 4.964078,
+      "sap_seconds_sum": 8.85392,
+      "wall_median": 20.482706964481622,
+      "native_profile_rank0_local_sums": [
+        {
+          "restrict_seconds": 0.083926,
+          "coarse_seconds": 0.798581,
+          "prolong_seconds": 0.0407135,
+          "sap_seconds": 1.47199,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0842694,
+          "coarse_seconds": 0.834229,
+          "prolong_seconds": 0.0408636,
+          "sap_seconds": 1.46883,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0837798,
+          "coarse_seconds": 0.807731,
+          "prolong_seconds": 0.0409851,
+          "sap_seconds": 1.47087,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0844231,
+          "coarse_seconds": 0.833516,
+          "prolong_seconds": 0.0412989,
+          "sap_seconds": 1.46782,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0865389,
+          "coarse_seconds": 0.855446,
+          "prolong_seconds": 0.0416026,
+          "sap_seconds": 1.50468,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0846988,
+          "coarse_seconds": 0.834575,
+          "prolong_seconds": 0.041086,
+          "sap_seconds": 1.46973,
+          "rhs": 2
+        }
+      ]
+    },
+    "cap14": {
+      "calls": 144,
+      "allreduce_calls": 15748,
+      "coarse_iterations_sum": 3680,
+      "coarse_seconds_sum": 4.201694,
+      "sap_seconds_sum": 9.06241,
+      "wall_median": 20.0425100044813,
+      "native_profile_rank0_local_sums": [
+        {
+          "restrict_seconds": 0.0857967,
+          "coarse_seconds": 0.69864,
+          "prolong_seconds": 0.0420392,
+          "sap_seconds": 1.49818,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0869345,
+          "coarse_seconds": 0.701867,
+          "prolong_seconds": 0.0417813,
+          "sap_seconds": 1.50215,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0888285,
+          "coarse_seconds": 0.702391,
+          "prolong_seconds": 0.0427275,
+          "sap_seconds": 1.53159,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0878798,
+          "coarse_seconds": 0.698487,
+          "prolong_seconds": 0.0419916,
+          "sap_seconds": 1.49897,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0876823,
+          "coarse_seconds": 0.714629,
+          "prolong_seconds": 0.0426832,
+          "sap_seconds": 1.53125,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0863371,
+          "coarse_seconds": 0.68568,
+          "prolong_seconds": 0.0418185,
+          "sap_seconds": 1.50027,
+          "rhs": 2
+        }
+      ]
+    },
+    "cgs2-cap40": {
+      "calls": 142,
+      "allreduce_calls": 9020,
+      "coarse_iterations_sum": 4369,
+      "coarse_seconds_sum": 5.875723,
+      "sap_seconds_sum": 8.85293,
+      "wall_median": 21.289673761930317,
+      "native_profile_rank0_local_sums": [
+        {
+          "restrict_seconds": 0.0837767,
+          "coarse_seconds": 0.946275,
+          "prolong_seconds": 0.041098,
+          "sap_seconds": 1.46954,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0846922,
+          "coarse_seconds": 0.993477,
+          "prolong_seconds": 0.0411998,
+          "sap_seconds": 1.47103,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0840132,
+          "coarse_seconds": 0.956929,
+          "prolong_seconds": 0.0410705,
+          "sap_seconds": 1.46906,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0853375,
+          "coarse_seconds": 0.986124,
+          "prolong_seconds": 0.0410758,
+          "sap_seconds": 1.46864,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0854146,
+          "coarse_seconds": 1.01242,
+          "prolong_seconds": 0.0418823,
+          "sap_seconds": 1.5037,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0849579,
+          "coarse_seconds": 0.980498,
+          "prolong_seconds": 0.0409578,
+          "sap_seconds": 1.47096,
+          "rhs": 2
+        }
+      ]
+    },
+    "cgs2-cap14": {
+      "calls": 144,
+      "allreduce_calls": 7401,
+      "coarse_iterations_sum": 3680,
+      "coarse_seconds_sum": 4.9704,
+      "sap_seconds_sum": 9.06259,
+      "wall_median": 20.821640109061264,
+      "native_profile_rank0_local_sums": [
+        {
+          "restrict_seconds": 0.0856821,
+          "coarse_seconds": 0.825093,
+          "prolong_seconds": 0.0420485,
+          "sap_seconds": 1.5007,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0866219,
+          "coarse_seconds": 0.830218,
+          "prolong_seconds": 0.042251,
+          "sap_seconds": 1.49889,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0884667,
+          "coarse_seconds": 0.828988,
+          "prolong_seconds": 0.0430993,
+          "sap_seconds": 1.53058,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0865593,
+          "coarse_seconds": 0.82744,
+          "prolong_seconds": 0.0418141,
+          "sap_seconds": 1.50088,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0873682,
+          "coarse_seconds": 0.847999,
+          "prolong_seconds": 0.0427012,
+          "sap_seconds": 1.53246,
+          "rhs": 2
+        },
+        {
+          "restrict_seconds": 0.0864363,
+          "coarse_seconds": 0.810662,
+          "prolong_seconds": 0.041996,
+          "sap_seconds": 1.49908,
+          "rhs": 2
+        }
+      ]
+    }
+  }
+}

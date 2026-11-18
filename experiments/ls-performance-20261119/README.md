@@ -369,6 +369,26 @@ batch of eight. The maximum force difference was `8.89e-16` and the
 default batch passed the two-rank LIME and RNG restart tests. See
 [timings](distributed-force-pole-batch-paired.json).
 
+Job `2171526` exchanged half-spinors and their cotangents during
+force differentiation. On four ranks the median force time changed
+from 10.58 to 10.22 s at `12⁴` and from 30.26 to 23.92 s at
+`24³×4`. The paired force agreed within `8.89e-16`. The two- and
+four-rank dense force and link reversibility comparisons passed.
+The new path is selected with `--compact-spin --projected-force-faces`.
+
+Job `2171553` starts a fresh eight-trajectory chain with the combined
+optimizations from the verified `hmc_000003.lime`. The new
+`--initial-lime` mode checks dimensions and SciDAC CRC, uses the new
+rank-local seeds, and records the input SHA256. A two-rank gate checks
+fresh starts and exact restarts before the full-volume stage. This gate
+passed, including rejection of a LIME field with mismatched dimensions.
+The 64-rank stage is running on cn12051.
+
+Job `2171561` holds the optimized algorithm, 64 ranks, input, and seeds
+fixed while pairing sequential CPU binding with four ranks per NUMA
+domain on an exclusive node. Both layouts record hashes of the
+pre-Metropolis links and momentum.
+
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
 matrix contraction. The contraction avoids constructing all eight
@@ -460,7 +480,15 @@ node with distinct NUMA placements before the full-volume comparison.
 The pinned two-rank fixture passed all widths with an independent
 maximum residual of `3.97e-11`. Its eight cap-40 diagnostic calls
 used 734 MPI reductions with packed MGS and 383 with packed CGS2.
-The real L24 timing continues in the same allocation.
+The real L24 comparison passed 12 independent columns per case,
+with maximum residual `4.91e-9`. Warmed wall medians were 20.483 s
+for cap 40, 20.043 s for cap 14, 21.290 s for CGS2 cap 40, and
+20.822 s for CGS2 cap 14. At cap 40 a separate diagnostic propagator
+recorded 19,746 MPI allreduces with MGS and 9,020 with CGS2, with
+identical coarse iteration totals. The sum of local rank-0 coarse
+times rose from 4.964 to 5.876 s. Packed MGS with cap 14 remained
+the fastest measured case in this allocation. See the
+[real-L24 diagnostics](coarse-cgs2/diagnostics.json).
 
 Job `2171520` holds the coarse cap at 14 and sweeps coarse residual
 targets 0.1, 0.20 and 0.35 alongside the cap-40 control. It runs on

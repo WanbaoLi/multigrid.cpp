@@ -1,0 +1,82 @@
+{
+  "complete": true,
+  "run": "/tmp/mg-l24-packed-retest-Wjw1F8VO/measurements/cgs2-cap14",
+  "reference": "/tmp/mg-l24-packed-cgs2-oZsR7f81/build/multigrid",
+  "reference_sha256": "f67e26a3ba3553e404a7bd9a042116d9825bc0e7d5dcbb1ea6c8d4500983c0e1",
+  "run_report_sha256": "f8500d9e7f6fa4516c7218b8f02946a8e0e3a3ccdeed9431d5b926eb79cd4cb0",
+  "propagator_sha256": "8f4c0b8f200de74d37902980092af2b6cc78c44d46e1758d4cb4498d06eaa0db",
+  "method": "byte-only column extraction + independent scalar C++",
+  "source_xyzt": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_scale": 1.0,
+  "mass": -0.277,
+  "csw": 1.160920226,
+  "normalization": "mass",
+  "columns": [
+    {
+      "source_spin": 0,
+      "source_color": 0,
+      "residual": 3.534939800809164e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 1,
+      "residual": 4.823176278417969e-09
+    },
+    {
+      "source_spin": 0,
+      "source_color": 2,
+      "residual": 3.02528271587089e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 0,
+      "residual": 4.908735455859015e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 1,
+      "residual": 3.4082995633883535e-09
+    },
+    {
+      "source_spin": 1,
+      "source_color": 2,
+      "residual": 3.1308921243279732e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 0,
+      "residual": 3.1013504605553432e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 1,
+      "residual": 4.057283821932495e-09
+    },
+    {
+      "source_spin": 2,
+      "source_color": 2,
+      "residual": 4.743060637291822e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 0,
+      "residual": 2.8865360535960637e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 1,
+      "residual": 3.4995546360398653e-09
+    },
+    {
+      "source_spin": 3,
+      "source_color": 2,
+      "residual": 4.7688327935294186e-09
+    }
+  ],
+  "assembled_gauge_sha256": "126d658999367b0ece3801c61cd143542d7db0dddc37ab60e6e668e18faa6834"
+}
