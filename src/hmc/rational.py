@@ -41,7 +41,7 @@ def apply_rational(apply, rhs, terms, tol=1e-12):
 def rational_action_gradient(model, gauge, mass, rhs, terms, tol=1e-12):
     """Return the fixed-pseudofermion quadratic action and its link gradient."""
     links = gauge.detach().requires_grad_(True)
-    clover = model.clover(model.field_strength(links), mass)
+    clover = model.clover_blocks(model.field_strength(links), mass)
     schur = model.prepare_even_schur(links, mass, clover)
 
     def normal(vec):

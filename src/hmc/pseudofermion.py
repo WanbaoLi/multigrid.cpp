@@ -29,7 +29,7 @@ class PseudofermionHMC(CloverHMC):
         energy = float(self.gauge_action(u)) + float(p.square().sum()) / 2
         for mass, strange, multiplicity, phi in (
                 (self.ml, False, 2, fields[0]), (self.ms, True, 1, fields[1])):
-            clover = self.clover(strength, mass)
+            clover = self.clover_blocks(strength, mass)
             odd = clover[self.odd]
             if strange:
                 lower, upper = positive_schur_bounds(clover[self.even], odd, mass)
@@ -93,7 +93,7 @@ class PseudofermionHMC(CloverHMC):
         strength = self.field_strength(links)
         total = self.gauge_action(links)
         for mass, multiplicity in ((self.ml, 2), (self.ms, 1)):
-            odd_clover = self.clover(strength, mass)[self.odd]
+            odd_clover = self.clover_blocks(strength, mass)[self.odd]
             total = total - multiplicity * torch.linalg.slogdet(odd_clover)[1].sum()
         gradient, = torch.autograd.grad(total, links)
         for mass, phi, terms in ((self.ml, fields[0], ((0., 1.),)),
@@ -152,10 +152,10 @@ class MatrixFreePseudofermionHMC(PseudofermionHMC):
     def refresh(self, u, rng):
         strength = self.field_strength(u)
         shape = (self.volume // 2, 4, 3)
-        light = self.prepare_even_schur(u, self.ml, self.clover(strength, self.ml))
+        light = self.prepare_even_schur(u, self.ml, self.clover_blocks(strength, self.ml))
         noise_l = torch.randn(shape, dtype=CD, generator=rng)
         phi_l = self.gamma5 @ light(self.gamma5 @ noise_l)
-        clover_s = self.clover(strength, self.ms)
+        clover_s = self.clover_blocks(strength, self.ms)
         self._certify_strange(clover_s)
         strange = self.prepare_even_schur(u, self.ms, clover_s)
 
@@ -171,5 +171,5 @@ class MatrixFreePseudofermionHMC(PseudofermionHMC):
 
     def observables(self, u):
         result = self.gauge_observables(u)
-        lower, upper = self._certify_strange(self.clover(self.field_strength(u), self.ms))
+        lower, upper = self._certify_strange(self.clover_blocks(self.field_strength(u), self.ms))
         return dict(result, strange_det_phase=1., strange_normal_lower=lower, strange_normal_upper=upper)

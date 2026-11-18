@@ -140,7 +140,7 @@ class CloverHMC:
                 field.append((q - dagger(q)) / 8)
         return field
 
-    def clover(self, field, mass):
+    def clover_blocks(self, field, mass):
         coeff = self.csw / (2 * (mass + 4))
         blocks = []
         for ch in (0, 1):
@@ -149,9 +149,12 @@ class CloverHMC:
             b20 = coeff * (field[1] - sign * field[4] - 1j * (field[2] + sign * field[3]))
             blocks.append(torch.cat((torch.cat((self.eye3 - b10, dagger(b20)), -1),
                                      torch.cat((b20, self.eye3 + b10), -1)), -2))
-        zero = torch.zeros_like(blocks[0])
-        return torch.cat((torch.cat((blocks[0], zero), -1),
-                          torch.cat((zero, blocks[1]), -1)), -2)
+        return torch.stack(blocks, dim=1)
+
+    def clover(self, field, mass):
+        upper, lower = self.clover_blocks(field, mass).unbind(1)
+        zero = torch.zeros_like(upper)
+        return torch.cat((torch.cat((upper, zero), -1), torch.cat((zero, lower), -1)), -2)
 
     def dirac(self, u, mass, field=None):
         if not self.dense_reference:
@@ -211,6 +214,8 @@ class CloverHMC:
 
     def prepare_even_schur(self, u, mass, clover):
         """Prepare parity-local coefficients and apply one or more Schur fields."""
+        if clover.ndim == 3:
+            clover = torch.stack((clover[:, :6, :6], clover[:, 6:, 6:]), dim=1)
         even_clover = clover[self.even]
         odd_inverse = torch.linalg.inv(clover[self.odd])
         hopping = []
@@ -233,11 +238,11 @@ class CloverHMC:
             for source, link, projector in terms:
                 rotated = sites[:, source] @ link.transpose(-2, -1)
                 result = result + projector @ rotated
-            return (-kappa * result).reshape(-1, self.volume // 2, 12, 1)
+            return (-kappa * result).reshape(-1, self.volume // 2, 2, 6, 1)
 
         def apply(spinor):
             odd_solved = odd_inverse @ hop(spinor, hopping[1])
-            local = even_clover @ spinor.reshape(-1, self.volume // 2, 12, 1)
+            local = even_clover @ spinor.reshape(-1, self.volume // 2, 2, 6, 1)
             return (local - hop(odd_solved, hopping[0])).reshape_as(spinor)
 
         return apply
