@@ -30,6 +30,8 @@ def main():
         model = DistributedRHMC(*params, comm, os.environ["LQCD_HMC_SCHUR_LIBRARY"],
                                 direct_clover=args.direct_clover, packed_faces=args.packed_faces,
                                 compact_spin=args.compact_spin, zolotarev=args.zolotarev)
+        baseline, final, precise_difference = model._hamiltonian_pair([2.**56, 2.], [2.**56, 3.])
+        assert final == baseline and precise_difference == comm.size
         serial = MatrixFreePseudofermionHMC(*params)
         dense = PseudofermionHMC(*params)
         rng = torch.Generator().manual_seed(1729)
@@ -46,29 +48,37 @@ def main():
         actual = model.refresh(local_u, *noise)
         refresh_error = max(float((a - e[half]).abs().max()) for a, e in zip(actual, expected))
         hamiltonian = model.endpoint_energy(local_u, local_p, actual)
-        endpoint_error = abs(hamiltonian - dense.endpoint_energy(u, p, tuple(x.flatten() for x in expected)))
+        dense_fields = tuple(x.flatten() for x in expected)
+        dense_initial = dense.endpoint_energy(u, p, dense_fields)
+        endpoint_error = abs(hamiltonian - dense_initial)
         force = model.force(local_u, actual)
         split_force = model.force(local_u, actual, include_gauge=False) + model.gauge_force(local_u)
         serial_force = comm.bcast(serial.md_force(u, expected).numpy() if comm.rank == 0 else None, root=0)
         force_error = float((force - torch.from_numpy(serial_force[slab])).abs().max())
         up, pp = model.integrate(local_u, local_p, actual, .04, 1)
+        _, _, measured_delta = model._hamiltonian_pair(
+            model._local_endpoint_terms(local_u, local_p, actual), model._local_endpoint_terms(up, pp, actual))
+        dense_final = dense.endpoint_energy(torch.cat(comm.allgather(up)), torch.cat(comm.allgather(pp)),
+                                            dense_fields)
         ub, pb = model.integrate(up, -pp, actual, .04, 1)
         split_u, split_p = model.integrate(local_u, local_p, actual, .04, 1, gauge_steps=2)
         split_back_u, split_back_p = model.integrate(split_u, -split_p, actual, .04, 1, gauge_steps=2)
         errors = dict(refresh=refresh_error, endpoint=endpoint_error, force=force_error,
+                      delta_h=abs(measured_delta - (dense_final - dense_initial)),
                       split_force=float((split_force - force).abs().max()),
                       split_reversible_links=float((split_back_u - local_u).abs().max()),
                       split_reversible_momenta=float((split_back_p + local_p).abs().max()),
                       reversible_links=float((ub - local_u).abs().max()),
                       reversible_momenta=float((pb + local_p).abs().max()))
         errors = {key: comm.allreduce(value, op=MPI.MAX) for key, value in errors.items()}
-        limits = dict(refresh=2e-11, endpoint=1e-9, force=3e-9,
+        limits = dict(refresh=2e-11, endpoint=1e-9, force=3e-9, delta_h=1e-9,
                       reversible_links=2e-12, reversible_momenta=2e-11,
                       split_force=2e-12, split_reversible_links=2e-12, split_reversible_momenta=2e-11)
         if any(errors[key] > tolerance for key, tolerance in limits.items()):
             raise AssertionError(errors)
         if comm.rank == 0:
             args.output.write_text(json.dumps(dict(passed=True, ranks=comm.size, lattice=lattice,
+                                                   extensive_difference_check=precise_difference,
                                                    max_error=errors), indent=2) + "\n")
     finally:
         comm.Free()

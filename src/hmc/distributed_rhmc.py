@@ -2,6 +2,7 @@
 import math
 from time import perf_counter
 
+import numpy as np
 import torch
 
 from .distributed_gauge import owned_clover_strength, owned_gauge_action, owned_gauge_gradient, time_faces
@@ -10,6 +11,10 @@ from .rational import apply_rational, checked_rational_terms
 from .reference import CD, RD, clover_chiral_blocks, dagger, drift_links, generators, integrate_links
 from .shifted import solve_multi_shift, solve_shifted
 from .spectral import cold_wilson_gap, positive_schur_bounds
+
+
+def _finite_sum(terms):
+    return math.fsum(terms) if all(map(math.isfinite, terms)) else math.nan
 
 
 class DistributedRHMC:
@@ -91,11 +96,11 @@ class DistributedRHMC:
         return self.gamma5 * schur_l(self.gamma5 * noise_l), normal(fraction)
 
     @torch.no_grad()
-    def endpoint_energy(self, u, p, fields):
+    def _local_endpoint_terms(self, u, p, fields):
         extended = self._gauge_faces(u)
         coefficients = self._coefficients(extended)
         self._certify(coefficients[1], u)
-        local = float(owned_gauge_action(extended, self.beta)) + float(p.square().sum()) / 2
+        terms = [float(owned_gauge_action(extended, self.beta)), float(p.square().sum()) / 2]
         for i, (mass, phi, clover) in enumerate(zip((self.ml, self.ms), fields, coefficients)):
             schur = self._schur(extended, clover, mass)
 
@@ -106,12 +111,26 @@ class DistributedRHMC:
                 solved, _, _ = solve_shifted(normal, phi, 0., comm=self.comm)
             else:
                 solved, _ = apply_rational(normal, phi, self.endpoint_terms, comm=self.comm)
-            local += float((phi.conj() * solved).real.sum())
-            local -= (2 - i) * float(torch.linalg.slogdet(clover[self.odd])[1].sum())
-        energy = self.comm.allreduce(local)
+            terms.extend((float((phi.conj() * solved).real.sum()),
+                          -(2 - i) * float(torch.linalg.slogdet(clover[self.odd])[1].sum())))
+        return terms
+
+    def endpoint_energy(self, u, p, fields):
+        energy = self.comm.allreduce(_finite_sum(self._local_endpoint_terms(u, p, fields)))
         if not math.isfinite(energy):
             raise ArithmeticError("Nonfinite distributed Hamiltonian")
         return energy
+
+    def _hamiltonian_pair(self, initial, final):
+        # Subtract corresponding terms before the collective. This avoids
+        # subtracting two extensive, already rounded global Hamiltonians.
+        differences = [b - a for a, b in zip(initial, final)]
+        local = np.array([_finite_sum(initial), _finite_sum(final), _finite_sum(differences)], dtype=np.float64)
+        total = np.empty_like(local)
+        self.comm.Allreduce(local, total)
+        if not np.isfinite(total).all():
+            raise ArithmeticError("Nonfinite distributed Hamiltonian")
+        return tuple(total.tolist())
 
     def force(self, u, fields, timing=None, *, include_gauge=True):
         start = perf_counter()
@@ -195,16 +214,16 @@ class DistributedRHMC:
         start = perf_counter()
         fields = self.refresh(u, *noises)
         refreshed = perf_counter()
-        initial = self.endpoint_energy(u, p, fields)
+        initial_terms = self._local_endpoint_terms(u, p, fields)
         force_timing = dict(coefficient_build=0., prepare_and_solve=0.,
                             spinor_differentiation=0., gauge_differentiation=0.)
         started_md = perf_counter()
         proposed, final_p = self.integrate(u, p, fields, length, steps, integrator,
                                            force_timing=force_timing, gauge_steps=gauge_steps)
         finished_md = perf_counter()
-        final = self.endpoint_energy(proposed, final_p, fields)
+        final_terms = self._local_endpoint_terms(proposed, final_p, fields)
+        initial, final, delta = self._hamiltonian_pair(initial_terms, final_terms)
         finished_endpoint = perf_counter()
-        delta = final - initial
         probability = math.exp(min(0., -delta))
         draw = float(torch.rand((), dtype=RD, generator=rng)) if self.comm.rank == 0 else None
         accepted = self.comm.bcast(draw, root=0) < probability

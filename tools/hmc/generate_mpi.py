@@ -166,6 +166,7 @@ def run(args, comm):
                   mass_strange=args.mass_strange, csw=args.csw, nf="2+1", rhmc=True,
                   mpi_ranks=comm.size, threads=args.threads, seed=args.seed,
                   timing_aggregation="maximum rank elapsed time for each phase independently",
+                  hamiltonian_difference_method="reduce per-rank differences of corresponding action terms",
                   rank_seed_rule="seed + MPI rank", source_commit=commit, native_schur_sha256=lib_digest,
                   torch_version=str(torch.__version__),
                   strange_md_interval=list(model.interval), strange_rational_grid_error=model.grid_errors,
