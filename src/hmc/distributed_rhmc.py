@@ -8,7 +8,8 @@ import torch
 from .distributed_gauge import owned_clover_strength, owned_gauge_action, owned_gauge_gradient, time_faces
 from .distributed_schur import prepare_local_slab_schur
 from .rational import apply_rational, checked_rational_terms
-from .reference import CD, RD, clover_chiral_blocks, dagger, drift_links, generators, integrate_links
+from .reference import (CD, RD, clover_blocks_from_components, clover_chiral_blocks,
+                        clover_chiral_components, dagger, drift_links, generators, integrate_links)
 from .shifted import solve_multi_shift, solve_shifted
 from .spectral import cold_wilson_gap, positive_schur_bounds
 
@@ -21,7 +22,7 @@ class DistributedRHMC:
     def __init__(self, lattice, beta, ml, ms, csw, comm, library, interval=(.004, 4.), *,
                  md_order=32, md_tolerance=1e-12, direct_clover=False, packed_faces=False, compact_spin=False,
                  zolotarev=False, force_pole_batch=8, projected_force_faces=False,
-                 light_heatbath_action=False, real_krylov_dot=False, pade_drift=False):
+                 light_heatbath_action=False, real_krylov_dot=False, pade_drift=False, shared_clover_spin=False):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -62,6 +63,7 @@ class DistributedRHMC:
         self.light_heatbath_action = light_heatbath_action
         self.real_krylov_dot = real_krylov_dot
         self.pade_drift = pade_drift
+        self.shared_clover_spin = shared_clover_spin
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
             self.interval, md_order=md_order, zolotarev=zolotarev)
 
@@ -74,6 +76,10 @@ class DistributedRHMC:
     def _coefficients(self, extended):
         field = [value.reshape(-1, 3, 3)
                  for value in owned_clover_strength(extended, direct=self.direct_clover)]
+        if self.shared_clover_spin:
+            components = clover_chiral_components(field)
+            return tuple(clover_blocks_from_components(components, mass, self.csw)
+                         for mass in (self.ml, self.ms))
         return tuple(clover_chiral_blocks(field, mass, self.csw) for mass in (self.ml, self.ms))
 
     def _certify(self, strange_clover, gauge):

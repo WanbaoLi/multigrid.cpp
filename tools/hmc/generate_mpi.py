@@ -27,7 +27,7 @@ CHECKPOINT_COMPATIBILITY = (
     "strange_md_interval", "strange_rational_poles", "md_relative_true_residual_tolerance",
     "direct_clover_adjoint", "packed_temporal_faces", "compact_spin_force",
     "half_power_rational_method", "rational_coefficients_sha256", "force_pole_batch",
-    "projected_force_faces", "light_heatbath_action", "real_krylov_dot", "pade_drift",
+    "projected_force_faces", "light_heatbath_action", "real_krylov_dot", "pade_drift", "shared_clover_spin",
 )
 
 
@@ -79,6 +79,7 @@ def resume_from(path, report, rng, comm):
         previous.setdefault("light_heatbath_action", False)
         previous.setdefault("real_krylov_dot", False)
         previous.setdefault("pade_drift", False)
+        previous.setdefault("shared_clover_spin", False)
         mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
         if mismatches:
             raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
@@ -158,6 +159,8 @@ def main():
                         help="use interleaved real buffers for local FP64 Krylov reductions")
     parser.add_argument("--pade-drift", action="store_true",
                         help="use the bounded small-step Padé gauge drift")
+    parser.add_argument("--shared-clover-spin", action="store_true",
+                        help="reuse the mass-independent spin contractions for both Clover masses")
     parser.add_argument("--save-every", type=int, default=1)
     parser.add_argument("--threads", type=int, default=1)
     parser.add_argument("--seed", type=int, default=1729)
@@ -198,7 +201,7 @@ def run(args, comm):
                             force_pole_batch=args.force_pole_batch,
                             projected_force_faces=args.projected_force_faces,
                             light_heatbath_action=args.light_heatbath_action, real_krylov_dot=args.real_krylov_dot,
-                            pade_drift=args.pade_drift)
+                            pade_drift=args.pade_drift, shared_clover_spin=args.shared_clover_spin)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
@@ -226,6 +229,7 @@ def run(args, comm):
                   light_heatbath_action=model.light_heatbath_action,
                   real_krylov_dot=model.real_krylov_dot,
                   pade_drift=model.pade_drift,
+                  shared_clover_spin=model.shared_clover_spin,
                   half_power_rational_method="zolotarev" if model.zolotarev else "quadrature",
                   rational_coefficients_sha256=rational_digest,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",

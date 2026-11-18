@@ -30,16 +30,27 @@ def dagger(a):
     return a.conj().transpose(-1, -2)
 
 
-def clover_chiral_blocks(field, mass, csw):
+def clover_chiral_components(field):
+    return tuple((field[0] + sign * field[5],
+                  field[1] - sign * field[4] - 1j * (field[2] + sign * field[3]))
+                 for sign in (-1, 1))
+
+
+def clover_blocks_from_components(components, mass, csw):
     coeff = csw / (2 * (mass + 4))
-    eye3 = torch.eye(3, dtype=field[0].dtype, device=field[0].device)
+    first = components[0][0]
+    eye3 = torch.eye(3, dtype=first.dtype, device=first.device)
     blocks = []
-    for sign in (-1, 1):
-        b10 = 1j * coeff * (field[0] + sign * field[5])
-        b20 = coeff * (field[1] - sign * field[4] - 1j * (field[2] + sign * field[3]))
+    for diagonal, off_diagonal in components:
+        b10 = 1j * coeff * diagonal
+        b20 = coeff * off_diagonal
         blocks.append(torch.cat((torch.cat((eye3 - b10, dagger(b20)), -1),
                                  torch.cat((b20, eye3 + b10), -1)), -2))
     return torch.stack(blocks, dim=1)
+
+
+def clover_chiral_blocks(field, mass, csw):
+    return clover_blocks_from_components(clover_chiral_components(field), mass, csw)
 
 
 def drift_links(u, p, step, basis, *, pade=False):
