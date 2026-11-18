@@ -24,7 +24,7 @@ CHECKPOINT_COMPATIBILITY = (
     "threads", "seed", "torch_version", "native_schur_sha256", "integrator",
     "trajectory_length", "integration_steps", "gauge_substeps_per_drift",
     "strange_md_interval", "strange_rational_poles", "md_relative_true_residual_tolerance",
-    "direct_clover_adjoint", "packed_temporal_faces",
+    "direct_clover_adjoint", "packed_temporal_faces", "compact_spin_force",
 )
 
 
@@ -50,6 +50,7 @@ def resume_from(path, report, rng, comm):
         previous = json.loads(path.read_text())
         previous.setdefault("direct_clover_adjoint", False)
         previous.setdefault("packed_temporal_faces", False)
+        previous.setdefault("compact_spin_force", False)
         mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
         if mismatches:
             raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
@@ -114,6 +115,8 @@ def main():
                         help="evaluate Clover leaf derivatives with the local analytic adjoint")
     parser.add_argument("--packed-faces", action="store_true",
                         help="apply the native Schur operator directly to packed temporal faces")
+    parser.add_argument("--compact-spin", action="store_true",
+                        help="differentiate a two-component Wilson hopping projection")
     parser.add_argument("--save-every", type=int, default=1)
     parser.add_argument("--threads", type=int, default=1)
     parser.add_argument("--seed", type=int, default=1729)
@@ -144,7 +147,8 @@ def run(args, comm):
     model = DistributedRHMC(args.lattice, args.beta, args.mass_light, args.mass_strange,
                             args.csw, comm, args.library, interval=args.strange_interval,
                             md_order=args.md_order, md_tolerance=args.md_tolerance,
-                            direct_clover=args.direct_clover, packed_faces=args.packed_faces)
+                            direct_clover=args.direct_clover, packed_faces=args.packed_faces,
+                            compact_spin=args.compact_spin)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
@@ -163,6 +167,7 @@ def run(args, comm):
                   md_relative_true_residual_tolerance=model.md_tolerance,
                   direct_clover_adjoint=model.direct_clover,
                   packed_temporal_faces=model.packed_faces,
+                  compact_spin_force=model.compact_spin,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",
                   gauge_substeps_per_drift=args.gauge_steps,
                   thermalization_established=False, independent_samples_established=False,

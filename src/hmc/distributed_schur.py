@@ -91,7 +91,7 @@ def prepare_slab_schur(model, gauge, mass, clover, comm, library):
 
 
 def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, projected=True,
-                             packed_faces=False):
+                             packed_faces=False, compact_spin=False):
     """Prepare Schur from only an owned Clover slab and its gauge faces.
 
     The returned operator differentiates through link and spinor halo adjoints
@@ -128,6 +128,17 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
     owned_grid = grid[1:-1]
     gamma = gamma_matrices()
     eye4 = torch.eye(4, dtype=links.dtype)
+    if compact_spin:
+        # In the DeGrand–Rossi basis the upper-lower block is a signed
+        # permutation. X and Y exchange the two lower spin components.
+        spins = torch.arange(2)
+        half_projectors = []
+        for mu in range(4):
+            swap = mu < 2
+            partner = 3 - spins if swap else 2 + spins
+            for sign in (-1, 1):
+                phase = (sign * gamma[mu, spins, partner]).reshape(2, 1)
+                half_projectors.append((phase, swap))
     hopping = []
     for target in targets:
         terms = []
@@ -203,9 +214,21 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
     def torch_hop(spinor, terms):
         fields = spinor.reshape(-1, nt, face, 4, 3).transpose(0, 1)
         neighbors = time_faces(fields, comm).transpose(0, 1).reshape(-1, (nt + 2) * face, 4, 3)
-        result = spinor.new_zeros((fields.shape[1], local_sites, 4, 3))
-        for indices, link, projector in terms:
-            result = result + projector @ (neighbors[:, indices] @ link.transpose(-2, -1))
+        if compact_spin:
+            upper = spinor.new_zeros((fields.shape[1], local_sites, 2, 3))
+            lower = torch.zeros_like(upper)
+            for (indices, link, _), (phase, swap) in zip(terms, half_projectors):
+                source_upper, source_lower = neighbors[:, indices].split(2, dim=-2)
+                source_lower = source_lower.flip(-2) if swap else source_lower
+                projected = (source_upper + phase * source_lower) @ link.transpose(-2, -1)
+                reconstructed = phase.conj() * projected
+                upper = upper + projected
+                lower = lower + (reconstructed.flip(-2) if swap else reconstructed)
+            result = torch.cat((upper, lower), dim=-2)
+        else:
+            result = spinor.new_zeros((fields.shape[1], local_sites, 4, 3))
+            for indices, link, projector in terms:
+                result = result + projector @ (neighbors[:, indices] @ link.transpose(-2, -1))
         return (-kappa * result).reshape(-1, local_sites, 2, 6, 1)
 
     def apply(spinor):
