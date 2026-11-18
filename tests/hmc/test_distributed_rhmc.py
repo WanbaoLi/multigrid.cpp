@@ -42,16 +42,23 @@ def main():
         hamiltonian = model.endpoint_energy(local_u, local_p, actual)
         endpoint_error = abs(hamiltonian - dense.endpoint_energy(u, p, tuple(x.flatten() for x in expected)))
         force = model.force(local_u, actual)
+        split_force = model.force(local_u, actual, include_gauge=False) + model.gauge_force(local_u)
         serial_force = comm.bcast(serial.md_force(u, expected).numpy() if comm.rank == 0 else None, root=0)
         force_error = float((force - torch.from_numpy(serial_force[slab])).abs().max())
         up, pp = model.integrate(local_u, local_p, actual, .04, 1)
         ub, pb = model.integrate(up, -pp, actual, .04, 1)
+        split_u, split_p = model.integrate(local_u, local_p, actual, .04, 1, gauge_steps=2)
+        split_back_u, split_back_p = model.integrate(split_u, -split_p, actual, .04, 1, gauge_steps=2)
         errors = dict(refresh=refresh_error, endpoint=endpoint_error, force=force_error,
+                      split_force=float((split_force - force).abs().max()),
+                      split_reversible_links=float((split_back_u - local_u).abs().max()),
+                      split_reversible_momenta=float((split_back_p + local_p).abs().max()),
                       reversible_links=float((ub - local_u).abs().max()),
                       reversible_momenta=float((pb + local_p).abs().max()))
         errors = {key: comm.allreduce(value, op=MPI.MAX) for key, value in errors.items()}
         limits = dict(refresh=2e-11, endpoint=1e-9, force=3e-9,
-                      reversible_links=2e-12, reversible_momenta=2e-11)
+                      reversible_links=2e-12, reversible_momenta=2e-11,
+                      split_force=2e-12, split_reversible_links=2e-12, split_reversible_momenta=2e-11)
         if any(errors[key] > tolerance for key, tolerance in limits.items()):
             raise AssertionError(errors)
         if comm.rank == 0:

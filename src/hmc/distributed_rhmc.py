@@ -104,7 +104,7 @@ class DistributedRHMC:
             raise ArithmeticError("Nonfinite distributed Hamiltonian")
         return energy
 
-    def force(self, u, fields, timing=None):
+    def force(self, u, fields, timing=None, *, include_gauge=True):
         start = perf_counter()
         links = u.detach().requires_grad_(True)
         extended = self._gauge_faces(links)
@@ -151,8 +151,9 @@ class DistributedRHMC:
         gradient, = torch.autograd.grad(
             (local, extended, *coefficients), links,
             grad_outputs=(torch.ones_like(local), link_gradient, *clover_gradients))
-        gradient.add_(owned_gauge_gradient(extended, self.beta).reshape_as(gradient))
-        force = torch.einsum("vmij,aji->vma", u @ dagger(gradient), 1j * self.basis).real
+        if include_gauge:
+            gradient.add_(owned_gauge_gradient(extended, self.beta).reshape_as(gradient))
+        force = self._project_force(u, gradient)
         if timing is not None:
             timing["coefficient_build"] += geometry
             timing["prepare_and_solve"] += solves
@@ -163,11 +164,23 @@ class DistributedRHMC:
     def drift(self, u, p, length):
         return drift_links(u, p, length, self.basis)
 
-    def integrate(self, u, p, fields, length, steps, integrator="omelyan", *, force_timing=None):
-        return integrate_links(u, p, length, steps, integrator,
-                               lambda gauge: self.force(gauge, fields, force_timing), self.drift)
+    def _project_force(self, u, link_gradient):
+        return torch.einsum("vmij,aji->vma", u @ dagger(link_gradient), 1j * self.basis).real
 
-    def trajectory(self, u, rng, length, steps, integrator="omelyan"):
+    @torch.no_grad()
+    def gauge_force(self, u):
+        gradient = owned_gauge_gradient(self._gauge_faces(u), self.beta).reshape_as(u)
+        return self._project_force(u, gradient)
+
+    def integrate(self, u, p, fields, length, steps, integrator="omelyan", *, force_timing=None, gauge_steps=0):
+        def fermion_step(gauge):
+            return self.force(gauge, fields, force_timing, include_gauge=gauge_steps == 0)
+
+        return integrate_links(u, p, length, steps, integrator,
+                               fermion_step, self.drift, fast_force=self.gauge_force if gauge_steps else None,
+                               fast_steps=gauge_steps)
+
+    def trajectory(self, u, rng, length, steps, integrator="omelyan", *, gauge_steps=0):
         p = torch.randn((self.local_volume, 4, 8), dtype=RD, generator=rng)
         noises = [torch.randn(self.spinor_shape, dtype=CD, generator=rng) for _ in range(2)]
         start = perf_counter()
@@ -177,7 +190,8 @@ class DistributedRHMC:
         force_timing = dict(coefficient_build=0., prepare_and_solve=0.,
                             spinor_differentiation=0., gauge_differentiation=0.)
         started_md = perf_counter()
-        proposed, final_p = self.integrate(u, p, fields, length, steps, integrator, force_timing=force_timing)
+        proposed, final_p = self.integrate(u, p, fields, length, steps, integrator,
+                                           force_timing=force_timing, gauge_steps=gauge_steps)
         finished_md = perf_counter()
         final = self.endpoint_energy(proposed, final_p, fields)
         finished_endpoint = perf_counter()

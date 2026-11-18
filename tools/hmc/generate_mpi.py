@@ -47,6 +47,8 @@ def main():
     parser.add_argument("--warmup", type=int, default=1)
     parser.add_argument("--length", type=float, default=.08)
     parser.add_argument("--steps", type=int, default=1)
+    parser.add_argument("--gauge-steps", type=int, default=0,
+                        help="inner Omelyan gauge steps per fermion drift, or zero for one time scale")
     parser.add_argument("--md-order", type=int, default=32,
                         help="strange-force quadrature order per tail (twice as many poles)")
     parser.add_argument("--md-tolerance", type=float, default=1e-12,
@@ -57,7 +59,8 @@ def main():
     args = parser.parse_args()
     if args.library is None:
         parser.error("Provide the native Schur library")
-    if (args.threads < 1 or args.steps < 1 or args.md_order < 1 or not math.isfinite(args.length) or args.length <= 0
+    if (args.threads < 1 or args.steps < 1 or args.gauge_steps < 0 or args.md_order < 1
+            or not math.isfinite(args.length) or args.length <= 0
             or not 0 < args.md_tolerance < 1
             or not 0 <= args.warmup < args.trajectories
             or not 1 <= args.save_every <= args.trajectories - args.warmup):
@@ -93,11 +96,12 @@ def run(args, comm):
                                               refresh=len(model.refresh_terms)),
                   md_relative_true_residual_tolerance=model.md_tolerance,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",
+                  gauge_substeps_per_drift=args.gauge_steps,
                   thermalization_established=False, independent_samples_established=False,
                   trajectories=args.trajectories, warmup=args.warmup, samples=[], saved_configurations=[])
     for trajectory in range(1, args.trajectories + 1):
         start = perf_counter()
-        gauge, sample = model.trajectory(gauge, rng, args.length, args.steps)
+        gauge, sample = model.trajectory(gauge, rng, args.length, args.steps, gauge_steps=args.gauge_steps)
         total = perf_counter() - start
         phases = sample["phase_seconds"]
         force_phases = sample["force_seconds"]

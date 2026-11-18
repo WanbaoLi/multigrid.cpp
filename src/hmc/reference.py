@@ -49,23 +49,31 @@ def drift_links(u, p, step, basis):
     return (rotation @ u).detach()
 
 
-def integrate_links(u, p, length, steps, integrator, force, drift):
+def integrate_links(u, p, length, steps, integrator, force, drift, *, fast_force=None, fast_steps=0):
     if steps < 1 or not math.isfinite(length) or integrator not in ("leapfrog", "omelyan"):
         raise ValueError("Invalid integration parameters")
+    if fast_steps < 0 or (fast_force is None) != (fast_steps == 0):
+        raise ValueError("Nested integration requires a fast force and a positive step count")
+
+    def advance(links, momentum, interval):
+        if fast_force is None:
+            return drift(links, momentum, interval), momentum
+        return integrate_links(links, momentum, interval, fast_steps, "omelyan", fast_force, drift)
+
     step = length / steps
     u, p = u.clone(), p.clone()
     if integrator == "omelyan":
         edge = 0.1931833275037836 * step
         p = p - edge * force(u)
         for i in range(steps):
-            u = drift(u, p, step / 2)
+            u, p = advance(u, p, step / 2)
             p = p - (step - 2 * edge) * force(u)
-            u = drift(u, p, step / 2)
+            u, p = advance(u, p, step / 2)
             p = p - (edge if i == steps - 1 else 2 * edge) * force(u)
         return u, p
     p = p - step / 2 * force(u)
     for i in range(steps):
-        u = drift(u, p, step)
+        u, p = advance(u, p, step)
         p = p - (step / 2 if i == steps - 1 else step) * force(u)
     return u, p
 
