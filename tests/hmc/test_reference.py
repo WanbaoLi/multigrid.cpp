@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 import torch
@@ -169,6 +170,27 @@ class HMCPhysicsTests(unittest.TestCase):
             grad_sparse, = torch.autograd.grad((y.conj() * sparse).real.sum(), gauge)
             self.assertGreater(grad_dense.abs().max().item(), 1e-4)
             torch.testing.assert_close(grad_sparse, grad_dense, atol=3e-14, rtol=3e-14)
+
+    def test_native_prepared_schur_matches_torch(self):
+        if not os.environ.get("LQCD_HMC_SCHUR_LIBRARY"):
+            self.skipTest("Native HMC Schur library not configured")
+        torch.set_num_threads(2)
+        for lattice in ((2, 2, 2, 2), (2, 2, 4, 4), (4, 4, 4, 4)):
+            model = CloverHMC(lattice, dense_reference=False)
+            p = torch.randn((model.volume, 4, 8), dtype=RD, generator=self.rng)
+            gauge = model.drift(model.cold(), p, 0.25)
+            strength = model.field_strength(gauge)
+            x = torch.randn((model.volume // 2, 4, 3), dtype=CD, generator=self.rng).conj()
+            for mass in (model.ml, model.ms):
+                blocks = model.clover_blocks(strength, mass)
+                native = model.prepare_even_schur(gauge, mass, blocks)
+                with patch.dict(os.environ, {"LQCD_HMC_SCHUR_LIBRARY": ""}):
+                    reference = model.prepare_even_schur(gauge, mass, blocks)
+                with torch.no_grad():
+                    actual = model.even_normal_from_schur(native, x)
+                    expected = model.even_normal_from_schur(reference, x)
+                torch.testing.assert_close(actual, expected, atol=3e-14, rtol=3e-14)
+                METRICS[f"native_schur_normal_error_{lattice}_{mass}"] = (actual - expected).abs().max().item()
 
     def test_even_schur_and_clover_determinant(self):
         spin_color = torch.arange(12)

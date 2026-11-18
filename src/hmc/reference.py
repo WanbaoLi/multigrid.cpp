@@ -19,6 +19,9 @@ import xml.etree.ElementTree as ET
 import numpy as np
 import torch
 
+# The dense reference and benchmark baseline can also be loaded as standalone modules.
+from hmc.native_schur import prepare_native_schur
+
 CD = torch.complex128
 RD = torch.float64
 
@@ -246,6 +249,7 @@ class CloverHMC:
                               (minus, backward, self.eye4 + self.gamma[mu])))
             hopping.append(terms)
         kappa = 1 / (2 * (mass + 4))
+        native = prepare_native_schur(hopping, even_clover, odd_inverse, kappa)
 
         def hop(spinor, terms):
             sites = spinor.reshape(-1, self.volume // 2, 4, 3)
@@ -256,6 +260,10 @@ class CloverHMC:
             return (-kappa * result).reshape(-1, self.volume // 2, 2, 6, 1)
 
         def apply(spinor):
+            if (native is not None and not torch.is_grad_enabled() and
+                    spinor.numel() == self.volume * 6 and spinor.dtype == CD
+                    and spinor.device.type == "cpu"):
+                return native(spinor)
             odd_solved = odd_inverse @ hop(spinor, hopping[1])
             local = even_clover @ spinor.reshape(-1, self.volume // 2, 2, 6, 1)
             return (local - hop(odd_solved, hopping[0])).reshape_as(spinor)

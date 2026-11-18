@@ -83,6 +83,10 @@ def main():
                   samples=[], saved_configurations=[])
     if pseudofermions:
         report.update(strange_md_interval=model.strange_interval, strange_md_poles=len(model.strange_terms))
+        library = os.environ.get('LQCD_HMC_SCHUR_LIBRARY')
+        if library:
+            library_path = Path(library).resolve(strict=True)
+            report.update(native_schur_library=str(library_path), native_schur_sha256=lime_sha256(library_path))
     if matrix_free:
         report.update(strange_endpoint_poles=len(model.endpoint_terms),
                       strange_refresh_poles=len(model.refresh_terms),
