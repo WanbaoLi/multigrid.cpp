@@ -3,10 +3,13 @@ from __future__ import annotations
 
 import math
 
+import numpy as np
 import torch
 
-from .rational import inverse_power_terms, rational_action_gradient
+from .rational import apply_rational, inverse_power_terms, rational_action_gradient
 from .reference import CD, RD, CloverHMC, dagger
+from .shifted import solve_shifted
+from .spectral import positive_schur_bounds
 
 
 class PseudofermionHMC(CloverHMC):
@@ -19,6 +22,31 @@ class PseudofermionHMC(CloverHMC):
         dofs = torch.arange(12)
         self.even_dofs = (12 * self.even[:, None] + dofs).flatten()
         self.odd_dofs = (12 * self.odd[:, None] + dofs).flatten()
+
+    def matrix_free_endpoint_energy(self, u, p, fields, strange_terms, interval, tol=1e-12):
+        """Evaluate the pseudofermion Hamiltonian using only local Clover and Schur solves."""
+        strength = self.field_strength(u)
+        energy = float(self.gauge_action(u)) + float(p.square().sum()) / 2
+        for mass, strange, multiplicity, phi in (
+                (self.ml, False, 2, fields[0]), (self.ms, True, 1, fields[1])):
+            clover = self.clover(strength, mass)
+            odd = clover[self.odd]
+            if strange:
+                lower, upper = positive_schur_bounds(clover[self.even], odd, mass)
+                if not (interval[0] <= lower <= upper <= interval[1]):
+                    raise ArithmeticError("Certified strange spectrum exceeds the endpoint interval")
+            schur = self.prepare_even_schur(u, mass, clover)
+
+            def normal(vec):
+                return self.even_normal_from_schur(schur, vec)
+
+            solved = (apply_rational(normal, phi, strange_terms, tol)[0] if strange
+                      else solve_shifted(normal, phi, 0., tol)[0])
+            energy += float((phi.conj() * solved).real.sum())
+            energy -= multiplicity * float(torch.linalg.slogdet(odd)[1].sum())
+        if not math.isfinite(energy):
+            raise ArithmeticError("Nonfinite matrix-free pseudofermion Hamiltonian")
+        return energy
 
     def _normal_spectrum(self, u, mass, field, strange=False):
         full = self.dirac(u, mass, field)
@@ -89,3 +117,53 @@ class PseudofermionHMC(CloverHMC):
         return (proposal if accepted else u.clone()), dict(
             accepted=accepted, delta_h=delta, h_initial=h0, h_final=h1,
             metropolis_probability=probability)
+
+
+class MatrixFreePseudofermionHMC(PseudofermionHMC):
+    """Rational refresh and endpoints with a sufficient positivity check."""
+
+    def __init__(self, *args, strange_interval=(0.004, 4.), endpoint_order=64, **kwargs):
+        super().__init__(*args, strange_interval=strange_interval, rational_order=32,
+                         dense_reference=False, **kwargs)
+        self.endpoint_terms = inverse_power_terms(0.5, *self.strange_interval, order=endpoint_order)
+        self.refresh_terms = inverse_power_terms(0.75, *self.strange_interval, order=endpoint_order)
+        points = np.geomspace(*self.strange_interval, 4097)
+        self.rational_grid_error = {}
+        for name, power, terms in (("endpoint", 0.5, self.endpoint_terms),
+                                   ("refresh", 0.75, self.refresh_terms),
+                                   ("md", 0.5, self.strange_terms)):
+            approximation = sum(weight / (points + shift) for shift, weight in terms)
+            self.rational_grid_error[name] = float(np.max(np.abs(approximation * points ** power - 1)))
+        if max(self.rational_grid_error["endpoint"], self.rational_grid_error["refresh"]) > 1e-11:
+            raise ArithmeticError("Endpoint or refresh rational approximation exceeds grid tolerance")
+
+    def _certify_strange(self, clover):
+        lower, upper = positive_schur_bounds(clover[self.even], clover[self.odd], self.ms)
+        if not (self.strange_interval[0] <= lower <= upper <= self.strange_interval[1]):
+            raise ArithmeticError("Certified strange spectrum exceeds the fixed rational interval")
+        return lower, upper
+
+    def refresh(self, u, rng):
+        strength = self.field_strength(u)
+        shape = (self.volume // 2, 4, 3)
+        light = self.prepare_even_schur(u, self.ml, self.clover(strength, self.ml))
+        noise_l = torch.randn(shape, dtype=CD, generator=rng)
+        phi_l = self.gamma5 @ light(self.gamma5 @ noise_l)
+        clover_s = self.clover(strength, self.ms)
+        self._certify_strange(clover_s)
+        strange = self.prepare_even_schur(u, self.ms, clover_s)
+
+        def normal(vec):
+            return self.even_normal_from_schur(strange, vec)
+
+        noise_s = torch.randn(shape, dtype=CD, generator=rng)
+        fractional, _ = apply_rational(normal, noise_s, self.refresh_terms)
+        return phi_l, normal(fractional)
+
+    def endpoint_energy(self, u, p, fields):
+        return self.matrix_free_endpoint_energy(u, p, fields, self.endpoint_terms, self.strange_interval)
+
+    def observables(self, u):
+        result = self.gauge_observables(u)
+        lower, upper = self._certify_strange(self.clover(self.field_strength(u), self.ms))
+        return dict(result, strange_det_phase=1., strange_normal_lower=lower, strange_normal_upper=upper)

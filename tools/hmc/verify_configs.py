@@ -38,7 +38,8 @@ def main():
     if not d['complete']:
         raise RuntimeError('Incomplete chain')
     torch.set_num_threads(1)
-    m = CloverHMC(d['lattice_xyzt'], d['beta'], d['mass_light'], d['mass_strange'], d['csw'])
+    m = CloverHMC(d['lattice_xyzt'], d['beta'], d['mass_light'], d['mass_strange'], d['csw'],
+                  dense_reference=False)
     records = []
     rng = np.random.default_rng(881)
     for item in d['saved_configurations']:
@@ -63,8 +64,9 @@ def main():
                     '--mass', str(mass), '--csw', str(m.csw), '--operator', '--out', str(out / 'image.bin')],
                     check=True, capture_output=True)
                 native = np.fromfile(out / 'image.bin', dtype=np.complex128)
-                dense = (m.dirac(torch.from_numpy(u.reshape(-1, 4, 3, 3)), mass) @ torch.from_numpy(probe)).numpy()
-                relative = float(np.linalg.norm(native - dense) / np.linalg.norm(native))
+                applied = m.apply_dirac(torch.from_numpy(u.reshape(-1, 4, 3, 3)), mass,
+                                        torch.from_numpy(probe)).numpy()
+                relative = float(np.linalg.norm(native - applied) / np.linalg.norm(native))
                 if relative > 5e-14:
                     raise RuntimeError('Independent native operator mismatch')
                 native_errors.append(relative)

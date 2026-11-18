@@ -49,13 +49,14 @@ def gamma_matrices():
 
 class CloverHMC:
     def __init__(self, lattice=(2, 2, 2, 2), beta=5.6,
-                 mass_light=0.5, mass_strange=0.8, csw=1.0):
+                 mass_light=0.5, mass_strange=0.8, csw=1.0, *, dense_reference=True):
         self.lattice = tuple(int(n) for n in lattice)
         if len(self.lattice) != 4 or any(n < 2 or n % 2 for n in self.lattice):
             raise ValueError("Use four positive even extents, each at least two")
         self.volume = math.prod(self.lattice)
-        if self.volume > 32:
+        if dense_reference and self.volume > 32:
             raise ValueError("Dense reference capped at 32 sites; production requires sparse RHMC")
+        self.dense_reference = dense_reference
         if not all(math.isfinite(x) for x in (beta, mass_light, mass_strange, csw)):
             raise ValueError("Nonfinite parameters")
         if beta <= 0 or min(mass_light, mass_strange) <= -4:
@@ -84,10 +85,11 @@ class CloverHMC:
              for plus, minus in zip(self.plus, self.minus)]
             for target in (self.even, self.odd)
         ]
-        self.block_indices = torch.cat(
-            [sites * self.volume + sites]
-            + [sites * self.volume + neighbors
-               for pair in zip(self.plus, self.minus) for neighbors in pair])
+        if dense_reference:
+            self.block_indices = torch.cat(
+                [sites * self.volume + sites]
+                + [sites * self.volume + neighbors
+                   for pair in zip(self.plus, self.minus) for neighbors in pair])
         times = torch.div(torch.arange(self.volume), math.prod(self.lattice[:3]), rounding_mode='floor')
         self.forward_sign = torch.where(times == self.lattice[3] - 1, -1., 1.)
         self.backward_sign = torch.where(times == 0, -1., 1.)
@@ -150,6 +152,8 @@ class CloverHMC:
                           torch.cat((zero, blocks[1]), -1)), -2)
 
     def dirac(self, u, mass, field=None):
+        if not self.dense_reference:
+            raise RuntimeError("Dense operator unavailable in matrix-free mode")
         c = self.clover(self.field_strength(u) if field is None else field, mass)
         hopping = []
         for mu in range(4):
@@ -316,11 +320,14 @@ class CloverHMC:
             accepted=accepted, delta_h=delta, h_initial=h0, h_final=h1,
             metropolis_probability=math.exp(min(0, -delta)))
 
-    def observables(self, u):
+    def gauge_observables(self, u):
         eye = dagger(u) @ u - self.eye3
         return dict(plaquette=1 - float(self.gauge_action(u)) / (6 * self.volume * self.beta),
                     max_unitarity_error=float(eye.abs().max()),
-                    max_det_su3_error=float((torch.linalg.det(u) - 1).abs().max()),
+                    max_det_su3_error=float((torch.linalg.det(u) - 1).abs().max()))
+
+    def observables(self, u):
+        return dict(**self.gauge_observables(u),
                     strange_det_phase=complex(torch.linalg.slogdet(self.dirac(u, self.ms))[0]).real)
 
 

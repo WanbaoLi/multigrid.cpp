@@ -17,7 +17,8 @@ sys.path.insert(0, str(ROOT / "src"))
 from hmc.reference import CloverHMC, CD, RD, dagger, generators, write_lime
 from hmc.shifted import solve_multi_shift, solve_shifted
 from hmc.rational import apply_rational, inverse_power_terms, rational_action_gradient
-from hmc.pseudofermion import PseudofermionHMC
+from hmc.pseudofermion import MatrixFreePseudofermionHMC, PseudofermionHMC
+from hmc.spectral import positive_schur_bounds
 
 REFERENCE = None
 REQUIRE_LIME = False
@@ -227,6 +228,12 @@ class HMCPhysicsTests(unittest.TestCase):
         schur = (full[even][:, even] - full[even][:, odd] @
                  torch.linalg.solve(full[odd][:, odd], full[odd][:, even]))
         eigenvalues, vectors = torch.linalg.eigh(dagger(schur) @ schur)
+        certified = positive_schur_bounds(c[self.m.even], c[self.m.odd], mass)
+        self.assertLessEqual(certified[0], eigenvalues[0].item())
+        self.assertGreaterEqual(certified[1], eigenvalues[-1].item())
+        with self.assertRaises(ArithmeticError):
+            positive_schur_bounds(c[self.m.even], c[self.m.odd], -0.277)
+        METRICS["positive_strange_schur_bounds"] = certified
         lower, upper = eigenvalues[0].item() * 0.9, eigenvalues[-1].item() * 1.1
         projection = dagger(vectors) @ rhs
         for power in (0.25, 0.5, 0.75):
@@ -300,6 +307,12 @@ class HMCPhysicsTests(unittest.TestCase):
     def test_two_plus_one_pseudofermion_trajectory(self):
         model = PseudofermionHMC()
         fields = model.refresh(self.u, self.rng)
+        interval = (0.004, 4.)
+        terms = inverse_power_terms(0.5, *interval, order=64)
+        dense_energy = model.endpoint_energy(self.u, self.p, fields)
+        sparse_energy = model.matrix_free_endpoint_energy(self.u, self.p, fields, terms, interval)
+        self.assertAlmostEqual(sparse_energy, dense_energy, delta=1e-9)
+        METRICS["matrix_free_endpoint_absolute_error"] = abs(sparse_energy - dense_energy)
         def force(links):
             return model.md_force(links, fields)
         direction = torch.randn(self.p.shape, dtype=RD, generator=self.rng)
@@ -319,6 +332,29 @@ class HMCPhysicsTests(unittest.TestCase):
         self.assertGreater(float((u_new - self.u).abs().max()), 1e-3)
         METRICS["pseudofermion_force_absolute_error"] = abs(analytic - finite)
         METRICS["pseudofermion_trajectory_delta_h"] = item["delta_h"]
+
+    def test_matrix_free_refresh_and_endpoint(self):
+        sparse = MatrixFreePseudofermionHMC()
+        dense = PseudofermionHMC()
+        seed = 831
+        actual_l, actual_s = sparse.refresh(self.u, torch.Generator().manual_seed(seed))
+        rng = torch.Generator().manual_seed(seed)
+        full_l = dense.dirac(self.u, dense.ml)
+        e, o = dense.even_dofs, dense.odd_dofs
+        schur_l = full_l[e][:, e] - full_l[e][:, o] @ torch.linalg.solve(
+            full_l[o][:, o], full_l[o][:, e])
+        eta_l = torch.randn(actual_l.shape, dtype=CD, generator=rng).flatten()
+        eta_s = torch.randn(actual_s.shape, dtype=CD, generator=rng).flatten()
+        values, vectors, _ = dense._normal_spectrum(
+            self.u, dense.ms, dense.field_strength(self.u), True)
+        exact_l = dagger(schur_l) @ eta_l
+        exact_s = vectors @ (values.pow(0.25) * (dagger(vectors) @ eta_s))
+        torch.testing.assert_close(actual_l.flatten(), exact_l, atol=2e-11, rtol=2e-11)
+        torch.testing.assert_close(actual_s.flatten(), exact_s, atol=2e-11, rtol=2e-11)
+        error = abs(sparse.endpoint_energy(self.u, self.p, (actual_l, actual_s)) -
+                    dense.endpoint_energy(self.u, self.p, (exact_l, exact_s)))
+        self.assertLess(error, 1e-9)
+        METRICS["matrix_free_refresh_endpoint_error"] = error
 
 
 if __name__ == '__main__':

@@ -16,7 +16,7 @@ import torch
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'src'))
 from hmc.reference import CloverHMC, RD, write_lime
-from hmc.pseudofermion import PseudofermionHMC
+from hmc.pseudofermion import MatrixFreePseudofermionHMC, PseudofermionHMC
 
 
 def atomic_json(path, obj):
@@ -35,7 +35,8 @@ def main():
     p.add_argument('--length', type=float, default=0.5)
     p.add_argument('--steps', type=int, default=10)
     p.add_argument('--integrator', choices=('leapfrog', 'omelyan'), default='leapfrog')
-    p.add_argument('--sea-action', choices=('determinant', 'pseudofermion'), default='determinant')
+    p.add_argument('--sea-action', choices=('determinant', 'pseudofermion', 'matrix-free'),
+                   default='determinant')
     p.add_argument('--warmup', type=int, default=40)
     p.add_argument('--trajectories', type=int, default=80)
     p.add_argument('--save-every', type=int, default=10)
@@ -50,23 +51,28 @@ def main():
             or args.save_every > args.trajectories - args.warmup):
         p.error('Invalid trajectory, warmup, save interval or integration parameters')
     torch.set_num_threads(args.threads)
-    pseudofermions = args.sea_action == 'pseudofermion'
-    model_type = PseudofermionHMC if pseudofermions else CloverHMC
+    matrix_free = args.sea_action == 'matrix-free'
+    pseudofermions = args.sea_action != 'determinant'
+    model_type = {'determinant': CloverHMC, 'pseudofermion': PseudofermionHMC,
+                  'matrix-free': MatrixFreePseudofermionHMC}[args.sea_action]
     model = model_type(args.lattice, args.beta, args.mass_light, args.mass_strange, args.csw)
     args.output.mkdir(parents=True)
     rng = torch.Generator().manual_seed(args.seed)
     u = model.cold()
     sea_description = ('2+1 pseudofermion HMC, rational MD with dense exact refresh and endpoints'
                        if pseudofermions else 'exact dense determinant HMC')
+    if matrix_free:
+        sea_description = '2+1 matrix-free RHMC with rational refresh and endpoints'
     report = dict(complete=False, algorithm=f'{sea_description}, {args.integrator} + Metropolis',
                   target='exp(-Sg) det(M_light)^2 det(M_strange), positive strange determinant required',
                   nf='2+1', lattice_xyzt=args.lattice, beta=args.beta, mass_light=args.mass_light,
                   mass_strange=args.mass_strange, csw=args.csw, gauge_action='Wilson plaquette',
                   fermion_operator='normalized Wilson-Clover, DeGrand-Rossi spin basis',
                   gauge_t_boundary=1, fermion_t_boundary=-1, stout_steps=0,
-                  precision='complex128/float64 CPU', dense_operator_dimension=12 * model.volume,
+                  precision='complex128/float64 CPU',
+                  dense_operator_dimension=None if matrix_free else 12 * model.volume,
                   pseudofermions=pseudofermions, rational_md=pseudofermions,
-                  rhmc=False, mg_used=False, seed=args.seed,
+                  rhmc=matrix_free, mg_used=False, seed=args.seed,
                   trajectory_length=args.length, integration_steps=args.steps, threads=args.threads,
                   requested_trajectories=args.trajectories, requested_warmup=args.warmup,
                   thermalization_established=False, independent_samples_established=False,
@@ -78,6 +84,10 @@ def main():
                   samples=[], saved_configurations=[])
     if pseudofermions:
         report.update(strange_md_interval=model.strange_interval, strange_md_poles=len(model.strange_terms))
+    if matrix_free:
+        report.update(strange_endpoint_poles=len(model.endpoint_terms),
+                      strange_refresh_poles=len(model.refresh_terms),
+                      strange_rational_grid_error=model.rational_grid_error)
     if report['source_tracked_status']:
         raise RuntimeError('Refuse a modified tracked source checkout')
     started = time.perf_counter()
