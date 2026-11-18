@@ -1,0 +1,88 @@
+{
+  "backend": "kupl",
+  "solver": "applyCloverMultigridQcu",
+  "lattice": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "local_lattice": [
+    24,
+    24,
+    24,
+    4
+  ],
+  "local_starts": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "grid": [
+    1,
+    1,
+    1,
+    16
+  ],
+  "grid_coordinate": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "mpi_rank": 0,
+  "mpi_size": 16,
+  "dtype": "complex128",
+  "mass": -0.277,
+  "kappa": 0.13430029546065003,
+  "mass_normalization": "kappa",
+  "csw": 1.160920226,
+  "atol": 1e-09,
+  "max_iter": 5000,
+  "levels": 2,
+  "dof": [
+    12,
+    2
+  ],
+  "mg_grid": [
+    2,
+    2,
+    2,
+    1
+  ],
+  "restart": 20,
+  "coarse_max_iter": 200,
+  "coarse_tol_factor": 10000.0,
+  "deflate": true,
+  "builder_seconds": 9.744974593864754,
+  "input_prebind_seconds": 4.1192114357836545,
+  "hdf5_mpio_read": false,
+  "gauge_read_seconds": 0.27652898989617825,
+  "source_read_seconds": 0.09586390317417681,
+  "coarse_source": "/tmp/pyqcu-review-hSnOvW90/report-c128-mg/cache.h5 (rank-local export)",
+  "coarse_export": {
+    "null_vector_seconds": 0.9848531500902027,
+    "lonv_publish_seconds": 0.07453516288660467,
+    "lonv_patch_seconds": 0.0785215338692069,
+    "gauge_patch_seconds": 2.901361739030108,
+    "stencil_seconds": 3.143268182873726,
+    "asset_write_seconds": 0.09625810594297945,
+    "manifest_seconds": 0.04768560593947768,
+    "seconds": 7.469054593006149
+  },
+  "wall_seconds": 1.2048740731552243,
+  "residual_seconds": 0.4367743320763111,
+  "verify_status": 0,
+  "final_true_residual": 7.527885547993626e-10,
+  "residual_acceptance": 1e-09,
+  "residual_source": "independent distributed NumPy full Wilson-Clover reconstruction with MPI halo exchange",
+  "converged": true,
+  "memory": {
+    "available": true,
+    "max_rss_kib": 2565380,
+    "resident_kib": 608864,
+    "omp_threads": "18"
+  },
+  "status": "PASS"
+}

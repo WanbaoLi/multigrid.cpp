@@ -111,6 +111,32 @@ digest of the matching library source to `bench_full12.py`.
   Seven trajectories were accepted and both saved LIME files passed
   independent verification.
 
+### Matrix-free refresh and endpoint pilot
+
+On cn12038, job `2169886` moved gauge-dependent parity hops and the
+odd Clover inverse outside the Krylov and pole loops. Three alternating
+matched samples reduced the strange action and force median from 34.908
+to 26.115 s. Job `2169956` grouped pole fields in batches of eight; in
+its separate matched measurement the median fell from 5.521 to 3.342 s.
+The maximum link-gradient discrepancies were `6.11e-16` and
+`3.35e-16`. The two measurements ran at different node loads.
+
+Job `2169940` passed 18 tests including dense-oracle refresh, endpoint
+Hamiltonian, force and reversibility comparisons. The `2×2×4×4`
+matrix-free run accepted all four trajectories and three saved LIME
+files passed the independent scalar operator, CRC and plaquette gates.
+The strange determinant certificate uses a sufficient strict-accretivity
+bound based on local Clover eigenvalues and unitary Wilson hopping.
+This pilot used heavy validation masses 0.5 and 0.8. The sufficient bound
+cannot certify the benchmark's negative strange mass.
+
+Job `2169993` verified the streamed LIME writer with the independent
+reader across multiple chunks, including a partial final chunk. Job
+`2170005` takes the matrix-free path to `4⁴` with this writer and grouped
+pole fields. The previous frozen HMC version `b9556bb` also passed
+15 tests on node5005 through itp. The independent C++ and MPI LIME
+checks were skipped in that run.
+
 Direct assembly reduced the paired median four-step MD time from 3.266 to
 2.212 s on `2⁴` and from 6.343 to 3.477 s on `2³×4` on cn12038.
 Ten alternating measurements used identical initial links and momenta.
