@@ -17,14 +17,14 @@ setup time separately, and independent FP64 full-operator residuals at
 - Job `2169362`, output `~/lqcd-run/pyqcu-cf3464c-run04`. Includes raw
   report-style single-RHS runs, matched BiCGStab and Legacy MG full12
   runs, and the frozen `efe57de` solver control on the same node.
-- Job `2169363`, output `~/lqcd-run/mg-l24-reliable-sap-run01`. One
+- Job `2169510`, output `~/lqcd-run/mg-l24-reliable-sap-run02`. One
   hierarchy and the frozen `820918f` library. The three interleaved cases
   test the control, fusing the FP64 residual update and norm, and splitting
   SAP work by block and RHS to balance the thread team. Each case receives
   three timed rounds following its warm-up, with independent verification.
 - Job `2169391` passed the actual PyQUDA MPI2 loader test. The output
   matched every element of all twelve input columns after the EO conversion.
-- Job `2169502` builds the opt-in AArch64 coefficient tiling candidate
+- Job `2169509` builds the opt-in AArch64 coefficient tiling candidate
   `6b7c1c7`. Threads visit all RHS columns before moving to the next
   64- or 128-site tile. Tests cover both tile widths with MPI2 and
   256-site blocks. The baseline uses the same library with tiling disabled.
@@ -34,6 +34,10 @@ The old PyQCU run failed because the packaging subprocess timed out after
 60 seconds. The replacement records packaging independently of the physics
 benchmarks. Earlier attempts in this campaign hit the shared-directory quota.
 Builds and benchmark arrays now use the compute node's temporary filesystem.
+The first SAP tuning allocation, `2169363`, failed before the payload
+started because the compute node's scheduler directory exhausted its
+inodes. The first tiling build, `2169502`, was missing the top-level build
+file after sparse checkout. The second build uses the full source in scratch.
 
 ## HMC
 
@@ -50,7 +54,10 @@ Builds and benchmark arrays now use the compute node's temporary filesystem.
   97.5% and 100%, and RMS energy error was 0.06864 and 0.01600,
   respectively. Their separately scheduled wall times combine kernel cost
   and node load. Job `2169487` interleaves ten-step leapfrog and
-  five- and three-step Omelyan on identical links and momenta.
+  five- and three-step Omelyan on sixteen identical initial conditions.
+  Three-step Omelyan used seven force evaluations and took 2.670 s
+  versus 4.127 s for leapfrog. The RMS energy errors were 0.05703 and 0.09084.
+  Job `2169517` checks the three-step setting over 80 trajectories.
 - Job `2169372` checks the matrix-free Wilson–Clover application and its
   link gradient against the dense reference at both sea masses. All eleven
   checks passed. Job `2169446` extended the comparison to the even Schur
@@ -59,6 +66,10 @@ Builds and benchmark arrays now use the compute node's temporary filesystem.
   a bad complex dot product on the installed PyTorch build. Explicit real
   reductions passed all 13 checks and reached a maximum shifted residual
   of `7.81e-13`.
+- Job `2169527` passed fourteen checks. Matrix-free rational powers at the
+  strange mass agreed with a dense eigensolve within `3.21e-13` relative
+  over the tested spectral interval. Job `2169538` checks the associated
+  force against an independent dense finite difference.
 
 Direct assembly reduced the paired median four-step MD time from 3.266 to
 2.212 s on `2⁴` and from 6.343 to 3.477 s on `2³×4` on cn12038.
