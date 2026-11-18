@@ -24,6 +24,11 @@ setup time separately, and independent FP64 full-operator residuals at
   three timed rounds following its warm-up, with independent verification.
 - Job `2169391` passed the actual PyQUDA MPI2 loader test. The output
   matched every element of all twelve input columns after the EO conversion.
+- Job `2169502` builds the opt-in AArch64 coefficient tiling candidate
+  `6b7c1c7`. Threads visit all RHS columns before moving to the next
+  64- or 128-site tile. Tests cover both tile widths with MPI2 and
+  256-site blocks. The baseline uses the same library with tiling disabled.
+  Real L24 timings will decide whether to use either width.
 
 The old PyQCU run failed because the packaging subprocess timed out after
 60 seconds. The replacement records packaging independently of the physics
@@ -39,11 +44,21 @@ Builds and benchmark arrays now use the compute node's temporary filesystem.
   leapfrog steps. Both use eleven force evaluations. The ten-test physics
   suite passed on cn12038. In the equal-force one-field test, absolute
   energy error was `0.0210409452` with Omelyan and `0.1337056014` with
-  leapfrog. Chain statistics and configuration verification follow separately.
+  leapfrog. Both 80-trajectory chains completed and all eight saved LIME
+  files passed independent CRC, plaquette, SU(3) and operator checks.
+  After the first 40 trajectories, leapfrog and Omelyan acceptance was
+  97.5% and 100%, and RMS energy error was 0.06864 and 0.01600,
+  respectively. Their separately scheduled wall times combine kernel cost
+  and node load. Job `2169487` interleaves ten-step leapfrog and
+  five- and three-step Omelyan on identical links and momenta.
 - Job `2169372` checks the matrix-free Wilson–Clover application and its
   link gradient against the dense reference at both sea masses. All eleven
-  checks passed. Job `2169405` extends the comparison to the even Schur
-  operator, the local odd-site Clover determinant and the log-weight gradient.
+  checks passed. Job `2169446` extended the comparison to the even Schur
+  operator, local odd-site Clover determinant, log-weight gradient and
+  six independent shifted FP64 solves. The first shifted test uncovered
+  a bad complex dot product on the installed PyTorch build. Explicit real
+  reductions passed all 13 checks and reached a maximum shifted residual
+  of `7.81e-13`.
 
 Direct assembly reduced the paired median four-step MD time from 3.266 to
 2.212 s on `2⁴` and from 6.343 to 3.477 s on `2³×4` on cn12038.
