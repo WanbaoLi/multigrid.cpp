@@ -15,13 +15,14 @@ void NativeMG::Impl::configure_solve() {
                           "LQCD_MG_COARSE_TOL", "LQCD_CORRECTION_BASE_TOL",
                           "LQCD_FLOAT_CORRECTION_VERIFY", "LQCD_FINE_TEAM_FUSED", "LQCD_COARSE_CGS2",
                           "LQCD_COARSE_THREADS", "LQCD_COARSE_BATCH_REDUCE", "LQCD_GCR_FUSED",
-                          "LQCD_OUTER_FLOAT", "LQCD_RELIABLE_FUSED", "LQCD_SAP_SCHEDULE"};
+                          "LQCD_OUTER_FLOAT", "LQCD_RELIABLE_FUSED", "LQCD_SAP_SCHEDULE",
+                          "LQCD_ARM_RHS_SITE_TILE"};
     double values[] = {(double)setting("NATIVE_SAP_STEPS", 4),
                        (double)setting("NATIVE_SAP_CYCLES", 2),
                        (double)setting("NATIVE_COARSE_IT", 40), .1, 1e-3, 0., 1., 0., 0., 0., 1.,
-                       (double)(setting("NATIVE_OUTER_FLOAT", 1) != 0), 0., 0.};
-    const double lower[] = {1., 1., 1., 1e-4, 1e-6, 0., 0., 0., 0., 0., 0., 0., 0., 0.};
-    const double upper[] = {32., 8., 200., .9, .1, 1., 1., 1., 608., 1., 1., 1., 1., 2.};
+                       (double)(setting("NATIVE_OUTER_FLOAT", 1) != 0), 0., 0., 0.};
+    const double lower[] = {1., 1., 1., 1e-4, 1e-6, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.};
+    const double upper[] = {32., 8., 200., .9, .1, 1., 1., 1., 608., 1., 1., 1., 1., 2., 128.};
     constexpr int count = sizeof(values) / sizeof(values[0]);
     int invalid = 0;
     for (int i = 0; i < count; i++) {
@@ -43,6 +44,8 @@ void NativeMG::Impl::configure_solve() {
     // uses strtod. Underflow or a rounded decimal must not select different
     // collective sequences despite equal parsed double values on every rank.
     if ((setting("LQCD_GCR_FUSED", 1) != 0) != (values[10] != 0))
+        invalid = 1;
+    if (values[14] != 0. && values[14] != 64. && values[14] != 128.)
         invalid = 1;
     double minimum[count], maximum[count];
     std::copy_n(values, count, minimum);
@@ -68,6 +71,7 @@ void NativeMG::Impl::configure_solve() {
     outer_float = values[11] != 0;
     reliable_fused = values[12] != 0;
     sap_schedule = (int)values[13];
+    arm_rhs_site_tile = (int)values[14];
     // LQCD_GCR_FUSED is read dynamically by existing scalar/outer code. It also
     // selects the collective sequence of the optional coarse batch path, so
     // validate it after setup as well as during context construction.

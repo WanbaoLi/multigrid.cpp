@@ -197,4 +197,5 @@ struct NativeMG::Impl {
                         int restart);
     bool reliable_fused = false;
     int sap_schedule = 0;
+    int arm_rhs_site_tile = 0;
 };

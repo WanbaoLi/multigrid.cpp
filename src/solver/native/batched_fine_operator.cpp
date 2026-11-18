@@ -35,10 +35,35 @@ void NativeMG::Impl::fine_apply_batch(const std::vector<const FloatField *> &sou
                     first,std::min(end,first+rhs_site_tile),(size_t)cb*24*block_sites);
     };
 #endif
+#if defined(LQCD_NATIVE_ARM_WILSON)
+    // Keep the same coefficient range hot while applying it to all columns.
+    auto arm_batch_range = [&](int cb, int begin, int end) {
+        const size_t field_offset = (size_t)cb * 24 * block_sites;
+        const size_t neighbor_offset = (size_t)cb * 8 * block_sites;
+        const auto *indices = neighbor.data() + neighbor_offset;
+        const auto *indices32 = neighbor32.empty() ? nullptr : neighbor32.data() + neighbor_offset;
+        const float *diag = diag_block(cb);
+        const float *links = links_block(cb);
+        for (int first = begin; first < end;) {
+            const int last = first + std::min(end - first, arm_rhs_site_tile);
+            for (int r = 0; r < nrhs; r++)
+                lqcd_native::kernels::wilson_clover_global_range(
+                    cb, block_sites, diag, links, indices, gp, gr, gi, sources[r]->data(),
+                    outputs[r]->data() + field_offset, first, last, fine_sites * 24, indices32);
+            first = last;
+        }
+    };
+#endif
     auto whole = [&](int cb) {
 #if defined(LQCD_NATIVE_PACKED_WILSON)
         if (tiled_rhs) {
             packed_batch_range(cb,0,block_sites);
+            return;
+        }
+#endif
+#if defined(LQCD_NATIVE_ARM_WILSON)
+        if (arm_rhs_site_tile) {
+            arm_batch_range(cb, 0, block_sites);
             return;
         }
 #endif
@@ -138,6 +163,13 @@ void NativeMG::Impl::fine_apply_batch(const std::vector<const FloatField *> &sou
         if (tiled_rhs) {
             for (int p = 0; p < parities; ++p)
                 packed_batch_range(cb,p*ps+begin_t*pf,p*ps+end_t*pf);
+            return;
+        }
+#endif
+#if defined(LQCD_NATIVE_ARM_WILSON)
+        if (arm_rhs_site_tile) {
+            for (int p = 0; p < parities; p++)
+                arm_batch_range(cb, p * ps + begin_t * pf, p * ps + end_t * pf);
             return;
         }
 #endif
