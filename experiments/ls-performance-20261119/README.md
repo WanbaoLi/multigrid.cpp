@@ -25,7 +25,7 @@ setup time separately, and independent FP64 full-operator residuals at
   both NumPy and independent C++ checks with a maximum residual of
   `5.63e-10`.
 - The frozen MG/SAP flexible GCR control on cn12075 took 13.113 s in
-  the same warmed full12 API scope and 12.682 s in the native solver.
+  the same warmed full12 API scope and 12.685 s in the native solver.
   Its separate hierarchy setup took 222.573 s. Independent verification
   passed all thirteen fields with maximum residual `4.82e-9`. In this
   workload, the reusable-hierarchy API control was 17.67× faster than
