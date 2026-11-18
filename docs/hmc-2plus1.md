@@ -170,6 +170,12 @@ Metropolis 端点仍使用各自通过精度检查的有理式。报告包括各
 两步规范场积分。省略该参数时使用单时间尺度。两种积分器使用相同的端点
 Hamiltonian 和 Metropolis 判定。
 
+MPI 生成器随每份 SciDAC LIME 保存各 rank 的 `.rng.npy` 状态。将上一段的
+`result.json` 传给 `--resume-from`，指定新的输出目录，并沿用原来的格点、
+质量、MPI rank 数、种子和积分参数。程序从报告中最后一条已保存的轨迹继续
+编号，并检查 LIME 与 RNG 的 SHA256。续跑时 `--trajectories` 和
+`--warmup` 分别表示新段的轨迹数和预热数。可以用 `--warmup 0` 直接追加样本。
+
 接近冷场的负 Wilson 奇异质量可用自由算子的最小奇异值减去规范场扰动
 的范数上界来认证。该下界为正时，连接自由算子和当前算子的整条直线保持
 γ₅ Hermiticity 和非奇异性，因而保持正行列式符号。运行时用

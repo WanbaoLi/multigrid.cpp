@@ -282,6 +282,20 @@ CRC, plaquette, SU(3) and scalar Dirac checks. The largest scalar Dirac
 discrepancy was `1.15e-16`. Job `2171047` extends the same validation
 parameters to the production spatial extent `24³×8`.
 
+The `24³×8` eight-rank pilot accepted all three proposals in 344.40,
+346.65 and 344.56 s. The two saved files passed SciDAC CRC, NumPy
+plaquette and SU(3), and the independent scalar Dirac comparison.
+Their largest scalar discrepancy was `1.15e-16`. This released the
+`24³×64` job's verification dependency. The full-volume geometry
+job subsequently entered the queue behind the scheduler limit.
+
+Job `2171240` compared a continuous three-trajectory chain with one
+trajectory followed by a two-trajectory restart. The configurations
+and per-rank RNG tables had identical digests on two ranks. Energies
+and acceptance decisions matched exactly. An incompatible mass was
+rejected before opening the new output directory, and the two resumed
+LIME files passed independent verification.
+
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
 matrix contraction. The contraction avoids constructing all eight

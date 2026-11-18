@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "ranks": 2,
+  "checkpoint": {
+    "trajectory": 1,
+    "configuration_sha256": "45bba0ad850eb8a69e7be6270283118f69a4130b73e8ce6874a15952a6f27481",
+    "report": "/home/share/nsls_lwb/lqcd-run/hmc-mpi-restart-run01/chains/head/result.json"
+  },
+  "matched_trajectories": 3,
+  "matched_lime_and_rng_digests": true,
+  "invalid_parameters_rejected": true
+}

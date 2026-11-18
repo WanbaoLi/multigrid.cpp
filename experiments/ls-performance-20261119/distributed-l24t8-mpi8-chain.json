@@ -1,0 +1,146 @@
+{
+  "complete": true,
+  "algorithm": "time-slab matrix-free 2+1 RHMC",
+  "lattice_xyzt": [
+    24,
+    24,
+    24,
+    8
+  ],
+  "beta": 5.6,
+  "mass_light": 0.5,
+  "mass_strange": 0.8,
+  "csw": 1.0,
+  "nf": "2+1",
+  "rhmc": true,
+  "mpi_ranks": 8,
+  "threads": 1,
+  "seed": 1729,
+  "timing_aggregation": "maximum rank elapsed time for each phase independently",
+  "rank_seed_rule": "seed + MPI rank",
+  "source_commit": "b2b60f3c1bbe75acf13e1e65476e55d4058f2370",
+  "native_schur_sha256": "fd400f9950c00b818eceef58e39369d4a176cd64b66ce06cef22c0110e06f4e4",
+  "strange_md_interval": [
+    0.004,
+    4.0
+  ],
+  "strange_rational_grid_error": {
+    "endpoint": 3.7547742692822794e-13,
+    "refresh": 4.505285033928885e-13,
+    "md": 4.969600508886174e-09
+  },
+  "strange_rational_poles": {
+    "md": 32,
+    "endpoint": 48,
+    "refresh": 48
+  },
+  "md_relative_true_residual_tolerance": 1e-12,
+  "trajectory_length": 0.012,
+  "integration_steps": 1,
+  "integrator": "omelyan",
+  "thermalization_established": false,
+  "independent_samples_established": false,
+  "trajectories": 3,
+  "warmup": 1,
+  "samples": [
+    {
+      "accepted": true,
+      "delta_h": 0.02467313315719366,
+      "h_initial": 3097128.1198770553,
+      "h_final": 3097128.1445501884,
+      "metropolis_probability": 0.9756287606077104,
+      "force_seconds": {
+        "coefficient_build": 20.020013062050566,
+        "prepare_and_solve": 93.850797371706,
+        "spinor_differentiation": 100.087532710284,
+        "gauge_differentiation": 45.41610778984614
+      },
+      "phase_seconds": {
+        "refresh": 30.372752120019868,
+        "md": 237.45336481602862,
+        "endpoint": 84.87446369300596
+      },
+      "plaquette": 0.9996158014443816,
+      "max_unitarity_error": 7.660538870409452e-15,
+      "max_det_su3_error": 7.549607508096104e-15,
+      "strange_det_phase": 1.0,
+      "strange_normal_lower": 0.025444760228109334,
+      "strange_normal_upper": 2.9108392860592756,
+      "trajectory": 1,
+      "warmup": true,
+      "seconds": 344.3982382430695
+    },
+    {
+      "accepted": true,
+      "delta_h": 0.024165476206690073,
+      "h_initial": 3096949.9586487133,
+      "h_final": 3096949.9828141895,
+      "metropolis_probability": 0.9761241710677863,
+      "force_seconds": {
+        "coefficient_build": 20.084236962953582,
+        "prepare_and_solve": 94.55365785793401,
+        "spinor_differentiation": 101.55176571337506,
+        "gauge_differentiation": 45.42501848586835
+      },
+      "phase_seconds": {
+        "refresh": 29.969511327100918,
+        "md": 239.36952359811403,
+        "endpoint": 85.64823418529704
+      },
+      "plaquette": 0.9992330369293182,
+      "max_unitarity_error": 9.325873437071407e-15,
+      "max_det_su3_error": 1.0214100500491156e-14,
+      "strange_det_phase": 1.0,
+      "strange_normal_lower": 0.024588440371310114,
+      "strange_normal_upper": 2.9301006355241057,
+      "trajectory": 2,
+      "warmup": false,
+      "seconds": 346.64805111987516
+    },
+    {
+      "accepted": true,
+      "delta_h": 0.024631980806589127,
+      "h_initial": 3100059.377330194,
+      "h_final": 3100059.401962175,
+      "metropolis_probability": 0.9756689108506597,
+      "force_seconds": {
+        "coefficient_build": 19.79587076813914,
+        "prepare_and_solve": 95.73257442191243,
+        "spinor_differentiation": 97.47666835808195,
+        "gauge_differentiation": 45.5899297457654
+      },
+      "phase_seconds": {
+        "refresh": 29.948339205002412,
+        "md": 237.7222901941277,
+        "endpoint": 86.84824349777773
+      },
+      "plaquette": 0.9988510122523936,
+      "max_unitarity_error": 1.221245328377783e-14,
+      "max_det_su3_error": 1.3766831633822213e-14,
+      "strange_det_phase": 1.0,
+      "strange_normal_lower": 0.023856353466240567,
+      "strange_normal_upper": 2.942063750809513,
+      "trajectory": 3,
+      "warmup": false,
+      "seconds": 344.5591717141215
+    }
+  ],
+  "saved_configurations": [
+    {
+      "file": "hmc_000002.lime",
+      "trajectory": 2,
+      "sha256": "097a3043d55c2d6c8675ed890ba77d376ca65bde410396e0b03784c1651d68c5",
+      "plaquette": 0.9992330369293182,
+      "bytes": 63702760
+    },
+    {
+      "file": "hmc_000003.lime",
+      "trajectory": 3,
+      "sha256": "9109e1b421685a9f692fb35d2a147e945962b72062abe46153754b9651e6f01b",
+      "plaquette": 0.9988510122523936,
+      "bytes": 63702760
+    }
+  ],
+  "accepted": 3,
+  "acceptance_rate": 1.0
+}
