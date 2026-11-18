@@ -38,7 +38,41 @@ def apply_rational(apply, rhs, terms, tol=1e-12, *, comm=None):
     return result, max(residuals)
 
 
-def checked_rational_terms(interval, endpoint_order=64, *, md_order=32):
+def zolotarev_inverse_sqrt(lower, upper, tol, max_poles=64):
+    """Find positive (n-1,n) partial fractions for the inverse square root."""
+    from scipy.special import ellipj, ellipk
+
+    if not 0 < lower < upper < math.inf or not 0 < tol < 1:
+        raise ValueError("Invalid Zolotarev spectral interval or tolerance")
+    parameter = 1. - lower / upper
+    if parameter >= 1.:
+        raise ValueError("Spectral ratio is too large for FP64 elliptic coefficients")
+    period = ellipk(parameter)
+    points = np.geomspace(lower, upper, 32769)
+    root = np.sqrt(points)
+    for n in range(1, max_poles + 1):
+        # Chiu, Physics Letters B 744 (2015), Appendix A, (n-1,n).
+        sn, cn, _, _ = ellipj(np.arange(1, 2 * n) * (period / (2 * n)), parameter)
+        offsets = np.square(sn / cn)
+        poles, zeros = offsets[::2], offsets[1::2]
+        residues = []
+        for i, pole in enumerate(poles):
+            # The interlacing zeros and poles give positive residues.
+            rest = np.concatenate((poles[:i], poles[i + 1:]))
+            log_residue = np.log(np.abs(zeros - pole)).sum() - np.log(np.abs(rest - pole)).sum()
+            residues.append(math.exp(log_residue) * math.sqrt(lower))
+        shifts = poles * lower
+        relative = root * sum(weight / (points + shift) for shift, weight in zip(shifts, residues))
+        scale = 2. / (relative.min() + relative.max())
+        coefficients = tuple((float(shift), float(scale * weight)) for shift, weight in zip(shifts, residues))
+        error = float(np.max(np.abs(root * sum(weight / (points + shift)
+                                                for shift, weight in coefficients) - 1.)))
+        if error <= tol:
+            return coefficients, error
+    raise ArithmeticError("Zolotarev inverse square root missed the checked error target")
+
+
+def checked_rational_terms(interval, endpoint_order=64, *, md_order=32, zolotarev=False):
     """Choose fixed refresh, endpoint and MD expansions on a tested scalar grid."""
     points = np.geomspace(*interval, 4097)
 
@@ -54,10 +88,15 @@ def checked_rational_terms(interval, endpoint_order=64, *, md_order=32):
                 return terms, error
         raise ArithmeticError("Endpoint or refresh rational approximation exceeds grid tolerance")
 
-    endpoint, err_endpoint = choose(0.5)
     refresh, err_refresh = choose(0.75)
     md = inverse_power_terms(0.5, *interval, order=md_order)
-    return md, endpoint, refresh, dict(endpoint=err_endpoint, refresh=err_refresh, md=grid_error(0.5, md))
+    err_md = grid_error(0.5, md)
+    if zolotarev:
+        endpoint, err_endpoint = zolotarev_inverse_sqrt(*interval, 2.5e-13, endpoint_order)
+        md, err_md = zolotarev_inverse_sqrt(*interval, max(5e-14, .5 * err_md), endpoint_order)
+    else:
+        endpoint, err_endpoint = choose(0.5)
+    return md, endpoint, refresh, dict(endpoint=err_endpoint, refresh=err_refresh, md=err_md)
 
 
 def rational_action_gradient(model, gauge, mass, rhs, terms, tol=1e-12):

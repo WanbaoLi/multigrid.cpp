@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 from hmc.reference import CloverHMC, CD, RD, dagger, generators, write_lime
 from hmc.shifted import solve_multi_shift, solve_shifted
-from hmc.rational import apply_rational, inverse_power_terms, rational_action_gradient
+from hmc.rational import apply_rational, inverse_power_terms, rational_action_gradient, zolotarev_inverse_sqrt
 from hmc.pseudofermion import MatrixFreePseudofermionHMC, PseudofermionHMC
 from hmc.spectral import cold_wilson_gap, positive_schur_bounds
 
@@ -333,6 +333,21 @@ class HMCPhysicsTests(unittest.TestCase):
         self.assertLess(calls, independent_calls)
         METRICS["multi_shift"] = dict(shared_operator_calls=calls,
             independent_operator_calls=independent_calls, max_residual=max(residuals))
+
+    @unittest.skipUnless(importlib.util.find_spec("scipy"), "optional elliptic coefficients require SciPy")
+    def test_zolotarev_inverse_square_root(self):
+        summaries = []
+        for lower, upper in ((.004, 4.), (.0005, 6.)):
+            terms, error = zolotarev_inverse_sqrt(lower, upper, 2.5e-13)
+            self.assertLess(len(terms), 48)
+            self.assertTrue(all(shift > 0 and weight > 0 for shift, weight in terms))
+            points = np.geomspace(lower, upper, 65539)
+            approximation = sum(weight / (points + shift) for shift, weight in terms)
+            measured = float(np.max(np.abs(np.sqrt(points) * approximation - 1.)))
+            self.assertLess(measured, 3e-13)
+            summaries.append(dict(interval=[lower, upper], poles=len(terms),
+                                  generation_error=error, independent_grid_error=measured))
+        METRICS["zolotarev_inverse_square_root"] = summaries
 
     def test_strange_rational_force_against_dense_variation(self):
         mass = self.m.ms

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generate time-slab matrix-free 2+1 Wilson–Clover RHMC validation fields."""
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -25,6 +26,7 @@ CHECKPOINT_COMPATIBILITY = (
     "trajectory_length", "integration_steps", "gauge_substeps_per_drift",
     "strange_md_interval", "strange_rational_poles", "md_relative_true_residual_tolerance",
     "direct_clover_adjoint", "packed_temporal_faces", "compact_spin_force",
+    "half_power_rational_method", "rational_coefficients_sha256",
 )
 
 
@@ -51,6 +53,8 @@ def resume_from(path, report, rng, comm):
         previous.setdefault("direct_clover_adjoint", False)
         previous.setdefault("packed_temporal_faces", False)
         previous.setdefault("compact_spin_force", False)
+        previous.setdefault("half_power_rational_method", "quadrature")
+        previous.setdefault("rational_coefficients_sha256", report["rational_coefficients_sha256"])
         mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
         if mismatches:
             raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
@@ -117,6 +121,8 @@ def main():
                         help="apply the native Schur operator directly to packed temporal faces")
     parser.add_argument("--compact-spin", action="store_true",
                         help="differentiate a two-component Wilson hopping projection")
+    parser.add_argument("--zolotarev", action="store_true",
+                        help="use elliptic inverse-square-root coefficients for the strange MD and endpoint")
     parser.add_argument("--save-every", type=int, default=1)
     parser.add_argument("--threads", type=int, default=1)
     parser.add_argument("--seed", type=int, default=1729)
@@ -148,10 +154,12 @@ def run(args, comm):
                             args.csw, comm, args.library, interval=args.strange_interval,
                             md_order=args.md_order, md_tolerance=args.md_tolerance,
                             direct_clover=args.direct_clover, packed_faces=args.packed_faces,
-                            compact_spin=args.compact_spin)
+                            compact_spin=args.compact_spin, zolotarev=args.zolotarev)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
+    terms = (model.md_terms, model.endpoint_terms, model.refresh_terms)
+    rational_digest = hashlib.sha256(json.dumps(terms, allow_nan=False).encode()).hexdigest()
     rng = torch.Generator().manual_seed(args.seed + comm.rank)
     report = dict(complete=False, algorithm="time-slab matrix-free 2+1 RHMC",
                   lattice_xyzt=list(args.lattice), beta=args.beta, mass_light=args.mass_light,
@@ -168,6 +176,8 @@ def run(args, comm):
                   direct_clover_adjoint=model.direct_clover,
                   packed_temporal_faces=model.packed_faces,
                   compact_spin_force=model.compact_spin,
+                  half_power_rational_method="zolotarev" if model.zolotarev else "quadrature",
+                  rational_coefficients_sha256=rational_digest,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",
                   gauge_substeps_per_drift=args.gauge_steps,
                   thermalization_established=False, independent_samples_established=False,
