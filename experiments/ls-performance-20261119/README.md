@@ -558,7 +558,10 @@ with the same LIME field, rank placement and seeds.
 The four-rank packed and overlap tests reproduced the explicit gamma5
 Schur and normal outputs exactly for both masses on two time decompositions.
 See the [packed gate](distributed-schur-gamma5-packed-mpi4.json) and
-[overlap gate](distributed-schur-gamma5-overlap-mpi4.json).
+[overlap gate](distributed-schur-gamma5-overlap-mpi4.json). The four-rank
+full RHMC test passed with maximum force discrepancy `1.78e-13`,
+delta-H discrepancy `1.55e-12`, and nested reversal link discrepancy
+`6.22e-15`. See the [dense comparison](distributed-schur-gamma5-rhmc-mpi4.json).
 
 The optional `--compress-refresh` projects the positive pole expansion
 for `(S†S)^(-3/4)` onto a rational Krylov basis built from that expansion's

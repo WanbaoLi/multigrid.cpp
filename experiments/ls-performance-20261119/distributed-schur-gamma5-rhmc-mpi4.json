@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "ranks": 4,
+  "lattice": [
+    2,
+    2,
+    2,
+    4
+  ],
+  "extensive_difference_check": 4.0,
+  "identical_heatbath_fields": true,
+  "identical_initial_terms": true,
+  "reused_observables_both_decisions": true,
+  "tested_gershgorin_fallback": false,
+  "max_error": {
+    "refresh": 9.155133597044475e-16,
+    "endpoint": 9.094947017729282e-13,
+    "force": 1.7763568394002505e-13,
+    "delta_h": 1.5450835055830225e-12,
+    "light_heatbath_action": 0.0,
+    "split_force": 4.440892098500626e-16,
+    "split_reversible_links": 6.21879760526691e-15,
+    "split_reversible_momenta": 8.881784197001252e-16,
+    "reversible_links": 3.960035930666926e-15,
+    "reversible_momenta": 4.440892098500626e-16
+  }
+}
