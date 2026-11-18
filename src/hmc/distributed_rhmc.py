@@ -20,7 +20,7 @@ def _finite_sum(terms):
 class DistributedRHMC:
     def __init__(self, lattice, beta, ml, ms, csw, comm, library, interval=(.004, 4.), *,
                  md_order=32, md_tolerance=1e-12, direct_clover=False, packed_faces=False, compact_spin=False,
-                 zolotarev=False, force_pole_batch=8):
+                 zolotarev=False, force_pole_batch=8, projected_force_faces=False):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -31,6 +31,8 @@ class DistributedRHMC:
             raise ValueError("The MD relative residual tolerance must be between zero and one")
         if type(force_pole_batch) is not int or force_pole_batch < 1:
             raise ValueError("Use a positive integer for the force pole batch size")
+        if projected_force_faces and not compact_spin:
+            raise ValueError("Projected force faces require compact spin contractions")
         self.beta, self.ml, self.ms, self.csw = beta, ml, ms, csw
         self.comm, self.library = comm, library
         nx, ny, nz, lt = self.lattice
@@ -55,6 +57,7 @@ class DistributedRHMC:
         self.compact_spin = compact_spin
         self.zolotarev = zolotarev
         self.force_pole_batch = force_pole_batch
+        self.projected_force_faces = projected_force_faces
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
             self.interval, md_order=md_order, zolotarev=zolotarev)
 
@@ -79,7 +82,8 @@ class DistributedRHMC:
 
     def _schur(self, extended, clover, mass):
         return prepare_local_slab_schur(extended, clover, mass, self.comm, self.library,
-                                        packed_faces=self.packed_faces, compact_spin=self.compact_spin)
+                                        packed_faces=self.packed_faces, compact_spin=self.compact_spin,
+                                        projected_force_faces=self.projected_force_faces)
 
     def _normal(self, schur, field):
         return self.gamma5 * schur(self.gamma5 * schur(field))

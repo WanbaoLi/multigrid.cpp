@@ -27,6 +27,7 @@ CHECKPOINT_COMPATIBILITY = (
     "strange_md_interval", "strange_rational_poles", "md_relative_true_residual_tolerance",
     "direct_clover_adjoint", "packed_temporal_faces", "compact_spin_force",
     "half_power_rational_method", "rational_coefficients_sha256", "force_pole_batch",
+    "projected_force_faces",
 )
 
 
@@ -56,6 +57,7 @@ def resume_from(path, report, rng, comm):
         previous.setdefault("half_power_rational_method", "quadrature")
         previous.setdefault("rational_coefficients_sha256", report["rational_coefficients_sha256"])
         previous.setdefault("force_pole_batch", 8)
+        previous.setdefault("projected_force_faces", False)
         mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
         if mismatches:
             raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
@@ -126,12 +128,16 @@ def main():
                         help="use elliptic inverse-square-root coefficients for the strange MD and endpoint")
     parser.add_argument("--force-pole-batch", type=int, default=8,
                         help="maximum number of shift solutions differentiated in one force batch")
+    parser.add_argument("--projected-force-faces", action="store_true",
+                        help="exchange two temporal spin components in the compact force and its adjoint")
     parser.add_argument("--save-every", type=int, default=1)
     parser.add_argument("--threads", type=int, default=1)
     parser.add_argument("--seed", type=int, default=1729)
     args = parser.parse_args()
     if args.library is None:
         parser.error("Provide the native Schur library")
+    if args.projected_force_faces and not args.compact_spin:
+        parser.error("--projected-force-faces requires --compact-spin")
     lower, upper = args.strange_interval
     if not 0 < lower < upper < math.inf:
         parser.error("The strange spectral interval must contain ascending positive finite endpoints")
@@ -159,7 +165,8 @@ def run(args, comm):
                             md_order=args.md_order, md_tolerance=args.md_tolerance,
                             direct_clover=args.direct_clover, packed_faces=args.packed_faces,
                             compact_spin=args.compact_spin, zolotarev=args.zolotarev,
-                            force_pole_batch=args.force_pole_batch)
+                            force_pole_batch=args.force_pole_batch,
+                            projected_force_faces=args.projected_force_faces)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
@@ -183,6 +190,7 @@ def run(args, comm):
                   packed_temporal_faces=model.packed_faces,
                   compact_spin_force=model.compact_spin,
                   force_pole_batch=model.force_pole_batch,
+                  projected_force_faces=model.projected_force_faces,
                   half_power_rational_method="zolotarev" if model.zolotarev else "quadrature",
                   rational_coefficients_sha256=rational_digest,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",

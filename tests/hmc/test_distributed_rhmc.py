@@ -21,6 +21,7 @@ def main():
     parser.add_argument("--packed-faces", action="store_true")
     parser.add_argument("--compact-spin", action="store_true")
     parser.add_argument("--zolotarev", action="store_true")
+    parser.add_argument("--projected-force-faces", action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(1)
     comm = MPI.COMM_WORLD.Dup()
@@ -29,7 +30,8 @@ def main():
         params = (lattice, 5.6, .5, .8, 1.)
         model = DistributedRHMC(*params, comm, os.environ["LQCD_HMC_SCHUR_LIBRARY"],
                                 direct_clover=args.direct_clover, packed_faces=args.packed_faces,
-                                compact_spin=args.compact_spin, zolotarev=args.zolotarev)
+                                compact_spin=args.compact_spin, zolotarev=args.zolotarev,
+                                projected_force_faces=args.projected_force_faces)
         baseline, final, precise_difference = model._hamiltonian_pair([2.**56, 2.], [2.**56, 3.])
         assert final == baseline and precise_difference == comm.size
         serial = MatrixFreePseudofermionHMC(*params)

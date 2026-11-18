@@ -5,9 +5,35 @@ import math
 from pathlib import Path
 
 import torch
+from torch.autograd.function import once_differentiable
 
 from .distributed_gauge import time_faces
 from .reference import dagger, gamma_matrices
+
+
+class _ProjectedTimeFaces(torch.autograd.Function):
+    """Exchange half-spinor time faces and return each cotangent to its owner."""
+
+    @staticmethod
+    def forward(ctx, first, last, comm):
+        ctx.comm = comm
+        first, last = (field.detach().resolve_conj().contiguous() for field in (first, last))
+        lower, upper = torch.empty_like(last), torch.empty_like(first)
+        prev, nxt = (comm.rank - 1) % comm.size, (comm.rank + 1) % comm.size
+        comm.Sendrecv(first.numpy(), prev, 22, upper.numpy(), nxt, 22)
+        comm.Sendrecv(last.numpy(), nxt, 23, lower.numpy(), prev, 23)
+        return lower, upper
+
+    @staticmethod
+    @once_differentiable
+    def backward(ctx, lower, upper):
+        comm = ctx.comm
+        lower, upper = (field.detach().resolve_conj().contiguous() for field in (lower, upper))
+        first, last = torch.empty_like(upper), torch.empty_like(lower)
+        prev, nxt = (comm.rank - 1) % comm.size, (comm.rank + 1) % comm.size
+        comm.Sendrecv(upper.numpy(), nxt, 24, first.numpy(), prev, 24)
+        comm.Sendrecv(lower.numpy(), prev, 25, last.numpy(), nxt, 25)
+        return first, last, None
 
 
 @lru_cache(maxsize=None)
@@ -91,7 +117,7 @@ def prepare_slab_schur(model, gauge, mass, clover, comm, library):
 
 
 def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, projected=True,
-                             packed_faces=False, compact_spin=False):
+                             packed_faces=False, compact_spin=False, projected_force_faces=False):
     """Prepare Schur from only an owned Clover slab and its gauge faces.
 
     The returned operator differentiates through link and spinor halo adjoints
@@ -101,6 +127,8 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
         raise ValueError("Expected t,z,y,x,mu,row,column gauge with time faces")
     if packed_faces and not projected:
         raise ValueError("Packed faces require the temporal Wilson projector")
+    if projected_force_faces and not compact_spin:
+        raise ValueError("Projected force faces require compact spin contractions")
     nt = extended_gauge.shape[0] - 2
     spatial = tuple(extended_gauge.shape[1:4])
     if any(n % 2 for n in spatial) or nt * comm.size % 2:
@@ -212,21 +240,38 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
         return extended,
 
     def torch_hop(spinor, terms):
-        fields = spinor.reshape(-1, nt, face, 4, 3).transpose(0, 1)
-        neighbors = time_faces(fields, comm).transpose(0, 1).reshape(-1, (nt + 2) * face, 4, 3)
+        fields = spinor.reshape(-1, nt, face, 4, 3)
+        batches = fields.shape[0]
+        if projected_force_faces:
+            neighbors = fields.reshape(batches, local_sites, 4, 3)
+            first, second = fields.split(2, dim=-2)
+            forward, backward = first - second, first + second
+            lower, upper = _ProjectedTimeFaces.apply(forward[:, 0], backward[:, -1], comm)
+            # A time hop preserves the lexicographic index within each
+            # checkerboard slice because the spatial x extent is even.
+            temporal = (torch.cat((forward[:, 1:], upper.unsqueeze(1)), dim=1),
+                        torch.cat((lower.unsqueeze(1), backward[:, :-1]), dim=1))
+        else:
+            neighbors = time_faces(fields.transpose(0, 1), comm).transpose(0, 1).reshape(
+                batches, (nt + 2) * face, 4, 3)
         if compact_spin:
-            upper = spinor.new_zeros((fields.shape[1], local_sites, 2, 3))
+            upper = spinor.new_zeros((batches, local_sites, 2, 3))
             lower = torch.zeros_like(upper)
-            for (indices, link, _), (phase, swap) in zip(terms, half_projectors):
-                source_upper, source_lower = neighbors[:, indices].split(2, dim=-2)
-                source_lower = source_lower.flip(-2) if swap else source_lower
-                projected = (source_upper + phase * source_lower) @ link.transpose(-2, -1)
+            for direction, ((indices, link, _), (phase, swap)) in enumerate(zip(terms, half_projectors)):
+                if projected_force_faces and direction >= 6:
+                    half = temporal[direction - 6].reshape(batches, local_sites, 2, 3)
+                else:
+                    owned_indices = indices - face if projected_force_faces else indices
+                    source_upper, source_lower = neighbors[:, owned_indices].split(2, dim=-2)
+                    source_lower = source_lower.flip(-2) if swap else source_lower
+                    half = source_upper + phase * source_lower
+                projected = half @ link.transpose(-2, -1)
                 reconstructed = phase.conj() * projected
                 upper = upper + projected
                 lower = lower + (reconstructed.flip(-2) if swap else reconstructed)
             result = torch.cat((upper, lower), dim=-2)
         else:
-            result = spinor.new_zeros((fields.shape[1], local_sites, 4, 3))
+            result = spinor.new_zeros((batches, local_sites, 4, 3))
             for indices, link, projector in terms:
                 result = result + projector @ (neighbors[:, indices] @ link.transpose(-2, -1))
         return (-kappa * result).reshape(-1, local_sites, 2, 6, 1)
