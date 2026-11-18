@@ -353,6 +353,14 @@ Job `2171439` started the `24³×64` full trajectory comparison of
 packed faces, analytic Clover differentiation, compact spin, and
 Zolotarev. Both cases read the verified `hmc_000002.lime` on 64 ranks.
 
+Job `2171445` reused the prepared Clover factors and Schur workspaces
+between the heatbath and the initial Hamiltonian. Fields and individual
+Hamiltonian terms were bitwise equal on both tested volumes. Four-rank
+median time for those two operations fell from 7.23 to 6.79 s at
+`12⁴` and from 15.42 to 14.44 s at `24³×4`. The two- and four-rank
+dense and reversal gates passed. Job `2171491` compares differentiation
+batch sizes of 4, 8 and 11 strange poles with identical force inputs.
+
 Job `2171040` replaced reverse differentiation of the Wilson plaquette
 loops with owned-site staples and projects link derivatives via a color
 matrix contraction. The contraction avoids constructing all eight
