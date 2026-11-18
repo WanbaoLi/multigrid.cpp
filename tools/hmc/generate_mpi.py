@@ -15,7 +15,7 @@ import numpy as np
 import torch
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / "src"))
+sys.path[:0] = [str(ROOT / name) for name in ("src", "bindings")]
 from hmc.distributed_rhmc import DistributedRHMC
 from hmc.reference import lime_sha256, write_lime
 from generate import atomic_json
@@ -45,10 +45,28 @@ def on_root(comm, function):
     return value
 
 
-def resume_from(path, report, rng, comm):
-    sys.path.insert(0, str(ROOT / "bindings"))
+def load_gauge(path, comm):
     from lqcd_cpu.io import read_lime_gauge
 
+    gauge = read_lime_gauge(path, grid=(1, 1, 1, comm.size),
+                            coords=(0, 0, 0, comm.rank), comm=comm)
+    return torch.from_numpy(gauge.reshape(-1, 4, 3, 3))
+
+
+def initial_gauge(path, lattice, comm):
+    from lqcd_cpu.io import read_lime_metadata
+
+    def inspect():
+        if tuple(read_lime_metadata(path)["lattice_xyzt"]) != tuple(lattice):
+            raise ValueError("Initial LIME lattice dimensions differ from --lattice")
+        return dict(file=str(path.resolve()), sha256=lime_sha256(path))
+
+    source = on_root(comm, inspect)
+    gauge = load_gauge(path, comm)
+    return gauge, source
+
+
+def resume_from(path, report, rng, comm):
     def read_checkpoint():
         previous = json.loads(path.read_text())
         previous.setdefault("direct_clover_adjoint", False)
@@ -89,17 +107,18 @@ def resume_from(path, report, rng, comm):
     errors = comm.allgather(error)
     if any(errors):
         raise ValueError(next(error for error in errors if error is not None))
-    gauge = read_lime_gauge(gauge_path, grid=(1, 1, 1, comm.size),
-                            coords=(0, 0, 0, comm.rank), comm=comm)
-    return torch.from_numpy(gauge.reshape(-1, 4, 3, 3)), dict(
+    return load_gauge(gauge_path, comm), dict(
         trajectory=last, configuration_sha256=digest, report=str(path.resolve()))
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True, type=Path)
-    parser.add_argument("--resume-from", type=Path,
-                        help="resume the newest saved LIME and RNG state from a previous result.json")
+    start = parser.add_mutually_exclusive_group()
+    start.add_argument("--resume-from", type=Path,
+                       help="resume the newest saved LIME and RNG state from a previous result.json")
+    start.add_argument("--initial-lime", type=Path,
+                       help="start a new chain from a checked LIME field with fresh rank-local RNG state")
     parser.add_argument("--library", type=Path, default=os.environ.get("LQCD_HMC_SCHUR_LIBRARY"))
     parser.add_argument("--lattice", nargs=4, type=int, default=(4, 4, 4, 4))
     parser.add_argument("--beta", type=float, default=5.6)
@@ -160,6 +179,8 @@ def main():
 
 
 def run(args, comm):
+    if args.resume_from is not None and args.initial_lime is not None:
+        raise ValueError("Select either an initial LIME field or a checkpoint")
     model = DistributedRHMC(args.lattice, args.beta, args.mass_light, args.mass_strange,
                             args.csw, comm, args.library, interval=args.strange_interval,
                             md_order=args.md_order, md_tolerance=args.md_tolerance,
@@ -197,12 +218,16 @@ def run(args, comm):
                   gauge_substeps_per_drift=args.gauge_steps,
                   thermalization_established=False, independent_samples_established=False,
                   trajectories=args.trajectories, warmup=args.warmup, samples=[], saved_configurations=[])
-    if args.resume_from is None:
-        gauge, first_trajectory = model.cold(), 0
-    else:
+    first_trajectory = 0
+    if args.resume_from is not None:
         gauge, checkpoint = resume_from(args.resume_from, report, rng, comm)
         report["resumed_from"] = checkpoint
         first_trajectory = checkpoint["trajectory"]
+    elif args.initial_lime is not None:
+        gauge, source = initial_gauge(args.initial_lime, model.lattice, comm)
+        report["initial_lime"] = source
+    else:
+        gauge = model.cold()
     on_root(comm, lambda: args.output.mkdir(parents=True))
     for segment_index in range(1, args.trajectories + 1):
         trajectory = first_trajectory + segment_index
@@ -246,7 +271,8 @@ def run(args, comm):
         if comm.rank == 0:
             print(json.dumps(sample), flush=True)
     accepted = sum(item["accepted"] for item in report["samples"])
-    if not report["saved_configurations"] or (not accepted and args.resume_from is None):
+    cold_start = args.resume_from is None and args.initial_lime is None
+    if not report["saved_configurations"] or (cold_start and not accepted):
         raise RuntimeError("The run must save an updated gauge field")
     report.update(complete=True, accepted=accepted, acceptance_rate=accepted / args.trajectories)
     on_root(comm, lambda: atomic_json(args.output / "result.json", report))

@@ -25,7 +25,7 @@ def main():
                         csw=1., strange_interval=(.004, 4.), md_order=16, md_tolerance=1e-12,
                         length=.025, steps=1, gauge_steps=2, threads=1, seed=1729, warmup=0,
                         save_every=1, direct_clover=False, packed_faces=False, compact_spin=False, zolotarev=False,
-                        force_pole_batch=8, projected_force_faces=False,
+                        force_pole_batch=8, projected_force_faces=False, initial_lime=None,
                         library=Path(os.environ["LQCD_HMC_SCHUR_LIBRARY"]))
         whole = run(SimpleNamespace(**settings, output=args.output / "whole",
                                     trajectories=3, resume_from=None), comm)
@@ -35,6 +35,20 @@ def main():
         tail = run(SimpleNamespace(**settings, output=args.output / "tail",
                                    trajectories=2, resume_from=checkpoint), comm)
         assert tail["resumed_from"]["trajectory"] == 1
+        field_path = args.output / "head" / head["saved_configurations"][0]["file"]
+        initial_settings = dict(settings, initial_lime=field_path, seed=9831)
+        new_chain = run(SimpleNamespace(**initial_settings, output=args.output / "initial-lime",
+                                        trajectories=1, resume_from=None), comm)
+        assert new_chain["initial_lime"]["sha256"] == head["saved_configurations"][0]["sha256"]
+        assert new_chain["samples"][0]["trajectory"] == 1 and new_chain["seed"] == 9831
+        mismatch = dict(initial_settings, lattice=(4, 2, 2, 2 * comm.size))
+        try:
+            run(SimpleNamespace(**mismatch, output=args.output / "invalid-lime",
+                                trajectories=1, resume_from=None), comm)
+        except RuntimeError as error:
+            assert "Initial LIME lattice dimensions differ" in str(error)
+        else:
+            raise AssertionError("An initial LIME file with different lattice dimensions was accepted")
         saved = head["saved_configurations"] + tail["saved_configurations"]
         assert len(whole["saved_configurations"]) == len(saved) == 3
         for left, right in zip(whole["saved_configurations"], saved):
@@ -58,6 +72,7 @@ def main():
             (args.output / "restart-verification.json").write_text(json.dumps(dict(
                 passed=True, ranks=comm.size, checkpoint=tail["resumed_from"],
                 matched_trajectories=3, matched_lime_and_rng_digests=True,
+                initial_lime_starts_new_chain=True,
                 invalid_parameters_rejected=True), indent=2) + "\n")
     finally:
         comm.Free()
