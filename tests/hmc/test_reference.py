@@ -19,7 +19,7 @@ from hmc.reference import CloverHMC, CD, RD, dagger, generators, write_lime
 from hmc.shifted import solve_multi_shift, solve_shifted
 from hmc.rational import apply_rational, inverse_power_terms, rational_action_gradient
 from hmc.pseudofermion import MatrixFreePseudofermionHMC, PseudofermionHMC
-from hmc.spectral import positive_schur_bounds
+from hmc.spectral import cold_wilson_gap, positive_schur_bounds
 
 REFERENCE = None
 REQUIRE_LIME = False
@@ -254,6 +254,30 @@ class HMCPhysicsTests(unittest.TestCase):
                 self.assertLessEqual(residual, 1e-12)
                 METRICS[f"shifted_cg_{mass}_{shift}"] = dict(
                     iterations=iterations, residual=residual)
+
+    def test_negative_mass_cold_certificate_against_dense_spectrum(self):
+        mass = -.277
+        cold = self.m.cold()
+        gap = cold_wilson_gap(self.m.lattice[3], mass)
+        dense_gap = float(torch.linalg.svdvals(self.m.dirac(cold, mass)).min())
+        self.assertAlmostEqual(gap, dense_gap, places=13)
+        near_cold = self.m.drift(cold, self.p, .02)
+        strength = self.m.field_strength(near_cold)
+        clover = self.m.clover_blocks(strength, mass)
+        lower, upper = positive_schur_bounds(clover[self.m.even], clover[self.m.odd], mass,
+                                             cold_gap=gap, links=near_cold)
+        dense = PseudofermionHMC(ms=mass, strange_interval=(.0005, 6.))
+        eigenvalues, _, _ = dense._normal_spectrum(near_cold, mass, strength, True)
+        self.assertLessEqual(lower, float(eigenvalues.min()))
+        self.assertGreaterEqual(upper, float(eigenvalues.max()))
+        far_links = torch.diag(torch.tensor([-1., -1., 1.], dtype=CD)).expand_as(cold)
+        cold_clover = self.m.clover_blocks(self.m.field_strength(cold), mass)
+        with self.assertRaises(ArithmeticError):
+            positive_schur_bounds(cold_clover[self.m.even], cold_clover[self.m.odd], mass,
+                                  cold_gap=gap, links=far_links)
+        METRICS["negative_mass_cold_certificate"] = dict(
+            free_gap=gap, dense_free_gap=dense_gap, certified_bounds=[lower, upper],
+            exact_bounds=[float(eigenvalues.min()), float(eigenvalues.max())])
 
     def test_strange_fractional_power_against_dense_spectrum(self):
         mass = self.m.ms

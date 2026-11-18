@@ -43,6 +43,8 @@ def main():
     parser.add_argument("--mass-light", type=float, default=.5)
     parser.add_argument("--mass-strange", type=float, default=.8)
     parser.add_argument("--csw", type=float, default=1.)
+    parser.add_argument("--strange-interval", type=float, nargs=2, default=(.004, 4.),
+                        metavar=("LOW", "HIGH"), help="fixed interval for the strange Schur normal spectrum")
     parser.add_argument("--trajectories", type=int, default=4)
     parser.add_argument("--warmup", type=int, default=1)
     parser.add_argument("--length", type=float, default=.08)
@@ -59,6 +61,9 @@ def main():
     args = parser.parse_args()
     if args.library is None:
         parser.error("Provide the native Schur library")
+    lower, upper = args.strange_interval
+    if not 0 < lower < upper < math.inf:
+        parser.error("The strange spectral interval must contain ascending positive finite endpoints")
     if (args.threads < 1 or args.steps < 1 or args.gauge_steps < 0 or args.md_order < 1
             or not math.isfinite(args.length) or args.length <= 0
             or not 0 < args.md_tolerance < 1
@@ -78,7 +83,8 @@ def main():
 
 def run(args, comm):
     model = DistributedRHMC(args.lattice, args.beta, args.mass_light, args.mass_strange,
-                            args.csw, comm, args.library, md_order=args.md_order, md_tolerance=args.md_tolerance)
+                            args.csw, comm, args.library, interval=args.strange_interval,
+                            md_order=args.md_order, md_tolerance=args.md_tolerance)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
@@ -92,6 +98,7 @@ def run(args, comm):
                   timing_aggregation="maximum rank elapsed time for each phase independently",
                   rank_seed_rule="seed + MPI rank", source_commit=commit, native_schur_sha256=lib_digest,
                   strange_md_interval=model.interval, strange_rational_grid_error=model.grid_errors,
+                  strange_cold_free_gap=model.strange_cold_gap,
                   strange_rational_poles=dict(md=len(model.md_terms), endpoint=len(model.endpoint_terms),
                                               refresh=len(model.refresh_terms)),
                   md_relative_true_residual_tolerance=model.md_tolerance,

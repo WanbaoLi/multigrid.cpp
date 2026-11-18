@@ -9,7 +9,7 @@ from .distributed_schur import prepare_local_slab_schur
 from .rational import apply_rational, checked_rational_terms
 from .reference import CD, RD, clover_chiral_blocks, dagger, drift_links, generators, integrate_links
 from .shifted import solve_multi_shift, solve_shifted
-from .spectral import positive_schur_bounds
+from .spectral import cold_wilson_gap, positive_schur_bounds
 
 
 class DistributedRHMC:
@@ -36,6 +36,7 @@ class DistributedRHMC:
         parity = parity + torch.arange(ny)[None, None, :, None]
         parity = parity + torch.arange(nx)[None, None, None, :]
         self.odd = parity.flatten() % 2 == 1
+        self.strange_cold_gap = cold_wilson_gap(lt, ms) if ms <= 0 else None
         self.basis = generators()
         self.eye = torch.eye(3, dtype=CD)
         self.gamma5 = torch.tensor([1., 1., -1., -1.], dtype=RD)[:, None]
@@ -54,9 +55,10 @@ class DistributedRHMC:
         field = [value.reshape(-1, 3, 3) for value in owned_clover_strength(extended)]
         return tuple(clover_chiral_blocks(field, mass, self.csw) for mass in (self.ml, self.ms))
 
-    def _certify(self, strange_clover):
+    def _certify(self, strange_clover, gauge):
         lower, upper = positive_schur_bounds(strange_clover[~self.odd], strange_clover[self.odd],
-                                              self.ms, comm=self.comm)
+                                              self.ms, comm=self.comm,
+                                              cold_gap=self.strange_cold_gap, links=gauge)
         if not self.interval[0] <= lower <= upper <= self.interval[1]:
             raise ArithmeticError("Certified strange spectrum exceeds the fixed rational interval")
         return lower, upper
@@ -71,7 +73,7 @@ class DistributedRHMC:
     def refresh(self, u, noise_l, noise_s):
         extended = self._gauge_faces(u)
         light, strange = self._coefficients(extended)
-        self._certify(strange)
+        self._certify(strange, u)
         schur_l = self._schur(extended, light, self.ml)
         schur_s = self._schur(extended, strange, self.ms)
 
@@ -85,7 +87,7 @@ class DistributedRHMC:
     def endpoint_energy(self, u, p, fields):
         extended = self._gauge_faces(u)
         coefficients = self._coefficients(extended)
-        self._certify(coefficients[1])
+        self._certify(coefficients[1], u)
         local = float(owned_gauge_action(extended, self.beta)) + float(p.square().sum()) / 2
         for i, (mass, phi, clover) in enumerate(zip((self.ml, self.ms), fields, coefficients)):
             schur = self._schur(extended, clover, mass)
@@ -211,7 +213,7 @@ class DistributedRHMC:
         action = self.comm.allreduce(float(owned_gauge_action(extended, self.beta)))
         errors = self.comm.allgather((float((dagger(u) @ u - self.eye).abs().max()),
                                       float((torch.linalg.det(u) - 1).abs().max())))
-        lower, upper = self._certify(self._coefficients(extended)[1])
+        lower, upper = self._certify(self._coefficients(extended)[1], u)
         return dict(plaquette=1 - action / (6 * self.volume * self.beta),
                     max_unitarity_error=max(x[0] for x in errors),
                     max_det_su3_error=max(x[1] for x in errors),
