@@ -168,12 +168,19 @@ class HMCPhysicsTests(unittest.TestCase):
             schur = (full[even][:, even] - full[even][:, odd] @
                      torch.linalg.solve(full[odd][:, odd], full[odd][:, even]))
             direct = self.m.apply_even_schur(u, mass, x, c)
+            prepared_schur = self.m.prepare_even_schur(u, mass, c)
+            prepared = prepared_schur(x)
             expected = schur @ x
             torch.testing.assert_close(direct, expected, atol=3e-14, rtol=3e-14)
+            torch.testing.assert_close(prepared, expected, atol=3e-14, rtol=3e-14)
             direct_grad, = torch.autograd.grad((x.conj() * direct).real.sum(), u, retain_graph=True)
             expected_grad, = torch.autograd.grad((x.conj() * expected).real.sum(), u, retain_graph=True)
+            prepared_grad, = torch.autograd.grad((x.conj() * prepared).real.sum(), u, retain_graph=True)
             self.assertGreater(expected_grad.abs().max().item(), 1e-4)
             torch.testing.assert_close(direct_grad, expected_grad, atol=3e-14, rtol=3e-14)
+            torch.testing.assert_close(prepared_grad, expected_grad, atol=3e-14, rtol=3e-14)
+            torch.testing.assert_close(self.m.even_normal_from_schur(prepared_schur, x),
+                                       dagger(schur) @ expected, atol=3e-14, rtol=3e-14)
             torch.testing.assert_close(self.m.apply_even_normal(u, mass, x, c),
                                        dagger(schur) @ expected, atol=3e-14, rtol=3e-14)
             sign, logdet = torch.linalg.slogdet(full)

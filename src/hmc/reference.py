@@ -77,6 +77,13 @@ class CloverHMC:
             stride *= extent
         self.even = sites[parity % 2 == 0]
         self.odd = sites[parity % 2 == 1]
+        within_parity = torch.empty_like(sites)
+        within_parity[self.even] = within_parity[self.odd] = torch.arange(self.volume // 2)
+        self.parity_hops = [
+            [(within_parity[plus[target]], within_parity[minus[target]], minus[target])
+             for plus, minus in zip(self.plus, self.minus)]
+            for target in (self.even, self.odd)
+        ]
         self.block_indices = torch.cat(
             [sites * self.volume + sites]
             + [sites * self.volume + neighbors
@@ -195,6 +202,47 @@ class CloverHMC:
         correction = self.apply_hopping(u, mass, odd_field)[self.even]
         local = (clover[self.even] @ even_spinor.unsqueeze(-1)).squeeze(-1)
         return (local - correction).reshape_as(spinor)
+
+    def prepare_even_schur(self, u, mass, clover):
+        """Prepare gauge-dependent coefficients for repeated parity-local applications."""
+        even_clover = clover[self.even]
+        odd_inverse = torch.linalg.inv(clover[self.odd])
+        hopping = []
+        for target, indices in zip((self.even, self.odd), self.parity_hops):
+            terms = []
+            for mu, (plus, minus, backward_sites) in enumerate(indices):
+                forward = u[target, mu]
+                backward = dagger(u[backward_sites, mu])
+                if mu == 3:
+                    forward = forward * self.forward_sign[target, None, None]
+                    backward = backward * self.backward_sign[target, None, None]
+                terms.extend(((plus, forward, self.eye4 - self.gamma[mu]),
+                              (minus, backward, self.eye4 + self.gamma[mu])))
+            hopping.append(terms)
+        kappa = 1 / (2 * (mass + 4))
+
+        def hop(spinor, terms):
+            sites = spinor.reshape(self.volume // 2, 4, 3)
+            result = torch.zeros_like(sites)
+            for source, link, projector in terms:
+                rotated = sites[source] @ link.transpose(-2, -1)
+                result = result + projector @ rotated
+            return (-kappa * result).reshape(self.volume // 2, 12, 1)
+
+        def apply(spinor):
+            odd_solved = odd_inverse @ hop(spinor, hopping[1])
+            local = even_clover @ spinor.reshape(self.volume // 2, 12, 1)
+            return (local - hop(odd_solved, hopping[0])).reshape_as(spinor)
+
+        return apply
+
+    def even_normal_from_schur(self, apply_schur, spinor):
+        """Apply S_e† S_e using S_e† = gamma5 S_e gamma5."""
+        shape = (self.volume // 2, 4, 3)
+        image = apply_schur(spinor).reshape(shape)
+        reflected = self.gamma5 @ image
+        result = apply_schur(reflected).reshape(shape)
+        return (self.gamma5 @ result).reshape_as(spinor)
 
     def apply_even_normal(self, u, mass, spinor, clover=None):
         """Apply S_e† S_e using S_e† = gamma5 S_e gamma5."""
