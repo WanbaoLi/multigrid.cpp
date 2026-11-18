@@ -1,4 +1,4 @@
-"""Optional native CPU Schur stencil for the non-differentiated Krylov path."""
+"""Optional native CPU kernels for the Schur stencil and gauge drift."""
 import ctypes
 from functools import lru_cache
 import os
@@ -18,6 +18,28 @@ def _apply_functions(path):
         normal.argtypes = apply.argtypes + [ctypes.c_void_p]
         normal.restype = None
     return apply, normal
+
+
+@lru_cache(maxsize=None)
+def _pade_drift_function(path):
+    function = ctypes.CDLL(str(Path(path).resolve())).lqcd_hmc_pade_drift
+    function.argtypes = [ctypes.c_int64, ctypes.c_double, ctypes.c_int] + [ctypes.c_void_p] * 3
+    function.restype = ctypes.c_int
+    return function
+
+
+def native_pade_drift(gauge, momenta, step, library):
+    if (gauge.device.type != "cpu" or gauge.dtype != torch.complex128 or gauge.shape[-2:] != (3, 3) or
+            momenta.device.type != "cpu" or momenta.dtype != torch.float64 or
+            momenta.shape != gauge.shape[:-2] + (8,)):
+        raise ValueError("Native gauge drift requires CPU complex128 links and matching float64 momenta")
+    field = gauge.detach().resolve_conj().contiguous()
+    momenta = momenta.detach().contiguous()
+    result = torch.empty_like(field)
+    kernel = _pade_drift_function(str(library))
+    outside = kernel(field.numel() // 9, step, torch.get_num_threads(), field.data_ptr(),
+                     momenta.data_ptr(), result.data_ptr())
+    return None if outside else result
 
 
 def prepare_native_schur(hopping, even_clover, odd_inverse, kappa):

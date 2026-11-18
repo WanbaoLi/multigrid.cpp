@@ -5,6 +5,7 @@ from time import perf_counter
 import numpy as np
 import torch
 
+from .native_schur import native_pade_drift
 from .distributed_gauge import owned_clover_strength, owned_gauge_action, owned_gauge_gradient, time_faces
 from .distributed_schur import prepare_local_slab_schur
 from .rational import apply_rational, checked_rational_terms
@@ -22,7 +23,8 @@ class DistributedRHMC:
     def __init__(self, lattice, beta, ml, ms, csw, comm, library, interval=(.004, 4.), *,
                  md_order=32, md_tolerance=1e-12, direct_clover=False, packed_faces=False, compact_spin=False,
                  zolotarev=False, force_pole_batch=8, projected_force_faces=False,
-                 light_heatbath_action=False, real_krylov_dot=False, pade_drift=False, shared_clover_spin=False):
+                 light_heatbath_action=False, real_krylov_dot=False, pade_drift=False,
+                 shared_clover_spin=False, native_pade=False):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -35,6 +37,8 @@ class DistributedRHMC:
             raise ValueError("Use a positive integer for the force pole batch size")
         if projected_force_faces and not compact_spin:
             raise ValueError("Projected force faces require compact spin contractions")
+        if pade_drift and native_pade:
+            raise ValueError("Select one Padé gauge drift implementation")
         self.beta, self.ml, self.ms, self.csw = beta, ml, ms, csw
         self.comm, self.library = comm, library
         nx, ny, nz, lt = self.lattice
@@ -64,6 +68,7 @@ class DistributedRHMC:
         self.real_krylov_dot = real_krylov_dot
         self.pade_drift = pade_drift
         self.shared_clover_spin = shared_clover_spin
+        self.native_pade = native_pade
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
             self.interval, md_order=md_order, zolotarev=zolotarev)
 
@@ -253,6 +258,10 @@ class DistributedRHMC:
         return force
 
     def drift(self, u, p, length):
+        if self.native_pade:
+            updated = native_pade_drift(u, p, length, self.library)
+            if updated is not None:
+                return updated
         return drift_links(u, p, length, self.basis, pade=self.pade_drift)
 
     def _project_force(self, u, link_gradient):

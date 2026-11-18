@@ -48,7 +48,7 @@ if(MULTIGRID_NATIVE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 endif()
 
 if(LQCD_BUILD_HMC_KERNELS)
-    add_library(lqcd_hmc_kernels SHARED src/hmc/native_schur.cpp)
+    add_library(lqcd_hmc_kernels SHARED src/hmc/native_schur.cpp src/hmc/native_drift.cpp)
     target_include_directories(lqcd_hmc_kernels PRIVATE src)
     target_link_libraries(lqcd_hmc_kernels PRIVATE multigrid_core)
     set_target_properties(lqcd_hmc_kernels PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
