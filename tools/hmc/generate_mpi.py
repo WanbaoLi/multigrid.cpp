@@ -26,7 +26,7 @@ CHECKPOINT_COMPATIBILITY = (
     "trajectory_length", "integration_steps", "gauge_substeps_per_drift",
     "strange_md_interval", "strange_rational_poles", "md_relative_true_residual_tolerance",
     "direct_clover_adjoint", "packed_temporal_faces", "compact_spin_force",
-    "half_power_rational_method", "rational_coefficients_sha256",
+    "half_power_rational_method", "rational_coefficients_sha256", "force_pole_batch",
 )
 
 
@@ -55,6 +55,7 @@ def resume_from(path, report, rng, comm):
         previous.setdefault("compact_spin_force", False)
         previous.setdefault("half_power_rational_method", "quadrature")
         previous.setdefault("rational_coefficients_sha256", report["rational_coefficients_sha256"])
+        previous.setdefault("force_pole_batch", 8)
         mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
         if mismatches:
             raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
@@ -123,6 +124,8 @@ def main():
                         help="differentiate a two-component Wilson hopping projection")
     parser.add_argument("--zolotarev", action="store_true",
                         help="use elliptic inverse-square-root coefficients for the strange MD and endpoint")
+    parser.add_argument("--force-pole-batch", type=int, default=8,
+                        help="maximum number of shift solutions differentiated in one force batch")
     parser.add_argument("--save-every", type=int, default=1)
     parser.add_argument("--threads", type=int, default=1)
     parser.add_argument("--seed", type=int, default=1729)
@@ -133,6 +136,7 @@ def main():
     if not 0 < lower < upper < math.inf:
         parser.error("The strange spectral interval must contain ascending positive finite endpoints")
     if (args.threads < 1 or args.steps < 1 or args.gauge_steps < 0 or args.md_order < 1
+            or args.force_pole_batch < 1
             or not math.isfinite(args.length) or args.length <= 0
             or not 0 < args.md_tolerance < 1
             or not 0 <= args.warmup < args.trajectories
@@ -154,7 +158,8 @@ def run(args, comm):
                             args.csw, comm, args.library, interval=args.strange_interval,
                             md_order=args.md_order, md_tolerance=args.md_tolerance,
                             direct_clover=args.direct_clover, packed_faces=args.packed_faces,
-                            compact_spin=args.compact_spin, zolotarev=args.zolotarev)
+                            compact_spin=args.compact_spin, zolotarev=args.zolotarev,
+                            force_pole_batch=args.force_pole_batch)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
@@ -177,6 +182,7 @@ def run(args, comm):
                   direct_clover_adjoint=model.direct_clover,
                   packed_temporal_faces=model.packed_faces,
                   compact_spin_force=model.compact_spin,
+                  force_pole_batch=model.force_pole_batch,
                   half_power_rational_method="zolotarev" if model.zolotarev else "quadrature",
                   rational_coefficients_sha256=rational_digest,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",

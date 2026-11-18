@@ -20,7 +20,7 @@ def _finite_sum(terms):
 class DistributedRHMC:
     def __init__(self, lattice, beta, ml, ms, csw, comm, library, interval=(.004, 4.), *,
                  md_order=32, md_tolerance=1e-12, direct_clover=False, packed_faces=False, compact_spin=False,
-                 zolotarev=False):
+                 zolotarev=False, force_pole_batch=8):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -29,6 +29,8 @@ class DistributedRHMC:
             raise ValueError("Invalid Wilson–Clover parameters")
         if not 0 < md_tolerance < 1:
             raise ValueError("The MD relative residual tolerance must be between zero and one")
+        if type(force_pole_batch) is not int or force_pole_batch < 1:
+            raise ValueError("Use a positive integer for the force pole batch size")
         self.beta, self.ml, self.ms, self.csw = beta, ml, ms, csw
         self.comm, self.library = comm, library
         nx, ny, nz, lt = self.lattice
@@ -52,6 +54,7 @@ class DistributedRHMC:
         self.packed_faces = packed_faces
         self.compact_spin = compact_spin
         self.zolotarev = zolotarev
+        self.force_pole_batch = force_pole_batch
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
             self.interval, md_order=md_order, zolotarev=zolotarev)
 
@@ -182,8 +185,8 @@ class DistributedRHMC:
             solves += finished_solve - start
             # Release spinor intermediates after each block. Accumulate the
             # coefficient cotangents before differentiating the gauge geometry.
-            for first in range(0, len(weights), 8):
-                end = min(first + 8, len(weights))
+            for first in range(0, len(weights), self.force_pole_batch):
+                end = min(first + self.force_pole_batch, len(weights))
                 image = schur(torch.stack(solutions[first:end])).reshape(end - first, -1)
                 norm = (image.real.square() + image.imag.square()).sum(dim=1)
                 weight = torch.tensor(weights[first:end], dtype=RD)
