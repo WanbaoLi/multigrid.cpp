@@ -138,6 +138,20 @@ class HMCPhysicsTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             CloverHMC((24, 24, 24, 64))
 
+    def test_matrix_free_dirac_and_link_gradient(self):
+        model = CloverHMC((2, 2, 2, 4))
+        p = torch.randn((model.volume, 4, 8), dtype=RD, generator=self.rng)
+        gauge = model.drift(model.cold(), p, 0.2).requires_grad_(True)
+        x = torch.randn((model.volume * 12,), dtype=CD, generator=self.rng)
+        y = torch.randn(x.shape, dtype=CD, generator=self.rng)
+        for mass in (model.ml, model.ms):
+            dense = model.dirac(gauge, mass) @ x
+            sparse = model.apply_dirac(gauge, mass, x)
+            torch.testing.assert_close(sparse, dense, atol=3e-14, rtol=3e-14)
+            grad_dense, = torch.autograd.grad(torch.vdot(y, dense).real, gauge)
+            grad_sparse, = torch.autograd.grad(torch.vdot(y, sparse).real, gauge)
+            torch.testing.assert_close(grad_sparse, grad_dense, atol=3e-14, rtol=3e-14)
+
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser()

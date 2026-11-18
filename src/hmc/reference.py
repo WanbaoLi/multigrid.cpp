@@ -153,6 +153,23 @@ class CloverHMC:
         return assembled.view(self.volume, self.volume, 12, 12).transpose(1, 2).reshape(
             12 * self.volume, 12 * self.volume)
 
+    def apply_dirac(self, u, mass, spinor, field=None):
+        """Apply the normalized operator to one site-major spin/color field."""
+        c = self.clover(self.field_strength(u) if field is None else field, mass)
+        sites = spinor.reshape(self.volume, 4, 3)
+        result = (c @ sites.reshape(self.volume, 12, 1)).reshape_as(sites)
+        kappa = 1 / (2 * (mass + 4))
+        for mu, (plus, minus) in enumerate(zip(self.plus, self.minus)):
+            forward = torch.einsum("vab,vsb->vsa", u[:, mu], sites[plus])
+            backward = torch.einsum("vab,vsb->vsa", dagger(u[minus, mu]), sites[minus])
+            if mu == 3:
+                forward = forward * self.forward_sign[:, None, None]
+                backward = backward * self.backward_sign[:, None, None]
+            projected = (torch.einsum("st,vta->vsa", self.eye4 - self.gamma[mu], forward) +
+                         torch.einsum("st,vta->vsa", self.eye4 + self.gamma[mu], backward))
+            result = result - kappa * projected
+        return result.reshape_as(spinor)
+
     def fermion_action(self, u):
         field = self.field_strength(u)
         sign_l, log_l = torch.linalg.slogdet(self.dirac(u, self.ml, field))
