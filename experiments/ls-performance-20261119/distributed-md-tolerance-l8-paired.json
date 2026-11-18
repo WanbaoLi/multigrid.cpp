@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "ranks": 4,
+  "lattice": [
+    8,
+    8,
+    8,
+    8
+  ],
+  "results": {
+    "1e-12": {
+      "md_tolerance": 1e-12,
+      "poles": 32,
+      "grid_error": 4.969600508886174e-09,
+      "samples": [
+        {
+          "seconds": 30.570525540038943,
+          "link_error": 0.0,
+          "delta_h_error": 0.0,
+          "delta_h": 0.016622897644992918,
+          "accepted": true
+        },
+        {
+          "seconds": 34.808162602130324,
+          "link_error": 0.0,
+          "delta_h_error": 0.0,
+          "delta_h": 0.016852706045028754,
+          "accepted": true
+        },
+        {
+          "seconds": 35.56300022103824,
+          "link_error": 0.0,
+          "delta_h_error": 0.0,
+          "delta_h": 0.015368248961749487,
+          "accepted": true
+        }
+      ],
+      "median_seconds": 34.808162602130324
+    },
+    "1e-09": {
+      "md_tolerance": 1e-09,
+      "poles": 32,
+      "grid_error": 4.969600508886174e-09,
+      "samples": [
+        {
+          "seconds": 30.35973381390795,
+          "link_error": 1.1621432433604692e-12,
+          "delta_h_error": 5.1513779908418655e-09,
+          "delta_h": 0.016622892493614927,
+          "accepted": true
+        },
+        {
+          "seconds": 32.13271599705331,
+          "link_error": 4.606004483813351e-13,
+          "delta_h_error": 2.9103830456733704e-10,
+          "delta_h": 0.01685270575399045,
+          "accepted": true
+        },
+        {
+          "seconds": 33.13958093198016,
+          "link_error": 6.501613195061923e-13,
+          "delta_h_error": 1.673470251262188e-09,
+          "delta_h": 0.015368250635219738,
+          "accepted": true
+        }
+      ],
+      "median_seconds": 32.13271599705331,
+      "force_error": 2.9048659311303737e-09,
+      "reversible_links": 5.554046032061304e-15,
+      "reversible_momenta": 8.881784197001252e-16
+    },
+    "1e-07": {
+      "md_tolerance": 1e-07,
+      "poles": 32,
+      "grid_error": 4.969600508886174e-09,
+      "samples": [
+        {
+          "seconds": 30.227978693088517,
+          "link_error": 3.885003576419639e-11,
+          "delta_h_error": 3.0882074497640133e-07,
+          "delta_h": 0.016623206465737894,
+          "accepted": true
+        },
+        {
+          "seconds": 31.152435697149485,
+          "link_error": 7.813446113791245e-11,
+          "delta_h_error": 1.0533258318901062e-06,
+          "delta_h": 0.016853759370860644,
+          "accepted": true
+        },
+        {
+          "seconds": 32.711544084129855,
+          "link_error": 8.456733079251126e-11,
+          "delta_h_error": 8.140923455357552e-07,
+          "delta_h": 0.015367434869403951,
+          "accepted": true
+        }
+      ],
+      "median_seconds": 31.152435697149485,
+      "force_error": 4.5202055364013116e-07,
+      "reversible_links": 6.589947581733781e-15,
+      "reversible_momenta": 8.881784197001252e-16
+    }
+  }
+}

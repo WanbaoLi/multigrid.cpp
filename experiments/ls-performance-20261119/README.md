@@ -291,6 +291,13 @@ reversibility agreed with the reference within `1.23e-15` and
 `4.25e-15`, respectively. The paired `4⁴` and `8⁴` force timing
 changes were below 1%.
 
+Job `2171036` held the `8⁴` MD approximation at 32 poles on four
+ranks and compared true-residual tolerances `1e-12`, `1e-9` and
+`1e-7`. Median trajectory times were 34.81, 32.13 and 31.15 s.
+All acceptance decisions agreed and both candidates passed reversal.
+Their largest changes in delta-H were `5.16e-9` and `1.06e-6`.
+The refresh and endpoint tolerances were fixed for all three cases.
+
 ### ARM propagation and Legacy MG follow-up
 
 Job `2169866` interleaved disabled, 64-site and 128-site RHS tiling at
