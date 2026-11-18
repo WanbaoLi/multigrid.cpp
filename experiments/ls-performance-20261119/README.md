@@ -572,6 +572,12 @@ See the [packed gate](distributed-schur-gamma5-packed-mpi4.json) and
 full RHMC test passed with maximum force discrepancy `1.78e-13`,
 delta-H discrepancy `1.55e-12`, and nested reversal link discrepancy
 `6.22e-15`. See the [dense comparison](distributed-schur-gamma5-rhmc-mpi4.json).
+On exclusive cn19572, the full `24³×64` operator medians changed from
+50.05 to 45.66 ms at mass 0.5 and from 48.23 to 45.07 ms at mass 0.8.
+The two complete trajectory pairs reduced the median from 76.08 to
+73.46 s. The proposed links, momenta, and delta-H agreed exactly in
+both pairs. One seed gave acceptance and the other rejection in both
+implementations. See the [64-rank results](distributed-schur-gamma5-l24t64-paired.json).
 
 The optional `--compress-refresh` projects the positive pole expansion
 for `(S†S)^(-3/4)` onto a rational Krylov basis built from that expansion's

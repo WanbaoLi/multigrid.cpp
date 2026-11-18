@@ -171,7 +171,19 @@ python tools/run_numa.py --time-slab --lattice 24 24 24 64 \
   --beta 5.6 --mass-light 0.5 --mass-strange 0.8 --csw 1 \
   --trajectories 4 --warmup 1 --length 0.018 --steps 1 --gauge-steps 2 \
   --threads '{threads}' --md-order 16 --packed-faces --direct-clover \
-  --compact-spin --projected-force-faces --zolotarev --force-pole-batch 11
+  --compact-spin --projected-force-faces --zolotarev --force-pole-batch 11 \
+  --fused-schur-gamma5
+```
+
+用已有独立验证报告的目录可复跑配对计时。下面比较 Schur 通信重叠，
+固定输入场、rank 放置与随机种子，并检查接受判定及提议场误差。
+
+```bash
+python tools/run_numa.py --time-slab --lattice 24 24 24 64 \
+  --numa-nodes 0-15 --ranks-per-numa 4 --threads 1 -- \
+  python tools/hmc/benchmark_mpi.py /outside/source/verified-chain \
+  --library "$LQCD_HMC_SCHUR_LIBRARY" --optimization overlap-schur-faces \
+  --repeats 2 --output /outside/source/schur-overlap-paired.json
 ```
 
 `--md-order` 设置奇异味 MD 力在每侧积分尾部的求积阶数，两个尾部共
