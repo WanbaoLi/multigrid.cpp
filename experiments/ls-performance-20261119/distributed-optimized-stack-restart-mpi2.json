@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "ranks": 2,
+  "checkpoint": {
+    "trajectory": 1,
+    "configuration_sha256": "0a9c328acb27a2d0448ccf7d7208ea68162124a07472bb4914ceef41a0351faf",
+    "report": "/tmp/hmc-optimized-stack-s06iHu8G/restart/head/result.json"
+  },
+  "optimized_stack": true,
+  "matched_trajectories": 3,
+  "matched_lime_and_rng_digests": true,
+  "initial_lime_starts_new_chain": true,
+  "invalid_parameters_rejected": true
+}

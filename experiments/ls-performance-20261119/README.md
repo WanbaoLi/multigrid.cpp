@@ -623,26 +623,35 @@ On the full lattice, the control took 75.44 s and the `1e-10` candidate
 took 69.96 s for the first matched pair. Both accepted, but the
 momentum and delta-H differences of `2.58e-11` and `2.60e-8` exceeded
 the fixed `2e-11` and `2e-8` gates. The candidate was rejected. Job
-`2172164` runs `1e-11` against the same control with the same gates,
-heatbath, and endpoint settings. See the [dense MD-tolerance check](distributed-md-tolerance-rhmc-mpi4.json)
-and [full-volume rejected pair](distributed-md-tolerance-1e-10-l24t64-rejected.json).
+`2172164` ran `1e-11` against the same control with the same gates,
+heatbath, and endpoint settings. Both pairs passed and accepted. The
+median fell from 73.71 to 71.40 s, with maximum momentum difference
+`2.30e-12` and delta-H difference `2.46e-9`. See the
+[dense check](distributed-md-tolerance-rhmc-mpi4.json),
+[rejected `1e-10` pair](distributed-md-tolerance-1e-10-l24t64-rejected.json),
+and [accepted `1e-11` pairs](distributed-md-tolerance-1e-11-l24t64-paired.json).
 
 Job `2172132` builds the optional `LQCD_HMC_CLOVER_SIMD` path with
 separate FP64 real and imaginary accumulators, then checks the
 distributed Schur operator, force and reversibility. Its four-rank
 Schur test passed, with maximum independent normal difference
-`7.03e-16`. See [the Schur gate](distributed-clover-simd-schur-mpi4.json).
+`7.03e-16`. The full four-rank dense RHMC check passed, with maximum
+force and delta-H differences of `1.78e-13` and `1.73e-12`. See the
+[Schur gate](distributed-clover-simd-schur-mpi4.json) and
+[dense RHMC gate](distributed-clover-simd-rhmc-mpi4.json).
 Job `2172133`
 uses the same benchmark driver to compare the two native libraries
 at the full volume with fixed input, algorithm settings and rank
 placement. The original Arm build did not confirm emitted FP64 vector
 instructions from the compiler-directed reduction. Job `2172192`
-builds the explicit Arm NEON lane implementation, checks the emitted
-instructions, and reruns the Schur and dense RHMC gates. See
+builds the explicit Arm NEON lane implementation. Its emitted binary
+contains FP64 two-lane `fmla`; the Schur and dense RHMC checks follow. See
 [the original build inspection](distributed-clover-simd-compiler.txt).
 
-Job `2172158` checks exact LIME and RNG resumption with native Padé,
+Job `2172158` checked exact LIME and RNG resumption with native Padé,
 fused gamma5, Schur overlap and compressed refresh enabled together.
+All three `2³×4` trajectories matched across the uninterrupted and
+resumed runs. See [the restart result](distributed-optimized-stack-restart-mpi2.json).
 Job `2172159` pairs the four changes against their common control on
 two independently verified L24 fields, using two seeds on each field.
 
