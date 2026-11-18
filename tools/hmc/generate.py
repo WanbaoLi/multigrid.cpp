@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate explicitly small-volume, exact-determinant Nf=2+1 Clover HMC fields."""
+"""Generate small-volume Nf=2+1 Clover HMC validation fields."""
 import argparse
 import hashlib
 import json
@@ -16,6 +16,7 @@ import torch
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'src'))
 from hmc.reference import CloverHMC, RD, write_lime
+from hmc.pseudofermion import PseudofermionHMC
 
 
 def atomic_json(path, obj):
@@ -34,6 +35,7 @@ def main():
     p.add_argument('--length', type=float, default=0.5)
     p.add_argument('--steps', type=int, default=10)
     p.add_argument('--integrator', choices=('leapfrog', 'omelyan'), default='leapfrog')
+    p.add_argument('--sea-action', choices=('determinant', 'pseudofermion'), default='determinant')
     p.add_argument('--warmup', type=int, default=40)
     p.add_argument('--trajectories', type=int, default=80)
     p.add_argument('--save-every', type=int, default=10)
@@ -48,18 +50,23 @@ def main():
             or args.save_every > args.trajectories - args.warmup):
         p.error('Invalid trajectory, warmup, save interval or integration parameters')
     torch.set_num_threads(args.threads)
-    model = CloverHMC(args.lattice, args.beta, args.mass_light, args.mass_strange, args.csw)
+    pseudofermions = args.sea_action == 'pseudofermion'
+    model_type = PseudofermionHMC if pseudofermions else CloverHMC
+    model = model_type(args.lattice, args.beta, args.mass_light, args.mass_strange, args.csw)
     args.output.mkdir(parents=True)
     rng = torch.Generator().manual_seed(args.seed)
     u = model.cold()
-    report = dict(complete=False, algorithm=f'exact dense determinant HMC, {args.integrator} + Metropolis',
+    sea_description = ('2+1 pseudofermion HMC, rational MD with dense exact refresh and endpoints'
+                       if pseudofermions else 'exact dense determinant HMC')
+    report = dict(complete=False, algorithm=f'{sea_description}, {args.integrator} + Metropolis',
                   target='exp(-Sg) det(M_light)^2 det(M_strange), positive strange determinant required',
                   nf='2+1', lattice_xyzt=args.lattice, beta=args.beta, mass_light=args.mass_light,
                   mass_strange=args.mass_strange, csw=args.csw, gauge_action='Wilson plaquette',
                   fermion_operator='normalized Wilson-Clover, DeGrand-Rossi spin basis',
                   gauge_t_boundary=1, fermion_t_boundary=-1, stout_steps=0,
                   precision='complex128/float64 CPU', dense_operator_dimension=12 * model.volume,
-                  pseudofermions=False, rhmc=False, mg_used=False, seed=args.seed,
+                  pseudofermions=pseudofermions, rational_md=pseudofermions,
+                  rhmc=False, mg_used=False, seed=args.seed,
                   trajectory_length=args.length, integration_steps=args.steps, threads=args.threads,
                   requested_trajectories=args.trajectories, requested_warmup=args.warmup,
                   thermalization_established=False, independent_samples_established=False,
@@ -69,6 +76,8 @@ def main():
                   source_branch=subprocess.check_output(['git', '-C', str(ROOT), 'branch', '--show-current'], text=True).strip(),
                   source_tracked_status=subprocess.check_output(['git', '-C', str(ROOT), 'status', '--porcelain', '--untracked-files=no'], text=True),
                   samples=[], saved_configurations=[])
+    if pseudofermions:
+        report.update(strange_md_interval=model.strange_interval, strange_md_poles=len(model.strange_terms))
     if report['source_tracked_status']:
         raise RuntimeError('Refuse a modified tracked source checkout')
     started = time.perf_counter()

@@ -1,0 +1,77 @@
+{
+  "backend": "kupl",
+  "solver": "applyCloverMultigridQcu",
+  "lattice": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "local_lattice": [
+    24,
+    24,
+    24,
+    4
+  ],
+  "local_starts": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "grid": [
+    1,
+    1,
+    1,
+    16
+  ],
+  "grid_coordinate": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "mpi_rank": 0,
+  "mpi_size": 16,
+  "dtype": "complex64",
+  "mass": -0.277,
+  "kappa": 0.13430029546065003,
+  "mass_normalization": "kappa",
+  "csw": 1.160920226,
+  "atol": 1e-06,
+  "max_iter": 5000,
+  "levels": 1,
+  "dof": [
+    12
+  ],
+  "mg_grid": [
+    2,
+    2,
+    2,
+    1
+  ],
+  "restart": 0,
+  "coarse_max_iter": 200,
+  "coarse_tol_factor": 10000.0,
+  "deflate": true,
+  "builder_seconds": 0.0,
+  "input_prebind_seconds": 0.026704143034294248,
+  "hdf5_mpio_read": false,
+  "gauge_read_seconds": 0.25481921806931496,
+  "source_read_seconds": 0.04631889192387462,
+  "coarse_source": "unused: restart=0",
+  "wall_seconds": 0.4407768161036074,
+  "iterations": 19,
+  "residual_seconds": 0.4202118481043726,
+  "final_true_residual": 5.132591439916026e-07,
+  "residual_acceptance": 1e-06,
+  "residual_source": "independent distributed NumPy full Wilson-Clover reconstruction with MPI halo exchange",
+  "converged": true,
+  "memory": {
+    "available": true,
+    "max_rss_kib": 564060,
+    "resident_kib": 371680,
+    "omp_threads": "18"
+  },
+  "status": "PASS"
+}

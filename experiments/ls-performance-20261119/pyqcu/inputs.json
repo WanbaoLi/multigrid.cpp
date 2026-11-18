@@ -1,0 +1,19 @@
+{
+  "lime": "/home/share/nsls_lwb/.cache/pyqcu-propagator24-v20261103/inputs/beta6.20_mu-0.2770_ms-0.2310_L24x64_cfg_20000.lime",
+  "lime_sha256": "47969c7fe9b4a4716d5eab40e5a1dbdaef09abdb055934000e034a99d20d2d30",
+  "stout_seconds": 51.71718369796872,
+  "stout": {
+    "steps": 1,
+    "rho": 0.125,
+    "dir_ignore": 4
+  },
+  "raw_boundary": "periodic",
+  "physical_boundary": "antiperiodic time via final link twist once",
+  "files": {
+    "point.h5": "75ed88c90c64f58135a6ecc1b652b846a51c6c6e9921d022dba85fc190790e11",
+    "random.h5": "d3291b1f833768077153b1b7bca7f3176cd8d44c622e92ea0f17e583fd542d55",
+    "ones.h5": "ab2166bdbac155878e8e9ba27d22f568d702622cc732fb9c2cc76e787dd0ec1c",
+    "physical.h5": "9e668d22687b098b57afa43d6fa8d46f2f315e543f92046d57277b34d0ff2aa3",
+    "raw-periodic.h5": "58f4fafe78a1da20b69c08079d6b1d18eaeb394f1b6ebefeaa4c03fb5c11eaa3"
+  }
+}

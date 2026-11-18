@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from hmc.reference import CloverHMC, CD, RD, dagger, generators, write_lime
 from hmc.shifted import solve_shifted
 from hmc.rational import apply_rational, inverse_power_terms, rational_action_gradient
+from hmc.pseudofermion import PseudofermionHMC
 
 REFERENCE = None
 REQUIRE_LIME = False
@@ -268,6 +269,29 @@ class HMCPhysicsTests(unittest.TestCase):
         self.assertGreater(abs(finite), 1e-5)
         self.assertAlmostEqual(analytic, finite, delta=1e-8)
         METRICS["strange_rational_force_absolute_error"] = abs(analytic - finite)
+
+    def test_two_plus_one_pseudofermion_trajectory(self):
+        model = PseudofermionHMC()
+        fields = model.refresh(self.u, self.rng)
+        def force(links):
+            return model.md_force(links, fields)
+        direction = torch.randn(self.p.shape, dtype=RD, generator=self.rng)
+        direction /= torch.linalg.vector_norm(direction)
+        eps = 2e-5
+        plus = model.endpoint_energy(model.drift(self.u, direction, eps), self.p, fields)
+        minus = model.endpoint_energy(model.drift(self.u, direction, -eps), self.p, fields)
+        finite = (plus - minus) / (2 * eps)
+        analytic = float((force(self.u) * direction).sum())
+        self.assertAlmostEqual(analytic, finite, delta=2e-7)
+        u1, p1 = model.integrate(self.u, self.p, 0.04, 1, "omelyan", force)
+        u2, p2 = model.integrate(u1, -p1, 0.04, 1, "omelyan", force)
+        torch.testing.assert_close(u2, self.u, atol=2e-12, rtol=0)
+        torch.testing.assert_close(p2, -self.p, atol=2e-11, rtol=0)
+        u_new, item = model.trajectory(self.u, self.rng, 0.04, 1, "omelyan")
+        self.assertTrue(item["accepted"])
+        self.assertGreater(float((u_new - self.u).abs().max()), 1e-3)
+        METRICS["pseudofermion_force_absolute_error"] = abs(analytic - finite)
+        METRICS["pseudofermion_trajectory_delta_h"] = item["delta_h"]
 
 
 if __name__ == '__main__':

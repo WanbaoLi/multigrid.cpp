@@ -230,24 +230,25 @@ class CloverHMC:
         tangent = 1j * torch.einsum("aij,vmjk->vmaik", self.t, leaf.detach())
         return (grad.conj().unsqueeze(-3) * tangent).sum((-1, -2)).real.detach()
 
-    def integrate(self, u, p, length, steps, integrator="leapfrog"):
+    def integrate(self, u, p, length, steps, integrator="leapfrog", force=None):
         if steps < 1 or not math.isfinite(length) or integrator not in ("leapfrog", "omelyan"):
             raise ValueError("Invalid integration parameters")
         step = length / steps
         u, p = u.clone(), p.clone()
+        force = self.force if force is None else force
         if integrator == "omelyan":
             edge = 0.1931833275037836 * step
-            p = p - edge * self.force(u)
+            p = p - edge * force(u)
             for i in range(steps):
                 u = self.drift(u, p, step / 2)
-                p = p - (step - 2 * edge) * self.force(u)
+                p = p - (step - 2 * edge) * force(u)
                 u = self.drift(u, p, step / 2)
-                p = p - (edge if i == steps - 1 else 2 * edge) * self.force(u)
+                p = p - (edge if i == steps - 1 else 2 * edge) * force(u)
             return u, p
-        p = p - step / 2 * self.force(u)
+        p = p - step / 2 * force(u)
         for i in range(steps):
             u = self.drift(u, p, step)
-            p = p - (step / 2 if i == steps - 1 else step) * self.force(u)
+            p = p - (step / 2 if i == steps - 1 else step) * force(u)
         return u, p
 
     def hamiltonian(self, u, p):
