@@ -17,6 +17,7 @@ from generate_mpi import run
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--optimized-stack", action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(1)
     comm = MPI.COMM_WORLD.Dup()
@@ -31,6 +32,12 @@ def main():
                         overlap_schur_faces=False, gershgorin_strange=False, fused_schur_gamma5=False,
                         compress_refresh=False,
                         library=Path(os.environ["LQCD_HMC_SCHUR_LIBRARY"]))
+        if args.optimized_stack:
+            settings.update(direct_clover=True, packed_faces=True, compact_spin=True, zolotarev=True,
+                            force_pole_batch=11, projected_force_faces=True, real_krylov_dot=True,
+                            light_heatbath_action=True, reuse_odd_inverse=True, gershgorin_strange=True,
+                            native_pade_drift=True, fused_schur_gamma5=True, overlap_schur_faces=True,
+                            compress_refresh=True)
         whole = run(SimpleNamespace(**settings, output=args.output / "whole",
                                     trajectories=3, resume_from=None), comm)
         head = run(SimpleNamespace(**settings, output=args.output / "head",
@@ -75,6 +82,7 @@ def main():
         if comm.rank == 0:
             (args.output / "restart-verification.json").write_text(json.dumps(dict(
                 passed=True, ranks=comm.size, checkpoint=tail["resumed_from"],
+                optimized_stack=args.optimized_stack,
                 matched_trajectories=3, matched_lime_and_rng_digests=True,
                 initial_lime_starts_new_chain=True,
                 invalid_parameters_rejected=True), indent=2) + "\n")

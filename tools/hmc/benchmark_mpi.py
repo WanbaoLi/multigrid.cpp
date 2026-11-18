@@ -25,7 +25,10 @@ OPTIMIZATIONS = {
     "native-pade": "native_pade",
     "md-tolerance": "md_tolerance",
     "native-library": None,
+    "optimized-stack": None,
 }
+
+STACK_OPTIONS = ("native_pade", "fused_schur_gamma5", "overlap_schur_faces", "compress_refresh")
 
 
 class TimedRHMC(DistributedRHMC):
@@ -77,7 +80,12 @@ def pair(args, comm):
                     native_pade=True, fused_schur_gamma5=True,
                     overlap_schur_faces=False, compress_refresh=False)
     flag = OPTIMIZATIONS[args.optimization]
-    if flag is None:
+    if args.optimization == "optimized-stack":
+        specifications = {
+            "control": {**settings, **dict.fromkeys(STACK_OPTIONS, False)},
+            "candidate": {**settings, **dict.fromkeys(STACK_OPTIONS, True)},
+        }
+    elif flag is None:
         specifications = dict(control=settings, candidate=settings.copy())
     else:
         tolerance_pair = args.optimization == "md-tolerance"
@@ -93,7 +101,8 @@ def pair(args, comm):
         for key, model in models.items()}
     if any(digests != rational_digests for digests in comm.allgather(rational_digests)):
         raise RuntimeError("Benchmark coefficients differ across MPI ranks")
-    if args.optimization == "compress-refresh" and len(models["candidate"].refresh_terms) >= len(models["control"].refresh_terms):
+    if (specifications["candidate"]["compress_refresh"]
+            and len(models["candidate"].refresh_terms) >= len(models["control"].refresh_terms)):
         raise ArithmeticError("The selected interval did not yield a compressed heatbath")
     limits = dict(links=2e-12, momenta=2e-11, delta_h=2e-8)
     report = dict(complete=False, gauge=source, trajectory=item["trajectory"], ranks=comm.size,
