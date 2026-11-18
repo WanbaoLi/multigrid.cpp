@@ -37,7 +37,7 @@ class _ProjectedTimeFaces(torch.autograd.Function):
 
 
 @lru_cache(maxsize=None)
-def _kernels(path, packed_faces=False, overlap_faces=False):
+def _kernels(path, packed_faces=False, overlap_faces=False, fused_gamma5=False):
     library = ctypes.CDLL(str(Path(path).resolve()))
     suffix = ("_faces_finish" if overlap_faces else "_faces") if packed_faces else ""
     odd = getattr(library, "lqcd_hmc_schur_odd" + suffix)
@@ -47,7 +47,12 @@ def _kernels(path, packed_faces=False, overlap_faces=False):
     odd.argtypes = prefix + [ctypes.c_void_p] * (5 + extra)
     even.argtypes = prefix + [ctypes.c_void_p] * (6 + extra)
     odd.restype = even.restype = None
-    return odd, even
+    reflected = None
+    if fused_gamma5:
+        reflected = getattr(library, "lqcd_hmc_schur_even" + suffix + "_gamma5")
+        reflected.argtypes = even.argtypes
+        reflected.restype = None
+    return odd, even, reflected
 
 
 @lru_cache(maxsize=None)
@@ -75,7 +80,7 @@ def prepare_slab_schur(model, gauge, mass, clover, comm, library):
     total = model.volume // 2
     lower, upper = (first - face) % total, end % total
     prev, nxt = (comm.rank - 1) % comm.size, (comm.rank + 1) % comm.size
-    odd_kernel, even_kernel = _kernels(str(library))
+    odd_kernel, even_kernel, _ = _kernels(str(library))
     threads = torch.get_num_threads()
 
     def pack(terms):
@@ -178,7 +183,7 @@ def _slab_geometry(nt, spatial, rank, ranks, packed_faces, projected_force_faces
 
 def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, projected=True,
                              packed_faces=False, compact_spin=False, projected_force_faces=False,
-                             odd_inverse=None, overlap_faces=False):
+                             odd_inverse=None, overlap_faces=False, fused_gamma5=False):
     """Prepare Schur from only an owned Clover slab and its gauge faces.
 
     The returned operator differentiates through link and spinor halo adjoints
@@ -233,7 +238,7 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
           odd_inverse.device != clover.device):
         raise ValueError("Prepared odd inverse must match the local Clover blocks")
     kappa = 1 / (2 * (mass + 4))
-    odd_kernel, even_kernel = _kernels(str(library), packed_faces, overlap_faces)
+    odd_kernel, even_kernel, reflected_kernel = _kernels(str(library), packed_faces, overlap_faces, fused_gamma5)
     threads = torch.get_num_threads()
     with torch.no_grad():
         neighbors_e, neighbors_o = [entry[-1] for entry in geometry]
@@ -325,11 +330,14 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
                 result = result + projector @ (neighbors[:, indices] @ link.transpose(-2, -1))
         return (-kappa * result).reshape(-1, local_sites, 2, 6, 1)
 
-    def apply(spinor):
+    def apply(spinor, *, reflect=False):
         if torch.is_grad_enabled() or spinor.numel() != local_sites * 12:
             odd = odd_inverse @ torch_hop(spinor, hopping[1])
             even = even_clover @ spinor.reshape(-1, local_sites, 2, 6, 1)
-            return (even - torch_hop(odd, hopping[0])).reshape_as(spinor)
+            output = (even - torch_hop(odd, hopping[0])).reshape(-1, 4, 3)
+            if reflect:
+                output = torch.cat((output[:, :2], -output[:, 2:]), dim=-2)
+            return output.reshape_as(spinor)
         even = spinor.resolve_conj().contiguous()
         output = torch.empty_like(even)
         # The two blocking phases consume shared scratch in order. Return a
@@ -338,8 +346,11 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
         odd_kernel(local_sites, kappa, threads, neighbors_o.data_ptr(), links_o.data_ptr(),
                    blocks_o.data_ptr(), *(part.data_ptr() for part in extended_even), scratch_odd.data_ptr())
         extended_odd = halo(scratch_odd, neighbors_e, links_e)
-        even_kernel(local_sites, kappa, threads, neighbors_e.data_ptr(), links_e.data_ptr(),
-                    blocks_e.data_ptr(), even.data_ptr(), *(part.data_ptr() for part in extended_odd), output.data_ptr())
+        finish = reflected_kernel if reflect and fused_gamma5 else even_kernel
+        finish(local_sites, kappa, threads, neighbors_e.data_ptr(), links_e.data_ptr(),
+               blocks_e.data_ptr(), even.data_ptr(), *(part.data_ptr() for part in extended_odd), output.data_ptr())
+        if reflect and not fused_gamma5:
+            output.reshape(-1, 4, 3)[:, 2:].neg_()
         return output
 
     return apply

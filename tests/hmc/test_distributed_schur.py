@@ -20,6 +20,7 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--real-krylov-dot", action="store_true")
     parser.add_argument("--overlap-schur-faces", action="store_true")
+    parser.add_argument("--fused-schur-gamma5", action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(1)
     library = os.environ["LQCD_HMC_SCHUR_LIBRARY"]
@@ -76,7 +77,8 @@ def main():
                 extended = time_faces(local, comm)
                 local_clover = model.clover_blocks(
                     [x.reshape(-1, 3, 3) for x in owned_clover_strength(extended)], mass)
-                local_apply = prepare_local_slab_schur(extended, local_clover, mass, comm, library)
+                local_apply = prepare_local_slab_schur(extended, local_clover, mass, comm, library,
+                                                      fused_gamma5=args.fused_schur_gamma5)
                 local_image = local_apply(field[slab])
                 global_image = model.apply_even_schur(full, mass, field)
                 with torch.no_grad():
@@ -86,12 +88,20 @@ def main():
                     native_full_halo = full_halo(field[slab])
                     packed_apply = prepare_local_slab_schur(
                         extended, local_clover, mass, comm, library, packed_faces=True,
-                        overlap_faces=args.overlap_schur_faces)
+                        overlap_faces=args.overlap_schur_faces, fused_gamma5=args.fused_schur_gamma5)
                     native_packed = packed_apply(field[slab])
 
                     def packed_normal(x):
                         return model.gamma5 @ packed_apply(model.gamma5 @ packed_apply(x))
 
+                    if args.fused_schur_gamma5:
+                        for operator in (local_apply, packed_apply):
+                            reflected = operator(field[slab], reflect=True)
+                            torch.testing.assert_close(reflected, model.gamma5 @ operator(field[slab]),
+                                                       rtol=0., atol=0.)
+                            fused_normal = operator(reflected, reflect=True)
+                            torch.testing.assert_close(fused_normal, packed_normal(field[slab]),
+                                                       rtol=0., atol=0.)
                     packed_solution, _, packed_residual = solve_shifted(
                         packed_normal, field[slab], shifts[1], comm=comm, real_dot=args.real_krylov_dot)
                     torch.testing.assert_close(packed_solution, solutions[1], rtol=2e-11, atol=2e-11)
@@ -114,7 +124,8 @@ def main():
                                     packed_halo_error=packed_error, packed_shifted_true_residual=packed_residual,
                                     schur_link_gradient_error=grad_error))
         if comm.rank == 0:
-            args.output.write_text(json.dumps(dict(ranks=comm.size, cases=results, passed=True),
+            args.output.write_text(json.dumps(dict(ranks=comm.size, cases=results, passed=True,
+                                                fused_schur_gamma5=args.fused_schur_gamma5),
                                               indent=2) + "\n")
     finally:
         comm.Free()

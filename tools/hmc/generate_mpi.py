@@ -28,6 +28,7 @@ CHECKPOINT_COMPATIBILITY = (
     "half_power_rational_method", "rational_coefficients_sha256", "force_pole_batch",
     "projected_force_faces", "light_heatbath_action", "real_krylov_dot", "pade_drift", "shared_clover_spin",
     "native_pade_drift", "reuse_odd_inverse", "overlap_schur_faces", "gershgorin_strange",
+    "fused_schur_gamma5",
 )
 
 
@@ -84,6 +85,7 @@ def resume_from(path, report, rng, comm):
         previous.setdefault("reuse_odd_inverse", False)
         previous.setdefault("overlap_schur_faces", False)
         previous.setdefault("gershgorin_strange", False)
+        previous.setdefault("fused_schur_gamma5", False)
         mismatches = [key for key in CHECKPOINT_COMPATIBILITY if previous.get(key) != report[key]]
         if mismatches:
             raise ValueError(f"Checkpoint parameters differ: {', '.join(mismatches)}")
@@ -172,6 +174,8 @@ def main():
                         help="differentiate the odd Clover determinant using the Schur inverse blocks")
     parser.add_argument("--overlap-schur-faces", action="store_true",
                         help="evaluate spatial Schur hopping while packed temporal halos are in flight")
+    parser.add_argument("--fused-schur-gamma5", action="store_true",
+                        help="apply gamma5 while storing the native Schur output")
     parser.add_argument("--gershgorin-strange", action="store_true",
                         help="try a conservative local Clover row-sum bound before the eigenvalue certificate")
     parser.add_argument("--save-every", type=int, default=1)
@@ -219,7 +223,8 @@ def run(args, comm):
                             pade_drift=args.pade_drift, shared_clover_spin=args.shared_clover_spin,
                             native_pade=args.native_pade_drift, reuse_odd_inverse=args.reuse_odd_inverse,
                             overlap_schur_faces=args.overlap_schur_faces,
-                            gershgorin_strange=args.gershgorin_strange)
+                            gershgorin_strange=args.gershgorin_strange,
+                            fused_schur_gamma5=args.fused_schur_gamma5)
     commit = on_root(comm, lambda: subprocess.check_output(
         ["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip())
     lib_digest = on_root(comm, lambda: lime_sha256(args.library))
@@ -252,6 +257,7 @@ def run(args, comm):
                   reuse_odd_inverse=model.reuse_odd_inverse,
                   overlap_schur_faces=model.overlap_schur_faces,
                   gershgorin_strange=model.gershgorin_strange,
+                  fused_schur_gamma5=model.fused_schur_gamma5,
                   half_power_rational_method="zolotarev" if model.zolotarev else "quadrature",
                   rational_coefficients_sha256=rational_digest,
                   trajectory_length=args.length, integration_steps=args.steps, integrator="omelyan",

@@ -145,6 +145,21 @@ void schur_team(
     odd_team(n, kappa, neighbors + 8 * n, links + 72 * n, odd_inverse, input, odd, table);
     even_team(n, kappa, neighbors, links, even_clover, input, odd, output, table, reflect_output);
 }
+
+template<bool PackedFaces = false, bool ReuseSpatial = false>
+void apply_schur_even(
+    std::int64_t n, double kappa, int threads, const std::int64_t *neighbors,
+    const Complex *links, const Complex *even_clover, const Complex *even,
+    const Complex *odd, Complex *output, bool reflect_output,
+    const Complex *lower_face = nullptr, const Complex *upper_face = nullptr,
+    const Complex *spatial = nullptr) {
+    const auto &table = projectors();
+#pragma omp parallel if(n >= 128 && (!ReuseSpatial || threads > 1)) num_threads(threads)
+    {
+        even_team<PackedFaces, ReuseSpatial>(n, kappa, neighbors, links, even_clover,
+            even, odd, output, table, reflect_output, lower_face, upper_face, spatial);
+    }
+}
 }
 
 // Coefficients are in prepared parity-local order, with the time-boundary
@@ -191,11 +206,14 @@ extern "C" void lqcd_hmc_schur_even(
     std::int64_t n, double kappa, int threads, const std::int64_t *neighbors,
     const Complex *links, const Complex *even_clover, const Complex *even,
     const Complex *odd, Complex *output) {
-    const auto &table = projectors();
-#pragma omp parallel if(n >= 128) num_threads(threads)
-    {
-        even_team(n, kappa, neighbors, links, even_clover, even, odd, output, table, false);
-    }
+    apply_schur_even(n, kappa, threads, neighbors, links, even_clover, even, odd, output, false);
+}
+
+extern "C" void lqcd_hmc_schur_even_gamma5(
+    std::int64_t n, double kappa, int threads, const std::int64_t *neighbors,
+    const Complex *links, const Complex *even_clover, const Complex *even,
+    const Complex *odd, Complex *output) {
+    apply_schur_even(n, kappa, threads, neighbors, links, even_clover, even, odd, output, true);
 }
 
 // Encoded indices address the actual owned input or one packed temporal face.
@@ -214,12 +232,16 @@ extern "C" void lqcd_hmc_schur_even_faces(
     std::int64_t n, double kappa, int threads, const std::int64_t *neighbors,
     const Complex *links, const Complex *even_clover, const Complex *even, const Complex *odd,
     const Complex *lower_face, const Complex *upper_face, Complex *output) {
-    const auto &table = projectors();
-#pragma omp parallel if(n >= 128) num_threads(threads)
-    {
-        even_team<true>(n, kappa, neighbors, links, even_clover, even, odd, output,
-                        table, false, lower_face, upper_face);
-    }
+    apply_schur_even<true>(n, kappa, threads, neighbors, links, even_clover, even, odd,
+                          output, false, lower_face, upper_face);
+}
+
+extern "C" void lqcd_hmc_schur_even_faces_gamma5(
+    std::int64_t n, double kappa, int threads, const std::int64_t *neighbors,
+    const Complex *links, const Complex *even_clover, const Complex *even, const Complex *odd,
+    const Complex *lower_face, const Complex *upper_face, Complex *output) {
+    apply_schur_even<true>(n, kappa, threads, neighbors, links, even_clover, even, odd,
+                          output, true, lower_face, upper_face);
 }
 
 // The six spatial directions only read owned spinors, even with one owned
@@ -254,10 +276,14 @@ extern "C" void lqcd_hmc_schur_even_faces_finish(
     std::int64_t n, double kappa, int threads, const std::int64_t *neighbors,
     const Complex *links, const Complex *even_clover, const Complex *even, const Complex *odd,
     const Complex *lower_face, const Complex *upper_face, const Complex *spatial, Complex *output) {
-    const auto &table = projectors();
-#pragma omp parallel if(threads > 1 && n >= 128) num_threads(threads)
-    {
-        even_team<true, true>(n, kappa, neighbors, links, even_clover, even, odd, output, table,
-                               false, lower_face, upper_face, spatial);
-    }
+    apply_schur_even<true, true>(n, kappa, threads, neighbors, links, even_clover, even,
+                                 odd, output, false, lower_face, upper_face, spatial);
+}
+
+extern "C" void lqcd_hmc_schur_even_faces_finish_gamma5(
+    std::int64_t n, double kappa, int threads, const std::int64_t *neighbors,
+    const Complex *links, const Complex *even_clover, const Complex *even, const Complex *odd,
+    const Complex *lower_face, const Complex *upper_face, const Complex *spatial, Complex *output) {
+    apply_schur_even<true, true>(n, kappa, threads, neighbors, links, even_clover, even,
+                                 odd, output, true, lower_face, upper_face, spatial);
 }

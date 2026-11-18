@@ -25,7 +25,7 @@ class DistributedRHMC:
                  zolotarev=False, force_pole_batch=8, projected_force_faces=False,
                  light_heatbath_action=False, real_krylov_dot=False, pade_drift=False,
                  shared_clover_spin=False, native_pade=False, reuse_odd_inverse=False,
-                 overlap_schur_faces=False, gershgorin_strange=False):
+                 overlap_schur_faces=False, gershgorin_strange=False, fused_schur_gamma5=False):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -75,6 +75,7 @@ class DistributedRHMC:
         self.reuse_odd_inverse = reuse_odd_inverse
         self.overlap_schur_faces = overlap_schur_faces
         self.gershgorin_strange = gershgorin_strange
+        self.fused_schur_gamma5 = fused_schur_gamma5
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
             self.interval, md_order=md_order, zolotarev=zolotarev)
 
@@ -113,10 +114,15 @@ class DistributedRHMC:
         return prepare_local_slab_schur(extended, clover, mass, self.comm, self.library,
                                         packed_faces=self.packed_faces, compact_spin=self.compact_spin,
                                         projected_force_faces=self.projected_force_faces, odd_inverse=odd_inverse,
-                                        overlap_faces=self.overlap_schur_faces)
+                                        overlap_faces=self.overlap_schur_faces, fused_gamma5=self.fused_schur_gamma5)
+
+    def _gamma5_schur(self, schur, field):
+        if self.fused_schur_gamma5:
+            return schur(field, reflect=True)
+        return self.gamma5 * schur(field)
 
     def _normal(self, schur, field):
-        return self.gamma5 * schur(self.gamma5 * schur(field))
+        return self._gamma5_schur(schur, self._gamma5_schur(schur, field))
 
     def _endpoint_geometry(self, u):
         extended = self._gauge_faces(u)
@@ -129,7 +135,7 @@ class DistributedRHMC:
             return self._normal(schur_s, vec)
 
         fraction, _ = apply_rational(normal, noise_s, self.refresh_terms, comm=self.comm, real_dot=self.real_krylov_dot)
-        return self.gamma5 * schur_l(self.gamma5 * noise_l), normal(fraction)
+        return self._gamma5_schur(schur_l, self.gamma5 * noise_l), normal(fraction)
 
     @torch.no_grad()
     def refresh(self, u, noise_l, noise_s):
