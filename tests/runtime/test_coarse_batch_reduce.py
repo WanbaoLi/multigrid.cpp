@@ -148,6 +148,7 @@ def diagnostic(solver, cap):
                            restarts=sum(sum(r['restarts']) for r in records),
                            differing_iterations=any(len(set(r['iterations'])) > 1 for r in records),
                            differing_refreshes=any(len(set(r['refreshes'])) > 1 for r in records),
+                           cgs2_rounds=sum(r.get('cgs2_rounds', 0) for r in records),
                            allreduce_calls=sum(r['allreduce_calls'] for r in records))
         except (AssertionError, KeyError, TypeError) as failure:
             error = repr(failure)
@@ -207,6 +208,12 @@ with Solver([extent]*4, [1,1,1,comm.size], mass=mass, csw=1.160920226,
         assert relative(fallback, normal) < 1e-12
         assert [s['iterations'] for s in normal_stats] == [s['iterations'] for s in fallback_stats]
         os.environ[name] = original
+    os.environ['LQCD_COARSE_CGS2'] = '2'
+    for indices, groups in [([1, 3, 2, 0, 5], 4), (list(range(12)), 4)]:
+        cgs, _ = verify(solver, indices, groups, 1)
+        assert relative(cgs, scalar[indices]) < 1e-8
+    assert diagnostic(solver, 40)['cgs2_rounds'] > 0
+    os.environ['LQCD_COARSE_CGS2'] = '0'
     for invalid in ['2', '-1', '.5', 'nan', 'bad', '']:
         rejected_then_recover(solver, 'LQCD_COARSE_BATCH_REDUCE', invalid)
     # strtod rounds both ranks to zero here, while the existing setting()->atoi

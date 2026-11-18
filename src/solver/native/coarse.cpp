@@ -31,65 +31,65 @@ public:
     CoarseThreadScope &operator=(const CoarseThreadScope &) = delete;
 };
 
-// Two classical Gram-Schmidt passes: each projection has one global vector
-// reduction. Transform q and its paired preconditioned direction z together,
-// preserving D*z ~= q. Fields contain owned entries only, including zero odd
-// rows in the Schur representation; MPI stays outside OpenMP regions.
+void coarse_cgs_coefficients(const FloatField &q, const std::vector<FloatField> &qs, double *h) {
+#pragma omp parallel for schedule(static) if (q.size() > 100000)
+    for (size_t j = 0; j < qs.size(); ++j) {
+        double re = 0, im = 0;
+        const float *basis = qs[j].data();
+#pragma omp simd reduction(+ : re, im)
+        for (size_t k = 0; k < q.size() / 2; ++k) {
+            re += (double)basis[2 * k] * q[2 * k] +
+                  (double)basis[2 * k + 1] * q[2 * k + 1];
+            im += (double)basis[2 * k] * q[2 * k + 1] -
+                  (double)basis[2 * k + 1] * q[2 * k];
+        }
+        h[2 * j] = re;
+        h[2 * j + 1] = im;
+    }
+}
+
+void coarse_cgs_subtract(FloatField &q, FloatField &z, const std::vector<FloatField> &qs,
+                         const std::vector<FloatField> &zs, const double *h) {
+    if (qs.empty()) return;
+    // Tile independent sites and preserve each site's sum over directions.
+#pragma omp parallel for schedule(static) if (q.size() > 100000)
+    for (size_t first = 0; first < q.size() / 2; first += 16) {
+        const size_t lanes = std::min(size_t(16), q.size() / 2 - first);
+        alignas(64) double qr[16] = {}, qi[16] = {}, zr[16] = {}, zi[16] = {};
+        for (size_t j = 0; j < qs.size(); ++j) {
+            const double ar = h[2 * j], ai = h[2 * j + 1];
+            const float *qj = qs[j].data() + 2 * first, *zj = zs[j].data() + 2 * first;
+#pragma omp simd
+            for (size_t lane = 0; lane < lanes; ++lane) {
+                qr[lane] += ar * qj[2 * lane] - ai * qj[2 * lane + 1];
+                qi[lane] += ar * qj[2 * lane + 1] + ai * qj[2 * lane];
+                zr[lane] += ar * zj[2 * lane] - ai * zj[2 * lane + 1];
+                zi[lane] += ar * zj[2 * lane + 1] + ai * zj[2 * lane];
+            }
+        }
+#pragma omp simd
+        for (size_t lane = 0; lane < lanes; ++lane) {
+            const size_t k = first + lane;
+            q[2 * k] = static_cast<float>((double)q[2 * k] - qr[lane]);
+            q[2 * k + 1] = static_cast<float>((double)q[2 * k + 1] - qi[lane]);
+            z[2 * k] = static_cast<float>((double)z[2 * k] - zr[lane]);
+            z[2 * k + 1] = static_cast<float>((double)z[2 * k + 1] - zi[lane]);
+        }
+    }
+}
+
+// Two classical Gram-Schmidt passes. Transform each image and paired
+// preconditioned direction together, preserving D*z ~= q.
 void coarse_cgs2_project(FloatField &q, FloatField &z,
                          const std::vector<FloatField> &qs,
                          const std::vector<FloatField> &zs) {
-    const size_t n = qs.size();
-    std::vector<double> h(2 * n);
-    std::vector<const float *> qptr(n), zptr(n);
-    for (size_t j = 0; j < n; ++j) {
-        qptr[j] = qs[j].data();
-        zptr[j] = zs[j].data();
-    }
+    std::vector<double> h(2 * qs.size());
     for (int pass = 0; pass < 2; ++pass) {
-#pragma omp parallel for schedule(static) if (q.size() > 100000)
-        for (size_t j = 0; j < n; ++j) {
-            double re = 0, im = 0;
-            const float *basis = qs[j].data();
-#pragma omp simd reduction(+ : re, im)
-            for (size_t k = 0; k < q.size() / 2; ++k) {
-                re += (double)basis[2 * k] * q[2 * k] +
-                      (double)basis[2 * k + 1] * q[2 * k + 1];
-                im += (double)basis[2 * k] * q[2 * k + 1] -
-                      (double)basis[2 * k + 1] * q[2 * k];
-            }
-            h[2 * j] = re;
-            h[2 * j + 1] = im;
-        }
+        coarse_cgs_coefficients(q, qs, h.data());
         if (native_size > 1)
             MPI_Allreduce(MPI_IN_PLACE, h.data(), static_cast<int>(h.size()),
                           MPI_DOUBLE, MPI_SUM, native_comm);
-        // Tile independent sites, not the short direction reduction. This
-        // makes SIMD explicit while preserving the order and precision of
-        // each site's sum over j; q/z are written once after all directions.
-#pragma omp parallel for schedule(static) if (q.size() > 100000)
-        for (size_t first = 0; first < q.size() / 2; first += 16) {
-            const size_t lanes = std::min(size_t(16), q.size() / 2 - first);
-            alignas(64) double qr[16] = {}, qi[16] = {}, zr[16] = {}, zi[16] = {};
-            for (size_t j = 0; j < n; ++j) {
-                const double ar = h[2 * j], ai = h[2 * j + 1];
-                const float *qj = qptr[j] + 2 * first, *zj = zptr[j] + 2 * first;
-#pragma omp simd
-                for (size_t lane = 0; lane < lanes; ++lane) {
-                    qr[lane] += ar * qj[2 * lane] - ai * qj[2 * lane + 1];
-                    qi[lane] += ar * qj[2 * lane + 1] + ai * qj[2 * lane];
-                    zr[lane] += ar * zj[2 * lane] - ai * zj[2 * lane + 1];
-                    zi[lane] += ar * zj[2 * lane + 1] + ai * zj[2 * lane];
-                }
-            }
-#pragma omp simd
-            for (size_t lane = 0; lane < lanes; ++lane) {
-                const size_t k = first + lane;
-                q[2 * k] = static_cast<float>((double)q[2 * k] - qr[lane]);
-                q[2 * k + 1] = static_cast<float>((double)q[2 * k + 1] - qi[lane]);
-                z[2 * k] = static_cast<float>((double)z[2 * k] - zr[lane]);
-                z[2 * k + 1] = static_cast<float>((double)z[2 * k + 1] - zi[lane]);
-            }
-        }
+        coarse_cgs_subtract(q, z, qs, zs, h.data());
     }
 }
 
@@ -661,9 +661,9 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
         throw std::runtime_error("coarse batch requires one to twelve matching RHS fields");
     if (destinations.size() < static_cast<size_t>(nrhs))
         destinations.resize(nrhs);
-    // This first candidate implements precisely the default EO/MGS/fused
-    // algorithm. Other valid modes retain the previously tested scalar path.
-    if (!coarse_batch_reduce || nrhs == 1 || !coarse_eo || coarse_cgs2 ||
+    // Plain CGS2 mode keeps the scalar execution path. Mode 2 opts in to
+    // packing the independent right-hand sides on the EO/fused path.
+    if (!coarse_batch_reduce || nrhs == 1 || !coarse_eo || (coarse_cgs2 && !coarse_batch_cgs2) ||
         !setting("LQCD_GCR_FUSED", 1)) {
         for (int r = 0; r < nrhs; ++r)
             coarse_solve(sources[r], destinations[r]);
@@ -679,6 +679,7 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
     };
     std::vector<State> states(nrhs);
     int reduction_rounds = 0;
+    int cgs2_rounds = 0;
     auto reduce = [&](std::vector<double> &values) {
         coarse_batch_sum(values);
         ++reduction_rounds;
@@ -688,6 +689,8 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
         std::cerr << "native coarse batch reduce {\"nrhs\":" << nrhs
                   << ",\"coarse_it_limit\":" << coarse_it
                   << ",\"coarse_tolerance\":" << coarse_tolerance
+                  << ",\"packed_cgs2\":" << (coarse_batch_cgs2 ? "true" : "false")
+                  << ",\"cgs2_rounds\":" << cgs2_rounds
                   << ",\"reduction_rounds\":" << reduction_rounds
                   << ",\"allreduce_calls\":" << (native_size > 1 ? reduction_rounds : 0);
         const char *names[] = {"iterations", "restarts", "refreshes", "capped"};
@@ -741,6 +744,7 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
     active.reserve(nrhs);
     refreshed.reserve(nrhs);
     std::vector<double> projections(2 * nrhs), moments(3 * nrhs);
+    std::vector<double> cgs_projections;
     // Iteration limits are per RHS. A converged/broken-down RHS never advances
     // another RHS's history. Every decision uses a globally reduced scalar,
     // so active sets and collective order agree on all MPI ranks.
@@ -759,25 +763,46 @@ void NativeMG::Impl::coarse_solve_batch(const std::vector<FloatField> &sources,
         }
         if (active.empty()) break;
 
-        // Modified Gram-Schmidt order is retained separately for every RHS:
-        // projection j is applied before projection j+1. The packed reduction
-        // contains only independent per-RHS dot products, no cross-RHS Gram.
-        for (size_t j = 0; j < maximum_history; ++j) {
-            std::fill(projections.begin(), projections.end(), 0.);
-            for (int r : active) {
-                const auto &state = states[r];
-                if (j >= state.images.size()) continue;
-                const Complex beta = coarse_batch_dot_local(state.images[j], state.image);
-                projections[2 * r] = beta.real();
-                projections[2 * r + 1] = beta.imag();
+        if (coarse_batch_cgs2 && maximum_history > 2) {
+            const size_t rhs_stride = 2 * maximum_history;
+            cgs_projections.resize(nrhs * rhs_stride);
+            // One collective per CGS pass, including lanes whose histories
+            // end early or have restarted. RHS columns remain independent.
+            for (int pass = 0; pass < 2; ++pass) {
+                std::fill(cgs_projections.begin(), cgs_projections.end(), 0.);
+                for (int r : active) {
+                    const auto &state = states[r];
+                    coarse_cgs_coefficients(state.image, state.images,
+                                            cgs_projections.data() + r * rhs_stride);
+                }
+                reduce(cgs_projections);
+                ++cgs2_rounds;
+                for (int r : active) {
+                    auto &state = states[r];
+                    coarse_cgs_subtract(state.image, state.direction, state.images, state.directions,
+                                        cgs_projections.data() + r * rhs_stride);
+                }
             }
-            reduce(projections);
-            for (int r : active) {
-                auto &state = states[r];
-                if (j >= state.images.size()) continue;
-                const Complex beta(projections[2 * r], projections[2 * r + 1]);
-                coarse_axpy(state.image, -beta, state.images[j]);
-                coarse_axpy(state.direction, -beta, state.directions[j]);
+        } else {
+            // Retain the established sequential MGS order for short histories
+            // and for the ordinary reduction batch.
+            for (size_t j = 0; j < maximum_history; ++j) {
+                std::fill(projections.begin(), projections.end(), 0.);
+                for (int r : active) {
+                    const auto &state = states[r];
+                    if (j >= state.images.size()) continue;
+                    const Complex beta = coarse_batch_dot_local(state.images[j], state.image);
+                    projections[2 * r] = beta.real();
+                    projections[2 * r + 1] = beta.imag();
+                }
+                reduce(projections);
+                for (int r : active) {
+                    auto &state = states[r];
+                    if (j >= state.images.size()) continue;
+                    const Complex beta(projections[2 * r], projections[2 * r + 1]);
+                    coarse_axpy(state.image, -beta, state.images[j]);
+                    coarse_axpy(state.direction, -beta, state.directions[j]);
+                }
             }
         }
         std::fill(moments.begin(), moments.end(), 0.);

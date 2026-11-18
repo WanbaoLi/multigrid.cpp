@@ -22,7 +22,7 @@ void NativeMG::Impl::configure_solve() {
                        (double)setting("NATIVE_COARSE_IT", 40), .1, 1e-3, 0., 1., 0., 0., 0., 1.,
                        (double)(setting("NATIVE_OUTER_FLOAT", 1) != 0), 0., 0., 0.};
     const double lower[] = {1., 1., 1., 1e-4, 1e-6, 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.};
-    const double upper[] = {32., 8., 200., .9, .1, 1., 1., 1., 608., 1., 1., 1., 1., 2., 128.};
+    const double upper[] = {32., 8., 200., .9, .1, 1., 1., 2., 608., 1., 1., 1., 1., 2., 128.};
     constexpr int count = sizeof(values) / sizeof(values[0]);
     int invalid = 0;
     for (int i = 0; i < count; i++) {
@@ -66,6 +66,7 @@ void NativeMG::Impl::configure_solve() {
     float_correction_verify = values[5] != 0;
     fine_team_fused = values[6] != 0;
     coarse_cgs2 = values[7] != 0;
+    coarse_batch_cgs2 = values[7] == 2;
     coarse_threads = (int)values[8];
     coarse_batch_reduce = values[9] != 0;
     outer_float = values[11] != 0;
