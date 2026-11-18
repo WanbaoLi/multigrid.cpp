@@ -6,7 +6,8 @@
 namespace {
 struct Projector {
     int lower_spin;
-    Complex phase;
+    double sign;
+    bool imaginary;
 };
 using ProjectorTable = std::array<std::array<Projector, 2>, 8>;
 
@@ -19,13 +20,21 @@ const auto &projectors() {
             for (int spin = 0; spin < 2; ++spin)
                 for (int lower = 2; lower < 4; ++lower) {
                     const Complex element = gamma_matrix[direction / 2][spin][lower];
-                    if (element != Complex{})
-                        values[direction][spin] = {lower, sign * element};
+                    if (element != Complex{}) {
+                        // Nonzero DeGrand–Rossi phases are ±1 or ±i.
+                        const bool imaginary = element.real() == 0.;
+                        const double component = imaginary ? element.imag() : element.real();
+                        values[direction][spin] = {lower, sign * component, imaginary};
+                    }
                 }
         }
         return values;
     }();
     return table;
+}
+
+Complex rotate_phase(Complex value, double sign, bool imaginary) {
+    return imaginary ? Complex{-sign * value.imag(), sign * value.real()} : sign * value;
 }
 
 void hopping_sum(std::int64_t n, std::int64_t site, const std::int64_t *neighbors,
@@ -36,16 +45,18 @@ void hopping_sum(std::int64_t n, std::int64_t site, const std::int64_t *neighbor
         const Complex *spinor = input + 12 * neighbors[offset];
         const Complex *link = links + 9 * offset;
         for (int spin = 0; spin < 2; ++spin) {
-            const auto [lower, phase] = table[direction][spin];
+            const auto [lower, sign, imaginary] = table[direction][spin];
+            const double reconstruction_sign = imaginary ? -sign : sign;
             Complex projected[3];
             for (int color = 0; color < 3; ++color)
-                projected[color] = spinor[3 * spin + color] + phase * spinor[3 * lower + color];
+                projected[color] = spinor[3 * spin + color] +
+                                   rotate_phase(spinor[3 * lower + color], sign, imaginary);
             for (int row = 0; row < 3; ++row) {
                 const Complex rotated = link[3 * row] * projected[0] +
                                         link[3 * row + 1] * projected[1] +
                                         link[3 * row + 2] * projected[2];
                 sum[spin][row] += rotated;
-                sum[lower][row] += std::conj(phase) * rotated;
+                sum[lower][row] += rotate_phase(rotated, reconstruction_sign, imaginary);
             }
         }
     }
