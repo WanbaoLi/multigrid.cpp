@@ -24,7 +24,7 @@ class DistributedRHMC:
                  md_order=32, md_tolerance=1e-12, direct_clover=False, packed_faces=False, compact_spin=False,
                  zolotarev=False, force_pole_batch=8, projected_force_faces=False,
                  light_heatbath_action=False, real_krylov_dot=False, pade_drift=False,
-                 shared_clover_spin=False, native_pade=False):
+                 shared_clover_spin=False, native_pade=False, reuse_odd_inverse=False):
         self.lattice = tuple(lattice)
         if (len(self.lattice) != 4 or any(n <= 0 or n % 2 for n in self.lattice) or
                 self.lattice[3] % comm.size != 0):
@@ -69,6 +69,7 @@ class DistributedRHMC:
         self.pade_drift = pade_drift
         self.shared_clover_spin = shared_clover_spin
         self.native_pade = native_pade
+        self.reuse_odd_inverse = reuse_odd_inverse
         self.md_terms, self.endpoint_terms, self.refresh_terms, self.grid_errors = checked_rational_terms(
             self.interval, md_order=md_order, zolotarev=zolotarev)
 
@@ -95,10 +96,10 @@ class DistributedRHMC:
             raise ArithmeticError("Certified strange spectrum exceeds the fixed rational interval")
         return lower, upper
 
-    def _schur(self, extended, clover, mass):
+    def _schur(self, extended, clover, mass, odd_inverse=None):
         return prepare_local_slab_schur(extended, clover, mass, self.comm, self.library,
                                         packed_faces=self.packed_faces, compact_spin=self.compact_spin,
-                                        projected_force_faces=self.projected_force_faces)
+                                        projected_force_faces=self.projected_force_faces, odd_inverse=odd_inverse)
 
     def _normal(self, schur, field):
         return self.gamma5 * schur(self.gamma5 * schur(field))
@@ -203,8 +204,10 @@ class DistributedRHMC:
         links = u.detach().requires_grad_(True)
         extended = self._gauge_faces(links)
         coefficients = self._coefficients(extended)
-        local = -sum((2 - i) * torch.linalg.slogdet(clover[self.odd])[1].sum()
-                     for i, clover in enumerate(coefficients))
+        determinant = None
+        if not self.reuse_odd_inverse:
+            determinant = -sum((2 - i) * torch.linalg.slogdet(clover[self.odd])[1].sum()
+                               for i, clover in enumerate(coefficients))
         schur_links = extended.detach().requires_grad_(True)
         link_gradient = torch.zeros_like(extended)
         clover_gradients = []
@@ -216,7 +219,12 @@ class DistributedRHMC:
             start = perf_counter()
             schur_clover = clover.detach().requires_grad_(True)
             clover_gradient = torch.zeros_like(clover)
-            schur = self._schur(schur_links, schur_clover, mass)
+            odd_inverse = None
+            if self.reuse_odd_inverse:
+                odd_inverse = torch.linalg.inv(schur_clover[self.odd])
+                # The real differential of log|det C| is Re tr(C^-1 dC).
+                clover_gradient[self.odd] = -(2 - i) * dagger(odd_inverse.detach())
+            schur = self._schur(schur_links, schur_clover, mass, odd_inverse)
 
             def normal(vec):
                 return self._normal(schur, vec)
@@ -244,9 +252,12 @@ class DistributedRHMC:
             clover_gradients.append(clover_gradient)
             spinor_grad += perf_counter() - finished_solve
         start = perf_counter()
-        gradient, = torch.autograd.grad(
-            (local, extended, *coefficients), links,
-            grad_outputs=(torch.ones_like(local), link_gradient, *clover_gradients))
+        outputs = (extended, *coefficients)
+        gradients = (link_gradient, *clover_gradients)
+        if determinant is not None:
+            outputs = (determinant, *outputs)
+            gradients = (torch.ones_like(determinant), *gradients)
+        gradient, = torch.autograd.grad(outputs, links, grad_outputs=gradients)
         if include_gauge:
             gradient.add_(owned_gauge_gradient(extended, self.beta).reshape_as(gradient))
         force = self._project_force(u, gradient)

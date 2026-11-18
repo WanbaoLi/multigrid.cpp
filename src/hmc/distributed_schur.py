@@ -169,7 +169,8 @@ def _slab_geometry(nt, spatial, rank, ranks, packed_faces, projected_force_faces
 
 
 def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, projected=True,
-                             packed_faces=False, compact_spin=False, projected_force_faces=False):
+                             packed_faces=False, compact_spin=False, projected_force_faces=False,
+                             odd_inverse=None):
     """Prepare Schur from only an owned Clover slab and its gauge faces.
 
     The returned operator differentiates through link and spinor halo adjoints
@@ -216,7 +217,8 @@ def prepare_local_slab_schur(extended_gauge, clover, mass, comm, library, *, pro
         hopping.append(terms)
     clover = clover.reshape(nt * area, 2, 6, 6)
     even_clover = clover[geometry[0][0] - area]
-    odd_inverse = torch.linalg.inv(clover[geometry[1][0] - area])
+    if odd_inverse is None:
+        odd_inverse = torch.linalg.inv(clover[geometry[1][0] - area])
     kappa = 1 / (2 * (mass + 4))
     odd_kernel, even_kernel = _kernels(str(library), packed_faces)
     threads = torch.get_num_threads()
