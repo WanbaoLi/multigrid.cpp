@@ -3,6 +3,10 @@
 #include <array>
 #include <cstdint>
 
+#if defined(LQCD_HMC_CLOVER_SIMD) && defined(__aarch64__)
+#include <arm_neon.h>
+#endif
+
 namespace {
 struct Projector {
     int lower_spin;
@@ -79,8 +83,29 @@ void clover_product(const Complex *blocks, const Complex *input, Complex *output
     for (int chiral = 0; chiral < 2; ++chiral) {
         const auto *block = blocks + 36 * chiral;
         const auto *source = input + 6 * chiral;
+#if defined(LQCD_HMC_CLOVER_SIMD) && defined(__aarch64__)
+        // One FP64 lane per real and imaginary component. Reuse the
+        // original and i-rotated inputs across all rows of the block.
+        const uint64x2_t negate_real = {std::uint64_t{1} << 63, 0};
+        float64x2_t values[6], rotated[6];
+        for (int col = 0; col < 6; ++col) {
+            const auto x = vld1q_f64(reinterpret_cast<const double *>(source + col));
+            values[col] = x;
+            rotated[col] = vreinterpretq_f64_u64(veorq_u64(
+                vreinterpretq_u64_f64(vextq_f64(x, x, 1)), negate_real));
+        }
+#endif
         for (int row = 0; row < 6; ++row) {
-#if defined(LQCD_HMC_CLOVER_SIMD)
+#if defined(LQCD_HMC_CLOVER_SIMD) && defined(__aarch64__)
+            auto sum = vdupq_n_f64(0.);
+            for (int col = 0; col < 6; ++col) {
+                const auto link = block[6 * row + col];
+                const auto product = vfmaq_n_f64(vmulq_n_f64(values[col], link.real()),
+                                                 rotated[col], link.imag());
+                sum = vaddq_f64(sum, product);
+            }
+            vst1q_f64(reinterpret_cast<double *>(output + 6 * chiral + row), sum);
+#elif defined(LQCD_HMC_CLOVER_SIMD)
             // Each row is a short FP64 complex dot product. Separate the
             // accumulators so the compiler can vectorize the real lanes.
             double real = 0., imag = 0.;
