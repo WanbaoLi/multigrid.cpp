@@ -29,7 +29,8 @@ git -C "$work/cccl" rev-parse HEAD
     -DCPM_CCCL_SOURCE="$work/cccl"
 
 "$cmake" --build "$work/quda-build" --target quda --parallel "${BUILD_JOBS:-32}"
-"$cmake" --install "$work/quda-build"
+# The top-level install also expects the QUDA test support library.
+"$cmake" -P "$work/quda-build/lib/cmake_install.cmake"
 python="$conda_root/envs/pyquda/bin/python"
 export QUDA_PATH="$prefix"
 export CC="$toolchain/bin/x86_64-conda-linux-gnu-gcc"
