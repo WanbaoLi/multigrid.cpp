@@ -86,7 +86,10 @@ def main():
     single = QudaPrecision.QUDA_SINGLE_PRECISION
     no_reconstruct = QudaReconstructType.QUDA_RECONSTRUCT_NO
     dirac.setPrecision(cuda=double, sloppy=single, refinement_sloppy=single, precondition=single)
-    dirac.setReconstruct(cuda=no_reconstruct, sloppy=no_reconstruct, precondition=no_reconstruct)
+    dirac.setReconstruct(
+        cuda=no_reconstruct, sloppy=no_reconstruct, refinement_sloppy=no_reconstruct,
+        precondition=no_reconstruct, eigensolver=no_reconstruct,
+    )
     dirac.multigrid.setParam(setup_tol=0.1, setup_maxiter=40, coarse_tol=0.25,
                              coarse_maxiter=16, smoother_tol=0.25,
                              smoother_nu_pre=2, smoother_nu_post=2)
