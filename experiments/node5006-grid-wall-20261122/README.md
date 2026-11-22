@@ -64,3 +64,13 @@ The driver compiles against an include override applied by
 Grid's batched inner-product template, which is instantiated while compiling
 the single-precision aggregation class. The benchmark runs the standard
 aggregation setup. The affected template belongs to HDCG refinement.
+
+An alternate setup uses Grid's `CreateSubspacePolyCheby` from
+`grid-chebyshev-setup.patch`. It filters the first near-null vector
+on `[0.5, 100]` with order 96 and builds the remaining vectors on
+`[0.2, 100]` with order 8. The chiral projection, Galerkin
+coarsening, outer solver, and residual check use the same Grid code.
+Use the runner export at `e7acbde16fd7e9409223d16c51a0eebc1a277ce4`
+with `GRID_CHEBYSHEV_SETUP=1` for this setup. It writes
+`run-chebyshev.log` and `samples-chebyshev.jsonl` alongside the
+default run files.
