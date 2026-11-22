@@ -119,8 +119,10 @@ def main():
                              smoother_nu_pre=2, smoother_nu_post=2)
     if args.mg_profile == "ensemble":
         mg_param = dirac.multigrid.param
-        mg_param.n_vec = [24, 32, 32]
-        mg_param.smoother = [QudaInverterType.QUDA_MR_INVERTER] * 3
+        null_vectors = list(mg_param.n_vec)
+        null_vectors[:2] = [24, 32]
+        mg_param.n_vec = null_vectors
+        mg_param.smoother = [QudaInverterType.QUDA_MR_INVERTER] * len(mg_param.smoother)
         dirac.multigrid.setParam(
             setup_tol=5e-6, setup_maxiter=500, coarse_tol=0.1, coarse_maxiter=12,
             smoother_tol=0.1, smoother_nu_pre=0, smoother_nu_post=8,
