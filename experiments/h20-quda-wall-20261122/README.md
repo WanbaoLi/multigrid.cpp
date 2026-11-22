@@ -149,3 +149,35 @@ single-RHS prolongation calls in the profile. The second sample took
 process acquired most of GPU 6's memory during the benchmark. The
 12-RHS phase failed its GPU allocation. The [interrupted run record](mg-recheck-interrupted.json)
 keeps its timings and status.
+
+## Solver compute at 1e-8
+
+The benchmark uses the same verified cfg_5000, one rank and one H20-3e
+per run. The original two-level configuration ran on GPU 3 with driver
+`8366db8cdeebe99ef3c36d96d8937d4858243aea`. The three-level configuration
+ran on GPU 2 with driver `d3f20eae36488e950c40fd23faeaa4d4cf30db65`.
+The two scripts differ only in how the three-level branch assigns fixed-size
+PyQUDA arrays.
+
+Both runs used the same rebuilt QUDA library with the earlier H20 reduction
+patch, the [compute accessor](quda-compute-timer-af7e150.patch), and
+`QUDA_MULTIGRID_NVEC_LIST=24,32`. The library SHA-256 is
+`ad6bd2e636fcb78b24339bcd240e140f083530bc8d056bd1b19a2005d1dc3296`.
+The reported time is the second call's increment to `QUDA_PROFILE_COMPUTE`,
+with one warm-up call before it. The profiles exclude Python allocation,
+gauge processing, multigrid setup, and the explicit full-residual checks.
+
+| Hierarchy | 1 RHS (s) | 1 RHS outer GCR steps | 12 RHS (s) | 12 RHS outer GCR steps | Worst 12-RHS full residual |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Original two levels | 9.305966 | 610 | 111.615315 | 628 | 7.342e-9 |
+| Three levels based on ensemble metadata | 0.564091 | 13 | 5.590312 | 12 | 5.048e-9 |
+
+Setting the solve tolerance to 1e-8 left the original hierarchy in the
+hundreds of outer iterations. The three-level setup uses blocks
+`[3,3,3,2]` and `[2,2,2,2]`, 24 and 32 null vectors, setup
+tolerance 5e-6 with a 500-iteration cap, and MR smoothing. The comparison
+changes multiple hierarchy parameters together. All six samples per
+configuration passed the full residual check, and no correction solves
+were used. The structured results are
+[two levels](pure-1e-8-two-level.json) and
+[three levels](pure-1e-8-three-level.json).

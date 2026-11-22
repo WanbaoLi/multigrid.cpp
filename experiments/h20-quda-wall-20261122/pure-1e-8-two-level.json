@@ -1,0 +1,145 @@
+{
+  "host": "gpu2025",
+  "gpu": "NVIDIA H20-3e",
+  "cuda_visible_devices": "3",
+  "mpi_ranks": 1,
+  "omp_num_threads": "1",
+  "gauge": "beta6.20_mu-0.2790_ms-0.2400_L24x64_cfg_5000.lime",
+  "gauge_sha256": "f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326",
+  "stout": {
+    "steps": 1,
+    "rho": 0.125,
+    "directions": "xyzt"
+  },
+  "gauge_fixing": null,
+  "lattice": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "mass": -0.279,
+  "clover_csw": 1.160678675188,
+  "temporal_boundary": -1,
+  "source": {
+    "type": "wall",
+    "time_slice": 0,
+    "spins": 4,
+    "colors": 3
+  },
+  "multigrid_active": true,
+  "multigrid_levels": 2,
+  "multigrid_profile": "original",
+  "multigrid_blocks": [
+    [
+      6,
+      6,
+      6,
+      4
+    ]
+  ],
+  "multigrid_null_vectors": [
+    24
+  ],
+  "zero_initial_guess": true,
+  "correction_solves": 0,
+  "requested_solve_tolerance": 1e-08,
+  "full_residual_threshold": 1e-08,
+  "samples": {
+    "1": [
+      {
+        "solver_seconds": 9.688367000000353,
+        "quda_iterations": 610,
+        "run": 1,
+        "warmup": true,
+        "full_relative_residuals": [
+          7.361251277084744e-09
+        ]
+      },
+      {
+        "solver_seconds": 9.30596599999892,
+        "quda_iterations": 610,
+        "run": 2,
+        "warmup": false,
+        "full_relative_residuals": [
+          7.361251277084744e-09
+        ]
+      },
+      {
+        "solver_seconds": 9.304765999998963,
+        "quda_iterations": 610,
+        "run": 3,
+        "warmup": false,
+        "full_relative_residuals": [
+          7.361251277084744e-09
+        ]
+      }
+    ],
+    "12": [
+      {
+        "solver_seconds": 116.92174799992391,
+        "quda_iterations": 628,
+        "run": 1,
+        "warmup": true,
+        "full_relative_residuals": [
+          5.163274178901366e-09,
+          3.3366604155098342e-09,
+          5.340061892840173e-09,
+          6.247030965689138e-09,
+          7.2654729988310104e-09,
+          5.151821335926043e-09,
+          7.342045992220711e-09,
+          4.241383509050214e-09,
+          3.6904962527127075e-09,
+          2.1103938782452957e-09,
+          4.036387026100615e-09,
+          5.395490128019594e-09
+        ]
+      },
+      {
+        "solver_seconds": 111.6153149997058,
+        "quda_iterations": 628,
+        "run": 2,
+        "warmup": false,
+        "full_relative_residuals": [
+          5.163274178901366e-09,
+          3.3366604155098342e-09,
+          5.340061892840173e-09,
+          6.247030965689138e-09,
+          7.2654729988310104e-09,
+          5.151821335926043e-09,
+          7.342045992220711e-09,
+          4.241383509050214e-09,
+          3.6904962527127075e-09,
+          2.1103938782452957e-09,
+          4.036387026100615e-09,
+          5.395490128019594e-09
+        ]
+      },
+      {
+        "solver_seconds": 111.62094199971159,
+        "quda_iterations": 628,
+        "run": 3,
+        "warmup": false,
+        "full_relative_residuals": [
+          5.163274178901366e-09,
+          3.3366604155098342e-09,
+          5.340061892840173e-09,
+          6.247030965689138e-09,
+          7.2654729988310104e-09,
+          5.151821335926043e-09,
+          7.342045992220711e-09,
+          4.241383509050214e-09,
+          3.6904962527127075e-09,
+          2.1103938782452957e-09,
+          4.036387026100615e-09,
+          5.395490128019594e-09
+        ]
+      }
+    ]
+  },
+  "second_solver_seconds_1": 9.30596599999892,
+  "second_solver_seconds_12": 111.6153149997058,
+  "second_solution_column_zero_relative_difference": 5.639329154532112e-07,
+  "timing_scope": "QUDA_PROFILE_COMPUTE"
+}
