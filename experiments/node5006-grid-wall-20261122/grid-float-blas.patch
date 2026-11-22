@@ -1,0 +1,17 @@
+--- a/Grid/algorithms/deflation/MultiRHSBlockCGLinalg.h
++++ b/Grid/algorithms/deflation/MultiRHSBlockCGLinalg.h
+@@ -332 +332 @@
+-		     ComplexD(1.0),
++		     scalar(1.0),
+@@ -335 +335 @@
+-		     ComplexD(0.0),  // wipe out C
++		     scalar(0.0),  // wipe out C
+@@ -346,2 +346,3 @@
+-      Eigen::Map<Eigen::MatrixXcd> eC((std::complex<double> *)&HOST_C[ss*nrhs*nrhs],nrhs,nrhs);
+-      m = m + eC;
++      Eigen::Map<const Eigen::Matrix<scalar, Eigen::Dynamic, Eigen::Dynamic>>
++        eC(&HOST_C[ss*nrhs*nrhs],nrhs,nrhs);
++      m += eC.template cast<ComplexD>();
+@@ -350 +351 @@
+-    grid->GlobalSumVector((scalar *) &m(0,0),nrhs*nrhs);
++    grid->GlobalSumVector(m.data(),nrhs*nrhs);
