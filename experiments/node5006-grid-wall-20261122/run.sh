@@ -10,7 +10,7 @@ build="$work/build"
 toolchain="$HOME/.cache/quda-wall-20261122/toolchain"
 export MPICH_CXX="$toolchain/bin/x86_64-conda-linux-gnu-g++"
 export PATH="$deps/bin:$toolchain/bin:$PATH"
-export LD_LIBRARY_PATH="$deps/lib:$toolchain/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export LD_LIBRARY_PATH="$deps/lib:$work/lime-install/lib:$toolchain/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export CXX="$deps/bin/mpicxx"
 
 test "$(git -C "$source" rev-parse HEAD)" = 3232b438f2cf729e515c185e2dbf29d7cc276bb7
@@ -18,7 +18,7 @@ mkdir -p "$build"
 cd "$build"
 "$source/configure" --prefix="$work/install" --enable-comms=mpi-auto \
     --enable-simd=GEN --enable-gen-simd-width=64 \
-    --with-gmp="$deps" --with-mpfr="$deps" --with-fftw="$deps" --with-lime="$deps" \
+    --with-gmp="$deps" --with-mpfr="$deps" --with-fftw="$deps" --with-lime="$work/lime-install" \
     CXXFLAGS="-O3 -march=znver4" > "$work/configure.log" 2>&1
 make -C Grid -j "${GRID_BUILD_JOBS:-24}" libGrid.a > "$work/build.log" 2>&1
 read -r -a cxxflags <<< "$(./grid-config --cxxflags)"
