@@ -75,3 +75,11 @@ with `GRID_CHEBYSHEV_SETUP=1` for this setup. It writes
 `run-chebyshev.log` and `samples-chebyshev.jsonl` alongside the
 default run files. The alternate run on the fully loaded node also sets
 `OMP_WAIT_POLICY=PASSIVE`.
+
+## Run status
+
+At 2026-11-23 02:44 Asia/Shanghai, Grid had verified both SciDAC
+checksums and built both MG levels on node5006. The alternate driver
+was still running the one-column warmup at 148 outer iterations.
+The sample file was empty and the measured CPU idle percentage was
+0.00%. The run had produced no accepted second-round timings.
