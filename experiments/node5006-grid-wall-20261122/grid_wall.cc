@@ -67,12 +67,12 @@ int main(int argc, char **argv)
     params.blockSizes = {{3, 6, 6, 2}};
     checkParameterValidity(params);
     LevelInfo levels(gridF, params);
-    auto mg = createMGInstance<vSpinColourVectorF, vTComplexF, basis, WilsonCloverFermionF>(
+    NLevelMGPreconditioner<vSpinColourVectorF, vTComplexF, basis, 2, WilsonCloverFermionF> mg(
         params, levels, diracF, diracF);
-    mg->setup();
+    mg.setup();
     MdagMLinearOperator<WilsonCloverFermionD, LatticeFermionD> normal(diracD);
     MixedPrecisionFlexibleGeneralisedMinimalResidual<LatticeFermionD, LatticeFermionF>
-        solve(normalTolerance, 1000, gridF, *mg, 32);
+        solve(normalTolerance, 1000, gridF, mg, 32);
 
     LatticeInteger t(gridD);
     LatticeCoordinate(t, 3);
