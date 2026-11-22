@@ -5,9 +5,9 @@ The benchmark uses upstream [Grid](https://github.com/paboyle/Grid) at
 [c-lime](https://github.com/usqcd-software/c-lime) at
 `924aa0fce27a6cd73d94c9adc4b995f00e13232b`. The Grid source checkout is
 `~/Grid` on node5006. GCC 13.4.0, MPICH, Grid GEN SIMD (64-byte vectors),
-and the generic Wilson kernel are used. The topology is 16 MPI ranks
-(2 per NUMA domain) with 16 OpenMP threads per rank, using the
-repository's physical-core affinity launcher.
+and the generic Wilson kernel are used. Grid uses a `2×1×1×8` MPI lattice
+with 16 ranks (2 per NUMA domain) and 16 OpenMP threads per rank. The
+repository's launcher supplies rank and thread placement on physical cores.
 
 The driver reuses Grid's Wilson–Clover mixed-precision multigrid implementation
 from `tests/solver/Test_multigrid_common.h`. It uses two levels, 40 coarse
@@ -48,7 +48,7 @@ existing Miniconda prefix.
 ssh itp
 ssh node5006
 work="$HOME/.cache/grid-node5006-wall"
-revision=ebd75bfe4a2d857b0d0962f7014651b6fae03c00
+revision=2729df1362c4d446b4ed13538016276d73002eb1
 bash "$work/driver-$revision/experiments/node5006-grid-wall-20261122/run.sh"
 ```
 
