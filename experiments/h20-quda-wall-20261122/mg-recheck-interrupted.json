@@ -1,0 +1,45 @@
+{
+  "host": "gpu2025",
+  "gpu": "NVIDIA H20-3e",
+  "cuda_visible_devices": "6",
+  "driver_commit": "471dbbeb5840f00f7f15e3ee67a255cbc0541998",
+  "quda_commit": "af7e15080e247795ef076b6d9284478755a9a683",
+  "quda_library_sha256": "e63135e76ac6580b75a2b8e3ccb0db4d02221927595b18e2d6626821dbe6d323",
+  "gauge_sha256": "f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326",
+  "cmake_multigrid": true,
+  "multigrid_active": true,
+  "multigrid_levels": 2,
+  "multigrid_block": [6, 6, 6, 4],
+  "multigrid_null_vectors": 24,
+  "outer_inverter": "GCR",
+  "profile_single_rhs_prolongation_calls": 2052,
+  "single_rhs_samples": [
+    {
+      "run": 1,
+      "warmup": true,
+      "api_seconds": 11.267097795003792,
+      "quda_iterations": 684,
+      "full_relative_residual": 1.471568986399428e-9
+    },
+    {
+      "run": 2,
+      "warmup": false,
+      "api_seconds": 10.988722141977632,
+      "quda_iterations": 684,
+      "full_relative_residual": 1.471568986399428e-9
+    },
+    {
+      "run": 3,
+      "warmup": false,
+      "api_seconds": 13.12416609597858,
+      "quda_iterations": 684,
+      "full_relative_residual": 1.471568986399428e-9
+    }
+  ],
+  "completed_twelve_rhs_samples": 0,
+  "failure": {
+    "type": "cupy.cuda.memory.OutOfMemoryError",
+    "requested_bytes": 2038431744,
+    "other_gpu_process_memory_mib_at_interruption": 122904
+  }
+}

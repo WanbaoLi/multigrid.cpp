@@ -136,3 +136,16 @@ patching. The build enables dynamic Clover and FP64 promotion in its
 Cholesky solve. That kernel uses a precision path outside the supplied
 reduction patch. The aggregate profiling rows come from `profile_0.tsv` in
 the original and patched run directories on h20.
+
+## Separate multigrid rebuild
+
+The original and patched builds both already had `QUDA_MULTIGRID:BOOL=ON`.
+A clean patched build repeated that configuration and used driver
+`471dbbeb5840f00f7f15e3ee67a255cbc0541998`, which checks that the live
+two-level preconditioner is bound to GCR before timing. The first attempt
+on H20 GPU 6 completed all three single-RHS samples, with 2,052
+single-RHS prolongation calls in the profile. The second sample took
+10.989 seconds and met the full-residual threshold. A different compute
+process acquired most of GPU 6's memory during the benchmark. The
+12-RHS phase failed its GPU allocation. The [interrupted run record](mg-recheck-interrupted.json)
+keeps its timings and status.
