@@ -39,15 +39,25 @@ done
 read -r -a cxxflags <<< "$(./grid-config --cxxflags)"
 read -r -a ldflags <<< "$(./grid-config --ldflags)"
 read -r -a libs <<< "$(./grid-config --libs)"
-overlay="$work/driver-include"
+variant=
+if [[ ${GRID_CHEBYSHEV_SETUP:-0} == 1 ]]; then
+    variant=-chebyshev
+fi
+overlay="$work/driver-include$variant"
+binary="$work/grid_wall$variant"
+compiler_log="$work/compile-driver$variant.log"
 header=Grid/algorithms/deflation/MultiRHSBlockCGLinalg.h
 mkdir -p "$overlay/$(dirname "$header")"
 patch -s -o "$overlay/$header" "$source/$header" "$driver/grid-float-blas.patch"
+if [[ -n $variant ]]; then
+    patch -s -o "$overlay/Test_multigrid_common.h" "$source/tests/solver/Test_multigrid_common.h" \
+        "$driver/grid-chebyshev-setup.patch"
+fi
 if [[ ${GRID_REUSE_DRIVER_OBJECT:-0} == 1 ]]; then
-    test -s "$work/grid_wall.o"
+    test -s "$binary.o"
 else
     "$CXX" -O3 -march=znver4 -I"$overlay" -I"$build/Grid" -I"$build" -I"$source" -I"$source/tests/solver" \
-        "${cxxflags[@]}" -c "$driver/grid_wall.cc" -o "$work/grid_wall.o" > "$work/compile-driver.log" 2>&1 &
+        "${cxxflags[@]}" -c "$driver/grid_wall.cc" -o "$binary.o" > "$compiler_log" 2>&1 &
     driver_pid=$!
 fi
 GIT_DIR="$source/.git" GIT_WORK_TREE="$source" make -C Grid Version.h
@@ -57,8 +67,10 @@ GIT_DIR="$source/.git" GIT_WORK_TREE="$source" \
     > "$work/build.log" 2>&1 || lib_status=$?
 if [[ -n ${driver_pid:-} ]]; then wait "$driver_pid"; fi
 if [[ $lib_status != 0 ]]; then exit "$lib_status"; fi
-"$CXX" "$work/grid_wall.o" -L"$build/Grid" "${ldflags[@]}" "${libs[@]}" \
-    -o "$work/grid_wall" >> "$work/compile-driver.log" 2>&1
+"$CXX" "$binary.o" -L"$build/Grid" "${ldflags[@]}" "${libs[@]}" \
+    -o "$binary" >> "$compiler_log" 2>&1
+sha256sum "$binary"
+if [[ ${GRID_BUILD_ONLY:-0} == 1 ]]; then exit 0; fi
 
 gauge="$HOME/.cache/quda-wall-20261122/verified-inputs/beta6.20_mu-0.2790_ms-0.2400_L24x64_cfg_5000.lime"
 printf '%s  %s\n' f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326 "$gauge" | sha256sum -c
@@ -74,11 +86,10 @@ cmp -n "$(stat -c %s "$gauge")" "$gauge" "$lfn_work/input.lime"
 grid_input="$work/$(basename "$gauge" .lime).with-lfn.lime"
 mv -- "$lfn_work/input.lime" "$grid_input"
 sha256sum "$grid_input"
-sha256sum "$work/grid_wall"
-mpstat 1 2 > "$work/pre-benchmark-cpu.log"
+mpstat 1 2 > "$work/pre-benchmark-cpu$variant.log"
 "$HOME/miniconda3/bin/python" "$root/tools/run_numa.py" \
     --mpirun "$deps/bin/mpiexec" --ranks-per-numa 2 --threads 16 --time-slab \
-    -- "$work/grid_wall" "$grid_input" "$work/samples.jsonl" \
+    -- "$binary" "$grid_input" "$work/samples$variant.jsonl" \
     --grid 24.24.24.64 --mpi 2.1.1.8 --threads '{threads}' --dslash-generic \
-    --log Warning,Error > "$work/run.log" 2>&1
-cat "$work/samples.jsonl"
+    --log Warning,Error > "$work/run$variant.log" 2>&1
+cat "$work/samples$variant.jsonl"

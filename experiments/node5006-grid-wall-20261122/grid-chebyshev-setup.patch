@@ -1,0 +1,6 @@
+--- a/tests/solver/Test_multigrid_common.h
++++ b/tests/solver/Test_multigrid_common.h
+@@ -230 +230,2 @@
+-    _Aggregates.CreateSubspace(_LevelInfo.PRNGs[_CurrentLevel], fineMdagMOp, nb);
++    _Aggregates.CreateSubspacePolyCheby(_LevelInfo.PRNGs[_CurrentLevel], fineMdagMOp,
++                                    nb, 100.0, 0.5, 96, 0.2, 8);
