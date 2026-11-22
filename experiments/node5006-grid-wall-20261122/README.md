@@ -73,4 +73,5 @@ coarsening, outer solver, and residual check use the same Grid code.
 Use the runner export at `e7acbde16fd7e9409223d16c51a0eebc1a277ce4`
 with `GRID_CHEBYSHEV_SETUP=1` for this setup. It writes
 `run-chebyshev.log` and `samples-chebyshev.jsonl` alongside the
-default run files.
+default run files. The alternate run on the fully loaded node also sets
+`OMP_WAIT_POLICY=PASSIVE`.
