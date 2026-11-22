@@ -19,6 +19,14 @@ if ! git -C "$source_dir" apply --reverse --check "$patch"; then
     git -C "$source_dir" apply --check "$patch"
     git -C "$source_dir" apply "$patch"
 fi
+if [[ ${H20_COMPUTE_TIMER:-0} == 1 ]]; then
+    timer_patch="$driver/quda-compute-timer-af7e150.patch"
+    if ! git -C "$source_dir" apply --reverse --check "$timer_patch" 2>/dev/null; then
+        git -C "$source_dir" apply --check "$timer_patch"
+        git -C "$source_dir" apply "$timer_patch"
+    fi
+    sha256sum "$timer_patch"
+fi
 git -C "$source_dir" diff --check
 sha256sum "$patch"
 
@@ -61,4 +69,4 @@ if [[ -n ${H20_TUNE_CACHE:-} && ! -e "$variant/run/quda-cache/tunecache.tsv" ]];
 fi
 gauge="$work/verified-inputs/beta6.20_mu-0.2790_ms-0.2400_L24x64_cfg_5000.lime"
 printf '%s  %s\n' f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326 "$gauge" | sha256sum -c
-"$python" -u "$driver/benchmark.py" "$gauge" "$variant/run/result.json"
+"$python" -u "$driver/benchmark.py" "$gauge" "$variant/run/result.json" "${@:2}"

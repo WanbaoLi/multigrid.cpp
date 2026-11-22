@@ -1,0 +1,30 @@
+diff --git a/include/timer.h b/include/timer.h
+index 9cbb587..d0a079f 100644
+--- a/include/timer.h
++++ b/include/timer.h
+@@ -231,6 +231,7 @@ namespace quda {
+     }
+ 
+     double Last(QudaProfileType idx) { return profile[idx].last_interval; }
++    double Elapsed(QudaProfileType idx) const { return profile[idx].time; }
+ 
+     static void PrintGlobal();
+   };
+diff --git a/lib/interface_quda.cpp b/lib/interface_quda.cpp
+index 850a2e3..b94e4cb 100644
+--- a/lib/interface_quda.cpp
++++ b/lib/interface_quda.cpp
+@@ -166,6 +166,13 @@ static TimeProfile profileInvert("invertQuda");
+ 
+ //!< Profiler for invertMultiSrcQuda
+ static TimeProfile profileInvertMultiSrc("invertMultiSrcQuda");
++
++// Benchmark-only accessor for cumulative solver compute, excluding other profile categories.
++extern "C" double qudaBenchmarkInvertComputeSeconds(int multi_rhs)
++{
++  auto &profile = multi_rhs ? profileInvertMultiSrc : profileInvert;
++  return profile.Elapsed(QUDA_PROFILE_COMPUTE);
++}
+ static TimeProfile profileUpdateSplitGauge("UpdateSplitGauge");
+ 
+ //!< Profiler for invertMultiShiftQuda
