@@ -39,14 +39,18 @@ done
 read -r -a cxxflags <<< "$(./grid-config --cxxflags)"
 read -r -a ldflags <<< "$(./grid-config --ldflags)"
 read -r -a libs <<< "$(./grid-config --libs)"
-"$CXX" -O3 -march=znver4 -I"$build/Grid" -I"$build" -I"$source" -I"$source/tests/solver" \
-    "${cxxflags[@]}" -c "$driver/grid_wall.cc" -o "$work/grid_wall.o" > "$work/compile-driver.log" 2>&1 &
-driver_pid=$!
+if [[ ${GRID_REUSE_DRIVER_OBJECT:-0} == 1 ]]; then
+    test -s "$work/grid_wall.o"
+else
+    "$CXX" -O3 -march=znver4 -I"$build/Grid" -I"$build" -I"$source" -I"$source/tests/solver" \
+        "${cxxflags[@]}" -c "$driver/grid_wall.cc" -o "$work/grid_wall.o" > "$work/compile-driver.log" 2>&1 &
+    driver_pid=$!
+fi
 GIT_DIR="$source/.git" GIT_WORK_TREE="$source" make -C Grid Version.h
 lib_status=0
 make -C Grid -j "${GRID_BUILD_JOBS:-48}" "libGrid_a_OBJECTS=${objects[*]}" libGrid.a \
     > "$work/build.log" 2>&1 || lib_status=$?
-wait "$driver_pid"
+if [[ -n ${driver_pid:-} ]]; then wait "$driver_pid"; fi
 if [[ $lib_status != 0 ]]; then exit "$lib_status"; fi
 "$CXX" "$work/grid_wall.o" -L"$build/Grid" "${ldflags[@]}" "${libs[@]}" \
     -o "$work/grid_wall" >> "$work/compile-driver.log" 2>&1
