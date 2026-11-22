@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     constexpr int basis = 40;
     using Clock = std::chrono::steady_clock;
 
-    const Coordinate lattice{24, 24, 24, 64};
+    const Coordinate lattice(std::vector<int>{24, 24, 24, 64});
     GRID_ASSERT(GridDefaultLatt() == lattice);
     auto *gridD = SpaceTimeGrid::makeFourDimGrid(
         lattice, GridDefaultSimd(Nd, vComplexD::Nsimd()), GridDefaultMpi());
