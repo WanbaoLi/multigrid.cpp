@@ -52,7 +52,8 @@ else
 fi
 GIT_DIR="$source/.git" GIT_WORK_TREE="$source" make -C Grid Version.h
 lib_status=0
-make -C Grid -j "${GRID_BUILD_JOBS:-48}" "libGrid_a_OBJECTS=${objects[*]}" libGrid.a \
+GIT_DIR="$source/.git" GIT_WORK_TREE="$source" \
+    make -C Grid -j "${GRID_BUILD_JOBS:-48}" "libGrid_a_OBJECTS=${objects[*]}" libGrid.a \
     > "$work/build.log" 2>&1 || lib_status=$?
 if [[ -n ${driver_pid:-} ]]; then wait "$driver_pid"; fi
 if [[ $lib_status != 0 ]]; then exit "$lib_status"; fi
@@ -61,11 +62,22 @@ if [[ $lib_status != 0 ]]; then exit "$lib_status"; fi
 
 gauge="$HOME/.cache/quda-wall-20261122/verified-inputs/beta6.20_mu-0.2790_ms-0.2400_L24x64_cfg_5000.lime"
 printf '%s  %s\n' f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326 "$gauge" | sha256sum -c
+lfn_work=$(mktemp -d "$work/ildg-lfn.XXXXXXXX")
+trap 'rm -f -- "$lfn_work/lfn.txt" "$lfn_work/manifest.txt" "$lfn_work/lfn.lime" "$lfn_work/input.lime"; rmdir -- "$lfn_work"' EXIT
+printf 'lfn://local/node5006/%s\n' "$(basename "$gauge")" > "$lfn_work/lfn.txt"
+printf '%s ildg-data-lfn\n' "$lfn_work/lfn.txt" > "$lfn_work/manifest.txt"
+"$work/lime-install/bin/lime_pack" "$lfn_work/manifest.txt" "$lfn_work/lfn.lime"
+cp --reflink=auto -- "$gauge" "$lfn_work/input.lime"
+cat "$lfn_work/lfn.lime" >> "$lfn_work/input.lime"
+cmp -n "$(stat -c %s "$gauge")" "$gauge" "$lfn_work/input.lime"
+grid_input="$work/$(basename "$gauge" .lime).with-lfn.lime"
+mv -- "$lfn_work/input.lime" "$grid_input"
+sha256sum "$grid_input"
 sha256sum "$work/grid_wall"
 mpstat 1 2 > "$work/pre-benchmark-cpu.log"
 "$HOME/miniconda3/bin/python" "$root/tools/run_numa.py" \
     --mpirun "$deps/bin/mpiexec" --ranks-per-numa 2 --threads 16 --time-slab \
-    -- "$work/grid_wall" "$gauge" "$work/samples.jsonl" \
+    -- "$work/grid_wall" "$grid_input" "$work/samples.jsonl" \
     --grid 24.24.24.64 --mpi 1.1.1.16 --threads '{threads}' --dslash-generic \
     --log Warning,Error > "$work/run.log" 2>&1
 cat "$work/samples.jsonl"
