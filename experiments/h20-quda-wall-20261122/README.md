@@ -124,7 +124,7 @@ CUDA device attribute 87 reported a peak FP32 to FP64 throughput ratio of
 kernels below. Their timings include all three samples and setup where
 applicable.
 
-| Kernel | Calls per run | Baseline (µs/call) | Patched (µs/call) |
+| Kernel | Calls per benchmark | Baseline (µs/call) | Patched (µs/call) |
 | --- | ---: | ---: | ---: |
 | FP32-input complex dot | 303991 | 122.002 | 53.139 |
 | FP32-input batched complex dot | 55080 | 651.029 | 244.474 |
