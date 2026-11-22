@@ -13,6 +13,7 @@ import cupy as cp
 from mpi4py import MPI
 import pyquda
 from pyquda.enum_quda import (
+    QudaInverterType,
     QudaPrecision,
     QudaPreserveSource,
     QudaReconstructType,
@@ -111,6 +112,15 @@ def main():
     second_solutions = {}
     residual_seconds = 0.0
     try:
+        mg = dirac.multigrid
+        if (mg.instance is None or mg.param.n_level < 2
+                or invert.inv_type_precondition != QudaInverterType.QUDA_MG_INVERTER
+                or invert.inv_type != QudaInverterType.QUDA_GCR_INVERTER
+                or repr(mg.instance) == "Pointer at 0x0000000000000000"
+                or repr(invert.preconditioner) != repr(mg.instance)):
+            raise RuntimeError("Expected GCR with the active QUDA multigrid preconditioner")
+        mg_levels = int(mg.param.n_level)
+        print(f"Verified QUDA multigrid preconditioner with {mg_levels} levels", flush=True)
         rhs = MultiLatticeFermion(lattice, 12)
         for spin in range(4):
             for color in range(3):
@@ -152,6 +162,8 @@ def main():
             "clover_csw": CSW,
             "temporal_boundary": -1,
             "source": {"type": "wall", "time_slice": 0, "spins": 4, "colors": 3},
+            "multigrid_active": True,
+            "multigrid_levels": mg_levels,
             "multigrid_block": BLOCK,
             "multigrid_null_vectors": 24,
             "gauge_clover_hierarchy_seconds": setup_seconds,

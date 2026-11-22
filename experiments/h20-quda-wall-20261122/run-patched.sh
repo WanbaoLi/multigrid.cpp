@@ -3,7 +3,7 @@ set -euo pipefail
 
 driver=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 work=$(realpath "${1:?pass the original H20 benchmark directory}")
-variant="$work/h20-product-precision"
+variant="$work/${H20_VARIANT:-h20-product-precision}"
 patch="$driver/quda-h20-af7e150.patch"
 base=af7e15080e247795ef076b6d9284478755a9a683
 python="${CONDA_ROOT:-"$HOME/miniconda3"}/envs/pyquda/bin/python"
@@ -48,8 +48,17 @@ if mapped != {expected}:
 print(f"Loaded QUDA library {expected}", flush=True)
 PY
 
-export CUDA_VISIBLE_DEVICES=0 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
-nvidia-smi --id=0 --query-gpu=name,memory.used,utilization.gpu --format=csv
+gpu=${H20_GPU:-0}
+export CUDA_VISIBLE_DEVICES="$gpu" OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
+nvidia-smi --id="$gpu" --query-gpu=name,memory.used,utilization.gpu --format=csv
+if [[ -n $(nvidia-smi --id="$gpu" --query-compute-apps=pid --format=csv,noheader) ]]; then
+    echo "GPU $gpu already has a compute process; pick an idle H20 with H20_GPU" >&2
+    exit 1
+fi
+if [[ -n ${H20_TUNE_CACHE:-} && ! -e "$variant/run/quda-cache/tunecache.tsv" ]]; then
+    mkdir -p "$variant/run/quda-cache"
+    cp "$H20_TUNE_CACHE" "$variant/run/quda-cache/tunecache.tsv"
+fi
 gauge="$work/verified-inputs/beta6.20_mu-0.2790_ms-0.2400_L24x64_cfg_5000.lime"
 printf '%s  %s\n' f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326 "$gauge" | sha256sum -c
 "$python" -u "$driver/benchmark.py" "$gauge" "$variant/run/result.json"
