@@ -6,14 +6,16 @@ conda_root=${CONDA_ROOT:-"$HOME/miniconda3"}
 toolchain="$work/toolchain"
 cuda=${CUDA_HOME:-/usr/local/cuda-12.8}
 cmake="$conda_root/bin/cmake"
-prefix="$work/quda-install"
+source_dir=${QUDA_SOURCE_DIR:-"$work/quda-src"}
+build_dir=${QUDA_BUILD_DIR:-"$work/quda-build"}
+prefix=${QUDA_INSTALL_DIR:-"$work/quda-install"}
 export PATH="$toolchain/bin:$conda_root/bin:$PATH"
 
-git -C "$work/quda-src" rev-parse HEAD
+git -C "$source_dir" rev-parse HEAD
 git -C "$work/pyquda-src" rev-parse HEAD
 git -C "$work/pyquda-src" submodule status
 git -C "$work/cccl" rev-parse HEAD
-"$cmake" -S "$work/quda-src" -B "$work/quda-build" -G Ninja \
+"$cmake" -S "$source_dir" -B "$build_dir" -G Ninja \
     -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$prefix" \
     -DCMAKE_C_COMPILER="$toolchain/bin/x86_64-conda-linux-gnu-gcc" \
     -DCMAKE_CXX_COMPILER="$toolchain/bin/x86_64-conda-linux-gnu-g++" \
@@ -28,9 +30,13 @@ git -C "$work/cccl" rev-parse HEAD
     -DQUDA_DOWNLOAD_EIGEN=OFF -DEIGEN_INCLUDE_DIR="$toolchain/include/eigen3" \
     -DCPM_CCCL_SOURCE="$work/cccl"
 
-"$cmake" --build "$work/quda-build" --target quda --parallel "${BUILD_JOBS:-32}"
+"$cmake" --build "$build_dir" --target quda --parallel "${BUILD_JOBS:-32}"
 # The top-level install also expects the QUDA test support library.
-"$cmake" -P "$work/quda-build/lib/cmake_install.cmake"
+"$cmake" -P "$build_dir/lib/cmake_install.cmake"
+sha256sum "$prefix/lib/libquda.so"
+if [[ ${QUDA_ONLY:-0} == 1 ]]; then
+    exit 0
+fi
 python="$conda_root/envs/pyquda/bin/python"
 export QUDA_PATH="$prefix"
 export CC="$toolchain/bin/x86_64-conda-linux-gnu-gcc"
@@ -39,4 +45,3 @@ export CXX="$toolchain/bin/x86_64-conda-linux-gnu-g++"
 "$python" -m pip install --no-build-isolation --no-deps "$work/pyquda-src"
 "$python" -m pip check
 "$python" -c 'from pyquda import quda; from pyquda_utils import core; print(quda.__file__, core.__file__)'
-sha256sum "$prefix/lib/libquda.so"
