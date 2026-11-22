@@ -26,7 +26,7 @@ make -C Grid -j "${GRID_BUILD_JOBS:-24}" libGrid.a > "$work/build.log" 2>&1
 read -r -a cxxflags <<< "$(./grid-config --cxxflags)"
 read -r -a ldflags <<< "$(./grid-config --ldflags)"
 read -r -a libs <<< "$(./grid-config --libs)"
-"$CXX" -O3 -march=znver4 -I"$build" -I"$source" -I"$source/tests/solver" \
+"$CXX" -O3 -march=znver4 -I"$build/Grid" -I"$build" -I"$source" -I"$source/tests/solver" \
     "${cxxflags[@]}" "$driver/grid_wall.cc" -L"$build/Grid" \
     "${ldflags[@]}" "${libs[@]}" -o "$work/grid_wall" > "$work/compile-driver.log" 2>&1
 
