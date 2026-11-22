@@ -81,3 +81,58 @@ Gauge reading and checksum verification took 1.603 seconds. Stout took
 0.151 seconds. Gauge loading, Clover construction and initial multigrid
 setup including its kernel tuning took 155.413 seconds.
 The complete samples and per-column residuals are in [result.json](result.json).
+
+## H20 reduction patch
+
+The supplied patch SHA-256 was
+`09c58d016541f71cb6ec871c42350bd3081768f682ef4e4f7a97a34a601df6c0`.
+It targeted an older QUDA revision. The [port](quda-h20-af7e150.patch) covers
+the same norm, real-dot and complex-dot helpers on QUDA `af7e150`, including
+the helpers shared by single- and multi-RHS reductions. Products and the
+real/imaginary combination use the input type, followed by conversion to the
+accumulator type. The build keeps the reduction accumulator in FP64.
+
+The comparison reuses the verified `cfg_5000` input, GPU 0, the installed
+PyQUDA extensions, and the baseline solver parameters. CMake's QUDA Boolean
+and string options matched the baseline. The patched build and tune cache live
+under `h20-product-precision`. The runner verifies that PyQUDA maps the patched
+shared library before the benchmark. The driver revision is
+`5455d24ea7c06d58d374af3bb02fbd757580e5bd`.
+
+```bash
+bash experiments/h20-quda-wall-20261122/run-patched.sh ~/.cache/quda-wall-20261122
+```
+
+The port SHA-256 is
+`f538173d0dffa682d80b2443d7909c29280f780351e17caea62300643c10910a`.
+The patched shared library SHA-256 is
+`e3fe403bda414e8761895a0ddb94002dd723b6855cefaf8739474a92980a3c47`.
+
+| RHS | Baseline run 2 (s) | Patched run 1 (s) | Patched run 2 (s) | Patched run 3 (s) | Run 2 time reduction | Patched run 2 worst full residual |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | 12.043 | 29.595 | 10.831 | 10.831 | 10.06% | 1.472e-9 |
+| 12 | 144.526 | 341.409 | 129.720 | 129.712 | 10.24% | 1.475e-9 |
+
+The second patched batch averaged 10.810 seconds per RHS. The iteration
+counts stayed at 684 and 708. All full residuals passed 1e-8, with zero
+correction solves. Patched gauge/Clover initialization and hierarchy setup
+took 153.672 seconds, including its initial kernel tuning. The structured
+output is in [h20-patch-result.json](h20-patch-result.json).
+
+CUDA device attribute 87 reported a peak FP32 to FP64 throughput ratio of
+64:1 on GPU 0. The cumulative QUDA profiles counted the same calls for the
+kernels below. Their timings include all three samples and setup where
+applicable.
+
+| Kernel | Calls per run | Baseline (µs/call) | Patched (µs/call) |
+| --- | ---: | ---: | ---: |
+| FP32-input complex dot | 303991 | 122.002 | 53.139 |
+| FP32-input batched complex dot | 55080 | 651.029 | 244.474 |
+| 12-RHS preconditioned Wilson–Clover Dslash, xpay | 12744 | 12256.3 | 12256.4 |
+| 12-RHS preconditioned Wilson–Clover Dslash | 12744 | 12247.4 | 12247.0 |
+
+The two Dslash kernels account for 71.4% of cumulative profiled time after
+patching. The build enables dynamic Clover and FP64 promotion in its
+Cholesky solve. That kernel uses a precision path outside the supplied
+reduction patch. The aggregate profiling rows come from `profile_0.tsv` in
+the original and patched run directories on h20.
