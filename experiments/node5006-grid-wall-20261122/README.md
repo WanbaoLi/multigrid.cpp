@@ -21,7 +21,9 @@ solver calls sharing the hierarchy.
 
 The verified `24³×64` `cfg_5000` is the same fixture as the H20 benchmark,
 with SHA-256 `f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326`.
-Grid reads and verifies the LIME configuration, applies one periodic
+The runner appends an ILDG logical filename record to a server-local copy
+and compares its prefix byte for byte with the original configuration. Grid
+verifies the gauge data using its SciDAC checksums, applies one periodic
 four-dimensional stout step with rho 0.125, and solves with mass −0.279,
 Clover coefficient 1.160678675188, and an antiperiodic temporal boundary.
 Each source is a unit wall at `t=0` in one spin–color component.
@@ -46,7 +48,7 @@ existing Miniconda prefix.
 ssh itp
 ssh node5006
 work="$HOME/.cache/grid-node5006-wall"
-revision=bd0c4605f6484b0efd8e9cff35f4e2c822613150
+revision=ebd75bfe4a2d857b0d0962f7014651b6fae03c00
 bash "$work/driver-$revision/experiments/node5006-grid-wall-20261122/run.sh"
 ```
 
@@ -54,6 +56,8 @@ The script builds the Grid core and its single- and double-precision
 Wilson–Clover instantiations, links the driver, verifies the input SHA-256,
 pins ranks to allowed physical CPUs, and runs the benchmark. Full build
 and run logs and large input data stay on the server.
+Set `GRID_REUSE_DRIVER_OBJECT=1` to reuse the existing driver object
+on node5006 when its C++ source and patch are unchanged.
 
 The driver compiles against an include override applied by
 `grid-float-blas.patch`. It fixes the scalar type and accumulation in
