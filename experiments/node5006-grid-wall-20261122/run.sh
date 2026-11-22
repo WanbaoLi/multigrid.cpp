@@ -79,6 +79,6 @@ mpstat 1 2 > "$work/pre-benchmark-cpu.log"
 "$HOME/miniconda3/bin/python" "$root/tools/run_numa.py" \
     --mpirun "$deps/bin/mpiexec" --ranks-per-numa 2 --threads 16 --time-slab \
     -- "$work/grid_wall" "$grid_input" "$work/samples.jsonl" \
-    --grid 24.24.24.64 --mpi 1.1.1.16 --threads '{threads}' --dslash-generic \
+    --grid 24.24.24.64 --mpi 2.1.1.8 --threads '{threads}' --dslash-generic \
     --log Warning,Error > "$work/run.log" 2>&1
 cat "$work/samples.jsonl"
