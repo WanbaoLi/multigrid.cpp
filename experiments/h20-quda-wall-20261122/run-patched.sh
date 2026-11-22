@@ -30,6 +30,8 @@ bash "$driver/build.sh" "$work"
 
 export LD_LIBRARY_PATH="$QUDA_INSTALL_DIR/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 expected="$QUDA_INSTALL_DIR/lib/libquda.so"
+# The existing PyQUDA extension embeds the baseline path in DT_RPATH.
+export LD_PRELOAD="$expected${LD_PRELOAD:+:$LD_PRELOAD}"
 "$python" - "$expected" <<'PY'
 from pathlib import Path
 import sys
