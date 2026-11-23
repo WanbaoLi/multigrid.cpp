@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 # Source on the allocated compute node; matches the measured stable ABI.
-task_sdk=/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001
+task_sdk=${LQCD_LS_SDK:-/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001}
 task_sysroot=/work_ssd/system/os_jasmine_v01/vroot
-source "$task_sdk/setvars.sh" --use-bisheng --force
+if [[ -n ${LQCD_LS_SDK:-} ]]; then
+    source "$task_sdk/setvars.sh" --use-gcc --force
+    export OPAL_PREFIX="$task_sdk/hmpi/bisheng/release/hmpi"
+    export PATH="$OPAL_PREFIX/bin:$PATH"
+else
+    source "$task_sdk/setvars.sh" --use-bisheng --force
+fi
 export CC=$task_sysroot/usr/bin/gcc CXX=$task_sysroot/usr/bin/g++
 export OMPI_CC=$CC OMPI_CXX=$CXX
 export CPATH=$task_sysroot/usr/include:$task_sysroot/usr/local/include
