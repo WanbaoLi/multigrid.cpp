@@ -5,7 +5,7 @@ checkout() {
     git clone --no-checkout "$workspace/project.bundle" "$1"
     git -C "$1" fetch "$workspace/project-delta.bundle" refs/heads/codex/ls-grid-wall-20261123
     git -C "$1" sparse-checkout init --cone
-    git -C "$1" sparse-checkout set src include bindings tests tools benchmarks/runtime \
+    git -C "$1" sparse-checkout set src include bindings cmake tests tools benchmarks/runtime \
         experiments/ls-grid-wall-20261123 experiments/node5006-grid-wall-20261122
     git -C "$1" checkout -B codex/ls-grid-wall-20261123 FETCH_HEAD
     test "$(git -C "$1" rev-parse HEAD)" = "$revision"

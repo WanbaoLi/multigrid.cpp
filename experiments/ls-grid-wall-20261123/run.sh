@@ -27,14 +27,20 @@ hostname -s
 lscpu
 
 if [[ $stage == native-one ]]; then
+    native_commit=5b99879f84f647d267dde6156e637ced64ca694f
+    native_library="$HOME/lqcd-run/mg-l24-coarse-rescue-run01/liblqcd_cpu.so"
+    git -C "$root" diff --exit-code "$native_commit" HEAD -- src include cmake CMakeLists.txt bindings
+    printf '%s  %s\n' 8d1e7374d9e765225f20a0eb79cd61785e7fdadf092f22649e37da1a7662236d \
+        "$native_library" | sha256sum -c
     native_tmp=$(mktemp -d /tmp/ls-wall-native.XXXXXXXX)
     trap 'rm -rf -- "$native_tmp"' EXIT
-    if ! bash "$root/tools/multinode/gate_ls.sh" "$native_tmp"; then
+    if ! LS_SCALAR_GATE=1 bash "$root/tools/multinode/gate_ls.sh" "$native_tmp"; then
         cp "$native_tmp/gates.log" "$out/"
         exit 1
     fi
     mkdir -p "$work/native-build/build"
-    cp "$native_tmp/build/liblqcd_cpu.so" "$native_tmp/build/verify_slab" "$work/native-build/build/"
+    cp "$native_library" "$native_tmp/build/verify_slab" "$work/native-build/build/"
+    printf '%s\n' "$native_commit" > "$work/native-build/library-source-commit.txt"
     cp "$native_tmp/gates.log" "$native_tmp/ctest.log" "$out/"
 fi
 

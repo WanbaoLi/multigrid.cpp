@@ -16,6 +16,11 @@ cmake -S . -B "$out/build" -DCMAKE_BUILD_TYPE=Release -DMULTIGRID_NATIVE=ON \
   '-DLQCD_MPI_FLAGS=--host;localhost:4;--map-by;ppr:1:numa:PE=2;--bind-to;core' \
   "-DCMAKE_EXE_LINKER_FLAGS=-L$task_sdk/compiler/gcc/lib64 -Wl,-rpath,$task_sdk/compiler/gcc/lib64" \
   "-DCMAKE_SHARED_LINKER_FLAGS=-L$task_sdk/compiler/gcc/lib64 -Wl,-rpath,$task_sdk/compiler/gcc/lib64"
+if [[ ${LS_SCALAR_GATE:-0} == 1 ]]; then
+  cmake --build "$out/build" -j 8 --target verify_slab multigrid_core_test
+  ctest --test-dir "$out/build" --output-on-failure -R '^core$' | tee "$out/ctest.log"
+  exit
+fi
 cmake --build "$out/build" -j 24
 ctest --test-dir "$out/build" --output-on-failure -R '^(core|compact_basis|native_allocator|cpu_backend_mpi2|shared_cpu_backend_mpi2|shared_batch12_mpi2|distributed_.*)$' \
   | tee "$out/ctest.log"
