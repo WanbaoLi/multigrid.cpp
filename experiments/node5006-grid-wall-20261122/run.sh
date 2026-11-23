@@ -66,14 +66,39 @@ if [[ ${GRID_SKIP_BUILD:-0} != 1 ]]; then
         patch -s -o "$overlay/Test_multigrid_common.h" "$source/tests/solver/Test_multigrid_common.h" \
             "$driver/grid-chebyshev-setup.patch"
     fi
+    if [[ -n ${GRID_SHARD_ARCHIVES:-} ]]; then
+        for ((i=0; i<GRID_SHARDS; ++i)); do
+            shard="$GRID_SHARD_ARCHIVES/shard-$i"
+            (cd "$shard"; sha256sum -c objects.sha256)
+            tar -xzf "$shard/objects.tar.gz" -C "$work"
+        done
+        GRID_REUSE_DRIVER_OBJECT=1
+    fi
     if [[ ${GRID_REUSE_DRIVER_OBJECT:-0} == 1 ]]; then
         test -s "$binary.o"
-    else
-        "$CXX" "${cpu_flags[@]}" -I"$overlay" -I"$build/Grid" -I"$build" -I"$source" -I"$source/tests/solver" \
+    elif [[ ${GRID_SHARD:-0} == 0 ]]; then
+        "$CXX" -std=c++17 "${cpu_flags[@]}" -I"$overlay" -I"$build/Grid" -I"$build" -I"$source" -I"$source/tests/solver" \
             "${cxxflags[@]}" -c "$driver/grid_wall.cc" -o "$binary.o" > "$compiler_log" 2>&1 &
         driver_pid=$!
     fi
     GIT_DIR="$source/.git" GIT_WORK_TREE="$source" make -C Grid Version.h
+    if [[ -n ${GRID_SHARD:-} ]]; then
+        targets=()
+        files=()
+        for ((i=GRID_SHARD; i<${#objects[@]}; i+=GRID_SHARDS)); do
+            targets+=("${objects[i]}")
+            files+=("build/Grid/${objects[i]#./}")
+        done
+        GIT_DIR="$source/.git" GIT_WORK_TREE="$source" \
+            make -C Grid -j 2 "${targets[@]}" > "$work/build.log" 2>&1
+        if [[ -n ${driver_pid:-} ]]; then
+            wait "$driver_pid"
+            files+=("$(basename "$binary").o")
+        fi
+        tar -czf "$results/objects.tar.gz" -C "$work" "${files[@]}"
+        (cd "$results"; sha256sum objects.tar.gz > objects.sha256)
+        exit 0
+    fi
     lib_status=0
     GIT_DIR="$source/.git" GIT_WORK_TREE="$source" \
         make -C Grid -j "${GRID_BUILD_JOBS:-48}" "libGrid_a_OBJECTS=${objects[*]}" libGrid.a \

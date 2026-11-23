@@ -12,14 +12,16 @@ mass=-0.279
 csw=1.160678675188
 
 case "$stage" in
-    grid-build|grid|native-build|native-one|native-two) ;;
+    grid-build|grid-shard|grid-assemble|grid|native-build|native-one|native-two) ;;
     *) echo "Unknown stage: $stage" >&2; exit 2 ;;
 esac
 
 out="$work/$stage"
+if [[ $stage == grid-shard ]]; then out="$work/shards/shard-$GRID_SHARD"; fi
+if [[ $stage == grid-assemble ]]; then out="$work/grid-build"; fi
 mkdir -p "$out"
 git -C "$root" rev-parse HEAD > "$out/source-commit.txt"
-if [[ $stage != grid-build ]]; then
+if [[ $stage == grid || $stage == native-build || $stage == native-one || $stage == native-two ]]; then
     printf '%s  %s\n' "$gauge_sha" "$gauge" | sha256sum -c
 fi
 source "$root/tools/multinode/ls_env.sh"
@@ -52,7 +54,7 @@ export OMPI_MCA_pml=ob1 OMPI_MCA_btl=self,vader,tcp
 export OMPI_MCA_btl_tcp_if_include=10.36.0.0/16 OMPI_MCA_oob_tcp_if_include=10.36.0.0/16
 export OMP_WAIT_POLICY=PASSIVE
 
-if [[ $stage == grid || $stage == grid-build ]]; then
+if [[ $stage == grid || $stage == grid-build || $stage == grid-shard || $stage == grid-assemble ]]; then
     grid_tmp=$(mktemp -d /tmp/ls-wall-grid.XXXXXXXX)
     export GRID_PLATFORM=ls GRID_WORK="$grid_tmp/build-grid" GRID_GAUGE="$gauge" GRID_RESULTS="$out"
     export GRID_SOURCE="$grid_tmp/Grid" GRID_CHEBYSHEV_SETUP=1 GRID_BUILD_JOBS=24
@@ -81,6 +83,16 @@ if [[ $stage == grid || $stage == grid-build ]]; then
         -DCMAKE_INSTALL_PREFIX="$GRID_WORK/lime-install"
     cmake --build "$grid_tmp/lime-build" -j 8
     cmake --install "$grid_tmp/lime-build"
+    if [[ $stage == grid-shard ]]; then
+        bash "$root/experiments/node5006-grid-wall-20261122/run.sh"
+        exit 0
+    fi
+    if [[ $stage == grid-assemble ]]; then
+        for ((i=0; i<GRID_SHARDS; ++i)); do
+            cmp "$out/source-commit.txt" "$work/shards/shard-$i/source-commit.txt"
+        done
+        export GRID_SHARD_ARCHIVES="$work/shards"
+    fi
     GRID_BUILD_ONLY=1 bash "$root/experiments/node5006-grid-wall-20261122/run.sh"
     tar -czf "$out/runtime.tar.gz" -C "$GRID_WORK" grid_wall-chebyshev lime-install
     (cd "$out"; sha256sum runtime.tar.gz > runtime.sha256)
