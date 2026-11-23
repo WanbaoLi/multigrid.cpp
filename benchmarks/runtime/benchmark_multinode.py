@@ -27,6 +27,7 @@ def main():
     p.add_argument('--csw',type=float,default=1.140825606017)
     p.add_argument('--tol',type=float,default=1e-8)
     p.add_argument('--source',choices=['point','wall'],default='point')
+    p.add_argument('--single-only',action='store_true')
     p.add_argument('--ranks-per-node',type=int,choices=(16,32),default=16)
     a=p.parse_args()
     import numpy as np
@@ -59,7 +60,8 @@ def main():
     report=dict(complete=False,measurements_complete=False,source_commit=subprocess.check_output(
         ['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),
         source_branch=subprocess.check_output(['git','-C',str(ROOT),'branch','--show-current'],text=True).strip(),
-        ranks=comm.size,ranks_per_node=local.size,threads=threads,batch=2,outer_restart=16,
+        ranks=comm.size,ranks_per_node=local.size,threads=threads,batch=1 if a.single_only else 2,
+        outer_restart=16,
         lattice_xyzt=lat,grid_xyzt=grid,block_xyzt=a.block,mass=a.mass,csw=a.csw,tol=a.tol,
         zero_initial_guesses=True,stout=dict(steps=1,rho=.125,dir_ignore=4),
         source=a.source,source_xyzt=[0,0,0,0],seed=1024,placement=placement,
@@ -125,7 +127,7 @@ def main():
             else:
                 src[0,0,0,0,0,0]=1
         wall_sources=None
-        if a.source=='wall':
+        if a.source=='wall' and not a.single_only:
             wall_sources=np.zeros((12,*shape),dtype=np.complex128)
             if rank==0:
                 for col in range(12):
@@ -142,7 +144,7 @@ def main():
             if i==1:
                 single.astype('<c16',copy=False).tofile(a.scratch/f'solution-{rank}-0.bin')
         checkpoint('single')
-        for i in range(3):
+        for i in range(0 if a.single_only else 3):
             os.environ['LQCD_RHS_BATCH']='2'
             if wall_sources is not None:
                 (prop,stats),wall=_measure(comm,lambda:solver.solve_many(wall_sources,a.tol,layout='lex'))
@@ -159,13 +161,16 @@ def main():
                     np.asarray(field,dtype='<c16',order='C').tofile(
                         a.scratch/f'solution-{rank}-{col+1}.bin')
             if i<2: del prop
-        first=prop[0] if wall_sources is not None else prop[..., :,0,:,0]
-        num=comm.allreduce(float(np.linalg.norm(single-first)**2))
-        den=comm.allreduce(float(np.linalg.norm(first)**2))
-        report['single_full12_relative_error']=(num/den)**.5
-        assert report['single_full12_relative_error']<=1e-6
+        if not a.single_only:
+            first=prop[0] if wall_sources is not None else prop[..., :,0,:,0]
+            num=comm.allreduce(float(np.linalg.norm(single-first)**2))
+            den=comm.allreduce(float(np.linalg.norm(first)**2))
+            report['single_full12_relative_error']=(num/den)**.5
+            assert report['single_full12_relative_error']<=1e-6
         for key in ('single','twelve'):
             samples=report[key+'_samples']
+            if not samples:
+                continue
             report[key+'_api_summary']=phase_summary(samples)
             report[key+'_pure_summary']={
                 'first_seconds':samples[0]['native_solver_seconds'],

@@ -91,6 +91,7 @@ if [[ $stage == grid || $stage == grid-build || $stage == grid-shard || $stage =
               if [[ -f "$GRID_WORK/$log.log" ]]; then cp "$GRID_WORK/$log.log" "$out/"; fi
           done; rm -rf -- "$grid_tmp"' EXIT
     if [[ $stage == grid ]]; then
+        if [[ ${LS_BENCHMARK_FULL12:-0} != 1 ]]; then export GRID_SINGLE_RHS_ONLY=1; fi
         binary_revision=$(cat "$work/grid-build/source-commit.txt")
         git -C "$root" diff --exit-code "$binary_revision" HEAD -- \
             experiments/node5006-grid-wall-20261122/grid_wall.cc \
@@ -154,11 +155,17 @@ if [[ $stage == native-two ]]; then
     if [[ ${LS_MPI_PROBE_ONLY:-0} == 1 ]]; then exit 0; fi
 fi
 scratch="/tmp/lqcd-ls-wall-${CCS_JOB_ID:-manual}-$(basename "$out")"
+rhs_args=(--single-only)
+oracle_columns=1
+if [[ ${LS_BENCHMARK_FULL12:-0} == 1 ]]; then
+    rhs_args=()
+    oracle_columns=13
+fi
 "${run[@]}" python -u "$root/benchmarks/runtime/benchmark_multinode.py" \
     --gauge "$gauge" --library "$build/liblqcd_cpu.so" --output "$out/measurements" --scratch "$scratch" \
     --lattice 24 24 24 64 --block 6 6 6 2 --mass "$mass" --csw "$csw" --tol 1e-8 --source wall \
-    --ranks-per-node "$ranks_per_node"
-"${run[@]}" "$build/verify_slab" "$scratch" 24 64 "$mass" "$csw" 1e-8 0 13 wall \
+    --ranks-per-node "$ranks_per_node" "${rhs_args[@]}"
+"${run[@]}" "$build/verify_slab" "$scratch" 24 64 "$mass" "$csw" 1e-8 0 "$oracle_columns" wall \
     | tee "$out/second-round-residuals.log"
 grep -qx SCALAR_ALL_PASSED "$out/second-round-residuals.log"
 

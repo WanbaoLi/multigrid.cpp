@@ -108,6 +108,7 @@ int main(int argc, char **argv)
       samples << std::setprecision(17);
     }
     for (int count : {1, columns}) {
+      if (count == columns && std::getenv("GRID_SINGLE_RHS_ONLY")) break;
       for (int run = 1; run <= 3; ++run) {
         std::array<int, columns> iterations{};
         std::array<double, columns> residuals{};
