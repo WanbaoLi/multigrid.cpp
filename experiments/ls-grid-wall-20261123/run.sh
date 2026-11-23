@@ -88,9 +88,11 @@ if [[ $stage == grid || $stage == grid-build || $stage == grid-shard || $stage =
         exit 0
     fi
     if [[ $stage == grid-assemble ]]; then
+        shard_revision=${GRID_SHARD_REVISION:-$(cat "$out/source-commit.txt")}
         for ((i=0; i<GRID_SHARDS; ++i)); do
-            cmp "$out/source-commit.txt" "$work/shards/shard-$i/source-commit.txt"
+            test "$(cat "$work/shards/shard-$i/source-commit.txt")" = "$shard_revision"
         done
+        printf '%s\n' "$shard_revision" > "$out/objects-source-commit.txt"
         export GRID_SHARD_ARCHIVES="$work/shards"
     fi
     GRID_BUILD_ONLY=1 bash "$root/experiments/node5006-grid-wall-20261122/run.sh"

@@ -70,7 +70,7 @@ if [[ ${GRID_SKIP_BUILD:-0} != 1 ]]; then
         for ((i=0; i<GRID_SHARDS; ++i)); do
             shard="$GRID_SHARD_ARCHIVES/shard-$i"
             (cd "$shard"; sha256sum -c objects.sha256)
-            tar -xzf "$shard/objects.tar.gz" -C "$work"
+            tar --touch -xzf "$shard/objects.tar.gz" -C "$work"
         done
         GRID_REUSE_DRIVER_OBJECT=1
     fi
