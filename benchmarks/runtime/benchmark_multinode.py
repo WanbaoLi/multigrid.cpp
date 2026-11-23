@@ -77,8 +77,14 @@ def main():
                 names=('memory.limit_in_bytes','memory.usage_in_bytes',
                        'memory.max_usage_in_bytes','memory.failcnt')
             else: continue
-            groups[str(base)]={name:(base/name).read_text().strip()
-                               for name in names if (base/name).is_file()}
+            values={}
+            for name in names:
+                try:
+                    values[name]=(base/name).read_text().strip()
+                except (FileNotFoundError,PermissionError):
+                    # Donau can hide per-job cgroup counters from job users.
+                    continue
+            groups[str(base)]=values
         data['cgroup']=groups
         data['rank']=rank; data['host']=socket.gethostname()
         return comm.allgather(data)

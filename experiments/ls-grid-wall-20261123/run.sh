@@ -103,7 +103,10 @@ fi
 
 if [[ $stage == native-one ]]; then ranks=16; else ranks=32; fi
 build="$work/native-build/build"
-cmp "$out/source-commit.txt" "$work/native-build/oracle-source-commit.txt"
+oracle_revision=$(cat "$work/native-build/oracle-source-commit.txt")
+git -C "$root" diff --exit-code "$oracle_revision" HEAD -- \
+    benchmarks/runtime/verify_slab.cpp src include cmake CMakeLists.txt tools/multinode/gate_ls.sh
+printf '%s\n' "$oracle_revision" > "$out/oracle-source-commit.txt"
 sha256sum "$build/liblqcd_cpu.so" "$build/verify_slab" > "$out/build.sha256"
 export PYTHONPATH="$root/bindings"
 export LQCD_DISTRIBUTED_STORAGE=1 LQCD_ARM_SVE=1 LQCD_ARM_SVE_REUSE=1
