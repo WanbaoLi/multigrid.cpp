@@ -60,6 +60,11 @@ if [[ $stage == grid || $stage == grid-build ]]; then
         exit 0
     fi
     tar -xzf "$work/upstream.tar.gz" -C "$grid_tmp"
+    # Grid's Eigen bootstrap writes absolute links tied to the original checkout.
+    ln -sfn ../Eigen/Eigen "$GRID_SOURCE/Grid/Eigen"
+    ln -sfn ../unsupported/Eigen "$GRID_SOURCE/Eigen/Eigen/unsupported"
+    test -f "$GRID_SOURCE/Grid/Eigen/Dense"
+    test -f "$GRID_SOURCE/Grid/Eigen/unsupported/CXX11/Tensor"
     lime="$grid_tmp/.cache/grid-node5006-wall/lime-src"
     test "$(git -C "$GRID_SOURCE" rev-parse HEAD)" = "$grid_sha"
     test "$(git -C "$lime" rev-parse HEAD)" = "$lime_sha"
