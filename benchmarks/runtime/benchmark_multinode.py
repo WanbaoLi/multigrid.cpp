@@ -26,6 +26,7 @@ def main():
     p.add_argument('--mass',type=float,default=-.2334)
     p.add_argument('--csw',type=float,default=1.140825606017)
     p.add_argument('--tol',type=float,default=1e-8)
+    p.add_argument('--source',choices=['point','wall'],default='point')
     a=p.parse_args()
     import numpy as np
     from mpi4py import MPI
@@ -55,7 +56,7 @@ def main():
         ranks=comm.size,ranks_per_node=local.size,threads=32,batch=2,outer_restart=16,
         lattice_xyzt=lat,grid_xyzt=grid,block_xyzt=a.block,mass=a.mass,csw=a.csw,tol=a.tol,
         zero_initial_guesses=True,stout=dict(steps=1,rho=.125,dir_ignore=4),
-        source_xyzt=[0,0,0,0],seed=1024,placement=placement,
+        source=a.source,source_xyzt=[0,0,0,0],seed=1024,placement=placement,
         mpi_library=MPI.Get_library_version(),
         mpi_environment={k:v for k,v in os.environ.items() if k.startswith('OMPI_MCA_')},
         context_environment={k:v for k,v in os.environ.items() if k.startswith('LQCD_')},
@@ -106,7 +107,18 @@ def main():
         faulthandler.cancel_dump_traceback_later()
         shape=(lat[3]//comm.size,lat[2],lat[1],lat[0],4,3)
         src=np.zeros(shape,dtype=np.complex128)
-        if rank==0: src[0,0,0,0,0,0]=1
+        if rank==0:
+            if a.source=='wall':
+                src[0,:,:,:,0,0]=1
+            else:
+                src[0,0,0,0,0,0]=1
+        wall_sources=None
+        if a.source=='wall':
+            wall_sources=np.zeros((12,*shape),dtype=np.complex128)
+            if rank==0:
+                for col in range(12):
+                    spin,color=divmod(col,3)
+                    wall_sources[col,0,:,:,:,spin,color]=1
         for i in range(3):
             os.environ['LQCD_RHS_BATCH']='1'
             single,wall=_measure(comm,lambda:solver.solve(src,a.tol,layout='lex'))
@@ -115,25 +127,31 @@ def main():
             report['single_samples'].append(dict(run=i+1,wall_seconds=wall,stats=stats,**native_timing(stats)))
             if rank==0: print('SAMPLE single',i+1,json.dumps(report['single_samples'][-1]),flush=True)
             checkpoint(f'single_{i+1}')
-        single.astype('<c16',copy=False).tofile(a.scratch/f'solution-{rank}-0.bin')
+            if i==1:
+                single.astype('<c16',copy=False).tofile(a.scratch/f'solution-{rank}-0.bin')
         checkpoint('single')
         for i in range(3):
             os.environ['LQCD_RHS_BATCH']='2'
-            (prop,stats),wall=_measure(comm,lambda:solver.solve_propagator((0,0,0,0),a.tol,layout='lex'))
+            if wall_sources is not None:
+                (prop,stats),wall=_measure(comm,lambda:solver.solve_many(wall_sources,a.tol,layout='lex'))
+            else:
+                (prop,stats),wall=_measure(comm,lambda:solver.solve_propagator((0,0,0,0),a.tol,layout='lex'))
             assert len(stats)==12 and all(s['converged'] and s['true_residual']<=a.tol for s in stats)
             report['twelve_samples'].append(dict(run=i+1,wall_seconds=wall,stats=stats,**native_timing(stats)))
             if rank==0: print('SAMPLE twelve',i+1,json.dumps(report['twelve_samples'][-1]),flush=True)
             checkpoint(f'twelve_{i+1}')
+            if i==1:
+                for col in range(12):
+                    spin,color=divmod(col,3)
+                    field=prop[col] if wall_sources is not None else prop[..., :,spin,:,color]
+                    np.asarray(field,dtype='<c16',order='C').tofile(
+                        a.scratch/f'solution-{rank}-{col+1}.bin')
             if i<2: del prop
-        first=prop[..., :,0,:,0]
+        first=prop[0] if wall_sources is not None else prop[..., :,0,:,0]
         num=comm.allreduce(float(np.linalg.norm(single-first)**2))
         den=comm.allreduce(float(np.linalg.norm(first)**2))
         report['single_full12_relative_error']=(num/den)**.5
         assert report['single_full12_relative_error']<=1e-6
-        for col in range(12):
-            spin,color=divmod(col,3)
-            np.asarray(prop[..., :,spin,:,color],dtype='<c16',order='C').tofile(
-                a.scratch/f'solution-{rank}-{col+1}.bin')
         for key in ('single','twelve'):
             samples=report[key+'_samples']
             report[key+'_api_summary']=phase_summary(samples)

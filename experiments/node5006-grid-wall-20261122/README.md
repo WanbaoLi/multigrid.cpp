@@ -1,0 +1,84 @@
+# Grid Wilson–Clover wall sources on node5006
+
+The benchmark uses upstream [Grid](https://github.com/paboyle/Grid) at
+`3232b438f2cf729e515c185e2dbf29d7cc276bb7` and
+[c-lime](https://github.com/usqcd-software/c-lime) at
+`924aa0fce27a6cd73d94c9adc4b995f00e13232b`. The Grid source checkout is
+`~/Grid` on node5006. GCC 13.4.0, MPICH, Grid GEN SIMD (64-byte vectors),
+and the generic Wilson kernel are used. Grid uses a `2×1×1×8` MPI lattice
+with 16 ranks (2 per NUMA domain) and 16 OpenMP threads per rank. The
+repository's launcher supplies rank and thread placement on physical cores.
+
+The driver reuses Grid's Wilson–Clover mixed-precision multigrid implementation
+from `tests/solver/Test_multigrid_common.h`. It uses two levels, 40 coarse
+basis components (20 near-null vectors and chiral doubling), and blocks
+`3×6×6×2`. Double-precision FGMRES solves the full Wilson–Clover system
+against the wall source at tolerance `1e-8`, using single-precision MG.
+After timing, a separate application of the full operator checks each
+relative residual. A failed sample stops the benchmark. The 12-column
+timing is the elapsed time for twelve sequential solves sharing the hierarchy.
+
+The verified `24³×64` `cfg_5000` is the same fixture as the H20 benchmark,
+with SHA-256 `f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326`.
+The runner appends an ILDG logical filename record to a server-local copy
+and compares its prefix byte for byte with the original configuration. Grid
+verifies the gauge data using its SciDAC checksums, applies one periodic
+four-dimensional stout step with rho 0.125, and solves with mass −0.279,
+Clover coefficient 1.160678675188, and an antiperiodic temporal boundary.
+Each source is a unit wall at `t=0` in one spin–color component.
+
+The run time is the maximum rank's time spent in the solver calls. Gauge
+reading, stout, construction of Clover and the MG hierarchy, and explicit full-residual checks are
+outside the timing. All solves start at zero. The first sample warms up,
+the second is the formal result, and the third checks stability.
+
+## Build and run
+
+The working directory on node5006 is `~/.cache/grid-node5006-wall`. Prepare
+`deps` there with conda-forge `gmp`, `mpfr`, `fftw`, and `mpich`.
+Build c-lime with CMake Release and
+`-DCMAKE_POSITION_INDEPENDENT_CODE=ON` into `lime-install`, and run
+`~/Grid/bootstrap.sh` from the Grid source directory. The script uses
+the GCC 13 toolchain prepared for the H20 tests and OpenSSL from the
+existing Miniconda prefix.
+
+```bash
+ssh itp
+ssh node5006
+work="$HOME/.cache/grid-node5006-wall"
+revision=110f7efa6ce98ff2da0a06207be224740c07995b
+bash "$work/driver-$revision/experiments/node5006-grid-wall-20261122/run.sh"
+```
+
+The script builds the Grid core and its single- and double-precision
+Wilson–Clover instantiations, links the driver, verifies the input SHA-256,
+pins ranks to allowed physical CPUs, and runs the benchmark. Full build
+and run logs and large input data stay on the server.
+Set `GRID_REUSE_DRIVER_OBJECT=1` to reuse the existing driver object
+on node5006 when its C++ source and patch are unchanged.
+
+The driver compiles against an include override applied by
+`grid-float-blas.patch`. It fixes the scalar type and accumulation in
+Grid's batched inner-product template, which is instantiated while compiling
+the single-precision aggregation class. The benchmark runs the standard
+aggregation setup. The affected template belongs to HDCG refinement.
+
+An alternate setup uses Grid's `CreateSubspacePolyCheby` from
+`grid-chebyshev-setup.patch`. It filters the first near-null vector
+on `[0.5, 100]` with order 96 and builds the remaining vectors on
+`[0.2, 100]` with order 8. The chiral projection, Galerkin
+coarsening, outer solver, and residual check use the same Grid code.
+Set `GRID_CHEBYSHEV_SETUP=1` for this setup. It writes
+`run-chebyshev.log` and `samples-chebyshev.jsonl` alongside the
+default run files. The alternate run on the fully loaded node also sets
+`OMP_WAIT_POLICY=PASSIVE`.
+
+## Run status
+
+The previous driver on node5006 reached 295 outer iterations in each of
+its first two one-column solves. Both samples were rejected. Grid's
+`MdagMLinearOperator::Op` applies `D`, and the old driver supplied
+`D†b` to FGMRES. Its independently checked `||Dx-b||/||b||` was 3.408.
+The corrected driver explicitly solves `Dx=b` and awaits a build and
+benchmark on an available node. SSH and per-core checks found no idle
+CPU cores on nodes 5001–5006. Slurm denied SSH to node5007.

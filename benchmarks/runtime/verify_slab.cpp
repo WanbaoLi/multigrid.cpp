@@ -22,7 +22,9 @@ int main(int argc,char **argv) {
     if(provided<MPI_THREAD_FUNNELED) MPI_Abort(MPI_COMM_WORLD,2);
     int rank,ranks; MPI_Comm_rank(MPI_COMM_WORLD,&rank); MPI_Comm_size(MPI_COMM_WORLD,&ranks);
     try {
-        if(argc!=9) throw std::runtime_error("usage: verify_slab ROOT L T MASS CSW TOL SOURCE_T COLUMNS");
+        if(argc!=9 && (argc!=10 || std::string(argv[9])!="wall"))
+            throw std::runtime_error("usage: verify_slab ROOT L T MASS CSW TOL SOURCE_T COLUMNS [wall]");
+        const bool wall=argc==10;
         std::string root=argv[1];
         int L=std::stoi(argv[2]), T=std::stoi(argv[3]), lt=T/ranks;
         double mass=std::stod(argv[4]),csw=std::stod(argv[5]),tol=std::stod(argv[6]);
@@ -58,12 +60,13 @@ int main(int argc,char **argv) {
             for(size_t i=0;i<owned.size();++i) {
                 Complex b{};
                 const int source_col=col==0?0:col-1;
-                if(rank*lt<=source_t && source_t<(rank+1)*lt &&
-                   i==((size_t)(source_t-rank*lt)*spatial*12+source_col)) b=1./(4+mass);
+                const bool same_time=rank*lt+int(i/(spatial*12))==source_t;
+                const bool same_component=int(i%12)==source_col;
+                if(same_time && same_component && (wall || (i/12)%spatial==0)) b=1./(4+mass);
                 sum+=std::norm(image[spatial*12+i]-b);
             }
             MPI_Allreduce(MPI_IN_PLACE,&sum,1,MPI_DOUBLE,MPI_SUM,MPI_COMM_WORLD);
-            double rel=std::sqrt(sum)*std::abs(4+mass);
+            double rel=std::sqrt(sum/(wall ? double(spatial) : 1.0))*std::abs(4+mass);
             if(rank==0) std::cout<<"SCALAR_COLUMN "<<col<<" "<<std::scientific<<std::setprecision(17)<<rel<<std::endl;
             if(!std::isfinite(rel)||rel>tol) throw std::runtime_error("independent scalar residual failed");
         }
