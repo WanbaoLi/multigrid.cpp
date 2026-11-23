@@ -12,12 +12,11 @@ repository's launcher supplies rank and thread placement on physical cores.
 The driver reuses Grid's Wilson–Clover mixed-precision multigrid implementation
 from `tests/solver/Test_multigrid_common.h`. It uses two levels, 40 coarse
 basis components (20 near-null vectors and chiral doubling), and blocks
-`3×6×6×2`. The outer solver is double-precision FGMRES on the normal
-equations, with the single-precision MG preconditioner and internal
-tolerance `1e-10`. The acceptance test applies the full Wilson–Clover
-operator in double precision and requires each relative residual to meet
-`1e-8`. The 12-column timing is the elapsed time for twelve sequential
-solver calls sharing the hierarchy.
+`3×6×6×2`. Double-precision FGMRES solves the full Wilson–Clover system
+against the wall source at tolerance `1e-8`, using single-precision MG.
+After timing, a separate application of the full operator checks each
+relative residual. A failed sample stops the benchmark. The 12-column
+timing is the elapsed time for twelve sequential solves sharing the hierarchy.
 
 The verified `24³×64` `cfg_5000` is the same fixture as the H20 benchmark,
 with SHA-256 `f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326`.
@@ -29,8 +28,7 @@ Clover coefficient 1.160678675188, and an antiperiodic temporal boundary.
 Each source is a unit wall at `t=0` in one spin–color component.
 
 The run time is the maximum rank's time spent in the solver calls. Gauge
-reading, stout, construction of Clover and the MG hierarchy, transformation
-of the RHS for the normal equations, and explicit full-residual checks are
+reading, stout, construction of Clover and the MG hierarchy, and explicit full-residual checks are
 outside the timing. All solves start at zero. The first sample warms up,
 the second is the formal result, and the third checks stability.
 
@@ -48,7 +46,7 @@ existing Miniconda prefix.
 ssh itp
 ssh node5006
 work="$HOME/.cache/grid-node5006-wall"
-revision=2729df1362c4d446b4ed13538016276d73002eb1
+revision=110f7efa6ce98ff2da0a06207be224740c07995b
 bash "$work/driver-$revision/experiments/node5006-grid-wall-20261122/run.sh"
 ```
 
@@ -70,16 +68,17 @@ An alternate setup uses Grid's `CreateSubspacePolyCheby` from
 on `[0.5, 100]` with order 96 and builds the remaining vectors on
 `[0.2, 100]` with order 8. The chiral projection, Galerkin
 coarsening, outer solver, and residual check use the same Grid code.
-Use the runner export at `e7acbde16fd7e9409223d16c51a0eebc1a277ce4`
-with `GRID_CHEBYSHEV_SETUP=1` for this setup. It writes
+Set `GRID_CHEBYSHEV_SETUP=1` for this setup. It writes
 `run-chebyshev.log` and `samples-chebyshev.jsonl` alongside the
 default run files. The alternate run on the fully loaded node also sets
 `OMP_WAIT_POLICY=PASSIVE`.
 
 ## Run status
 
-At 2026-11-23 02:44 Asia/Shanghai, Grid had verified both SciDAC
-checksums and built both MG levels on node5006. The alternate driver
-was still running the one-column warmup at 148 outer iterations.
-The sample file was empty and the measured CPU idle percentage was
-0.00%. The run had produced no accepted second-round timings.
+The previous driver on node5006 reached 295 outer iterations in each of
+its first two one-column solves. Both samples were rejected. Grid's
+`MdagMLinearOperator::Op` applies `D`, and the old driver supplied
+`D†b` to FGMRES. Its independently checked `||Dx-b||/||b||` was 3.408.
+The corrected driver explicitly solves `Dx=b` and awaits a build and
+benchmark on an available node. SSH and per-core checks found no idle
+CPU cores on nodes 5001–5006. Slurm denied SSH to node5007.
