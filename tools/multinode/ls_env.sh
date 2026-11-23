@@ -3,7 +3,7 @@
 task_sdk=${LQCD_LS_SDK:-/home/share/test_mpi/my_software/hpckit/HPCKit/25.1.0.SPC001}
 task_sysroot=/work_ssd/system/os_jasmine_v01/vroot
 if [[ -n ${LQCD_LS_SDK:-} ]]; then
-    source "$task_sdk/setvars.sh" --use-gcc --force
+    source "$task_sdk/setvars.sh" --use-gcc
     export OPAL_PREFIX="$task_sdk/hmpi/bisheng/release/hmpi"
     export PATH="$OPAL_PREFIX/bin:$PATH"
 else

@@ -68,6 +68,10 @@ case "${LS_MPI_TRANSPORT:-tcp}" in
     ucx)
         export OMPI_MCA_pml=ucx
         export UCX_TLS="${LS_UCX_TLS:-self,sm,rc}"
+        # Explicitly select a routable IPv4 RoCE GID on the compute fabric.
+        export UCX_NET_DEVICES="${UCX_NET_DEVICES:-roceroh0:1}"
+        export UCX_IB_GID_INDEX="${UCX_IB_GID_INDEX:-1}"
+        export UCX_MAX_RNDV_RAILS="${UCX_MAX_RNDV_RAILS:-1}"
         export LD_LIBRARY_PATH="$task_sdk/hmpi/bisheng/release/hucx/lib:$LD_LIBRARY_PATH"
         ;;
     *) echo "Unknown MPI transport: $LS_MPI_TRANSPORT" >&2; exit 2 ;;
