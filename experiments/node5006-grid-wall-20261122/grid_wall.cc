@@ -64,6 +64,14 @@ int main(int argc, char **argv)
 
     WilsonMGParams params;
     params.blockSizes = {{3, 6, 6, 2}};
+#ifdef GRID_TUNED_SETUP
+    params.kCycle = false;
+    params.smootherMaxOuterIter = {1};
+    params.smootherMaxInnerIter = {8};
+    params.coarseSolverTol = 1e-1;
+    params.coarseSolverMaxOuterIter = 2;
+    params.coarseSolverMaxInnerIter = 24;
+#endif
     checkParameterValidity(params);
     LevelInfo levels(gridF, params);
     NLevelMGPreconditioner<vSpinColourVectorF, vTComplexF, basis, 2, WilsonCloverFermionF> mg(

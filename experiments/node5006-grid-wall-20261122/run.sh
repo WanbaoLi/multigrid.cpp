@@ -62,9 +62,15 @@ if [[ ${GRID_SKIP_BUILD:-0} != 1 ]]; then
     header=Grid/algorithms/deflation/MultiRHSBlockCGLinalg.h
     mkdir -p "$overlay/$(dirname "$header")"
     patch -s -o "$overlay/$header" "$source/$header" "$driver/grid-float-blas.patch"
+    driver_flags=()
     if [[ -n $variant ]]; then
+        setup_patch="$driver/grid-chebyshev-setup.patch"
+        if [[ ${GRID_TUNED_SETUP:-0} == 1 ]]; then
+            setup_patch="$driver/grid-independent-setup.patch"
+            driver_flags=(-DGRID_TUNED_SETUP)
+        fi
         patch -s -o "$overlay/Test_multigrid_common.h" "$source/tests/solver/Test_multigrid_common.h" \
-            "$driver/grid-chebyshev-setup.patch"
+            "$setup_patch"
     fi
     if [[ -n ${GRID_SHARD_ARCHIVES:-} ]]; then
         for ((i=0; i<GRID_SHARDS; ++i)); do
@@ -72,13 +78,13 @@ if [[ ${GRID_SKIP_BUILD:-0} != 1 ]]; then
             (cd "$shard"; sha256sum -c objects.sha256)
             tar -xzf "$shard/objects.tar.gz" -C "$work"
         done
-        GRID_REUSE_DRIVER_OBJECT=1
+        if [[ ${GRID_TUNED_SETUP:-0} != 1 ]]; then GRID_REUSE_DRIVER_OBJECT=1; fi
     fi
     if [[ ${GRID_REUSE_DRIVER_OBJECT:-0} == 1 ]]; then
         test -s "$binary.o"
     elif [[ ${GRID_SHARD:-0} == 0 ]]; then
         "$CXX" -std=c++17 "${cpu_flags[@]}" -I"$overlay" -I"$build/Grid" -I"$build" -I"$source" -I"$source/tests/solver" \
-            "${cxxflags[@]}" -c "$driver/grid_wall.cc" -o "$binary.o" > "$compiler_log" 2>&1 &
+            "${cxxflags[@]}" "${driver_flags[@]}" -c "$driver/grid_wall.cc" -o "$binary.o" > "$compiler_log" 2>&1 &
         driver_pid=$!
     fi
     if [[ -z ${GRID_SHARD_ARCHIVES:-} ]]; then

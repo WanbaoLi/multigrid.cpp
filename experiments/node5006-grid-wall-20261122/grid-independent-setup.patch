@@ -1,0 +1,12 @@
+--- a/tests/solver/Test_multigrid_common.h
++++ b/tests/solver/Test_multigrid_common.h
+@@ -230 +230,8 @@
+-    _Aggregates.CreateSubspace(_LevelInfo.PRNGs[_CurrentLevel], fineMdagMOp, nb);
++    Chebyshev<FineVector> filter(0.5, 100.0, 220);
++    FineVector noise(_LevelInfo.Grids[_CurrentLevel]);
++    for (int n = 0; n < nb; ++n) {
++      gaussian(_LevelInfo.PRNGs[_CurrentLevel], noise);
++      auto &nearNull = _Aggregates.subspace[n];
++      filter(fineMdagMOp, noise, nearNull);
++      nearNull = (1.0 / std::sqrt(norm2(nearNull))) * nearNull;
++    }
