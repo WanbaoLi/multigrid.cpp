@@ -27,6 +27,7 @@ def main():
     p.add_argument('--csw',type=float,default=1.140825606017)
     p.add_argument('--tol',type=float,default=1e-8)
     p.add_argument('--source',choices=['point','wall'],default='point')
+    p.add_argument('--ranks-per-node',type=int,choices=(16,32),default=16)
     a=p.parse_args()
     import numpy as np
     from mpi4py import MPI
@@ -40,20 +41,25 @@ def main():
     stage('mpi_ready')
     lat=tuple(a.lattice); grid=(1,1,1,comm.size); coords=(0,0,0,rank)
     assert lat[3]%comm.size==0 and lat[3]//comm.size%a.block[3]==0
-    assert int(os.environ['OMP_NUM_THREADS'])==32
+    threads=512//a.ranks_per_node
+    assert int(os.environ['OMP_NUM_THREADS'])==threads
     if rank==0: a.output.mkdir(parents=True,exist_ok=False)
     local=comm.Split_type(MPI.COMM_TYPE_SHARED)
     if local.rank==0: a.scratch.mkdir(parents=True,exist_ok=False)
     comm.Barrier()
     if int(os.environ.get('LQCD_TEST_SMALL','0'))!=1:
-        assert local.size==16
+        assert local.size==a.ranks_per_node
     placement=comm.allgather(dict(rank=rank,host=socket.gethostname(),
         cpus=sorted(os.sched_getaffinity(0)),numa=os.environ.get('LQCD_NUMA_NODE')))
+    for host in {row['host'] for row in placement}:
+        masks=[set(row['cpus']) for row in placement if row['host']==host]
+        assert all(len(mask)==threads for mask in masks)
+        assert len(set.union(*masks))==len(masks)*threads
     stage('placement_ready')
     report=dict(complete=False,measurements_complete=False,source_commit=subprocess.check_output(
         ['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),
         source_branch=subprocess.check_output(['git','-C',str(ROOT),'branch','--show-current'],text=True).strip(),
-        ranks=comm.size,ranks_per_node=local.size,threads=32,batch=2,outer_restart=16,
+        ranks=comm.size,ranks_per_node=local.size,threads=threads,batch=2,outer_restart=16,
         lattice_xyzt=lat,grid_xyzt=grid,block_xyzt=a.block,mass=a.mass,csw=a.csw,tol=a.tol,
         zero_initial_guesses=True,stout=dict(steps=1,rho=.125,dir_ignore=4),
         source=a.source,source_xyzt=[0,0,0,0],seed=1024,placement=placement,
@@ -103,7 +109,7 @@ def main():
     gauge,report['stout_seconds']=_measure(comm,lambda:stout_smear(gauge,steps=1,rho=.125,dir_ignore=4,comm=comm))
     gauge.astype('<c16',copy=False).tofile(a.scratch/f'gauge-{rank}.bin')
     checkpoint('preprocessed')
-    with Solver(lat,grid,mass=a.mass,csw=a.csw,block=a.block,threads=32,seed=1024,
+    with Solver(lat,grid,mass=a.mass,csw=a.csw,block=a.block,threads=threads,seed=1024,
                 backend='arm',normalization='mass',library=a.library,comm=comm) as solver:
         _,report['gauge_clover_seconds']=_measure(comm,lambda:solver.load_gauge(gauge,layout='lex'))
         del gauge

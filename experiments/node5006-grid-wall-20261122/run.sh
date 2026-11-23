@@ -146,14 +146,18 @@ mv -- "$lfn_work/input.lime" "$grid_input"
 sha256sum "$grid_input"
 if command -v mpstat >/dev/null; then mpstat 1 2 > "$results/pre-benchmark-cpu$variant.log"; fi
 if [[ ${GRID_PLATFORM:-} == ls ]]; then
-    launcher=(mpirun -n 16 --bind-to none python "$root/tools/multinode/rank_exec.py")
-    threads=32
+    ranks=${LS_RANKS_PER_NODE:-16}
+    export LS_AFFINITY_LOG=1
+    launcher=(mpirun -n "$ranks" --bind-to none python "$root/tools/multinode/rank_exec.py")
+    threads=$((512 / ranks))
+    mpi_grid=$((ranks / 8)).1.1.8
 else
     launcher=("$HOME/miniconda3/bin/python" "$root/tools/run_numa.py"
               --mpirun "$deps/bin/mpiexec" --ranks-per-numa 2 --threads 16 --time-slab --)
     threads='{threads}'
+    mpi_grid=2.1.1.8
 fi
 "${launcher[@]}" "$binary" "$grid_input" "$results/samples$variant.jsonl" \
-    --grid 24.24.24.64 --mpi 2.1.1.8 --threads "$threads" --dslash-generic \
+    --grid 24.24.24.64 --mpi "$mpi_grid" --threads "$threads" --dslash-generic \
     --log Warning,Error > "$results/run$variant.log" 2>&1
 cat "$results/samples$variant.jsonl"

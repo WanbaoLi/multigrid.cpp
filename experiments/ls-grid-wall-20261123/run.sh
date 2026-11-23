@@ -12,11 +12,22 @@ mass=-0.279
 csw=1.160678675188
 
 case "$stage" in
+    native-one-pair)
+        LS_RANKS_PER_NODE=16 LS_RESULT_SUFFIX=16 bash "$0" native-one "$work" "$gauge"
+        LS_RANKS_PER_NODE=32 LS_RESULT_SUFFIX=32 bash "$0" native-one "$work" "$gauge"
+        exit 0
+        ;;
+    native-two-pair)
+        LS_MPI_TRANSPORT=tcp LS_RESULT_SUFFIX=tcp bash "$0" native-two "$work" "$gauge"
+        LS_MPI_TRANSPORT=ucx LS_RESULT_SUFFIX=ucx bash "$0" native-two "$work" "$gauge"
+        exit 0
+        ;;
     grid-build|grid-shard|grid-assemble|grid|native-build|native-one|native-two) ;;
     *) echo "Unknown stage: $stage" >&2; exit 2 ;;
 esac
 
 out="$work/$stage"
+if [[ -n ${LS_RESULT_SUFFIX:-} ]]; then out="$out-$LS_RESULT_SUFFIX"; fi
 if [[ $stage == grid-shard ]]; then out="$work/shards/shard-$GRID_SHARD"; fi
 if [[ $stage == grid-assemble ]]; then out="$work/grid-build"; fi
 mkdir -p "$out"
@@ -50,9 +61,17 @@ if [[ $stage == native-build ]]; then exit 0; fi
 
 unset OMPI_MCA_ras OMPI_MCA_plm
 export OMPI_MCA_coll=basic,tuned,self,libnbc
-export OMPI_MCA_pml=ob1 OMPI_MCA_btl=self,vader,tcp
 export OMPI_MCA_btl_tcp_if_include=10.36.0.0/16 OMPI_MCA_oob_tcp_if_include=10.36.0.0/16
 export OMP_WAIT_POLICY=PASSIVE
+case "${LS_MPI_TRANSPORT:-tcp}" in
+    tcp) export OMPI_MCA_pml=ob1 OMPI_MCA_btl=self,vader,tcp ;;
+    ucx)
+        export OMPI_MCA_pml=ucx
+        export UCX_TLS="${LS_UCX_TLS:-self,sm,rc}"
+        export LD_LIBRARY_PATH="$task_sdk/hmpi/bisheng/release/hucx/lib:$LD_LIBRARY_PATH"
+        ;;
+    *) echo "Unknown MPI transport: $LS_MPI_TRANSPORT" >&2; exit 2 ;;
+esac
 
 if [[ $stage == grid || $stage == grid-build || $stage == grid-shard || $stage == grid-assemble ]]; then
     grid_tmp=$(mktemp -d /tmp/ls-wall-grid.XXXXXXXX)
@@ -62,7 +81,11 @@ if [[ $stage == grid || $stage == grid-build || $stage == grid-shard || $stage =
               if [[ -f "$GRID_WORK/$log.log" ]]; then cp "$GRID_WORK/$log.log" "$out/"; fi
           done; rm -rf -- "$grid_tmp"' EXIT
     if [[ $stage == grid ]]; then
-        cmp "$out/source-commit.txt" "$work/grid-build/source-commit.txt"
+        binary_revision=$(cat "$work/grid-build/source-commit.txt")
+        git -C "$root" diff --exit-code "$binary_revision" HEAD -- \
+            experiments/node5006-grid-wall-20261122/grid_wall.cc \
+            'experiments/node5006-grid-wall-20261122/*.patch'
+        printf '%s\n' "$binary_revision" > "$out/binary-source-commit.txt"
         (cd "$work/grid-build"; sha256sum -c runtime.sha256)
         mkdir -p "$GRID_WORK"
         tar -xzf "$work/grid-build/runtime.tar.gz" -C "$GRID_WORK"
@@ -101,7 +124,8 @@ if [[ $stage == grid || $stage == grid-build || $stage == grid-shard || $stage =
     exit 0
 fi
 
-if [[ $stage == native-one ]]; then ranks=16; else ranks=32; fi
+ranks_per_node=${LS_RANKS_PER_NODE:-16}
+if [[ $stage == native-one ]]; then ranks=$ranks_per_node; else ranks=$((2 * ranks_per_node)); fi
 build="$work/native-build/build"
 oracle_revision=$(cat "$work/native-build/oracle-source-commit.txt")
 git -C "$root" diff --exit-code "$oracle_revision" HEAD -- \
@@ -115,12 +139,15 @@ export LQCD_COARSE_FUSED=0 LQCD_COARSE_SPATIAL_OVERLAP=1 LQCD_COARSE_BATCH_REDUC
 export LQCD_HBW_ALLOC=prefer LQCD_HBM=off
 run=(mpirun -n "$ranks" --bind-to none python "$root/tools/multinode/rank_exec.py")
 if [[ $stage == native-two ]]; then
-    timeout 120 "${run[@]}" python -u "$root/tests/runtime/test_multinode_communication.py"
+    UCX_LOG_LEVEL=info timeout 120 "${run[@]}" \
+        python -u "$root/tests/runtime/test_multinode_communication.py" --benchmark
+    if [[ ${LS_MPI_PROBE_ONLY:-0} == 1 ]]; then exit 0; fi
 fi
 scratch="/tmp/lqcd-ls-wall-${CCS_JOB_ID:-manual}-$(basename "$out")"
 "${run[@]}" python -u "$root/benchmarks/runtime/benchmark_multinode.py" \
     --gauge "$gauge" --library "$build/liblqcd_cpu.so" --output "$out/measurements" --scratch "$scratch" \
-    --lattice 24 24 24 64 --block 6 6 6 2 --mass "$mass" --csw "$csw" --tol 1e-8 --source wall
+    --lattice 24 24 24 64 --block 6 6 6 2 --mass "$mass" --csw "$csw" --tol 1e-8 --source wall \
+    --ranks-per-node "$ranks_per_node"
 "${run[@]}" "$build/verify_slab" "$scratch" 24 64 "$mass" "$csw" 1e-8 0 13 wall \
     | tee "$out/second-round-residuals.log"
 grep -qx SCALAR_ALL_PASSED "$out/second-round-residuals.log"

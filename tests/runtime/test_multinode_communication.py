@@ -3,6 +3,7 @@ import faulthandler
 import json
 import os
 import socket
+import sys
 import traceback
 
 import numpy as np
@@ -47,6 +48,30 @@ try:
     comm.Sendrecv(send, dest=(rank + 1) % comm.size, sendtag=981,
                   recvbuf=recv, source=(rank - 1) % comm.size, recvtag=981)
     assert np.all(recv == (rank - 1) % comm.size)
+    if '--benchmark' in sys.argv:
+        def mean_max_seconds(operation, count):
+            for _ in range(5):
+                operation()
+            comm.Barrier()
+            start = MPI.Wtime()
+            for _ in range(count):
+                operation()
+            return comm.allreduce((MPI.Wtime() - start) / count, op=MPI.MAX)
+
+        def ring(size):
+            return mean_max_seconds(
+                lambda: comm.Sendrecv(
+                    send[:size], dest=(rank + 1) % comm.size, sendtag=981,
+                    recvbuf=recv[:size], source=(rank - 1) % comm.size, recvtag=981), 40)
+
+        reduction = np.ones(8, dtype=np.float64)
+        reduced = np.empty_like(reduction)
+        metrics = {'ring_seconds': {size: ring(size) for size in
+                                   (16 * 1024, 24**3 * 24 * 4, 2 * 24**3 * 24 * 4)},
+                   'sum_64_bytes_seconds': mean_max_seconds(
+                       lambda: comm.Allreduce(reduction, reduced, MPI.SUM), 100)}
+        if rank == 0:
+            print('COMM_TIMING', json.dumps(metrics), flush=True)
     local.Free()
     comm.Barrier()
     if rank == 0:
