@@ -27,7 +27,15 @@ hostname -s
 lscpu
 
 if [[ $stage == native-one ]]; then
-    bash "$root/tools/multinode/gate_ls.sh" "$work/native-build"
+    native_tmp=$(mktemp -d /tmp/ls-wall-native.XXXXXXXX)
+    trap 'rm -rf -- "$native_tmp"' EXIT
+    if ! bash "$root/tools/multinode/gate_ls.sh" "$native_tmp"; then
+        cp "$native_tmp/gates.log" "$out/"
+        exit 1
+    fi
+    mkdir -p "$work/native-build/build"
+    cp "$native_tmp/build/liblqcd_cpu.so" "$native_tmp/build/verify_slab" "$work/native-build/build/"
+    cp "$native_tmp/gates.log" "$native_tmp/ctest.log" "$out/"
 fi
 
 unset OMPI_MCA_ras OMPI_MCA_plm
@@ -37,19 +45,23 @@ export OMPI_MCA_btl_tcp_if_include=10.36.0.0/16 OMPI_MCA_oob_tcp_if_include=10.3
 export OMP_WAIT_POLICY=PASSIVE
 
 if [[ $stage == grid ]]; then
-    export GRID_PLATFORM=ls GRID_WORK="$out" GRID_GAUGE="$gauge"
-    export GRID_SOURCE="$work/upstream/Grid" GRID_CHEBYSHEV_SETUP=1 GRID_BUILD_JOBS=24
-    lime="$work/upstream/.cache/grid-node5006-wall/lime-src"
+    grid_tmp=$(mktemp -d /tmp/ls-wall-grid.XXXXXXXX)
+    export GRID_PLATFORM=ls GRID_WORK="$grid_tmp/build-grid" GRID_GAUGE="$gauge" GRID_RESULTS="$out"
+    export GRID_SOURCE="$grid_tmp/Grid" GRID_CHEBYSHEV_SETUP=1 GRID_BUILD_JOBS=24
+    trap 'for log in configure build compile-driver-chebyshev; do
+              if [[ -f "$GRID_WORK/$log.log" ]]; then cp "$GRID_WORK/$log.log" "$out/"; fi
+          done; rm -rf -- "$grid_tmp"' EXIT
+    tar -xzf "$work/upstream.tar.gz" -C "$grid_tmp"
+    lime="$grid_tmp/.cache/grid-node5006-wall/lime-src"
     test "$(git -C "$GRID_SOURCE" rev-parse HEAD)" = "$grid_sha"
     test "$(git -C "$lime" rev-parse HEAD)" = "$lime_sha"
-    if [[ ! -x $out/lime-install/bin/lime_pack ]]; then
-        cmake -S "$lime" -B "$out/lime-build" -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_INSTALL_LIBDIR=lib \
-            -DCMAKE_INSTALL_PREFIX="$out/lime-install"
-        cmake --build "$out/lime-build" -j 8
-        cmake --install "$out/lime-build"
-    fi
-    exec bash "$root/experiments/node5006-grid-wall-20261122/run.sh"
+    cmake -S "$lime" -B "$grid_tmp/lime-build" -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_INSTALL_LIBDIR=lib \
+        -DCMAKE_INSTALL_PREFIX="$GRID_WORK/lime-install"
+    cmake --build "$grid_tmp/lime-build" -j 8
+    cmake --install "$grid_tmp/lime-build"
+    bash "$root/experiments/node5006-grid-wall-20261122/run.sh"
+    exit 0
 fi
 
 if [[ $stage == native-one ]]; then ranks=16; else ranks=32; fi

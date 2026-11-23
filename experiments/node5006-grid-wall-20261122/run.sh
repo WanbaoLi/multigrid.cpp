@@ -4,6 +4,7 @@ set -euo pipefail
 driver=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 root=$(cd "$driver/../.." && pwd)
 work=${GRID_WORK:-"$HOME/.cache/grid-node5006-wall"}
+results=${GRID_RESULTS:-"$work"}
 source=${GRID_SOURCE:-"$HOME/Grid"}
 deps="$work/deps"
 build="$work/build"
@@ -26,6 +27,7 @@ fi
 
 test "$(git -C "$source" rev-parse HEAD)" = 3232b438f2cf729e515c185e2dbf29d7cc276bb7
 mkdir -p "$build"
+mkdir -p "$results"
 cd "$build"
 if [[ ! -f Grid/Makefile ]]; then
   "$source/configure" --prefix="$work/install" --enable-comms=mpi-auto \
@@ -96,7 +98,7 @@ cmp -n "$(stat -c %s "$gauge")" "$gauge" "$lfn_work/input.lime"
 grid_input="$work/$(basename "$gauge" .lime).with-lfn.lime"
 mv -- "$lfn_work/input.lime" "$grid_input"
 sha256sum "$grid_input"
-if command -v mpstat >/dev/null; then mpstat 1 2 > "$work/pre-benchmark-cpu$variant.log"; fi
+if command -v mpstat >/dev/null; then mpstat 1 2 > "$results/pre-benchmark-cpu$variant.log"; fi
 if [[ ${GRID_PLATFORM:-} == ls ]]; then
     launcher=(mpirun -n 16 --bind-to none python "$root/tools/multinode/rank_exec.py")
     threads=32
@@ -105,7 +107,7 @@ else
               --mpirun "$deps/bin/mpiexec" --ranks-per-numa 2 --threads 16 --time-slab --)
     threads='{threads}'
 fi
-"${launcher[@]}" "$binary" "$grid_input" "$work/samples$variant.jsonl" \
+"${launcher[@]}" "$binary" "$grid_input" "$results/samples$variant.jsonl" \
     --grid 24.24.24.64 --mpi 2.1.1.8 --threads "$threads" --dslash-generic \
-    --log Warning,Error > "$work/run$variant.log" 2>&1
-cat "$work/samples$variant.jsonl"
+    --log Warning,Error > "$results/run$variant.log" 2>&1
+cat "$results/samples$variant.jsonl"
