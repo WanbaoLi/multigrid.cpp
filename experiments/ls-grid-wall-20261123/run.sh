@@ -22,7 +22,7 @@ case "$stage" in
         LS_MPI_TRANSPORT=ucx LS_RESULT_SUFFIX=ucx bash "$0" native-two "$work" "$gauge"
         exit 0
         ;;
-    grid-build|grid-shard|grid-assemble|grid|native-build|native-one|native-two) ;;
+    grid-build|grid-shard|grid-assemble|grid|halo-layout|native-build|native-one|native-two) ;;
     *) echo "Unknown stage: $stage" >&2; exit 2 ;;
 esac
 
@@ -76,6 +76,12 @@ case "${LS_MPI_TRANSPORT:-tcp}" in
         ;;
     *) echo "Unknown MPI transport: $LS_MPI_TRANSPORT" >&2; exit 2 ;;
 esac
+
+if [[ $stage == halo-layout ]]; then
+    mpirun -n 32 --bind-to none python "$root/tools/multinode/rank_exec.py" \
+        python -u "$root/experiments/ls-grid-wall-20261123/halo_layout_probe.py"
+    exit 0
+fi
 
 if [[ $stage == grid || $stage == grid-build || $stage == grid-shard || $stage == grid-assemble ]]; then
     grid_tmp=$(mktemp -d /tmp/ls-wall-grid.XXXXXXXX)

@@ -150,7 +150,7 @@ if [[ ${GRID_PLATFORM:-} == ls ]]; then
     export LS_AFFINITY_LOG=1
     launcher=(mpirun -n "$ranks" --bind-to none python "$root/tools/multinode/rank_exec.py")
     threads=$((512 / ranks))
-    mpi_grid=$((ranks / 8)).1.1.8
+    mpi_grid=${LS_GRID_MPI_XYZT:-$((ranks / 8)).1.1.8}
 else
     launcher=("$HOME/miniconda3/bin/python" "$root/tools/run_numa.py"
               --mpirun "$deps/bin/mpiexec" --ranks-per-numa 2 --threads 16 --time-slab --)
