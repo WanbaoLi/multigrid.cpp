@@ -4,6 +4,7 @@
 #include <array>
 #include <chrono>
 #include <cmath>
+#include <cstdlib>
 #include <fstream>
 #include <iomanip>
 #include <memory>
@@ -33,10 +34,14 @@ int main(int argc, char **argv)
 
     const Coordinate lattice(std::vector<int>{24, 24, 24, 64});
     GRID_ASSERT(GridDefaultLatt() == lattice);
+    // Keep float lanes away from the two-site local coarse time extent.
+    const auto simdF = std::getenv("GRID_SPATIAL_SIMD")
+        ? Coordinate(std::vector<int>{1, vComplexF::Nsimd(), 1, 1})
+        : GridDefaultSimd(Nd, vComplexF::Nsimd());
     auto *gridD = SpaceTimeGrid::makeFourDimGrid(
         lattice, GridDefaultSimd(Nd, vComplexD::Nsimd()), GridDefaultMpi());
     auto *gridF = SpaceTimeGrid::makeFourDimGrid(
-        lattice, GridDefaultSimd(Nd, vComplexF::Nsimd()), GridDefaultMpi());
+        lattice, simdF, GridDefaultMpi());
     auto *rbD = SpaceTimeGrid::makeFourDimRedBlackGrid(gridD);
     auto *rbF = SpaceTimeGrid::makeFourDimRedBlackGrid(gridF);
 
