@@ -70,7 +70,7 @@ if [[ ${GRID_SKIP_BUILD:-0} != 1 ]]; then
         for ((i=0; i<GRID_SHARDS; ++i)); do
             shard="$GRID_SHARD_ARCHIVES/shard-$i"
             (cd "$shard"; sha256sum -c objects.sha256)
-            tar --touch -xzf "$shard/objects.tar.gz" -C "$work"
+            tar -xzf "$shard/objects.tar.gz" -C "$work"
         done
         GRID_REUSE_DRIVER_OBJECT=1
     fi
@@ -81,7 +81,9 @@ if [[ ${GRID_SKIP_BUILD:-0} != 1 ]]; then
             "${cxxflags[@]}" -c "$driver/grid_wall.cc" -o "$binary.o" > "$compiler_log" 2>&1 &
         driver_pid=$!
     fi
-    GIT_DIR="$source/.git" GIT_WORK_TREE="$source" make -C Grid Version.h
+    if [[ -z ${GRID_SHARD_ARCHIVES:-} ]]; then
+        GIT_DIR="$source/.git" GIT_WORK_TREE="$source" make -C Grid Version.h
+    fi
     if [[ -n ${GRID_SHARD:-} ]]; then
         targets=()
         files=()
@@ -100,9 +102,19 @@ if [[ ${GRID_SKIP_BUILD:-0} != 1 ]]; then
         exit 0
     fi
     lib_status=0
-    GIT_DIR="$source/.git" GIT_WORK_TREE="$source" \
-        make -C Grid -j "${GRID_BUILD_JOBS:-48}" "libGrid_a_OBJECTS=${objects[*]}" libGrid.a \
-        > "$work/build.log" 2>&1 || lib_status=$?
+    if [[ -n ${GRID_SHARD_ARCHIVES:-} ]]; then
+        # Objects came from identically configured builds on other nodes.
+        # Archiving them directly avoids regenerating Automake prerequisites.
+        (
+            cd Grid
+            for object in "${objects[@]}"; do test -s "$object"; done
+            ar rcs libGrid.a "${objects[@]}"
+        ) > "$work/build.log" 2>&1
+    else
+        GIT_DIR="$source/.git" GIT_WORK_TREE="$source" \
+            make -C Grid -j "${GRID_BUILD_JOBS:-48}" "libGrid_a_OBJECTS=${objects[*]}" libGrid.a \
+            > "$work/build.log" 2>&1 || lib_status=$?
+    fi
     if [[ -n ${driver_pid:-} ]]; then wait "$driver_pid"; fi
     if [[ $lib_status != 0 ]]; then exit "$lib_status"; fi
     "$CXX" "$binary.o" -L"$build/Grid" "${ldflags[@]}" "${libs[@]}" \
