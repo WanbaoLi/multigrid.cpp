@@ -12,7 +12,7 @@ mass=-0.279
 csw=1.160678675188
 
 case "$stage" in
-    grid-build|grid|native-one|native-two) ;;
+    grid-build|grid|native-build|native-one|native-two) ;;
     *) echo "Unknown stage: $stage" >&2; exit 2 ;;
 esac
 
@@ -26,7 +26,7 @@ source "$root/tools/multinode/ls_env.sh"
 hostname -s
 lscpu
 
-if [[ $stage == native-one ]]; then
+if [[ $stage == native-build || $stage == native-one && ! -s $work/native-build/build/verify_slab ]]; then
     native_commit=5b99879f84f647d267dde6156e637ced64ca694f
     native_library="$HOME/lqcd-run/mg-l24-coarse-rescue-run01/liblqcd_cpu.so"
     git -C "$root" diff --exit-code "$native_commit" HEAD -- src include cmake CMakeLists.txt bindings
@@ -41,8 +41,10 @@ if [[ $stage == native-one ]]; then
     mkdir -p "$work/native-build/build"
     cp "$native_library" "$native_tmp/build/verify_slab" "$work/native-build/build/"
     printf '%s\n' "$native_commit" > "$work/native-build/library-source-commit.txt"
+    cp "$out/source-commit.txt" "$work/native-build/oracle-source-commit.txt"
     cp "$native_tmp/gates.log" "$native_tmp/ctest.log" "$out/"
 fi
+if [[ $stage == native-build ]]; then exit 0; fi
 
 unset OMPI_MCA_ras OMPI_MCA_plm
 export OMPI_MCA_coll=basic,tuned,self,libnbc
@@ -87,6 +89,7 @@ fi
 
 if [[ $stage == native-one ]]; then ranks=16; else ranks=32; fi
 build="$work/native-build/build"
+cmp "$out/source-commit.txt" "$work/native-build/oracle-source-commit.txt"
 sha256sum "$build/liblqcd_cpu.so" "$build/verify_slab" > "$out/build.sha256"
 export PYTHONPATH="$root/bindings"
 export LQCD_DISTRIBUTED_STORAGE=1 LQCD_ARM_SVE=1 LQCD_ARM_SVE_REUSE=1
