@@ -28,7 +28,6 @@ int main(int argc, char **argv)
     constexpr RealD mass = -0.279;
     constexpr RealD csw = 1.160678675188;
     constexpr RealD fullTolerance = 1e-8;
-    constexpr RealD normalTolerance = 1e-10;
     constexpr int basis = 40;
     using Clock = std::chrono::steady_clock;
 
@@ -70,16 +69,15 @@ int main(int argc, char **argv)
     NLevelMGPreconditioner<vSpinColourVectorF, vTComplexF, basis, 2, WilsonCloverFermionF> mg(
         params, levels, diracF, diracF);
     mg.setup();
-    MdagMLinearOperator<WilsonCloverFermionD, LatticeFermionD> normal(diracD);
+    NonHermitianLinearOperator<WilsonCloverFermionD, LatticeFermionD> wilsonClover(diracD);
     MixedPrecisionFlexibleGeneralisedMinimalResidual<LatticeFermionD, LatticeFermionF>
-        solve(normalTolerance, 1000, gridF, mg, 32);
+        solve(fullTolerance, 1000, gridF, mg, 32);
 
     LatticeInteger t(gridD);
     LatticeCoordinate(t, 3);
     LatticeFermionD constant(gridD), zeroSource(gridD), image(gridD);
     zeroSource = Zero();
     std::vector<LatticeFermionD> rhs(columns, gridD);
-    std::vector<LatticeFermionD> normalRhs(columns, gridD);
     std::vector<LatticeFermionD> solution(columns, gridD);
     for (int column = 0; column < columns; ++column) {
       LatticeFermionD::scalar_object component;
@@ -88,7 +86,6 @@ int main(int argc, char **argv)
       constant = component;
       rhs[column] = where(t == Integer(0), constant, zeroSource);
       GRID_ASSERT(norm2(rhs[column]) == 24 * 24 * 24);
-      diracD.Mdag(rhs[column], normalRhs[column]);
     }
 
     std::ofstream samples;
@@ -97,7 +94,6 @@ int main(int argc, char **argv)
       if (!samples) throw std::runtime_error("cannot open samples: " + output);
       samples << std::setprecision(17);
     }
-    bool passed = true;
     for (int count : {1, columns}) {
       for (int run = 1; run <= 3; ++run) {
         std::array<int, columns> iterations{};
@@ -106,11 +102,12 @@ int main(int argc, char **argv)
         gridD->Barrier();
         const auto start = Clock::now();
         for (int column = 0; column < count; ++column) {
-          solve(normal, normalRhs[column], solution[column]);
+          solve(wilsonClover, rhs[column], solution[column]);
           iterations[column] = solve.IterationCount;
         }
         double seconds = std::chrono::duration<double>(Clock::now() - start).count();
         gridD->GlobalMax(seconds);
+        bool passed = true;
         for (int column = 0; column < count; ++column) {
           diracD.M(solution[column], image);
           image = rhs[column] - image;
@@ -120,6 +117,7 @@ int main(int argc, char **argv)
         if (gridD->IsBoss()) {
           samples << "{\"rhs\":" << count << ",\"run\":" << run
                   << ",\"warmup\":" << (run == 1 ? "true" : "false")
+                  << ",\"accepted\":" << (passed ? "true" : "false")
                   << ",\"solver_seconds\":" << seconds
                   << ",\"ranks\":" << gridD->_Nprocessors
                   << ",\"threads_per_rank\":" << GridThread::GetThreads()
@@ -138,9 +136,13 @@ int main(int argc, char **argv)
           std::cout << "GRID_WALL " << count << " RHS run " << run << ": "
                     << std::fixed << std::setprecision(6) << seconds << " s" << std::endl;
         }
+        if (!passed) {
+          if (gridD->IsBoss()) std::cerr << "Full Wilson–Clover residual check failed." << std::endl;
+          return 1;
+        }
       }
     }
-    return passed ? 0 : 1;
+    return 0;
   }();
   Grid_finalize();
   return status;
