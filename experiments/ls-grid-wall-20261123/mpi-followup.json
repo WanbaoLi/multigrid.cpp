@@ -1,0 +1,656 @@
+{
+  "date": "2026-11-23",
+  "site": "LingSheng",
+  "source_branch": "codex/ls-grid-wall-20261123",
+  "fixture_reference": "results.json",
+  "input_sha256": "f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326",
+  "ratio_sample": "second, after a separately warmed 1-RHS and 12-RHS case",
+  "tolerance": 1e-8,
+  "zero_initial_guesses": true,
+  "hierarchy_reused": true,
+  "grid": {
+    "executable_sha256": "a751bf4dd1d342320d720f207594659333670ba5bec2821b436beee069ccfa10",
+    "binary_source_commit": "8c3aac475bd01168be209be99b283e4932cf8e19",
+    "rhs_batch_size": 1,
+    "preconditioner": "two-level V-cycle",
+    "layouts": {
+      "grid16": {
+        "job_id": 2231629,
+        "node": "cn12053",
+        "runner_source_commit": "8c3aac475bd01168be209be99b283e4932cf8e19",
+        "ranks": 16,
+        "threads_per_rank": 32,
+        "mpi_xyzt": [
+          2,
+          1,
+          1,
+          8
+        ],
+        "single_rhs_second_preconditioner_seconds": 66.308821,
+        "samples": {
+          "1": {
+            "solver_seconds_first_second_third": [
+              68.784531555,
+              69.182018797,
+              68.248721294
+            ],
+            "second_iterations": [
+              65
+            ],
+            "second_full_relative_residuals": [
+              8.959792126985165e-9
+            ],
+            "correction_solves_occurred": false
+          },
+          "12": {
+            "solver_seconds_first_second_third": [
+              830.734094822,
+              828.652825883,
+              831.284197571
+            ],
+            "second_iterations": [
+              65,
+              65,
+              67,
+              67,
+              65,
+              67,
+              68,
+              66,
+              65,
+              63,
+              64,
+              66
+            ],
+            "second_full_relative_residuals": [
+              8.959792126985165e-9,
+              9.780504302681118e-9,
+              8.38167065903405e-9,
+              8.878175106599682e-9,
+              9.44482222232604e-9,
+              8.375245408548574e-9,
+              8.547045754563192e-9,
+              8.359440100380393e-9,
+              9.413904174575577e-9,
+              8.108687114104704e-9,
+              9.09067729414842e-9,
+              8.374057261396197e-9
+            ],
+            "correction_solves_occurred": false
+          }
+        }
+      },
+      "grid32": {
+        "job_id": 2232963,
+        "node": "cn12053",
+        "runner_source_commit": "755639d77d8253e89f45d2765ba4b0be43caa8ae",
+        "ranks": 32,
+        "threads_per_rank": 16,
+        "mpi_xyzt": [
+          4,
+          1,
+          1,
+          8
+        ],
+        "single_rhs_second_preconditioner_seconds": 34.609097,
+        "samples": {
+          "1": {
+            "solver_seconds_first_second_third": [
+              37.529690783,
+              36.891709199,
+              36.802456572
+            ],
+            "second_iterations": [
+              65
+            ],
+            "second_full_relative_residuals": [
+              8.959794191448778e-9
+            ],
+            "correction_solves_occurred": false
+          },
+          "12": {
+            "solver_seconds_first_second_third": [
+              447.233868214,
+              447.242347289,
+              447.395301591
+            ],
+            "second_iterations": [
+              65,
+              65,
+              67,
+              67,
+              65,
+              67,
+              68,
+              66,
+              65,
+              63,
+              64,
+              66
+            ],
+            "second_full_relative_residuals": [
+              8.959794191448778e-9,
+              9.780505654579029e-9,
+              8.381669478071267e-9,
+              8.878175431130426e-9,
+              9.444829465327669e-9,
+              8.375246163731448e-9,
+              8.547047686407332e-9,
+              8.359441870415853e-9,
+              9.413906142232264e-9,
+              8.108685202667423e-9,
+              9.090675136343501e-9,
+              8.374061881716039e-9
+            ],
+            "correction_solves_occurred": false
+          }
+        }
+      }
+    }
+  },
+  "multigrid_cpp": {
+    "library_sha256": "8d1e7374d9e765225f20a0eb79cd61785e7fdadf092f22649e37da1a7662236d",
+    "library_source_commit": "5b99879f84f647d267dde6156e637ced64ca694f",
+    "oracle_source_commit": "bfe6ac3209dcf1eeee01879354c1582d97b98f9c",
+    "rhs_batch_size": 2,
+    "layouts_and_transports": {
+      "native-one-16": {
+        "job_id": 2232964,
+        "hosts": [
+          "cn12060"
+        ],
+        "runner_source_commit": "755639d77d8253e89f45d2765ba4b0be43caa8ae",
+        "ranks_per_node": 16,
+        "threads_per_rank": 32,
+        "mpi_xyzt": [
+          1,
+          1,
+          1,
+          16
+        ],
+        "transport": "tcp",
+        "independent_scalar_oracle_passed": true,
+        "profiled": false,
+        "samples": {
+          "1": {
+            "solver_seconds_first_second_third": [
+              7.393974561999997,
+              6.50210614400001,
+              6.155692728000005
+            ],
+            "second_iterations": [
+              24
+            ],
+            "second_full_relative_residuals": [
+              2.56459522253708e-9
+            ],
+            "correction_solves_occurred": false
+          },
+          "12": {
+            "solver_seconds_first_second_third": [
+              84.01100227399999,
+              83.08373624099997,
+              82.50436387500008
+            ],
+            "second_iterations": [
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24
+            ],
+            "second_full_relative_residuals": [
+              2.56459522253708e-9,
+              2.8423802549978976e-9,
+              2.651101527962753e-9,
+              2.7147092124751614e-9,
+              3.0903650795000656e-9,
+              2.6416218097195235e-9,
+              3.0339907908505176e-9,
+              2.7546420952261663e-9,
+              2.9079225622315416e-9,
+              2.4833093322416163e-9,
+              2.7586425860681554e-9,
+              3.219060102554033e-9
+            ],
+            "correction_solves_occurred": false
+          }
+        }
+      },
+      "native-one-32": {
+        "job_id": 2232964,
+        "hosts": [
+          "cn12060"
+        ],
+        "runner_source_commit": "755639d77d8253e89f45d2765ba4b0be43caa8ae",
+        "ranks_per_node": 32,
+        "threads_per_rank": 16,
+        "mpi_xyzt": [
+          1,
+          1,
+          1,
+          32
+        ],
+        "transport": "tcp",
+        "independent_scalar_oracle_passed": true,
+        "profiled": false,
+        "samples": {
+          "1": {
+            "solver_seconds_first_second_third": [
+              7.767335853000006,
+              7.1638948519999985,
+              7.035108526000002
+            ],
+            "second_iterations": [
+              24
+            ],
+            "second_full_relative_residuals": [
+              2.5645612856201314e-9
+            ],
+            "correction_solves_occurred": false
+          },
+          "12": {
+            "solver_seconds_first_second_third": [
+              92.072343012,
+              93.05548771299999,
+              91.69711705499992
+            ],
+            "second_iterations": [
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24
+            ],
+            "second_full_relative_residuals": [
+              2.5645612856201314e-9,
+              2.842437515787133e-9,
+              2.6512545353035227e-9,
+              2.714793956819877e-9,
+              3.090439234605433e-9,
+              2.641612111666742e-9,
+              3.033931972815521e-9,
+              2.754468569408904e-9,
+              2.9079379653058125e-9,
+              2.483265219193874e-9,
+              2.7587178349820805e-9,
+              3.2191078746401994e-9
+            ],
+            "correction_solves_occurred": false
+          }
+        }
+      },
+      "native-two-tcp": {
+        "job_id": 2233000,
+        "hosts": [
+          "cn12044",
+          "cn12114"
+        ],
+        "runner_source_commit": "755639d77d8253e89f45d2765ba4b0be43caa8ae",
+        "ranks_per_node": 16,
+        "threads_per_rank": 32,
+        "mpi_xyzt": [
+          1,
+          1,
+          1,
+          32
+        ],
+        "transport": "tcp",
+        "independent_scalar_oracle_passed": true,
+        "profiled": false,
+        "samples": {
+          "1": {
+            "solver_seconds_first_second_third": [
+              8.436564168999993,
+              8.384716304999998,
+              8.716497817000004
+            ],
+            "second_iterations": [
+              24
+            ],
+            "second_full_relative_residuals": [
+              2.5645999904909377e-9
+            ],
+            "correction_solves_occurred": false
+          },
+          "12": {
+            "solver_seconds_first_second_third": [
+              81.27670158299996,
+              79.66821960799993,
+              79.61024186699996
+            ],
+            "second_iterations": [
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24
+            ],
+            "second_full_relative_residuals": [
+              2.5645999904909377e-9,
+              2.8571264746354947e-9,
+              2.651181465146371e-9,
+              2.71470816900529e-9,
+              3.0904540589096247e-9,
+              2.6416464513643434e-9,
+              3.0339339673646913e-9,
+              2.754660366451176e-9,
+              2.908002957493579e-9,
+              2.4831882466073516e-9,
+              2.7586361740149262e-9,
+              3.219021605274089e-9
+            ],
+            "correction_solves_occurred": false
+          }
+        }
+      },
+      "native-two-ucx": {
+        "job_id": 2233000,
+        "hosts": [
+          "cn12044",
+          "cn12114"
+        ],
+        "runner_source_commit": "755639d77d8253e89f45d2765ba4b0be43caa8ae",
+        "ranks_per_node": 16,
+        "threads_per_rank": 32,
+        "mpi_xyzt": [
+          1,
+          1,
+          1,
+          32
+        ],
+        "transport": "ucx_roce",
+        "independent_scalar_oracle_passed": true,
+        "profiled": false,
+        "samples": {
+          "1": {
+            "solver_seconds_first_second_third": [
+              3.876402702,
+              2.987141248999997,
+              3.071677016999999
+            ],
+            "second_iterations": [
+              24
+            ],
+            "second_full_relative_residuals": [
+              2.5645999904909377e-9
+            ],
+            "correction_solves_occurred": false
+          },
+          "12": {
+            "solver_seconds_first_second_third": [
+              34.20965416499999,
+              32.458268909,
+              33.614725007999965
+            ],
+            "second_iterations": [
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24
+            ],
+            "second_full_relative_residuals": [
+              2.5645999904909377e-9,
+              2.8423533405910443e-9,
+              2.651181465146371e-9,
+              2.71470816900529e-9,
+              3.0904540589096247e-9,
+              2.6416464513643434e-9,
+              3.0339339673646913e-9,
+              2.754660366451176e-9,
+              2.9079231835899623e-9,
+              2.4831882466073516e-9,
+              2.7586361740149262e-9,
+              3.219021605274089e-9
+            ],
+            "correction_solves_occurred": false
+          }
+        }
+      },
+      "native-two-ucx-profiled": {
+        "job_id": 2233079,
+        "hosts": [
+          "cn12044",
+          "cn12114"
+        ],
+        "runner_source_commit": "13e6c80282e0952a98802d7f0315b2cbcdec9cfc",
+        "ranks_per_node": 16,
+        "threads_per_rank": 32,
+        "mpi_xyzt": [
+          1,
+          1,
+          1,
+          32
+        ],
+        "transport": "ucx_roce_profiled",
+        "independent_scalar_oracle_passed": true,
+        "profiled": true,
+        "samples": {
+          "1": {
+            "solver_seconds_first_second_third": [
+              4.374332742,
+              2.995437760999998,
+              3.0088339180000006
+            ],
+            "second_iterations": [
+              24
+            ],
+            "second_full_relative_residuals": [
+              2.5645999904909377e-9
+            ],
+            "correction_solves_occurred": false
+          },
+          "12": {
+            "solver_seconds_first_second_third": [
+              46.71147881000002,
+              43.62887439299996,
+              43.968734590000025
+            ],
+            "second_iterations": [
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24
+            ],
+            "second_full_relative_residuals": [
+              2.5645999904909377e-9,
+              2.8571264746354947e-9,
+              2.651181465146371e-9,
+              2.71470816900529e-9,
+              3.0904540589096247e-9,
+              2.6416464513643434e-9,
+              3.0339339673646913e-9,
+              2.754660366451176e-9,
+              2.9079231835899623e-9,
+              2.4831882466073516e-9,
+              2.7586361740149262e-9,
+              3.219038666129265e-9
+            ],
+            "correction_solves_occurred": false
+          }
+        }
+      },
+      "native-two-clean": {
+        "job_id": 2233164,
+        "hosts": [
+          "cn12044",
+          "cn12114"
+        ],
+        "runner_source_commit": "13e6c80282e0952a98802d7f0315b2cbcdec9cfc",
+        "ranks_per_node": 16,
+        "threads_per_rank": 32,
+        "mpi_xyzt": [
+          1,
+          1,
+          1,
+          32
+        ],
+        "transport": "ucx_roce_clean",
+        "independent_scalar_oracle_passed": true,
+        "profiled": false,
+        "samples": {
+          "1": {
+            "solver_seconds_first_second_third": [
+              4.144601833000003,
+              3.2598324380000037,
+              3.210518291999996
+            ],
+            "second_iterations": [
+              24
+            ],
+            "second_full_relative_residuals": [
+              2.5645999904909377e-9
+            ],
+            "correction_solves_occurred": false
+          },
+          "12": {
+            "solver_seconds_first_second_third": [
+              38.90280217800002,
+              36.731398475000006,
+              39.04601272599999
+            ],
+            "second_iterations": [
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24,
+              24
+            ],
+            "second_full_relative_residuals": [
+              2.5645999904909377e-9,
+              2.8423533405910443e-9,
+              2.651181465146371e-9,
+              2.71470816900529e-9,
+              3.0904540589096247e-9,
+              2.6416464513643434e-9,
+              3.0339339673646913e-9,
+              2.754660366451176e-9,
+              2.908002957493579e-9,
+              2.4831882466073516e-9,
+              2.7586361740149262e-9,
+              3.219038666129265e-9
+            ],
+            "correction_solves_occurred": false
+          }
+        }
+      }
+    }
+  },
+  "mpi_diagnostics": {
+    "unpinned_ucx": {
+      "job_id": 2232962,
+      "outcome": "timed out in MPI_Comm_split_type"
+    },
+    "pinned_probe": {
+      "job_id": 2232993,
+      "tcp": {
+        "ring_seconds": {
+          "16384": 0.000083121325,
+          "1327104": 0.0031652366749999996,
+          "2654208": 0.005433616649999999
+        },
+        "sum_64_bytes_seconds": 0.0004626132399999994
+      },
+      "roce": {
+        "ring_seconds": {
+          "16384": 0.000050690875,
+          "1327104": 0.0017220307,
+          "2654208": 0.002992271199999999
+        },
+        "sum_64_bytes_seconds": 0.00003530359000000094
+      }
+    },
+    "paired_probes": {
+      "job_id": 2233000,
+      "tcp": {
+        "ring_seconds": {
+          "16384": 0.000143070075,
+          "1327104": 0.0030778016500000002,
+          "2654208": 0.005926283
+        },
+        "sum_64_bytes_seconds": 0.0004689338599999998
+      },
+      "roce": {
+        "ring_seconds": {
+          "16384": 0.00004876355,
+          "1327104": 0.0012589956749999999,
+          "2654208": 0.002190025775
+        },
+        "sum_64_bytes_seconds": 0.000032749059999999944
+      }
+    },
+    "roce_settings": {
+      "device": "roceroh0:1",
+      "gid_index": 1,
+      "max_rendezvous_rails": 1,
+      "tls": "self,sm,rc"
+    },
+    "delivered_default_clean_probe": {
+      "job_id": 2233164,
+      "roce": {
+        "ring_seconds": {
+          "16384": 0.000049673549999999995,
+          "1327104": 0.0016880521000000002,
+          "2654208": 0.002905393525
+        },
+        "sum_64_bytes_seconds": 0.00003359717000000012
+      }
+    },
+    "second_single_rhs_profile": {
+      "job_id": 2233079,
+      "aggregation": "independent_rank_max_of_local_sums",
+      "fine_calls": 120,
+      "fine_wait_seconds": 0.295779408654,
+      "coarse_calls": 1502,
+      "coarse_wait_seconds": 0.857704750495
+    }
+  },
+  "server_run_directories": [
+    "$HOME/lqcd-run/ls-grid-wall-20261123/mpi-followup",
+    "$HOME/lqcd-run/ls-grid-wall-20261123/mpi-roce-default"
+  ]
+}
