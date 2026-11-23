@@ -1,0 +1,650 @@
+{
+  "date": "2026-11-23",
+  "site": "LingSheng (ssh ls)",
+  "source_branch": "codex/ls-grid-wall-20261123",
+  "fixture": {
+    "name": "beta6.20_mu-0.2790_ms-0.2400_L24x64_cfg_5000.lime",
+    "sha256": "f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326",
+    "bytes": 509748664,
+    "lattice_xyzt": [
+      24,
+      24,
+      24,
+      64
+    ],
+    "mass": -0.279,
+    "csw": 1.160678675188,
+    "stout": {
+      "steps": 1,
+      "rho": 0.125
+    },
+    "temporal_boundary": "antiperiodic",
+    "source": "unit wall at t=0, one spin/color component per column",
+    "order": "spin-major, color-minor",
+    "full_relative_residual_limit": 1e-8
+  },
+  "measurement": {
+    "primary_sample": "second",
+    "zero_initial_guesses": true,
+    "hierarchy_reused": true,
+    "mpi_ranks_per_node": 16,
+    "threads_per_rank": 32,
+    "excludes": [
+      "input",
+      "stout and clover construction",
+      "multigrid setup",
+      "layout conversion",
+      "post-timing residual verification",
+      "output"
+    ]
+  },
+  "grid": {
+    "job_id": 2231629,
+    "node": "cn12053",
+    "source_commit": "8c3aac475bd01168be209be99b283e4932cf8e19",
+    "object_source_commit": "ef19edc11da4d10586e1c4ca887a951bd898a773",
+    "upstream_grid_commit": "3232b438f2cf729e515c185e2dbf29d7cc276bb7",
+    "upstream_c_lime_commit": "924aa0fce27a6cd73d94c9adc4b995f00e13232b",
+    "runtime_archive_sha256": "4fd9449c5dfc15d82bb19e14dc5620988770a2d1789a823176a45ca014132989",
+    "executable_sha256": "a751bf4dd1d342320d720f207594659333670ba5bec2821b436beee069ccfa10",
+    "hpc_kit": "25.1.0.SPC001",
+    "mpi_xyzt": [
+      2,
+      1,
+      1,
+      8
+    ],
+    "aggregation_block_xyzt": [
+      3,
+      6,
+      6,
+      2
+    ],
+    "solver": "NEONv8 generic Wilson–Clover dslash, mixed-precision FGMRES with two-level V-cycle and 40 chiral basis vectors",
+    "basis": "20 independent Gaussian vectors filtered by Chebyshev with order parameter 220 on [0.5,100], then chirally doubled",
+    "rhs_batch_size": 1,
+    "samples": {
+      "1": {
+        "warmup": {
+          "solver_seconds": 68.784531555,
+          "iterations": [
+            65
+          ],
+          "full_relative_residuals": [
+            8.959792126985165e-9
+          ],
+          "correction_solves_occurred": false
+        },
+        "second": {
+          "solver_seconds": 69.182018797,
+          "iterations": [
+            65
+          ],
+          "full_relative_residuals": [
+            8.959792126985165e-9
+          ],
+          "correction_solves_occurred": false
+        },
+        "third": {
+          "solver_seconds": 68.248721294,
+          "iterations": [
+            65
+          ],
+          "full_relative_residuals": [
+            8.959792126985165e-9
+          ],
+          "correction_solves_occurred": false
+        }
+      },
+      "12": {
+        "warmup": {
+          "solver_seconds": 830.734094822,
+          "iterations": [
+            65,
+            65,
+            67,
+            67,
+            65,
+            67,
+            68,
+            66,
+            65,
+            63,
+            64,
+            66
+          ],
+          "full_relative_residuals": [
+            8.959792126985165e-9,
+            9.780504302681118e-9,
+            8.38167065903405e-9,
+            8.878175106599682e-9,
+            9.44482222232604e-9,
+            8.375245408548574e-9,
+            8.547045754563192e-9,
+            8.359440100380393e-9,
+            9.413904174575577e-9,
+            8.108687114104704e-9,
+            9.09067729414842e-9,
+            8.374057261396197e-9
+          ],
+          "correction_solves_occurred": false
+        },
+        "second": {
+          "solver_seconds": 828.652825883,
+          "iterations": [
+            65,
+            65,
+            67,
+            67,
+            65,
+            67,
+            68,
+            66,
+            65,
+            63,
+            64,
+            66
+          ],
+          "full_relative_residuals": [
+            8.959792126985165e-9,
+            9.780504302681118e-9,
+            8.38167065903405e-9,
+            8.878175106599682e-9,
+            9.44482222232604e-9,
+            8.375245408548574e-9,
+            8.547045754563192e-9,
+            8.359440100380393e-9,
+            9.413904174575577e-9,
+            8.108687114104704e-9,
+            9.09067729414842e-9,
+            8.374057261396197e-9
+          ],
+          "correction_solves_occurred": false
+        },
+        "third": {
+          "solver_seconds": 831.284197571,
+          "iterations": [
+            65,
+            65,
+            67,
+            67,
+            65,
+            67,
+            68,
+            66,
+            65,
+            63,
+            64,
+            66
+          ],
+          "full_relative_residuals": [
+            8.959792126985165e-9,
+            9.780504302681118e-9,
+            8.38167065903405e-9,
+            8.878175106599682e-9,
+            9.44482222232604e-9,
+            8.375245408548574e-9,
+            8.547045754563192e-9,
+            8.359440100380393e-9,
+            9.413904174575577e-9,
+            8.108687114104704e-9,
+            9.09067729414842e-9,
+            8.374057261396197e-9
+          ],
+          "correction_solves_occurred": false
+        }
+      }
+    }
+  },
+  "multigrid_cpp": {
+    "runner_source_commit": "56779c0396fd0c243eebc91d2c944b10a291c511",
+    "oracle_source_commit": "bfe6ac3209dcf1eeee01879354c1582d97b98f9c",
+    "library_source_commit": "5b99879f84f647d267dde6156e637ced64ca694f",
+    "library_sha256": "8d1e7374d9e765225f20a0eb79cd61785e7fdadf092f22649e37da1a7662236d",
+    "hpc_kit": "25.2.1",
+    "solver": "Native Arm SVE, distributed storage, KUPL HBW sidecars verified",
+    "rhs_batch_size": 2,
+    "residual_oracle": "Independent scalar full-spin Wilson–Clover on padded MPI time slabs",
+    "results_by_node_count": {
+      "1": {
+        "job_id": 2232581,
+        "nodes": [
+          "cn12080"
+        ],
+        "mpi_xyzt": [
+          1,
+          1,
+          1,
+          16
+        ],
+        "aggregation_block_xyzt": [
+          6,
+          6,
+          6,
+          2
+        ],
+        "samples": {
+          "1": {
+            "warmup": {
+              "solver_seconds": 4.130755151999999,
+              "iterations": [
+                24
+              ],
+              "full_relative_residuals": [
+                2.5645952225973366e-9
+              ],
+              "correction_solves_occurred": false,
+              "refinement_steps": [
+                0
+              ]
+            },
+            "second": {
+              "solver_seconds": 3.7255758169999993,
+              "iterations": [
+                24
+              ],
+              "full_relative_residuals": [
+                2.564595222597336e-9
+              ],
+              "correction_solves_occurred": false,
+              "refinement_steps": [
+                0
+              ],
+              "independent_full_relative_residuals": [
+                2.56459522253708e-9
+              ]
+            },
+            "third": {
+              "solver_seconds": 3.5852923250000117,
+              "iterations": [
+                24
+              ],
+              "full_relative_residuals": [
+                2.564595222597336e-9
+              ],
+              "correction_solves_occurred": false,
+              "refinement_steps": [
+                0
+              ]
+            }
+          },
+          "12": {
+            "warmup": {
+              "solver_seconds": 40.89789806799999,
+              "iterations": [
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24
+              ],
+              "full_relative_residuals": [
+                2.564595222597336e-9,
+                2.8423802548730988e-9,
+                2.651101526716005e-9,
+                2.7147092124571417e-9,
+                3.0903650794004388e-9,
+                2.6416432632012593e-9,
+                3.0339907908795777e-9,
+                2.754642095246634e-9,
+                2.9079225624157614e-9,
+                2.483309332180917e-9,
+                2.7586425860600106e-9,
+                3.219060102600632e-9
+              ],
+              "correction_solves_occurred": false,
+              "refinement_steps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "second": {
+              "solver_seconds": 39.107697159000026,
+              "iterations": [
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24
+              ],
+              "full_relative_residuals": [
+                2.564595222597336e-9,
+                2.8423802548730988e-9,
+                2.6511015278171523e-9,
+                2.714709212457142e-9,
+                3.0903650794004388e-9,
+                2.6416432632012593e-9,
+                3.0339907908795777e-9,
+                2.754642095246634e-9,
+                2.9079225624157614e-9,
+                2.483309332180917e-9,
+                2.7586425860600106e-9,
+                3.219060102600632e-9
+              ],
+              "correction_solves_occurred": false,
+              "refinement_steps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "independent_full_relative_residuals": [
+                2.56459522253708e-9,
+                2.8423802549978976e-9,
+                2.651101527962753e-9,
+                2.7147092124751614e-9,
+                3.0903650795000656e-9,
+                2.6416432631208764e-9,
+                3.0339907908505176e-9,
+                2.7546420952261663e-9,
+                2.9079225622315416e-9,
+                2.4833093322416163e-9,
+                2.7586425860681554e-9,
+                3.219060102554033e-9
+              ]
+            },
+            "third": {
+              "solver_seconds": 39.24411113100001,
+              "iterations": [
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24
+              ],
+              "full_relative_residuals": [
+                2.564595222597336e-9,
+                2.842380254873099e-9,
+                2.6511015278171523e-9,
+                2.7147092124571417e-9,
+                3.0903650794004388e-9,
+                2.6416218097352987e-9,
+                3.0339907908795777e-9,
+                2.754642095246634e-9,
+                2.9079225624157614e-9,
+                2.483309332180917e-9,
+                2.7586425860600106e-9,
+                3.219060102600632e-9
+              ],
+              "correction_solves_occurred": false,
+              "refinement_steps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        }
+      },
+      "2": {
+        "job_id": 2232582,
+        "nodes": [
+          "cn12080",
+          "cn19573"
+        ],
+        "mpi_xyzt": [
+          1,
+          1,
+          1,
+          32
+        ],
+        "aggregation_block_xyzt": [
+          6,
+          6,
+          6,
+          2
+        ],
+        "mpi_two_host_8_mib_ring_passed": true,
+        "samples": {
+          "1": {
+            "warmup": {
+              "solver_seconds": 12.68326318199999,
+              "iterations": [
+                24
+              ],
+              "full_relative_residuals": [
+                2.5645999906572018e-9
+              ],
+              "correction_solves_occurred": false,
+              "refinement_steps": [
+                0
+              ]
+            },
+            "second": {
+              "solver_seconds": 12.204662521000003,
+              "iterations": [
+                24
+              ],
+              "full_relative_residuals": [
+                2.5645999906572018e-9
+              ],
+              "correction_solves_occurred": false,
+              "refinement_steps": [
+                0
+              ],
+              "independent_full_relative_residuals": [
+                2.5645999904909377e-9
+              ]
+            },
+            "third": {
+              "solver_seconds": 11.942308315999995,
+              "iterations": [
+                24
+              ],
+              "full_relative_residuals": [
+                2.5645999906572018e-9
+              ],
+              "correction_solves_occurred": false,
+              "refinement_steps": [
+                0
+              ]
+            }
+          },
+          "12": {
+            "warmup": {
+              "solver_seconds": 110.37031173700004,
+              "iterations": [
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24
+              ],
+              "full_relative_residuals": [
+                2.5645999906572018e-9,
+                2.857126474584626e-9,
+                2.651181465115718e-9,
+                2.7147081691736205e-9,
+                3.0904540588442865e-9,
+                2.641646451358575e-9,
+                3.033933967448732e-9,
+                2.7546603663188902e-9,
+                2.908002957416977e-9,
+                2.483188246535425e-9,
+                2.758636174028172e-9,
+                3.21903866612884e-9
+              ],
+              "correction_solves_occurred": false,
+              "refinement_steps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "second": {
+              "solver_seconds": 112.23842356199998,
+              "iterations": [
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24
+              ],
+              "full_relative_residuals": [
+                2.5645999906572018e-9,
+                2.842353340545504e-9,
+                2.651181465115718e-9,
+                2.7147081691736205e-9,
+                3.0904540588442865e-9,
+                2.641646451358575e-9,
+                3.033933967448732e-9,
+                2.75466036631889e-9,
+                2.908002957416977e-9,
+                2.483188246535425e-9,
+                2.758636174028172e-9,
+                3.21903866612884e-9
+              ],
+              "correction_solves_occurred": false,
+              "refinement_steps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "independent_full_relative_residuals": [
+                2.5645999904909377e-9,
+                2.8423533405910443e-9,
+                2.651181465146371e-9,
+                2.71470816900529e-9,
+                3.0904540589096247e-9,
+                2.6416464513643434e-9,
+                3.0339339673646913e-9,
+                2.754660366451176e-9,
+                2.908002957493579e-9,
+                2.4831882466073516e-9,
+                2.7586361740149262e-9,
+                3.219038666129265e-9
+              ]
+            },
+            "third": {
+              "solver_seconds": 113.44274491900006,
+              "iterations": [
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24,
+                24
+              ],
+              "full_relative_residuals": [
+                2.5645999906572018e-9,
+                2.857126474584626e-9,
+                2.6511814651157186e-9,
+                2.7147081691736205e-9,
+                3.0904540588442865e-9,
+                2.641646451358575e-9,
+                3.033933967448732e-9,
+                2.75466036631889e-9,
+                2.908002957416977e-9,
+                2.483188246535425e-9,
+                2.758636174028172e-9,
+                3.21903866612884e-9
+              ],
+              "correction_solves_occurred": false,
+              "refinement_steps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "server_run_root": "$HOME/lqcd-run/ls-grid-wall-20261123"
+}
