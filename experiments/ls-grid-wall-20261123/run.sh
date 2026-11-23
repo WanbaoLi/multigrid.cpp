@@ -19,7 +19,9 @@ esac
 out="$work/$stage"
 mkdir -p "$out"
 git -C "$root" rev-parse HEAD > "$out/source-commit.txt"
-printf '%s  %s\n' "$gauge_sha" "$gauge" | sha256sum -c
+if [[ $stage != grid ]]; then
+    printf '%s  %s\n' "$gauge_sha" "$gauge" | sha256sum -c
+fi
 source "$root/tools/multinode/ls_env.sh"
 hostname -s
 lscpu
@@ -40,11 +42,13 @@ if [[ $stage == grid ]]; then
     lime="$work/upstream/.cache/grid-node5006-wall/lime-src"
     test "$(git -C "$GRID_SOURCE" rev-parse HEAD)" = "$grid_sha"
     test "$(git -C "$lime" rev-parse HEAD)" = "$lime_sha"
-    cmake -S "$lime" -B "$out/lime-build" -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_INSTALL_PREFIX="$out/lime-install"
-    cmake --build "$out/lime-build" -j 8
-    cmake --install "$out/lime-build"
+    if [[ ! -x $out/lime-install/bin/lime_pack ]]; then
+        cmake -S "$lime" -B "$out/lime-build" -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_INSTALL_LIBDIR=lib \
+            -DCMAKE_INSTALL_PREFIX="$out/lime-install"
+        cmake --build "$out/lime-build" -j 8
+        cmake --install "$out/lime-build"
+    fi
     exec bash "$root/experiments/node5006-grid-wall-20261122/run.sh"
 fi
 
