@@ -25,62 +25,65 @@ else
                   --with-mpfr="$deps" --with-fftw="$deps" --with-openssl="$HOME/miniconda3")
 fi
 
-test "$(git -C "$source" rev-parse HEAD)" = 3232b438f2cf729e515c185e2dbf29d7cc276bb7
-mkdir -p "$build"
-mkdir -p "$results"
-cd "$build"
-if [[ ! -f Grid/Makefile ]]; then
-  "$source/configure" --prefix="$work/install" --enable-comms=mpi-auto \
-    "${config_flags[@]}" --with-lime="$lime" \
-    CXXFLAGS="${cpu_flags[*]}" > "$work/configure.log" 2>&1
-fi
-# Keep Grid core and the fundamental Wilson–Clover double/float instantiations.
-read -r -a grid_objects <<< "$(make -s --no-print-directory -C Grid \
-    --eval='list-grid-objects:;@echo $(libGrid_a_OBJECTS)' list-grid-objects)"
-objects=()
-for object in "${grid_objects[@]}"; do
-    case "$object" in
-        */instantiation/WilsonImpl[DF]/WilsonCloverFermionInstantiation* | \
-        */instantiation/WilsonImpl[DF]/WilsonFermionInstantiation* | \
-        */instantiation/WilsonImpl[DF]/WilsonKernelsInstantiation*)
-            objects+=("$object") ;;
-        */instantiation/*/*) ;;
-        *) objects+=("$object") ;;
-    esac
-done
-read -r -a cxxflags <<< "$(./grid-config --cxxflags)"
-read -r -a ldflags <<< "$(./grid-config --ldflags)"
-read -r -a libs <<< "$(./grid-config --libs)"
 variant=
 if [[ ${GRID_CHEBYSHEV_SETUP:-0} == 1 ]]; then
     variant=-chebyshev
 fi
-overlay="$work/driver-include$variant"
 binary="$work/grid_wall$variant"
-compiler_log="$work/compile-driver$variant.log"
-header=Grid/algorithms/deflation/MultiRHSBlockCGLinalg.h
-mkdir -p "$overlay/$(dirname "$header")"
-patch -s -o "$overlay/$header" "$source/$header" "$driver/grid-float-blas.patch"
-if [[ -n $variant ]]; then
-    patch -s -o "$overlay/Test_multigrid_common.h" "$source/tests/solver/Test_multigrid_common.h" \
-        "$driver/grid-chebyshev-setup.patch"
+mkdir -p "$results"
+if [[ ${GRID_SKIP_BUILD:-0} != 1 ]]; then
+    test "$(git -C "$source" rev-parse HEAD)" = 3232b438f2cf729e515c185e2dbf29d7cc276bb7
+    mkdir -p "$build"
+    cd "$build"
+    if [[ ! -f Grid/Makefile ]]; then
+      "$source/configure" --prefix="$work/install" --enable-comms=mpi-auto \
+        "${config_flags[@]}" --with-lime="$lime" \
+        CXXFLAGS="${cpu_flags[*]}" > "$work/configure.log" 2>&1
+    fi
+    # Keep Grid core and the fundamental Wilson–Clover double/float instantiations.
+    read -r -a grid_objects <<< "$(make -s --no-print-directory -C Grid \
+        --eval='list-grid-objects:;@echo $(libGrid_a_OBJECTS)' list-grid-objects)"
+    objects=()
+    for object in "${grid_objects[@]}"; do
+        case "$object" in
+            */instantiation/WilsonImpl[DF]/WilsonCloverFermionInstantiation* | \
+            */instantiation/WilsonImpl[DF]/WilsonFermionInstantiation* | \
+            */instantiation/WilsonImpl[DF]/WilsonKernelsInstantiation*)
+                objects+=("$object") ;;
+            */instantiation/*/*) ;;
+            *) objects+=("$object") ;;
+        esac
+    done
+    read -r -a cxxflags <<< "$(./grid-config --cxxflags)"
+    read -r -a ldflags <<< "$(./grid-config --ldflags)"
+    read -r -a libs <<< "$(./grid-config --libs)"
+    overlay="$work/driver-include$variant"
+    compiler_log="$work/compile-driver$variant.log"
+    header=Grid/algorithms/deflation/MultiRHSBlockCGLinalg.h
+    mkdir -p "$overlay/$(dirname "$header")"
+    patch -s -o "$overlay/$header" "$source/$header" "$driver/grid-float-blas.patch"
+    if [[ -n $variant ]]; then
+        patch -s -o "$overlay/Test_multigrid_common.h" "$source/tests/solver/Test_multigrid_common.h" \
+            "$driver/grid-chebyshev-setup.patch"
+    fi
+    if [[ ${GRID_REUSE_DRIVER_OBJECT:-0} == 1 ]]; then
+        test -s "$binary.o"
+    else
+        "$CXX" "${cpu_flags[@]}" -I"$overlay" -I"$build/Grid" -I"$build" -I"$source" -I"$source/tests/solver" \
+            "${cxxflags[@]}" -c "$driver/grid_wall.cc" -o "$binary.o" > "$compiler_log" 2>&1 &
+        driver_pid=$!
+    fi
+    GIT_DIR="$source/.git" GIT_WORK_TREE="$source" make -C Grid Version.h
+    lib_status=0
+    GIT_DIR="$source/.git" GIT_WORK_TREE="$source" \
+        make -C Grid -j "${GRID_BUILD_JOBS:-48}" "libGrid_a_OBJECTS=${objects[*]}" libGrid.a \
+        > "$work/build.log" 2>&1 || lib_status=$?
+    if [[ -n ${driver_pid:-} ]]; then wait "$driver_pid"; fi
+    if [[ $lib_status != 0 ]]; then exit "$lib_status"; fi
+    "$CXX" "$binary.o" -L"$build/Grid" "${ldflags[@]}" "${libs[@]}" \
+        -o "$binary" >> "$compiler_log" 2>&1
 fi
-if [[ ${GRID_REUSE_DRIVER_OBJECT:-0} == 1 ]]; then
-    test -s "$binary.o"
-else
-    "$CXX" "${cpu_flags[@]}" -I"$overlay" -I"$build/Grid" -I"$build" -I"$source" -I"$source/tests/solver" \
-        "${cxxflags[@]}" -c "$driver/grid_wall.cc" -o "$binary.o" > "$compiler_log" 2>&1 &
-    driver_pid=$!
-fi
-GIT_DIR="$source/.git" GIT_WORK_TREE="$source" make -C Grid Version.h
-lib_status=0
-GIT_DIR="$source/.git" GIT_WORK_TREE="$source" \
-    make -C Grid -j "${GRID_BUILD_JOBS:-48}" "libGrid_a_OBJECTS=${objects[*]}" libGrid.a \
-    > "$work/build.log" 2>&1 || lib_status=$?
-if [[ -n ${driver_pid:-} ]]; then wait "$driver_pid"; fi
-if [[ $lib_status != 0 ]]; then exit "$lib_status"; fi
-"$CXX" "$binary.o" -L"$build/Grid" "${ldflags[@]}" "${libs[@]}" \
-    -o "$binary" >> "$compiler_log" 2>&1
+test -x "$binary"
 sha256sum "$binary"
 if [[ ${GRID_BUILD_ONLY:-0} == 1 ]]; then exit 0; fi
 
