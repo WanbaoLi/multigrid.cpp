@@ -1,0 +1,251 @@
+{
+  "date": "2026-11-23",
+  "site": "LingSheng",
+  "git_branch": "codex/ls-grid-wall-20261123",
+  "gauge_sha256": "f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326",
+  "lattice_xyzt": [
+    24,
+    24,
+    24,
+    64
+  ],
+  "source": "unit wall at t=0",
+  "tol": 1e-8,
+  "zero_initial_guesses": true,
+  "multigrid_hierarchy_reused": true,
+  "timing_sample": "second after warm-up",
+  "grid": {
+    "job_ids": {
+      "build": 2235290,
+      "xt": 2235291,
+      "reference": 2235292
+    },
+    "executable_sha256": "eb42dce5eaa84706b0416e170a6a108bd6fd7cbb6499f03d9d6bd880a6a7002d",
+    "source_commit": "eedacdd6f5a9d22213944e39dcf0d6d852eef9fc",
+    "simd_single_precision_xyzt": [
+      1,
+      2,
+      1,
+      1
+    ],
+    "aggregation_block_xyzt": [
+      3,
+      6,
+      6,
+      2
+    ],
+    "layouts": {
+      "xt": {
+        "mpi_xyzt": [
+          2,
+          1,
+          1,
+          16
+        ],
+        "host": "cn12042",
+        "solver_seconds_first_second_third": [
+          137.263178099,
+          138.953164982,
+          142.422446345
+        ],
+        "outer_iterations": [
+          65,
+          65,
+          65
+        ],
+        "full_relative_residuals": [
+          8.959794082318559e-9,
+          8.959794082318559e-9,
+          8.959794082318559e-9
+        ],
+        "ranks": 32,
+        "threads_per_rank": 16,
+        "correction_solves_occurred": false
+      },
+      "reference": {
+        "mpi_xyzt": [
+          4,
+          1,
+          1,
+          8
+        ],
+        "host": "cn12042",
+        "solver_seconds_first_second_third": [
+          143.420144694,
+          145.224450457,
+          145.429610986
+        ],
+        "outer_iterations": [
+          65,
+          65,
+          65
+        ],
+        "full_relative_residuals": [
+          8.959796689607071e-9,
+          8.959796689607071e-9,
+          8.959796689607071e-9
+        ],
+        "ranks": 32,
+        "threads_per_rank": 16,
+        "correction_solves_occurred": false
+      }
+    },
+    "prior_xt_single": {
+      "job_id": 2234479,
+      "source_commit": "a516419b546f1460df37bbdc737f6eb2989e5972",
+      "host": "cn12042",
+      "second_solver_seconds": 99.162067054,
+      "remaining_work_cancelled_at_user_request": true
+    }
+  },
+  "halo_probe": {
+    "job_id": 2234434,
+    "source_commit": "476e030c0b6df755036ef769cc4d9331b46d99f3",
+    "aggregation_block_xyzt": [
+      6,
+      6,
+      6,
+      2
+    ],
+    "method": "Packing and nonblocking MPI face exchange over marked buffers",
+    "layouts": [
+      {
+        "host": "cn12053",
+        "mpi_xyzt": [
+          1,
+          1,
+          1,
+          32
+        ],
+        "local_xyzt": [
+          24,
+          24,
+          24,
+          2
+        ],
+        "coarse_local_xyzt": [
+          4,
+          4,
+          4,
+          1
+        ],
+        "fine_interior_fraction": 0,
+        "repetitions_per_sample": 60,
+        "verified": true,
+        "faces": {
+          "fine": {
+            "1": {
+              "bytes_sent_per_rank": 2654208,
+              "pack_and_exchange_seconds": [
+                0.0026229229833333334,
+                0.0026283057666666664,
+                0.002634503749999999
+              ]
+            },
+            "2": {
+              "bytes_sent_per_rank": 5308416,
+              "pack_and_exchange_seconds": [
+                0.004861383249999999,
+                0.004835311483333334,
+                0.0048465662500000025
+              ]
+            }
+          },
+          "coarse": {
+            "1": {
+              "bytes_sent_per_rank": 49152,
+              "pack_and_exchange_seconds": [
+                0.00009904431666666695,
+                0.00009737211666666449,
+                0.0000959490833333317
+              ]
+            },
+            "2": {
+              "bytes_sent_per_rank": 98304,
+              "pack_and_exchange_seconds": [
+                0.0001391009500000003,
+                0.00013621003333333197,
+                0.00013708539999999955
+              ]
+            }
+          }
+        }
+      },
+      {
+        "host": "cn12053",
+        "mpi_xyzt": [
+          2,
+          1,
+          1,
+          16
+        ],
+        "local_xyzt": [
+          12,
+          24,
+          24,
+          4
+        ],
+        "coarse_local_xyzt": [
+          2,
+          4,
+          4,
+          2
+        ],
+        "fine_interior_fraction": 0.4166666666666667,
+        "repetitions_per_sample": 60,
+        "verified": true,
+        "faces": {
+          "fine": {
+            "1": {
+              "bytes_sent_per_rank": 1769472,
+              "pack_and_exchange_seconds": [
+                0.002166131250000003,
+                0.0021223688833333326,
+                0.002128616033333334
+              ]
+            },
+            "2": {
+              "bytes_sent_per_rank": 3538944,
+              "pack_and_exchange_seconds": [
+                0.0042847852,
+                0.004289652816666667,
+                0.004316663449999998
+              ]
+            }
+          },
+          "coarse": {
+            "1": {
+              "bytes_sent_per_rank": 49152,
+              "pack_and_exchange_seconds": [
+                0.00013427864999999707,
+                0.00013275696666667318,
+                0.00013204426666667176
+              ]
+            },
+            "2": {
+              "bytes_sent_per_rank": 98304,
+              "pack_and_exchange_seconds": [
+                0.00016846696666666567,
+                0.00016615023333333608,
+                0.00016537838333333295
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  "native_single_mode_gate": {
+    "job_id": 2235293,
+    "solver_process_grid": [
+      1,
+      1,
+      1,
+      16
+    ],
+    "full_relative_residual": 2.56466514396623e-9,
+    "three_single_column_samples": true,
+    "independent_scalar_oracle_passed": true
+  },
+  "native_mixed_layout_end_to_end_measured": false
+}

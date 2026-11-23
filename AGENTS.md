@@ -37,6 +37,8 @@ and `docs/backend-architecture.md` for field, normalization and MPI contracts.
 - Performance results must pass true residuals and include zero initial guesses,
   thread/rank configuration, first/second/steady samples and whether correction
   solves occurred. Report bounded scans as best in the tested set, not global optima.
+- Routine performance experiments time a single RHS only, per the user's latest
+  benchmark instruction. Use the second solve after warm-up for comparisons.
 - Keep source/build/data artifacts and upstream license notices separate.
   Do not relabel the external backend as a newly authored MG algorithm.
 
