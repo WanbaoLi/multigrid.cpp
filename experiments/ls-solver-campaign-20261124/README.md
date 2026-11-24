@@ -37,4 +37,6 @@ plaquette 和两种质量的独立算子像。
 的提交和分支。目录包含 `project.bundle`、`project-delta.bundle` 和该提交
 的 `launch.sh`。调度器先编译并执行 CTest，再启动使用该构建的作业。
 每个原生求解试验只在独立残差复核后写出带 `complete: true` 的 `result.json`。
+有界扫描在 `single-node-sweep.json` 汇总合格配置；同配方的一、两节点对照
+另写出 `strong-scaling.json`，记录加速比和并行效率。
 作业日志及源码包在实验目录；此处记录结构化状态和通过验证的结果。

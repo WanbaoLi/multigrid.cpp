@@ -50,7 +50,7 @@ for slot in c24 c32; do
     two[$slot]=$(submit "$slot" two -D "$single=SUCCEEDED" \
         -n "lqcd_${slot}_two" -nn 2 -N 32 -rpn 16 -x job \
         -R 'cpu=37,mem=30000MB' -T 7200 \
-        "${common[@]}" "LS_NATIVE_FIXTURE=$slot" LS_MPI_TRANSPORT=ucx \
+        "${common[@]}" "LS_NATIVE_FIXTURE=$slot" LS_MPI_TRANSPORT=ucx LQCD_COARSE_THREADS=0 LS_REQUIRE_SCALING=1 \
         /bin/bash "$work/launch.sh" native-two "$work/$slot" "$revision" "$gauge")
     test -n "${two[$slot]}"
 done

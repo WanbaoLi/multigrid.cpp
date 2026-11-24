@@ -30,10 +30,13 @@ esac
 case "$stage" in
     native-one-sweep)
         for layout in 16:0 16:8 32:0 32:8; do
-            LS_RANKS_PER_NODE=${layout%:*} LQCD_COARSE_THREADS=${layout#*:} \
+            if ! LS_RANKS_PER_NODE=${layout%:*} LQCD_COARSE_THREADS=${layout#*:} \
                 LS_RESULT_SUFFIX="mpi${layout%:*}-coarse${layout#*:}" \
-                bash "$0" native-one "$work" "$gauge"
+                bash "$0" native-one "$work" "$gauge"; then
+                echo "Single-node case failed: $layout" >&2
+            fi
         done
+        python3 "$root/tools/multinode/summarize_wall.py" "$work"
         exit 0
         ;;
     native-one-pair)
@@ -236,6 +239,9 @@ tmp = output / "result.json.tmp"
 tmp.write_text(json.dumps(report, indent=2) + "\n")
 tmp.replace(output / "result.json")
 PY
+if [[ $stage == native-two && ( -f "$work/native-one-mpi16-coarse0/result.json" || ${LS_REQUIRE_SCALING:-0} == 1 ) ]]; then
+    python "$root/tools/multinode/summarize_wall.py" "$work" --two "$out"
+fi
 
 mpirun -n "$ranks" --bind-to none python -c '
 import os
