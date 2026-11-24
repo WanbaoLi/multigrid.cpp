@@ -18,6 +18,7 @@ template <class T> struct WorkspaceAllocator {
     using difference_type = std::ptrdiff_t;
     using is_always_equal = std::true_type;
     using propagate_on_container_move_assignment = std::true_type;
+    static constexpr size_type minimum_mmap_bytes = 1024 * 1024;
 
     template <class U> struct rebind {
         using other = WorkspaceAllocator<U>;
@@ -33,7 +34,7 @@ template <class T> struct WorkspaceAllocator {
         void *storage = nullptr;
         // Large scalar fields use demand-zero virtual mappings. Default
         // insertion below never writes them: only owned/halo pages are resident.
-        if (count * sizeof(T) >= 1024 * 1024) {
+        if (count * sizeof(T) >= minimum_mmap_bytes) {
             storage = mmap(nullptr, count * sizeof(T), PROT_READ | PROT_WRITE,
                            MAP_PRIVATE | MAP_ANONYMOUS | MAP_NORESERVE, -1, 0);
             if (storage == MAP_FAILED) throw std::bad_alloc();
@@ -45,7 +46,7 @@ template <class T> struct WorkspaceAllocator {
         return static_cast<T *>(storage);
     }
     void deallocate(T *storage, size_type count) noexcept {
-        if (count * sizeof(T) >= 1024 * 1024) munmap(storage, count * sizeof(T));
+        if (count * sizeof(T) >= minimum_mmap_bytes) munmap(storage, count * sizeof(T));
         else std::free(storage);
     }
     constexpr size_type max_size() const noexcept {

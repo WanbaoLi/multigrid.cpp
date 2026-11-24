@@ -1,6 +1,7 @@
 #pragma once
 #include "environment.hpp"
 #include "batched_state.hpp"
+#include "halo_storage.hpp"
 #include "multigrid.hpp"
 #include <cstddef>
 #include "../../support/hbw_buffer.hpp"
@@ -13,6 +14,7 @@ namespace hbm = lqcd_native::hbm;
 
 // Aggregate-major storage; method bodies are grouped by algorithm in .cpp files.
 struct NativeMG::Impl {
+    mutable std::unique_ptr<lqcd_native::detail::FineHaloStorage> fine_halo_storage;
     std::vector<BatchKrylovWorkspace> batch_workspace;
     bool outer_float = true;
     std::vector<FloatField> batch_coarse_rhs, batch_coarse_correction, batch_sap_image;

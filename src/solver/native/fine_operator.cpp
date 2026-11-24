@@ -117,6 +117,7 @@ void NativeMG::Impl::fine_apply(const FloatField &src, FloatField &out, int colo
         return;
     }
     HaloTrace trace(fine_halo_stats, profile_active);
+    if (fine_halo_storage) fine_halo_storage->bind(src,0);
     const int prev = (native_rank + native_size - 1) % native_size;
     const int next = (native_rank + 1) % native_size;
     // Block-local x,y,z are contiguous, t slowest.  A Wilson hop needs
