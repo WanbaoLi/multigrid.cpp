@@ -3,17 +3,18 @@ set -eo pipefail
 
 checkout() {
     git clone --no-checkout "$workspace/project.bundle" "$1"
-    git -C "$1" fetch "$workspace/project-delta.bundle" refs/heads/codex/ls-grid-wall-20261123
+    git -C "$1" fetch "$workspace/project-delta.bundle" "refs/heads/$branch"
     git -C "$1" sparse-checkout init --cone
     git -C "$1" sparse-checkout set src include bindings cmake tests tools benchmarks/runtime \
         experiments/ls-grid-wall-20261123 experiments/node5006-grid-wall-20261122
-    git -C "$1" checkout -B codex/ls-grid-wall-20261123 FETCH_HEAD
+    git -C "$1" checkout -B "$branch" FETCH_HEAD
     test "$(git -C "$1" rev-parse HEAD)" = "$revision"
 }
 
 stage=$1
 workspace=$2
 revision=$3
+branch=${LQCD_BUNDLE_BRANCH:-codex/ls-grid-wall-20261123}
 if [[ $stage == stage-native-host ]]; then
     mkdir -p "$(dirname "$4")"
     checkout "$4"

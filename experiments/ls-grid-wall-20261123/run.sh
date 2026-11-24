@@ -10,8 +10,32 @@ lime_sha=924aa0fce27a6cd73d94c9adc4b995f00e13232b
 gauge_sha=f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326
 mass=-0.279
 csw=1.160678675188
+lattice=24
+time_extent=64
+block=6
+block_t=2
+case "${LS_NATIVE_FIXTURE:-c24}" in
+    c24) ;;
+    c32)
+        lattice=32; block=8; csw=1.1606789224
+        gauge_sha=bc2918403eee5d1e10a409fc0e69ac03b22cc7f0cf71be760b44a593ff0d0828
+        ;;
+    f64p14)
+        lattice=64; time_extent=128; block=8; block_t=4; mass=-.2334; csw=1.140825606017
+        gauge_sha=30790de7907dc66a6555bd62fb276d365aceedb07cb9eb3bc7e567847a250183
+        ;;
+    *) echo "Unknown native fixture: $LS_NATIVE_FIXTURE" >&2; exit 2 ;;
+esac
 
 case "$stage" in
+    native-one-sweep)
+        for layout in 16:0 16:8 32:0 32:8; do
+            LS_RANKS_PER_NODE=${layout%:*} LQCD_COARSE_THREADS=${layout#*:} \
+                LS_RESULT_SUFFIX="mpi${layout%:*}-coarse${layout#*:}" \
+                bash "$0" native-one "$work" "$gauge"
+        done
+        exit 0
+        ;;
     native-one-pair)
         LS_RANKS_PER_NODE=16 LS_RESULT_SUFFIX=16 bash "$0" native-one "$work" "$gauge"
         LS_RANKS_PER_NODE=32 LS_RESULT_SUFFIX=32 bash "$0" native-one "$work" "$gauge"
@@ -22,7 +46,7 @@ case "$stage" in
         LS_MPI_TRANSPORT=ucx LS_RESULT_SUFFIX=ucx bash "$0" native-two "$work" "$gauge"
         exit 0
         ;;
-    grid-build|grid-shard|grid-assemble|grid|halo-layout|native-build|native-one|native-two) ;;
+    grid-build|grid-shard|grid-assemble|grid|halo-layout|hmc-c24|native-build|native-one|native-two) ;;
     *) echo "Unknown stage: $stage" >&2; exit 2 ;;
 esac
 
@@ -40,22 +64,37 @@ hostname -s
 lscpu
 
 if [[ $stage == native-build || $stage == native-one && ! -s $work/native-build/build/verify_slab ]]; then
-    native_commit=5b99879f84f647d267dde6156e637ced64ca694f
-    native_library="$HOME/lqcd-run/mg-l24-coarse-rescue-run01/liblqcd_cpu.so"
-    git -C "$root" diff --exit-code "$native_commit" HEAD -- src include cmake CMakeLists.txt bindings
-    printf '%s  %s\n' 8d1e7374d9e765225f20a0eb79cd61785e7fdadf092f22649e37da1a7662236d \
-        "$native_library" | sha256sum -c
     native_tmp=$(mktemp -d /tmp/ls-wall-native.XXXXXXXX)
     trap 'rm -rf -- "$native_tmp"' EXIT
-    if ! LS_SCALAR_GATE=1 bash "$root/tools/multinode/gate_ls.sh" "$native_tmp"; then
-        cp "$native_tmp/gates.log" "$out/"
-        exit 1
+    if [[ ${LS_BUILD_RUNTIME:-0} == 1 ]]; then
+        bash "$root/tools/multinode/gate_ls.sh" "$native_tmp" || {
+            cp "$native_tmp/gates.log" "$out/"
+            exit 1
+        }
+        mkdir -p "$work/native-build/build"
+        cp "$native_tmp/build/"{liblqcd_cpu.so,verify_slab,multigrid} "$work/native-build/build/"
+        if [[ ${LS_BUILD_HMC:-OFF} == ON ]]; then
+            cp "$native_tmp/build/liblqcd_hmc_kernels.so" "$work/native-build/build/"
+        fi
+        cp "$out/source-commit.txt" "$work/native-build/library-source-commit.txt"
+        cp "$out/source-commit.txt" "$work/native-build/oracle-source-commit.txt"
+        cp "$native_tmp/"{gates,ctest}.log "$out/"
+    else
+        native_commit=5b99879f84f647d267dde6156e637ced64ca694f
+        native_library="$HOME/lqcd-run/mg-l24-coarse-rescue-run01/liblqcd_cpu.so"
+        git -C "$root" diff --exit-code "$native_commit" HEAD -- src include cmake CMakeLists.txt bindings
+        printf '%s  %s\n' 8d1e7374d9e765225f20a0eb79cd61785e7fdadf092f22649e37da1a7662236d \
+            "$native_library" | sha256sum -c
+        if ! LS_SCALAR_GATE=1 bash "$root/tools/multinode/gate_ls.sh" "$native_tmp"; then
+            cp "$native_tmp/gates.log" "$out/"
+            exit 1
+        fi
+        mkdir -p "$work/native-build/build"
+        cp "$native_library" "$native_tmp/build/verify_slab" "$work/native-build/build/"
+        printf '%s\n' "$native_commit" > "$work/native-build/library-source-commit.txt"
+        cp "$out/source-commit.txt" "$work/native-build/oracle-source-commit.txt"
+        cp "$native_tmp/gates.log" "$native_tmp/ctest.log" "$out/"
     fi
-    mkdir -p "$work/native-build/build"
-    cp "$native_library" "$native_tmp/build/verify_slab" "$work/native-build/build/"
-    printf '%s\n' "$native_commit" > "$work/native-build/library-source-commit.txt"
-    cp "$out/source-commit.txt" "$work/native-build/oracle-source-commit.txt"
-    cp "$native_tmp/gates.log" "$native_tmp/ctest.log" "$out/"
 fi
 if [[ $stage == native-build ]]; then exit 0; fi
 
@@ -82,8 +121,14 @@ if [[ $stage == halo-layout ]]; then
         python -u "$root/experiments/ls-grid-wall-20261123/halo_layout_probe.py"
     exit 0
 fi
+if [[ $stage == hmc-c24 ]]; then
+    cmp "$out/source-commit.txt" "$work/native-build/library-source-commit.txt"
+    bash "$root/tools/hmc/run_c24_ls.sh" "$out" "$gauge" "$work/native-build/build"
+    exit 0
+fi
 
 if [[ $stage == grid || $stage == grid-build || $stage == grid-shard || $stage == grid-assemble ]]; then
+    test "$lattice" -eq 24
     grid_tmp=$(mktemp -d /tmp/ls-wall-grid.XXXXXXXX)
     export GRID_PLATFORM=ls GRID_WORK="$grid_tmp/build-grid" GRID_GAUGE="$gauge" GRID_RESULTS="$out"
     export GRID_SOURCE="$grid_tmp/Grid" GRID_CHEBYSHEV_SETUP=1 GRID_BUILD_JOBS=24
@@ -163,11 +208,34 @@ if [[ ${LS_BENCHMARK_FULL12:-0} == 1 ]]; then
 fi
 "${run[@]}" python -u "$root/benchmarks/runtime/benchmark_multinode.py" \
     --gauge "$gauge" --library "$build/liblqcd_cpu.so" --output "$out/measurements" --scratch "$scratch" \
-    --lattice 24 24 24 64 --block 6 6 6 2 --mass "$mass" --csw "$csw" --tol 1e-8 --source wall \
+    --lattice "$lattice" "$lattice" "$lattice" "$time_extent" \
+    --block "$block" "$block" "$block" "$block_t" --mass "$mass" --csw "$csw" --tol 1e-8 --source wall \
     --ranks-per-node "$ranks_per_node" "${rhs_args[@]}"
-"${run[@]}" "$build/verify_slab" "$scratch" 24 64 "$mass" "$csw" 1e-8 0 "$oracle_columns" wall \
+"${run[@]}" "$build/verify_slab" "$scratch" "$lattice" "$time_extent" "$mass" "$csw" 1e-8 0 "$oracle_columns" wall \
     | tee "$out/second-round-residuals.log"
 grep -qx SCALAR_ALL_PASSED "$out/second-round-residuals.log"
+python - "$out" "$oracle_columns" <<'PY'
+import json
+import math
+from pathlib import Path
+import sys
+
+output = Path(sys.argv[1])
+report = json.loads((output / "measurements/result.json").read_text())
+rows = []
+for line in (output / "second-round-residuals.log").read_text().splitlines():
+    fields = line.split()
+    if fields and fields[0] == "SCALAR_COLUMN":
+        rows.append({"column": int(fields[1]), "residual": float(fields[2])})
+if ([row["column"] for row in rows] != list(range(int(sys.argv[2])))
+        or any(not math.isfinite(row["residual"]) or row["residual"] > report["tol"] for row in rows)):
+    raise RuntimeError("Missing or invalid independent full residual")
+report.update(complete=True, independent_verification={
+    "passed": True, "method": "independent scalar full-spin padded slabs", "columns": rows})
+tmp = output / "result.json.tmp"
+tmp.write_text(json.dumps(report, indent=2) + "\n")
+tmp.replace(output / "result.json")
+PY
 
 mpirun -n "$ranks" --bind-to none python -c '
 import os
