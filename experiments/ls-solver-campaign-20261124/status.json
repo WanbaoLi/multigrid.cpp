@@ -1,0 +1,78 @@
+{
+  "checked_at": "2026-11-24T22:04:10+08:00",
+  "branch": "codex/ls-solver-campaign-20261124",
+  "submitted_source_commit": "f4943d272facbb99145de6ee305d96adb6decca9",
+  "server_run_root": "/home/share/nsls_lwb/lqcd-run/ls-solver-campaign-20261124",
+  "scheduler": {
+    "queue": "q_hpcapp",
+    "dependency_group": 3298,
+    "closed_for_administration": 521,
+    "unavailable": 4,
+    "build_pending_reason": "Available resource pool supplied 0 vcores; node administrative reason recorded as close node when upgrading.",
+    "jobs": [
+      {"id": 2249431, "stage": "build and CTest", "state": "PENDING"},
+      {"id": 2249432, "stage": "C24 one-node single-RHS sweep", "state": "WAITING"},
+      {"id": 2249433, "stage": "C24 two-node RoCE and residual", "state": "WAITING"},
+      {"id": 2249434, "stage": "C32 one-node single-RHS sweep", "state": "WAITING"},
+      {"id": 2249435, "stage": "C32 two-node RoCE and residual", "state": "WAITING"},
+      {"id": 2249436, "stage": "F64P14 two-node halo-page reuse", "state": "WAITING"},
+      {"id": 2249437, "stage": "C24 RHMC pilot with independent verification", "state": "WAITING"}
+    ]
+  },
+  "inputs": {
+    "c24": {
+      "fixture": "beta6.20_mu-0.2790_ms-0.2400_L24x64_cfg_5000.lime",
+      "sha256": "f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326"
+    },
+    "c32": {
+      "fixture": "beta6.20_mu-0.2790_ms-0.2400_L32x64_cfg_10000.lime",
+      "bytes": 1208084584,
+      "sha256": "bc2918403eee5d1e10a409fc0e69ac03b22cc7f0cf71be760b44a593ff0d0828",
+      "current_destination_hash_verified": true
+    },
+    "c64": {
+      "fixture": "beta6.41_mu-0.2334_ms-0.2030_L64x128_cfg_1000.lime",
+      "bytes": 19327493608,
+      "sha256": "30790de7907dc66a6555bd62fb276d365aceedb07cb9eb3bc7e567847a250183",
+      "current_source_and_destination_hashes_match": true,
+      "previously_verified_transfer_reused": true
+    }
+  },
+  "local_validation": {
+    "platform": "WSL x86_64",
+    "compiler": "GCC 15.2.0",
+    "mpi": "MPICH 5.0.2",
+    "native_build_source_commit": "f96a4239dc28961df360bbf77ccbdc7075aff625",
+    "runtime_sha256": "c05b8d0018793d5aa06f222562a6bb354a5d248a277d293930fc58712d848664",
+    "hmc_kernel_sha256": "0aa22481462f0bbdb1bf42cc2afe4e19607d012db55413af7662937688e81689",
+    "ctest": {"passed": 60, "failed": 0, "mpi_tests_included": true},
+    "halo_page_reuse": {
+      "ranks": 2,
+      "lattice_xyzt": [8, 8, 8, 32],
+      "independent_full_residual_default": 3.2954195455165317e-10,
+      "independent_full_residual_reused": 3.2954195455165317e-10
+    },
+    "rhmc": {
+      "lattice_xyzt": [4, 4, 4, 4],
+      "mpi_ranks": 2,
+      "threads_per_rank": 1,
+      "beta": 5.6,
+      "mass_light": 0.5,
+      "mass_strange": 0.8,
+      "csw": 1.0,
+      "seed": 6451,
+      "trajectories": 2,
+      "warmup": 1,
+      "accepted": 2,
+      "verified_configurations": 1,
+      "lime_sha256": "6f289f576f90455c309af64878100834fd2951a184ebfdbda878f5c6a1ca548e",
+      "scidac_crc_passed": true,
+      "unitarity_error": 6.661338346862539e-15,
+      "determinant_error": 6.661338373626389e-15,
+      "plaquette": 0.9978305758346352,
+      "independent_operator_relative_errors": [1.170099572434621e-16, 1.166932990507851e-16],
+      "restart_baseline_and_optimized_match_lime_and_rng": true
+    }
+  },
+  "new_lingsheng_performance_results_available": false
+}
