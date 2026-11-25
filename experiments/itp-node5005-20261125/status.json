@@ -1,0 +1,37 @@
+{
+  "checked_at": "2026-11-25T16:21:53+08:00",
+  "source_branch": "codex/itp-node5005-20261125",
+  "source_commit": "b68c5586c8cd606112693e544a0544667f36cd38",
+  "server_root": "/public2/home/lwb_720/itp-node5005-20261125",
+  "allocation": {
+    "job_id": 1305916,
+    "partition": "amd256c_2025",
+    "host": "node5005",
+    "state": "RUNNING",
+    "allocated_cpus": 256,
+    "exclusive": true,
+    "time_limit": "10:00:00"
+  },
+  "cpu_sample_during_c24_setup": {
+    "seconds": 5,
+    "job_average_cpu_cores": 0.03,
+    "host_cpu_utilization_percent": 100.0,
+    "cpu_cfs_quota_us": -1,
+    "cpu_shares": 1024,
+    "host_load_average_1m": 289.60
+  },
+  "tests": {"selected_unit_tests_passed": 3, "earlier_mpi_smoke_tests_timed_out": true},
+  "x86_c24": {
+    "input_sha256": "f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326",
+    "phase": "multigrid_setup",
+    "latest_completed_setup_vector": 1,
+    "read_seconds": 15.144231582060456,
+    "stout_seconds": 47.08985538966954,
+    "gauge_clover_seconds": 382.2850082591176
+  },
+  "pending_inputs": {
+    "reason": "LingSheng SSH tunnel closed and a connection bound to the VPN interface timed out",
+    "c32": {"copied_bytes": 172556800, "expected_bytes": 1208084584},
+    "c24_rhmc_initial_gauge": {"copied_bytes": 401037702, "expected_bytes": 509609712}
+  }
+}
