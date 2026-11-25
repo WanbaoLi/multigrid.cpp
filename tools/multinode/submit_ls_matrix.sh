@@ -34,7 +34,6 @@ common=(/usr/bin/env "LQCD_LS_SDK=$sdk" "LQCD_BUNDLE_BRANCH=$branch")
 build=$(submit build build -n lqcd_matrix_build -nn 1 -N 1 -rpn 1 \
     -R 'cpu=8,mem=64000MB' -RL 'mem=64000MB' -T 7200 \
     "${common[@]}" LS_BUILD_RUNTIME=1 LS_BUILD_HMC=ON LS_BUILD_JOBS=8 \
-    LS_MPI_GATE_BIND_NONE=1 \
     /bin/bash "$work/launch.sh" native-build "$work/build" "$revision" "$input24")
 test -n "$build"
 
