@@ -49,12 +49,17 @@ try:
     comm.Allreduce(MPI.IN_PLACE, values, op=MPI.SUM)
     assert np.array_equal(values, [comm.size * (comm.size - 1) // 2, comm.size])
     phase('8MiB_ring')
-    send = np.full(8 * 1024 * 1024, rank, dtype=np.uint8)
+    # Preserve distinct rank IDs above 255 while keeping the payload at 8 MiB.
+    marker = np.dtype(np.uint32)
+    send = np.full(8 * 1024 * 1024 // marker.itemsize, rank, dtype=marker)
     recv = np.empty_like(send)
     comm.Sendrecv(send, dest=(rank + 1) % comm.size, sendtag=981,
                   recvbuf=recv, source=(rank - 1) % comm.size, recvtag=981)
     assert np.all(recv == (rank - 1) % comm.size)
     if args.benchmark:
+        send_bytes = send.view(np.uint8)
+        recv_bytes = recv.view(np.uint8)
+
         def mean_max_seconds(operation, count):
             for _ in range(5):
                 operation()
@@ -67,8 +72,8 @@ try:
         def ring(size):
             return mean_max_seconds(
                 lambda: comm.Sendrecv(
-                    send[:size], dest=(rank + 1) % comm.size, sendtag=981,
-                    recvbuf=recv[:size], source=(rank - 1) % comm.size, recvtag=981), 40)
+                    send_bytes[:size], dest=(rank + 1) % comm.size, sendtag=981,
+                    recvbuf=recv_bytes[:size], source=(rank - 1) % comm.size, recvtag=981), 40)
 
         reduction = np.ones(8, dtype=np.float64)
         reduced = np.empty_like(reduction)
