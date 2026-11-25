@@ -234,14 +234,14 @@ class NativeBackend final : public Backend {
             shared_coefficients->synchronize();
         solver->release_setup_vectors();
         solver->verify();
-        solver->place_hot_data();
         if (distributed) {
-            // All runtime kernels now use the verified FP32 owned copies.
-            // Setup cannot run twice in the C ABI; retain FP64 gauge/Clover
-            // for reliable residuals, but discard the FP64 setup-only assets.
+            // Placement allocates copies of the verified FP32 owned assets.
+            // Reclaim the FP64 setup-only data on every rank before allocating them.
             hierarchy.basis.release_storage();
             hierarchy.stencil.release_storage();
+            MPI_Barrier(comm);
         }
+        solver->place_hot_data();
     }
     void apply(const Vector &in, Vector &out) override {
         solver->apply(in, out);
