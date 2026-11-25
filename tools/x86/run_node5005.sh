@@ -77,7 +77,7 @@ OMP_NUM_THREADS=2 "$hmc/bin/python" "$root/tools/hmc/verify_configs.py" "$work/h
     --reference "$build/multigrid"
 )
 
-gauge24="$HOME/.cache/quda-wall-20261122/inputs/beta6.20_mu-0.2790_ms-0.2400_L24x64_cfg_5000.lime"
+gauge24="$HOME/.cache/quda-wall-20261122/verified-inputs/beta6.20_mu-0.2790_ms-0.2400_L24x64_cfg_5000.lime"
 set +e
 (set -e; solve 24 6 1.160678675188 "$gauge24" f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326)
 status=$?
