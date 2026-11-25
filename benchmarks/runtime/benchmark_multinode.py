@@ -15,6 +15,20 @@ sys.path.insert(0,str(ROOT/'bindings'))
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from check_lime_solver import atomic, native_timing, phase_summary, _measure, digest
 
+
+def numa_memory():
+    pools=[]
+    for path in sorted(Path('/sys/devices/system/node').glob('node[0-9]*')):
+        cpus=(path/'cpulist').read_text().strip()
+        values={}
+        for line in (path/'meminfo').read_text().splitlines():
+            fields=line.split()
+            if fields[2] in ('MemTotal:','MemFree:'):
+                values[fields[2][:-1]+'_KiB']=int(fields[3])
+        pools.append(dict(numa_node=int(path.name[4:]),cpu_list=cpus,**values))
+    return pools
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--gauge',required=True)
@@ -28,7 +42,9 @@ def main():
     p.add_argument('--tol',type=float,default=1e-8)
     p.add_argument('--source',choices=['point','wall'],default='point')
     p.add_argument('--single-only',action='store_true')
-    p.add_argument('--ranks-per-node',type=int,choices=(16,32),default=16)
+    p.add_argument('--ranks-per-node',type=int,choices=(4,8,16,32),default=16)
+    p.add_argument('--time-replicas',type=int,default=1,
+                   help='Tile the input and a single wall RHS along time; --lattice gives the global dimensions')
     a=p.parse_args()
     import numpy as np
     from mpi4py import MPI
@@ -42,6 +58,13 @@ def main():
     stage('mpi_ready')
     lat=tuple(a.lattice); grid=(1,1,1,comm.size); coords=(0,0,0,rank)
     assert lat[3]%comm.size==0 and lat[3]//comm.size%a.block[3]==0
+    repeats=a.time_replicas
+    if repeats<1 or comm.size%repeats or lat[3]%repeats:
+        raise ValueError('Time replicas must divide the rank count and global time extent')
+    if repeats>1 and (a.source!='wall' or not a.single_only):
+        raise ValueError('Replicated time benchmarks require a single wall RHS')
+    tile_ranks=comm.size//repeats
+    tile_time=lat[3]//repeats
     threads=512//a.ranks_per_node
     assert int(os.environ['OMP_NUM_THREADS'])==threads
     if rank==0: a.output.mkdir(parents=True,exist_ok=False)
@@ -51,20 +74,29 @@ def main():
     if int(os.environ.get('LQCD_TEST_SMALL','0'))!=1:
         assert local.size==a.ranks_per_node
     placement=comm.allgather(dict(rank=rank,host=socket.gethostname(),
-        cpus=sorted(os.sched_getaffinity(0)),numa=os.environ.get('LQCD_NUMA_NODE')))
+        cpus=sorted(os.sched_getaffinity(0)),numa=os.environ.get('LQCD_NUMA_NODE'),
+        numa_domains=os.environ.get('LQCD_NUMA_NODES')))
     for host in {row['host'] for row in placement}:
         masks=[set(row['cpus']) for row in placement if row['host']==host]
         assert all(len(mask)==threads for mask in masks)
         assert len(set.union(*masks))==len(masks)*threads
+    if repeats>1:
+        assert tile_ranks==local.size
+        for start in range(0,comm.size,tile_ranks):
+            assert len({row['host'] for row in placement[start:start+tile_ranks]})==1
+    memory_pools={host:pools for host,pools in
+                  comm.allgather((socket.gethostname(),numa_memory() if local.rank==0 else [])) if pools}
     stage('placement_ready')
     report=dict(complete=False,measurements_complete=False,source_commit=subprocess.check_output(
         ['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),
         source_branch=subprocess.check_output(['git','-C',str(ROOT),'branch','--show-current'],text=True).strip(),
         ranks=comm.size,ranks_per_node=local.size,threads=threads,batch=1 if a.single_only else 2,
         outer_restart=16,
-        lattice_xyzt=lat,grid_xyzt=grid,block_xyzt=a.block,mass=a.mass,csw=a.csw,tol=a.tol,
+        lattice_xyzt=lat,input_lattice_xyzt=(*lat[:3],tile_time),time_replicas=repeats,
+        grid_xyzt=grid,block_xyzt=a.block,mass=a.mass,csw=a.csw,tol=a.tol,
         zero_initial_guesses=True,stout=dict(steps=1,rho=.125,dir_ignore=4),
-        source=a.source,source_xyzt=[0,0,0,0],seed=1024,placement=placement,
+        source=a.source,source_xyzt=[0,0,0,0],wall_period=tile_time if a.source=='wall' else None,
+        seed=1024,placement=placement,numa_memory_at_start=memory_pools,
         mpi_library=MPI.Get_library_version(),
         mpi_environment={k:v for k,v in os.environ.items() if k.startswith('OMPI_MCA_')},
         context_environment={k:v for k,v in os.environ.items() if k.startswith('LQCD_')},
@@ -102,11 +134,21 @@ def main():
             atomic(a.output/'checkpoint.json',report)
             print('CHECKPOINT',phase,json.dumps({k:report[k] for k in report if k.endswith('_seconds')}),flush=True)
     checkpoint('created')
-    meta=read_lime_metadata(a.gauge); assert tuple(meta['lattice_xyzt'])==lat
+    meta=read_lime_metadata(a.gauge); assert tuple(meta['lattice_xyzt'])==(*lat[:3],tile_time)
     stage('sha256_start')
     report['input_sha256']=comm.bcast(digest(a.gauge) if rank==0 else None)
     stage('read_start')
-    gauge,report['read_seconds']=_measure(comm,lambda:read_lime_gauge(a.gauge,grid,coords,comm))
+    if repeats==1:
+        gauge,report['read_seconds']=_measure(comm,lambda:read_lime_gauge(a.gauge,grid,coords,comm))
+    else:
+        tile=comm.Split(rank//tile_ranks,rank)
+        try:
+            tile_grid=(1,1,1,tile_ranks)
+            tile_coords=(0,0,0,tile.rank)
+            gauge,report['read_seconds']=_measure(
+                comm,lambda:read_lime_gauge(a.gauge,tile_grid,tile_coords,tile))
+        finally:
+            tile.Free()
     stage('stout_start')
     gauge,report['stout_seconds']=_measure(comm,lambda:stout_smear(gauge,steps=1,rho=.125,dir_ignore=4,comm=comm))
     gauge.astype('<c16',copy=False).tofile(a.scratch/f'gauge-{rank}.bin')
@@ -121,7 +163,7 @@ def main():
         faulthandler.cancel_dump_traceback_later()
         shape=(lat[3]//comm.size,lat[2],lat[1],lat[0],4,3)
         src=np.zeros(shape,dtype=np.complex128)
-        if rank==0:
+        if rank%tile_ranks==0:
             if a.source=='wall':
                 src[0,:,:,:,0,0]=1
             else:

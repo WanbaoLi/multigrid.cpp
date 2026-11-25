@@ -1,9 +1,9 @@
-"""Preflight actual 16-rank/host placement, metadata collectives and large halos."""
+"""Preflight rank placement, metadata collectives and large halos."""
+import argparse
 import faulthandler
 import json
 import os
 import socket
-import sys
 import traceback
 
 import numpy as np
@@ -18,7 +18,13 @@ def phase(name):
         print('COMM_GATE', name, flush=True)
 
 try:
-    assert comm.size >= 32 and comm.size % 16 == 0
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--ranks-per-node', type=int, choices=(4, 8, 16, 32), default=16)
+    parser.add_argument('--benchmark', action='store_true')
+    args = parser.parse_args()
+    ranks_per_node = args.ranks_per_node
+    threads = 512 // ranks_per_node
+    assert comm.size >= 2 * ranks_per_node and comm.size % ranks_per_node == 0
     if rank == 0:
         print('COMM_CONFIGURATION', json.dumps(dict(
             library=MPI.Get_library_version(),
@@ -26,15 +32,15 @@ try:
         )), flush=True)
     phase('shared_split')
     local = comm.Split_type(MPI.COMM_TYPE_SHARED)
-    assert local.size == 16
+    assert local.size == ranks_per_node
     phase('object_allgather')
     rows = comm.allgather(dict(rank=rank, host=socket.gethostname(),
                               cpus=sorted(os.sched_getaffinity(0))))
-    assert len({row['host'] for row in rows}) == comm.size // 16
+    assert len({row['host'] for row in rows}) == comm.size // ranks_per_node
     for host in {row['host'] for row in rows}:
         masks = [set(row['cpus']) for row in rows if row['host'] == host]
-        assert len(masks) == 16 and all(len(cpus) == 32 for cpus in masks)
-        assert len(set.union(*masks)) == 16 * 32
+        assert len(masks) == ranks_per_node and all(len(cpus) == threads for cpus in masks)
+        assert len(set.union(*masks)) == ranks_per_node * threads
     phase('object_bcast_reduce')
     assert comm.bcast({'payload': list(range(257))} if rank == 0 else None)['payload'][-1] == 256
     assert comm.allreduce(rank, op=MPI.SUM) == comm.size * (comm.size - 1) // 2
@@ -48,7 +54,7 @@ try:
     comm.Sendrecv(send, dest=(rank + 1) % comm.size, sendtag=981,
                   recvbuf=recv, source=(rank - 1) % comm.size, recvtag=981)
     assert np.all(recv == (rank - 1) % comm.size)
-    if '--benchmark' in sys.argv:
+    if args.benchmark:
         def mean_max_seconds(operation, count):
             for _ in range(5):
                 operation()

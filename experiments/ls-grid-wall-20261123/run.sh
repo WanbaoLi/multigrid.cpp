@@ -63,7 +63,7 @@ case "$stage" in
         done
         exit 0
         ;;
-    grid-build|grid-shard|grid-assemble|grid|halo-layout|hmc-c24|native-build|native-one|native-two) ;;
+    grid-build|grid-shard|grid-assemble|grid|halo-layout|hmc-c24|native-build|native-one|native-two|native-scale) ;;
     *) echo "Unknown stage: $stage" >&2; exit 2 ;;
 esac
 
@@ -73,7 +73,7 @@ if [[ $stage == grid-shard ]]; then out="$work/shards/shard-$GRID_SHARD"; fi
 if [[ $stage == grid-assemble ]]; then out="$work/grid-build"; fi
 mkdir -p "$out"
 git -C "$root" rev-parse HEAD > "$out/source-commit.txt"
-if [[ $stage == grid || $stage == native-build || $stage == native-one || $stage == native-two ]]; then
+if [[ $stage == grid || $stage == native-build || $stage == native-one || $stage == native-two || $stage == native-scale ]]; then
     printf '%s  %s\n' "$gauge_sha" "$gauge" | sha256sum -c
 fi
 source "$root/tools/multinode/ls_env.sh"
@@ -199,16 +199,30 @@ fi
 
 ranks_per_node=${LS_RANKS_PER_NODE:-16}
 case "$ranks_per_node" in
-    16|32) ;;
+    4|8|16|32) ;;
     *) echo "Unsupported ranks per node: $ranks_per_node" >&2; exit 2 ;;
 esac
-if [[ $stage == native-one ]]; then ranks=$ranks_per_node; else ranks=$((2 * ranks_per_node)); fi
+nodes=1
+replicas=1
+case "$stage" in
+    native-two) nodes=2 ;;
+    native-scale)
+        nodes=${LS_NATIVE_NODES:?expected LS_NATIVE_NODES}
+        case "$nodes" in
+            1|2|4|8|16|32) ;;
+            *) echo "Unsupported scaling node count: $nodes" >&2; exit 2 ;;
+        esac
+        if [[ ${LS_NATIVE_WEAK:-0} == 1 ]]; then replicas=$nodes; fi
+        ;;
+esac
+ranks=$((nodes * ranks_per_node))
+total_time=$((time_extent * replicas))
 block_t=${LS_NATIVE_BLOCK_T:-$block_t}
 case "$block_t" in
     2|4) ;;
     *) echo "Unsupported temporal aggregation block: $block_t" >&2; exit 2 ;;
 esac
-if (( time_extent % ranks != 0 || time_extent / ranks % block_t != 0 )); then
+if (( total_time % ranks != 0 || total_time / ranks % 2 != 0 || total_time / ranks % block_t != 0 )); then
     echo "Temporal aggregation block $block_t does not divide the rank-local time extent" >&2
     exit 2
 fi
@@ -222,26 +236,33 @@ export PYTHONPATH="$root/bindings"
 export LQCD_DISTRIBUTED_STORAGE=1 LQCD_ARM_SVE=1 LQCD_ARM_SVE_REUSE=1
 export LQCD_ARM_COARSE_SVE=0 LQCD_ARM_SVE_TRANSFER=0
 export LQCD_COARSE_FUSED=0 LQCD_COARSE_SPATIAL_OVERLAP=1 LQCD_COARSE_BATCH_REDUCE=1
-export LQCD_HBW_ALLOC=prefer LQCD_HBM=off
-run=(mpirun -n "$ranks" --bind-to none python "$root/tools/multinode/rank_exec.py")
-if [[ $stage == native-two ]]; then
-    UCX_LOG_LEVEL=info timeout 120 "${run[@]}" \
-        python -u "$root/tests/runtime/test_multinode_communication.py" --benchmark
+export LQCD_HBW_ALLOC=${LQCD_HBW_ALLOC:-prefer} LQCD_HBM=off
+mapping=()
+if [[ $stage == native-scale ]]; then mapping=(--map-by "ppr:$ranks_per_node:node" --rank-by slot); fi
+mpi=(mpirun -n "$ranks" "${mapping[@]}" --bind-to none)
+run=("${mpi[@]}" python "$root/tools/multinode/rank_exec.py")
+if (( nodes > 1 )); then
+    gate_timeout=120
+    if [[ $stage == native-scale ]]; then gate_timeout=$((120 + 6 * nodes)); fi
+    UCX_LOG_LEVEL=info timeout "$gate_timeout" "${run[@]}" \
+        python -u "$root/tests/runtime/test_multinode_communication.py" --benchmark --ranks-per-node "$ranks_per_node"
     if [[ ${LS_MPI_PROBE_ONLY:-0} == 1 ]]; then exit 0; fi
 fi
 scratch="/tmp/lqcd-ls-wall-${CCS_JOB_ID:-manual}-$(basename "$out")"
 rhs_args=(--single-only)
 oracle_columns=1
+oracle_period=()
+if (( replicas > 1 )); then oracle_period=("$time_extent"); fi
 if [[ ${LS_BENCHMARK_FULL12:-0} == 1 ]]; then
     rhs_args=()
     oracle_columns=13
 fi
 "${run[@]}" python -u "$root/benchmarks/runtime/benchmark_multinode.py" \
     --gauge "$gauge" --library "$build/liblqcd_cpu.so" --output "$out/measurements" --scratch "$scratch" \
-    --lattice "$lattice" "$lattice" "$lattice" "$time_extent" \
+    --lattice "$lattice" "$lattice" "$lattice" "$total_time" --time-replicas "$replicas" \
     --block "$block" "$block" "$block" "$block_t" --mass "$mass" --csw "$csw" --tol 1e-8 --source wall \
     --ranks-per-node "$ranks_per_node" "${rhs_args[@]}"
-"${run[@]}" "$build/verify_slab" "$scratch" "$lattice" "$time_extent" "$mass" "$csw" 1e-8 0 "$oracle_columns" wall \
+"${run[@]}" "$build/verify_slab" "$scratch" "$lattice" "$total_time" "$mass" "$csw" 1e-8 0 "$oracle_columns" wall "${oracle_period[@]}" \
     | tee "$out/second-round-residuals.log"
 grep -qx SCALAR_ALL_PASSED "$out/second-round-residuals.log"
 python - "$out" "$oracle_columns" <<'PY'
@@ -270,7 +291,7 @@ if [[ $stage == native-two && ( -f "$work/native-one-mpi16-coarse0/result.json" 
     python "$root/tools/multinode/summarize_wall.py" "$work" --two "$out"
 fi
 
-mpirun -n "$ranks" --bind-to none python -c '
+"${mpi[@]}" python -c '
 import os
 from pathlib import Path
 import sys

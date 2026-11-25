@@ -22,15 +22,18 @@ int main(int argc,char **argv) {
     if(provided<MPI_THREAD_FUNNELED) MPI_Abort(MPI_COMM_WORLD,2);
     int rank,ranks; MPI_Comm_rank(MPI_COMM_WORLD,&rank); MPI_Comm_size(MPI_COMM_WORLD,&ranks);
     try {
-        if(argc!=9 && (argc!=10 || std::string(argv[9])!="wall"))
-            throw std::runtime_error("usage: verify_slab ROOT L T MASS CSW TOL SOURCE_T COLUMNS [wall]");
-        const bool wall=argc==10;
+        if(argc<9 || argc>11 || (argc>=10 && std::string(argv[9])!="wall"))
+            throw std::runtime_error("usage: verify_slab ROOT L T MASS CSW TOL SOURCE_T COLUMNS [wall [WALL_PERIOD]]");
+        const bool wall=argc>=10;
         std::string root=argv[1];
         int L=std::stoi(argv[2]), T=std::stoi(argv[3]), lt=T/ranks;
         double mass=std::stod(argv[4]),csw=std::stod(argv[5]),tol=std::stod(argv[6]);
         int source_t=std::stoi(argv[7]), columns=std::stoi(argv[8]);
+        const int wall_period=argc==11 ? std::stoi(argv[10]) : T;
         size_t spatial=(size_t)L*L*L, sites=spatial*lt;
         if(T%ranks || lt<2) throw std::runtime_error("invalid scalar slab topology");
+        if(wall_period<1 || T%wall_period || source_t<0 || source_t>=wall_period)
+            throw std::runtime_error("invalid wall source period or source time");
         Gauge g; g.o.nx=g.o.ny=g.o.nz=L; g.o.nt=lt+2; g.o.mass=mass;g.o.csw=csw;
         Field gauge(sites*36); read(root+"/gauge-"+std::to_string(rank)+".bin",gauge);
         g.u.resize(spatial*(lt+2)*36);
@@ -60,13 +63,13 @@ int main(int argc,char **argv) {
             for(size_t i=0;i<owned.size();++i) {
                 Complex b{};
                 const int source_col=col==0?0:col-1;
-                const bool same_time=rank*lt+int(i/(spatial*12))==source_t;
+                const bool same_time=(rank*lt+int(i/(spatial*12)))%wall_period==source_t;
                 const bool same_component=int(i%12)==source_col;
                 if(same_time && same_component && (wall || (i/12)%spatial==0)) b=1./(4+mass);
                 sum+=std::norm(image[spatial*12+i]-b);
             }
             MPI_Allreduce(MPI_IN_PLACE,&sum,1,MPI_DOUBLE,MPI_SUM,MPI_COMM_WORLD);
-            double rel=std::sqrt(sum/(wall ? double(spatial) : 1.0))*std::abs(4+mass);
+            double rel=std::sqrt(sum/(wall ? double(spatial)*(T/wall_period) : 1.0))*std::abs(4+mass);
             if(rank==0) std::cout<<"SCALAR_COLUMN "<<col<<" "<<std::scientific<<std::setprecision(17)<<rel<<std::endl;
             if(!std::isfinite(rel)||rel>tol) throw std::runtime_error("independent scalar residual failed");
         }

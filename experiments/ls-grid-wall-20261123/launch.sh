@@ -25,11 +25,13 @@ gauge=$4
 temp=$(mktemp -d /tmp/ls-wall-src.XXXXXXXX)
 trap 'rm -rf -- "$temp"' EXIT
 checkout "$temp/project"
-if [[ $stage == native-two || $stage == native-two-pair || $stage == native-two-coarse-pair ]]; then
+if [[ $stage == native-two || $stage == native-two-pair || $stage == native-two-coarse-pair || $stage == native-scale ]]; then
     source "$temp/project/tools/multinode/ls_env.sh"
     unset OMPI_MCA_ras OMPI_MCA_plm
     host_source="$temp/worker-project"
-    mpirun -n 2 --map-by ppr:1:node --bind-to none \
+    nodes=2
+    if [[ $stage == native-scale ]]; then nodes=${LS_NATIVE_NODES:?expected LS_NATIVE_NODES}; fi
+    mpirun -n "$nodes" --map-by ppr:1:node --bind-to none \
         /bin/bash "$0" stage-native-host "$workspace" "$revision" "$host_source"
     bash "$host_source/experiments/ls-grid-wall-20261123/run.sh" "$stage" "$workspace" "$gauge"
 else
