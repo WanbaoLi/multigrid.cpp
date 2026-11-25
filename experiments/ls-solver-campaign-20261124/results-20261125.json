@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-25T13:17:02+08:00",
+  "checked_at": "2026-11-25T14:02:39+08:00",
   "branch": "codex/ls-solver-campaign-20261124",
   "artifacts": {
     "build_commit": "cb292e91d9055da8051c0194d88fd105738b9609",
@@ -400,10 +400,18 @@
     },
     "c64_reclaim_relaunch": {
       "id": 2256142,
-      "state": "PENDING",
-      "exec_nodes": "-",
-      "start_time": "-",
-      "end_time": "-"
+      "state": "SUCCEEDED",
+      "exec_nodes": "cn[12128,19529]",
+      "start_time": "2026-11-25T05:26:12Z",
+      "end_time": "2026-11-25T06:02:02Z",
+      "memory_per_node": [
+        {
+          "host": "cn12128",
+          "peak": 347122,
+          "peak_including_swap": 347122,
+          "peak_swap": 0
+        }
+      ]
     }
   },
   "communication_preflight": {
@@ -456,6 +464,18 @@
       }
     ],
     "c64_reclaim": [],
+    "c64_reclaim_relaunch": [
+      {
+        "ring_seconds": {
+          "16384": 0.00005424142500000001,
+          "1327104": 0.001252140525,
+          "2654208": 0.0021763888499999997
+        },
+        "sum_64_bytes_seconds": 0.000045665559999999996,
+        "passed": true,
+        "pml": "ucx"
+      }
+    ],
     "c24_roce_coarse": [
       {
         "ring_seconds": {
@@ -1750,14 +1770,85 @@
         {
           "job_id": 2256142,
           "build_job_id": 2255976,
-          "result": "PENDING",
+          "result": "SUCCEEDED",
           "change": "Reuse the verified ARM build with a fresh allocation excluding the previous hosts.",
           "excluded_nodes": [
             "cn12127",
             "cn12199"
           ]
         }
-      ]
+      ],
+      "mass": -0.2334,
+      "csw": 1.140825606017,
+      "last_live_scheduler_peak_per_host": {
+        "checked_at": "2026-11-25T13:53:21+08:00",
+        "cn12128": 347122,
+        "cn19529": 346953
+      },
+      "run": {
+        "hosts": [
+          "cn12128",
+          "cn19529"
+        ],
+        "ranks": 32,
+        "ranks_per_node": 16,
+        "threads_per_rank": 32,
+        "coarse_threads_per_rank": 0,
+        "process_grid_xyzt": [
+          1,
+          1,
+          1,
+          32
+        ],
+        "aggregate_block_xyzt": [
+          8,
+          8,
+          8,
+          4
+        ],
+        "read_seconds": 14.850663725985214,
+        "stout_seconds": 89.45054380805232,
+        "gauge_clover_seconds": 2.0570275250356644,
+        "setup_seconds": 1278.159471862018,
+        "solver_samples": [
+          {
+            "run": 1,
+            "solver_seconds": 190.082288759,
+            "iterations": 69,
+            "residual": 4.5997414742807215e-9,
+            "correction_solves_occurred": false,
+            "refinement_steps": [
+              0
+            ]
+          },
+          {
+            "run": 2,
+            "solver_seconds": 187.495774493,
+            "iterations": 69,
+            "residual": 4.5997414742807215e-9,
+            "correction_solves_occurred": false,
+            "refinement_steps": [
+              0
+            ]
+          },
+          {
+            "run": 3,
+            "solver_seconds": 189.99454409600003,
+            "iterations": 69,
+            "residual": 4.5997414742807215e-9,
+            "correction_solves_occurred": false,
+            "refinement_steps": [
+              0
+            ]
+          }
+        ],
+        "steady_median_seconds": 188.7451592945,
+        "independent_full_residual": 4.599741474297412e-9,
+        "proportional_memory_after_setup_gib_per_host": {
+          "cn12128": 141.468,
+          "cn19529": 141.485
+        }
+      }
     }
   },
   "c24_rhmc": {
