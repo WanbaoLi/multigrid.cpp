@@ -20,9 +20,13 @@ git -C "$root" rev-parse HEAD > source-commit.txt
     -DLQCD_TEST_PYTHON="$mpi/bin/python" -DLQCD_CPU_BACKEND_TEST_TIMEOUT=720 \
     '-DLQCD_MPI_FLAGS=-bind-to;core:2;-launcher;fork;-rmk;user'
 "$cmake" --build "$build" -j 24
+gate='core|compact_basis|halo_storage'
+if [[ ${LQCD_ITP_MPI_REGRESSION:-1} == 1 ]]; then
+    gate+='|cpu_backend_mpi2|distributed_cpu_backend_mpi2|reused_halo_mpi2'
+fi
 OMP_NUM_THREADS=2 OMP_PROC_BIND=close OMP_PLACES=cores OMP_WAIT_POLICY=ACTIVE \
     "$HOME/miniconda3/bin/ctest" --test-dir "$build" --output-on-failure \
-    -R '^(core|compact_basis|halo_storage|cpu_backend_mpi2|distributed_cpu_backend_mpi2|reused_halo_mpi2)$' | tee ctest.log
+    -R "^($gate)$" | tee ctest.log
 sha256sum "$build/"{liblqcd_cpu.so,verify_slab,multigrid,liblqcd_hmc_kernels.so} > build.sha256
 
 solve() {
