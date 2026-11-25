@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-25T12:00:17+08:00",
+  "checked_at": "2026-11-25T12:51:14+08:00",
   "branch": "codex/ls-solver-campaign-20261124",
   "artifacts": {
     "build_commit": "cb292e91d9055da8051c0194d88fd105738b9609",
@@ -91,7 +91,84 @@
     "c64_retry": {
       "root": "~/lqcd-run/ls-c64-memory-20261125",
       "source_commit": "bd90e4a19f550687afe6e58d202b749071eb1b8b",
-      "bundle_sha256": "5eb4911b80ab10bc160f162fb282d9aadc54fd2dd50f1d4f68cdb02b2ff9131e"
+      "bundle_sha256": "5eb4911b80ab10bc160f162fb282d9aadc54fd2dd50f1d4f68cdb02b2ff9131e",
+      "arm_binary": {
+        "runtime_sha256": "0de67525393f067d773bd537f516791363988829ca671cdae4f86d3812e5428d",
+        "verify_slab_sha256": "72a57e8bcc575d93dd5fb5b94b58aad0abca8f45b2e68b469d07590721c5608e",
+        "ctest": [
+          {
+            "name": "halo_storage",
+            "state": "Passed",
+            "seconds": 0.09
+          },
+          {
+            "name": "compact_basis",
+            "state": "Passed",
+            "seconds": 0.13
+          },
+          {
+            "name": "core",
+            "state": "Passed",
+            "seconds": 2.02
+          },
+          {
+            "name": "native_allocator",
+            "state": "Passed",
+            "seconds": 0.07
+          },
+          {
+            "name": "cpu_backend_mpi2",
+            "state": "Passed",
+            "seconds": 71.68
+          },
+          {
+            "name": "shared_cpu_backend_mpi2",
+            "state": "Passed",
+            "seconds": 66.38
+          },
+          {
+            "name": "distributed_cpu_backend_mpi2",
+            "state": "Passed",
+            "seconds": 83.7
+          },
+          {
+            "name": "distributed_batch12_mpi2",
+            "state": "Passed",
+            "seconds": 72.21
+          },
+          {
+            "name": "distributed_native_halo_mpi2",
+            "state": "Passed",
+            "seconds": 287.81
+          },
+          {
+            "name": "distributed_sap_eo_mpi2",
+            "state": "Passed",
+            "seconds": 238.76
+          },
+          {
+            "name": "reused_halo_mpi2",
+            "state": "Passed",
+            "seconds": 68.18
+          },
+          {
+            "name": "shared_batch12_mpi2",
+            "state": "Passed",
+            "seconds": 80.17
+          }
+        ]
+      },
+      "wsl_ctest": {
+        "architecture": "x86_64",
+        "runtime_sha256": "dde95bdd5610acbffdb46c721ca44a057ed474780070a40408e1fb45c95cc829",
+        "passed": 60,
+        "total_seconds": 237.41
+      }
+    },
+    "c64_halo_reclaim": {
+      "root": "~/lqcd-run/ls-c64-halo-reclaim-20261125",
+      "source_commit": "4b7bc8d61f7fbbbc0d135d23278b3af6f144185a",
+      "bundle_sha256": "e64d010e92b7b5e70c1d667dd7a54abf7add552886565cac854758d474ea4a47"
     }
   },
   "protocol": {
@@ -214,13 +291,35 @@
     },
     "c64_retry_build": {
       "id": 2255389,
-      "state": "RUNNING",
+      "state": "SUCCEEDED",
       "exec_nodes": "cn12038",
       "start_time": "2026-11-25T03:59:46Z",
-      "end_time": "-"
+      "end_time": "2026-11-25T04:23:00Z"
     },
     "c64_retry": {
       "id": 2255390,
+      "state": "FAILED",
+      "exec_nodes": "cn[19462,19540]",
+      "start_time": "2026-11-25T04:23:05Z",
+      "end_time": "2026-11-25T04:48:12Z",
+      "memory_per_node": [
+        {
+          "host": "cn19462",
+          "peak": 442083,
+          "peak_including_swap": 442083,
+          "peak_swap": 0
+        }
+      ]
+    },
+    "c64_reclaim_build": {
+      "id": 2255976,
+      "state": "RUNNING",
+      "exec_nodes": "cn12038",
+      "start_time": "2026-11-25T04:51:13Z",
+      "end_time": "-"
+    },
+    "c64_reclaim": {
+      "id": 2255977,
       "state": "WAITING",
       "exec_nodes": "-",
       "start_time": "-",
@@ -260,6 +359,18 @@
           "2654208": 0.0029418556250000003
         },
         "sum_64_bytes_seconds": 0.00003757866999999998,
+        "passed": true,
+        "pml": "ucx"
+      }
+    ],
+    "c64_retry": [
+      {
+        "ring_seconds": {
+          "16384": 0.000048154975,
+          "1327104": 0.001249362075,
+          "2654208": 0.0022510836249999997
+        },
+        "sum_64_bytes_seconds": 0.000045621670000000056,
         "passed": true,
         "pml": "ucx"
       }
@@ -1535,8 +1646,23 @@
         {
           "job_id": 2255390,
           "build_job_id": 2255389,
+          "result": "failed_during_final_setup",
+          "change": "Release FP64 basis and coarse stencil after verification, collectively, before allocating HBW copies.",
+          "last_checkpoint": "loaded",
+          "completed_setup_pass_vectors": 3,
+          "exit_code": 205,
+          "remote_mpi_daemon_lost": "cn19540",
+          "scheduler_memory_peak_observed": {
+            "cn19462": 442083,
+            "cn19540": 408442
+          },
+          "memory_cause_verified": false
+        },
+        {
+          "job_id": 2255977,
+          "build_job_id": 2255976,
           "result": "WAITING",
-          "change": "Release FP64 basis and coarse stencil after verification, collectively, before allocating HBW copies."
+          "change": "Release both FP64 basis halo planes immediately after Galerkin assembly on each pass. After packing the final FP32 coefficients, release the remaining FP64 basis and stencil before numerical verification and HBW placement."
         }
       ]
     }
