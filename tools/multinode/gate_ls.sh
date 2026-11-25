@@ -7,13 +7,17 @@ exec > >(tee "$out/gates.log") 2>&1
 source "$root/tools/multinode/ls_env.sh"
 cd "$root"
 git rev-parse HEAD > "$out/source-commit.txt"
+gate_mpi_flags=${LS_MPI_GATE_FLAGS:---host;localhost:4;--map-by;ppr:1:numa:PE=2;--bind-to;core}
+if [[ ${LS_MPI_GATE_BIND_NONE:-0} == 1 ]]; then
+  gate_mpi_flags='--host;localhost:4;--bind-to;none'
+fi
 cmake -S . -B "$out/build" -DCMAKE_BUILD_TYPE=Release -DMULTIGRID_NATIVE=ON \
   -DLQCD_BUILD_RUNTIME=ON -DLQCD_DD_REFERENCE=OFF -DLQCD_KUPL_HBW=ON \
   -DLQCD_KUPL_ROOT="$task_sdk/kupl/gcc/release" \
   -DCMAKE_C_COMPILER="$CC" -DCMAKE_CXX_COMPILER="$CXX" \
   -DMPI_C_COMPILER="$(command -v mpicc)" -DMPI_CXX_COMPILER="$(command -v mpicxx)" \
   -DLQCD_TEST_PYTHON="$(command -v python)" \
-  "-DLQCD_MPI_FLAGS=${LS_MPI_GATE_FLAGS:---host;localhost:4;--map-by;ppr:1:numa:PE=2;--bind-to;core}" \
+  "-DLQCD_MPI_FLAGS=$gate_mpi_flags" \
   "-DLQCD_BUILD_HMC_KERNELS=${LS_BUILD_HMC:-OFF}" \
   "-DCMAKE_EXE_LINKER_FLAGS=-L$task_sdk/compiler/gcc/lib64 -Wl,-rpath,$task_sdk/compiler/gcc/lib64" \
   "-DCMAKE_SHARED_LINKER_FLAGS=-L$task_sdk/compiler/gcc/lib64 -Wl,-rpath,$task_sdk/compiler/gcc/lib64"
