@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-25T12:51:14+08:00",
+  "checked_at": "2026-11-25T13:17:02+08:00",
   "branch": "codex/ls-solver-campaign-20261124",
   "artifacts": {
     "build_commit": "cb292e91d9055da8051c0194d88fd105738b9609",
@@ -168,7 +168,79 @@
     "c64_halo_reclaim": {
       "root": "~/lqcd-run/ls-c64-halo-reclaim-20261125",
       "source_commit": "4b7bc8d61f7fbbbc0d135d23278b3af6f144185a",
-      "bundle_sha256": "e64d010e92b7b5e70c1d667dd7a54abf7add552886565cac854758d474ea4a47"
+      "bundle_sha256": "e64d010e92b7b5e70c1d667dd7a54abf7add552886565cac854758d474ea4a47",
+      "wsl_ctest": {
+        "architecture": "x86_64",
+        "runtime_sha256": "0169508f456882f01023d97a02cd4af52fddaa84d608295605c174724036aea0",
+        "passed": 60,
+        "total_seconds": 238.5
+      },
+      "arm_binary": {
+        "runtime_sha256": "94cc2e3d031b4ba21d19f844688035f0a0917d9a69b49264831c92203fcd657f",
+        "verify_slab_sha256": "72a57e8bcc575d93dd5fb5b94b58aad0abca8f45b2e68b469d07590721c5608e",
+        "ctest": [
+          {
+            "name": "halo_storage",
+            "state": "Passed",
+            "seconds": 0.05
+          },
+          {
+            "name": "compact_basis",
+            "state": "Passed",
+            "seconds": 0.04
+          },
+          {
+            "name": "core",
+            "state": "Passed",
+            "seconds": 2.02
+          },
+          {
+            "name": "native_allocator",
+            "state": "Passed",
+            "seconds": 0.04
+          },
+          {
+            "name": "cpu_backend_mpi2",
+            "state": "Passed",
+            "seconds": 64.62
+          },
+          {
+            "name": "shared_cpu_backend_mpi2",
+            "state": "Passed",
+            "seconds": 65.23
+          },
+          {
+            "name": "distributed_cpu_backend_mpi2",
+            "state": "Passed",
+            "seconds": 83.6
+          },
+          {
+            "name": "distributed_batch12_mpi2",
+            "state": "Passed",
+            "seconds": 73.74
+          },
+          {
+            "name": "distributed_native_halo_mpi2",
+            "state": "Passed",
+            "seconds": 270.94
+          },
+          {
+            "name": "distributed_sap_eo_mpi2",
+            "state": "Passed",
+            "seconds": 227.1
+          },
+          {
+            "name": "reused_halo_mpi2",
+            "state": "Passed",
+            "seconds": 64.13
+          },
+          {
+            "name": "shared_batch12_mpi2",
+            "state": "Passed",
+            "seconds": 71.33
+          }
+        ]
+      }
     }
   },
   "protocol": {
@@ -313,14 +385,22 @@
     },
     "c64_reclaim_build": {
       "id": 2255976,
-      "state": "RUNNING",
+      "state": "SUCCEEDED",
       "exec_nodes": "cn12038",
       "start_time": "2026-11-25T04:51:13Z",
-      "end_time": "-"
+      "end_time": "2026-11-25T05:13:49Z"
     },
     "c64_reclaim": {
       "id": 2255977,
-      "state": "WAITING",
+      "state": "FAILED",
+      "exec_nodes": "cn[12127,12199]",
+      "start_time": "2026-11-25T05:14:06Z",
+      "end_time": "2026-11-25T05:14:18Z",
+      "memory_per_node": []
+    },
+    "c64_reclaim_relaunch": {
+      "id": 2256142,
+      "state": "PENDING",
       "exec_nodes": "-",
       "start_time": "-",
       "end_time": "-"
@@ -375,6 +455,7 @@
         "pml": "ucx"
       }
     ],
+    "c64_reclaim": [],
     "c24_roce_coarse": [
       {
         "ring_seconds": {
@@ -1661,8 +1742,20 @@
         {
           "job_id": 2255977,
           "build_job_id": 2255976,
-          "result": "WAITING",
+          "result": "failed_before_startup_local_tmp_full",
+          "reason": "mktemp could not create the compute-local source directory",
+          "exit_code": 1,
           "change": "Release both FP64 basis halo planes immediately after Galerkin assembly on each pass. After packing the final FP32 coefficients, release the remaining FP64 basis and stencil before numerical verification and HBW placement."
+        },
+        {
+          "job_id": 2256142,
+          "build_job_id": 2255976,
+          "result": "PENDING",
+          "change": "Reuse the verified ARM build with a fresh allocation excluding the previous hosts.",
+          "excluded_nodes": [
+            "cn12127",
+            "cn12199"
+          ]
         }
       ]
     }
