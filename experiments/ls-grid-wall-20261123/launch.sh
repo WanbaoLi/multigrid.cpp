@@ -25,7 +25,7 @@ gauge=$4
 temp=$(mktemp -d /tmp/ls-wall-src.XXXXXXXX)
 trap 'rm -rf -- "$temp"' EXIT
 checkout "$temp/project"
-if [[ $stage == native-two || $stage == native-two-pair ]]; then
+if [[ $stage == native-two || $stage == native-two-pair || $stage == native-two-coarse-pair ]]; then
     source "$temp/project/tools/multinode/ls_env.sh"
     unset OMPI_MCA_ras OMPI_MCA_plm
     host_source="$temp/worker-project"

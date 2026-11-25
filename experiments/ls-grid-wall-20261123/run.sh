@@ -56,6 +56,13 @@ case "$stage" in
         LS_MPI_TRANSPORT=ucx LS_RESULT_SUFFIX=ucx bash "$0" native-two "$work" "$gauge"
         exit 0
         ;;
+    native-two-coarse-pair)
+        for coarse_threads in 0 8; do
+            LS_MPI_TRANSPORT=ucx LQCD_COARSE_THREADS=$coarse_threads LS_RESULT_SUFFIX="coarse$coarse_threads" \
+                bash "$0" native-two "$work" "$gauge"
+        done
+        exit 0
+        ;;
     grid-build|grid-shard|grid-assemble|grid|halo-layout|hmc-c24|native-build|native-one|native-two) ;;
     *) echo "Unknown stage: $stage" >&2; exit 2 ;;
 esac
