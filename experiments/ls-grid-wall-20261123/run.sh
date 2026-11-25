@@ -44,6 +44,13 @@ case "$stage" in
         LS_RANKS_PER_NODE=32 LS_RESULT_SUFFIX=32 bash "$0" native-one "$work" "$gauge"
         exit 0
         ;;
+    native-one-block-pair)
+        for time_block in 2 4; do
+            LS_RANKS_PER_NODE=16 LS_NATIVE_BLOCK_T=$time_block LS_RESULT_SUFFIX="block-t$time_block" \
+                bash "$0" native-one "$work" "$gauge"
+        done
+        exit 0
+        ;;
     native-two-pair)
         LS_MPI_TRANSPORT=tcp LS_RESULT_SUFFIX=tcp bash "$0" native-two "$work" "$gauge"
         LS_MPI_TRANSPORT=ucx LS_RESULT_SUFFIX=ucx bash "$0" native-two "$work" "$gauge"
@@ -184,7 +191,20 @@ if [[ $stage == grid || $stage == grid-build || $stage == grid-shard || $stage =
 fi
 
 ranks_per_node=${LS_RANKS_PER_NODE:-16}
+case "$ranks_per_node" in
+    16|32) ;;
+    *) echo "Unsupported ranks per node: $ranks_per_node" >&2; exit 2 ;;
+esac
 if [[ $stage == native-one ]]; then ranks=$ranks_per_node; else ranks=$((2 * ranks_per_node)); fi
+block_t=${LS_NATIVE_BLOCK_T:-$block_t}
+case "$block_t" in
+    2|4) ;;
+    *) echo "Unsupported temporal aggregation block: $block_t" >&2; exit 2 ;;
+esac
+if (( time_extent % ranks != 0 || time_extent / ranks % block_t != 0 )); then
+    echo "Temporal aggregation block $block_t does not divide the rank-local time extent" >&2
+    exit 2
+fi
 build="$work/native-build/build"
 oracle_revision=$(cat "$work/native-build/oracle-source-commit.txt")
 git -C "$root" diff --exit-code "$oracle_revision" HEAD -- \
