@@ -23,19 +23,9 @@ OMP_NUM_THREADS=2 "$HOME/miniconda3/bin/ctest" --test-dir "$build" --output-on-f
     -R '^(core|compact_basis|halo_storage|cpu_backend_mpi2|distributed_cpu_backend_mpi2|reused_halo_mpi2)$' | tee ctest.log
 sha256sum "$build/"{liblqcd_cpu.so,verify_slab,multigrid,liblqcd_hmc_kernels.so} > build.sha256
 
-wait_for_file() {
-    for ((i=0; i<180; ++i)); do
-        if [[ -s $1 ]]; then return; fi
-        sleep 10
-    done
-    echo "Missing input $1" >&2
-    return 1
-}
-
 solve() {
     local l=$1 b=$2 csw=$3 gauge=$4 digest=$5
     local out="$work/c$l"
-    wait_for_file "$gauge"
     printf '%s  %s\n' "$digest" "$gauge" | sha256sum -c
     mkdir "$out"
     local run=("$mpi/bin/python" "$root/tools/run_numa.py" --lattice "$l" "$l" "$l" 64 \
@@ -63,16 +53,7 @@ data.update(complete=True, independent_full_residual=residual)
 PY
 }
 
-gauge24="$HOME/.cache/quda-wall-20261122/inputs/beta6.20_mu-0.2790_ms-0.2400_L24x64_cfg_5000.lime"
-status=0
-set +e
-(set -e; solve 24 6 1.160678675188 "$gauge24" f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326)
-if (( $? != 0 )); then status=1; fi
-(set -e; solve 32 8 1.1606789224 "$work/c32.lime" bc2918403eee5d1e10a409fc0e69ac03b22cc7f0cf71be760b44a593ff0d0828)
-if (( $? != 0 )); then status=1; fi
-set -e
-
-wait_for_file "$work/hmc_initial.lime"
+generate() (
 printf '%s  %s\n' f59477552f281812cc703f83c3c9f95415a3ed87dfb4fdc5b2bb9176e7dc579c "$work/hmc_initial.lime" | sha256sum -c
 mkdir -p "$work/hmc-deps"
 ln -s "$mpi/lib/python3.12/site-packages/mpi4py" "$work/hmc-deps/mpi4py"
@@ -88,4 +69,29 @@ export LQCD_HMC_SCHUR_LIBRARY="$build/liblqcd_hmc_kernels.so"
     | tee "$work/hmc.log"
 OMP_NUM_THREADS=2 "$hmc/bin/python" "$root/tools/hmc/verify_configs.py" "$work/hmc" \
     --reference "$build/multigrid"
+)
+
+gauge24="$HOME/.cache/quda-wall-20261122/inputs/beta6.20_mu-0.2790_ms-0.2400_L24x64_cfg_5000.lime"
+set +e
+(set -e; solve 24 6 1.160678675188 "$gauge24" f9d2ae770c82bdb80c64491f7301c969420c25a5ba4645e406ef788efd210326)
+status=$?
+pending32=1
+pending_hmc=1
+deadline=$((SECONDS + 14400))
+while (( pending32 || pending_hmc )); do
+    if (( pending32 )) && [[ -s $work/c32.lime ]]; then
+        (set -e; solve 32 8 1.1606789224 "$work/c32.lime" bc2918403eee5d1e10a409fc0e69ac03b22cc7f0cf71be760b44a593ff0d0828)
+        if (( $? != 0 )); then status=1; fi
+        pending32=0
+    elif (( pending_hmc )) && [[ -s $work/hmc_initial.lime ]]; then
+        (set -e; generate)
+        if (( $? != 0 )); then status=1; fi
+        pending_hmc=0
+    elif (( SECONDS >= deadline )); then
+        echo "Timed out waiting for inputs: C32=$pending32 RHMC=$pending_hmc" >&2
+        exit 1
+    else
+        sleep 30
+    fi
+done
 exit "$status"
