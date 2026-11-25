@@ -35,6 +35,8 @@ def main():
     p.add_argument('--output',required=True,type=Path)
     p.add_argument('--scratch',required=True,type=Path)
     p.add_argument('--library',required=True)
+    p.add_argument('--backend',choices=('arm','x86'),default='arm')
+    p.add_argument('--threads',type=int,help='Expected OpenMP threads per rank')
     p.add_argument('--lattice',nargs=4,type=int,default=[64,64,64,128])
     p.add_argument('--block',nargs=4,type=int,default=[8,8,8,4])
     p.add_argument('--mass',type=float,default=-.2334)
@@ -65,7 +67,7 @@ def main():
         raise ValueError('Replicated time benchmarks require a single wall RHS')
     tile_ranks=comm.size//repeats
     tile_time=lat[3]//repeats
-    threads=512//a.ranks_per_node
+    threads=a.threads if a.threads is not None else 512//a.ranks_per_node
     assert int(os.environ['OMP_NUM_THREADS'])==threads
     if rank==0: a.output.mkdir(parents=True,exist_ok=False)
     local=comm.Split_type(MPI.COMM_TYPE_SHARED)
@@ -154,7 +156,7 @@ def main():
     gauge.astype('<c16',copy=False).tofile(a.scratch/f'gauge-{rank}.bin')
     checkpoint('preprocessed')
     with Solver(lat,grid,mass=a.mass,csw=a.csw,block=a.block,threads=threads,seed=1024,
-                backend='arm',normalization='mass',library=a.library,comm=comm) as solver:
+                backend=a.backend,normalization='mass',library=a.library,comm=comm) as solver:
         _,report['gauge_clover_seconds']=_measure(comm,lambda:solver.load_gauge(gauge,layout='lex'))
         del gauge
         checkpoint('loaded')
