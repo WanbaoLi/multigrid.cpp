@@ -7,17 +7,6 @@
 using namespace lqcd_native::detail;
 
 void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive, int inverse_batch) {
-    if (m.distributed && native_size>1) {
-        // Previous coarse halos are setup-only. Fine/adaptive iterations read
-        // the independent packed FP32 owned basis, so drop stale halos before
-        // their large Krylov workspace is populated, then exchange fresh halos.
-        const size_t stride=(size_t)m.block_volume*12*m.coarse_dof;
-        const size_t plane=(size_t)m.cx*m.cy*m.cz;
-        const size_t lo=(m.first_block+m.n_coarse-plane)%m.n_coarse;
-        const size_t hi=m.end_block%m.n_coarse;
-        m.basis.discard_sparse_region(lo*stride,(lo+plane)*stride);
-        m.basis.discard_sparse_region(hi*stride,(hi+plane)*stride);
-    }
     const bool paper_update = impl->setup_update == SetupUpdate::Paper;
     const int batch = adaptive && !paper_update ? inverse_batch : 1;
     if (native_rank == 0)
@@ -169,6 +158,16 @@ void NativeMG::generate_basis(Multigrid &m, int cycles, int adaptive, int invers
         rebuild_coarse_operator(g, m);
     if (m.synchronize_shared)
         m.synchronize_shared();
+    if (m.distributed && native_size > 1) {
+        // Galerkin assembly has finished reading remote FP64 basis entries.
+        // The next Impl copies owned rows only. Reclaim both halo planes on
+        // all ranks before its FP32 allocations can overlap those pages.
+        const size_t lower = (m.first_block + m.n_coarse - plane_blocks) % m.n_coarse;
+        const size_t upper = m.end_block % m.n_coarse;
+        m.basis.discard_sparse_region(lower * basis_stride, (lower + plane_blocks) * basis_stride);
+        m.basis.discard_sparse_region(upper * basis_stride, (upper + plane_blocks) * basis_stride);
+        MPI_Barrier(native_comm);
+    }
     for (size_t i = (m.distributed ? m.first_block*9*48*48 : 0);
          i < (m.distributed ? m.end_block*9*48*48 : m.stencil.size()); ++i)
         if (!std::isfinite(std::norm(m.stencil[i])))

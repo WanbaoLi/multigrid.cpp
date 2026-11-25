@@ -233,14 +233,14 @@ class NativeBackend final : public Backend {
         if (shared_coefficients)
             shared_coefficients->synchronize();
         solver->release_setup_vectors();
-        solver->verify();
         if (distributed) {
-            // Placement allocates copies of the verified FP32 owned assets.
-            // Reclaim the FP64 setup-only data on every rank before allocating them.
+            // Impl has packed its owned coefficients. Verification and
+            // placement now use Impl and the original gauge/Clover fields.
             hierarchy.basis.release_storage();
             hierarchy.stencil.release_storage();
             MPI_Barrier(comm);
         }
+        solver->verify();
         solver->place_hot_data();
     }
     void apply(const Vector &in, Vector &out) override {
