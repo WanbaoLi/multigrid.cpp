@@ -1,0 +1,1349 @@
+{
+  "checked_at": "2026-11-25T15:05:45+08:00",
+  "jobs": {
+    "build": {
+      "id": 2256647,
+      "state": "SUCCEEDED",
+      "exec_nodes": "cn12038",
+      "start_time": "2026-11-25T06:18:45Z",
+      "end_time": "2026-11-25T06:41:53Z",
+      "scheduler_peaks_per_host": [
+        {
+          "host": "cn12038",
+          "peak": 1135,
+          "peak_swap": 0
+        }
+      ]
+    },
+    "c64_2": {
+      "id": 2256760,
+      "state": "FAILED",
+      "exec_nodes": "-",
+      "start_time": "-",
+      "end_time": "2026-11-25T06:49:48Z"
+    },
+    "c64_2_ddr": {
+      "id": 2256948,
+      "state": "RUNNING",
+      "exec_nodes": "cn[12069,12111]",
+      "start_time": "2026-11-25T07:05:09Z",
+      "end_time": "-"
+    },
+    "c64_4": {
+      "id": 2256657,
+      "state": "FAILED",
+      "exec_nodes": "-",
+      "start_time": "-",
+      "end_time": "2026-11-25T06:49:48Z"
+    },
+    "c64_4_ddr": {
+      "id": 2256949,
+      "state": "PENDING",
+      "exec_nodes": "-",
+      "start_time": "-",
+      "end_time": "-"
+    },
+    "strong_1": {
+      "id": 2256648,
+      "state": "SUCCEEDED",
+      "exec_nodes": "cn12060",
+      "start_time": "2026-11-25T06:42:03Z",
+      "end_time": "2026-11-25T06:46:17Z",
+      "scheduler_peaks_per_host": [
+        {
+          "host": "cn12060",
+          "peak": 42814,
+          "peak_swap": 0
+        }
+      ]
+    },
+    "strong_2": {
+      "id": 2256649,
+      "state": "FAILED",
+      "exec_nodes": "cn[12060,12127]",
+      "start_time": "2026-11-25T06:46:20Z",
+      "end_time": "2026-11-25T06:46:38Z",
+      "scheduler_peaks_per_host": [
+        {
+          "host": "cn12060",
+          "peak": 75,
+          "peak_swap": 0
+        }
+      ]
+    },
+    "strong_2_retry": {
+      "id": 2256898,
+      "state": "SUCCEEDED",
+      "exec_nodes": "cn[12138,12144]",
+      "start_time": "2026-11-25T06:49:48Z",
+      "end_time": "2026-11-25T06:52:56Z",
+      "scheduler_peaks_per_host": [
+        {
+          "host": "cn12138",
+          "peak": 26496,
+          "peak_swap": 0
+        }
+      ]
+    },
+    "strong_4": {
+      "id": 2256650,
+      "state": "FAILED",
+      "exec_nodes": "-",
+      "start_time": "-",
+      "end_time": "2026-11-25T06:46:39Z"
+    },
+    "strong_4_retry": {
+      "id": 2256899,
+      "state": "SUCCEEDED",
+      "exec_nodes": "cn[12060,12138,12144,12200]",
+      "start_time": "2026-11-25T06:52:58Z",
+      "end_time": "2026-11-25T06:55:54Z",
+      "scheduler_peaks_per_host": [
+        {
+          "host": "cn12060",
+          "peak": 19267,
+          "peak_swap": 0
+        }
+      ]
+    },
+    "weak_1": {
+      "id": 2256651,
+      "state": "SUCCEEDED",
+      "exec_nodes": "cn12069",
+      "start_time": "2026-11-25T06:42:03Z",
+      "end_time": "2026-11-25T06:46:00Z",
+      "scheduler_peaks_per_host": [
+        {
+          "host": "cn12069",
+          "peak": 47727,
+          "peak_swap": 0
+        }
+      ]
+    },
+    "weak_16": {
+      "id": 2256655,
+      "state": "FAILED",
+      "exec_nodes": "-",
+      "start_time": "-",
+      "end_time": "2026-11-25T06:49:51Z"
+    },
+    "weak_16_ddr": {
+      "id": 2256946,
+      "state": "WAITING",
+      "exec_nodes": "-",
+      "start_time": "-",
+      "end_time": "-"
+    },
+    "weak_1_ddr": {
+      "id": 2256942,
+      "state": "SUCCEEDED",
+      "exec_nodes": "cn19605",
+      "start_time": "2026-11-25T06:51:34Z",
+      "end_time": "2026-11-25T06:55:24Z",
+      "scheduler_peaks_per_host": [
+        {
+          "host": "cn19605",
+          "peak": 42675,
+          "peak_swap": 0
+        }
+      ]
+    },
+    "weak_2": {
+      "id": 2256652,
+      "state": "FAILED",
+      "exec_nodes": "cn[12067,12069]",
+      "start_time": "2026-11-25T06:46:05Z",
+      "end_time": "2026-11-25T06:49:46Z",
+      "scheduler_peaks_per_host": [
+        {
+          "host": "cn12067",
+          "peak": 43141,
+          "peak_swap": 0
+        }
+      ]
+    },
+    "weak_2_ddr": {
+      "id": 2256943,
+      "state": "SUCCEEDED",
+      "exec_nodes": "cn[12069,12111]",
+      "start_time": "2026-11-25T06:55:28Z",
+      "end_time": "2026-11-25T07:00:09Z",
+      "scheduler_peaks_per_host": [
+        {
+          "host": "cn12069",
+          "peak": 43913,
+          "peak_swap": 0
+        }
+      ]
+    },
+    "weak_32": {
+      "id": 2256656,
+      "state": "FAILED",
+      "exec_nodes": "-",
+      "start_time": "-",
+      "end_time": "2026-11-25T06:49:51Z"
+    },
+    "weak_32_ddr": {
+      "id": 2256947,
+      "state": "WAITING",
+      "exec_nodes": "-",
+      "start_time": "-",
+      "end_time": "-"
+    },
+    "weak_4": {
+      "id": 2256653,
+      "state": "FAILED",
+      "exec_nodes": "-",
+      "start_time": "-",
+      "end_time": "2026-11-25T06:49:46Z"
+    },
+    "weak_4_ddr": {
+      "id": 2256944,
+      "state": "SUCCEEDED",
+      "exec_nodes": "cn[12069,12111,12138,12253]",
+      "start_time": "2026-11-25T07:00:10Z",
+      "end_time": "2026-11-25T07:05:07Z",
+      "scheduler_peaks_per_host": [
+        {
+          "host": "cn12069",
+          "peak": 43957,
+          "peak_swap": 0
+        }
+      ]
+    },
+    "weak_8": {
+      "id": 2256654,
+      "state": "FAILED",
+      "exec_nodes": "-",
+      "start_time": "-",
+      "end_time": "2026-11-25T06:49:48Z"
+    },
+    "weak_8_ddr": {
+      "id": 2256945,
+      "state": "PENDING",
+      "exec_nodes": "-",
+      "start_time": "-",
+      "end_time": "-"
+    }
+  },
+  "cases": {
+    "strong_1": {
+      "source_commit": "7639db8a86ab5173b2bb264aba5d605b0155919d",
+      "source_branch": "codex/ls-scaling-20261125",
+      "input_sha256": "bc2918403eee5d1e10a409fc0e69ac03b22cc7f0cf71be760b44a593ff0d0828",
+      "library_sha256": "94cc2e3d031b4ba21d19f844688035f0a0917d9a69b49264831c92203fcd657f",
+      "lattice_xyzt": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "grid_xyzt": [
+        1,
+        1,
+        1,
+        8
+      ],
+      "block_xyzt": [
+        8,
+        8,
+        8,
+        2
+      ],
+      "input_lattice_xyzt": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "time_replicas": 1,
+      "mass": -0.279,
+      "csw": 1.1606789224,
+      "tol": 1e-8,
+      "seed": 1024,
+      "source": "wall",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "wall_period": 64,
+      "zero_initial_guesses": true,
+      "ranks": 8,
+      "ranks_per_node": 8,
+      "threads": 64,
+      "setup_seconds": 127.05052984086797,
+      "read_seconds": 4.621927507920191,
+      "stout_seconds": 22.965752002084628,
+      "gauge_clover_seconds": 0.14460622891783714,
+      "single_pure_summary": {
+        "first_seconds": 14.79038290199999,
+        "second_seconds": 14.506114579000013,
+        "steady_median_seconds": 14.731621160500012,
+        "best_seconds": 14.506114579000013
+      },
+      "independent_verification": {
+        "passed": true,
+        "method": "independent scalar full-spin padded slabs",
+        "columns": [
+          {
+            "column": 0,
+            "residual": 3.5907732483025636e-9
+          }
+        ]
+      },
+      "hosts": [
+        "cn12060"
+      ],
+      "coarse_threads": 8,
+      "hbw_policy": "off",
+      "halo_page_reuse": true,
+      "pml": "ucx",
+      "single_samples": [
+        {
+          "run": 1,
+          "solver_seconds": 14.79038290199999,
+          "iterations": 40,
+          "residual": 3.5907732482597044e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 2,
+          "solver_seconds": 14.506114579000013,
+          "iterations": 40,
+          "residual": 3.5907732482597044e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 3,
+          "solver_seconds": 14.957127742000011,
+          "iterations": 40,
+          "residual": 3.590773248259704e-9,
+          "correction_solves_occurred": false
+        }
+      ],
+      "setup_Pss_GiB_per_host": {
+        "cn12060": 24.694
+      },
+      "numa_pool_gib_at_start": [
+        {
+          "host": "cn12060",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 61.822
+        }
+      ],
+      "hbw_observed_allocations": {},
+      "hbw_observed_cap_fallbacks": {},
+      "hbw_rank_cap_bytes": [],
+      "observed_sidecar_bytes": [],
+      "network_preflight": []
+    },
+    "strong_2_retry": {
+      "source_commit": "7639db8a86ab5173b2bb264aba5d605b0155919d",
+      "source_branch": "codex/ls-scaling-20261125",
+      "input_sha256": "bc2918403eee5d1e10a409fc0e69ac03b22cc7f0cf71be760b44a593ff0d0828",
+      "library_sha256": "94cc2e3d031b4ba21d19f844688035f0a0917d9a69b49264831c92203fcd657f",
+      "lattice_xyzt": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "grid_xyzt": [
+        1,
+        1,
+        1,
+        16
+      ],
+      "block_xyzt": [
+        8,
+        8,
+        8,
+        2
+      ],
+      "input_lattice_xyzt": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "time_replicas": 1,
+      "mass": -0.279,
+      "csw": 1.1606789224,
+      "tol": 1e-8,
+      "seed": 1024,
+      "source": "wall",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "wall_period": 64,
+      "zero_initial_guesses": true,
+      "ranks": 16,
+      "ranks_per_node": 8,
+      "threads": 64,
+      "setup_seconds": 80.44623714199406,
+      "read_seconds": 1.7500988559331745,
+      "stout_seconds": 9.916046737023862,
+      "gauge_clover_seconds": 0.09203633799916133,
+      "single_pure_summary": {
+        "first_seconds": 8.829313196000001,
+        "second_seconds": 7.976777186999996,
+        "steady_median_seconds": 7.9769819689999935,
+        "best_seconds": 7.976777186999996
+      },
+      "independent_verification": {
+        "passed": true,
+        "method": "independent scalar full-spin padded slabs",
+        "columns": [
+          {
+            "column": 0,
+            "residual": 3.5908166578747925e-9
+          }
+        ]
+      },
+      "hosts": [
+        "cn12138",
+        "cn12144"
+      ],
+      "coarse_threads": 8,
+      "hbw_policy": "off",
+      "halo_page_reuse": true,
+      "pml": "ucx",
+      "single_samples": [
+        {
+          "run": 1,
+          "solver_seconds": 8.829313196000001,
+          "iterations": 40,
+          "residual": 3.5908166577900437e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 2,
+          "solver_seconds": 7.976777186999996,
+          "iterations": 40,
+          "residual": 3.5908166577900437e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 3,
+          "solver_seconds": 7.977186750999991,
+          "iterations": 40,
+          "residual": 3.590816657790044e-9,
+          "correction_solves_occurred": false
+        }
+      ],
+      "setup_Pss_GiB_per_host": {
+        "cn12138": 16.332,
+        "cn12144": 16.306
+      },
+      "numa_pool_gib_at_start": [
+        {
+          "host": "cn12138",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 58.757
+        },
+        {
+          "host": "cn12144",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 60.578
+        }
+      ],
+      "hbw_observed_allocations": {},
+      "hbw_observed_cap_fallbacks": {},
+      "hbw_rank_cap_bytes": [],
+      "observed_sidecar_bytes": [],
+      "network_preflight": [
+        {
+          "ring_seconds": {
+            "16384": 0.000062543225,
+            "1327104": 0.0017141828500000001,
+            "2654208": 0.0030216829
+          },
+          "sum_64_bytes_seconds": 0.00003693827000000094
+        }
+      ]
+    },
+    "strong_4_retry": {
+      "source_commit": "7639db8a86ab5173b2bb264aba5d605b0155919d",
+      "source_branch": "codex/ls-scaling-20261125",
+      "input_sha256": "bc2918403eee5d1e10a409fc0e69ac03b22cc7f0cf71be760b44a593ff0d0828",
+      "library_sha256": "94cc2e3d031b4ba21d19f844688035f0a0917d9a69b49264831c92203fcd657f",
+      "lattice_xyzt": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "grid_xyzt": [
+        1,
+        1,
+        1,
+        32
+      ],
+      "block_xyzt": [
+        8,
+        8,
+        8,
+        2
+      ],
+      "input_lattice_xyzt": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "time_replicas": 1,
+      "mass": -0.279,
+      "csw": 1.1606789224,
+      "tol": 1e-8,
+      "seed": 1024,
+      "source": "wall",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "wall_period": 64,
+      "zero_initial_guesses": true,
+      "ranks": 32,
+      "ranks_per_node": 8,
+      "threads": 64,
+      "setup_seconds": 60.60495235514827,
+      "read_seconds": 1.1841183910146356,
+      "stout_seconds": 5.935137548018247,
+      "gauge_clover_seconds": 0.08229082101024687,
+      "single_pure_summary": {
+        "first_seconds": 10.015664257999994,
+        "second_seconds": 8.835687620000002,
+        "steady_median_seconds": 9.000017739499995,
+        "best_seconds": 8.835687620000002
+      },
+      "independent_verification": {
+        "passed": true,
+        "method": "independent scalar full-spin padded slabs",
+        "columns": [
+          {
+            "column": 0,
+            "residual": 3.590874690323455e-9
+          }
+        ]
+      },
+      "hosts": [
+        "cn12060",
+        "cn12138",
+        "cn12144",
+        "cn12200"
+      ],
+      "coarse_threads": 8,
+      "hbw_policy": "off",
+      "halo_page_reuse": true,
+      "pml": "ucx",
+      "single_samples": [
+        {
+          "run": 1,
+          "solver_seconds": 10.015664257999994,
+          "iterations": 40,
+          "residual": 3.5908746903598095e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 2,
+          "solver_seconds": 8.835687620000002,
+          "iterations": 40,
+          "residual": 3.59087469035981e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 3,
+          "solver_seconds": 9.164347858999989,
+          "iterations": 40,
+          "residual": 3.59087469035981e-9,
+          "correction_solves_occurred": false
+        }
+      ],
+      "setup_Pss_GiB_per_host": {
+        "cn12060": 12.69,
+        "cn12138": 12.589,
+        "cn12144": 12.681,
+        "cn12200": 12.602
+      },
+      "numa_pool_gib_at_start": [
+        {
+          "host": "cn12060",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 61.929
+        },
+        {
+          "host": "cn12138",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 58.752
+        },
+        {
+          "host": "cn12144",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 60.578
+        },
+        {
+          "host": "cn12200",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 62.664
+        }
+      ],
+      "hbw_observed_allocations": {},
+      "hbw_observed_cap_fallbacks": {},
+      "hbw_rank_cap_bytes": [],
+      "observed_sidecar_bytes": [],
+      "network_preflight": [
+        {
+          "ring_seconds": {
+            "16384": 0.0000867187,
+            "1327104": 0.001287793875,
+            "2654208": 0.0021584269999999997
+          },
+          "sum_64_bytes_seconds": 0.00006353568000000004
+        }
+      ]
+    },
+    "weak_1": {
+      "source_commit": "7639db8a86ab5173b2bb264aba5d605b0155919d",
+      "source_branch": "codex/ls-scaling-20261125",
+      "input_sha256": "bc2918403eee5d1e10a409fc0e69ac03b22cc7f0cf71be760b44a593ff0d0828",
+      "library_sha256": "94cc2e3d031b4ba21d19f844688035f0a0917d9a69b49264831c92203fcd657f",
+      "lattice_xyzt": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "grid_xyzt": [
+        1,
+        1,
+        1,
+        16
+      ],
+      "block_xyzt": [
+        8,
+        8,
+        8,
+        2
+      ],
+      "input_lattice_xyzt": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "time_replicas": 1,
+      "mass": -0.279,
+      "csw": 1.1606789224,
+      "tol": 1e-8,
+      "seed": 1024,
+      "source": "wall",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "wall_period": 64,
+      "zero_initial_guesses": true,
+      "ranks": 16,
+      "ranks_per_node": 16,
+      "threads": 32,
+      "setup_seconds": 125.55595583491959,
+      "read_seconds": 2.339594115037471,
+      "stout_seconds": 7.117871939903125,
+      "gauge_clover_seconds": 0.12608179985545576,
+      "single_pure_summary": {
+        "first_seconds": 12.741599400999988,
+        "second_seconds": 12.62511623200001,
+        "steady_median_seconds": 12.588845131500008,
+        "best_seconds": 12.552574031000006
+      },
+      "independent_verification": {
+        "passed": true,
+        "method": "independent scalar full-spin padded slabs",
+        "columns": [
+          {
+            "column": 0,
+            "residual": 3.590795094033965e-9
+          }
+        ]
+      },
+      "hosts": [
+        "cn12069"
+      ],
+      "coarse_threads": 8,
+      "hbw_policy": "prefer",
+      "halo_page_reuse": true,
+      "pml": "ucx",
+      "single_samples": [
+        {
+          "run": 1,
+          "solver_seconds": 12.741599400999988,
+          "iterations": 40,
+          "residual": 3.5907950939406077e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 2,
+          "solver_seconds": 12.62511623200001,
+          "iterations": 40,
+          "residual": 3.590795093940608e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 3,
+          "solver_seconds": 12.552574031000006,
+          "iterations": 40,
+          "residual": 3.590795093940608e-9,
+          "correction_solves_occurred": false
+        }
+      ],
+      "setup_Pss_GiB_per_host": {
+        "cn12069": 32.25
+      },
+      "numa_pool_gib_at_start": [
+        {
+          "host": "cn12069",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 63.579
+        }
+      ],
+      "hbw_observed_allocations": {
+        "links": 15,
+        "diag": 13,
+        "clover_inverse": 16,
+        "basis": 15
+      },
+      "hbw_observed_cap_fallbacks": {},
+      "hbw_rank_cap_bytes": [
+        1073741824,
+        10737418244
+      ],
+      "observed_sidecar_bytes": [
+        528482556
+      ],
+      "network_preflight": []
+    },
+    "weak_1_ddr": {
+      "source_commit": "7639db8a86ab5173b2bb264aba5d605b0155919d",
+      "source_branch": "codex/ls-scaling-20261125",
+      "input_sha256": "bc2918403eee5d1e10a409fc0e69ac03b22cc7f0cf71be760b44a593ff0d0828",
+      "library_sha256": "94cc2e3d031b4ba21d19f844688035f0a0917d9a69b49264831c92203fcd657f",
+      "lattice_xyzt": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "grid_xyzt": [
+        1,
+        1,
+        1,
+        16
+      ],
+      "block_xyzt": [
+        8,
+        8,
+        8,
+        2
+      ],
+      "input_lattice_xyzt": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "time_replicas": 1,
+      "mass": -0.279,
+      "csw": 1.1606789224,
+      "tol": 1e-8,
+      "seed": 1024,
+      "source": "wall",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "wall_period": 64,
+      "zero_initial_guesses": true,
+      "ranks": 16,
+      "ranks_per_node": 16,
+      "threads": 32,
+      "setup_seconds": 120.59119198494591,
+      "read_seconds": 2.0629434920847416,
+      "stout_seconds": 7.18975323298946,
+      "gauge_clover_seconds": 0.1061110410373658,
+      "single_pure_summary": {
+        "first_seconds": 12.409080356999993,
+        "second_seconds": 12.414608380999994,
+        "steady_median_seconds": 12.258092572999999,
+        "best_seconds": 12.101576765000004
+      },
+      "independent_verification": {
+        "passed": true,
+        "method": "independent scalar full-spin padded slabs",
+        "columns": [
+          {
+            "column": 0,
+            "residual": 3.590795094033965e-9
+          }
+        ]
+      },
+      "hosts": [
+        "cn19605"
+      ],
+      "coarse_threads": 8,
+      "hbw_policy": "off",
+      "halo_page_reuse": true,
+      "pml": "ucx",
+      "single_samples": [
+        {
+          "run": 1,
+          "solver_seconds": 12.409080356999993,
+          "iterations": 40,
+          "residual": 3.590795093940608e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 2,
+          "solver_seconds": 12.414608380999994,
+          "iterations": 40,
+          "residual": 3.5907950939406077e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 3,
+          "solver_seconds": 12.101576765000004,
+          "iterations": 40,
+          "residual": 3.590795093940608e-9,
+          "correction_solves_occurred": false
+        }
+      ],
+      "setup_Pss_GiB_per_host": {
+        "cn19605": 24.374
+      },
+      "numa_pool_gib_at_start": [
+        {
+          "host": "cn19605",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 62.001
+        }
+      ],
+      "hbw_observed_allocations": {},
+      "hbw_observed_cap_fallbacks": {},
+      "hbw_rank_cap_bytes": [],
+      "observed_sidecar_bytes": [],
+      "network_preflight": []
+    },
+    "weak_2_ddr": {
+      "source_commit": "7639db8a86ab5173b2bb264aba5d605b0155919d",
+      "source_branch": "codex/ls-scaling-20261125",
+      "input_sha256": "bc2918403eee5d1e10a409fc0e69ac03b22cc7f0cf71be760b44a593ff0d0828",
+      "library_sha256": "94cc2e3d031b4ba21d19f844688035f0a0917d9a69b49264831c92203fcd657f",
+      "lattice_xyzt": [
+        32,
+        32,
+        32,
+        128
+      ],
+      "grid_xyzt": [
+        1,
+        1,
+        1,
+        32
+      ],
+      "block_xyzt": [
+        8,
+        8,
+        8,
+        2
+      ],
+      "input_lattice_xyzt": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "time_replicas": 2,
+      "mass": -0.279,
+      "csw": 1.1606789224,
+      "tol": 1e-8,
+      "seed": 1024,
+      "source": "wall",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "wall_period": 64,
+      "zero_initial_guesses": true,
+      "ranks": 32,
+      "ranks_per_node": 16,
+      "threads": 32,
+      "setup_seconds": 128.11970851314254,
+      "read_seconds": 1.8433516039513052,
+      "stout_seconds": 7.789206262910739,
+      "gauge_clover_seconds": 0.10485699190758169,
+      "single_pure_summary": {
+        "first_seconds": 17.12155222300001,
+        "second_seconds": 16.992223644999996,
+        "steady_median_seconds": 16.990487150999996,
+        "best_seconds": 16.988750656999997
+      },
+      "independent_verification": {
+        "passed": true,
+        "method": "independent scalar full-spin padded slabs",
+        "columns": [
+          {
+            "column": 0,
+            "residual": 4.527885357974414e-9
+          }
+        ]
+      },
+      "hosts": [
+        "cn12069",
+        "cn12111"
+      ],
+      "coarse_threads": 8,
+      "hbw_policy": "off",
+      "halo_page_reuse": true,
+      "pml": "ucx",
+      "single_samples": [
+        {
+          "run": 1,
+          "solver_seconds": 17.12155222300001,
+          "iterations": 40,
+          "residual": 4.527885357947671e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 2,
+          "solver_seconds": 16.992223644999996,
+          "iterations": 40,
+          "residual": 4.527885357947671e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 3,
+          "solver_seconds": 16.988750656999997,
+          "iterations": 40,
+          "residual": 4.527885357947671e-9,
+          "correction_solves_occurred": false
+        }
+      ],
+      "setup_Pss_GiB_per_host": {
+        "cn12069": 26.172,
+        "cn12111": 26.133
+      },
+      "numa_pool_gib_at_start": [
+        {
+          "host": "cn12069",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 63.579
+        },
+        {
+          "host": "cn12111",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 63.592
+        }
+      ],
+      "hbw_observed_allocations": {},
+      "hbw_observed_cap_fallbacks": {},
+      "hbw_rank_cap_bytes": [],
+      "observed_sidecar_bytes": [],
+      "network_preflight": [
+        {
+          "ring_seconds": {
+            "16384": 0.00004713765,
+            "1327104": 0.0017145519000000002,
+            "2654208": 0.0030605496750000004
+          },
+          "sum_64_bytes_seconds": 0.00003899352999999994
+        }
+      ]
+    },
+    "weak_4_ddr": {
+      "source_commit": "7639db8a86ab5173b2bb264aba5d605b0155919d",
+      "source_branch": "codex/ls-scaling-20261125",
+      "input_sha256": "bc2918403eee5d1e10a409fc0e69ac03b22cc7f0cf71be760b44a593ff0d0828",
+      "library_sha256": "94cc2e3d031b4ba21d19f844688035f0a0917d9a69b49264831c92203fcd657f",
+      "lattice_xyzt": [
+        32,
+        32,
+        32,
+        256
+      ],
+      "grid_xyzt": [
+        1,
+        1,
+        1,
+        64
+      ],
+      "block_xyzt": [
+        8,
+        8,
+        8,
+        2
+      ],
+      "input_lattice_xyzt": [
+        32,
+        32,
+        32,
+        64
+      ],
+      "time_replicas": 4,
+      "mass": -0.279,
+      "csw": 1.1606789224,
+      "tol": 1e-8,
+      "seed": 1024,
+      "source": "wall",
+      "source_xyzt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "wall_period": 64,
+      "zero_initial_guesses": true,
+      "ranks": 64,
+      "ranks_per_node": 16,
+      "threads": 32,
+      "setup_seconds": 128.6169784949161,
+      "read_seconds": 1.8112342339009047,
+      "stout_seconds": 8.615935895126313,
+      "gauge_clover_seconds": 0.1055943330284208,
+      "single_pure_summary": {
+        "first_seconds": 17.680510524,
+        "second_seconds": 17.325863218999984,
+        "steady_median_seconds": 17.303106936499987,
+        "best_seconds": 17.28035065399999
+      },
+      "independent_verification": {
+        "passed": true,
+        "method": "independent scalar full-spin padded slabs",
+        "columns": [
+          {
+            "column": 0,
+            "residual": 4.8209038540951484e-9
+          }
+        ]
+      },
+      "hosts": [
+        "cn12069",
+        "cn12111",
+        "cn12138",
+        "cn12253"
+      ],
+      "coarse_threads": 8,
+      "hbw_policy": "off",
+      "halo_page_reuse": true,
+      "pml": "ucx",
+      "single_samples": [
+        {
+          "run": 1,
+          "solver_seconds": 17.680510524,
+          "iterations": 40,
+          "residual": 4.820903854100954e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 2,
+          "solver_seconds": 17.325863218999984,
+          "iterations": 40,
+          "residual": 4.820903854100953e-9,
+          "correction_solves_occurred": false
+        },
+        {
+          "run": 3,
+          "solver_seconds": 17.28035065399999,
+          "iterations": 40,
+          "residual": 4.820903854100954e-9,
+          "correction_solves_occurred": false
+        }
+      ],
+      "setup_Pss_GiB_per_host": {
+        "cn12069": 26.191,
+        "cn12111": 26.148,
+        "cn12138": 26.176,
+        "cn12253": 24.412
+      },
+      "numa_pool_gib_at_start": [
+        {
+          "host": "cn12069",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 63.579
+        },
+        {
+          "host": "cn12111",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 63.587
+        },
+        {
+          "host": "cn12138",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 58.752
+        },
+        {
+          "host": "cn12253",
+          "cpu_attached_total_gib": 501.001,
+          "memory_only_total_gib": 64,
+          "memory_only_free_gib": 0.092
+        }
+      ],
+      "hbw_observed_allocations": {},
+      "hbw_observed_cap_fallbacks": {},
+      "hbw_rank_cap_bytes": [],
+      "observed_sidecar_bytes": [],
+      "network_preflight": [
+        {
+          "ring_seconds": {
+            "16384": 0.001869160075000001,
+            "1327104": 0.001264014275,
+            "2654208": 0.002177344025
+          },
+          "sum_64_bytes_seconds": 0.00005643695000000004
+        }
+      ]
+    }
+  },
+  "artifacts": {
+    "runtime_sha256": "94cc2e3d031b4ba21d19f844688035f0a0917d9a69b49264831c92203fcd657f",
+    "independent_oracle_sha256": "ff5e890f19763824486eef80e8a979a6ef52540b2bae3116f67d2250a9d626fb",
+    "source_commit": "7639db8a86ab5173b2bb264aba5d605b0155919d",
+    "ctest_summary": [
+      "100% tests passed, 0 tests failed out of 12"
+    ]
+  },
+  "experiment_root": "~/lqcd-run/ls-scaling-20261125",
+  "checkout_bundle_sha256": "071fd8d18b19567e83c9786dcfa42a71e144acd10655928bc38a1632508ab8ec",
+  "validations": {
+    "wsl_ctest": {
+      "passed": 60,
+      "seconds": 298.92
+    },
+    "repeated_wall_oracle": {
+      "mpi_ranks": 2,
+      "lattice_xyzt": [
+        4,
+        4,
+        4,
+        8
+      ],
+      "wall_period": 4,
+      "independent_residual": 3.89542561456178e-16,
+      "rejects_wrong_wall_period": true
+    },
+    "synthetic_rank_affinity": {
+      "ranks_per_node": [
+        4,
+        8,
+        16,
+        32
+      ],
+      "disjoint_physical_cores": 512,
+      "numa_binding": true,
+      "method": "synthetic 16 CPU-NUMA domains"
+    }
+  },
+  "hbw_observations": {
+    "hardware_build_host": {
+      "host": "cn12038",
+      "cpu_attached_gib": 501,
+      "memory_only_gib": 64,
+      "memory_only_domains": 16
+    },
+    "previous_c64": {
+      "source_commit": "4b7bc8d61f7fbbbc0d135d23278b3af6f144185a",
+      "job_id": 2256142,
+      "verified_second_seconds": 187.495774493,
+      "second_residual": 4.599741474297412e-9,
+      "max_post_setup_pss_gib": 141.485,
+      "raw_four_fp32_assets_gib_per_host": 63,
+      "hbw_link_sidecar_gib_per_host_approx": 9,
+      "hbw_cap_gib_per_rank": 1,
+      "c64_basis_gib_per_rank": 2.25
+    },
+    "c32_prefer_failure": {
+      "job_id": 2256652,
+      "last_checkpoint": "loaded",
+      "rank": 10,
+      "exit_signal": 9,
+      "host": "cn12067",
+      "free_memory_only_gib_before_run": {
+        "cn12067": 1.2602386474609375,
+        "cn12069": 63.57966232299805
+      },
+      "installed_memory_only_gib_per_host": 64,
+      "oom_explicitly_confirmed": false
+    }
+  },
+  "startup_retry": {
+    "failed_job_id": 2256649,
+    "failed_host": "cn12127",
+    "reason": "No space left creating ORTE session directory",
+    "excluded_nodes_for_retries": [
+      "cn12127",
+      "cn12199"
+    ]
+  },
+  "comparisons": {
+    "strong": [
+      {
+        "nodes": 1,
+        "job_id": 2256648,
+        "state": "SUCCEEDED",
+        "case": "strong_1",
+        "second_solver_seconds": 14.506114579000013,
+        "iterations": 40,
+        "independent_full_residual": 3.5907732483025636e-9,
+        "local_temporal_extent": 8,
+        "max_post_setup_pss_gib_per_node": 24.694,
+        "speedup_relative_to_first_test": 1,
+        "efficiency_relative_to_first_test": 1
+      },
+      {
+        "nodes": 2,
+        "job_id": 2256898,
+        "state": "SUCCEEDED",
+        "case": "strong_2_retry",
+        "second_solver_seconds": 7.976777186999996,
+        "iterations": 40,
+        "independent_full_residual": 3.5908166578747925e-9,
+        "local_temporal_extent": 4,
+        "max_post_setup_pss_gib_per_node": 16.332,
+        "speedup_relative_to_first_test": 1.8185432837012274,
+        "efficiency_relative_to_first_test": 0.9092716418506137
+      },
+      {
+        "nodes": 4,
+        "job_id": 2256899,
+        "state": "SUCCEEDED",
+        "case": "strong_4_retry",
+        "second_solver_seconds": 8.835687620000002,
+        "iterations": 40,
+        "independent_full_residual": 3.590874690323455e-9,
+        "local_temporal_extent": 2,
+        "max_post_setup_pss_gib_per_node": 12.69,
+        "speedup_relative_to_first_test": 1.6417640825332855,
+        "efficiency_relative_to_first_test": 0.4104410206333214
+      }
+    ],
+    "weak": [
+      {
+        "nodes": 1,
+        "job_id": 2256942,
+        "state": "SUCCEEDED",
+        "case": "weak_1_ddr",
+        "second_solver_seconds": 12.414608380999994,
+        "iterations": 40,
+        "independent_full_residual": 3.590795094033965e-9,
+        "local_temporal_extent": 4,
+        "max_post_setup_pss_gib_per_node": 24.374,
+        "weak_efficiency": 1
+      },
+      {
+        "nodes": 2,
+        "job_id": 2256943,
+        "state": "SUCCEEDED",
+        "case": "weak_2_ddr",
+        "second_solver_seconds": 16.992223644999996,
+        "iterations": 40,
+        "independent_full_residual": 4.527885357974414e-9,
+        "local_temporal_extent": 4,
+        "max_post_setup_pss_gib_per_node": 26.172,
+        "weak_efficiency": 0.7306052839442837
+      },
+      {
+        "nodes": 4,
+        "job_id": 2256944,
+        "state": "SUCCEEDED",
+        "case": "weak_4_ddr",
+        "second_solver_seconds": 17.325863218999984,
+        "iterations": 40,
+        "independent_full_residual": 4.8209038540951484e-9,
+        "local_temporal_extent": 4,
+        "max_post_setup_pss_gib_per_node": 26.191,
+        "weak_efficiency": 0.7165362108703373
+      },
+      {
+        "nodes": 8,
+        "job_id": 2256945,
+        "state": "PENDING",
+        "case": "weak_8_ddr"
+      },
+      {
+        "nodes": 16,
+        "job_id": 2256946,
+        "state": "WAITING",
+        "case": "weak_16_ddr"
+      },
+      {
+        "nodes": 32,
+        "job_id": 2256947,
+        "state": "WAITING",
+        "case": "weak_32_ddr"
+      }
+    ],
+    "c64": [
+      {
+        "nodes": 2,
+        "job_id": 2256948,
+        "state": "RUNNING",
+        "case": "c64_2_ddr"
+      },
+      {
+        "nodes": 4,
+        "job_id": 2256949,
+        "state": "PENDING",
+        "case": "c64_4_ddr"
+      }
+    ]
+  },
+  "c64_node_volume": {
+    "c32_sites": 2097152,
+    "c64_sites": 33554432,
+    "c64_to_c32_volume_ratio": 16,
+    "per_node_multiplier_relative_to_c32_one_node": {
+      "2": 8,
+      "4": 4,
+      "8": 2,
+      "16": 1,
+      "32": 0.5
+    },
+    "t_slab_c64_max_nodes_at_sixteen_ranks_per_node": 4,
+    "possible_t_slab_sixteen_node_layout": {
+      "mpi_per_node": 4,
+      "threads_per_rank": 128,
+      "local_time_extent": 2
+    },
+    "example_spatial_grid_for_sixteen_nodes_at_sixteen_ranks_per_node": [
+      2,
+      2,
+      2,
+      32
+    ]
+  }
+}
